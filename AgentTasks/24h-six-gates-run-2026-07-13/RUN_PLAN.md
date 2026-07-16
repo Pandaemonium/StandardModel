@@ -5,16 +5,15 @@ End: 2026-07-13 10:30 PDT.
 Landing freeze: 2026-07-13 08:30 PDT.
 Final adversarial audit: 2026-07-13 08:30-10:30 PDT.
 
-Executors: Codex and Claude Opus, co-equal when Opus is available. Coordinate
-only through the append-only `LEDGER.md` in this directory. Aristotle is the
+Executors: Codex and the user-started interactive Claude Code session,
+co-equal when both are available. Coordinate through the AFPL mailbox and keep
+this run's append-only `LEDGER.md` as its historical record. Aristotle is the
 proof, strategy, and audit fleet. `AGENTS.md`, repository conventions, source
 provenance, and the Lean kernel are binding.
 
-The configured Opus wrapper returned `Credit balance is too low` at startup.
-Retry it at most once per hour through
-`Scripts/autonomous_loop/send_claude_review.py`. Do not substitute another
-model without the user's instruction. Codex and Aristotle continue useful work
-while Opus is unavailable; every missed Opus review is recorded, not implied.
+Do not invoke Claude through an API or repository review wrapper. If the
+interactive Claude Code session is unavailable, Codex and Aristotle continue
+useful work and leave Claude-family review explicitly pending.
 
 ## 0. Mission
 
@@ -64,8 +63,7 @@ binding whenever older task notes use broader language.
 5. Inspect the exact Lean declarations and guards used as premises.
 6. Generate a semantic context pack for every nontrivial submission.
 7. Submit one grand-strategy Aristotle job and one hostile audit job.
-8. Retry Opus if its service is available; log failure or response through the
-   repository wrapper.
+8. Check the AFPL mailbox for interactive Claude Code handoffs and reviews.
 
 ## 3. Gate 7.1: continuum commuting square
 
@@ -274,7 +272,7 @@ lanes when capacity permits:
 Prefix jobs:
 
 - Codex: `codex-6gate-`;
-- Opus: `opus-6gate-`.
+- Claude Code: `claude-6gate-`.
 
 Submit a grand-strategy job at startup and every 90 minutes. Keep at least one
 audit project running. Apply the two-hour stall rule, but download useful
@@ -289,9 +287,9 @@ Every proof submission must include:
 - expected axiom footprint;
 - manuscript consequence and kill condition.
 
-## 10. Opus and literature cadence
+## 10. Claude Code and literature cadence
 
-Opus responsibilities when available:
+Interactive Claude Code responsibilities when available:
 
 - hostile strategy and semantic review for all six gates;
 - primary-source audits for Lorentz sprinklings, modular selection/Jacobson,
@@ -299,10 +297,9 @@ Opus responsibilities when available:
 - independent review of Codex Lean statements using verbatim source;
 - manuscript and overview wording only after theorem grades are settled.
 
-All autonomous Opus calls use
-`Scripts/autonomous_loop/send_claude_review.py` and preserve complete logs. If
-the account remains out of credit, record the failure once per hour and
-continue; do not imply that Opus reviewed the work.
+Claude-family work occurs only in the user-started interactive Claude Code
+session. Use the AFPL mailbox for durable requests, artifacts, and verdicts;
+do not invoke a Claude API or repository review wrapper.
 
 Run a literature/public-Lean pass at least every 30 minutes. Use Spark when
 available, direct search otherwise. For theorem content, inspect primary full
@@ -340,9 +337,9 @@ Codex defaults:
 - 7.2 deterministic Lorentz no-go and finite ensemble theorem;
 - 7.5 overlap gauge covariance/index composition;
 - guards, root imports, exact fixtures, publication verifier, final build;
-- independent audit of Opus prose and source claims.
+- independent audit of Claude Code prose and source claims.
 
-Opus defaults when available:
+Claude Code defaults when available:
 
 - 7.3 maximum-entropy/modular derivation architecture and source audit;
 - 7.4 gravity/Lambda primary-source and physical-meaning audit;
@@ -392,6 +389,7 @@ At 10:30 PDT on July 13, the run succeeds only if:
 10. the final verifier runs twice identically;
 11. `HONEST_SCORECARD.md` and `FINAL_REPORT.md` report failures as prominently
     as successes;
-12. Opus participation or unavailability is disclosed exactly.
+12. Interactive Claude Code participation or unavailability is disclosed
+    exactly.
 
 The run does not succeed by making the overview sound more complete.

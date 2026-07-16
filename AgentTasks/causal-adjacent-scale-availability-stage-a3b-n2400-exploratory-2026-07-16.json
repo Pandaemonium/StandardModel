@@ -1,0 +1,107 @@
+{
+  "continuous_event_threshold": 743.2393838678859,
+  "embedding_coordinates_used_after_sprinkling": false,
+  "results": [
+    {
+      "adjacent_scale_ratios_to_operator_scale": [
+        0.552770245874274,
+        0.6909628073428425,
+        0.8637035091785531
+      ],
+      "adjacent_scales": [
+        0.09949864425736932,
+        0.12437330532171165,
+        0.15546663165213956
+      ],
+      "common_interior_count": {
+        "count": 3,
+        "mean": 495.6666666666667,
+        "median": 509.0,
+        "std": 43.49201714746691
+      },
+      "common_marks_evaluated": 1487,
+      "ell": 0.08593732820359837,
+      "events": 2400,
+      "hierarchy_valid": true,
+      "interior_count_by_scale": [
+        {
+          "count": 3,
+          "mean": 2142.6666666666665,
+          "median": 2121.0,
+          "std": 45.52166761249221
+        },
+        {
+          "count": 3,
+          "mean": 931.3333333333334,
+          "median": 919.0,
+          "std": 66.30401362076222
+        },
+        {
+          "count": 3,
+          "mean": 496.3333333333333,
+          "median": 509.0,
+          "std": 44.19150245113747
+        }
+      ],
+      "lower_hierarchy_clearance": 1.1578047204544475,
+      "minimum_shell_count_across_scales": {
+        "count": 1487,
+        "mean": 0.3846671149966375,
+        "median": 0.0,
+        "std": 2.40823101135454
+      },
+      "operator_scale_over_ell": 2.0945496417290643,
+      "passes_availability_gate": false,
+      "realizations_evaluated": 3,
+      "realizations_with_common_interior_rate": 1.0,
+      "realizations_with_rank_capable_common_mark_rate": 1.0,
+      "retarded_shell_count_by_scale": [
+        {
+          "count": 1487,
+          "mean": 53.57901815736382,
+          "median": 42.0,
+          "std": 37.82731144514231
+        },
+        {
+          "count": 1487,
+          "mean": 3.8238063214525893,
+          "median": 0.0,
+          "std": 10.125767209011698
+        },
+        {
+          "count": 1487,
+          "mean": 0.3846671149966375,
+          "median": 0.0,
+          "std": 2.40823101135454
+        }
+      ],
+      "triple_shell_nonempty_rate": 0.07128446536650974,
+      "triple_shell_rank_capable_rate": 0.03227975790181574,
+      "upper_hierarchy_clearance": 1.1578047204544475
+    }
+  ],
+  "scale_schedule": "s = sqrt(ell * L), evaluated at (s/r, s, r*s)",
+  "settings": {
+    "adjacent_ratio": 1.25,
+    "duration": 1.0,
+    "events": [
+      2400
+    ],
+    "interior_abundance_threshold": 0.25,
+    "interior_band": [
+      0.5,
+      2.0
+    ],
+    "minimum_availability_rate": 0.8,
+    "minimum_shell_count": 4,
+    "nonlocality_scale": 0.18,
+    "realizations": 3,
+    "retarded_shell_band": [
+      0.5,
+      4.0
+    ],
+    "seed": 2026071601
+  },
+  "status": "order-only adjacent-scale availability scan; external numerical oracle",
+  "strict_hierarchy_condition": "L / ell > r^2"
+}

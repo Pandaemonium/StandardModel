@@ -1,0 +1,1461 @@
+{
+  "claim_boundary": "deterministic continuum-kernel control; not a graph or GR limit",
+  "conventions": {
+    "c4": 0.1308996938995747,
+    "nonlocality_ratios": [
+      0.25,
+      0.2,
+      0.16,
+      0.125,
+      0.1
+    ],
+    "profiles": [
+      {
+        "depth_one": 0.08,
+        "depth_zero": 0.02,
+        "name": "primary"
+      },
+      {
+        "depth_one": 0.12,
+        "depth_zero": 0.04,
+        "name": "robustness"
+      }
+    ],
+    "proper_variable_cutoff": 20.0,
+    "quadrature_orders": [
+      160,
+      240
+    ],
+    "signature": "+---",
+    "source_to_project_sign": -1
+  },
+  "passes": false,
+  "profile_passes": {
+    "primary": {
+      "checks": {
+        "metric_error": true,
+        "metric_reduction": true,
+        "quadrature": false,
+        "response_ratio": true,
+        "signature": true,
+        "zero_reduction": true,
+        "zero_residual": false
+      },
+      "metric_error_reduction": 0.8162773199028452,
+      "passes": false,
+      "zero_residual_reduction": 0.9190217042881818
+    },
+    "robustness": {
+      "checks": {
+        "metric_error": true,
+        "metric_reduction": true,
+        "quadrature": false,
+        "response_ratio": false,
+        "signature": true,
+        "zero_reduction": true,
+        "zero_residual": false
+      },
+      "metric_error_reduction": 0.8974851983396143,
+      "passes": false,
+      "zero_residual_reduction": 0.9680414495541441
+    }
+  },
+  "settings": [
+    {
+      "cutoff": "primary",
+      "high": {
+        "cutoff": "primary",
+        "maximum_zero_target_residual": 3.367623133968355,
+        "metric_diagonal": [
+          0.7648203276384075,
+          -0.6234812689477532,
+          -0.6234812689477532,
+          -0.6234812689477532
+        ],
+        "metric_relative_error": 0.3466296809246463,
+        "nonlocality_ratio": 0.25,
+        "operator_values": {
+          "constant": -3.367623133968355,
+          "spatial_quadratic": -1.2469625378955065,
+          "temporal_affine": 2.2506713212281464,
+          "temporal_cubic": -1.297640809826411,
+          "temporal_quadratic": 1.529640655276815,
+          "temporal_spatial_cubic": 0.32954664549301743
+        },
+        "quadrature_order": 240,
+        "response_ratio_error": 0.22669335187758177,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "low": {
+        "cutoff": "primary",
+        "maximum_zero_target_residual": 3.3676212609694023,
+        "metric_diagonal": [
+          0.764820297148098,
+          -0.6234812445945417,
+          -0.6234812445945417,
+          -0.6234812445945417
+        ],
+        "metric_relative_error": 0.3466297059362249,
+        "nonlocality_ratio": 0.25,
+        "operator_values": {
+          "constant": -3.3676212609694023,
+          "spatial_quadratic": -1.2469624891890834,
+          "temporal_affine": 2.250670978852082,
+          "temporal_cubic": -1.297640691731267,
+          "temporal_quadratic": 1.529640594296196,
+          "temporal_spatial_cubic": 0.3295466275395511
+        },
+        "quadrature_order": 160,
+        "response_ratio_error": 0.2266933508889606,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "nonlocality_ratio": 0.25,
+      "quadrature_agreement": {
+        "fields": {
+          "constant": {
+            "absolute": 1.8729989528232238e-06,
+            "passes": true,
+            "relative": 5.561783128078559e-07
+          },
+          "spatial_quadratic": {
+            "absolute": 4.8706423116939845e-08,
+            "passes": true,
+            "relative": 3.906005323876167e-08
+          },
+          "temporal_affine": {
+            "absolute": 3.423760643883611e-07,
+            "passes": true,
+            "relative": 1.5212175192312545e-07
+          },
+          "temporal_cubic": {
+            "absolute": 1.1809514388616549e-07,
+            "passes": true,
+            "relative": 9.100757543373148e-08
+          },
+          "temporal_quadratic": {
+            "absolute": 6.098061899884044e-08,
+            "passes": true,
+            "relative": 3.9865976880566724e-08
+          },
+          "temporal_spatial_cubic": {
+            "absolute": 1.795346632471606e-08,
+            "passes": true,
+            "relative": 5.447928713659586e-08
+          }
+        },
+        "passes": true
+      }
+    },
+    {
+      "cutoff": "primary",
+      "high": {
+        "cutoff": "primary",
+        "maximum_zero_target_residual": 2.5207211096943514,
+        "metric_diagonal": [
+          1.5780586061006758,
+          -0.7625503829148317,
+          -0.7625503829148317,
+          -0.7625503829148317
+        ],
+        "metric_relative_error": 0.35471774485100666,
+        "nonlocality_ratio": 0.2,
+        "operator_values": {
+          "constant": 2.5207211096943514,
+          "spatial_quadratic": -1.5251007658296634,
+          "temporal_affine": -1.1488080087634729,
+          "temporal_cubic": -1.5883937710490812,
+          "temporal_quadratic": 3.1561172122013517,
+          "temporal_spatial_cubic": 0.2635992618681469
+        },
+        "quadrature_order": 240,
+        "response_ratio_error": 1.0694483164097068,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "low": {
+        "cutoff": "primary",
+        "maximum_zero_target_residual": 2.520722222878979,
+        "metric_diagonal": [
+          1.578058418404042,
+          -0.7625502898480624,
+          -0.7625502898480624,
+          -0.7625502898480624
+        ],
+        "metric_relative_error": 0.35471771510649847,
+        "nonlocality_ratio": 0.2,
+        "operator_values": {
+          "constant": 2.520722222878979,
+          "spatial_quadratic": -1.5251005796961248,
+          "temporal_affine": -1.14880769090145,
+          "temporal_cubic": -1.5883935446200304,
+          "temporal_quadratic": 3.156116836808084,
+          "temporal_spatial_cubic": 0.26359919326047515
+        },
+        "quadrature_order": 160,
+        "response_ratio_error": 1.0694483228358211,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "nonlocality_ratio": 0.2,
+      "quadrature_agreement": {
+        "fields": {
+          "constant": {
+            "absolute": 1.1131846275880264e-06,
+            "passes": true,
+            "relative": 4.4161336679002687e-07
+          },
+          "spatial_quadratic": {
+            "absolute": 1.861335385822116e-07,
+            "passes": true,
+            "relative": 1.2204671504505731e-07
+          },
+          "temporal_affine": {
+            "absolute": 3.178620229249418e-07,
+            "passes": true,
+            "relative": 2.76688550654408e-07
+          },
+          "temporal_cubic": {
+            "absolute": 2.2642905084246934e-07,
+            "passes": true,
+            "relative": 1.425522153067375e-07
+          },
+          "temporal_quadratic": {
+            "absolute": 3.7539326758206926e-07,
+            "passes": true,
+            "relative": 1.189414848506964e-07
+          },
+          "temporal_spatial_cubic": {
+            "absolute": 6.860767176597449e-08,
+            "passes": true,
+            "relative": 2.6027262474009597e-07
+          }
+        },
+        "passes": true
+      }
+    },
+    {
+      "cutoff": "primary",
+      "high": {
+        "cutoff": "primary",
+        "maximum_zero_target_residual": 0.789146837353025,
+        "metric_diagonal": [
+          1.2009576086292368,
+          -0.8366926683236027,
+          -0.8366926683236027,
+          -0.8366926683236027
+        ],
+        "metric_relative_error": 0.1734876178605955,
+        "nonlocality_ratio": 0.16,
+        "operator_values": {
+          "constant": 0.7538296897455145,
+          "spatial_quadratic": -1.6733853366472053,
+          "temporal_affine": -0.17860324825288917,
+          "temporal_cubic": -0.789146837353025,
+          "temporal_quadratic": 2.4019152172584737,
+          "temporal_spatial_cubic": 0.17770419737734197
+        },
+        "quadrature_order": 240,
+        "response_ratio_error": 0.43536289260843564,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "low": {
+        "cutoff": "primary",
+        "maximum_zero_target_residual": 0.7891477011360469,
+        "metric_diagonal": [
+          1.200958684814949,
+          -0.8366923117880327,
+          -0.8366923117880327,
+          -0.8366923117880327
+        ],
+        "metric_relative_error": 0.1734881812184661,
+        "nonlocality_ratio": 0.16,
+        "operator_values": {
+          "constant": 0.7538455626267417,
+          "spatial_quadratic": -1.6733846235760654,
+          "temporal_affine": -0.1786088940944164,
+          "temporal_cubic": -0.7891477011360469,
+          "temporal_quadratic": 2.401917369629898,
+          "temporal_spatial_cubic": 0.17770393454181582
+        },
+        "quadrature_order": 160,
+        "response_ratio_error": 0.4353647904908673,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "nonlocality_ratio": 0.16,
+      "quadrature_agreement": {
+        "fields": {
+          "constant": {
+            "absolute": 1.5872881227285696e-05,
+            "passes": false,
+            "relative": 2.105587936603001e-05
+          },
+          "spatial_quadratic": {
+            "absolute": 7.130711399128131e-07,
+            "passes": true,
+            "relative": 4.2612488845009383e-07
+          },
+          "temporal_affine": {
+            "absolute": 5.645841527235351e-06,
+            "passes": false,
+            "relative": 3.1610080538603195e-05
+          },
+          "temporal_cubic": {
+            "absolute": 8.637830218871656e-07,
+            "passes": true,
+            "relative": 1.0945771249712502e-06
+          },
+          "temporal_quadratic": {
+            "absolute": 2.152371424202215e-06,
+            "passes": true,
+            "relative": 8.961055244518531e-07
+          },
+          "temporal_spatial_cubic": {
+            "absolute": 2.628355261491411e-07,
+            "passes": true,
+            "relative": 1.4790620031952814e-06
+          }
+        },
+        "passes": false
+      }
+    },
+    {
+      "cutoff": "primary",
+      "high": {
+        "cutoff": "primary",
+        "maximum_zero_target_residual": 0.4394940507733996,
+        "metric_diagonal": [
+          1.0924338588458533,
+          -0.897320089108712,
+          -0.897320089108712,
+          -0.897320089108712
+        ],
+        "metric_relative_error": 0.10021665351011239,
+        "nonlocality_ratio": 0.125,
+        "operator_values": {
+          "constant": 0.27879166753354984,
+          "spatial_quadratic": -1.794640178217424,
+          "temporal_affine": 0.0032665538162372594,
+          "temporal_cubic": -0.4394940507733996,
+          "temporal_quadratic": 2.1848677176917066,
+          "temporal_spatial_cubic": 0.11493488776461115
+        },
+        "quadrature_order": 240,
+        "response_ratio_error": 0.21744054558161463,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "low": {
+        "cutoff": "primary",
+        "maximum_zero_target_residual": 0.43949765962195475,
+        "metric_diagonal": [
+          1.0924386788155007,
+          -0.897318501413458,
+          -0.897318501413458,
+          -0.897318501413458
+        ],
+        "metric_relative_error": 0.10021898497426693,
+        "nonlocality_ratio": 0.125,
+        "operator_values": {
+          "constant": 0.27886256067029225,
+          "spatial_quadratic": -1.794637002826916,
+          "temporal_affine": 0.0032406639402876684,
+          "temporal_cubic": -0.43949765962195475,
+          "temporal_quadratic": 2.1848773576310014,
+          "temporal_spatial_cubic": 0.11493371722657711
+        },
+        "quadrature_order": 160,
+        "response_ratio_error": 0.21744807121962717,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "nonlocality_ratio": 0.125,
+      "quadrature_agreement": {
+        "fields": {
+          "constant": {
+            "absolute": 7.089313674241149e-05,
+            "passes": false,
+            "relative": 0.00025422249789289794
+          },
+          "spatial_quadratic": {
+            "absolute": 3.1753905078701905e-06,
+            "passes": true,
+            "relative": 1.7693744664873352e-06
+          },
+          "temporal_affine": {
+            "absolute": 2.5889875949590933e-05,
+            "passes": false,
+            "relative": 0.007925746032683907
+          },
+          "temporal_cubic": {
+            "absolute": 3.608848555158861e-06,
+            "passes": true,
+            "relative": 8.21130323711645e-06
+          },
+          "temporal_quadratic": {
+            "absolute": 9.639939294814326e-06,
+            "passes": true,
+            "relative": 4.412119179662619e-06
+          },
+          "temporal_spatial_cubic": {
+            "absolute": 1.1705380340426563e-06,
+            "passes": true,
+            "relative": 1.0184357916109342e-05
+          }
+        },
+        "passes": false
+      }
+    },
+    {
+      "cutoff": "primary",
+      "high": {
+        "cutoff": "primary",
+        "maximum_zero_target_residual": 0.2727043819884496,
+        "metric_diagonal": [
+          1.053876505748874,
+          -0.9333671902058538,
+          -0.9333671902058538,
+          -0.9333671902058538
+        ],
+        "metric_relative_error": 0.06368373398069763,
+        "nonlocality_ratio": 0.1,
+        "operator_values": {
+          "constant": 0.14455693304115017,
+          "spatial_quadratic": -1.8667343804117076,
+          "temporal_affine": 0.023911570798875813,
+          "temporal_cubic": -0.2727043819884496,
+          "temporal_quadratic": 2.107753011497748,
+          "temporal_spatial_cubic": 0.07619104561866462
+        },
+        "quadrature_order": 240,
+        "response_ratio_error": 0.1291124402138475,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "low": {
+        "cutoff": "primary",
+        "maximum_zero_target_residual": 0.27271839406015086,
+        "metric_diagonal": [
+          1.0538954535807823,
+          -0.9333609538931776,
+          -0.9333609538931776,
+          -0.9333609538931776
+        ],
+        "metric_relative_error": 0.06369263559227208,
+        "nonlocality_ratio": 0.1,
+        "operator_values": {
+          "constant": 0.1448355171780189,
+          "spatial_quadratic": -1.8667219077863553,
+          "temporal_affine": 0.02380912089053033,
+          "temporal_cubic": -0.27271839406015086,
+          "temporal_quadratic": 2.1077909071615646,
+          "temporal_spatial_cubic": 0.0761864469309839
+        },
+        "quadrature_order": 160,
+        "response_ratio_error": 0.12914028510067688,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "nonlocality_ratio": 0.1,
+      "quadrature_agreement": {
+        "fields": {
+          "constant": {
+            "absolute": 0.00027858413686873695,
+            "passes": false,
+            "relative": 0.0019234518044791884
+          },
+          "spatial_quadratic": {
+            "absolute": 1.2472625352311084e-05,
+            "passes": true,
+            "relative": 6.681521207939745e-06
+          },
+          "temporal_affine": {
+            "absolute": 0.00010244990834548315,
+            "passes": false,
+            "relative": 0.004284532756430195
+          },
+          "temporal_cubic": {
+            "absolute": 1.4012071701263729e-05,
+            "passes": false,
+            "relative": 5.137926889586047e-05
+          },
+          "temporal_quadratic": {
+            "absolute": 3.7895663816733816e-05,
+            "passes": true,
+            "relative": 1.7978853446979533e-05
+          },
+          "temporal_spatial_cubic": {
+            "absolute": 4.598687680712477e-06,
+            "passes": false,
+            "relative": 6.035732471409908e-05
+          }
+        },
+        "passes": false
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "high": {
+        "cutoff": "robustness",
+        "maximum_zero_target_residual": 10.784613568912324,
+        "metric_diagonal": [
+          -0.22381955018201571,
+          -0.5607329847118291,
+          -0.5607329847118291,
+          -0.5607329847118291
+        ],
+        "metric_relative_error": 0.7205207879666355,
+        "nonlocality_ratio": 0.25,
+        "operator_values": {
+          "constant": -10.784613568912324,
+          "spatial_quadratic": -1.1214659694236582,
+          "temporal_affine": 6.193790551408797,
+          "temporal_cubic": -0.3434900515437674,
+          "temporal_quadratic": -0.44763910036403143,
+          "temporal_spatial_cubic": 0.3100469449801747
+        },
+        "quadrature_order": 240,
+        "response_ratio_error": 1.3991553132852363,
+        "signature": [
+          0,
+          4,
+          0
+        ]
+      },
+      "low": {
+        "cutoff": "robustness",
+        "maximum_zero_target_residual": 10.784609193973154,
+        "metric_diagonal": [
+          -0.2238192791448828,
+          -0.5607329629021196,
+          -0.5607329629021196,
+          -0.5607329629021196
+        ],
+        "metric_relative_error": 0.7205206828483399,
+        "nonlocality_ratio": 0.25,
+        "operator_values": {
+          "constant": -10.784609193973154,
+          "spatial_quadratic": -1.1214659258042392,
+          "temporal_affine": 6.193788994172783,
+          "temporal_cubic": -0.34349023701878745,
+          "temporal_quadratic": -0.4476385582897656,
+          "temporal_spatial_cubic": 0.31004693029115543
+        },
+        "quadrature_order": 160,
+        "response_ratio_error": 1.3991548454481573,
+        "signature": [
+          0,
+          4,
+          0
+        ]
+      },
+      "nonlocality_ratio": 0.25,
+      "quadrature_agreement": {
+        "fields": {
+          "constant": {
+            "absolute": 4.3749391700487195e-06,
+            "passes": true,
+            "relative": 4.0566489861629336e-07
+          },
+          "spatial_quadratic": {
+            "absolute": 4.3619418965690215e-08,
+            "passes": true,
+            "relative": 3.8895000075755336e-08
+          },
+          "temporal_affine": {
+            "absolute": 1.5572360139159969e-06,
+            "passes": true,
+            "relative": 2.5141890107372114e-07
+          },
+          "temporal_cubic": {
+            "absolute": 1.8547502006471817e-07,
+            "passes": true,
+            "relative": 5.399717374050823e-07
+          },
+          "temporal_quadratic": {
+            "absolute": 5.420742658079902e-07,
+            "passes": true,
+            "relative": 1.2109627272665898e-06
+          },
+          "temporal_spatial_cubic": {
+            "absolute": 1.468901927870192e-08,
+            "passes": true,
+            "relative": 4.737675863776428e-08
+          }
+        },
+        "passes": true
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "high": {
+        "cutoff": "robustness",
+        "maximum_zero_target_residual": 1.9070614405319986,
+        "metric_diagonal": [
+          1.6828583640313204,
+          -0.7832623452583884,
+          -0.7832623452583884,
+          -0.7832623452583884
+        ],
+        "metric_relative_error": 0.3896219893294696,
+        "nonlocality_ratio": 0.2,
+        "operator_values": {
+          "constant": 1.9070614405319986,
+          "spatial_quadratic": -1.566524690516777,
+          "temporal_affine": -1.1291936806435727,
+          "temporal_cubic": -1.8176490734540491,
+          "temporal_quadratic": 3.3657167280626408,
+          "temporal_spatial_cubic": 0.3182028642641154
+        },
+        "quadrature_order": 240,
+        "response_ratio_error": 1.1485245323215003,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "low": {
+        "cutoff": "robustness",
+        "maximum_zero_target_residual": 1.9070625701659487,
+        "metric_diagonal": [
+          1.6828580824154424,
+          -0.7832622618769749,
+          -0.7832622618769749,
+          -0.7832622618769749
+        ],
+        "metric_relative_error": 0.3896219007256106,
+        "nonlocality_ratio": 0.2,
+        "operator_values": {
+          "constant": 1.9070625701659487,
+          "spatial_quadratic": -1.5665245237539498,
+          "temporal_affine": -1.1291931306212828,
+          "temporal_cubic": -1.8176487312625023,
+          "temporal_quadratic": 3.365716164830885,
+          "temporal_spatial_cubic": 0.3182028081034494
+        },
+        "quadrature_order": 160,
+        "response_ratio_error": 1.148524401498313,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "nonlocality_ratio": 0.2,
+      "quadrature_agreement": {
+        "fields": {
+          "constant": {
+            "absolute": 1.1296339501587482e-06,
+            "passes": true,
+            "relative": 5.923423635022367e-07
+          },
+          "spatial_quadratic": {
+            "absolute": 1.6676282710292867e-07,
+            "passes": true,
+            "relative": 1.0645400491448092e-07
+          },
+          "temporal_affine": {
+            "absolute": 5.500222899357254e-07,
+            "passes": true,
+            "relative": 4.870929578903114e-07
+          },
+          "temporal_cubic": {
+            "absolute": 3.4219154687598063e-07,
+            "passes": true,
+            "relative": 1.8826051291942705e-07
+          },
+          "temporal_quadratic": {
+            "absolute": 5.632317559012279e-07,
+            "passes": true,
+            "relative": 1.6734377887631467e-07
+          },
+          "temporal_spatial_cubic": {
+            "absolute": 5.6160666006555005e-08,
+            "passes": true,
+            "relative": 1.7649327618855248e-07
+          }
+        },
+        "passes": true
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "high": {
+        "cutoff": "robustness",
+        "maximum_zero_target_residual": 2.574081766746466,
+        "metric_diagonal": [
+          1.4780121253647505,
+          -0.8453291672149194,
+          -0.8453291672149194,
+          -0.8453291672149194
+        ],
+        "metric_relative_error": 0.2739821123445001,
+        "nonlocality_ratio": 0.16,
+        "operator_values": {
+          "constant": 2.574081766746466,
+          "spatial_quadratic": -1.6906583344298387,
+          "temporal_affine": -1.1469149742876652,
+          "temporal_cubic": -1.1021817154582154,
+          "temporal_quadratic": 2.956024250729501,
+          "temporal_spatial_cubic": 0.2062529596847117
+        },
+        "quadrature_order": 240,
+        "response_ratio_error": 0.7484456738128564,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "low": {
+        "cutoff": "robustness",
+        "maximum_zero_target_residual": 2.574097818956416,
+        "metric_diagonal": [
+          1.478012978618106,
+          -0.8453288475968251,
+          -0.8453288475968251,
+          -0.8453288475968251
+        ],
+        "metric_relative_error": 0.2739826198340564,
+        "nonlocality_ratio": 0.16,
+        "operator_values": {
+          "constant": 2.574097818956416,
+          "spatial_quadratic": -1.6906576951936503,
+          "temporal_affine": -1.146920038029721,
+          "temporal_cubic": -1.102182330846554,
+          "temporal_quadratic": 2.956025957236212,
+          "temporal_spatial_cubic": 0.20625274441269423
+        },
+        "quadrature_order": 160,
+        "response_ratio_error": 0.7484473442730963,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "nonlocality_ratio": 0.16,
+      "quadrature_agreement": {
+        "fields": {
+          "constant": {
+            "absolute": 1.6052209950156993e-05,
+            "passes": true,
+            "relative": 6.236052815065449e-06
+          },
+          "spatial_quadratic": {
+            "absolute": 6.392361884266506e-07,
+            "passes": true,
+            "relative": 3.7809897801865926e-07
+          },
+          "temporal_affine": {
+            "absolute": 5.063742055888554e-06,
+            "passes": true,
+            "relative": 4.415078547749056e-06
+          },
+          "temporal_cubic": {
+            "absolute": 6.153883385096037e-07,
+            "passes": true,
+            "relative": 5.583362401000767e-07
+          },
+          "temporal_quadratic": {
+            "absolute": 1.7065067110522136e-06,
+            "passes": true,
+            "relative": 5.772976069018494e-07
+          },
+          "temporal_spatial_cubic": {
+            "absolute": 2.152720174619649e-07,
+            "passes": true,
+            "relative": 1.0437281374824399e-06
+          }
+        },
+        "passes": true
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "high": {
+        "cutoff": "robustness",
+        "maximum_zero_target_residual": 0.716084323287253,
+        "metric_diagonal": [
+          1.1715631417214452,
+          -0.8988782595261345,
+          -0.8988782595261345,
+          -0.8988782595261345
+        ],
+        "metric_relative_error": 0.12258744918090522,
+        "nonlocality_ratio": 0.125,
+        "operator_values": {
+          "constant": 0.716084323287253,
+          "spatial_quadratic": -1.797756519052269,
+          "temporal_affine": -0.2412678808988499,
+          "temporal_cubic": -0.5346457073002314,
+          "temporal_quadratic": 2.3431262834428903,
+          "temporal_spatial_cubic": 0.12865387784589274
+        },
+        "quadrature_order": 240,
+        "response_ratio_error": 0.30336130538863304,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "low": {
+        "cutoff": "robustness",
+        "maximum_zero_target_residual": 0.7161606007926151,
+        "metric_diagonal": [
+          1.1715674657960835,
+          -0.8988768337651639,
+          -0.8988768337651639,
+          -0.8988768337651639
+        ],
+        "metric_relative_error": 0.12258984416313322,
+        "nonlocality_ratio": 0.125,
+        "operator_values": {
+          "constant": 0.7161606007926151,
+          "spatial_quadratic": -1.7977536675303278,
+          "temporal_affine": -0.2412933090174159,
+          "temporal_cubic": -0.5346486751180138,
+          "temporal_quadratic": 2.343134931592167,
+          "temporal_spatial_cubic": 0.12865291749233365
+        },
+        "quadrature_order": 160,
+        "response_ratio_error": 0.3033681832567523,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "nonlocality_ratio": 0.125,
+      "quadrature_agreement": {
+        "fields": {
+          "constant": {
+            "absolute": 7.627750536209899e-05,
+            "passes": false,
+            "relative": 0.0001065089384667048
+          },
+          "spatial_quadratic": {
+            "absolute": 2.8515219412383885e-06,
+            "passes": true,
+            "relative": 1.5861558064279125e-06
+          },
+          "temporal_affine": {
+            "absolute": 2.5428118566012126e-05,
+            "passes": false,
+            "relative": 0.00010538260952845896
+          },
+          "temporal_cubic": {
+            "absolute": 2.9678177824177254e-06,
+            "passes": true,
+            "relative": 5.550968178800096e-06
+          },
+          "temporal_quadratic": {
+            "absolute": 8.6481492767021e-06,
+            "passes": true,
+            "relative": 3.690845610340356e-06
+          },
+          "temporal_spatial_cubic": {
+            "absolute": 9.603535590929635e-07,
+            "passes": true,
+            "relative": 7.4646297116929275e-06
+          }
+        },
+        "passes": false
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "high": {
+        "cutoff": "robustness",
+        "maximum_zero_target_residual": 0.34466061678114746,
+        "metric_diagonal": [
+          1.0930998304295432,
+          -0.9337781240945887,
+          -0.9337781240945887,
+          -0.9337781240945887
+        ],
+        "metric_relative_error": 0.0738640456705845,
+        "nonlocality_ratio": 0.1,
+        "operator_values": {
+          "constant": 0.34466061678114746,
+          "spatial_quadratic": -1.8675562481891774,
+          "temporal_affine": -0.0902482998056976,
+          "temporal_cubic": -0.3205663910711634,
+          "temporal_quadratic": 2.1861996608590863,
+          "temporal_spatial_cubic": 0.08443584537236276
+        },
+        "quadrature_order": 240,
+        "response_ratio_error": 0.17062051704138614,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "low": {
+        "cutoff": "robustness",
+        "maximum_zero_target_residual": 0.3449616520607295,
+        "metric_diagonal": [
+          1.0931169004265617,
+          -0.933772500256071,
+          -0.933772500256071,
+          -0.933772500256071
+        ],
+        "metric_relative_error": 0.07387320608997315,
+        "nonlocality_ratio": 0.1,
+        "operator_values": {
+          "constant": 0.3449616520607295,
+          "spatial_quadratic": -1.867545000512142,
+          "temporal_affine": -0.0903493652327622,
+          "temporal_cubic": -0.32057793031175125,
+          "temporal_quadratic": 2.1862338008531235,
+          "temporal_spatial_cubic": 0.08443205671680262
+        },
+        "quadrature_order": 160,
+        "response_ratio_error": 0.17064584802700167,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "nonlocality_ratio": 0.1,
+      "quadrature_agreement": {
+        "fields": {
+          "constant": {
+            "absolute": 0.00030103527958202925,
+            "passes": false,
+            "relative": 0.0008726630272776896
+          },
+          "spatial_quadratic": {
+            "absolute": 1.1247677035530756e-05,
+            "passes": true,
+            "relative": 6.022671095682791e-06
+          },
+          "temporal_affine": {
+            "absolute": 0.00010106542706460331,
+            "passes": false,
+            "relative": 0.0011186069410032255
+          },
+          "temporal_cubic": {
+            "absolute": 1.1539240587832289e-05,
+            "passes": false,
+            "relative": 3.5995118493062716e-05
+          },
+          "temporal_quadratic": {
+            "absolute": 3.413999403711898e-05,
+            "passes": true,
+            "relative": 1.5615893425395167e-05
+          },
+          "temporal_spatial_cubic": {
+            "absolute": 3.7886555601385208e-06,
+            "passes": false,
+            "relative": 4.487022713434702e-05
+          }
+        },
+        "passes": false
+      }
+    },
+    {
+      "cutoff": "none",
+      "high": {
+        "cutoff": "none",
+        "maximum_zero_target_residual": 0.9206936496793655,
+        "metric_diagonal": [
+          0.8657128921727841,
+          -0.6549139271272768,
+          -0.6549139271272768,
+          -0.6549139271272768
+        ],
+        "metric_relative_error": 0.3063030445493293,
+        "nonlocality_ratio": 0.25,
+        "operator_values": {
+          "constant": -2.7639701382407696e-07,
+          "spatial_quadratic": -1.3098278542545536,
+          "temporal_affine": 0.7796971409327331,
+          "temporal_cubic": -0.9206936496793655,
+          "temporal_quadratic": 1.7314257843455683,
+          "temporal_spatial_cubic": 0.23406645214331992
+        },
+        "quadrature_order": 240,
+        "response_ratio_error": 0.3218727779544386,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "low": {
+        "cutoff": "none",
+        "maximum_zero_target_residual": 0.9206932862898394,
+        "metric_diagonal": [
+          0.8657125975432175,
+          -0.654913927124255,
+          -0.654913927124255,
+          -0.654913927124255
+        ],
+        "metric_relative_error": 0.3063030768442434,
+        "nonlocality_ratio": 0.25,
+        "operator_values": {
+          "constant": -9.302422737200579e-07,
+          "spatial_quadratic": -1.30982785424851,
+          "temporal_affine": 0.779697944287271,
+          "temporal_cubic": -0.9206932862898394,
+          "temporal_quadratic": 1.731425195086435,
+          "temporal_spatial_cubic": 0.23406645213932648
+        },
+        "quadrature_order": 160,
+        "response_ratio_error": 0.32187232808528776,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "nonlocality_ratio": 0.25,
+      "quadrature_agreement": {
+        "fields": {
+          "constant": {
+            "absolute": 6.538452598959809e-07,
+            "passes": true,
+            "relative": 0.0
+          },
+          "spatial_quadratic": {
+            "absolute": 6.043610056849502e-12,
+            "passes": true,
+            "relative": 4.614049118911911e-12
+          },
+          "temporal_affine": {
+            "absolute": 8.033545378927087e-07,
+            "passes": true,
+            "relative": 1.0303407156306695e-06
+          },
+          "temporal_cubic": {
+            "absolute": 3.6338952613679254e-07,
+            "passes": true,
+            "relative": 3.94691031336367e-07
+          },
+          "temporal_quadratic": {
+            "absolute": 5.892591332656849e-07,
+            "passes": true,
+            "relative": 3.4033173041165537e-07
+          },
+          "temporal_spatial_cubic": {
+            "absolute": 3.9934444640010724e-12,
+            "passes": true,
+            "relative": 1.706115689554635e-11
+          }
+        },
+        "passes": true
+      }
+    },
+    {
+      "cutoff": "none",
+      "high": {
+        "cutoff": "none",
+        "maximum_zero_target_residual": 0.6568720497897459,
+        "metric_diagonal": [
+          0.944995944191803,
+          -0.7688316730486998,
+          -0.7688316730486998,
+          -0.7688316730486998
+        ],
+        "metric_relative_error": 0.20207785152741314,
+        "nonlocality_ratio": 0.2,
+        "operator_values": {
+          "constant": -6.792163870183774e-07,
+          "spatial_quadratic": -1.5376633460973996,
+          "temporal_affine": 0.49900640261880386,
+          "temporal_cubic": -0.6568720497897459,
+          "temporal_quadratic": 1.889991888383606,
+          "temporal_spatial_cubic": 0.1822637780940565
+        },
+        "quadrature_order": 240,
+        "response_ratio_error": 0.22913243212854018,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "low": {
+        "cutoff": "none",
+        "maximum_zero_target_residual": 0.6568718531509977,
+        "metric_diagonal": [
+          0.9449956901210641,
+          -0.7688316730444825,
+          -0.7688316730444825,
+          -0.7688316730444825
+        ],
+        "metric_relative_error": 0.2020778688201018,
+        "nonlocality_ratio": 0.2,
+        "operator_values": {
+          "constant": -2.2849057068245845e-06,
+          "spatial_quadratic": -1.537663346088965,
+          "temporal_affine": 0.4990074660448614,
+          "temporal_cubic": -0.6568718531509977,
+          "temporal_quadratic": 1.8899913802421282,
+          "temporal_spatial_cubic": 0.18226377809042466
+        },
+        "quadrature_order": 160,
+        "response_ratio_error": 0.22913210167186904,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "nonlocality_ratio": 0.2,
+      "quadrature_agreement": {
+        "fields": {
+          "constant": {
+            "absolute": 1.6056893198062073e-06,
+            "passes": true,
+            "relative": 0.7027376731610038
+          },
+          "spatial_quadratic": {
+            "absolute": 8.43458636268224e-12,
+            "passes": true,
+            "relative": 5.4853270607570104e-12
+          },
+          "temporal_affine": {
+            "absolute": 1.0634260575459464e-06,
+            "passes": true,
+            "relative": 2.1310824584944046e-06
+          },
+          "temporal_cubic": {
+            "absolute": 1.9663874817332783e-07,
+            "passes": true,
+            "relative": 2.9935624180731803e-07
+          },
+          "temporal_quadratic": {
+            "absolute": 5.081414777841076e-07,
+            "passes": true,
+            "relative": 2.688590786591628e-07
+          },
+          "temporal_spatial_cubic": {
+            "absolute": 3.631844824880659e-12,
+            "passes": true,
+            "relative": 1.992631154066421e-11
+          }
+        },
+        "passes": true
+      }
+    },
+    {
+      "cutoff": "none",
+      "high": {
+        "cutoff": "none",
+        "maximum_zero_target_residual": 0.4442094919388905,
+        "metric_diagonal": [
+          0.9774703820118511,
+          -0.8478279675194562,
+          -0.8478279675194562,
+          -0.8478279675194562
+        ],
+        "metric_relative_error": 0.13226542074033462,
+        "nonlocality_ratio": 0.16,
+        "operator_values": {
+          "constant": -5.516748278663572e-09,
+          "spatial_quadratic": -1.6956559350389124,
+          "temporal_affine": 0.3193638980333996,
+          "temporal_cubic": -0.4442094919388905,
+          "temporal_quadratic": 1.9549407640237022,
+          "temporal_spatial_cubic": 0.13124133621964565
+        },
+        "quadrature_order": 240,
+        "response_ratio_error": 0.15291122663917056,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "low": {
+        "cutoff": "none",
+        "maximum_zero_target_residual": 0.44420956248725935,
+        "metric_diagonal": [
+          0.9774703802332652,
+          -0.8478279675202215,
+          -0.8478279675202215,
+          -0.8478279675202215
+        ],
+        "metric_relative_error": 0.13226542081541376,
+        "nonlocality_ratio": 0.16,
+        "operator_values": {
+          "constant": -1.8594373071816993e-08,
+          "spatial_quadratic": -1.695655935040443,
+          "temporal_affine": 0.31936410669954407,
+          "temporal_cubic": -0.44420956248725935,
+          "temporal_quadratic": 1.9549407604665303,
+          "temporal_spatial_cubic": 0.13124133622124168
+        },
+        "quadrature_order": 160,
+        "response_ratio_error": 0.15291122454031525,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "nonlocality_ratio": 0.16,
+      "quadrature_agreement": {
+        "fields": {
+          "constant": {
+            "absolute": 1.3077624793153422e-08,
+            "passes": true,
+            "relative": 0.0
+          },
+          "spatial_quadratic": {
+            "absolute": 1.5305534617482408e-12,
+            "passes": true,
+            "relative": 9.026320906969465e-13
+          },
+          "temporal_affine": {
+            "absolute": 2.0866614447445642e-07,
+            "passes": true,
+            "relative": 6.533800765242799e-07
+          },
+          "temporal_cubic": {
+            "absolute": 7.054836886899452e-08,
+            "passes": true,
+            "relative": 1.5881776266583176e-07
+          },
+          "temporal_quadratic": {
+            "absolute": 3.5571718903781857e-09,
+            "passes": true,
+            "relative": 1.8195803964191407e-09
+          },
+          "temporal_spatial_cubic": {
+            "absolute": 1.5960288646255094e-12,
+            "passes": true,
+            "relative": 1.2161022666936157e-11
+          }
+        },
+        "passes": true
+      }
+    },
+    {
+      "cutoff": "none",
+      "high": {
+        "cutoff": "none",
+        "maximum_zero_target_residual": 0.28010508483722585,
+        "metric_diagonal": [
+          0.9916070635512063,
+          -0.9053355453287657,
+          -0.9053355453287657,
+          -0.9053355453287657
+        ],
+        "metric_relative_error": 0.08208915628272714,
+        "nonlocality_ratio": 0.125,
+        "operator_values": {
+          "constant": 3.45192650038937e-11,
+          "spatial_quadratic": -1.8106710906575314,
+          "temporal_affine": 0.19492430956729592,
+          "temporal_cubic": -0.28010508483722585,
+          "temporal_quadratic": 1.9832141271024126,
+          "temporal_spatial_cubic": 0.08663507075634894
+        },
+        "quadrature_order": 240,
+        "response_ratio_error": 0.09529231307394626,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "low": {
+        "cutoff": "none",
+        "maximum_zero_target_residual": 0.2801051413938648,
+        "metric_diagonal": [
+          0.9916070635394962,
+          -0.9053355453326252,
+          -0.9053355453326252,
+          -0.9053355453326252
+        ],
+        "metric_relative_error": 0.08208915627968844,
+        "nonlocality_ratio": 0.125,
+        "operator_values": {
+          "constant": -9.449576275351606e-11,
+          "spatial_quadratic": -1.8106710906652503,
+          "temporal_affine": 0.19492456798738977,
+          "temporal_cubic": -0.2801051413938648,
+          "temporal_quadratic": 1.9832141270789925,
+          "temporal_spatial_cubic": 0.08663507076049302
+        },
+        "quadrature_order": 160,
+        "response_ratio_error": 0.09529231305634256,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "nonlocality_ratio": 0.125,
+      "quadrature_agreement": {
+        "fields": {
+          "constant": {
+            "absolute": 1.2901502775740975e-10,
+            "passes": true,
+            "relative": 0.0
+          },
+          "spatial_quadratic": {
+            "absolute": 7.718936601008863e-12,
+            "passes": true,
+            "relative": 4.263025262182147e-12
+          },
+          "temporal_affine": {
+            "absolute": 2.584200938515746e-07,
+            "passes": true,
+            "relative": 1.3257440892124615e-06
+          },
+          "temporal_cubic": {
+            "absolute": 5.655663892767393e-08,
+            "passes": true,
+            "relative": 2.019121771426103e-07
+          },
+          "temporal_quadratic": {
+            "absolute": 2.3420154704467677e-11,
+            "passes": true,
+            "relative": 1.1809191143008769e-11
+          },
+          "temporal_spatial_cubic": {
+            "absolute": 4.144087850654898e-12,
+            "passes": true,
+            "relative": 4.783383697015076e-11
+          }
+        },
+        "passes": true
+      }
+    },
+    {
+      "cutoff": "none",
+      "high": {
+        "cutoff": "none",
+        "maximum_zero_target_residual": 0.1822576797300001,
+        "metric_diagonal": [
+          0.9965622532354854,
+          -0.9387701714894404,
+          -0.9387701714894404,
+          -0.9387701714894404
+        ],
+        "metric_relative_error": 0.0530544385539856,
+        "nonlocality_ratio": 0.1,
+        "operator_values": {
+          "constant": 7.855670969636101e-11,
+          "spatial_quadratic": -1.8775403429788808,
+          "temporal_affine": 0.12475162475890053,
+          "temporal_cubic": -0.1822576797300001,
+          "temporal_quadratic": 1.9931245064709708,
+          "temporal_spatial_cubic": 0.057887384852744195
+        },
+        "quadrature_order": 240,
+        "response_ratio_error": 0.06156148064904188,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "low": {
+        "cutoff": "none",
+        "maximum_zero_target_residual": 0.1822577249496923,
+        "metric_diagonal": [
+          0.9965622531959184,
+          -0.9387701715025979,
+          -0.9387701715025979,
+          -0.9387701715025979
+        ],
+        "metric_relative_error": 0.05305443854323783,
+        "nonlocality_ratio": 0.1,
+        "operator_values": {
+          "constant": -3.8917570513318377e-10,
+          "spatial_quadratic": -1.8775403430051958,
+          "temporal_affine": 0.12475194790548795,
+          "temporal_cubic": -0.1822577249496923,
+          "temporal_quadratic": 1.9931245063918368,
+          "temporal_spatial_cubic": 0.05788738486461982
+        },
+        "quadrature_order": 160,
+        "response_ratio_error": 0.061561480592015716,
+        "signature": [
+          1,
+          3,
+          0
+        ]
+      },
+      "nonlocality_ratio": 0.1,
+      "quadrature_agreement": {
+        "fields": {
+          "constant": {
+            "absolute": 4.677324148295448e-10,
+            "passes": true,
+            "relative": 0.0
+          },
+          "spatial_quadratic": {
+            "absolute": 2.631495021887531e-11,
+            "passes": true,
+            "relative": 1.4015651017519835e-11
+          },
+          "temporal_affine": {
+            "absolute": 3.2314658741927627e-07,
+            "passes": true,
+            "relative": 2.590312959795161e-06
+          },
+          "temporal_cubic": {
+            "absolute": 4.521969221293887e-08,
+            "passes": true,
+            "relative": 2.4810850802302416e-07
+          },
+          "temporal_quadratic": {
+            "absolute": 7.913403266002206e-11,
+            "passes": true,
+            "relative": 3.970350693250814e-11
+          },
+          "temporal_spatial_cubic": {
+            "absolute": 1.1875625482993257e-11,
+            "passes": true,
+            "relative": 2.0515049195548508e-10
+          }
+        },
+        "passes": true
+      }
+    }
+  ],
+  "stage": "A41"
+}

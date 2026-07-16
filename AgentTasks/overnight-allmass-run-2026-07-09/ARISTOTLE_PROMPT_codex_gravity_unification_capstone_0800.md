@@ -2,11 +2,12 @@
 
 aristotle:
   project_id: 535f2b9d-1e4c-40c5-af73-ed57c316e113
+  task_id: d664d16d-d23a-460a-a3bf-ef2f4bd13f2a
   target_file: PhysicsSM/Draft/NullEdge/GravityUnificationCapstone.lean
   expected_module: PhysicsSM.Draft.NullEdge.GravityUnificationCapstone
   submission_project: AgentTasks/aristotle-submit/codex-proof-wave-0800-20260709-project
   output_dir: AgentTasks/aristotle-output/535f2b9d-1e4c-40c5-af73-ed57c316e113
-  status: submitted 2026-07-09 ~08:00
+  status: harvested and integrated; completion rechecked 2026-07-14
 
 You are Aristotle, proving an ambitious finite Goal IV gravity unification
 capstone in Lean. Stay in exact finite-avatar scope: trace-source WEP, finite
@@ -111,7 +112,7 @@ gravity/action story with explicit nonzero multiplier, nonzero source, nonzero
 torsion, nonzero curvature coefficient, resource nonvacuity, and mostly-minus
 convention provenance.
 
-Add guard pins for headline theorem axiom footprints. Run first:
+Add guard pins for headline theorem assumption footprints. Run first:
 
 ```text
 lake env lean PhysicsSM/Draft/NullEdge/GravityUnificationCapstone.lean
@@ -119,3 +120,20 @@ lake env lean PhysicsSM/Draft/NullEdge/GravityUnificationCapstone.lean
 
 Return solved targets, exact theorem names, any statement adjustments, and any
 dependency-footprint guard blocks you added.
+
+## Harvested result
+
+Aristotle completed task `d664d16d-d23a-460a-a3bf-ef2f4bd13f2a`. The live
+`GravityUnificationCapstone.lean` contains the returned implementation and
+three guarded headline theorems:
+
+- `gravity_unification_capstone`;
+- `finite_gravity_nondegeneracy_bundle`;
+- `finite_gravity_claim_boundary`.
+
+The result composes the exact propositions of the imported finite-avatar
+theorems. The parameterized teleparallel source conjunct retains its explicit
+channel-blindness and stationarity hypotheses. Aristotle reported successful
+targeted build and direct Lean checks, no proof holes, and the standard assumption
+footprint `[propext, Classical.choice, Quot.sound]`. Its scope remains finite
+algebra; it does not close any continuum reconstruction gate.

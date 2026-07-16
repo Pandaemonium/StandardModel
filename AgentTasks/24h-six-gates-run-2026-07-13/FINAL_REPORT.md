@@ -41,7 +41,7 @@ Populate during the final audit. Do not predeclare success.
 
 ## Trust and provenance
 
-## Opus participation
+## Interactive Claude Code participation
 
 ## Remaining gates
 

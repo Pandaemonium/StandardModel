@@ -1,0 +1,280 @@
+{
+  "chain_coefficient": 1.05051433598341,
+  "chain_coefficient_was_frozen": true,
+  "density_is_supplied": true,
+  "dimension_is_supplied": true,
+  "f1_f2_f3_audit_uses_known_embedding": true,
+  "global_interval_endpoints_are_supplied": true,
+  "metric_and_curvature_scores_opened": false,
+  "samples": [
+    {
+      "active_count": 39,
+      "chain_coefficient": 1.05051433598341,
+      "chain_relative_error_median": 0.09998924621000316,
+      "chain_relative_error_p90": 0.23822616196784718,
+      "chain_scale_spread": 0.086525268640393,
+      "count_relative_error_median": 0.10116113130146448,
+      "count_relative_error_p90": 0.23142738970230758,
+      "density_standardized_error_p90": 0.5268871954570984,
+      "minimum_scale_pair_count": 24,
+      "normalized_anchor_proximity_maximum": 2.2565932022372586,
+      "normalized_frame_minimum_singular_value": 0.07982531038312972,
+      "order_sensitivity": 1.0,
+      "order_specificity": 1.0,
+      "passes_f1_gate": true,
+      "passes_f2_gate": true,
+      "passes_f3_gate": true,
+      "passes_sampled_well_conditioning_gate": false,
+      "passes_scaffold_gate": false,
+      "scaffold_active_causal_coverage_fraction": 0.9487179487179487,
+      "scaffold_frame_condition": 373.75319835883994,
+      "scaffold_scale": 0.05
+    },
+    {
+      "active_count": 32,
+      "chain_coefficient": 1.05051433598341,
+      "chain_relative_error_median": 0.09967747871153848,
+      "chain_relative_error_p90": 0.24116147111069208,
+      "chain_scale_spread": 0.0704096579646768,
+      "count_relative_error_median": 0.09514418625756851,
+      "count_relative_error_p90": 0.28423379926781367,
+      "density_standardized_error_p90": 0.48907435318747394,
+      "minimum_scale_pair_count": 24,
+      "normalized_anchor_proximity_maximum": 2.1852191658460987,
+      "normalized_frame_minimum_singular_value": 0.16218932840218728,
+      "order_sensitivity": 1.0,
+      "order_specificity": 1.0,
+      "passes_f1_gate": true,
+      "passes_f2_gate": true,
+      "passes_f3_gate": true,
+      "passes_sampled_well_conditioning_gate": false,
+      "passes_scaffold_gate": false,
+      "scaffold_active_causal_coverage_fraction": 0.96875,
+      "scaffold_frame_condition": 182.708965484534,
+      "scaffold_scale": 0.05
+    },
+    {
+      "active_count": 18,
+      "chain_coefficient": 1.05051433598341,
+      "chain_relative_error_median": 0.09518385759756537,
+      "chain_relative_error_p90": 0.2168277873889196,
+      "chain_scale_spread": 0.0909574371094316,
+      "count_relative_error_median": 0.09191369655132653,
+      "count_relative_error_p90": 0.2667667070034797,
+      "density_standardized_error_p90": 0.5776213927425506,
+      "minimum_scale_pair_count": 24,
+      "normalized_anchor_proximity_maximum": 2.221889718986032,
+      "normalized_frame_minimum_singular_value": 0.844235126541878,
+      "order_sensitivity": 1.0,
+      "order_specificity": 1.0,
+      "passes_f1_gate": true,
+      "passes_f2_gate": true,
+      "passes_f3_gate": true,
+      "passes_sampled_well_conditioning_gate": false,
+      "passes_scaffold_gate": false,
+      "scaffold_active_causal_coverage_fraction": 1.0,
+      "scaffold_frame_condition": 35.01423560934357,
+      "scaffold_scale": 0.05
+    }
+  ],
+  "scaffold_selection_uses_known_embedding": false,
+  "scaffold_selection_uses_order_derived_johnston_chart": true,
+  "selected_scaffold_key": "scaffold_scale=0.050000",
+  "selected_scaffold_summary": {
+    "active_count": {
+      "count": 3,
+      "mean": 29.666666666666668,
+      "median": 32.0,
+      "std": 8.73053390247253
+    },
+    "chain_relative_error_median": {
+      "count": 3,
+      "mean": 0.098283527506369,
+      "median": 0.09967747871153848,
+      "std": 0.0021954900593309876
+    },
+    "chain_relative_error_p90": {
+      "count": 3,
+      "mean": 0.2320718068224863,
+      "median": 0.23822616196784718,
+      "std": 0.010845555351056215
+    },
+    "chain_scale_spread": {
+      "count": 3,
+      "mean": 0.0826307879048338,
+      "median": 0.086525268640393,
+      "std": 0.008829044572513172
+    },
+    "count_relative_error_median": {
+      "count": 3,
+      "mean": 0.09607300470345319,
+      "median": 0.09514418625756851,
+      "std": 0.003831952517414278
+    },
+    "count_relative_error_p90": {
+      "count": 3,
+      "mean": 0.260809298657867,
+      "median": 0.2667667070034797,
+      "std": 0.021965841033253962
+    },
+    "density_standardized_error_p90": {
+      "count": 3,
+      "mean": 0.5311943137957077,
+      "median": 0.5268871954570984,
+      "std": 0.03627724727501769
+    },
+    "f1_gate_success_rate": 1.0,
+    "f2_gate_success_rate": 1.0,
+    "f3_gate_success_rate": 1.0,
+    "minimum_scale_pair_count": {
+      "count": 3,
+      "mean": 24.0,
+      "median": 24.0,
+      "std": 0.0
+    },
+    "normalized_anchor_proximity_maximum": {
+      "count": 3,
+      "mean": 2.2212340290231296,
+      "median": 2.221889718986032,
+      "std": 0.029142016799199547
+    },
+    "normalized_frame_minimum_singular_value": {
+      "count": 3,
+      "mean": 0.36208325510906497,
+      "median": 0.16218932840218728,
+      "std": 0.342586999374547
+    },
+    "sampled_well_conditioning_gate_success_rate": 0.0,
+    "samples": 3,
+    "scaffold_active_causal_coverage_fraction": {
+      "count": 3,
+      "mean": 0.9724893162393163,
+      "median": 0.96875,
+      "std": 0.02110211775117916
+    },
+    "scaffold_frame_condition": {
+      "count": 3,
+      "mean": 197.1587998175725,
+      "median": 182.708965484534,
+      "std": 138.6665532980475
+    },
+    "scaffold_gate_success_rate": 0.0,
+    "scaffold_scale": 0.05
+  },
+  "selection_rule": "maximum full and scaffold gate rates, then active causal coverage, frame condition, anchor proximity, and smaller scaffold scale",
+  "settings": {
+    "boundary_clearance": 0.02,
+    "density": 30557.749073643907,
+    "dimension": 4,
+    "duration": 1.0,
+    "events_including_endpoints": 4000,
+    "maximum_chain_relative_p90": 0.35,
+    "maximum_chain_scale_spread": 0.2,
+    "maximum_count_relative_p90": 0.6,
+    "maximum_density_standardized_p90": 1.0,
+    "maximum_frame_condition": 50.0,
+    "maximum_normalized_proximity": 1.5,
+    "minimum_active_count": 8,
+    "minimum_active_coverage": 0.95,
+    "minimum_lightcone_count": 20,
+    "minimum_normalized_singular_value": 0.25,
+    "pairs_per_scale": 24,
+    "proper_time_scales": [
+      0.25,
+      0.3,
+      0.35,
+      0.4
+    ],
+    "realizations": 3,
+    "relative_scale_width": 0.075,
+    "scaffold_scales": [
+      0.05
+    ],
+    "seed": 20260825
+  },
+  "status": "frozen held-out well-conditioning audit",
+  "summaries": {
+    "scaffold_scale=0.050000": {
+      "active_count": {
+        "count": 3,
+        "mean": 29.666666666666668,
+        "median": 32.0,
+        "std": 8.73053390247253
+      },
+      "chain_relative_error_median": {
+        "count": 3,
+        "mean": 0.098283527506369,
+        "median": 0.09967747871153848,
+        "std": 0.0021954900593309876
+      },
+      "chain_relative_error_p90": {
+        "count": 3,
+        "mean": 0.2320718068224863,
+        "median": 0.23822616196784718,
+        "std": 0.010845555351056215
+      },
+      "chain_scale_spread": {
+        "count": 3,
+        "mean": 0.0826307879048338,
+        "median": 0.086525268640393,
+        "std": 0.008829044572513172
+      },
+      "count_relative_error_median": {
+        "count": 3,
+        "mean": 0.09607300470345319,
+        "median": 0.09514418625756851,
+        "std": 0.003831952517414278
+      },
+      "count_relative_error_p90": {
+        "count": 3,
+        "mean": 0.260809298657867,
+        "median": 0.2667667070034797,
+        "std": 0.021965841033253962
+      },
+      "density_standardized_error_p90": {
+        "count": 3,
+        "mean": 0.5311943137957077,
+        "median": 0.5268871954570984,
+        "std": 0.03627724727501769
+      },
+      "f1_gate_success_rate": 1.0,
+      "f2_gate_success_rate": 1.0,
+      "f3_gate_success_rate": 1.0,
+      "minimum_scale_pair_count": {
+        "count": 3,
+        "mean": 24.0,
+        "median": 24.0,
+        "std": 0.0
+      },
+      "normalized_anchor_proximity_maximum": {
+        "count": 3,
+        "mean": 2.2212340290231296,
+        "median": 2.221889718986032,
+        "std": 0.029142016799199547
+      },
+      "normalized_frame_minimum_singular_value": {
+        "count": 3,
+        "mean": 0.36208325510906497,
+        "median": 0.16218932840218728,
+        "std": 0.342586999374547
+      },
+      "sampled_well_conditioning_gate_success_rate": 0.0,
+      "samples": 3,
+      "scaffold_active_causal_coverage_fraction": {
+        "count": 3,
+        "mean": 0.9724893162393163,
+        "median": 0.96875,
+        "std": 0.02110211775117916
+      },
+      "scaffold_frame_condition": {
+        "count": 3,
+        "mean": 197.1587998175725,
+        "median": 182.708965484534,
+        "std": 138.6665532980475
+      },
+      "scaffold_gate_success_rate": 0.0,
+      "scaffold_scale": 0.05
+    }
+  },
+  "uniform_all_diamonds_claimed": false
+}

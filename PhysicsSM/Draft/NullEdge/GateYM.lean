@@ -106,6 +106,7 @@ import PhysicsSM.Draft.NullEdge.GateYM.FermionicSingleCutRP
 import PhysicsSM.Draft.NullEdge.GateYM.ClosureObstruction
 import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPCriterion
 import PhysicsSM.Draft.NullEdge.GateYM.PolymerKPConclusion
+import PhysicsSM.Draft.NullEdge.GateYM.RootedTouchSum
 import PhysicsSM.Draft.NullEdge.GateYM.KPAntiRegressionToy
 import PhysicsSM.Draft.NullEdge.GateYM.StrongCouplingPolymerMap
 import PhysicsSM.Draft.NullEdge.GateYM.ExponentialClustering
@@ -742,5 +743,17 @@ measure, expectation, nonabelian, or beyond-leading positivity claim).
 the concrete Carrier `Z2 x Z2` torus gauge-configuration type, with a
 scalar-free re-export of `mZero_iff_commute`; still no curvature-to-scalar
 derivation).
+`RootedTouchSum` (YM4/T6 rooted-touch normalization bridge R0, Aristotle
+`70a0d064` integrated, GAUGE-YM-EGF-001: after the audit counterexample killed
+the unrooted `pairSum_le_expBound` recurrence, this proves the easy first rung
+of the repaired rooted route - `boundedTouchSum_le_rootedTouchSum`, that
+renormalizing the cluster sum from `1/n!` to `1/(n-1)!` can only increase it,
+by termwise nonnegativity and `(n-1)! <= n!`, with explicit truncated-`Nat`
+boundary controls and a strict-gap witness at `n = 2`. Its axiom footprint is
+`[propext, Classical.choice, Quot.sound]` with NO `sorryAx` - it does not depend
+on `PolymerKPConclusion`'s open holes. It is only a normalization bridge: it does
+NOT prove the rooted exponential recurrence R1, the size-to-height bridge, the KP
+criterion, cluster summability, or a Yang-Mills mass gap. Codex skeptic review
+pending; R1 requires a fresh portfolio decision, not an automatic submission).
 Adding a new YM module? Import it here.
 -/

@@ -1,0 +1,1105 @@
+{
+  "density_is_supplied": true,
+  "dimension_is_supplied": true,
+  "pivot_selection_uses_embedding_coordinates": false,
+  "probe_construction_uses_embedding_coordinates": false,
+  "samples": [
+    {
+      "affine_probe_covariance_relative_error": 4.616489971041265e-15,
+      "coordinate_pulled_relative_error": 0.6243700952613978,
+      "count_normalization_factor": 3.485876568083972,
+      "count_normalized_coordinate_pulled_relative_error": 1.0475800835529934,
+      "count_normalized_direct_metric_relative_error": 1.0473018810305206,
+      "count_normalized_oracle_metric_relative_error": 0.7620939788930761,
+      "count_normalized_oracle_signature": [
+        1,
+        3,
+        0
+      ],
+      "count_normalized_signature": [
+        1,
+        3,
+        0
+      ],
+      "direct_metric_relative_error": 0.6467378612036704,
+      "dominant_spatial_gap_rank": 5,
+      "eigenvalues": [
+        -0.5330760554369451,
+        -0.3634867080133553,
+        -0.2880507870415392,
+        0.6938966866903039
+      ],
+      "intrinsic_quadratic_response": 2.2949751213931355,
+      "johnston_normalized_coordinate_pulled_relative_error": 0.6363899727594681,
+      "johnston_normalized_direct_metric_relative_error": 0.6590027510378937,
+      "johnston_normalized_oracle_metric_relative_error": 0.4645750864971585,
+      "johnston_normalized_oracle_signature": [
+        1,
+        3,
+        0
+      ],
+      "johnston_normalized_signature": [
+        1,
+        3,
+        0
+      ],
+      "johnston_quadratic_normalization_factor": 2.4186143152973094,
+      "johnston_quadratic_response": 3.30767909104044,
+      "local_affine_fit_relative_error": 0.08862309981712008,
+      "local_jacobian_condition": 1.159019120864717,
+      "local_jacobian_rank": 4,
+      "oracle_probe_eigenvalues": [
+        -0.44641168970180906,
+        -0.3332463063980253,
+        -0.23932512673198317,
+        0.6299360600768957
+      ],
+      "oracle_probe_metric_relative_error": 0.6361355673434188,
+      "oracle_probe_signature": [
+        1,
+        3,
+        0
+      ],
+      "passes_conditional_dimension_gate": false,
+      "passes_count_normalized_conditional_dimension_gate": false,
+      "passes_count_normalized_operator_control_gate": false,
+      "passes_count_normalized_prototype_gate": false,
+      "passes_johnston_normalized_conditional_dimension_gate": false,
+      "passes_johnston_normalized_operator_control_gate": true,
+      "passes_johnston_normalized_prototype_gate": false,
+      "passes_operator_control_gate": false,
+      "passes_prototype_gate": false,
+      "pivot_future_count": 565,
+      "pivot_intrinsic_radius": 0.11044272397228368,
+      "pivot_intrinsic_time": 0.4998948707063439,
+      "pivot_oracle_radius": 0.10851898955144888,
+      "pivot_oracle_time": 0.49812868547657874,
+      "pivot_past_count": 564,
+      "relabeling_spatial_subspace_relative_error": 1.2299454177300802e-15,
+      "relabeling_time_relative_error": 1.2107478929893644e-16,
+      "scale_balance_residual": 0.054693024178657706,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spatial_rank_gap": 0.5883990800958832,
+      "spatial_rank_gate": false,
+      "spatial_singular_values": [
+        7.207733317510975,
+        4.362513169056252,
+        4.197067866042299,
+        1.7275169945630187,
+        0.7712433403261277,
+        0.1510449353767375,
+        0.1103832853292684,
+        0.10136902299369367
+      ]
+    },
+    {
+      "affine_probe_covariance_relative_error": 3.956444493654505e-15,
+      "coordinate_pulled_relative_error": 0.731170801633507,
+      "count_normalization_factor": 4.731774780589061,
+      "count_normalized_coordinate_pulled_relative_error": 1.1492882156552755,
+      "count_normalized_direct_metric_relative_error": 1.0121585749229465,
+      "count_normalized_oracle_metric_relative_error": 1.3661424371312696,
+      "count_normalized_oracle_signature": [
+        0,
+        4,
+        0
+      ],
+      "count_normalized_signature": [
+        0,
+        4,
+        0
+      ],
+      "direct_metric_relative_error": 0.7519066556358597,
+      "dominant_spatial_gap_rank": 5,
+      "eigenvalues": [
+        -0.4540081144405313,
+        -0.4117051608472429,
+        -0.3081651977441446,
+        -0.028775250577434186
+      ],
+      "intrinsic_quadratic_response": 1.6906975439359515,
+      "johnston_normalized_coordinate_pulled_relative_error": 0.8187905139726841,
+      "johnston_normalized_direct_metric_relative_error": 0.7378257625515403,
+      "johnston_normalized_oracle_metric_relative_error": 0.9711022212997376,
+      "johnston_normalized_oracle_signature": [
+        0,
+        4,
+        0
+      ],
+      "johnston_normalized_signature": [
+        0,
+        4,
+        0
+      ],
+      "johnston_quadratic_normalization_factor": 3.619968737998332,
+      "johnston_quadratic_response": 2.2099638364345693,
+      "local_affine_fit_relative_error": 0.08974852572278169,
+      "local_jacobian_condition": 1.1348675634612457,
+      "local_jacobian_rank": 4,
+      "oracle_probe_eigenvalues": [
+        -0.5663899236177735,
+        -0.5077864900704622,
+        -0.3676916484346114,
+        -0.03852913963063963
+      ],
+      "oracle_probe_metric_relative_error": 0.718144682457307,
+      "oracle_probe_signature": [
+        0,
+        4,
+        0
+      ],
+      "passes_conditional_dimension_gate": false,
+      "passes_count_normalized_conditional_dimension_gate": false,
+      "passes_count_normalized_operator_control_gate": false,
+      "passes_count_normalized_prototype_gate": false,
+      "passes_johnston_normalized_conditional_dimension_gate": false,
+      "passes_johnston_normalized_operator_control_gate": false,
+      "passes_johnston_normalized_prototype_gate": false,
+      "passes_operator_control_gate": false,
+      "passes_prototype_gate": false,
+      "pivot_future_count": 574,
+      "pivot_intrinsic_radius": 0.1095321068192153,
+      "pivot_intrinsic_time": 0.49821433002735915,
+      "pivot_oracle_radius": 0.10013812983074928,
+      "pivot_oracle_time": 0.4992423986184794,
+      "pivot_past_count": 557,
+      "relabeling_spatial_subspace_relative_error": 1.7347264347642017e-15,
+      "relabeling_time_relative_error": 1.44948941533461e-16,
+      "scale_balance_residual": 0.14431983053754147,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spatial_rank_gap": 0.6415270548201454,
+      "spatial_rank_gate": false,
+      "spatial_singular_values": [
+        6.367066755194908,
+        4.641901062280308,
+        4.2982762200052695,
+        1.5408157357818215,
+        1.2511907799609736,
+        0.14197522477810096,
+        0.1270671557437681,
+        0.10852853865226454
+      ]
+    },
+    {
+      "affine_probe_covariance_relative_error": 3.0490574112521557e-15,
+      "coordinate_pulled_relative_error": 0.6767409148821719,
+      "count_normalization_factor": 3.152928650499707,
+      "count_normalized_coordinate_pulled_relative_error": 0.8937147301831659,
+      "count_normalized_direct_metric_relative_error": 0.897413309818045,
+      "count_normalized_oracle_metric_relative_error": 0.8356424849489963,
+      "count_normalized_oracle_signature": [
+        1,
+        3,
+        0
+      ],
+      "count_normalized_signature": [
+        1,
+        3,
+        0
+      ],
+      "direct_metric_relative_error": 0.7035159674399728,
+      "dominant_spatial_gap_rank": 5,
+      "eigenvalues": [
+        -0.3045694743924336,
+        -0.19921415673376722,
+        -0.1636146212990706,
+        0.815142937499206
+      ],
+      "intrinsic_quadratic_response": 2.537323513087453,
+      "johnston_normalized_coordinate_pulled_relative_error": 0.7797703719162213,
+      "johnston_normalized_direct_metric_relative_error": 0.7933682205028483,
+      "johnston_normalized_oracle_metric_relative_error": 0.723053127485436,
+      "johnston_normalized_oracle_signature": [
+        1,
+        3,
+        0
+      ],
+      "johnston_normalized_signature": [
+        1,
+        3,
+        0
+      ],
+      "johnston_quadratic_normalization_factor": 2.8130011110348097,
+      "johnston_quadratic_response": 2.843937732060499,
+      "local_affine_fit_relative_error": 0.08091477066430494,
+      "local_jacobian_condition": 1.1941122768009644,
+      "local_jacobian_rank": 4,
+      "oracle_probe_eigenvalues": [
+        -0.3512392025477206,
+        -0.21967252566289316,
+        -0.19939660018653632,
+        0.8116621002630635
+      ],
+      "oracle_probe_metric_relative_error": 0.6602667234908565,
+      "oracle_probe_signature": [
+        1,
+        3,
+        0
+      ],
+      "passes_conditional_dimension_gate": false,
+      "passes_count_normalized_conditional_dimension_gate": false,
+      "passes_count_normalized_operator_control_gate": false,
+      "passes_count_normalized_prototype_gate": false,
+      "passes_johnston_normalized_conditional_dimension_gate": false,
+      "passes_johnston_normalized_operator_control_gate": false,
+      "passes_johnston_normalized_prototype_gate": false,
+      "passes_operator_control_gate": false,
+      "passes_prototype_gate": false,
+      "pivot_future_count": 546,
+      "pivot_intrinsic_radius": 0.11249879863357373,
+      "pivot_intrinsic_time": 0.503475790152658,
+      "pivot_oracle_radius": 0.13466917920560523,
+      "pivot_oracle_time": 0.5094850490086021,
+      "pivot_past_count": 579,
+      "relabeling_spatial_subspace_relative_error": 1.5734162763329954e-15,
+      "relabeling_time_relative_error": 1.832705476392534e-16,
+      "scale_balance_residual": 0.22340114220416102,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spatial_rank_gap": 0.5488002489390603,
+      "spatial_rank_gate": false,
+      "spatial_singular_values": [
+        6.500995966465517,
+        4.610612686730744,
+        4.339028585363158,
+        1.957768617562158,
+        0.5993320741562455,
+        0.16375629127907346,
+        0.11806597855529916,
+        0.10715400014396893
+      ]
+    },
+    {
+      "affine_probe_covariance_relative_error": 4.699794284835868e-15,
+      "coordinate_pulled_relative_error": 0.7019625410361722,
+      "count_normalization_factor": 3.5957304181547225,
+      "count_normalized_coordinate_pulled_relative_error": 1.3202929332683768,
+      "count_normalized_direct_metric_relative_error": 1.2590930856503288,
+      "count_normalized_oracle_metric_relative_error": 1.0994203691566318,
+      "count_normalized_oracle_signature": [
+        1,
+        3,
+        0
+      ],
+      "count_normalized_signature": [
+        1,
+        3,
+        0
+      ],
+      "direct_metric_relative_error": 0.717514352949324,
+      "dominant_spatial_gap_rank": 5,
+      "eigenvalues": [
+        -0.6504980850135225,
+        -0.48633930689607774,
+        -0.27741413626169553,
+        0.5117220136998966
+      ],
+      "intrinsic_quadratic_response": 2.2248608960249823,
+      "johnston_normalized_coordinate_pulled_relative_error": 0.9530740037269725,
+      "johnston_normalized_direct_metric_relative_error": 0.9215826640807921,
+      "johnston_normalized_oracle_metric_relative_error": 0.7628048017474718,
+      "johnston_normalized_oracle_signature": [
+        1,
+        3,
+        0
+      ],
+      "johnston_normalized_signature": [
+        1,
+        3,
+        0
+      ],
+      "johnston_quadratic_normalization_factor": 2.72184359367034,
+      "johnston_quadratic_response": 2.939184315588169,
+      "local_affine_fit_relative_error": 0.07738388094097297,
+      "local_jacobian_condition": 1.2175568021918843,
+      "local_jacobian_rank": 4,
+      "oracle_probe_eigenvalues": [
+        -0.6085227440642376,
+        -0.5314435760955522,
+        -0.31880822139749876,
+        0.46312608310878783
+      ],
+      "oracle_probe_metric_relative_error": 0.6552292573042411,
+      "oracle_probe_signature": [
+        1,
+        3,
+        0
+      ],
+      "passes_conditional_dimension_gate": false,
+      "passes_count_normalized_conditional_dimension_gate": false,
+      "passes_count_normalized_operator_control_gate": false,
+      "passes_count_normalized_prototype_gate": false,
+      "passes_johnston_normalized_conditional_dimension_gate": false,
+      "passes_johnston_normalized_operator_control_gate": false,
+      "passes_johnston_normalized_prototype_gate": false,
+      "passes_operator_control_gate": false,
+      "passes_prototype_gate": false,
+      "pivot_future_count": 534,
+      "pivot_intrinsic_radius": 0.13634994529236785,
+      "pivot_intrinsic_time": 0.5001080339656985,
+      "pivot_oracle_radius": 0.1379527191940961,
+      "pivot_oracle_time": 0.5019043777917968,
+      "pivot_past_count": 535,
+      "relabeling_spatial_subspace_relative_error": 6.133418726879112e-15,
+      "relabeling_time_relative_error": 1.0573368094431582e-15,
+      "scale_balance_residual": 0.06903343374640472,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spatial_rank_gap": 0.6613073144078779,
+      "spatial_rank_gate": false,
+      "spatial_singular_values": [
+        6.555027062446134,
+        4.514432531800206,
+        4.359491928390302,
+        1.4765280290436902,
+        0.8910951844432681,
+        0.14883006070968663,
+        0.11677703433723913,
+        0.11161482845064623
+      ]
+    },
+    {
+      "affine_probe_covariance_relative_error": 3.245307864058517e-15,
+      "coordinate_pulled_relative_error": 0.6739019643607601,
+      "count_normalization_factor": 3.5163855886749578,
+      "count_normalized_coordinate_pulled_relative_error": 1.0003806601277165,
+      "count_normalized_direct_metric_relative_error": 1.0702560869949065,
+      "count_normalized_oracle_metric_relative_error": 0.8414685358319338,
+      "count_normalized_oracle_signature": [
+        1,
+        3,
+        0
+      ],
+      "count_normalized_signature": [
+        1,
+        3,
+        0
+      ],
+      "direct_metric_relative_error": 0.7051344042172896,
+      "dominant_spatial_gap_rank": 5,
+      "eigenvalues": [
+        -0.47017910899230103,
+        -0.37856470474437537,
+        -0.2768852481869003,
+        0.6510938513965754
+      ],
+      "intrinsic_quadratic_response": 2.2750633564661364,
+      "johnston_normalized_coordinate_pulled_relative_error": 0.7463495186886981,
+      "johnston_normalized_direct_metric_relative_error": 0.8203967332799058,
+      "johnston_normalized_oracle_metric_relative_error": 0.6124265851085482,
+      "johnston_normalized_oracle_signature": [
+        1,
+        3,
+        0
+      ],
+      "johnston_normalized_signature": [
+        1,
+        3,
+        0
+      ],
+      "johnston_quadratic_normalization_factor": 2.78153462452877,
+      "johnston_quadratic_response": 2.876110162157449,
+      "local_affine_fit_relative_error": 0.07768469179537565,
+      "local_jacobian_condition": 1.1350796839094932,
+      "local_jacobian_rank": 4,
+      "oracle_probe_eigenvalues": [
+        -0.4332374812507841,
+        -0.3734845066251382,
+        -0.3345747517156736,
+        0.5761308726517484
+      ],
+      "oracle_probe_metric_relative_error": 0.6572013261271749,
+      "oracle_probe_signature": [
+        1,
+        3,
+        0
+      ],
+      "passes_conditional_dimension_gate": false,
+      "passes_count_normalized_conditional_dimension_gate": false,
+      "passes_count_normalized_operator_control_gate": false,
+      "passes_count_normalized_prototype_gate": false,
+      "passes_johnston_normalized_conditional_dimension_gate": false,
+      "passes_johnston_normalized_operator_control_gate": false,
+      "passes_johnston_normalized_prototype_gate": false,
+      "passes_operator_control_gate": false,
+      "passes_prototype_gate": false,
+      "pivot_future_count": 570,
+      "pivot_intrinsic_radius": 0.1085315038541548,
+      "pivot_intrinsic_time": 0.49926538941689397,
+      "pivot_oracle_radius": 0.1117982664736071,
+      "pivot_oracle_time": 0.49806240440301397,
+      "pivot_past_count": 563,
+      "relabeling_spatial_subspace_relative_error": 1.458599960053687e-15,
+      "relabeling_time_relative_error": 1.458618275606226e-16,
+      "scale_balance_residual": 0.10853665679212887,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spatial_rank_gap": 0.5608421090404626,
+      "spatial_rank_gate": false,
+      "spatial_singular_values": [
+        7.3568978912039755,
+        4.738012932628893,
+        4.082045210931832,
+        1.7926623656343033,
+        0.7587793587575306,
+        0.14360184067462028,
+        0.13429614073317178,
+        0.1254696590856397
+      ]
+    },
+    {
+      "affine_probe_covariance_relative_error": 5.937771705229341e-15,
+      "coordinate_pulled_relative_error": 0.6621501932236749,
+      "count_normalization_factor": 3.508909034470258,
+      "count_normalized_coordinate_pulled_relative_error": 1.082905909260213,
+      "count_normalized_direct_metric_relative_error": 1.0945716533763796,
+      "count_normalized_oracle_metric_relative_error": 0.9617775997131348,
+      "count_normalized_oracle_signature": [
+        1,
+        3,
+        0
+      ],
+      "count_normalized_signature": [
+        1,
+        3,
+        0
+      ],
+      "direct_metric_relative_error": 0.6642386014568099,
+      "dominant_spatial_gap_rank": 5,
+      "eigenvalues": [
+        -0.5127683979961251,
+        -0.3850790617472086,
+        -0.1933417282483647,
+        0.7295818494318953
+      ],
+      "intrinsic_quadratic_response": 2.27991091288229,
+      "johnston_normalized_coordinate_pulled_relative_error": 0.7098654801065921,
+      "johnston_normalized_direct_metric_relative_error": 0.719298994882952,
+      "johnston_normalized_oracle_metric_relative_error": 0.6148098153673336,
+      "johnston_normalized_oracle_signature": [
+        1,
+        3,
+        0
+      ],
+      "johnston_normalized_signature": [
+        1,
+        3,
+        0
+      ],
+      "johnston_quadratic_normalization_factor": 2.487534085163065,
+      "johnston_quadratic_response": 3.2160363340209575,
+      "local_affine_fit_relative_error": 0.0694437678869787,
+      "local_jacobian_condition": 1.1041791808031678,
+      "local_jacobian_rank": 4,
+      "oracle_probe_eigenvalues": [
+        -0.440116878903965,
+        -0.411822692152206,
+        -0.15999662034222503,
+        0.7118150384186106
+      ],
+      "oracle_probe_metric_relative_error": 0.6456764060726603,
+      "oracle_probe_signature": [
+        1,
+        3,
+        0
+      ],
+      "passes_conditional_dimension_gate": false,
+      "passes_count_normalized_conditional_dimension_gate": false,
+      "passes_count_normalized_operator_control_gate": false,
+      "passes_count_normalized_prototype_gate": false,
+      "passes_johnston_normalized_conditional_dimension_gate": false,
+      "passes_johnston_normalized_operator_control_gate": false,
+      "passes_johnston_normalized_prototype_gate": false,
+      "passes_operator_control_gate": false,
+      "passes_prototype_gate": false,
+      "pivot_future_count": 572,
+      "pivot_intrinsic_radius": 0.10409092283664162,
+      "pivot_intrinsic_time": 0.499790939417627,
+      "pivot_oracle_radius": 0.10809643138729186,
+      "pivot_oracle_time": 0.4994387774850373,
+      "pivot_past_count": 570,
+      "relabeling_spatial_subspace_relative_error": 1.904178547770011e-15,
+      "relabeling_time_relative_error": 1.2876251286959394e-16,
+      "scale_balance_residual": 0.11325106568441484,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spatial_rank_gap": 0.503082565974308,
+      "spatial_rank_gate": false,
+      "spatial_singular_values": [
+        6.607295121427943,
+        4.301701176239168,
+        4.032139999637928,
+        2.0036406622524336,
+        0.7435372579327695,
+        0.1530016705689645,
+        0.1292509416355548,
+        0.11160312891500206
+      ]
+    },
+    {
+      "affine_probe_covariance_relative_error": 4.0328765409272484e-15,
+      "coordinate_pulled_relative_error": 0.7710370095461317,
+      "count_normalization_factor": 3.789750389909144,
+      "count_normalized_coordinate_pulled_relative_error": 1.3363478042743864,
+      "count_normalized_direct_metric_relative_error": 1.2462248404460625,
+      "count_normalized_oracle_metric_relative_error": 1.3227040473266034,
+      "count_normalized_oracle_signature": [
+        1,
+        3,
+        0
+      ],
+      "count_normalized_signature": [
+        1,
+        3,
+        0
+      ],
+      "direct_metric_relative_error": 0.7525951906060738,
+      "dominant_spatial_gap_rank": 4,
+      "eigenvalues": [
+        -0.5032709304065262,
+        -0.27749140915911336,
+        -0.2344096274174416,
+        0.6676270164997697
+      ],
+      "intrinsic_quadratic_response": 2.110956969963342,
+      "johnston_normalized_coordinate_pulled_relative_error": 1.0893845339947237,
+      "johnston_normalized_direct_metric_relative_error": 1.0100676086066058,
+      "johnston_normalized_oracle_metric_relative_error": 1.060232619096588,
+      "johnston_normalized_oracle_signature": [
+        1,
+        3,
+        0
+      ],
+      "johnston_normalized_signature": [
+        1,
+        3,
+        0
+      ],
+      "johnston_quadratic_normalization_factor": 3.1184722403900422,
+      "johnston_quadratic_response": 2.565358734442158,
+      "local_affine_fit_relative_error": 0.06834183481758357,
+      "local_jacobian_condition": 1.1314101553010192,
+      "local_jacobian_rank": 4,
+      "oracle_probe_eigenvalues": [
+        -0.5639853996205693,
+        -0.28137470542462645,
+        -0.21143862165131935,
+        0.70672995076164
+      ],
+      "oracle_probe_metric_relative_error": 0.7356611914349567,
+      "oracle_probe_signature": [
+        1,
+        3,
+        0
+      ],
+      "passes_conditional_dimension_gate": false,
+      "passes_count_normalized_conditional_dimension_gate": false,
+      "passes_count_normalized_operator_control_gate": false,
+      "passes_count_normalized_prototype_gate": false,
+      "passes_johnston_normalized_conditional_dimension_gate": false,
+      "passes_johnston_normalized_operator_control_gate": false,
+      "passes_johnston_normalized_prototype_gate": false,
+      "passes_operator_control_gate": false,
+      "passes_prototype_gate": false,
+      "pivot_future_count": 561,
+      "pivot_intrinsic_radius": 0.10997566525452371,
+      "pivot_intrinsic_time": 0.5008406679518362,
+      "pivot_oracle_radius": 0.11585816221744163,
+      "pivot_oracle_time": 0.503610025540168,
+      "pivot_past_count": 569,
+      "relabeling_spatial_subspace_relative_error": 1.2363377218365699e-15,
+      "relabeling_time_relative_error": 9.53412356026823e-17,
+      "scale_balance_residual": 0.14480356579664858,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spatial_rank_gap": 0.44051305222752374,
+      "spatial_rank_gate": false,
+      "spatial_singular_values": [
+        6.246553547952613,
+        4.709034950077769,
+        4.315200770507749,
+        2.4142985081168185,
+        0.5430577208878543,
+        0.15561935430141233,
+        0.10334110413839924,
+        0.10260748550623479
+      ]
+    },
+    {
+      "affine_probe_covariance_relative_error": 5.217768507149107e-15,
+      "coordinate_pulled_relative_error": 0.6503108472119198,
+      "count_normalization_factor": 3.6024526206371617,
+      "count_normalized_coordinate_pulled_relative_error": 0.9135171201690391,
+      "count_normalized_direct_metric_relative_error": 0.8818657794361824,
+      "count_normalized_oracle_metric_relative_error": 0.6699003004501897,
+      "count_normalized_oracle_signature": [
+        1,
+        3,
+        0
+      ],
+      "count_normalized_signature": [
+        1,
+        3,
+        0
+      ],
+      "direct_metric_relative_error": 0.6603938740605068,
+      "dominant_spatial_gap_rank": 5,
+      "eigenvalues": [
+        -0.5606848772416062,
+        -0.558611467058465,
+        -0.3452326878327703,
+        0.1619840160158102
+      ],
+      "intrinsic_quadratic_response": 2.220709289601996,
+      "johnston_normalized_coordinate_pulled_relative_error": 0.6007476800659934,
+      "johnston_normalized_direct_metric_relative_error": 0.5894652085440893,
+      "johnston_normalized_oracle_metric_relative_error": 0.445155745622967,
+      "johnston_normalized_oracle_signature": [
+        1,
+        3,
+        0
+      ],
+      "johnston_normalized_signature": [
+        1,
+        3,
+        0
+      ],
+      "johnston_quadratic_normalization_factor": 2.6425678071592564,
+      "johnston_quadratic_response": 3.0273584573029173,
+      "local_affine_fit_relative_error": 0.07816596095091881,
+      "local_jacobian_condition": 1.1387632544813546,
+      "local_jacobian_rank": 4,
+      "oracle_probe_eigenvalues": [
+        -0.5202339647800892,
+        -0.47354857027419783,
+        -0.3300442125234832,
+        0.15159737919100363
+      ],
+      "oracle_probe_metric_relative_error": 0.6627049162642459,
+      "oracle_probe_signature": [
+        1,
+        3,
+        0
+      ],
+      "passes_conditional_dimension_gate": false,
+      "passes_count_normalized_conditional_dimension_gate": false,
+      "passes_count_normalized_operator_control_gate": false,
+      "passes_count_normalized_prototype_gate": false,
+      "passes_johnston_normalized_conditional_dimension_gate": false,
+      "passes_johnston_normalized_operator_control_gate": true,
+      "passes_johnston_normalized_prototype_gate": false,
+      "passes_operator_control_gate": false,
+      "passes_prototype_gate": false,
+      "pivot_future_count": 558,
+      "pivot_intrinsic_radius": 0.10419988924107958,
+      "pivot_intrinsic_time": 0.5027179620491093,
+      "pivot_oracle_radius": 0.14259227818444192,
+      "pivot_oracle_time": 0.4982985764047728,
+      "pivot_past_count": 584,
+      "relabeling_spatial_subspace_relative_error": 1.1847409248901168e-14,
+      "relabeling_time_relative_error": 2.3468381604205335e-15,
+      "scale_balance_residual": 0.0909550877247652,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spatial_rank_gap": 0.544196521104967,
+      "spatial_rank_gate": false,
+      "spatial_singular_values": [
+        7.797791826587731,
+        4.538156078264657,
+        4.347967507617755,
+        1.9818187160947385,
+        0.6798015070543975,
+        0.185449070917224,
+        0.1186012019705099,
+        0.10800439986575877
+      ]
+    },
+    {
+      "affine_probe_covariance_relative_error": 2.7229848445808295e-15,
+      "coordinate_pulled_relative_error": 0.7174295218452298,
+      "count_normalization_factor": 2.831870156478663,
+      "count_normalized_coordinate_pulled_relative_error": 1.341582949270882,
+      "count_normalized_direct_metric_relative_error": 1.3198710074106024,
+      "count_normalized_oracle_metric_relative_error": 1.1571000058800107,
+      "count_normalized_oracle_signature": [
+        1,
+        3,
+        0
+      ],
+      "count_normalized_signature": [
+        1,
+        3,
+        0
+      ],
+      "direct_metric_relative_error": 0.7200548204538156,
+      "dominant_spatial_gap_rank": 5,
+      "eigenvalues": [
+        -0.3841763566614512,
+        -0.3076332665653407,
+        -0.27885639472999824,
+        1.1417606252691006
+      ],
+      "intrinsic_quadratic_response": 2.824988279105189,
+      "johnston_normalized_coordinate_pulled_relative_error": 1.044252056039997,
+      "johnston_normalized_direct_metric_relative_error": 1.0303751327769683,
+      "johnston_normalized_oracle_metric_relative_error": 0.8898959190680407,
+      "johnston_normalized_oracle_signature": [
+        1,
+        3,
+        0
+      ],
+      "johnston_normalized_signature": [
+        1,
+        3,
+        0
+      ],
+      "johnston_quadratic_normalization_factor": 2.253716574028343,
+      "johnston_quadratic_response": 3.5496921361769207,
+      "local_affine_fit_relative_error": 0.06273511137293243,
+      "local_jacobian_condition": 1.0832245208278926,
+      "local_jacobian_rank": 4,
+      "oracle_probe_eigenvalues": [
+        -0.3405536618402343,
+        -0.3160091819515379,
+        -0.2765554763429967,
+        1.0836938619368488
+      ],
+      "oracle_probe_metric_relative_error": 0.6692976091909351,
+      "oracle_probe_signature": [
+        1,
+        3,
+        0
+      ],
+      "passes_conditional_dimension_gate": false,
+      "passes_count_normalized_conditional_dimension_gate": false,
+      "passes_count_normalized_operator_control_gate": false,
+      "passes_count_normalized_prototype_gate": false,
+      "passes_johnston_normalized_conditional_dimension_gate": false,
+      "passes_johnston_normalized_operator_control_gate": false,
+      "passes_johnston_normalized_prototype_gate": false,
+      "passes_operator_control_gate": false,
+      "passes_prototype_gate": false,
+      "pivot_future_count": 590,
+      "pivot_intrinsic_radius": 0.1068683406791139,
+      "pivot_intrinsic_time": 0.4954945412957641,
+      "pivot_oracle_radius": 0.09493055415917209,
+      "pivot_oracle_time": 0.4927927603643292,
+      "pivot_past_count": 547,
+      "relabeling_spatial_subspace_relative_error": 1.1768014223857679e-15,
+      "relabeling_time_relative_error": 1.1443551061865486e-16,
+      "scale_balance_residual": 0.09587669097852276,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spatial_rank_gap": 0.5002241846512846,
+      "spatial_rank_gate": false,
+      "spatial_singular_values": [
+        6.0141148153802435,
+        5.036460859400603,
+        4.723869634536201,
+        2.360875798201368,
+        1.1165398625889646,
+        0.13850805895245966,
+        0.11614968053259711,
+        0.10388268299511752
+      ]
+    },
+    {
+      "affine_probe_covariance_relative_error": 9.142841116577977e-15,
+      "coordinate_pulled_relative_error": 0.6888199039782644,
+      "count_normalization_factor": 2.786193270349229,
+      "count_normalized_coordinate_pulled_relative_error": 0.8931924616051943,
+      "count_normalized_direct_metric_relative_error": 0.8681297319199301,
+      "count_normalized_oracle_metric_relative_error": 0.8404651864836786,
+      "count_normalized_oracle_signature": [
+        1,
+        3,
+        0
+      ],
+      "count_normalized_signature": [
+        1,
+        3,
+        0
+      ],
+      "direct_metric_relative_error": 0.6922956051206126,
+      "dominant_spatial_gap_rank": 5,
+      "eigenvalues": [
+        -0.269866842396491,
+        -0.21114235361000522,
+        -0.19070766051580065,
+        0.9024037318931497
+      ],
+      "intrinsic_quadratic_response": 2.8713011710767855,
+      "johnston_normalized_coordinate_pulled_relative_error": 0.8370055859582959,
+      "johnston_normalized_direct_metric_relative_error": 0.814867224651346,
+      "johnston_normalized_oracle_metric_relative_error": 0.784119767987216,
+      "johnston_normalized_oracle_signature": [
+        1,
+        3,
+        0
+      ],
+      "johnston_normalized_signature": [
+        1,
+        3,
+        0
+      ],
+      "johnston_quadratic_normalization_factor": 2.6220753957419207,
+      "johnston_quadratic_response": 3.0510182937498587,
+      "local_affine_fit_relative_error": 0.08288427137448623,
+      "local_jacobian_condition": 1.1533551113817198,
+      "local_jacobian_rank": 4,
+      "oracle_probe_eigenvalues": [
+        -0.33557196728296085,
+        -0.23501546810241447,
+        -0.1875951581802885,
+        0.8992185995449855
+      ],
+      "oracle_probe_metric_relative_error": 0.6654896109646371,
+      "oracle_probe_signature": [
+        1,
+        3,
+        0
+      ],
+      "passes_conditional_dimension_gate": false,
+      "passes_count_normalized_conditional_dimension_gate": false,
+      "passes_count_normalized_operator_control_gate": false,
+      "passes_count_normalized_prototype_gate": false,
+      "passes_johnston_normalized_conditional_dimension_gate": false,
+      "passes_johnston_normalized_operator_control_gate": false,
+      "passes_johnston_normalized_prototype_gate": false,
+      "passes_operator_control_gate": false,
+      "passes_prototype_gate": false,
+      "pivot_future_count": 536,
+      "pivot_intrinsic_radius": 0.12908477547668584,
+      "pivot_intrinsic_time": 0.5016070989821426,
+      "pivot_oracle_radius": 0.14588634596897848,
+      "pivot_oracle_time": 0.5026331320468941,
+      "pivot_past_count": 551,
+      "relabeling_spatial_subspace_relative_error": 6.7899195211225615e-15,
+      "relabeling_time_relative_error": 1.4137893572999003e-15,
+      "scale_balance_residual": 0.024106916586263613,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spatial_rank_gap": 0.552736048504791,
+      "spatial_rank_gate": false,
+      "spatial_singular_values": [
+        7.443249971047723,
+        4.210569328690906,
+        3.8584980347276483,
+        1.7257670778487866,
+        0.5496249924514087,
+        0.1501277934172323,
+        0.12653428226701013,
+        0.10530145022573534
+      ]
+    }
+  ],
+  "scoring_uses_embedding_coordinates": true,
+  "settings": {
+    "density": 76394.37268410977,
+    "dimension": 4,
+    "duration": 1.0,
+    "ell": 0.06014986511033369,
+    "epsilon": 0.012469487682858438,
+    "events_including_endpoints": 10000,
+    "maximum_fit_error": 0.25,
+    "maximum_metric_error": 0.5,
+    "minimum_rank_gap": 0.15,
+    "nonlocality_scale": 0.18,
+    "realizations": 10,
+    "seed": 20260726,
+    "support_radius": 0.65
+  },
+  "status": "external Johnston-probe metric prototype; not a proof",
+  "summary": {
+    "affine_probe_covariance_relative_error": {
+      "count": 10,
+      "mean": 4.662133673930682e-15,
+      "median": 4.324683255984256e-15,
+      "std": 1.7686122711409522e-15
+    },
+    "conditional_dimension_gate_success_rate": 0.0,
+    "coordinate_pulled_relative_error": {
+      "count": 10,
+      "mean": 0.6897893792979229,
+      "median": 0.6827804094302181,
+      "std": 0.04031319507054834
+    },
+    "count_normalization_factor": {
+      "count": 10,
+      "mean": 3.5001871477846875,
+      "median": 3.512647311572608,
+      "std": 0.5194043017942122
+    },
+    "count_normalization_success_rate": 1.0,
+    "count_normalized_conditional_dimension_gate_success_rate": 0.0,
+    "count_normalized_coordinate_pulled_relative_error": {
+      "count": 10,
+      "mean": 1.0978802867367243,
+      "median": 1.065242996406603,
+      "std": 0.17268436008408955
+    },
+    "count_normalized_direct_metric_relative_error": {
+      "count": 10,
+      "mean": 1.0696885951005906,
+      "median": 1.0587789840127135,
+      "std": 0.15480402531749937
+    },
+    "count_normalized_operator_control_gate_success_rate": 0.0,
+    "count_normalized_oracle_metric_relative_error": {
+      "count": 10,
+      "mean": 0.9856714945815526,
+      "median": 0.9016230677725343,
+      "std": 0.2270094624501507
+    },
+    "count_normalized_prototype_gate_success_rate": 0.0,
+    "direct_metric_relative_error": {
+      "count": 10,
+      "mean": 0.7014387333143934,
+      "median": 0.7043251858286312,
+      "std": 0.03454166168900989
+    },
+    "intrinsic_quadratic_response": {
+      "count": 10,
+      "mean": 2.3330787053537256,
+      "median": 2.277487134674213,
+      "std": 0.3267029954785541
+    },
+    "johnston_normalized_conditional_dimension_gate_success_rate": 0.0,
+    "johnston_normalized_coordinate_pulled_relative_error": {
+      "count": 10,
+      "mean": 0.8215629717229647,
+      "median": 0.7992804429444527,
+      "std": 0.15549552309015974
+    },
+    "johnston_normalized_direct_metric_relative_error": {
+      "count": 10,
+      "mean": 0.8096250300914942,
+      "median": 0.8041177225770971,
+      "std": 0.13649962871896548
+    },
+    "johnston_normalized_operator_control_gate_success_rate": 0.2,
+    "johnston_normalized_oracle_metric_relative_error": {
+      "count": 10,
+      "mean": 0.7328175689280497,
+      "median": 0.7429289646164539,
+      "std": 0.19375331368675702
+    },
+    "johnston_normalized_prototype_gate_success_rate": 0.0,
+    "johnston_quadratic_normalization_factor": {
+      "count": 10,
+      "mean": 2.7479328485012187,
+      "median": 2.682205700414798,
+      "std": 0.3675920931463097
+    },
+    "johnston_quadratic_normalization_success_rate": 1.0,
+    "johnston_quadratic_response": {
+      "count": 10,
+      "mean": 2.958633909297394,
+      "median": 2.9832713864455433,
+      "std": 0.358638010042281
+    },
+    "local_affine_fit_relative_error": {
+      "count": 10,
+      "mean": 0.0775925915343455,
+      "median": 0.07792532637314722,
+      "std": 0.008255803638321062
+    },
+    "local_jacobian_condition": {
+      "count": 10,
+      "mean": 1.1451567670023457,
+      "median": 1.136921469195424,
+      "std": 0.03721533565074373
+    },
+    "operator_control_gate_success_rate": 0.0,
+    "oracle_probe_metric_relative_error": {
+      "count": 10,
+      "mean": 0.6705807290650434,
+      "median": 0.6614858198775512,
+      "std": 0.029858231429370816
+    },
+    "pivot_intrinsic_radius": {
+      "count": 10,
+      "mean": 0.11315746720596401,
+      "median": 0.1097538860368695,
+      "std": 0.010227580576289178
+    },
+    "pivot_intrinsic_time": {
+      "count": 10,
+      "mean": 0.5001409623965432,
+      "median": 0.5000014523360212,
+      "std": 0.002159932373612145
+    },
+    "pivot_oracle_radius": {
+      "count": 10,
+      "mean": 0.12004410561728326,
+      "median": 0.11382821434552437,
+      "std": 0.01760364233401962
+    },
+    "pivot_oracle_time": {
+      "count": 10,
+      "mean": 0.5003596187139673,
+      "median": 0.49934058805175835,
+      "std": 0.004186279885246025
+    },
+    "prototype_gate_success_rate": 0.0,
+    "relabeling_spatial_subspace_relative_error": {
+      "count": 10,
+      "mean": 3.5084753277776154e-15,
+      "median": 1.6540713555485986e-15,
+      "std": 3.4154564802581653e-15
+    },
+    "relabeling_time_relative_error": {
+      "count": 10,
+      "mean": 5.751659692286797e-16,
+      "median": 1.454053845470418e-16,
+      "std": 7.37939712556543e-16
+    },
+    "samples": 10,
+    "scale_balance_residual": {
+      "count": 10,
+      "mean": 0.10689774142295087,
+      "median": 0.10220667388532581,
+      "std": 0.05276584897152189
+    },
+    "signature_success_rate": 0.9,
+    "spatial_rank_gap": {
+      "count": 10,
+      "mean": 0.5541628179766304,
+      "median": 0.5507681487219256,
+      "std": 0.062365170586927164
+    },
+    "spatial_rank_gate_success_rate": 0.0
+  }
+}

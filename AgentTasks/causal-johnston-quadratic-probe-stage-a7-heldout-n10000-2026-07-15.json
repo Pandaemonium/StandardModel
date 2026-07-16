@@ -1,0 +1,270 @@
+{
+  "density_is_supplied": true,
+  "dimension_is_supplied": true,
+  "operator_scores_opened": false,
+  "pivot_selection_uses_embedding_coordinates": false,
+  "probe_construction_uses_embedding_coordinates": false,
+  "samples": [
+    {
+      "dominant_spatial_gap_rank": 4,
+      "interval_inner_relative_error": 0.22989999595561295,
+      "interval_quadratic_relative_error": 0.1437512986604861,
+      "johnston_inner_relative_error": 0.15018737375251315,
+      "johnston_quadratic_correlation": 0.9852702386561241,
+      "johnston_quadratic_relative_error": 0.1178405294400254,
+      "johnston_to_oracle_norm_ratio": 0.972113309646942,
+      "passes_probe_gate": true,
+      "pivot_future_count": 575,
+      "pivot_intrinsic_radius": 0.11479030479620553,
+      "pivot_intrinsic_time": 0.49683321445547923,
+      "pivot_past_count": 545,
+      "spatial_rank_gap": 0.38804020391873434,
+      "support_radius": 0.65
+    },
+    {
+      "dominant_spatial_gap_rank": 5,
+      "interval_inner_relative_error": 0.22586852974831612,
+      "interval_quadratic_relative_error": 0.1418915038167584,
+      "johnston_inner_relative_error": 0.14406830831723755,
+      "johnston_quadratic_correlation": 0.9879775710932351,
+      "johnston_quadratic_relative_error": 0.09818912844795678,
+      "johnston_to_oracle_norm_ratio": 0.9935169953723005,
+      "passes_probe_gate": true,
+      "pivot_future_count": 538,
+      "pivot_intrinsic_radius": 0.11087806062982783,
+      "pivot_intrinsic_time": 0.5055733829435254,
+      "pivot_past_count": 591,
+      "spatial_rank_gap": 0.5460157807542746,
+      "support_radius": 0.65
+    },
+    {
+      "dominant_spatial_gap_rank": 5,
+      "interval_inner_relative_error": 0.19382116258602483,
+      "interval_quadratic_relative_error": 0.13126890284653503,
+      "johnston_inner_relative_error": 0.12595528247354495,
+      "johnston_quadratic_correlation": 0.9933177757208782,
+      "johnston_quadratic_relative_error": 0.10447444833480925,
+      "johnston_to_oracle_norm_ratio": 1.0191032242678453,
+      "passes_probe_gate": true,
+      "pivot_future_count": 587,
+      "pivot_intrinsic_radius": 0.11026691138260274,
+      "pivot_intrinsic_time": 0.4953754813670846,
+      "pivot_past_count": 543,
+      "spatial_rank_gap": 0.5059960616778066,
+      "support_radius": 0.65
+    },
+    {
+      "dominant_spatial_gap_rank": 5,
+      "interval_inner_relative_error": 0.18659546297894639,
+      "interval_quadratic_relative_error": 0.15406262350661273,
+      "johnston_inner_relative_error": 0.11319517722911486,
+      "johnston_quadratic_correlation": 0.9902104407950254,
+      "johnston_quadratic_relative_error": 0.08974496656159203,
+      "johnston_to_oracle_norm_ratio": 0.9823266332897129,
+      "passes_probe_gate": true,
+      "pivot_future_count": 582,
+      "pivot_intrinsic_radius": 0.1005570786991167,
+      "pivot_intrinsic_time": 0.4984367882016335,
+      "pivot_past_count": 567,
+      "spatial_rank_gap": 0.49867093571039545,
+      "support_radius": 0.65
+    },
+    {
+      "dominant_spatial_gap_rank": 4,
+      "interval_inner_relative_error": 0.21532172142143693,
+      "interval_quadratic_relative_error": 0.1699932283161116,
+      "johnston_inner_relative_error": 0.12448472223266738,
+      "johnston_quadratic_correlation": 0.9860123023726595,
+      "johnston_quadratic_relative_error": 0.1152039419812181,
+      "johnston_to_oracle_norm_ratio": 1.038248042746983,
+      "passes_probe_gate": true,
+      "pivot_future_count": 538,
+      "pivot_intrinsic_radius": 0.13355247910511434,
+      "pivot_intrinsic_time": 0.5,
+      "pivot_past_count": 538,
+      "spatial_rank_gap": 0.40082449291329497,
+      "support_radius": 0.65
+    },
+    {
+      "dominant_spatial_gap_rank": 5,
+      "interval_inner_relative_error": 0.23424123421543955,
+      "interval_quadratic_relative_error": 0.16722997897981326,
+      "johnston_inner_relative_error": 0.11355942194599201,
+      "johnston_quadratic_correlation": 0.9904295602827174,
+      "johnston_quadratic_relative_error": 0.09236460882168836,
+      "johnston_to_oracle_norm_ratio": 0.9697902546136814,
+      "passes_probe_gate": true,
+      "pivot_future_count": 581,
+      "pivot_intrinsic_radius": 0.10415514501902715,
+      "pivot_intrinsic_time": 0.4979093150931488,
+      "pivot_past_count": 561,
+      "spatial_rank_gap": 0.45693782411336104,
+      "support_radius": 0.65
+    },
+    {
+      "dominant_spatial_gap_rank": 5,
+      "interval_inner_relative_error": 0.23700998255862404,
+      "interval_quadratic_relative_error": 0.15579338696783954,
+      "johnston_inner_relative_error": 0.1711760471256401,
+      "johnston_quadratic_correlation": 0.9905943464832608,
+      "johnston_quadratic_relative_error": 0.1023044520535494,
+      "johnston_to_oracle_norm_ratio": 0.9739376599252634,
+      "passes_probe_gate": true,
+      "pivot_future_count": 573,
+      "pivot_intrinsic_radius": 0.10658686694140153,
+      "pivot_intrinsic_time": 0.49905715773293774,
+      "pivot_past_count": 564,
+      "spatial_rank_gap": 0.5420621318546255,
+      "support_radius": 0.65
+    },
+    {
+      "dominant_spatial_gap_rank": 5,
+      "interval_inner_relative_error": 0.20666590158913473,
+      "interval_quadratic_relative_error": 0.14009089229513694,
+      "johnston_inner_relative_error": 0.08599580817513815,
+      "johnston_quadratic_correlation": 0.9953133084592223,
+      "johnston_quadratic_relative_error": 0.06881272302176421,
+      "johnston_to_oracle_norm_ratio": 0.9914585989775899,
+      "passes_probe_gate": true,
+      "pivot_future_count": 560,
+      "pivot_intrinsic_radius": 0.11139836991318353,
+      "pivot_intrinsic_time": 0.5007365600548598,
+      "pivot_past_count": 567,
+      "spatial_rank_gap": 0.5726860887319793,
+      "support_radius": 0.65
+    },
+    {
+      "dominant_spatial_gap_rank": 5,
+      "interval_inner_relative_error": 0.2451652307408944,
+      "interval_quadratic_relative_error": 0.15310582373764947,
+      "johnston_inner_relative_error": 0.09768763071474541,
+      "johnston_quadratic_correlation": 0.9928909088411823,
+      "johnston_quadratic_relative_error": 0.08314062091352122,
+      "johnston_to_oracle_norm_ratio": 1.0060866435425377,
+      "passes_probe_gate": true,
+      "pivot_future_count": 591,
+      "pivot_intrinsic_radius": 0.10122845078470323,
+      "pivot_intrinsic_time": 0.49645486750421275,
+      "pivot_past_count": 557,
+      "spatial_rank_gap": 0.6044497290828258,
+      "support_radius": 0.65
+    },
+    {
+      "dominant_spatial_gap_rank": 5,
+      "interval_inner_relative_error": 0.20276016734912178,
+      "interval_quadratic_relative_error": 0.14511870484625133,
+      "johnston_inner_relative_error": 0.11723602531022141,
+      "johnston_quadratic_correlation": 0.9912704296060024,
+      "johnston_quadratic_relative_error": 0.09120482713259832,
+      "johnston_to_oracle_norm_ratio": 0.9577545782487288,
+      "passes_probe_gate": true,
+      "pivot_future_count": 559,
+      "pivot_intrinsic_radius": 0.10017118840928643,
+      "pivot_intrinsic_time": 0.5033336549439721,
+      "pivot_past_count": 591,
+      "spatial_rank_gap": 0.5726390571560634,
+      "support_radius": 0.65
+    }
+  ],
+  "scoring_uses_embedding_coordinates": true,
+  "selected_support": {
+    "interval_inner_relative_error": {
+      "count": 10,
+      "mean": 0.21773493891435516,
+      "median": 0.22059512558487654,
+      "std": 0.018720781403656774
+    },
+    "interval_quadratic_relative_error": {
+      "count": 10,
+      "mean": 0.15023063439731943,
+      "median": 0.1491122642919504,
+      "std": 0.011547507317767254
+    },
+    "johnston_inner_relative_error": {
+      "count": 10,
+      "mean": 0.12435457972768149,
+      "median": 0.1208603737714444,
+      "std": 0.023927090034126682
+    },
+    "johnston_quadratic_correlation": {
+      "count": 10,
+      "mean": 0.9903286882310308,
+      "median": 0.9905119533829891,
+      "std": 0.003017855477378698
+    },
+    "johnston_quadratic_relative_error": {
+      "count": 10,
+      "mean": 0.0963280246708723,
+      "median": 0.09527686863482257,
+      "std": 0.013931710737638783
+    },
+    "johnston_to_oracle_norm_ratio": {
+      "count": 10,
+      "mean": 0.9904335940631585,
+      "median": 0.9868926161336514,
+      "std": 0.02351867804768031
+    },
+    "probe_gate_success_rate": 1.0,
+    "samples": 10,
+    "support_radius": 0.65
+  },
+  "selected_support_key": "support=0.650000",
+  "selection_rule": "maximum probe-gate rate, then minimum Johnston median overall error, then minimum Johnston median inner error",
+  "settings": {
+    "density": 76394.37268410977,
+    "dimension": 4,
+    "duration": 1.0,
+    "events_including_endpoints": 10000,
+    "maximum_probe_error": 0.25,
+    "realizations": 10,
+    "seed": 20260724,
+    "support_radii": [
+      0.65
+    ]
+  },
+  "spatial_rank_is_supplied": true,
+  "status": "quadratic-probe validation only; not metric reconstruction",
+  "summaries": {
+    "support=0.650000": {
+      "interval_inner_relative_error": {
+        "count": 10,
+        "mean": 0.21773493891435516,
+        "median": 0.22059512558487654,
+        "std": 0.018720781403656774
+      },
+      "interval_quadratic_relative_error": {
+        "count": 10,
+        "mean": 0.15023063439731943,
+        "median": 0.1491122642919504,
+        "std": 0.011547507317767254
+      },
+      "johnston_inner_relative_error": {
+        "count": 10,
+        "mean": 0.12435457972768149,
+        "median": 0.1208603737714444,
+        "std": 0.023927090034126682
+      },
+      "johnston_quadratic_correlation": {
+        "count": 10,
+        "mean": 0.9903286882310308,
+        "median": 0.9905119533829891,
+        "std": 0.003017855477378698
+      },
+      "johnston_quadratic_relative_error": {
+        "count": 10,
+        "mean": 0.0963280246708723,
+        "median": 0.09527686863482257,
+        "std": 0.013931710737638783
+      },
+      "johnston_to_oracle_norm_ratio": {
+        "count": 10,
+        "mean": 0.9904335940631585,
+        "median": 0.9868926161336514,
+        "std": 0.02351867804768031
+      },
+      "probe_gate_success_rate": 1.0,
+      "samples": 10,
+      "support_radius": 0.65
+    }
+  }
+}

@@ -1,0 +1,2928 @@
+{
+  "embedding_coordinates_used_after_sprinkling": false,
+  "results": [
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 311.6,
+        "median": 310.0,
+        "std": 8.76584280032445
+      },
+      "marked_events_evaluated": 3116,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 3116,
+        "mean": 10.625802310654686,
+        "median": 3.0,
+        "std": 16.59575325658566
+      },
+      "retarded_shell_nonempty_rate": 0.6954428754813864,
+      "retarded_shell_rank_capable_rate": 0.4765725288831836,
+      "scale_ratio": 0.75
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 311.6,
+        "median": 310.0,
+        "std": 8.76584280032445
+      },
+      "marked_events_evaluated": 3116,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 3116,
+        "mean": 3.5564826700898586,
+        "median": 0.0,
+        "std": 7.228284264265415
+      },
+      "retarded_shell_nonempty_rate": 0.417201540436457,
+      "retarded_shell_rank_capable_rate": 0.24422336328626446,
+      "scale_ratio": 0.75
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 311.6,
+        "median": 310.0,
+        "std": 8.76584280032445
+      },
+      "marked_events_evaluated": 3116,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 3116,
+        "mean": 10.625802310654686,
+        "median": 3.0,
+        "std": 16.59575325658566
+      },
+      "retarded_shell_nonempty_rate": 0.6954428754813864,
+      "retarded_shell_rank_capable_rate": 0.4765725288831836,
+      "scale_ratio": 0.75
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 311.6,
+        "median": 310.0,
+        "std": 8.76584280032445
+      },
+      "marked_events_evaluated": 3116,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 3116,
+        "mean": 3.5564826700898586,
+        "median": 0.0,
+        "std": 7.228284264265415
+      },
+      "retarded_shell_nonempty_rate": 0.417201540436457,
+      "retarded_shell_rank_capable_rate": 0.24422336328626446,
+      "scale_ratio": 0.75
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 132.8,
+        "median": 136.5,
+        "std": 16.460862674841803
+      },
+      "marked_events_evaluated": 1328,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 1328,
+        "mean": 3.7484939759036147,
+        "median": 1.0,
+        "std": 6.851479315901696
+      },
+      "retarded_shell_nonempty_rate": 0.5225903614457831,
+      "retarded_shell_rank_capable_rate": 0.27936746987951805,
+      "scale_ratio": 0.75
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 132.8,
+        "median": 136.5,
+        "std": 16.460862674841803
+      },
+      "marked_events_evaluated": 1328,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 1328,
+        "mean": 0.8456325301204819,
+        "median": 0.0,
+        "std": 2.4469298855843595
+      },
+      "retarded_shell_nonempty_rate": 0.1980421686746988,
+      "retarded_shell_rank_capable_rate": 0.07756024096385543,
+      "scale_ratio": 0.75
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 132.8,
+        "median": 136.5,
+        "std": 16.460862674841803
+      },
+      "marked_events_evaluated": 1328,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 1328,
+        "mean": 3.7484939759036147,
+        "median": 1.0,
+        "std": 6.851479315901696
+      },
+      "retarded_shell_nonempty_rate": 0.5225903614457831,
+      "retarded_shell_rank_capable_rate": 0.27936746987951805,
+      "scale_ratio": 0.75
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 132.8,
+        "median": 136.5,
+        "std": 16.460862674841803
+      },
+      "marked_events_evaluated": 1328,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 1328,
+        "mean": 0.8456325301204819,
+        "median": 0.0,
+        "std": 2.4469298855843595
+      },
+      "retarded_shell_nonempty_rate": 0.1980421686746988,
+      "retarded_shell_rank_capable_rate": 0.07756024096385543,
+      "scale_ratio": 0.75
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 143.6,
+        "median": 144.5,
+        "std": 17.396551382386107
+      },
+      "marked_events_evaluated": 1436,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 1436,
+        "mean": 1.0299442896935933,
+        "median": 0.0,
+        "std": 3.056992577365257
+      },
+      "retarded_shell_nonempty_rate": 0.20612813370473537,
+      "retarded_shell_rank_capable_rate": 0.08913649025069638,
+      "scale_ratio": 1.0
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 143.6,
+        "median": 144.5,
+        "std": 17.396551382386107
+      },
+      "marked_events_evaluated": 1436,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 1436,
+        "mean": 0.2604456824512535,
+        "median": 0.0,
+        "std": 1.1241193751609646
+      },
+      "retarded_shell_nonempty_rate": 0.08913649025069638,
+      "retarded_shell_rank_capable_rate": 0.023676880222841225,
+      "scale_ratio": 1.0
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 54.1,
+        "median": 52.5,
+        "std": 14.208800090085017
+      },
+      "marked_events_evaluated": 541,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 541,
+        "mean": 0.16635859519408502,
+        "median": 0.0,
+        "std": 0.9507538855518428
+      },
+      "retarded_shell_nonempty_rate": 0.06469500924214418,
+      "retarded_shell_rank_capable_rate": 0.012939001848428836,
+      "scale_ratio": 1.0
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 54.1,
+        "median": 52.5,
+        "std": 14.208800090085017
+      },
+      "marked_events_evaluated": 541,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 541,
+        "mean": 0.031423290203327174,
+        "median": 0.0,
+        "std": 0.33431532390495855
+      },
+      "retarded_shell_nonempty_rate": 0.012939001848428836,
+      "retarded_shell_rank_capable_rate": 0.0036968576709796672,
+      "scale_ratio": 1.0
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 57.9,
+        "median": 54.0,
+        "std": 16.831220989577673
+      },
+      "marked_events_evaluated": 579,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 579,
+        "mean": 0.14853195164075994,
+        "median": 0.0,
+        "std": 0.6742567739115575
+      },
+      "retarded_shell_nonempty_rate": 0.06563039723661486,
+      "retarded_shell_rank_capable_rate": 0.012089810017271158,
+      "scale_ratio": 1.0
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 57.9,
+        "median": 54.0,
+        "std": 16.831220989577673
+      },
+      "marked_events_evaluated": 579,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 579,
+        "mean": 0.015544041450777202,
+        "median": 0.0,
+        "std": 0.1602033661527493
+      },
+      "retarded_shell_nonempty_rate": 0.012089810017271158,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.0
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 10.1,
+        "median": 9.5,
+        "std": 5.6471231613982
+      },
+      "marked_events_evaluated": 101,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 101,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.0
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 10.1,
+        "median": 9.5,
+        "std": 5.6471231613982
+      },
+      "marked_events_evaluated": 101,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 101,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.0
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 11.0,
+        "median": 10.0,
+        "std": 6.0
+      },
+      "marked_events_evaluated": 110,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 110,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.25
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 11.0,
+        "median": 10.0,
+        "std": 6.0
+      },
+      "marked_events_evaluated": 110,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 110,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.25
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 1.4,
+        "median": 1.0,
+        "std": 1.562049935181331
+      },
+      "marked_events_evaluated": 14,
+      "realizations_with_interior_rate": 0.6,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 14,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.25
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 1.4,
+        "median": 1.0,
+        "std": 1.562049935181331
+      },
+      "marked_events_evaluated": 14,
+      "realizations_with_interior_rate": 0.6,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 14,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.25
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.3,
+        "median": 0.0,
+        "std": 0.9000000000000001
+      },
+      "marked_events_evaluated": 3,
+      "realizations_with_interior_rate": 0.1,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 3,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.25
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.3,
+        "median": 0.0,
+        "std": 0.9000000000000001
+      },
+      "marked_events_evaluated": 3,
+      "realizations_with_interior_rate": 0.1,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 3,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.25
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.25
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.25
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.5
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.5
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.5
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.5
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.5
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.5
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.5
+    },
+    {
+      "ell": 0.13449918722414902,
+      "events": 400,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.5
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 352.3,
+        "median": 343.0,
+        "std": 43.929602775349565
+      },
+      "marked_events_evaluated": 3523,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 3523,
+        "mean": 3.7672438262844166,
+        "median": 0.0,
+        "std": 9.532428777217284
+      },
+      "retarded_shell_nonempty_rate": 0.33068407607152994,
+      "retarded_shell_rank_capable_rate": 0.2055066704513199,
+      "scale_ratio": 0.75
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 352.3,
+        "median": 343.0,
+        "std": 43.929602775349565
+      },
+      "marked_events_evaluated": 3523,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 3523,
+        "mean": 2.186772636957139,
+        "median": 0.0,
+        "std": 6.265239237994443
+      },
+      "retarded_shell_nonempty_rate": 0.25319330116378086,
+      "retarded_shell_rank_capable_rate": 0.14078910019869428,
+      "scale_ratio": 0.75
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 192.4,
+        "median": 194.0,
+        "std": 31.645536810109572
+      },
+      "marked_events_evaluated": 1924,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 1924,
+        "mean": 1.0415800415800416,
+        "median": 0.0,
+        "std": 3.2288552193272975
+      },
+      "retarded_shell_nonempty_rate": 0.2104989604989605,
+      "retarded_shell_rank_capable_rate": 0.09303534303534304,
+      "scale_ratio": 0.75
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 192.4,
+        "median": 194.0,
+        "std": 31.645536810109572
+      },
+      "marked_events_evaluated": 1924,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 1924,
+        "mean": 0.48440748440748443,
+        "median": 0.0,
+        "std": 1.8822582624594293
+      },
+      "retarded_shell_nonempty_rate": 0.1262993762993763,
+      "retarded_shell_rank_capable_rate": 0.04313929313929314,
+      "scale_ratio": 0.75
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 261.7,
+        "median": 256.0,
+        "std": 30.515733646759994
+      },
+      "marked_events_evaluated": 2617,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 2617,
+        "mean": 2.180741306839893,
+        "median": 0.0,
+        "std": 6.137499430501457
+      },
+      "retarded_shell_nonempty_rate": 0.27130301872372947,
+      "retarded_shell_rank_capable_rate": 0.14635078333970195,
+      "scale_ratio": 0.75
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 261.7,
+        "median": 256.0,
+        "std": 30.515733646759994
+      },
+      "marked_events_evaluated": 2617,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 2617,
+        "mean": 1.1482613679786013,
+        "median": 0.0,
+        "std": 3.82560579288386
+      },
+      "retarded_shell_nonempty_rate": 0.1834161253343523,
+      "retarded_shell_rank_capable_rate": 0.09170806266717615,
+      "scale_ratio": 0.75
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 119.3,
+        "median": 116.5,
+        "std": 28.63581673359431
+      },
+      "marked_events_evaluated": 1193,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 1193,
+        "mean": 0.46186085498742663,
+        "median": 0.0,
+        "std": 1.7382137329675222
+      },
+      "retarded_shell_nonempty_rate": 0.14082145850796313,
+      "retarded_shell_rank_capable_rate": 0.04107292539815591,
+      "scale_ratio": 0.75
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 119.3,
+        "median": 116.5,
+        "std": 28.63581673359431
+      },
+      "marked_events_evaluated": 1193,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 1193,
+        "mean": 0.1760268231349539,
+        "median": 0.0,
+        "std": 0.9554337332998517
+      },
+      "retarded_shell_nonempty_rate": 0.06621961441743504,
+      "retarded_shell_rank_capable_rate": 0.016764459346186086,
+      "scale_ratio": 0.75
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 78.4,
+        "median": 77.0,
+        "std": 22.94428033301546
+      },
+      "marked_events_evaluated": 784,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 784,
+        "mean": 0.04081632653061224,
+        "median": 0.0,
+        "std": 0.34753849726380415
+      },
+      "retarded_shell_nonempty_rate": 0.02295918367346939,
+      "retarded_shell_rank_capable_rate": 0.003826530612244898,
+      "scale_ratio": 1.0
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 78.4,
+        "median": 77.0,
+        "std": 22.94428033301546
+      },
+      "marked_events_evaluated": 784,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 784,
+        "mean": 0.006377551020408163,
+        "median": 0.0,
+        "std": 0.09427565047006316
+      },
+      "retarded_shell_nonempty_rate": 0.00510204081632653,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.0
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 35.5,
+        "median": 33.0,
+        "std": 11.333578428722324
+      },
+      "marked_events_evaluated": 355,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 355,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.0
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 35.5,
+        "median": 33.0,
+        "std": 11.333578428722324
+      },
+      "marked_events_evaluated": 355,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 355,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.0
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 28.5,
+        "median": 23.5,
+        "std": 12.816005617976296
+      },
+      "marked_events_evaluated": 285,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 285,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.0
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 28.5,
+        "median": 23.5,
+        "std": 12.816005617976296
+      },
+      "marked_events_evaluated": 285,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 285,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.0
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 7.0,
+        "median": 5.0,
+        "std": 5.196152422706632
+      },
+      "marked_events_evaluated": 70,
+      "realizations_with_interior_rate": 0.9,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 70,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.0
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 7.0,
+        "median": 5.0,
+        "std": 5.196152422706632
+      },
+      "marked_events_evaluated": 70,
+      "realizations_with_interior_rate": 0.9,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 70,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.0
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 4.6,
+        "median": 3.0,
+        "std": 4.409081537009721
+      },
+      "marked_events_evaluated": 46,
+      "realizations_with_interior_rate": 0.9,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 46,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.25
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 4.6,
+        "median": 3.0,
+        "std": 4.409081537009721
+      },
+      "marked_events_evaluated": 46,
+      "realizations_with_interior_rate": 0.9,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 46,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.25
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.3,
+        "median": 0.0,
+        "std": 0.6403124237432849
+      },
+      "marked_events_evaluated": 3,
+      "realizations_with_interior_rate": 0.2,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 3,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.25
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.3,
+        "median": 0.0,
+        "std": 0.6403124237432849
+      },
+      "marked_events_evaluated": 3,
+      "realizations_with_interior_rate": 0.2,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 3,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.25
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.25
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.25
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.25
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.25
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.5
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.5
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.5
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.5
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.5
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.5
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.5
+    },
+    {
+      "ell": 0.11309988439132511,
+      "events": 800,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.5
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 644.3,
+        "median": 655.5,
+        "std": 49.505656242494155
+      },
+      "marked_events_evaluated": 6443,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 6443,
+        "mean": 8.838118888716437,
+        "median": 0.0,
+        "std": 19.63800980619108
+      },
+      "retarded_shell_nonempty_rate": 0.4513425422939624,
+      "retarded_shell_rank_capable_rate": 0.31615706968803353,
+      "scale_ratio": 0.75
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 644.3,
+        "median": 655.5,
+        "std": 49.505656242494155
+      },
+      "marked_events_evaluated": 6443,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 6443,
+        "mean": 4.2082880645661955,
+        "median": 0.0,
+        "std": 11.096199201740976
+      },
+      "retarded_shell_nonempty_rate": 0.303585286357287,
+      "retarded_shell_rank_capable_rate": 0.2120130374049356,
+      "scale_ratio": 0.75
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 408.5,
+        "median": 418.0,
+        "std": 50.014497898109504
+      },
+      "marked_events_evaluated": 4085,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 4085,
+        "mean": 3.624969400244798,
+        "median": 0.0,
+        "std": 9.749637699965133
+      },
+      "retarded_shell_nonempty_rate": 0.33341493268053857,
+      "retarded_shell_rank_capable_rate": 0.19412484700122398,
+      "scale_ratio": 0.75
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 408.5,
+        "median": 418.0,
+        "std": 50.014497898109504
+      },
+      "marked_events_evaluated": 4085,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 4085,
+        "mean": 1.4193390452876378,
+        "median": 0.0,
+        "std": 5.0185621716389255
+      },
+      "retarded_shell_nonempty_rate": 0.18776009791921663,
+      "retarded_shell_rank_capable_rate": 0.09914320685434516,
+      "scale_ratio": 0.75
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 418.1,
+        "median": 427.0,
+        "std": 44.960983085337446
+      },
+      "marked_events_evaluated": 4181,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 4181,
+        "mean": 3.8268356852427647,
+        "median": 0.0,
+        "std": 10.301327453002186
+      },
+      "retarded_shell_nonempty_rate": 0.32623774216694573,
+      "retarded_shell_rank_capable_rate": 0.20162640516622818,
+      "scale_ratio": 0.75
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 418.1,
+        "median": 427.0,
+        "std": 44.960983085337446
+      },
+      "marked_events_evaluated": 4181,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 4181,
+        "mean": 1.5116000956708922,
+        "median": 0.0,
+        "std": 5.28165534060066
+      },
+      "retarded_shell_nonempty_rate": 0.19134178426213824,
+      "retarded_shell_rank_capable_rate": 0.1002152595072949,
+      "scale_ratio": 0.75
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 213.3,
+        "median": 216.5,
+        "std": 39.04369347282606
+      },
+      "marked_events_evaluated": 2133,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 2133,
+        "mean": 0.9146741678387248,
+        "median": 0.0,
+        "std": 3.5097126435632235
+      },
+      "retarded_shell_nonempty_rate": 0.1753398968588842,
+      "retarded_shell_rank_capable_rate": 0.06938584153774027,
+      "scale_ratio": 0.75
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 213.3,
+        "median": 216.5,
+        "std": 39.04369347282606
+      },
+      "marked_events_evaluated": 2133,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 2133,
+        "mean": 0.2255039849976559,
+        "median": 0.0,
+        "std": 1.394270740193672
+      },
+      "retarded_shell_nonempty_rate": 0.05532114392873887,
+      "retarded_shell_rank_capable_rate": 0.01969057665260197,
+      "scale_ratio": 0.75
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 121.0,
+        "median": 116.5,
+        "std": 27.386127875258307
+      },
+      "marked_events_evaluated": 1210,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 1210,
+        "mean": 0.02066115702479339,
+        "median": 0.0,
+        "std": 0.28237989632159577
+      },
+      "retarded_shell_nonempty_rate": 0.00743801652892562,
+      "retarded_shell_rank_capable_rate": 0.001652892561983471,
+      "scale_ratio": 1.0
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 121.0,
+        "median": 116.5,
+        "std": 27.386127875258307
+      },
+      "marked_events_evaluated": 1210,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 1210,
+        "mean": 0.001652892561983471,
+        "median": 0.0,
+        "std": 0.04062216769403144
+      },
+      "retarded_shell_nonempty_rate": 0.001652892561983471,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.0
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 66.7,
+        "median": 62.0,
+        "std": 17.14088679152861
+      },
+      "marked_events_evaluated": 667,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 667,
+        "mean": 0.004497751124437781,
+        "median": 0.0,
+        "std": 0.1160733544278615
+      },
+      "retarded_shell_nonempty_rate": 0.0014992503748125937,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.0
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 66.7,
+        "median": 62.0,
+        "std": 17.14088679152861
+      },
+      "marked_events_evaluated": 667,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 667,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.0
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 31.2,
+        "median": 25.5,
+        "std": 15.58717421471897
+      },
+      "marked_events_evaluated": 312,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 312,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.0
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 31.2,
+        "median": 25.5,
+        "std": 15.58717421471897
+      },
+      "marked_events_evaluated": 312,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 312,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.0
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 9.9,
+        "median": 6.0,
+        "std": 7.569015788066504
+      },
+      "marked_events_evaluated": 99,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 99,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.0
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 9.9,
+        "median": 6.0,
+        "std": 7.569015788066504
+      },
+      "marked_events_evaluated": 99,
+      "realizations_with_interior_rate": 1.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 99,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.0
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 2.5,
+        "median": 1.0,
+        "std": 3.2015621187164243
+      },
+      "marked_events_evaluated": 25,
+      "realizations_with_interior_rate": 0.7,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 25,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.25
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 2.5,
+        "median": 1.0,
+        "std": 3.2015621187164243
+      },
+      "marked_events_evaluated": 25,
+      "realizations_with_interior_rate": 0.7,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 25,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.25
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.25
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.25
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.25
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.25
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.25
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.25
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.5
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.5
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.5
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        0.5,
+        2.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.5
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.5
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.25,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.5
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        0.5,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.5
+    },
+    {
+      "ell": 0.10219728214404318,
+      "events": 1200,
+      "interior_abundance_threshold": 0.5,
+      "interior_band": [
+        1.0,
+        4.0
+      ],
+      "interior_count": {
+        "count": 10,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "marked_events_evaluated": 0,
+      "realizations_with_interior_rate": 0.0,
+      "retarded_shell_band": [
+        1.0,
+        4.0
+      ],
+      "retarded_shell_count": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "retarded_shell_nonempty_rate": 0.0,
+      "retarded_shell_rank_capable_rate": 0.0,
+      "scale_ratio": 1.5
+    }
+  ],
+  "settings": {
+    "duration": 1.0,
+    "events": [
+      400,
+      800,
+      1200
+    ],
+    "interior_abundance_thresholds": [
+      0.25,
+      0.5
+    ],
+    "interior_bands": [
+      [
+        0.5,
+        2.0
+      ],
+      [
+        1.0,
+        4.0
+      ]
+    ],
+    "minimum_shell_count": 4,
+    "nonlocality_scale": 0.18,
+    "realizations": 10,
+    "retarded_shell_bands": [
+      [
+        0.5,
+        4.0
+      ],
+      [
+        1.0,
+        4.0
+      ]
+    ],
+    "scale_ratios": [
+      0.75,
+      1.0,
+      1.25,
+      1.5
+    ],
+    "seed": 20260715
+  },
+  "status": "order-only development scan; external numerical oracle"
+}

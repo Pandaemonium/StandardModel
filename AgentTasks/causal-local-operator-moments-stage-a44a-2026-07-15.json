@@ -1,0 +1,299 @@
+{
+  "asymmetric_affine_negative_control": -1.7456896551724133,
+  "claim_boundary": "ideal coordinate-oracle local moment stencil; no intrinsic distance or concentration claim",
+  "conventions": {
+    "project_response": "negative of source response",
+    "project_signature": "+---",
+    "source_signature": "-+++"
+  },
+  "passes": true,
+  "settings": [
+    {
+      "balance": 8.379310344827585,
+      "max_absolute_response_error": 7.105427357601002e-15,
+      "metric_diagonal": [
+        1.0000000000000036,
+        -0.9999999999999997
+      ],
+      "moment_diagnostics": {
+        "max_absolute_first_moment": 0.0,
+        "max_absolute_proper_time_squared_error": 1.3877787807814457e-17,
+        "max_absolute_second_moment_error": 1.3877787807814457e-17
+      },
+      "responses": {
+        "constant": {
+          "absolute_error": 0.0,
+          "expected_project_response": 0.0,
+          "project_response": -0.0,
+          "source_response": 0.0,
+          "spatial_difference": 0.0,
+          "temporal_difference": 0.0
+        },
+        "spatial_affine_1": {
+          "absolute_error": 0.0,
+          "expected_project_response": 0.0,
+          "project_response": -0.0,
+          "source_response": 0.0,
+          "spatial_difference": 0.0,
+          "temporal_difference": 0.0
+        },
+        "spatial_quadratic_1": {
+          "absolute_error": 6.661338147750939e-16,
+          "expected_project_response": -2.0,
+          "project_response": -1.9999999999999993,
+          "source_response": 1.9999999999999993,
+          "spatial_difference": 0.2386831275720164,
+          "temporal_difference": 0.0
+        },
+        "temporal_affine": {
+          "absolute_error": 0.0,
+          "expected_project_response": 0.0,
+          "project_response": -0.0,
+          "source_response": 0.0,
+          "spatial_difference": 0.0,
+          "temporal_difference": 0.0
+        },
+        "temporal_quadratic": {
+          "absolute_error": 7.105427357601002e-15,
+          "expected_project_response": 2.0,
+          "project_response": 2.000000000000007,
+          "source_response": -2.000000000000007,
+          "spatial_difference": 2.2386831275720156,
+          "temporal_difference": 2.0
+        },
+        "temporal_spatial_cross_1": {
+          "absolute_error": 0.0,
+          "expected_project_response": 0.0,
+          "project_response": -0.0,
+          "source_response": 0.0,
+          "spatial_difference": 0.0,
+          "temporal_difference": 0.0
+        }
+      },
+      "scale": 0.2,
+      "spatial_dimension": 1
+    },
+    {
+      "balance": 8.379310344827585,
+      "max_absolute_response_error": 4.440892098500626e-16,
+      "metric_diagonal": [
+        1.0,
+        -0.9999999999999998,
+        -0.9999999999999998
+      ],
+      "moment_diagnostics": {
+        "max_absolute_first_moment": 0.0,
+        "max_absolute_proper_time_squared_error": 0.0,
+        "max_absolute_second_moment_error": 8.673617379884035e-19
+      },
+      "responses": {
+        "constant": {
+          "absolute_error": 0.0,
+          "expected_project_response": 0.0,
+          "project_response": -0.0,
+          "source_response": 0.0,
+          "spatial_difference": 0.0,
+          "temporal_difference": 0.0
+        },
+        "spatial_affine_1": {
+          "absolute_error": 0.0,
+          "expected_project_response": 0.0,
+          "project_response": -0.0,
+          "source_response": 0.0,
+          "spatial_difference": 0.0,
+          "temporal_difference": 0.0
+        },
+        "spatial_affine_2": {
+          "absolute_error": 0.0,
+          "expected_project_response": 0.0,
+          "project_response": -0.0,
+          "source_response": 0.0,
+          "spatial_difference": 0.0,
+          "temporal_difference": 0.0
+        },
+        "spatial_cross_1_2": {
+          "absolute_error": 0.0,
+          "expected_project_response": 0.0,
+          "project_response": -0.0,
+          "source_response": 0.0,
+          "spatial_difference": 0.0,
+          "temporal_difference": 0.0
+        },
+        "spatial_quadratic_1": {
+          "absolute_error": 4.440892098500626e-16,
+          "expected_project_response": -2.0,
+          "project_response": -1.9999999999999996,
+          "source_response": 1.9999999999999996,
+          "spatial_difference": 0.23868312757201643,
+          "temporal_difference": 0.0
+        },
+        "spatial_quadratic_2": {
+          "absolute_error": 4.440892098500626e-16,
+          "expected_project_response": -2.0,
+          "project_response": -1.9999999999999996,
+          "source_response": 1.9999999999999996,
+          "spatial_difference": 0.23868312757201643,
+          "temporal_difference": 0.0
+        },
+        "temporal_affine": {
+          "absolute_error": 0.0,
+          "expected_project_response": 0.0,
+          "project_response": -0.0,
+          "source_response": 0.0,
+          "spatial_difference": 0.0,
+          "temporal_difference": 0.0
+        },
+        "temporal_quadratic": {
+          "absolute_error": 0.0,
+          "expected_project_response": 2.0,
+          "project_response": 2.0,
+          "source_response": -2.0,
+          "spatial_difference": 2.477366255144033,
+          "temporal_difference": 2.0
+        },
+        "temporal_spatial_cross_1": {
+          "absolute_error": 0.0,
+          "expected_project_response": 0.0,
+          "project_response": -0.0,
+          "source_response": 0.0,
+          "spatial_difference": 0.0,
+          "temporal_difference": 0.0
+        },
+        "temporal_spatial_cross_2": {
+          "absolute_error": 0.0,
+          "expected_project_response": 0.0,
+          "project_response": -0.0,
+          "source_response": 0.0,
+          "spatial_difference": 0.0,
+          "temporal_difference": 0.0
+        }
+      },
+      "scale": 0.2,
+      "spatial_dimension": 2
+    },
+    {
+      "balance": 8.379310344827585,
+      "max_absolute_response_error": 3.552713678800501e-15,
+      "metric_diagonal": [
+        1.0000000000000018,
+        -0.9999999999999998,
+        -0.9999999999999998,
+        -0.9999999999999998
+      ],
+      "moment_diagnostics": {
+        "max_absolute_first_moment": 4.625929269271485e-18,
+        "max_absolute_proper_time_squared_error": 0.0,
+        "max_absolute_second_moment_error": 6.938893903907228e-18
+      },
+      "responses": {
+        "constant": {
+          "absolute_error": 0.0,
+          "expected_project_response": 0.0,
+          "project_response": -0.0,
+          "source_response": 0.0,
+          "spatial_difference": 0.0,
+          "temporal_difference": 0.0
+        },
+        "spatial_affine_1": {
+          "absolute_error": 0.0,
+          "expected_project_response": 0.0,
+          "project_response": -0.0,
+          "source_response": 0.0,
+          "spatial_difference": 0.0,
+          "temporal_difference": 0.0
+        },
+        "spatial_affine_2": {
+          "absolute_error": 0.0,
+          "expected_project_response": 0.0,
+          "project_response": -0.0,
+          "source_response": 0.0,
+          "spatial_difference": 0.0,
+          "temporal_difference": 0.0
+        },
+        "spatial_affine_3": {
+          "absolute_error": 0.0,
+          "expected_project_response": 0.0,
+          "project_response": -0.0,
+          "source_response": 0.0,
+          "spatial_difference": 0.0,
+          "temporal_difference": 0.0
+        },
+        "spatial_cross_1_2": {
+          "absolute_error": 0.0,
+          "expected_project_response": 0.0,
+          "project_response": -0.0,
+          "source_response": 0.0,
+          "spatial_difference": 0.0,
+          "temporal_difference": 0.0
+        },
+        "spatial_quadratic_1": {
+          "absolute_error": 4.440892098500626e-16,
+          "expected_project_response": -2.0,
+          "project_response": -1.9999999999999996,
+          "source_response": 1.9999999999999996,
+          "spatial_difference": 0.23868312757201643,
+          "temporal_difference": 0.0
+        },
+        "spatial_quadratic_2": {
+          "absolute_error": 4.440892098500626e-16,
+          "expected_project_response": -2.0,
+          "project_response": -1.9999999999999996,
+          "source_response": 1.9999999999999996,
+          "spatial_difference": 0.23868312757201643,
+          "temporal_difference": 0.0
+        },
+        "spatial_quadratic_3": {
+          "absolute_error": 4.440892098500626e-16,
+          "expected_project_response": -2.0,
+          "project_response": -1.9999999999999996,
+          "source_response": 1.9999999999999996,
+          "spatial_difference": 0.23868312757201643,
+          "temporal_difference": 0.0
+        },
+        "temporal_affine": {
+          "absolute_error": 0.0,
+          "expected_project_response": 0.0,
+          "project_response": -0.0,
+          "source_response": 0.0,
+          "spatial_difference": 0.0,
+          "temporal_difference": 0.0
+        },
+        "temporal_quadratic": {
+          "absolute_error": 3.552713678800501e-15,
+          "expected_project_response": 2.0,
+          "project_response": 2.0000000000000036,
+          "source_response": -2.0000000000000036,
+          "spatial_difference": 2.716049382716049,
+          "temporal_difference": 2.0
+        },
+        "temporal_spatial_cross_1": {
+          "absolute_error": 0.0,
+          "expected_project_response": 0.0,
+          "project_response": -0.0,
+          "source_response": 0.0,
+          "spatial_difference": 0.0,
+          "temporal_difference": 0.0
+        },
+        "temporal_spatial_cross_2": {
+          "absolute_error": 0.0,
+          "expected_project_response": 0.0,
+          "project_response": -0.0,
+          "source_response": 0.0,
+          "spatial_difference": 0.0,
+          "temporal_difference": 0.0
+        },
+        "temporal_spatial_cross_3": {
+          "absolute_error": 0.0,
+          "expected_project_response": 0.0,
+          "project_response": -0.0,
+          "source_response": 0.0,
+          "spatial_difference": 0.0,
+          "temporal_difference": 0.0
+        }
+      },
+      "scale": 0.2,
+      "spatial_dimension": 3
+    }
+  ],
+  "stage": "A44a"
+}

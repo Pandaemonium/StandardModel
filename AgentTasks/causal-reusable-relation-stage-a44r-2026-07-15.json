@@ -1,0 +1,112 @@
+{
+  "claim_boundary": "development-only exactness/resource gate; not concentration or GR",
+  "environment": {
+    "numpy": "2.4.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.10",
+    "temporary_volume_free_bytes_before": 432614486016
+  },
+  "gate": {
+    "authorization_blockers": [
+      "no measured N=100000 scaling point",
+      "physical density and pivot schedule not frozen",
+      "full same-graph covariance concentration not tested"
+    ],
+    "checks": {
+      "exact_raw_storage": true,
+      "finite_responses": true,
+      "minimum_pivots": true,
+      "projected_total_at_most_12_hours": true,
+      "scratch_at_most_512_mib": true,
+      "small_direct_count_match": true,
+      "target_storage_at_most_24_gib": true
+    },
+    "large_run_authorized": false,
+    "prototype_passes": true
+  },
+  "quadratic_extrapolation": {
+    "packed_relation_bytes": 20000550003,
+    "projected_build_seconds": 5168.642482977196,
+    "projected_response_seconds": 1014.0188263797958,
+    "projected_total_seconds": 6182.661309356991,
+    "target_pivots": 256,
+    "target_random_events": 400000,
+    "target_total_points": 400003
+  },
+  "results": [
+    {
+      "all_responses_finite": true,
+      "build_seconds": 0.862883800000418,
+      "cache_file_bytes": 3131878,
+      "cache_storage_bytes": 3131878,
+      "compression_ratio_vs_dense_boolean": 7.992012779552716,
+      "dense_boolean_bytes": 25030009,
+      "depth_threshold": 266,
+      "direct_count_match": true,
+      "expected_cache_bytes": 3131878,
+      "minimum_selected_depth": 266,
+      "random_events": 5000,
+      "response_seconds": 0.0067063000169582665,
+      "selected_pivots": 9,
+      "spawn_key": [
+        0
+      ],
+      "total_points": 5003
+    },
+    {
+      "all_responses_finite": true,
+      "build_seconds": 3.181007999985013,
+      "cache_file_bytes": 12513753,
+      "cache_storage_bytes": 12513753,
+      "compression_ratio_vs_dense_boolean": 7.996003197442047,
+      "dense_boolean_bytes": 100060009,
+      "depth_threshold": 547,
+      "direct_count_match": null,
+      "expected_cache_bytes": 12513753,
+      "minimum_selected_depth": 547,
+      "random_events": 10000,
+      "response_seconds": 0.02942330000223592,
+      "selected_pivots": 9,
+      "spawn_key": [
+        1
+      ],
+      "total_points": 10003
+    },
+    {
+      "all_responses_finite": true,
+      "build_seconds": 12.925289099977817,
+      "cache_file_bytes": 50027503,
+      "cache_storage_bytes": 50027503,
+      "compression_ratio_vs_dense_boolean": 7.998000799680128,
+      "dense_boolean_bytes": 400120009,
+      "depth_threshold": 1132,
+      "direct_count_match": null,
+      "expected_cache_bytes": 50027503,
+      "minimum_selected_depth": 1132,
+      "random_events": 20000,
+      "response_seconds": 0.0792428000131622,
+      "selected_pivots": 8,
+      "spawn_key": [
+        2
+      ],
+      "total_points": 20003
+    }
+  ],
+  "scratch_upper_bound_bytes": 5373952,
+  "settings": {
+    "column_block_size": 4096,
+    "duration": 2.0,
+    "events": [
+      5000,
+      10000,
+      20000
+    ],
+    "minimum_pivots": 8,
+    "popcount_block_size": 128,
+    "row_block_size": 32,
+    "seed": 20261520,
+    "target_events_extrapolation_only": 400000,
+    "target_pivots_extrapolation_only": 256
+  },
+  "stage": "A44r"
+}

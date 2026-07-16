@@ -7,8 +7,11 @@ This file makes the finite core of the following statement a theorem.
 
 *Context.* The everpresent-Lambda identification survives iff the pierced-null-edge count of a
 region has EXTENSIVE variance (Poisson, `Var ~ N`); it dies if the count is HYPERUNIFORM
-(sub-extensive, `Var ≪ N`). Poisson sprinkling is the unique Lorentz-invariant discretization: a
-regular/hyperuniform point set picks out a preferred frame.
+(sub-extensive, `Var ≪ N`). A homogeneous Poisson sprinkling is Lorentz invariant in
+distribution. Bombelli-Henson-Sorkin prove that no measurable Lorentz-equivariant rule extracts a
+preferred finite direction set or finite-valency graph from such a sprinkling. They do not prove
+that Poisson is the unique Lorentz-invariant point-process law, or that every hyperuniform law
+selects a frame.
 
 *Finite avatar.* We model a count ensemble by its rational covariance matrix
 `C : Matrix (Fin k) (Fin k) ℚ`. FRAME-BLINDNESS is permutation invariance (`C` commutes with every
@@ -26,9 +29,11 @@ permutation matrix), the finite avatar of "no preferred direction". We prove, fo
   covector.
 * `frame_blind_everpresent_verdict` — the package.
 
-*Honest scope.* Permutation invariance is the finite avatar of Lorentz frame-blindness; the
-continuum "Lorentz-invariance ⇒ Poisson" step stays imported. This is the finite structural core of
-"the hyperuniform branch costs a preferred frame."
+*Honest scope.* Permutation invariance is only a finite surrogate for frame-blindness. It is not
+Lorentz invariance, and this module does not formalize the Bombelli-Henson-Sorkin theorem. In
+particular, it supplies no classification of Lorentz-invariant point processes and no theorem that
+hyperuniformity selects a preferred frame. Its exact content is the stated covariance-matrix
+classification and its finite controls.
 -/
 
 namespace LambdaFrameConstraint

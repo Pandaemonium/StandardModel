@@ -1,0 +1,1409 @@
+{
+  "status": "oracle-only A39 development selection; no Johnston result opened",
+  "phase": "development",
+  "calibration": {
+    "seed": 20261390,
+    "events": [
+      300,
+      600
+    ],
+    "realizations": 2,
+    "duration": 2.0,
+    "dimension": 4,
+    "nonlocality_schedule": "L = cL * sqrt(ell * T)",
+    "minimum_evaluation_events": 30,
+    "nonlocality_multipliers": [
+      0.45,
+      0.6,
+      0.75
+    ],
+    "retained_fractions": [
+      0.15,
+      0.25,
+      0.35
+    ]
+  },
+  "selected_setting": "cL=0.600000|fraction=0.150000",
+  "selection": {
+    "nonlocality_multiplier": 0.6,
+    "retained_fraction": 0.15,
+    "structural_pass": false,
+    "worst_closure_locality_median": 1.0266927738053986,
+    "by_density": {
+      "300": {
+        "summary": {
+          "sample_count": 2,
+          "evaluation_count_median": 52.0,
+          "rank_15_rate": 1.0,
+          "mean_lorentzian_rate": 0.0,
+          "eventwise_lorentzian_fraction_median": 0.5110115714818962,
+          "generator_product_closure_defect_median": 1.2597513163022862e-14,
+          "envelope_product_closure_defect_median": 0.608601349686468,
+          "gl_envelope_projector_error_max": 1.417936316591102e-14,
+          "operator_closure_defect_median": 0.5581189642746746,
+          "gamma_closure_defect_median": 0.6021417359584196,
+          "double_multiplication_defect_median": 0.6604655735122503,
+          "triple_commutator_defect_median": 1.0266927738053986,
+          "determinant_volume_cv_median": 1.4413578316978448
+        },
+        "samples": [
+          {
+            "sector": "oracle",
+            "events": 300,
+            "evaluation_count": 47,
+            "generator_rank": 4,
+            "envelope_rank": 15,
+            "generator_condition": 3.0371442872196313,
+            "envelope_condition": 85.15424391829299,
+            "generator_product_closure_defect": 1.8265483886366246e-14,
+            "envelope_product_closure_defect": 0.5911373244942549,
+            "operator_closure_defect": 0.48767679747178133,
+            "gamma_closure_defect": 0.5244871537938912,
+            "double_multiplication_defect": 0.6950839876730704,
+            "triple_commutator_defect": 0.9912128439020579,
+            "mean_pairing_signature": [
+              0,
+              4,
+              0
+            ],
+            "eventwise_lorentzian_fraction": 0.425531914893617,
+            "determinant_volume_coefficient_of_variation": 1.401253830542897,
+            "gl_envelope_projector_error": 5.9166569391903455e-15
+          },
+          {
+            "sector": "oracle",
+            "events": 300,
+            "evaluation_count": 57,
+            "generator_rank": 4,
+            "envelope_rank": 15,
+            "generator_condition": 2.5993625861499368,
+            "envelope_condition": 110.66785528772644,
+            "generator_product_closure_defect": 6.92954243967948e-15,
+            "envelope_product_closure_defect": 0.6260653748786809,
+            "operator_closure_defect": 0.6285611310775677,
+            "gamma_closure_defect": 0.6797963181229478,
+            "double_multiplication_defect": 0.6258471593514302,
+            "triple_commutator_defect": 1.0621727037087392,
+            "mean_pairing_signature": [
+              0,
+              4,
+              0
+            ],
+            "eventwise_lorentzian_fraction": 0.5964912280701754,
+            "determinant_volume_coefficient_of_variation": 1.4814618328527924,
+            "gl_envelope_projector_error": 1.417936316591102e-14
+          }
+        ]
+      },
+      "600": {
+        "summary": {
+          "sample_count": 2,
+          "evaluation_count_median": 97.5,
+          "rank_15_rate": 1.0,
+          "mean_lorentzian_rate": 0.0,
+          "eventwise_lorentzian_fraction_median": 0.40546085858585856,
+          "generator_product_closure_defect_median": 1.343395014947402e-14,
+          "envelope_product_closure_defect_median": 0.660292440019989,
+          "gl_envelope_projector_error_max": 6.54643012116465e-15,
+          "operator_closure_defect_median": 0.667042116401414,
+          "gamma_closure_defect_median": 0.7421037647005315,
+          "double_multiplication_defect_median": 0.5321766398396639,
+          "triple_commutator_defect_median": 1.0162308625682317,
+          "determinant_volume_cv_median": 1.629582598579397
+        },
+        "samples": [
+          {
+            "sector": "oracle",
+            "events": 600,
+            "evaluation_count": 96,
+            "generator_rank": 4,
+            "envelope_rank": 15,
+            "generator_condition": 2.646930718465962,
+            "envelope_condition": 152.61059764448893,
+            "generator_product_closure_defect": 1.9895119230560573e-14,
+            "envelope_product_closure_defect": 0.6584770160619726,
+            "operator_closure_defect": 0.6959769574152563,
+            "gamma_closure_defect": 0.7600958954680294,
+            "double_multiplication_defect": 0.5605104922965856,
+            "triple_commutator_defect": 1.0356746210037384,
+            "mean_pairing_signature": [
+              0,
+              4,
+              0
+            ],
+            "eventwise_lorentzian_fraction": 0.4270833333333333,
+            "determinant_volume_coefficient_of_variation": 1.41033930611257,
+            "gl_envelope_projector_error": 6.4095655878793476e-15
+          },
+          {
+            "sector": "oracle",
+            "events": 600,
+            "evaluation_count": 99,
+            "generator_rank": 4,
+            "envelope_rank": 15,
+            "generator_condition": 2.5776038927908123,
+            "envelope_condition": 161.70735727758262,
+            "generator_product_closure_defect": 6.972781068387468e-15,
+            "envelope_product_closure_defect": 0.6621078639780053,
+            "operator_closure_defect": 0.6381072753875715,
+            "gamma_closure_defect": 0.7241116339330337,
+            "double_multiplication_defect": 0.5038427873827421,
+            "triple_commutator_defect": 0.9967871041327252,
+            "mean_pairing_signature": [
+              0,
+              4,
+              0
+            ],
+            "eventwise_lorentzian_fraction": 0.3838383838383838,
+            "determinant_volume_coefficient_of_variation": 1.848825891046224,
+            "gl_envelope_projector_error": 6.54643012116465e-15
+          }
+        ]
+      }
+    }
+  },
+  "settings": {
+    "cL=0.450000|fraction=0.150000": {
+      "nonlocality_multiplier": 0.45,
+      "retained_fraction": 0.15,
+      "structural_pass": false,
+      "worst_closure_locality_median": 1.0483782466249298,
+      "by_density": {
+        "300": {
+          "summary": {
+            "sample_count": 2,
+            "evaluation_count_median": 52.0,
+            "rank_15_rate": 1.0,
+            "mean_lorentzian_rate": 0.5,
+            "eventwise_lorentzian_fraction_median": 0.4589399029488615,
+            "generator_product_closure_defect_median": 1.2597513163022862e-14,
+            "envelope_product_closure_defect_median": 0.608601349686468,
+            "gl_envelope_projector_error_max": 1.417936316591102e-14,
+            "operator_closure_defect_median": 0.8349471613494522,
+            "gamma_closure_defect_median": 0.8664891969656334,
+            "double_multiplication_defect_median": 0.6897241246930594,
+            "triple_commutator_defect_median": 1.0483782466249298,
+            "determinant_volume_cv_median": 2.1939537114238368
+          },
+          "samples": [
+            {
+              "sector": "oracle",
+              "events": 300,
+              "evaluation_count": 47,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 3.0371442872196313,
+              "envelope_condition": 85.15424391829299,
+              "generator_product_closure_defect": 1.8265483886366246e-14,
+              "envelope_product_closure_defect": 0.5911373244942549,
+              "operator_closure_defect": 0.7845090821375968,
+              "gamma_closure_defect": 0.8027125403187045,
+              "double_multiplication_defect": 0.7493676189901136,
+              "triple_commutator_defect": 1.0250082331795076,
+              "mean_pairing_signature": [
+                1,
+                3,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.5319148936170213,
+              "determinant_volume_coefficient_of_variation": 1.9953685121489098,
+              "gl_envelope_projector_error": 5.9166569391903455e-15
+            },
+            {
+              "sector": "oracle",
+              "events": 300,
+              "evaluation_count": 57,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 2.5993625861499368,
+              "envelope_condition": 110.66785528772644,
+              "generator_product_closure_defect": 6.92954243967948e-15,
+              "envelope_product_closure_defect": 0.6260653748786809,
+              "operator_closure_defect": 0.8853852405613076,
+              "gamma_closure_defect": 0.9302658536125624,
+              "double_multiplication_defect": 0.6300806303960054,
+              "triple_commutator_defect": 1.071748260070352,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.38596491228070173,
+              "determinant_volume_coefficient_of_variation": 2.3925389106987636,
+              "gl_envelope_projector_error": 1.417936316591102e-14
+            }
+          ]
+        },
+        "600": {
+          "summary": {
+            "sample_count": 2,
+            "evaluation_count_median": 97.5,
+            "rank_15_rate": 1.0,
+            "mean_lorentzian_rate": 0.5,
+            "eventwise_lorentzian_fraction_median": 0.39378156565656564,
+            "generator_product_closure_defect_median": 1.343395014947402e-14,
+            "envelope_product_closure_defect_median": 0.660292440019989,
+            "gl_envelope_projector_error_max": 6.54643012116465e-15,
+            "operator_closure_defect_median": 0.8763710390386523,
+            "gamma_closure_defect_median": 0.8149651213293367,
+            "double_multiplication_defect_median": 0.5306171952634318,
+            "triple_commutator_defect_median": 1.026593786678973,
+            "determinant_volume_cv_median": 1.4307575042533622
+          },
+          "samples": [
+            {
+              "sector": "oracle",
+              "events": 600,
+              "evaluation_count": 96,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 2.646930718465962,
+              "envelope_condition": 152.61059764448893,
+              "generator_product_closure_defect": 1.9895119230560573e-14,
+              "envelope_product_closure_defect": 0.6584770160619726,
+              "operator_closure_defect": 0.8656334121772659,
+              "gamma_closure_defect": 0.8557321433427297,
+              "double_multiplication_defect": 0.550619593721697,
+              "triple_commutator_defect": 1.0004259758156109,
+              "mean_pairing_signature": [
+                2,
+                2,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.3229166666666667,
+              "determinant_volume_coefficient_of_variation": 1.24647676435236,
+              "gl_envelope_projector_error": 6.4095655878793476e-15
+            },
+            {
+              "sector": "oracle",
+              "events": 600,
+              "evaluation_count": 99,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 2.5776038927908123,
+              "envelope_condition": 161.70735727758262,
+              "generator_product_closure_defect": 6.972781068387468e-15,
+              "envelope_product_closure_defect": 0.6621078639780053,
+              "operator_closure_defect": 0.8871086659000389,
+              "gamma_closure_defect": 0.7741980993159439,
+              "double_multiplication_defect": 0.5106147968051666,
+              "triple_commutator_defect": 1.052761597542335,
+              "mean_pairing_signature": [
+                1,
+                3,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.46464646464646464,
+              "determinant_volume_coefficient_of_variation": 1.6150382441543645,
+              "gl_envelope_projector_error": 6.54643012116465e-15
+            }
+          ]
+        }
+      }
+    },
+    "cL=0.450000|fraction=0.250000": {
+      "nonlocality_multiplier": 0.45,
+      "retained_fraction": 0.25,
+      "structural_pass": false,
+      "worst_closure_locality_median": 1.1089360416976994,
+      "by_density": {
+        "300": {
+          "summary": {
+            "sample_count": 2,
+            "evaluation_count_median": 93.5,
+            "rank_15_rate": 1.0,
+            "mean_lorentzian_rate": 0.0,
+            "eventwise_lorentzian_fraction_median": 0.34764367816091957,
+            "generator_product_closure_defect_median": 1.607674451560446e-14,
+            "envelope_product_closure_defect_median": 0.6527491496987148,
+            "gl_envelope_projector_error_max": 6.041492345631234e-15,
+            "operator_closure_defect_median": 0.8630776016735706,
+            "gamma_closure_defect_median": 0.9033701405356304,
+            "double_multiplication_defect_median": 0.4721863820595204,
+            "triple_commutator_defect_median": 1.1089360416976994,
+            "determinant_volume_cv_median": 2.787645009728217
+          },
+          "samples": [
+            {
+              "sector": "oracle",
+              "events": 300,
+              "evaluation_count": 87,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 2.157131737624103,
+              "envelope_condition": 150.01289173892656,
+              "generator_product_closure_defect": 2.5869949252171904e-14,
+              "envelope_product_closure_defect": 0.6545613563939141,
+              "operator_closure_defect": 0.8553734877724207,
+              "gamma_closure_defect": 0.9097773443911696,
+              "double_multiplication_defect": 0.4990109817256252,
+              "triple_commutator_defect": 1.0717165828770372,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.42528735632183906,
+              "determinant_volume_coefficient_of_variation": 3.5625214621581853,
+              "gl_envelope_projector_error": 6.041492345631234e-15
+            },
+            {
+              "sector": "oracle",
+              "events": 300,
+              "evaluation_count": 100,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 2.0969836107326403,
+              "envelope_condition": 151.16310303971565,
+              "generator_product_closure_defect": 6.2835397790370166e-15,
+              "envelope_product_closure_defect": 0.6509369430035156,
+              "operator_closure_defect": 0.8707817155747204,
+              "gamma_closure_defect": 0.8969629366800911,
+              "double_multiplication_defect": 0.4453617823934156,
+              "triple_commutator_defect": 1.1461555005183615,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.27,
+              "determinant_volume_coefficient_of_variation": 2.0127685572982483,
+              "gl_envelope_projector_error": 5.33108961119777e-15
+            }
+          ]
+        },
+        "600": {
+          "summary": {
+            "sample_count": 2,
+            "evaluation_count_median": 155.0,
+            "rank_15_rate": 1.0,
+            "mean_lorentzian_rate": 0.5,
+            "eventwise_lorentzian_fraction_median": 0.43870967741935485,
+            "generator_product_closure_defect_median": 1.9667154870721444e-14,
+            "envelope_product_closure_defect_median": 0.6760354721131088,
+            "gl_envelope_projector_error_max": 9.469410808207582e-15,
+            "operator_closure_defect_median": 0.9338609270667174,
+            "gamma_closure_defect_median": 0.9016364441711504,
+            "double_multiplication_defect_median": 0.39528666437485804,
+            "triple_commutator_defect_median": 1.0633072230784102,
+            "determinant_volume_cv_median": 2.577680701517812
+          },
+          "samples": [
+            {
+              "sector": "oracle",
+              "events": 600,
+              "evaluation_count": 155,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 2.3326323846579338,
+              "envelope_condition": 248.99384584581165,
+              "generator_product_closure_defect": 1.9969809155282737e-14,
+              "envelope_product_closure_defect": 0.6738943767718161,
+              "operator_closure_defect": 0.9479506205323277,
+              "gamma_closure_defect": 0.9587371764159051,
+              "double_multiplication_defect": 0.39887185786358537,
+              "triple_commutator_defect": 1.0360820776744881,
+              "mean_pairing_signature": [
+                1,
+                3,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.3741935483870968,
+              "determinant_volume_coefficient_of_variation": 2.687797964765035,
+              "gl_envelope_projector_error": 9.469410808207582e-15
+            },
+            {
+              "sector": "oracle",
+              "events": 600,
+              "evaluation_count": 155,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 2.4018774025868845,
+              "envelope_condition": 240.94074061348533,
+              "generator_product_closure_defect": 1.9364500586160155e-14,
+              "envelope_product_closure_defect": 0.6781765674544014,
+              "operator_closure_defect": 0.9197712336011071,
+              "gamma_closure_defect": 0.8445357119263956,
+              "double_multiplication_defect": 0.3917014708861307,
+              "triple_commutator_defect": 1.0905323684823323,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.5032258064516129,
+              "determinant_volume_coefficient_of_variation": 2.467563438270589,
+              "gl_envelope_projector_error": 8.688394111189007e-15
+            }
+          ]
+        }
+      }
+    },
+    "cL=0.450000|fraction=0.350000": {
+      "nonlocality_multiplier": 0.45,
+      "retained_fraction": 0.35,
+      "structural_pass": false,
+      "worst_closure_locality_median": 1.1280435083885114,
+      "by_density": {
+        "300": {
+          "summary": {
+            "sample_count": 2,
+            "evaluation_count_median": 130.0,
+            "rank_15_rate": 1.0,
+            "mean_lorentzian_rate": 0.5,
+            "eventwise_lorentzian_fraction_median": 0.2903749098774333,
+            "generator_product_closure_defect_median": 1.1617137873043075e-14,
+            "envelope_product_closure_defect_median": 0.6648213695455805,
+            "gl_envelope_projector_error_max": 1.8032764134137682e-14,
+            "operator_closure_defect_median": 0.8901789928017363,
+            "gamma_closure_defect_median": 0.9150192141110243,
+            "double_multiplication_defect_median": 0.39513092148405143,
+            "triple_commutator_defect_median": 1.1280435083885114,
+            "determinant_volume_cv_median": 2.8386852788998946
+          },
+          "samples": [
+            {
+              "sector": "oracle",
+              "events": 300,
+              "evaluation_count": 114,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 1.9374183330571773,
+              "envelope_condition": 193.904613008071,
+              "generator_product_closure_defect": 1.2351000168944618e-14,
+              "envelope_product_closure_defect": 0.6558575772399415,
+              "operator_closure_defect": 0.8926920618836311,
+              "gamma_closure_defect": 0.9000456931218097,
+              "double_multiplication_defect": 0.4278032392267325,
+              "triple_commutator_defect": 1.133197233668887,
+              "mean_pairing_signature": [
+                1,
+                3,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.3684210526315789,
+              "determinant_volume_coefficient_of_variation": 3.7885387811185964,
+              "gl_envelope_projector_error": 1.8032764134137682e-14
+            },
+            {
+              "sector": "oracle",
+              "events": 300,
+              "evaluation_count": 146,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 1.955405136701372,
+              "envelope_condition": 209.79057186963104,
+              "generator_product_closure_defect": 1.0883275577141531e-14,
+              "envelope_product_closure_defect": 0.6737851618512194,
+              "operator_closure_defect": 0.8876659237198413,
+              "gamma_closure_defect": 0.9299927351002388,
+              "double_multiplication_defect": 0.36245860374137034,
+              "triple_commutator_defect": 1.122889783108136,
+              "mean_pairing_signature": [
+                2,
+                2,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.21232876712328766,
+              "determinant_volume_coefficient_of_variation": 1.8888317766811928,
+              "gl_envelope_projector_error": 4.8547089356583626e-15
+            }
+          ]
+        },
+        "600": {
+          "summary": {
+            "sample_count": 2,
+            "evaluation_count_median": 214.0,
+            "rank_15_rate": 1.0,
+            "mean_lorentzian_rate": 0.5,
+            "eventwise_lorentzian_fraction_median": 0.43186582809224316,
+            "generator_product_closure_defect_median": 3.865614512950223e-15,
+            "envelope_product_closure_defect_median": 0.6828689481445738,
+            "gl_envelope_projector_error_max": 6.757365086122253e-15,
+            "operator_closure_defect_median": 0.9402524347058372,
+            "gamma_closure_defect_median": 0.9536961940327346,
+            "double_multiplication_defect_median": 0.3088570651950844,
+            "triple_commutator_defect_median": 1.0782121342645896,
+            "determinant_volume_cv_median": 3.6224977925653263
+          },
+          "samples": [
+            {
+              "sector": "oracle",
+              "events": 600,
+              "evaluation_count": 212,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 2.1650884360395786,
+              "envelope_condition": 317.77036284410434,
+              "generator_product_closure_defect": 3.605172712972134e-15,
+              "envelope_product_closure_defect": 0.67863850309072,
+              "operator_closure_defect": 0.9364774917737139,
+              "gamma_closure_defect": 0.961830652134926,
+              "double_multiplication_defect": 0.3188233482785709,
+              "triple_commutator_defect": 1.0377563986276468,
+              "mean_pairing_signature": [
+                1,
+                3,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.3915094339622642,
+              "determinant_volume_coefficient_of_variation": 3.078981699322076,
+              "gl_envelope_projector_error": 5.685260696443161e-15
+            },
+            {
+              "sector": "oracle",
+              "events": 600,
+              "evaluation_count": 216,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 2.077003290493546,
+              "envelope_condition": 323.7129765089726,
+              "generator_product_closure_defect": 4.126056312928312e-15,
+              "envelope_product_closure_defect": 0.6870993931984276,
+              "operator_closure_defect": 0.9440273776379605,
+              "gamma_closure_defect": 0.9455617359305434,
+              "double_multiplication_defect": 0.2988907821115979,
+              "triple_commutator_defect": 1.1186678699015324,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.4722222222222222,
+              "determinant_volume_coefficient_of_variation": 4.166013885808576,
+              "gl_envelope_projector_error": 6.757365086122253e-15
+            }
+          ]
+        }
+      }
+    },
+    "cL=0.600000|fraction=0.150000": {
+      "nonlocality_multiplier": 0.6,
+      "retained_fraction": 0.15,
+      "structural_pass": false,
+      "worst_closure_locality_median": 1.0266927738053986,
+      "by_density": {
+        "300": {
+          "summary": {
+            "sample_count": 2,
+            "evaluation_count_median": 52.0,
+            "rank_15_rate": 1.0,
+            "mean_lorentzian_rate": 0.0,
+            "eventwise_lorentzian_fraction_median": 0.5110115714818962,
+            "generator_product_closure_defect_median": 1.2597513163022862e-14,
+            "envelope_product_closure_defect_median": 0.608601349686468,
+            "gl_envelope_projector_error_max": 1.417936316591102e-14,
+            "operator_closure_defect_median": 0.5581189642746746,
+            "gamma_closure_defect_median": 0.6021417359584196,
+            "double_multiplication_defect_median": 0.6604655735122503,
+            "triple_commutator_defect_median": 1.0266927738053986,
+            "determinant_volume_cv_median": 1.4413578316978448
+          },
+          "samples": [
+            {
+              "sector": "oracle",
+              "events": 300,
+              "evaluation_count": 47,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 3.0371442872196313,
+              "envelope_condition": 85.15424391829299,
+              "generator_product_closure_defect": 1.8265483886366246e-14,
+              "envelope_product_closure_defect": 0.5911373244942549,
+              "operator_closure_defect": 0.48767679747178133,
+              "gamma_closure_defect": 0.5244871537938912,
+              "double_multiplication_defect": 0.6950839876730704,
+              "triple_commutator_defect": 0.9912128439020579,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.425531914893617,
+              "determinant_volume_coefficient_of_variation": 1.401253830542897,
+              "gl_envelope_projector_error": 5.9166569391903455e-15
+            },
+            {
+              "sector": "oracle",
+              "events": 300,
+              "evaluation_count": 57,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 2.5993625861499368,
+              "envelope_condition": 110.66785528772644,
+              "generator_product_closure_defect": 6.92954243967948e-15,
+              "envelope_product_closure_defect": 0.6260653748786809,
+              "operator_closure_defect": 0.6285611310775677,
+              "gamma_closure_defect": 0.6797963181229478,
+              "double_multiplication_defect": 0.6258471593514302,
+              "triple_commutator_defect": 1.0621727037087392,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.5964912280701754,
+              "determinant_volume_coefficient_of_variation": 1.4814618328527924,
+              "gl_envelope_projector_error": 1.417936316591102e-14
+            }
+          ]
+        },
+        "600": {
+          "summary": {
+            "sample_count": 2,
+            "evaluation_count_median": 97.5,
+            "rank_15_rate": 1.0,
+            "mean_lorentzian_rate": 0.0,
+            "eventwise_lorentzian_fraction_median": 0.40546085858585856,
+            "generator_product_closure_defect_median": 1.343395014947402e-14,
+            "envelope_product_closure_defect_median": 0.660292440019989,
+            "gl_envelope_projector_error_max": 6.54643012116465e-15,
+            "operator_closure_defect_median": 0.667042116401414,
+            "gamma_closure_defect_median": 0.7421037647005315,
+            "double_multiplication_defect_median": 0.5321766398396639,
+            "triple_commutator_defect_median": 1.0162308625682317,
+            "determinant_volume_cv_median": 1.629582598579397
+          },
+          "samples": [
+            {
+              "sector": "oracle",
+              "events": 600,
+              "evaluation_count": 96,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 2.646930718465962,
+              "envelope_condition": 152.61059764448893,
+              "generator_product_closure_defect": 1.9895119230560573e-14,
+              "envelope_product_closure_defect": 0.6584770160619726,
+              "operator_closure_defect": 0.6959769574152563,
+              "gamma_closure_defect": 0.7600958954680294,
+              "double_multiplication_defect": 0.5605104922965856,
+              "triple_commutator_defect": 1.0356746210037384,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.4270833333333333,
+              "determinant_volume_coefficient_of_variation": 1.41033930611257,
+              "gl_envelope_projector_error": 6.4095655878793476e-15
+            },
+            {
+              "sector": "oracle",
+              "events": 600,
+              "evaluation_count": 99,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 2.5776038927908123,
+              "envelope_condition": 161.70735727758262,
+              "generator_product_closure_defect": 6.972781068387468e-15,
+              "envelope_product_closure_defect": 0.6621078639780053,
+              "operator_closure_defect": 0.6381072753875715,
+              "gamma_closure_defect": 0.7241116339330337,
+              "double_multiplication_defect": 0.5038427873827421,
+              "triple_commutator_defect": 0.9967871041327252,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.3838383838383838,
+              "determinant_volume_coefficient_of_variation": 1.848825891046224,
+              "gl_envelope_projector_error": 6.54643012116465e-15
+            }
+          ]
+        }
+      }
+    },
+    "cL=0.600000|fraction=0.250000": {
+      "nonlocality_multiplier": 0.6,
+      "retained_fraction": 0.25,
+      "structural_pass": false,
+      "worst_closure_locality_median": 1.0728486516570501,
+      "by_density": {
+        "300": {
+          "summary": {
+            "sample_count": 2,
+            "evaluation_count_median": 93.5,
+            "rank_15_rate": 1.0,
+            "mean_lorentzian_rate": 0.0,
+            "eventwise_lorentzian_fraction_median": 0.5086206896551724,
+            "generator_product_closure_defect_median": 1.607674451560446e-14,
+            "envelope_product_closure_defect_median": 0.6527491496987148,
+            "gl_envelope_projector_error_max": 6.041492345631234e-15,
+            "operator_closure_defect_median": 0.674862690886379,
+            "gamma_closure_defect_median": 0.7590209863364105,
+            "double_multiplication_defect_median": 0.47460946677675975,
+            "triple_commutator_defect_median": 1.0728486516570501,
+            "determinant_volume_cv_median": 2.1715928287054824
+          },
+          "samples": [
+            {
+              "sector": "oracle",
+              "events": 300,
+              "evaluation_count": 87,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 2.157131737624103,
+              "envelope_condition": 150.01289173892656,
+              "generator_product_closure_defect": 2.5869949252171904e-14,
+              "envelope_product_closure_defect": 0.6545613563939141,
+              "operator_closure_defect": 0.6233591562028289,
+              "gamma_closure_defect": 0.7401377820305104,
+              "double_multiplication_defect": 0.5032219563929082,
+              "triple_commutator_defect": 1.0636711039717122,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.5172413793103449,
+              "determinant_volume_coefficient_of_variation": 2.9802801067408846,
+              "gl_envelope_projector_error": 6.041492345631234e-15
+            },
+            {
+              "sector": "oracle",
+              "events": 300,
+              "evaluation_count": 100,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 2.0969836107326403,
+              "envelope_condition": 151.16310303971565,
+              "generator_product_closure_defect": 6.2835397790370166e-15,
+              "envelope_product_closure_defect": 0.6509369430035156,
+              "operator_closure_defect": 0.726366225569929,
+              "gamma_closure_defect": 0.7779041906423105,
+              "double_multiplication_defect": 0.4459969771606112,
+              "triple_commutator_defect": 1.082026199342388,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.5,
+              "determinant_volume_coefficient_of_variation": 1.3629055506700807,
+              "gl_envelope_projector_error": 5.33108961119777e-15
+            }
+          ]
+        },
+        "600": {
+          "summary": {
+            "sample_count": 2,
+            "evaluation_count_median": 155.0,
+            "rank_15_rate": 1.0,
+            "mean_lorentzian_rate": 0.0,
+            "eventwise_lorentzian_fraction_median": 0.45806451612903226,
+            "generator_product_closure_defect_median": 1.9667154870721444e-14,
+            "envelope_product_closure_defect_median": 0.6760354721131088,
+            "gl_envelope_projector_error_max": 9.469410808207582e-15,
+            "operator_closure_defect_median": 0.7374356149581967,
+            "gamma_closure_defect_median": 0.8509523645446,
+            "double_multiplication_defect_median": 0.4004257726482802,
+            "triple_commutator_defect_median": 1.0500087918054737,
+            "determinant_volume_cv_median": 1.7306551646505008
+          },
+          "samples": [
+            {
+              "sector": "oracle",
+              "events": 600,
+              "evaluation_count": 155,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 2.3326323846579338,
+              "envelope_condition": 248.99384584581165,
+              "generator_product_closure_defect": 1.9969809155282737e-14,
+              "envelope_product_closure_defect": 0.6738943767718161,
+              "operator_closure_defect": 0.7371008784197758,
+              "gamma_closure_defect": 0.8415308821738738,
+              "double_multiplication_defect": 0.4004234997199872,
+              "triple_commutator_defect": 1.068432046363188,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.4967741935483871,
+              "determinant_volume_coefficient_of_variation": 1.8211058726661615,
+              "gl_envelope_projector_error": 9.469410808207582e-15
+            },
+            {
+              "sector": "oracle",
+              "events": 600,
+              "evaluation_count": 155,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 2.4018774025868845,
+              "envelope_condition": 240.94074061348533,
+              "generator_product_closure_defect": 1.9364500586160155e-14,
+              "envelope_product_closure_defect": 0.6781765674544014,
+              "operator_closure_defect": 0.7377703514966176,
+              "gamma_closure_defect": 0.8603738469153263,
+              "double_multiplication_defect": 0.40042804557657324,
+              "triple_commutator_defect": 1.0315855372477596,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.41935483870967744,
+              "determinant_volume_coefficient_of_variation": 1.64020445663484,
+              "gl_envelope_projector_error": 8.688394111189007e-15
+            }
+          ]
+        }
+      }
+    },
+    "cL=0.600000|fraction=0.350000": {
+      "nonlocality_multiplier": 0.6,
+      "retained_fraction": 0.35,
+      "structural_pass": false,
+      "worst_closure_locality_median": 1.1195239202376994,
+      "by_density": {
+        "300": {
+          "summary": {
+            "sample_count": 2,
+            "evaluation_count_median": 130.0,
+            "rank_15_rate": 1.0,
+            "mean_lorentzian_rate": 0.0,
+            "eventwise_lorentzian_fraction_median": 0.4188896899783706,
+            "generator_product_closure_defect_median": 1.1617137873043075e-14,
+            "envelope_product_closure_defect_median": 0.6648213695455805,
+            "gl_envelope_projector_error_max": 1.8032764134137682e-14,
+            "operator_closure_defect_median": 0.7967411052511616,
+            "gamma_closure_defect_median": 0.8733625519876907,
+            "double_multiplication_defect_median": 0.3834428697708168,
+            "triple_commutator_defect_median": 1.1195239202376994,
+            "determinant_volume_cv_median": 2.244416442349819
+          },
+          "samples": [
+            {
+              "sector": "oracle",
+              "events": 300,
+              "evaluation_count": 114,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 1.9374183330571773,
+              "envelope_condition": 193.904613008071,
+              "generator_product_closure_defect": 1.2351000168944618e-14,
+              "envelope_product_closure_defect": 0.6558575772399415,
+              "operator_closure_defect": 0.7781050628136074,
+              "gamma_closure_defect": 0.8539998569400541,
+              "double_multiplication_defect": 0.42077267463980755,
+              "triple_commutator_defect": 1.1050511587159968,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.4473684210526316,
+              "determinant_volume_coefficient_of_variation": 3.0285747037828528,
+              "gl_envelope_projector_error": 1.8032764134137682e-14
+            },
+            {
+              "sector": "oracle",
+              "events": 300,
+              "evaluation_count": 146,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 1.955405136701372,
+              "envelope_condition": 209.79057186963104,
+              "generator_product_closure_defect": 1.0883275577141531e-14,
+              "envelope_product_closure_defect": 0.6737851618512194,
+              "operator_closure_defect": 0.8153771476887158,
+              "gamma_closure_defect": 0.8927252470353274,
+              "double_multiplication_defect": 0.3461130649018261,
+              "triple_commutator_defect": 1.1339966817594018,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.3904109589041096,
+              "determinant_volume_coefficient_of_variation": 1.4602581809167852,
+              "gl_envelope_projector_error": 4.8547089356583626e-15
+            }
+          ]
+        },
+        "600": {
+          "summary": {
+            "sample_count": 2,
+            "evaluation_count_median": 214.0,
+            "rank_15_rate": 1.0,
+            "mean_lorentzian_rate": 0.0,
+            "eventwise_lorentzian_fraction_median": 0.5257686932215234,
+            "generator_product_closure_defect_median": 3.865614512950223e-15,
+            "envelope_product_closure_defect_median": 0.6828689481445738,
+            "gl_envelope_projector_error_max": 6.757365086122253e-15,
+            "operator_closure_defect_median": 0.7647882098640314,
+            "gamma_closure_defect_median": 0.8961804684263619,
+            "double_multiplication_defect_median": 0.32119147247528573,
+            "triple_commutator_defect_median": 1.0774107615518544,
+            "determinant_volume_cv_median": 2.6828677102279928
+          },
+          "samples": [
+            {
+              "sector": "oracle",
+              "events": 600,
+              "evaluation_count": 212,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 2.1650884360395786,
+              "envelope_condition": 317.77036284410434,
+              "generator_product_closure_defect": 3.605172712972134e-15,
+              "envelope_product_closure_defect": 0.67863850309072,
+              "operator_closure_defect": 0.760277803646978,
+              "gamma_closure_defect": 0.8715747569874451,
+              "double_multiplication_defect": 0.32852591563224354,
+              "triple_commutator_defect": 1.0766475380405331,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.5330188679245284,
+              "determinant_volume_coefficient_of_variation": 2.2629620926519673,
+              "gl_envelope_projector_error": 5.685260696443161e-15
+            },
+            {
+              "sector": "oracle",
+              "events": 600,
+              "evaluation_count": 216,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 2.077003290493546,
+              "envelope_condition": 323.7129765089726,
+              "generator_product_closure_defect": 4.126056312928312e-15,
+              "envelope_product_closure_defect": 0.6870993931984276,
+              "operator_closure_defect": 0.7692986160810849,
+              "gamma_closure_defect": 0.9207861798652788,
+              "double_multiplication_defect": 0.31385702931832793,
+              "triple_commutator_defect": 1.0781739850631755,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.5185185185185185,
+              "determinant_volume_coefficient_of_variation": 3.102773327804018,
+              "gl_envelope_projector_error": 6.757365086122253e-15
+            }
+          ]
+        }
+      }
+    },
+    "cL=0.750000|fraction=0.150000": {
+      "nonlocality_multiplier": 0.75,
+      "retained_fraction": 0.15,
+      "structural_pass": false,
+      "worst_closure_locality_median": 1.1006590252424062,
+      "by_density": {
+        "300": {
+          "summary": {
+            "sample_count": 2,
+            "evaluation_count_median": 52.0,
+            "rank_15_rate": 1.0,
+            "mean_lorentzian_rate": 0.0,
+            "eventwise_lorentzian_fraction_median": 0.4145203434117208,
+            "generator_product_closure_defect_median": 1.2597513163022862e-14,
+            "envelope_product_closure_defect_median": 0.608601349686468,
+            "gl_envelope_projector_error_max": 1.417936316591102e-14,
+            "operator_closure_defect_median": 0.40519536352700714,
+            "gamma_closure_defect_median": 0.4955242930860951,
+            "double_multiplication_defect_median": 0.6275926537220322,
+            "triple_commutator_defect_median": 1.1006590252424062,
+            "determinant_volume_cv_median": 1.7026652229719377
+          },
+          "samples": [
+            {
+              "sector": "oracle",
+              "events": 300,
+              "evaluation_count": 47,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 3.0371442872196313,
+              "envelope_condition": 85.15424391829299,
+              "generator_product_closure_defect": 1.8265483886366246e-14,
+              "envelope_product_closure_defect": 0.5911373244942549,
+              "operator_closure_defect": 0.3833262885607256,
+              "gamma_closure_defect": 0.49995426689222017,
+              "double_multiplication_defect": 0.6834911977155291,
+              "triple_commutator_defect": 1.096733613995388,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.425531914893617,
+              "determinant_volume_coefficient_of_variation": 1.8462732021551023,
+              "gl_envelope_projector_error": 5.9166569391903455e-15
+            },
+            {
+              "sector": "oracle",
+              "events": 300,
+              "evaluation_count": 57,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 2.5993625861499368,
+              "envelope_condition": 110.66785528772644,
+              "generator_product_closure_defect": 6.92954243967948e-15,
+              "envelope_product_closure_defect": 0.6260653748786809,
+              "operator_closure_defect": 0.4270644384932886,
+              "gamma_closure_defect": 0.49109431927997,
+              "double_multiplication_defect": 0.5716941097285352,
+              "triple_commutator_defect": 1.1045844364894242,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.40350877192982454,
+              "determinant_volume_coefficient_of_variation": 1.559057243788773,
+              "gl_envelope_projector_error": 1.417936316591102e-14
+            }
+          ]
+        },
+        "600": {
+          "summary": {
+            "sample_count": 2,
+            "evaluation_count_median": 97.5,
+            "rank_15_rate": 1.0,
+            "mean_lorentzian_rate": 0.0,
+            "eventwise_lorentzian_fraction_median": 0.23642676767676768,
+            "generator_product_closure_defect_median": 1.343395014947402e-14,
+            "envelope_product_closure_defect_median": 0.660292440019989,
+            "gl_envelope_projector_error_max": 6.54643012116465e-15,
+            "operator_closure_defect_median": 0.4943876791463574,
+            "gamma_closure_defect_median": 0.621378317481205,
+            "double_multiplication_defect_median": 0.4968674029168987,
+            "triple_commutator_defect_median": 1.0452054237849193,
+            "determinant_volume_cv_median": 1.6996567086347834
+          },
+          "samples": [
+            {
+              "sector": "oracle",
+              "events": 600,
+              "evaluation_count": 96,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 2.646930718465962,
+              "envelope_condition": 152.61059764448893,
+              "generator_product_closure_defect": 1.9895119230560573e-14,
+              "envelope_product_closure_defect": 0.6584770160619726,
+              "operator_closure_defect": 0.5284398079662566,
+              "gamma_closure_defect": 0.6749170669323317,
+              "double_multiplication_defect": 0.5300143294824544,
+              "triple_commutator_defect": 1.0585942784869473,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.2708333333333333,
+              "determinant_volume_coefficient_of_variation": 1.9146329559601574,
+              "gl_envelope_projector_error": 6.4095655878793476e-15
+            },
+            {
+              "sector": "oracle",
+              "events": 600,
+              "evaluation_count": 99,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 2.5776038927908123,
+              "envelope_condition": 161.70735727758262,
+              "generator_product_closure_defect": 6.972781068387468e-15,
+              "envelope_product_closure_defect": 0.6621078639780053,
+              "operator_closure_defect": 0.4603355503264583,
+              "gamma_closure_defect": 0.5678395680300783,
+              "double_multiplication_defect": 0.46372047635134295,
+              "triple_commutator_defect": 1.0318165690828913,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.20202020202020202,
+              "determinant_volume_coefficient_of_variation": 1.4846804613094096,
+              "gl_envelope_projector_error": 6.54643012116465e-15
+            }
+          ]
+        }
+      }
+    },
+    "cL=0.750000|fraction=0.250000": {
+      "nonlocality_multiplier": 0.75,
+      "retained_fraction": 0.25,
+      "structural_pass": false,
+      "worst_closure_locality_median": 1.1060659579566097,
+      "by_density": {
+        "300": {
+          "summary": {
+            "sample_count": 2,
+            "evaluation_count_median": 93.5,
+            "rank_15_rate": 1.0,
+            "mean_lorentzian_rate": 0.0,
+            "eventwise_lorentzian_fraction_median": 0.4838505747126437,
+            "generator_product_closure_defect_median": 1.607674451560446e-14,
+            "envelope_product_closure_defect_median": 0.6527491496987148,
+            "gl_envelope_projector_error_max": 6.041492345631234e-15,
+            "operator_closure_defect_median": 0.49035802425078956,
+            "gamma_closure_defect_median": 0.6207326275448731,
+            "double_multiplication_defect_median": 0.4188120350882016,
+            "triple_commutator_defect_median": 1.1060659579566097,
+            "determinant_volume_cv_median": 2.6864703301800636
+          },
+          "samples": [
+            {
+              "sector": "oracle",
+              "events": 300,
+              "evaluation_count": 87,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 2.157131737624103,
+              "envelope_condition": 150.01289173892656,
+              "generator_product_closure_defect": 2.5869949252171904e-14,
+              "envelope_product_closure_defect": 0.6545613563939141,
+              "operator_closure_defect": 0.45301289471044576,
+              "gamma_closure_defect": 0.6373662316019557,
+              "double_multiplication_defect": 0.4279923251416261,
+              "triple_commutator_defect": 1.0771926800698561,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.5977011494252874,
+              "determinant_volume_coefficient_of_variation": 4.160186387992325,
+              "gl_envelope_projector_error": 6.041492345631234e-15
+            },
+            {
+              "sector": "oracle",
+              "events": 300,
+              "evaluation_count": 100,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 2.0969836107326403,
+              "envelope_condition": 151.16310303971565,
+              "generator_product_closure_defect": 6.2835397790370166e-15,
+              "envelope_product_closure_defect": 0.6509369430035156,
+              "operator_closure_defect": 0.5277031537911333,
+              "gamma_closure_defect": 0.6040990234877905,
+              "double_multiplication_defect": 0.40963174503477706,
+              "triple_commutator_defect": 1.1349392358433632,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.37,
+              "determinant_volume_coefficient_of_variation": 1.2127542723678026,
+              "gl_envelope_projector_error": 5.33108961119777e-15
+            }
+          ]
+        },
+        "600": {
+          "summary": {
+            "sample_count": 2,
+            "evaluation_count_median": 155.0,
+            "rank_15_rate": 1.0,
+            "mean_lorentzian_rate": 0.0,
+            "eventwise_lorentzian_fraction_median": 0.3258064516129032,
+            "generator_product_closure_defect_median": 1.9667154870721444e-14,
+            "envelope_product_closure_defect_median": 0.6760354721131088,
+            "gl_envelope_projector_error_max": 9.469410808207582e-15,
+            "operator_closure_defect_median": 0.5160787843595108,
+            "gamma_closure_defect_median": 0.6628371857565555,
+            "double_multiplication_defect_median": 0.35542630341685494,
+            "triple_commutator_defect_median": 1.04020091707048,
+            "determinant_volume_cv_median": 2.1489051216856594
+          },
+          "samples": [
+            {
+              "sector": "oracle",
+              "events": 600,
+              "evaluation_count": 155,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 2.3326323846579338,
+              "envelope_condition": 248.99384584581165,
+              "generator_product_closure_defect": 1.9969809155282737e-14,
+              "envelope_product_closure_defect": 0.6738943767718161,
+              "operator_closure_defect": 0.5187493547043925,
+              "gamma_closure_defect": 0.690163352047702,
+              "double_multiplication_defect": 0.34923281896483876,
+              "triple_commutator_defect": 1.0330085384521606,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.32903225806451614,
+              "determinant_volume_coefficient_of_variation": 2.9763724996493672,
+              "gl_envelope_projector_error": 9.469410808207582e-15
+            },
+            {
+              "sector": "oracle",
+              "events": 600,
+              "evaluation_count": 155,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 2.4018774025868845,
+              "envelope_condition": 240.94074061348533,
+              "generator_product_closure_defect": 1.9364500586160155e-14,
+              "envelope_product_closure_defect": 0.6781765674544014,
+              "operator_closure_defect": 0.5134082140146291,
+              "gamma_closure_defect": 0.635511019465409,
+              "double_multiplication_defect": 0.3616197878688711,
+              "triple_commutator_defect": 1.0473932956887995,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.3225806451612903,
+              "determinant_volume_coefficient_of_variation": 1.3214377437219513,
+              "gl_envelope_projector_error": 8.688394111189007e-15
+            }
+          ]
+        }
+      }
+    },
+    "cL=0.750000|fraction=0.350000": {
+      "nonlocality_multiplier": 0.75,
+      "retained_fraction": 0.35,
+      "structural_pass": false,
+      "worst_closure_locality_median": 1.129401850424749,
+      "by_density": {
+        "300": {
+          "summary": {
+            "sample_count": 2,
+            "evaluation_count_median": 130.0,
+            "rank_15_rate": 1.0,
+            "mean_lorentzian_rate": 0.0,
+            "eventwise_lorentzian_fraction_median": 0.3938356164383562,
+            "generator_product_closure_defect_median": 1.1617137873043075e-14,
+            "envelope_product_closure_defect_median": 0.6648213695455805,
+            "gl_envelope_projector_error_max": 1.8032764134137682e-14,
+            "operator_closure_defect_median": 0.5731148708296441,
+            "gamma_closure_defect_median": 0.7201073051646075,
+            "double_multiplication_defect_median": 0.3398809175434153,
+            "triple_commutator_defect_median": 1.129401850424749,
+            "determinant_volume_cv_median": 2.8081591314444325
+          },
+          "samples": [
+            {
+              "sector": "oracle",
+              "events": 300,
+              "evaluation_count": 114,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 1.9374183330571773,
+              "envelope_condition": 193.904613008071,
+              "generator_product_closure_defect": 1.2351000168944618e-14,
+              "envelope_product_closure_defect": 0.6558575772399415,
+              "operator_closure_defect": 0.5429961164890444,
+              "gamma_closure_defect": 0.7217578965536505,
+              "double_multiplication_defect": 0.34734154661987987,
+              "triple_commutator_defect": 1.0780812582525223,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.5,
+              "determinant_volume_coefficient_of_variation": 4.327241319230057,
+              "gl_envelope_projector_error": 1.8032764134137682e-14
+            },
+            {
+              "sector": "oracle",
+              "events": 300,
+              "evaluation_count": 146,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 1.955405136701372,
+              "envelope_condition": 209.79057186963104,
+              "generator_product_closure_defect": 1.0883275577141531e-14,
+              "envelope_product_closure_defect": 0.6737851618512194,
+              "operator_closure_defect": 0.6032336251702438,
+              "gamma_closure_defect": 0.7184567137755645,
+              "double_multiplication_defect": 0.33242028846695076,
+              "triple_commutator_defect": 1.1807224425969756,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.2876712328767123,
+              "determinant_volume_coefficient_of_variation": 1.2890769436588074,
+              "gl_envelope_projector_error": 4.8547089356583626e-15
+            }
+          ]
+        },
+        "600": {
+          "summary": {
+            "sample_count": 2,
+            "evaluation_count_median": 214.0,
+            "rank_15_rate": 1.0,
+            "mean_lorentzian_rate": 0.0,
+            "eventwise_lorentzian_fraction_median": 0.3991963661774982,
+            "generator_product_closure_defect_median": 3.865614512950223e-15,
+            "envelope_product_closure_defect_median": 0.6828689481445738,
+            "gl_envelope_projector_error_max": 6.757365086122253e-15,
+            "operator_closure_defect_median": 0.5237926325884198,
+            "gamma_closure_defect_median": 0.7348673247992247,
+            "double_multiplication_defect_median": 0.27825723102924593,
+            "triple_commutator_defect_median": 1.0390005709458388,
+            "determinant_volume_cv_median": 2.320502862589483
+          },
+          "samples": [
+            {
+              "sector": "oracle",
+              "events": 600,
+              "evaluation_count": 212,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 2.1650884360395786,
+              "envelope_condition": 317.77036284410434,
+              "generator_product_closure_defect": 3.605172712972134e-15,
+              "envelope_product_closure_defect": 0.67863850309072,
+              "operator_closure_defect": 0.5156743764698132,
+              "gamma_closure_defect": 0.7091900863264621,
+              "double_multiplication_defect": 0.27837345683563053,
+              "triple_commutator_defect": 1.0232858789252652,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.3632075471698113,
+              "determinant_volume_coefficient_of_variation": 2.81977116594871,
+              "gl_envelope_projector_error": 5.685260696443161e-15
+            },
+            {
+              "sector": "oracle",
+              "events": 600,
+              "evaluation_count": 216,
+              "generator_rank": 4,
+              "envelope_rank": 15,
+              "generator_condition": 2.077003290493546,
+              "envelope_condition": 323.7129765089726,
+              "generator_product_closure_defect": 4.126056312928312e-15,
+              "envelope_product_closure_defect": 0.6870993931984276,
+              "operator_closure_defect": 0.5319108887070264,
+              "gamma_closure_defect": 0.7605445632719873,
+              "double_multiplication_defect": 0.2781410052228613,
+              "triple_commutator_defect": 1.0547152629664125,
+              "mean_pairing_signature": [
+                0,
+                4,
+                0
+              ],
+              "eventwise_lorentzian_fraction": 0.4351851851851852,
+              "determinant_volume_coefficient_of_variation": 1.821234559230255,
+              "gl_envelope_projector_error": 6.757365086122253e-15
+            }
+          ]
+        }
+      }
+    }
+  }
+}

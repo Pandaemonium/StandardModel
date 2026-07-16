@@ -1,0 +1,270 @@
+{
+  "density_is_supplied": true,
+  "derived_tetrad_claimed": false,
+  "dimension_is_supplied": true,
+  "global_interval_endpoints_are_supplied": true,
+  "metric_and_curvature_scores_opened": false,
+  "oracle_scores_use_known_embedding": true,
+  "samples": [
+    {
+      "active_causal_coverage_fraction": 1.0,
+      "active_chart_radius": 0.16053386387713495,
+      "active_count": 12,
+      "active_indices": [
+        2875,
+        3521,
+        3392,
+        1140,
+        3216,
+        2122,
+        978,
+        2164,
+        3888,
+        3599,
+        3946,
+        1728
+      ],
+      "anchor_indices": [
+        2562,
+        1840,
+        3267,
+        496,
+        1150
+      ],
+      "chart_transition_relative_error": 2.097745593374017,
+      "common_lower_candidate_count": 93,
+      "common_upper_candidate_count": 17,
+      "consensus_maximum_frame_condition": 27.555917867275536,
+      "maximum_anchor_relative_time_mismatch": 0.3265366783887036,
+      "normalized_consensus_minimum_singular_value": 0.13114442806542032,
+      "normalized_consensus_minimum_volume": 0.021212024922015967,
+      "oracle_active_reconstruction_relative_error": 0.9098434476624395,
+      "oracle_frame_condition": 21.92793771530243,
+      "oracle_normalized_minimum_singular_value": 0.16708097665175817,
+      "passes_derived_tetrad_gate": false,
+      "passes_intrinsic_frame_gate": true,
+      "passes_oracle_frame_gate": true,
+      "passes_oracle_reconstruction_gate": false,
+      "pivot_index": 2875,
+      "shell_lower_candidate_count": 10,
+      "shell_upper_candidate_count": 17,
+      "validation_pivot_indices": [
+        2875,
+        3888,
+        3521
+      ]
+    },
+    {
+      "active_causal_coverage_fraction": 1.0,
+      "active_chart_radius": 0.15431414067091828,
+      "active_count": 12,
+      "active_indices": [
+        1404,
+        1929,
+        2523,
+        2196,
+        3674,
+        165,
+        3114,
+        3521,
+        1899,
+        158,
+        2274,
+        1206
+      ],
+      "anchor_indices": [
+        528,
+        3999,
+        3576,
+        1695,
+        522
+      ],
+      "chart_transition_relative_error": 1.101515682830224,
+      "common_lower_candidate_count": 71,
+      "common_upper_candidate_count": 23,
+      "consensus_maximum_frame_condition": 22.86542981662693,
+      "maximum_anchor_relative_time_mismatch": 0.2622785125946944,
+      "normalized_consensus_minimum_singular_value": 0.1686959054020461,
+      "normalized_consensus_minimum_volume": 0.05063737856045977,
+      "oracle_active_reconstruction_relative_error": 0.7592728420288455,
+      "oracle_frame_condition": 24.650386163008882,
+      "oracle_normalized_minimum_singular_value": 0.16070718568473658,
+      "passes_derived_tetrad_gate": false,
+      "passes_intrinsic_frame_gate": true,
+      "passes_oracle_frame_gate": true,
+      "passes_oracle_reconstruction_gate": false,
+      "pivot_index": 1404,
+      "shell_lower_candidate_count": 10,
+      "shell_upper_candidate_count": 18,
+      "validation_pivot_indices": [
+        1404,
+        1929,
+        165
+      ]
+    },
+    {
+      "active_causal_coverage_fraction": 1.0,
+      "active_chart_radius": 0.13116221626710925,
+      "active_count": 12,
+      "active_indices": [
+        3524,
+        1866,
+        1295,
+        1522,
+        1713,
+        479,
+        751,
+        1800,
+        1303,
+        3802,
+        2378,
+        1910
+      ],
+      "anchor_indices": [
+        1271,
+        617,
+        1505,
+        3518,
+        238
+      ],
+      "chart_transition_relative_error": 1.130864478564527,
+      "common_lower_candidate_count": 61,
+      "common_upper_candidate_count": 63,
+      "consensus_maximum_frame_condition": 22.53752435978836,
+      "maximum_anchor_relative_time_mismatch": 0.23343497637687116,
+      "normalized_consensus_minimum_singular_value": 0.1627227803175068,
+      "normalized_consensus_minimum_volume": 0.04526819456043489,
+      "oracle_active_reconstruction_relative_error": 1.0126817830007286,
+      "oracle_frame_condition": 18.11658607041915,
+      "oracle_normalized_minimum_singular_value": 0.20421651642056218,
+      "passes_derived_tetrad_gate": false,
+      "passes_intrinsic_frame_gate": true,
+      "passes_oracle_frame_gate": true,
+      "passes_oracle_reconstruction_gate": false,
+      "pivot_index": 3524,
+      "shell_lower_candidate_count": 10,
+      "shell_upper_candidate_count": 18,
+      "validation_pivot_indices": [
+        3524,
+        1866,
+        479
+      ]
+    }
+  ],
+  "selection_rule": "maximize worst-chart normalized minimum singular value, then worst-chart normalized volume, maximum condition, and intrinsic time-shell mismatch",
+  "selection_uses_known_embedding": false,
+  "selection_uses_order_counts_and_johnston_lightcone_charts": true,
+  "settings": {
+    "active_count": 12,
+    "anchor_time": 0.4,
+    "anchor_time_multiplier": 8.0,
+    "density": 30557.749073643907,
+    "dimension": 4,
+    "duration": 1.0,
+    "events_including_endpoints": 4000,
+    "maximum_consensus_condition": 50.0,
+    "maximum_lower_candidates": 10,
+    "maximum_oracle_condition": 50.0,
+    "maximum_reconstruction_error": 0.75,
+    "maximum_upper_candidates": 18,
+    "minimum_consensus_singular_value": 0.09,
+    "minimum_lightcone_count": 20,
+    "minimum_oracle_singular_value": 0.08,
+    "realizations": 3,
+    "relative_time_shell_width": 0.35,
+    "scaffold_scale": 0.05,
+    "seed": 20260825
+  },
+  "status": "closed held-out chart-consensus tetrad-selector audit",
+  "summary": {
+    "active_causal_coverage_fraction": {
+      "count": 3,
+      "mean": 1.0,
+      "median": 1.0,
+      "std": 0.0
+    },
+    "active_chart_radius": {
+      "count": 3,
+      "mean": 0.14867007360505416,
+      "median": 0.15431414067091828,
+      "std": 0.01263764325642143
+    },
+    "active_count": {
+      "count": 3,
+      "mean": 12.0,
+      "median": 12.0,
+      "std": 0.0
+    },
+    "chart_transition_relative_error": {
+      "count": 3,
+      "mean": 1.443375251589589,
+      "median": 1.130864478564527,
+      "std": 0.4628648082741978
+    },
+    "common_lower_candidate_count": {
+      "count": 3,
+      "mean": 75.0,
+      "median": 71.0,
+      "std": 13.366625103842281
+    },
+    "common_upper_candidate_count": {
+      "count": 3,
+      "mean": 34.333333333333336,
+      "median": 23.0,
+      "std": 20.417857108151406
+    },
+    "consensus_maximum_frame_condition": {
+      "count": 3,
+      "mean": 24.319624014563612,
+      "median": 22.86542981662693,
+      "std": 2.2923174479089767
+    },
+    "derived_tetrad_gate_success_rate": 0.0,
+    "intrinsic_frame_gate_success_rate": 1.0,
+    "maximum_anchor_relative_time_mismatch": {
+      "count": 3,
+      "mean": 0.2740833891200897,
+      "median": 0.2622785125946944,
+      "std": 0.038914419450120565
+    },
+    "normalized_consensus_minimum_singular_value": {
+      "count": 3,
+      "mean": 0.15418770459499107,
+      "median": 0.1627227803175068,
+      "std": 0.016475517204478245
+    },
+    "oracle_active_reconstruction_relative_error": {
+      "count": 3,
+      "mean": 0.893932690897338,
+      "median": 0.9098434476624395,
+      "std": 0.10406372078924052
+    },
+    "oracle_frame_condition": {
+      "count": 3,
+      "mean": 21.564969982910153,
+      "median": 21.92793771530243,
+      "std": 2.6797319634060286
+    },
+    "oracle_frame_gate_success_rate": 1.0,
+    "oracle_normalized_minimum_singular_value": {
+      "count": 3,
+      "mean": 0.17733489291901897,
+      "median": 0.16708097665175817,
+      "std": 0.019185455678401485
+    },
+    "oracle_reconstruction_gate_success_rate": 0.0,
+    "samples": 3,
+    "shell_lower_candidate_count": {
+      "count": 3,
+      "mean": 10.0,
+      "median": 10.0,
+      "std": 0.0
+    },
+    "shell_upper_candidate_count": {
+      "count": 3,
+      "mean": 17.666666666666668,
+      "median": 18.0,
+      "std": 0.4714045207910317
+    }
+  }
+}

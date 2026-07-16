@@ -1,0 +1,736 @@
+{
+  "construction_uses_embedding_coordinates": false,
+  "density_is_supplied": true,
+  "dimension_is_supplied": true,
+  "interval_endpoints_are_supplied": true,
+  "operator_scores_opened": false,
+  "pivot_selection_uses_embedding_coordinates": false,
+  "samples": [
+    {
+      "causal_sensitivity": 0.7000311575011684,
+      "causal_specificity": 0.9644429608471153,
+      "dominant_spatial_gap_rank": 5,
+      "events": 500,
+      "gram_reconstruction_relative_error": 0.7351981016944408,
+      "local_affine_fit_relative_error": 0.5964486406239334,
+      "local_jacobian_condition": 11.997740630617873,
+      "local_jacobian_rank": 4,
+      "pivot_index": 192,
+      "pivot_intrinsic_radius": 0.11581198844069673,
+      "pivot_intrinsic_time": 0.4957735545982995,
+      "quadratic_correlation": 0.646188337465572,
+      "quadratic_inner_relative_error": 0.7079174348035076,
+      "quadratic_relative_error": 0.6250095218395448,
+      "sampled_spatial_distance_relative_error": 0.4139247743113513,
+      "spatial_eigenvalues": [
+        17.07987040052514,
+        12.970754116870129,
+        10.578362657427695,
+        9.74714813969457,
+        8.002789802028268,
+        3.9530542764560135,
+        3.2710341246938217,
+        2.9599146889109056,
+        2.7555856870948814
+      ],
+      "spatial_rank_gap": 0.07857685963805372,
+      "spatial_subspace_relative_error": 1.1230697361415665,
+      "time_relative_error": 0.15093502341858142
+    },
+    {
+      "causal_sensitivity": 0.798978102189781,
+      "causal_specificity": 0.9430916030534351,
+      "dominant_spatial_gap_rank": 5,
+      "events": 500,
+      "gram_reconstruction_relative_error": 0.7071988936999961,
+      "local_affine_fit_relative_error": 0.6148772975623974,
+      "local_jacobian_condition": 35.717262271033604,
+      "local_jacobian_rank": 4,
+      "pivot_index": 275,
+      "pivot_intrinsic_radius": 0.10675239930364686,
+      "pivot_intrinsic_time": 0.47899458955061347,
+      "quadratic_correlation": 0.6227093740478009,
+      "quadratic_inner_relative_error": 0.7694709890772214,
+      "quadratic_relative_error": 0.695163533792511,
+      "sampled_spatial_distance_relative_error": 0.40999712088903,
+      "spatial_eigenvalues": [
+        15.909048995338214,
+        12.415468622450371,
+        9.518859760671566,
+        8.46476697373746,
+        7.271382724814982,
+        3.5707728498527045,
+        3.074929269617151,
+        2.5524787254900456,
+        2.3429372041168857
+      ],
+      "spatial_rank_gap": 0.11073729558336709,
+      "spatial_subspace_relative_error": 1.1599633870425683,
+      "time_relative_error": 0.16577427290731694
+    },
+    {
+      "causal_sensitivity": 0.777342884572779,
+      "causal_specificity": 0.9493640844383981,
+      "dominant_spatial_gap_rank": 5,
+      "events": 500,
+      "gram_reconstruction_relative_error": 0.7277595578760137,
+      "local_affine_fit_relative_error": 0.6116737350012807,
+      "local_jacobian_condition": 42.33596292989745,
+      "local_jacobian_rank": 4,
+      "pivot_index": 355,
+      "pivot_intrinsic_radius": 0.10918435543068167,
+      "pivot_intrinsic_time": 0.5146877075317456,
+      "quadratic_correlation": 0.6525686177993457,
+      "quadratic_inner_relative_error": 0.7422386363619937,
+      "quadratic_relative_error": 0.6620965488680024,
+      "sampled_spatial_distance_relative_error": 0.412430815702764,
+      "spatial_eigenvalues": [
+        15.461901975426322,
+        12.014279324493097,
+        10.445141084832045,
+        9.842862474471508,
+        7.917713603503334,
+        3.548906067793835,
+        3.2066431985642723,
+        2.906205358210144,
+        2.7660558008599727
+      ],
+      "spatial_rank_gap": 0.057661127357593926,
+      "spatial_subspace_relative_error": 1.17472671867095,
+      "time_relative_error": 0.13530392528088084
+    },
+    {
+      "causal_sensitivity": 0.811191768271196,
+      "causal_specificity": 0.9414307023471066,
+      "dominant_spatial_gap_rank": 5,
+      "events": 500,
+      "gram_reconstruction_relative_error": 0.6634843354563192,
+      "local_affine_fit_relative_error": 0.556684199171554,
+      "local_jacobian_condition": 146.94684626275912,
+      "local_jacobian_rank": 4,
+      "pivot_index": 346,
+      "pivot_intrinsic_radius": 0.10665605249165765,
+      "pivot_intrinsic_time": 0.5062849867529364,
+      "quadratic_correlation": 0.37712275875271745,
+      "quadratic_inner_relative_error": 0.7857384002030067,
+      "quadratic_relative_error": 0.8314200737889134,
+      "sampled_spatial_distance_relative_error": 0.4067807757649406,
+      "spatial_eigenvalues": [
+        16.36611023275929,
+        10.700294336804006,
+        8.230045937274124,
+        5.581108645120107,
+        5.008682226458333,
+        2.606744467946883,
+        2.3941062360315413,
+        2.1195469513729375,
+        1.870844160380419
+      ],
+      "spatial_rank_gap": 0.3218617869624397,
+      "spatial_subspace_relative_error": 1.1603221929424035,
+      "time_relative_error": 0.20474825157646248
+    },
+    {
+      "causal_sensitivity": 0.6964592107315551,
+      "causal_specificity": 0.9628398076711819,
+      "dominant_spatial_gap_rank": 5,
+      "events": 500,
+      "gram_reconstruction_relative_error": 0.7441706622707682,
+      "local_affine_fit_relative_error": 0.5989184382798157,
+      "local_jacobian_condition": 17.76381458526332,
+      "local_jacobian_rank": 4,
+      "pivot_index": 381,
+      "pivot_intrinsic_radius": 0.16245984811645317,
+      "pivot_intrinsic_time": 0.5,
+      "quadratic_correlation": 0.5546729905199154,
+      "quadratic_inner_relative_error": 0.6801914135731988,
+      "quadratic_relative_error": 0.6862790985576189,
+      "sampled_spatial_distance_relative_error": 0.3959323383560646,
+      "spatial_eigenvalues": [
+        16.574552023778033,
+        12.05154707103882,
+        10.655763007863584,
+        9.143399096447189,
+        8.729315914538768,
+        3.8757326089396025,
+        3.462179389879444,
+        3.361225277955311,
+        2.861084966085551
+      ],
+      "spatial_rank_gap": 0.14192919927933112,
+      "spatial_subspace_relative_error": 1.1815988094738008,
+      "time_relative_error": 0.13324356917401212
+    },
+    {
+      "causal_sensitivity": 0.8904807144214326,
+      "causal_specificity": 0.9443283282437102,
+      "dominant_spatial_gap_rank": 5,
+      "events": 1000,
+      "gram_reconstruction_relative_error": 0.697209316216599,
+      "local_affine_fit_relative_error": 0.3855073385669931,
+      "local_jacobian_condition": 21.167248947821264,
+      "local_jacobian_rank": 4,
+      "pivot_index": 837,
+      "pivot_intrinsic_radius": 0.11351284836570097,
+      "pivot_intrinsic_time": 0.48630439489487814,
+      "quadratic_correlation": 0.580824987867808,
+      "quadratic_inner_relative_error": 0.6496212219012614,
+      "quadratic_relative_error": 0.6931853635295477,
+      "sampled_spatial_distance_relative_error": 0.3450444767569329,
+      "spatial_eigenvalues": [
+        31.625541447330388,
+        26.769884712969393,
+        21.2080747057188,
+        19.59885494452584,
+        17.107760349974047,
+        5.969726710294701,
+        5.471329388146558,
+        4.944469053494871,
+        4.625856536611559
+      ],
+      "spatial_rank_gap": 0.07587769203580895,
+      "spatial_subspace_relative_error": 0.9574811675918122,
+      "time_relative_error": 0.10221256713216624
+    },
+    {
+      "causal_sensitivity": 0.9542381424127083,
+      "causal_specificity": 0.9326962397884994,
+      "dominant_spatial_gap_rank": 5,
+      "events": 1000,
+      "gram_reconstruction_relative_error": 0.7123350330890279,
+      "local_affine_fit_relative_error": 0.34905142999006245,
+      "local_jacobian_condition": 24.395506736469752,
+      "local_jacobian_rank": 4,
+      "pivot_index": 876,
+      "pivot_intrinsic_radius": 0.12068475338489724,
+      "pivot_intrinsic_time": 0.5018898705791053,
+      "quadratic_correlation": 0.8222942929382457,
+      "quadratic_inner_relative_error": 0.7122546685813773,
+      "quadratic_relative_error": 0.5660936331156757,
+      "sampled_spatial_distance_relative_error": 0.3512113924211219,
+      "spatial_eigenvalues": [
+        27.248334595291876,
+        21.67954865676859,
+        20.71116805101207,
+        18.642209305020067,
+        15.709468537550961,
+        4.909964074210757,
+        4.797928659417371,
+        4.706265214858238,
+        4.112708798410314
+      ],
+      "spatial_rank_gap": 0.09989580215351018,
+      "spatial_subspace_relative_error": 0.8945444599397818,
+      "time_relative_error": 0.0843190210192428
+    },
+    {
+      "causal_sensitivity": 0.9405111607535488,
+      "causal_specificity": 0.9333534292346539,
+      "dominant_spatial_gap_rank": 5,
+      "events": 1000,
+      "gram_reconstruction_relative_error": 0.7129968861473001,
+      "local_affine_fit_relative_error": 0.363934296219375,
+      "local_jacobian_condition": 51.917321387006524,
+      "local_jacobian_rank": 4,
+      "pivot_index": 918,
+      "pivot_intrinsic_radius": 0.11557166034982518,
+      "pivot_intrinsic_time": 0.5,
+      "quadratic_correlation": 0.6588145932319194,
+      "quadratic_inner_relative_error": 0.6572635733635844,
+      "quadratic_relative_error": 0.66721881841921,
+      "sampled_spatial_distance_relative_error": 0.34707655952602334,
+      "spatial_eigenvalues": [
+        27.397889283801106,
+        22.042785695038873,
+        20.517088100184804,
+        19.067265047044074,
+        15.79789009618025,
+        5.198651513357314,
+        4.812103899354231,
+        4.277823450240611,
+        4.165456757172318
+      ],
+      "spatial_rank_gap": 0.07066417252103482,
+      "spatial_subspace_relative_error": 0.9036052760294696,
+      "time_relative_error": 0.15006470053411877
+    },
+    {
+      "causal_sensitivity": 0.8905615865970931,
+      "causal_specificity": 0.9492476667077634,
+      "dominant_spatial_gap_rank": 5,
+      "events": 1000,
+      "gram_reconstruction_relative_error": 0.7477832855119682,
+      "local_affine_fit_relative_error": 0.4126454855803789,
+      "local_jacobian_condition": 33.03007264340704,
+      "local_jacobian_rank": 4,
+      "pivot_index": 781,
+      "pivot_intrinsic_radius": 0.12464421220951581,
+      "pivot_intrinsic_time": 0.49573528046908016,
+      "quadratic_correlation": 0.6660770366565842,
+      "quadratic_inner_relative_error": 0.611530360153088,
+      "quadratic_relative_error": 0.631607538451675,
+      "sampled_spatial_distance_relative_error": 0.34853682645505896,
+      "spatial_eigenvalues": [
+        33.584350420599826,
+        27.058256947127507,
+        23.28320272151028,
+        21.612386640659093,
+        21.31422514103561,
+        7.077884248880769,
+        6.742470534244914,
+        5.712163813316625,
+        5.342484492606351
+      ],
+      "spatial_rank_gap": 0.07176057782237989,
+      "spatial_subspace_relative_error": 0.9274309979135112,
+      "time_relative_error": 0.09681103730403595
+    },
+    {
+      "causal_sensitivity": 0.9494528400208442,
+      "causal_specificity": 0.9403766974022182,
+      "dominant_spatial_gap_rank": 5,
+      "events": 1000,
+      "gram_reconstruction_relative_error": 0.7204396989429838,
+      "local_affine_fit_relative_error": 0.3631265887009826,
+      "local_jacobian_condition": 54.73236995098219,
+      "local_jacobian_rank": 4,
+      "pivot_index": 522,
+      "pivot_intrinsic_radius": 0.1023745006921465,
+      "pivot_intrinsic_time": 0.509390351647674,
+      "quadratic_correlation": 0.5957679263570774,
+      "quadratic_inner_relative_error": 0.6769377870937247,
+      "quadratic_relative_error": 0.6967802312517721,
+      "sampled_spatial_distance_relative_error": 0.34733794348964353,
+      "spatial_eigenvalues": [
+        30.575562334022848,
+        23.81521605149123,
+        21.846925026761802,
+        21.21772910092257,
+        17.383416031803748,
+        6.084792247406732,
+        5.1794348704707724,
+        4.760583638565778,
+        4.448667214760477
+      ],
+      "spatial_rank_gap": 0.028800205295184036,
+      "spatial_subspace_relative_error": 0.8943457674510947,
+      "time_relative_error": 0.07839043097489619
+    },
+    {
+      "causal_sensitivity": 0.958192839901977,
+      "causal_specificity": 0.950297062460221,
+      "dominant_spatial_gap_rank": 5,
+      "events": 1500,
+      "gram_reconstruction_relative_error": 0.6769645663170675,
+      "local_affine_fit_relative_error": 0.2544996469977684,
+      "local_jacobian_condition": 36.65457518618748,
+      "local_jacobian_rank": 4,
+      "pivot_index": 1280,
+      "pivot_intrinsic_radius": 0.13017331528285367,
+      "pivot_intrinsic_time": 0.5035754991416023,
+      "quadratic_correlation": 0.697140240383422,
+      "quadratic_inner_relative_error": 0.6166905396465899,
+      "quadratic_relative_error": 0.5936030253288179,
+      "sampled_spatial_distance_relative_error": 0.32173447143360345,
+      "spatial_eigenvalues": [
+        48.319399304826476,
+        39.270897599929576,
+        37.66193502602343,
+        34.02171672347995,
+        25.041912717099464,
+        8.536985775351045,
+        7.813877919172767,
+        7.60204731384269,
+        6.577408901116349
+      ],
+      "spatial_rank_gap": 0.09665510548059157,
+      "spatial_subspace_relative_error": 0.8464806182976601,
+      "time_relative_error": 0.10208124639989666
+    },
+    {
+      "causal_sensitivity": 0.9720212011184842,
+      "causal_specificity": 0.94123206941342,
+      "dominant_spatial_gap_rank": 5,
+      "events": 1500,
+      "gram_reconstruction_relative_error": 0.710829065529234,
+      "local_affine_fit_relative_error": 0.2767563352443093,
+      "local_jacobian_condition": 14.634129368098622,
+      "local_jacobian_rank": 4,
+      "pivot_index": 232,
+      "pivot_intrinsic_radius": 0.12162225215617269,
+      "pivot_intrinsic_time": 0.5119526246418994,
+      "quadratic_correlation": 0.8316403116222293,
+      "quadratic_inner_relative_error": 0.6698843126543881,
+      "quadratic_relative_error": 0.534916324080729,
+      "sampled_spatial_distance_relative_error": 0.3289579354478412,
+      "spatial_eigenvalues": [
+        44.36981604981973,
+        35.5784278268036,
+        34.08536056057872,
+        31.600530988629647,
+        24.4183253124756,
+        8.635402326920104,
+        7.231546966326174,
+        6.8483827852922206,
+        6.585908697072345
+      ],
+      "spatial_rank_gap": 0.07290019912017283,
+      "spatial_subspace_relative_error": 0.8406693570865887,
+      "time_relative_error": 0.08272862257467738
+    },
+    {
+      "causal_sensitivity": 0.9580404273410731,
+      "causal_specificity": 0.9475456621272572,
+      "dominant_spatial_gap_rank": 5,
+      "events": 1500,
+      "gram_reconstruction_relative_error": 0.7014473314356862,
+      "local_affine_fit_relative_error": 0.2871467880466387,
+      "local_jacobian_condition": 13.632808149192602,
+      "local_jacobian_rank": 4,
+      "pivot_index": 539,
+      "pivot_intrinsic_radius": 0.118643014092538,
+      "pivot_intrinsic_time": 0.5021192876973796,
+      "quadratic_correlation": 0.6389459926455058,
+      "quadratic_inner_relative_error": 0.6748182820158936,
+      "quadratic_relative_error": 0.6491209300847912,
+      "sampled_spatial_distance_relative_error": 0.3093832437795892,
+      "spatial_eigenvalues": [
+        43.53029836877504,
+        39.16610321081229,
+        36.99544693481327,
+        33.28795155466491,
+        23.9011237469795,
+        8.195630220161634,
+        7.636220991727265,
+        7.0200755700122235,
+        6.640190962471487
+      ],
+      "spatial_rank_gap": 0.10021490986934278,
+      "spatial_subspace_relative_error": 0.821432354454019,
+      "time_relative_error": 0.09931333981870691
+    },
+    {
+      "causal_sensitivity": 0.9524827970987539,
+      "causal_specificity": 0.9506100067259547,
+      "dominant_spatial_gap_rank": 5,
+      "events": 1500,
+      "gram_reconstruction_relative_error": 0.6843789484560855,
+      "local_affine_fit_relative_error": 0.2981996593851935,
+      "local_jacobian_condition": 15.541261543454365,
+      "local_jacobian_rank": 4,
+      "pivot_index": 157,
+      "pivot_intrinsic_radius": 0.14600720225755687,
+      "pivot_intrinsic_time": 0.4948988794299883,
+      "quadratic_correlation": 0.6806842154385923,
+      "quadratic_inner_relative_error": 0.6190986652219521,
+      "quadratic_relative_error": 0.600410621430686,
+      "sampled_spatial_distance_relative_error": 0.3140641396641149,
+      "spatial_eigenvalues": [
+        51.568343404297664,
+        39.83872425909536,
+        37.76260001803172,
+        35.7337634485594,
+        26.413382840003855,
+        9.569128068654583,
+        7.6454897991576605,
+        6.815507561006735,
+        6.198084119015915
+      ],
+      "spatial_rank_gap": 0.05372608264535664,
+      "spatial_subspace_relative_error": 0.8473396305485025,
+      "time_relative_error": 0.10056408130991051
+    },
+    {
+      "causal_sensitivity": 0.9567876647459217,
+      "causal_specificity": 0.9463948643962158,
+      "dominant_spatial_gap_rank": 5,
+      "events": 1500,
+      "gram_reconstruction_relative_error": 0.6812570744544466,
+      "local_affine_fit_relative_error": 0.30795520651463504,
+      "local_jacobian_condition": 7408.780264184674,
+      "local_jacobian_rank": 4,
+      "pivot_index": 1294,
+      "pivot_intrinsic_radius": 0.11156356354187195,
+      "pivot_intrinsic_time": 0.4873797310707703,
+      "quadratic_correlation": 0.7548857879483757,
+      "quadratic_inner_relative_error": 0.6645151633184351,
+      "quadratic_relative_error": 0.5735022122871235,
+      "sampled_spatial_distance_relative_error": 0.3193558196278433,
+      "spatial_eigenvalues": [
+        48.714284395515364,
+        37.06271471279988,
+        35.42200835177717,
+        34.55261618929959,
+        22.670226602390763,
+        7.974074282951846,
+        7.598285431678992,
+        6.8862061042359155,
+        6.2089958612230385
+      ],
+      "spatial_rank_gap": 0.024543841609533202,
+      "spatial_subspace_relative_error": 0.8672086128456885,
+      "time_relative_error": 0.08721723292052795
+    }
+  ],
+  "scoring_uses_embedding_coordinates": true,
+  "settings": {
+    "affine_radius": 0.18,
+    "density_by_event_count": {
+      "1000": 7639.437268410977,
+      "1500": 11459.155902616465,
+      "500": 3819.7186342054883
+    },
+    "dimension": 4,
+    "distance_pair_samples": 10000,
+    "duration": 1.0,
+    "events_including_endpoints": [
+      500,
+      1000,
+      1500
+    ],
+    "realizations_per_event_count": 5,
+    "seed": 20260729,
+    "support_radius": 0.65
+  },
+  "spatial_rank_is_supplied": true,
+  "status": "full-interval embedding validation; no operator score",
+  "summaries": {
+    "1000": {
+      "causal_sensitivity": {
+        "count": 5,
+        "mean": 0.9250488888411255,
+        "median": 0.9405111607535488,
+        "std": 0.028534119606967105
+      },
+      "causal_specificity": {
+        "count": 5,
+        "mean": 0.9400004722753691,
+        "median": 0.9403766974022182,
+        "std": 0.006354801033968654
+      },
+      "dominant_spatial_gap_rank_counts": {
+        "5": 5
+      },
+      "events": 1000,
+      "gram_reconstruction_relative_error": {
+        "count": 5,
+        "mean": 0.7181528439815759,
+        "median": 0.7129968861473001,
+        "std": 0.016626815395096858
+      },
+      "local_affine_fit_relative_error": {
+        "count": 5,
+        "mean": 0.37485302781155844,
+        "median": 0.363934296219375,
+        "std": 0.022200156422060916
+      },
+      "local_jacobian_condition": {
+        "count": 5,
+        "mean": 37.048503933137354,
+        "median": 33.03007264340704,
+        "std": 13.872715940372748
+      },
+      "quadratic_correlation": {
+        "count": 5,
+        "mean": 0.664755767410327,
+        "median": 0.6588145932319194,
+        "std": 0.08562608048527427
+      },
+      "quadratic_inner_relative_error": {
+        "count": 5,
+        "mean": 0.6615215222186072,
+        "median": 0.6572635733635844,
+        "std": 0.033076810376219914
+      },
+      "quadratic_relative_error": {
+        "count": 5,
+        "mean": 0.6509771169535761,
+        "median": 0.66721881841921,
+        "std": 0.04842239280483939
+      },
+      "sampled_spatial_distance_relative_error": {
+        "count": 5,
+        "mean": 0.3478414397297561,
+        "median": 0.34733794348964353,
+        "std": 0.0020249294259793347
+      },
+      "samples": 5,
+      "spatial_rank_gap": {
+        "count": 5,
+        "mean": 0.06939968996558357,
+        "median": 0.07176057782237989,
+        "std": 0.022923648193548363
+      },
+      "spatial_subspace_relative_error": {
+        "count": 5,
+        "mean": 0.9154815337851339,
+        "median": 0.9036052760294696,
+        "std": 0.024219356353389163
+      },
+      "time_relative_error": {
+        "count": 5,
+        "mean": 0.10235955139289199,
+        "median": 0.09681103730403595,
+        "std": 0.025324171604728822
+      }
+    },
+    "1500": {
+      "causal_sensitivity": {
+        "count": 5,
+        "mean": 0.959504986041242,
+        "median": 0.9580404273410731,
+        "std": 0.006591164875844282
+      },
+      "causal_specificity": {
+        "count": 5,
+        "mean": 0.9472159330246137,
+        "median": 0.9475456621272572,
+        "std": 0.0033941889629229196
+      },
+      "dominant_spatial_gap_rank_counts": {
+        "5": 5
+      },
+      "events": 1500,
+      "gram_reconstruction_relative_error": {
+        "count": 5,
+        "mean": 0.690975397238504,
+        "median": 0.6843789484560855,
+        "std": 0.012946751467543751
+      },
+      "local_affine_fit_relative_error": {
+        "count": 5,
+        "mean": 0.284911527237709,
+        "median": 0.2871467880466387,
+        "std": 0.01846061546995917
+      },
+      "local_jacobian_condition": {
+        "count": 5,
+        "mean": 1497.8486076863214,
+        "median": 15.541261543454365,
+        "std": 2955.4782301727723
+      },
+      "quadratic_correlation": {
+        "count": 5,
+        "mean": 0.720659309607625,
+        "median": 0.697140240383422,
+        "std": 0.06680786715308777
+      },
+      "quadratic_inner_relative_error": {
+        "count": 5,
+        "mean": 0.6490013925714517,
+        "median": 0.6645151633184351,
+        "std": 0.025618155804965185
+      },
+      "quadratic_relative_error": {
+        "count": 5,
+        "mean": 0.5903106226424295,
+        "median": 0.5936030253288179,
+        "std": 0.03720901268309172
+      },
+      "sampled_spatial_distance_relative_error": {
+        "count": 5,
+        "mean": 0.3186991219905984,
+        "median": 0.3193558196278433,
+        "std": 0.0066806661282777825
+      },
+      "samples": 5,
+      "spatial_rank_gap": {
+        "count": 5,
+        "mean": 0.0696080277449994,
+        "median": 0.07290019912017283,
+        "std": 0.02815024366492105
+      },
+      "spatial_subspace_relative_error": {
+        "count": 5,
+        "mean": 0.8446261146464916,
+        "median": 0.8464806182976601,
+        "std": 0.014658635813152406
+      },
+      "time_relative_error": {
+        "count": 5,
+        "mean": 0.09438090460474388,
+        "median": 0.09931333981870691,
+        "std": 0.007860658033229564
+      }
+    },
+    "500": {
+      "causal_sensitivity": {
+        "count": 5,
+        "mean": 0.7568006246532959,
+        "median": 0.777342884572779,
+        "std": 0.04903708635882576
+      },
+      "causal_specificity": {
+        "count": 5,
+        "mean": 0.9522338316714475,
+        "median": 0.9493640844383981,
+        "std": 0.009696112196330247
+      },
+      "dominant_spatial_gap_rank_counts": {
+        "5": 5
+      },
+      "events": 500,
+      "gram_reconstruction_relative_error": {
+        "count": 5,
+        "mean": 0.7155623101995076,
+        "median": 0.7277595578760137,
+        "std": 0.02875704141821335
+      },
+      "local_affine_fit_relative_error": {
+        "count": 5,
+        "mean": 0.5957204621277963,
+        "median": 0.5989184382798157,
+        "std": 0.020765733217126048
+      },
+      "local_jacobian_condition": {
+        "count": 5,
+        "mean": 50.95232533591427,
+        "median": 35.717262271033604,
+        "std": 49.27521448169526
+      },
+      "quadratic_correlation": {
+        "count": 5,
+        "mean": 0.5706524157170703,
+        "median": 0.6227093740478009,
+        "std": 0.10279585274027249
+      },
+      "quadratic_inner_relative_error": {
+        "count": 5,
+        "mean": 0.7371113748037856,
+        "median": 0.7422386363619937,
+        "std": 0.03880770326989131
+      },
+      "quadratic_relative_error": {
+        "count": 5,
+        "mean": 0.6999937553693181,
+        "median": 0.6862790985576189,
+        "std": 0.07006159227982693
+      },
+      "sampled_spatial_distance_relative_error": {
+        "count": 5,
+        "mean": 0.4078131650048301,
+        "median": 0.40999712088903,
+        "std": 0.00641348577590179
+      },
+      "samples": 5,
+      "spatial_rank_gap": {
+        "count": 5,
+        "mean": 0.1421532537641571,
+        "median": 0.11073729558336709,
+        "std": 0.09430063292246542
+      },
+      "spatial_subspace_relative_error": {
+        "count": 5,
+        "mean": 1.1599361688542578,
+        "median": 1.1603221929424035,
+        "std": 0.020235187070434164
+      },
+      "time_relative_error": {
+        "count": 5,
+        "mean": 0.15800100847145077,
+        "median": 0.15093502341858142,
+        "std": 0.026167708759470523
+      }
+    }
+  }
+}

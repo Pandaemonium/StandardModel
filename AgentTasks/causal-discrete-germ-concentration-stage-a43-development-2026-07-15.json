@@ -1,0 +1,4167 @@
+{
+  "claim_boundary": "flat oracle pointwise finite-scale concentration; not a joint continuum, intrinsic algebra, or curvature result",
+  "gate": null,
+  "samples": [
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.40099910073555795,
+      "events": 10000,
+      "metric_diagonal": [
+        0.10479622145711931,
+        -0.4157316820046993,
+        -0.4157316820046993,
+        -0.4157316820046993
+      ],
+      "metric_relative_error": 0.7377467465362482,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.7215208258642387,
+      "operator_values": {
+        "constant": 0.34908758413222074,
+        "spatial_quadratic": -0.8314633640093986,
+        "temporal_affine": 2.6635022225676774,
+        "temporal_cubic": -0.5117645190111304,
+        "temporal_quadratic": 0.20959244291423862,
+        "temporal_spatial_cubic": 0.25465727250354286
+      },
+      "past_count": 639,
+      "principal_symbol_mismatch": 0.5973463833152366,
+      "realization": 0,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spawn_key": [
+        0
+      ],
+      "target_metric_diagonal": [
+        -0.5449324462720462,
+        -0.40001304625018874,
+        -0.40001304625018874,
+        -0.40001304625018874
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.212047078409241,
+        "spatial_quadratic": -0.8000260925003775,
+        "temporal_affine": 5.798409275798299,
+        "temporal_cubic": 0.0445672439964684,
+        "temporal_quadratic": -1.0898648925440924,
+        "temporal_spatial_cubic": 0.2525049877753145
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.4811989208826695,
+      "events": 10000,
+      "metric_diagonal": [
+        1.628937549372226,
+        -0.6094530220728298,
+        -0.6094530220728298,
+        -0.6094530220728298
+      ],
+      "metric_relative_error": 0.6532571797472096,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 2.563160389242594,
+      "operator_values": {
+        "constant": 15.361166685501182,
+        "spatial_quadratic": -1.2189060441456596,
+        "temporal_affine": -3.7498020693719516,
+        "temporal_cubic": -1.7161448014485754,
+        "temporal_quadratic": 3.257875098744452,
+        "temporal_spatial_cubic": 0.31391435839057513
+      },
+      "past_count": 639,
+      "principal_symbol_mismatch": 0.45545426267643696,
+      "realization": 0,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spawn_key": [
+        0
+      ],
+      "target_metric_diagonal": [
+        0.7648203987783109,
+        -0.6234812688926987,
+        -0.6234812688926987,
+        -0.6234812688926987
+      ],
+      "target_principal_symbol_mismatch": 0.10180721753559525,
+      "target_signature": [
+        1,
+        3,
+        0
+      ],
+      "target_values": {
+        "constant": -3.367622752881808,
+        "spatial_quadratic": -1.2469625377853975,
+        "temporal_affine": 2.2506710791396136,
+        "temporal_cubic": -1.2976408898429783,
+        "temporal_quadratic": 1.5296407975566217,
+        "temporal_spatial_cubic": 0.3295466454627286
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.40099910073555795,
+      "events": 10000,
+      "metric_diagonal": [
+        -0.29659006972400753,
+        -0.3265732205071524,
+        -0.3265732205071524,
+        -0.3265732205071524
+      ],
+      "metric_relative_error": 0.5620402203367529,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.5165731766734915,
+      "operator_values": {
+        "constant": -0.9783813581604832,
+        "spatial_quadratic": -0.6531464410143047,
+        "temporal_affine": 3.875155389299959,
+        "temporal_cubic": -0.04102696902530781,
+        "temporal_quadratic": -0.5931801394480151,
+        "temporal_spatial_cubic": 0.19941560180983958
+      },
+      "past_count": 639,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 0,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        0
+      ],
+      "target_metric_diagonal": [
+        -0.8649675882728836,
+        -0.30493491519849714,
+        -0.30493491519849714,
+        -0.30493491519849714
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.948828566916043,
+        "spatial_quadratic": -0.6098698303969943,
+        "temporal_affine": 6.703619272404818,
+        "temporal_cubic": 0.42830341165859254,
+        "temporal_quadratic": -1.7299351765457671,
+        "temporal_spatial_cubic": 0.18732984235396222
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.4811989208826695,
+      "events": 10000,
+      "metric_diagonal": [
+        1.0914789458328562,
+        -0.5285601528644148,
+        -0.5285601528644148,
+        -0.5285601528644148
+      ],
+      "metric_relative_error": 1.3208712830342257,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 1.494560010328746,
+      "operator_values": {
+        "constant": 11.092877612071508,
+        "spatial_quadratic": -1.0571203057288296,
+        "temporal_affine": -1.4823179409768832,
+        "temporal_cubic": -1.253025626838486,
+        "temporal_quadratic": 2.1829578916657124,
+        "temporal_spatial_cubic": 0.28563105970603714
+      },
+      "past_count": 639,
+      "principal_symbol_mismatch": 0.3474723501556868,
+      "realization": 0,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spawn_key": [
+        0
+      ],
+      "target_metric_diagonal": [
+        -0.22381959403220436,
+        -0.5607329845279937,
+        -0.5607329845279937,
+        -0.5607329845279937
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -10.784614271026934,
+        "spatial_quadratic": -1.1214659690559874,
+        "temporal_affine": 6.193790802128904,
+        "temporal_cubic": -0.34349002184947963,
+        "temporal_quadratic": -0.4476391880644087,
+        "temporal_spatial_cubic": 0.31004694485184087
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.40099910073555795,
+      "events": 10000,
+      "metric_diagonal": [
+        -0.16637672565407877,
+        -0.2810721457235767,
+        -0.2810721457235767,
+        -0.2810721457235767
+      ],
+      "metric_relative_error": 0.4889373171518499,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.457088806616207,
+      "operator_values": {
+        "constant": -2.0701507008892968,
+        "spatial_quadratic": -0.5621442914471534,
+        "temporal_affine": 3.8035383786318615,
+        "temporal_cubic": -0.24035464114404725,
+        "temporal_quadratic": -0.33275345130815753,
+        "temporal_spatial_cubic": 0.17154577914201632
+      },
+      "past_count": 630,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 1,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        1
+      ],
+      "target_metric_diagonal": [
+        -0.5449324462720462,
+        -0.40001304625018874,
+        -0.40001304625018874,
+        -0.40001304625018874
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.212047078409241,
+        "spatial_quadratic": -0.8000260925003775,
+        "temporal_affine": 5.798409275798299,
+        "temporal_cubic": 0.0445672439964684,
+        "temporal_quadratic": -1.0898648925440924,
+        "temporal_spatial_cubic": 0.2525049877753145
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.4811989208826695,
+      "events": 10000,
+      "metric_diagonal": [
+        2.7410351682357526,
+        -0.2784237479622975,
+        -0.2784237479622975,
+        -0.2784237479622975
+      ],
+      "metric_relative_error": 1.5601925523665068,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 3.987753263861494,
+      "operator_values": {
+        "constant": 24.002778332768212,
+        "spatial_quadratic": -0.556847495924595,
+        "temporal_affine": -8.027267139018633,
+        "temporal_cubic": -2.8662803966058092,
+        "temporal_quadratic": 5.482070336471505,
+        "temporal_spatial_cubic": 0.08757942306125646
+      },
+      "past_count": 630,
+      "principal_symbol_mismatch": 0.8155803700665186,
+      "realization": 1,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spawn_key": [
+        1
+      ],
+      "target_metric_diagonal": [
+        0.7648203987783109,
+        -0.6234812688926987,
+        -0.6234812688926987,
+        -0.6234812688926987
+      ],
+      "target_principal_symbol_mismatch": 0.10180721753559525,
+      "target_signature": [
+        1,
+        3,
+        0
+      ],
+      "target_values": {
+        "constant": -3.367622752881808,
+        "spatial_quadratic": -1.2469625377853975,
+        "temporal_affine": 2.2506710791396136,
+        "temporal_cubic": -1.2976408898429783,
+        "temporal_quadratic": 1.5296407975566217,
+        "temporal_spatial_cubic": 0.3295466454627286
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.40099910073555795,
+      "events": 10000,
+      "metric_diagonal": [
+        -0.8181359344528631,
+        -0.23751398022074377,
+        -0.23751398022074377,
+        -0.23751398022074377
+      ],
+      "metric_relative_error": 0.12414469701825287,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.08396252301269533,
+      "operator_values": {
+        "constant": -6.921124714814013,
+        "spatial_quadratic": -0.47502796044148754,
+        "temporal_affine": 6.3669193735794165,
+        "temporal_cubic": 0.40627293811203036,
+        "temporal_quadratic": -1.6362718689057263,
+        "temporal_spatial_cubic": 0.14911304272362758
+      },
+      "past_count": 630,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 1,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        1
+      ],
+      "target_metric_diagonal": [
+        -0.8649675882728836,
+        -0.30493491519849714,
+        -0.30493491519849714,
+        -0.30493491519849714
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.948828566916043,
+        "spatial_quadratic": -0.6098698303969943,
+        "temporal_affine": 6.703619272404818,
+        "temporal_cubic": 0.42830341165859254,
+        "temporal_quadratic": -1.7299351765457671,
+        "temporal_spatial_cubic": 0.18732984235396222
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.4811989208826695,
+      "events": 10000,
+      "metric_diagonal": [
+        0.1676089657483965,
+        -0.3956909688632011,
+        -0.3956909688632011,
+        -0.3956909688632011
+      ],
+      "metric_relative_error": 0.4863161351864706,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 0.5509698004591557,
+      "operator_values": {
+        "constant": -0.7959034099442839,
+        "spatial_quadratic": -0.7913819377264022,
+        "temporal_affine": 3.3158863198633703,
+        "temporal_cubic": -0.5456133327219974,
+        "temporal_quadratic": 0.335217931496793,
+        "temporal_spatial_cubic": 0.22451722473494373
+      },
+      "past_count": 630,
+      "principal_symbol_mismatch": 0.40490330124406987,
+      "realization": 1,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spawn_key": [
+        1
+      ],
+      "target_metric_diagonal": [
+        -0.22381959403220436,
+        -0.5607329845279937,
+        -0.5607329845279937,
+        -0.5607329845279937
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -10.784614271026934,
+        "spatial_quadratic": -1.1214659690559874,
+        "temporal_affine": 6.193790802128904,
+        "temporal_cubic": -0.34349002184947963,
+        "temporal_quadratic": -0.4476391880644087,
+        "temporal_spatial_cubic": 0.31004694485184087
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.40099910073555795,
+      "events": 10000,
+      "metric_diagonal": [
+        -0.4960534402525193,
+        -0.511919223280718,
+        -0.511919223280718,
+        -0.511919223280718
+      ],
+      "metric_relative_error": 0.22677591770791078,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.27677682758471417,
+      "operator_values": {
+        "constant": -11.471775504490857,
+        "spatial_quadratic": -1.023838446561436,
+        "temporal_affine": 6.495235369359391,
+        "temporal_cubic": -0.13482701210202552,
+        "temporal_quadratic": -0.9921068805050386,
+        "temporal_spatial_cubic": 0.33005525571108885
+      },
+      "past_count": 642,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 2,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        2
+      ],
+      "target_metric_diagonal": [
+        -0.5449324462720462,
+        -0.40001304625018874,
+        -0.40001304625018874,
+        -0.40001304625018874
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.212047078409241,
+        "spatial_quadratic": -0.8000260925003775,
+        "temporal_affine": 5.798409275798299,
+        "temporal_cubic": 0.0445672439964684,
+        "temporal_quadratic": -1.0898648925440924,
+        "temporal_spatial_cubic": 0.2525049877753145
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.4811989208826695,
+      "events": 10000,
+      "metric_diagonal": [
+        -1.879816796657202,
+        -1.2393273196526566,
+        -1.2393273196526566,
+        -1.2393273196526566
+      ],
+      "metric_relative_error": 2.154944527678329,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 6.190520783792161,
+      "operator_values": {
+        "constant": -47.24906425136232,
+        "spatial_quadratic": -2.4786546393053133,
+        "temporal_affine": 17.313818283079947,
+        "temporal_cubic": 0.631361541038864,
+        "temporal_quadratic": -3.759633593314404,
+        "temporal_spatial_cubic": 0.7869851985691086
+      },
+      "past_count": 642,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 2,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        2
+      ],
+      "target_metric_diagonal": [
+        0.7648203987783109,
+        -0.6234812688926987,
+        -0.6234812688926987,
+        -0.6234812688926987
+      ],
+      "target_principal_symbol_mismatch": 0.10180721753559525,
+      "target_signature": [
+        1,
+        3,
+        0
+      ],
+      "target_values": {
+        "constant": -3.367622752881808,
+        "spatial_quadratic": -1.2469625377853975,
+        "temporal_affine": 2.2506710791396136,
+        "temporal_cubic": -1.2976408898429783,
+        "temporal_quadratic": 1.5296407975566217,
+        "temporal_spatial_cubic": 0.3295466454627286
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.40099910073555795,
+      "events": 10000,
+      "metric_diagonal": [
+        -1.136442745374354,
+        -0.414532055691312,
+        -0.414532055691312,
+        -0.414532055691312
+      ],
+      "metric_relative_error": 0.32685695037891593,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.4419651988691344,
+      "operator_values": {
+        "constant": -15.51431084907216,
+        "spatial_quadratic": -0.829064111382624,
+        "temporal_affine": 8.842679598248425,
+        "temporal_cubic": 0.5384605611237487,
+        "temporal_quadratic": -2.272885490748708,
+        "temporal_spatial_cubic": 0.26231137305263746
+      },
+      "past_count": 642,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 2,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        2
+      ],
+      "target_metric_diagonal": [
+        -0.8649675882728836,
+        -0.30493491519849714,
+        -0.30493491519849714,
+        -0.30493491519849714
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.948828566916043,
+        "spatial_quadratic": -0.6098698303969943,
+        "temporal_affine": 6.703619272404818,
+        "temporal_cubic": 0.42830341165859254,
+        "temporal_quadratic": -1.7299351765457671,
+        "temporal_spatial_cubic": 0.18732984235396222
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.4811989208826695,
+      "events": 10000,
+      "metric_diagonal": [
+        -1.9653761547706297,
+        -1.0071163937638445,
+        -1.0071163937638445,
+        -1.0071163937638445
+      ],
+      "metric_relative_error": 1.9118223256483462,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 2.1823664786075163,
+      "operator_values": {
+        "constant": -46.97429158326045,
+        "spatial_quadratic": -2.014232787527689,
+        "temporal_affine": 17.53229556550975,
+        "temporal_cubic": 0.7064199376290232,
+        "temporal_quadratic": -3.9307523095412593,
+        "temporal_spatial_cubic": 0.6206468858996247
+      },
+      "past_count": 642,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 2,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        2
+      ],
+      "target_metric_diagonal": [
+        -0.22381959403220436,
+        -0.5607329845279937,
+        -0.5607329845279937,
+        -0.5607329845279937
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -10.784614271026934,
+        "spatial_quadratic": -1.1214659690559874,
+        "temporal_affine": 6.193790802128904,
+        "temporal_cubic": -0.34349002184947963,
+        "temporal_quadratic": -0.4476391880644087,
+        "temporal_spatial_cubic": 0.31004694485184087
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.40099910073555795,
+      "events": 10000,
+      "metric_diagonal": [
+        -0.7422725028398067,
+        -0.4184086037389745,
+        -0.4184086037389745,
+        -0.4184086037389745
+      ],
+      "metric_relative_error": 0.22677635167197116,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.31134088183050007,
+      "operator_values": {
+        "constant": -11.656193298635309,
+        "spatial_quadratic": -0.836817207477949,
+        "temporal_affine": 7.22754570899745,
+        "temporal_cubic": 0.1373097665274895,
+        "temporal_quadratic": -1.4845450056796134,
+        "temporal_spatial_cubic": 0.25857359192357265
+      },
+      "past_count": 578,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 3,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        3
+      ],
+      "target_metric_diagonal": [
+        -0.5449324462720462,
+        -0.40001304625018874,
+        -0.40001304625018874,
+        -0.40001304625018874
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.212047078409241,
+        "spatial_quadratic": -0.8000260925003775,
+        "temporal_affine": 5.798409275798299,
+        "temporal_cubic": 0.0445672439964684,
+        "temporal_quadratic": -1.0898648925440924,
+        "temporal_spatial_cubic": 0.2525049877753145
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.4811989208826695,
+      "events": 10000,
+      "metric_diagonal": [
+        -0.08135441952734973,
+        -0.7981518815487236,
+        -0.7981518815487236,
+        -0.7981518815487236
+      ],
+      "metric_relative_error": 0.6790821528932349,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 2.9205675030695195,
+      "operator_values": {
+        "constant": -25.097437750788515,
+        "spatial_quadratic": -1.5963037630974473,
+        "temporal_affine": 8.672435484204039,
+        "temporal_cubic": -0.9086036403806188,
+        "temporal_quadratic": -0.16270883905469946,
+        "temporal_spatial_cubic": 0.42493420217339184
+      },
+      "past_count": 578,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 3,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        3
+      ],
+      "target_metric_diagonal": [
+        0.7648203987783109,
+        -0.6234812688926987,
+        -0.6234812688926987,
+        -0.6234812688926987
+      ],
+      "target_principal_symbol_mismatch": 0.10180721753559525,
+      "target_signature": [
+        1,
+        3,
+        0
+      ],
+      "target_values": {
+        "constant": -3.367622752881808,
+        "spatial_quadratic": -1.2469625377853975,
+        "temporal_affine": 2.2506710791396136,
+        "temporal_cubic": -1.2976408898429783,
+        "temporal_quadratic": 1.5296407975566217,
+        "temporal_spatial_cubic": 0.3295466454627286
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.40099910073555795,
+      "events": 10000,
+      "metric_diagonal": [
+        -1.1069602408448385,
+        -0.33024738928159764,
+        -0.33024738928159764,
+        -0.33024738928159764
+      ],
+      "metric_relative_error": 0.24266304289771073,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.30187515434178974,
+      "operator_values": {
+        "constant": -12.903102746245622,
+        "spatial_quadratic": -0.6604947785631953,
+        "temporal_affine": 8.341927965373706,
+        "temporal_cubic": 0.5609597211834314,
+        "temporal_quadratic": -2.213920481689677,
+        "temporal_spatial_cubic": 0.19938726301809034
+      },
+      "past_count": 578,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 3,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        3
+      ],
+      "target_metric_diagonal": [
+        -0.8649675882728836,
+        -0.30493491519849714,
+        -0.30493491519849714,
+        -0.30493491519849714
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.948828566916043,
+        "spatial_quadratic": -0.6098698303969943,
+        "temporal_affine": 6.703619272404818,
+        "temporal_cubic": 0.42830341165859254,
+        "temporal_quadratic": -1.7299351765457671,
+        "temporal_spatial_cubic": 0.18732984235396222
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.4811989208826695,
+      "events": 10000,
+      "metric_diagonal": [
+        -1.1148160938691956,
+        -0.7358115480389631,
+        -0.7358115480389631,
+        -0.7358115480389631
+      ],
+      "metric_relative_error": 0.9443271837859358,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 1.2281810420591548,
+      "operator_values": {
+        "constant": -33.46400831935978,
+        "spatial_quadratic": -1.4716230960779262,
+        "temporal_affine": 12.933286596398098,
+        "temporal_cubic": 0.05922766330688933,
+        "temporal_quadratic": -2.229632187738391,
+        "temporal_spatial_cubic": 0.4053066492552123
+      },
+      "past_count": 578,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 3,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        3
+      ],
+      "target_metric_diagonal": [
+        -0.22381959403220436,
+        -0.5607329845279937,
+        -0.5607329845279937,
+        -0.5607329845279937
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -10.784614271026934,
+        "spatial_quadratic": -1.1214659690559874,
+        "temporal_affine": 6.193790802128904,
+        "temporal_cubic": -0.34349002184947963,
+        "temporal_quadratic": -0.4476391880644087,
+        "temporal_spatial_cubic": 0.31004694485184087
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.40099910073555795,
+      "events": 10000,
+      "metric_diagonal": [
+        -0.05198418419853802,
+        -0.2675940992158999,
+        -0.2675940992158999,
+        -0.2675940992158999
+      ],
+      "metric_relative_error": 0.6168055185822269,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.559610079636812,
+      "operator_values": {
+        "constant": -1.4487803137789257,
+        "spatial_quadratic": -0.5351881984317998,
+        "temporal_affine": 3.406372230105087,
+        "temporal_cubic": -0.37043189239699165,
+        "temporal_quadratic": -0.10396836839707604,
+        "temporal_spatial_cubic": 0.1548469667610221
+      },
+      "past_count": 610,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 4,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        4
+      ],
+      "target_metric_diagonal": [
+        -0.5449324462720462,
+        -0.40001304625018874,
+        -0.40001304625018874,
+        -0.40001304625018874
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.212047078409241,
+        "spatial_quadratic": -0.8000260925003775,
+        "temporal_affine": 5.798409275798299,
+        "temporal_cubic": 0.0445672439964684,
+        "temporal_quadratic": -1.0898648925440924,
+        "temporal_spatial_cubic": 0.2525049877753145
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.4811989208826695,
+      "events": 10000,
+      "metric_diagonal": [
+        2.4422719145544725,
+        -0.11599089747562119,
+        -0.11599089747562119,
+        -0.11599089747562119
+      ],
+      "metric_relative_error": 1.431114352171073,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 3.5798185821943442,
+      "operator_values": {
+        "constant": 21.366382243536002,
+        "spatial_quadratic": -0.23198179495124238,
+        "temporal_affine": -6.865172461818009,
+        "temporal_cubic": -2.548977397061492,
+        "temporal_quadratic": 4.884543829108945,
+        "temporal_spatial_cubic": -0.043488757594152515
+      },
+      "past_count": 610,
+      "principal_symbol_mismatch": 0.9093205772837877,
+      "realization": 4,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spawn_key": [
+        4
+      ],
+      "target_metric_diagonal": [
+        0.7648203987783109,
+        -0.6234812688926987,
+        -0.6234812688926987,
+        -0.6234812688926987
+      ],
+      "target_principal_symbol_mismatch": 0.10180721753559525,
+      "target_signature": [
+        1,
+        3,
+        0
+      ],
+      "target_values": {
+        "constant": -3.367622752881808,
+        "spatial_quadratic": -1.2469625377853975,
+        "temporal_affine": 2.2506710791396136,
+        "temporal_cubic": -1.2976408898429783,
+        "temporal_quadratic": 1.5296407975566217,
+        "temporal_spatial_cubic": 0.3295466454627286
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.40099910073555795,
+      "events": 10000,
+      "metric_diagonal": [
+        -0.5033832644586429,
+        -0.21086929742918564,
+        -0.21086929742918564,
+        -0.21086929742918564
+      ],
+      "metric_relative_error": 0.3913240299576404,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.3379692580708997,
+      "operator_values": {
+        "constant": -3.5135083221168877,
+        "spatial_quadratic": -0.4217385948583713,
+        "temporal_affine": 4.895584364446696,
+        "temporal_cubic": 0.13401507982270922,
+        "temporal_quadratic": -1.0067665289172858,
+        "temporal_spatial_cubic": 0.120251746726241
+      },
+      "past_count": 610,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 4,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        4
+      ],
+      "target_metric_diagonal": [
+        -0.8649675882728836,
+        -0.30493491519849714,
+        -0.30493491519849714,
+        -0.30493491519849714
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.948828566916043,
+        "spatial_quadratic": -0.6098698303969943,
+        "temporal_affine": 6.703619272404818,
+        "temporal_cubic": 0.42830341165859254,
+        "temporal_quadratic": -1.7299351765457671,
+        "temporal_spatial_cubic": 0.18732984235396222
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.4811989208826695,
+      "events": 10000,
+      "metric_diagonal": [
+        1.0203081737215023,
+        -0.20785530838145627,
+        -0.20785530838145627,
+        -0.20785530838145627
+      ],
+      "metric_relative_error": 1.3907789429704573,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 1.405760844208859,
+      "operator_values": {
+        "constant": 8.299834127803294,
+        "spatial_quadratic": -0.41571061676291254,
+        "temporal_affine": -0.7086303727802441,
+        "temporal_cubic": -1.256264374235973,
+        "temporal_quadratic": 2.0406163474430046,
+        "temporal_spatial_cubic": 0.0590895879414885
+      },
+      "past_count": 610,
+      "principal_symbol_mismatch": 0.6615185007364818,
+      "realization": 4,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spawn_key": [
+        4
+      ],
+      "target_metric_diagonal": [
+        -0.22381959403220436,
+        -0.5607329845279937,
+        -0.5607329845279937,
+        -0.5607329845279937
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -10.784614271026934,
+        "spatial_quadratic": -1.1214659690559874,
+        "temporal_affine": 6.193790802128904,
+        "temporal_cubic": -0.34349002184947963,
+        "temporal_quadratic": -0.4476391880644087,
+        "temporal_spatial_cubic": 0.31004694485184087
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.40099910073555795,
+      "events": 10000,
+      "metric_diagonal": [
+        -0.37359583634563065,
+        -0.3306091523366037,
+        -0.3306091523366037,
+        -0.3306091523366037
+      ],
+      "metric_relative_error": 0.23744649670795662,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.4030057271727682,
+      "operator_values": {
+        "constant": -0.8610812121127687,
+        "spatial_quadratic": -0.6612183046732074,
+        "temporal_affine": 4.180104755386271,
+        "temporal_cubic": 0.006337491486778913,
+        "temporal_quadratic": -0.7471916726912613,
+        "temporal_spatial_cubic": 0.21333060081406327
+      },
+      "past_count": 633,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 5,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        5
+      ],
+      "target_metric_diagonal": [
+        -0.5449324462720462,
+        -0.40001304625018874,
+        -0.40001304625018874,
+        -0.40001304625018874
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.212047078409241,
+        "spatial_quadratic": -0.8000260925003775,
+        "temporal_affine": 5.798409275798299,
+        "temporal_cubic": 0.0445672439964684,
+        "temporal_quadratic": -1.0898648925440924,
+        "temporal_spatial_cubic": 0.2525049877753145
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.4811989208826695,
+      "events": 10000,
+      "metric_diagonal": [
+        2.835421870374728,
+        -0.37059500972303067,
+        -0.37059500972303067,
+        -0.37059500972303067
+      ],
+      "metric_relative_error": 1.5993457051824285,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 5.150879764417009,
+      "operator_values": {
+        "constant": 33.676711584640444,
+        "spatial_quadratic": -0.7411900194460613,
+        "temporal_affine": -9.948377932027661,
+        "temporal_cubic": -2.771275477561677,
+        "temporal_quadratic": 5.670843740749456,
+        "temporal_spatial_cubic": 0.17407264735463654
+      },
+      "past_count": 633,
+      "principal_symbol_mismatch": 0.7688128144155434,
+      "realization": 5,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spawn_key": [
+        5
+      ],
+      "target_metric_diagonal": [
+        0.7648203987783109,
+        -0.6234812688926987,
+        -0.6234812688926987,
+        -0.6234812688926987
+      ],
+      "target_principal_symbol_mismatch": 0.10180721753559525,
+      "target_signature": [
+        1,
+        3,
+        0
+      ],
+      "target_values": {
+        "constant": -3.367622752881808,
+        "spatial_quadratic": -1.2469625377853975,
+        "temporal_affine": 2.2506710791396136,
+        "temporal_cubic": -1.2976408898429783,
+        "temporal_quadratic": 1.5296407975566217,
+        "temporal_spatial_cubic": 0.3295466454627286
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.40099910073555795,
+      "events": 10000,
+      "metric_diagonal": [
+        -0.5349394463770007,
+        -0.24276841898448212,
+        -0.24276841898448212,
+        -0.24276841898448212
+      ],
+      "metric_relative_error": 0.34253472258354023,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.46667115900895934,
+      "operator_values": {
+        "constant": -0.03772688657798895,
+        "spatial_quadratic": -0.48553683796896424,
+        "temporal_affine": 4.3917415697297155,
+        "temporal_cubic": 0.24144159429287812,
+        "temporal_quadratic": -1.0698788927540015,
+        "temporal_spatial_cubic": 0.1516907555046129
+      },
+      "past_count": 633,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 5,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        5
+      ],
+      "target_metric_diagonal": [
+        -0.8649675882728836,
+        -0.30493491519849714,
+        -0.30493491519849714,
+        -0.30493491519849714
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.948828566916043,
+        "spatial_quadratic": -0.6098698303969943,
+        "temporal_affine": 6.703619272404818,
+        "temporal_cubic": 0.42830341165859254,
+        "temporal_quadratic": -1.7299351765457671,
+        "temporal_spatial_cubic": 0.18732984235396222
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.4811989208826695,
+      "events": 10000,
+      "metric_diagonal": [
+        1.2848980750195371,
+        -0.3575380455088974,
+        -0.3575380455088974,
+        -0.3575380455088974
+      ],
+      "metric_relative_error": 1.5543929852069829,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 1.8873682305300319,
+      "operator_values": {
+        "constant": 21.058368663500065,
+        "spatial_quadratic": -0.7150760910177948,
+        "temporal_affine": -3.573331311048347,
+        "temporal_cubic": -1.3016649871404102,
+        "temporal_quadratic": 2.5697961500390742,
+        "temporal_spatial_cubic": 0.19209133089532654
+      },
+      "past_count": 633,
+      "principal_symbol_mismatch": 0.5646247168579515,
+      "realization": 5,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spawn_key": [
+        5
+      ],
+      "target_metric_diagonal": [
+        -0.22381959403220436,
+        -0.5607329845279937,
+        -0.5607329845279937,
+        -0.5607329845279937
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -10.784614271026934,
+        "spatial_quadratic": -1.1214659690559874,
+        "temporal_affine": 6.193790802128904,
+        "temporal_cubic": -0.34349002184947963,
+        "temporal_quadratic": -0.4476391880644087,
+        "temporal_spatial_cubic": 0.31004694485184087
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.40099910073555795,
+      "events": 10000,
+      "metric_diagonal": [
+        0.08223280072278935,
+        -0.2940900077049266,
+        -0.2940900077049266,
+        -0.2940900077049266
+      ],
+      "metric_relative_error": 0.7413202892360373,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.6402495099334462,
+      "operator_values": {
+        "constant": -2.0866238410684623,
+        "spatial_quadratic": -0.5881800154098532,
+        "temporal_affine": 3.3015618412553525,
+        "temporal_cubic": -0.5822826976818796,
+        "temporal_quadratic": 0.1644656014455787,
+        "temporal_spatial_cubic": 0.17106652365303576
+      },
+      "past_count": 612,
+      "principal_symbol_mismatch": 0.5629666930561047,
+      "realization": 6,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spawn_key": [
+        6
+      ],
+      "target_metric_diagonal": [
+        -0.5449324462720462,
+        -0.40001304625018874,
+        -0.40001304625018874,
+        -0.40001304625018874
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.212047078409241,
+        "spatial_quadratic": -0.8000260925003775,
+        "temporal_affine": 5.798409275798299,
+        "temporal_cubic": 0.0445672439964684,
+        "temporal_quadratic": -1.0898648925440924,
+        "temporal_spatial_cubic": 0.2525049877753145
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.4811989208826695,
+      "events": 10000,
+      "metric_diagonal": [
+        1.9438692864028535,
+        -0.40242504830098974,
+        -0.40242504830098974,
+        -0.40242504830098974
+      ],
+      "metric_relative_error": 0.9367896865964072,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 1.6528140195729668,
+      "operator_values": {
+        "constant": 6.472155684029133,
+        "spatial_quadratic": -0.8048500966019795,
+        "temporal_affine": -2.5620714496675396,
+        "temporal_cubic": -2.4192303982088514,
+        "temporal_quadratic": 3.887738572805707,
+        "temporal_spatial_cubic": 0.15202842306466813
+      },
+      "past_count": 612,
+      "principal_symbol_mismatch": 0.6569696799342227,
+      "realization": 6,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spawn_key": [
+        6
+      ],
+      "target_metric_diagonal": [
+        0.7648203987783109,
+        -0.6234812688926987,
+        -0.6234812688926987,
+        -0.6234812688926987
+      ],
+      "target_principal_symbol_mismatch": 0.10180721753559525,
+      "target_signature": [
+        1,
+        3,
+        0
+      ],
+      "target_values": {
+        "constant": -3.367622752881808,
+        "spatial_quadratic": -1.2469625377853975,
+        "temporal_affine": 2.2506710791396136,
+        "temporal_cubic": -1.2976408898429783,
+        "temporal_quadratic": 1.5296407975566217,
+        "temporal_spatial_cubic": 0.3295466454627286
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.40099910073555795,
+      "events": 10000,
+      "metric_diagonal": [
+        -0.6478522225605018,
+        -0.2437017240747415,
+        -0.2437017240747415,
+        -0.2437017240747415
+      ],
+      "metric_relative_error": 0.23842328701335616,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.17231328959484032,
+      "operator_values": {
+        "constant": -6.534953715151005,
+        "spatial_quadratic": -0.487403448149483,
+        "temporal_affine": 5.935054244860463,
+        "temporal_cubic": 0.19662032550899844,
+        "temporal_quadratic": -1.2957044451210036,
+        "temporal_spatial_cubic": 0.1462533465122931
+      },
+      "past_count": 612,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 6,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        6
+      ],
+      "target_metric_diagonal": [
+        -0.8649675882728836,
+        -0.30493491519849714,
+        -0.30493491519849714,
+        -0.30493491519849714
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.948828566916043,
+        "spatial_quadratic": -0.6098698303969943,
+        "temporal_affine": 6.703619272404818,
+        "temporal_cubic": 0.42830341165859254,
+        "temporal_quadratic": -1.7299351765457671,
+        "temporal_spatial_cubic": 0.18732984235396222
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.4811989208826695,
+      "events": 10000,
+      "metric_diagonal": [
+        0.791224107638486,
+        -0.42032505995565916,
+        -0.42032505995565916,
+        -0.42032505995565916
+      ],
+      "metric_relative_error": 1.0472533630705112,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 1.0124530633922837,
+      "operator_values": {
+        "constant": -2.574583796593398,
+        "spatial_quadratic": -0.8406501199113183,
+        "temporal_affine": 2.1016274645559374,
+        "temporal_cubic": -1.3131532606359317,
+        "temporal_quadratic": 1.582448215276972,
+        "temporal_spatial_cubic": 0.20944590796670953
+      },
+      "past_count": 612,
+      "principal_symbol_mismatch": 0.3061361912528454,
+      "realization": 6,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spawn_key": [
+        6
+      ],
+      "target_metric_diagonal": [
+        -0.22381959403220436,
+        -0.5607329845279937,
+        -0.5607329845279937,
+        -0.5607329845279937
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -10.784614271026934,
+        "spatial_quadratic": -1.1214659690559874,
+        "temporal_affine": 6.193790802128904,
+        "temporal_cubic": -0.34349002184947963,
+        "temporal_quadratic": -0.4476391880644087,
+        "temporal_spatial_cubic": 0.31004694485184087
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.40099910073555795,
+      "events": 10000,
+      "metric_diagonal": [
+        -0.3560054754292651,
+        -0.35463762797758275,
+        -0.35463762797758275,
+        -0.35463762797758275
+      ],
+      "metric_relative_error": 0.23213828721003868,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.25321760257390574,
+      "operator_values": {
+        "constant": -3.9694494659260826,
+        "spatial_quadratic": -0.7092752559551655,
+        "temporal_affine": 4.593894290803638,
+        "temporal_cubic": -0.053093929127587515,
+        "temporal_quadratic": -0.7120109508585302,
+        "temporal_spatial_cubic": 0.21453580501052222
+      },
+      "past_count": 591,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 7,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        7
+      ],
+      "target_metric_diagonal": [
+        -0.5449324462720462,
+        -0.40001304625018874,
+        -0.40001304625018874,
+        -0.40001304625018874
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.212047078409241,
+        "spatial_quadratic": -0.8000260925003775,
+        "temporal_affine": 5.798409275798299,
+        "temporal_cubic": 0.0445672439964684,
+        "temporal_quadratic": -1.0898648925440924,
+        "temporal_spatial_cubic": 0.2525049877753145
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.4811989208826695,
+      "events": 10000,
+      "metric_diagonal": [
+        1.474630250352143,
+        -0.44223232380568406,
+        -0.44223232380568406,
+        -0.44223232380568406
+      ],
+      "metric_relative_error": 0.5865114637595128,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 1.3979621239068623,
+      "operator_values": {
+        "constant": 5.970715996736267,
+        "spatial_quadratic": -0.8844646476113681,
+        "temporal_affine": -1.596214440394288,
+        "temporal_cubic": -1.7925004627135794,
+        "temporal_quadratic": 2.949260500704286,
+        "temporal_spatial_cubic": 0.17557877768656519
+      },
+      "past_count": 591,
+      "principal_symbol_mismatch": 0.5385873460438564,
+      "realization": 7,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spawn_key": [
+        7
+      ],
+      "target_metric_diagonal": [
+        0.7648203987783109,
+        -0.6234812688926987,
+        -0.6234812688926987,
+        -0.6234812688926987
+      ],
+      "target_principal_symbol_mismatch": 0.10180721753559525,
+      "target_signature": [
+        1,
+        3,
+        0
+      ],
+      "target_values": {
+        "constant": -3.367622752881808,
+        "spatial_quadratic": -1.2469625377853975,
+        "temporal_affine": 2.2506710791396136,
+        "temporal_cubic": -1.2976408898429783,
+        "temporal_quadratic": 1.5296407975566217,
+        "temporal_spatial_cubic": 0.3295466454627286
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.40099910073555795,
+      "events": 10000,
+      "metric_diagonal": [
+        -0.6326280756598964,
+        -0.2996714550322226,
+        -0.2996714550322226,
+        -0.2996714550322226
+      ],
+      "metric_relative_error": 0.22942752970421057,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.21986608382072564,
+      "operator_values": {
+        "constant": -4.812507807292427,
+        "spatial_quadratic": -0.5993429100644452,
+        "temporal_affine": 5.424879377009162,
+        "temporal_cubic": 0.26815493983612193,
+        "temporal_quadratic": -1.2652561513197929,
+        "temporal_spatial_cubic": 0.1790286740418441
+      },
+      "past_count": 591,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 7,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        7
+      ],
+      "target_metric_diagonal": [
+        -0.8649675882728836,
+        -0.30493491519849714,
+        -0.30493491519849714,
+        -0.30493491519849714
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.948828566916043,
+        "spatial_quadratic": -0.6098698303969943,
+        "temporal_affine": 6.703619272404818,
+        "temporal_cubic": 0.42830341165859254,
+        "temporal_quadratic": -1.7299351765457671,
+        "temporal_spatial_cubic": 0.18732984235396222
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.12029973022066738,
+      "ell_over_nonlocality": 0.4811989208826695,
+      "events": 10000,
+      "metric_diagonal": [
+        -0.021898429715638545,
+        -0.5702484145592968,
+        -0.5702484145592968,
+        -0.5702484145592968
+      ],
+      "metric_relative_error": 0.2032686739455075,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 0.20905358495153994,
+      "operator_values": {
+        "constant": -8.387605930066506,
+        "spatial_quadratic": -1.1404968291185935,
+        "temporal_affine": 5.02187020513445,
+        "temporal_cubic": -0.4602217722928257,
+        "temporal_quadratic": -0.04379685943127709,
+        "temporal_spatial_cubic": 0.30590473010245234
+      },
+      "past_count": 591,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 7,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        7
+      ],
+      "target_metric_diagonal": [
+        -0.22381959403220436,
+        -0.5607329845279937,
+        -0.5607329845279937,
+        -0.5607329845279937
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -10.784614271026934,
+        "spatial_quadratic": -1.1214659690559874,
+        "temporal_affine": 6.193790802128904,
+        "temporal_cubic": -0.34349002184947963,
+        "temporal_quadratic": -0.4476391880644087,
+        "temporal_spatial_cubic": 0.31004694485184087
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.33719870632849386,
+      "events": 20000,
+      "metric_diagonal": [
+        -0.7120023401012233,
+        -0.3705491269287236,
+        -0.3705491269287236,
+        -0.3705491269287236
+      ],
+      "metric_relative_error": 0.19818155687420702,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.17039733069827886,
+      "operator_values": {
+        "constant": -8.600047713446926,
+        "spatial_quadratic": -0.7410982538574472,
+        "temporal_affine": 6.490543985979286,
+        "temporal_cubic": 0.20338254215513663,
+        "temporal_quadratic": -1.4240046802024466,
+        "temporal_spatial_cubic": 0.2372478940969743
+      },
+      "past_count": 1215,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 0,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        8
+      ],
+      "target_metric_diagonal": [
+        -0.5449324462720462,
+        -0.40001304625018874,
+        -0.40001304625018874,
+        -0.40001304625018874
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.212047078409241,
+        "spatial_quadratic": -0.8000260925003775,
+        "temporal_affine": 5.798409275798299,
+        "temporal_cubic": 0.0445672439964684,
+        "temporal_quadratic": -1.0898648925440924,
+        "temporal_spatial_cubic": 0.2525049877753145
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.4046384475941926,
+      "events": 20000,
+      "metric_diagonal": [
+        0.9208669995940577,
+        -0.4907727614723395,
+        -0.4907727614723395,
+        -0.4907727614723395
+      ],
+      "metric_relative_error": 0.2099456707985624,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 0.22378451495761717,
+      "operator_values": {
+        "constant": -2.204890313998497,
+        "spatial_quadratic": -0.981545522944679,
+        "temporal_affine": 1.6531706099365477,
+        "temporal_cubic": -1.4585754936838993,
+        "temporal_quadratic": 1.8417339991881154,
+        "temporal_spatial_cubic": 0.23749138218383944
+      },
+      "past_count": 1215,
+      "principal_symbol_mismatch": 0.3046770500405936,
+      "realization": 0,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spawn_key": [
+        8
+      ],
+      "target_metric_diagonal": [
+        0.7648203987783109,
+        -0.6234812688926987,
+        -0.6234812688926987,
+        -0.6234812688926987
+      ],
+      "target_principal_symbol_mismatch": 0.10180721753559525,
+      "target_signature": [
+        1,
+        3,
+        0
+      ],
+      "target_values": {
+        "constant": -3.367622752881808,
+        "spatial_quadratic": -1.2469625377853975,
+        "temporal_affine": 2.2506710791396136,
+        "temporal_cubic": -1.2976408898429783,
+        "temporal_quadratic": 1.5296407975566217,
+        "temporal_spatial_cubic": 0.3295466454627286
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.33719870632849386,
+      "events": 20000,
+      "metric_diagonal": [
+        -0.9209897843289955,
+        -0.27486076706183293,
+        -0.27486076706183293,
+        -0.27486076706183293
+      ],
+      "metric_relative_error": 0.07548053379348088,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.049704758127914056,
+      "operator_values": {
+        "constant": -8.370051326699429,
+        "spatial_quadratic": -0.5497215341236659,
+        "temporal_affine": 6.932700564907643,
+        "temporal_cubic": 0.48057959983088705,
+        "temporal_quadratic": -1.841979568657991,
+        "temporal_spatial_cubic": 0.16995283457766625
+      },
+      "past_count": 1215,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 0,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        8
+      ],
+      "target_metric_diagonal": [
+        -0.8649675882728836,
+        -0.30493491519849714,
+        -0.30493491519849714,
+        -0.30493491519849714
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.948828566916043,
+        "spatial_quadratic": -0.6098698303969943,
+        "temporal_affine": 6.703619272404818,
+        "temporal_cubic": 0.42830341165859254,
+        "temporal_quadratic": -1.7299351765457671,
+        "temporal_spatial_cubic": 0.18732984235396222
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.4046384475941926,
+      "events": 20000,
+      "metric_diagonal": [
+        -0.21755153215174056,
+        -0.4614321029069749,
+        -0.4614321029069749,
+        -0.4614321029069749
+      ],
+      "metric_relative_error": 0.17268264072863881,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 0.07808396202810941,
+      "operator_values": {
+        "constant": -11.031822990857624,
+        "spatial_quadratic": -0.9228642058139498,
+        "temporal_affine": 6.24044049406345,
+        "temporal_cubic": -0.3623596187855739,
+        "temporal_quadratic": -0.4351030643034811,
+        "temporal_spatial_cubic": 0.24581332285097499
+      },
+      "past_count": 1215,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 0,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        8
+      ],
+      "target_metric_diagonal": [
+        -0.22381959403220436,
+        -0.5607329845279937,
+        -0.5607329845279937,
+        -0.5607329845279937
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -10.784614271026934,
+        "spatial_quadratic": -1.1214659690559874,
+        "temporal_affine": 6.193790802128904,
+        "temporal_cubic": -0.34349002184947963,
+        "temporal_quadratic": -0.4476391880644087,
+        "temporal_spatial_cubic": 0.31004694485184087
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.33719870632849386,
+      "events": 20000,
+      "metric_diagonal": [
+        -1.115364634907912,
+        -0.5380332719045312,
+        -0.5380332719045312,
+        -0.5380332719045312
+      ],
+      "metric_relative_error": 0.7016712500614146,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.7644477984164286,
+      "operator_values": {
+        "constant": -17.007976799080513,
+        "spatial_quadratic": -1.0760665438090624,
+        "temporal_affine": 9.248954790647517,
+        "temporal_cubic": 0.3992959714759959,
+        "temporal_quadratic": -2.230729269815824,
+        "temporal_spatial_cubic": 0.3496729512705603
+      },
+      "past_count": 1244,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 1,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        9
+      ],
+      "target_metric_diagonal": [
+        -0.5449324462720462,
+        -0.40001304625018874,
+        -0.40001304625018874,
+        -0.40001304625018874
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.212047078409241,
+        "spatial_quadratic": -0.8000260925003775,
+        "temporal_affine": 5.798409275798299,
+        "temporal_cubic": 0.0445672439964684,
+        "temporal_quadratic": -1.0898648925440924,
+        "temporal_spatial_cubic": 0.2525049877753145
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.4046384475941926,
+      "events": 20000,
+      "metric_diagonal": [
+        -2.1529525230455624,
+        -1.1638557184372287,
+        -1.1638557184372287,
+        -1.1638557184372287
+      ],
+      "metric_relative_error": 2.31557662213976,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 6.182990221836025,
+      "operator_values": {
+        "constant": -46.142357091348245,
+        "spatial_quadratic": -2.3277114368744574,
+        "temporal_affine": 18.1352737027393,
+        "temporal_cubic": 0.8643461777585667,
+        "temporal_quadratic": -4.305905046091125,
+        "temporal_spatial_cubic": 0.7155952787930981
+      },
+      "past_count": 1244,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 1,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        9
+      ],
+      "target_metric_diagonal": [
+        0.7648203987783109,
+        -0.6234812688926987,
+        -0.6234812688926987,
+        -0.6234812688926987
+      ],
+      "target_principal_symbol_mismatch": 0.10180721753559525,
+      "target_signature": [
+        1,
+        3,
+        0
+      ],
+      "target_values": {
+        "constant": -3.367622752881808,
+        "spatial_quadratic": -1.2469625377853975,
+        "temporal_affine": 2.2506710791396136,
+        "temporal_cubic": -1.2976408898429783,
+        "temporal_quadratic": 1.5296407975566217,
+        "temporal_spatial_cubic": 0.3295466454627286
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.33719870632849386,
+      "events": 20000,
+      "metric_diagonal": [
+        -1.498800260402699,
+        -0.39935273127006016,
+        -0.39935273127006016,
+        -0.39935273127006016
+      ],
+      "metric_relative_error": 0.6458887659266809,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.6540810398511382,
+      "operator_values": {
+        "constant": -17.706622661392966,
+        "spatial_quadratic": -0.7987054625401203,
+        "temporal_affine": 10.280861306297487,
+        "temporal_cubic": 0.8739367710547443,
+        "temporal_quadratic": -2.997600520805398,
+        "temporal_spatial_cubic": 0.2506665195484169
+      },
+      "past_count": 1244,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 1,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        9
+      ],
+      "target_metric_diagonal": [
+        -0.8649675882728836,
+        -0.30493491519849714,
+        -0.30493491519849714,
+        -0.30493491519849714
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.948828566916043,
+        "spatial_quadratic": -0.6098698303969943,
+        "temporal_affine": 6.703619272404818,
+        "temporal_cubic": 0.42830341165859254,
+        "temporal_quadratic": -1.7299351765457671,
+        "temporal_spatial_cubic": 0.18732984235396222
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.4046384475941926,
+      "events": 20000,
+      "metric_diagonal": [
+        -2.30179643547708,
+        -0.9084238997366835,
+        -0.9084238997366835,
+        -0.9084238997366835
+      ],
+      "metric_relative_error": 2.170701182496088,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 2.34576219542703,
+      "operator_values": {
+        "constant": -44.052282068361464,
+        "spatial_quadratic": -1.816847799473367,
+        "temporal_affine": 18.094466235206973,
+        "temporal_cubic": 1.1046287768297063,
+        "temporal_quadratic": -4.60359287095416,
+        "temporal_spatial_cubic": 0.5441523508927586
+      },
+      "past_count": 1244,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 1,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        9
+      ],
+      "target_metric_diagonal": [
+        -0.22381959403220436,
+        -0.5607329845279937,
+        -0.5607329845279937,
+        -0.5607329845279937
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -10.784614271026934,
+        "spatial_quadratic": -1.1214659690559874,
+        "temporal_affine": 6.193790802128904,
+        "temporal_cubic": -0.34349002184947963,
+        "temporal_quadratic": -0.4476391880644087,
+        "temporal_spatial_cubic": 0.31004694485184087
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.33719870632849386,
+      "events": 20000,
+      "metric_diagonal": [
+        -0.005061936711421702,
+        -0.39445564357738705,
+        -0.39445564357738705,
+        -0.39445564357738705
+      ],
+      "metric_relative_error": 0.6125660938605156,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.5608471507830607,
+      "operator_values": {
+        "constant": -2.0574142814312992,
+        "spatial_quadratic": -0.7889112871547741,
+        "temporal_affine": 3.3451996775052426,
+        "temporal_cubic": -0.4197814667805332,
+        "temporal_quadratic": -0.010123873422843405,
+        "temporal_spatial_cubic": 0.237872387986813
+      },
+      "past_count": 1246,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 2,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        10
+      ],
+      "target_metric_diagonal": [
+        -0.5449324462720462,
+        -0.40001304625018874,
+        -0.40001304625018874,
+        -0.40001304625018874
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.212047078409241,
+        "spatial_quadratic": -0.8000260925003775,
+        "temporal_affine": 5.798409275798299,
+        "temporal_cubic": 0.0445672439964684,
+        "temporal_quadratic": -1.0898648925440924,
+        "temporal_spatial_cubic": 0.2525049877753145
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.4046384475941926,
+      "events": 20000,
+      "metric_diagonal": [
+        1.7742276590177595,
+        -0.652758812636876,
+        -0.652758812636876,
+        -0.652758812636876
+      ],
+      "metric_relative_error": 0.7637543926309512,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 2.0336505562016325,
+      "operator_values": {
+        "constant": 10.397296119504073,
+        "spatial_quadratic": -1.305517625273752,
+        "temporal_affine": -3.3010210621546325,
+        "temporal_cubic": -1.9826269405068722,
+        "temporal_quadratic": 3.548455318035519,
+        "temporal_spatial_cubic": 0.33912800482984196
+      },
+      "past_count": 1246,
+      "principal_symbol_mismatch": 0.46208285850736724,
+      "realization": 2,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spawn_key": [
+        10
+      ],
+      "target_metric_diagonal": [
+        0.7648203987783109,
+        -0.6234812688926987,
+        -0.6234812688926987,
+        -0.6234812688926987
+      ],
+      "target_principal_symbol_mismatch": 0.10180721753559525,
+      "target_signature": [
+        1,
+        3,
+        0
+      ],
+      "target_values": {
+        "constant": -3.367622752881808,
+        "spatial_quadratic": -1.2469625377853975,
+        "temporal_affine": 2.2506710791396136,
+        "temporal_cubic": -1.2976408898429783,
+        "temporal_quadratic": 1.5296407975566217,
+        "temporal_spatial_cubic": 0.3295466454627286
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.33719870632849386,
+      "events": 20000,
+      "metric_diagonal": [
+        -0.6526148567335978,
+        -0.3436047297912591,
+        -0.3436047297912591,
+        -0.3436047297912591
+      ],
+      "metric_relative_error": 0.21970530048170897,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.16466553206709209,
+      "operator_values": {
+        "constant": -6.2754095032444575,
+        "spatial_quadratic": -0.6872094595825182,
+        "temporal_affine": 5.756273391822708,
+        "temporal_cubic": 0.25055160520933273,
+        "temporal_quadratic": -1.3052297134671955,
+        "temporal_spatial_cubic": 0.2107382967570245
+      },
+      "past_count": 1246,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 2,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        10
+      ],
+      "target_metric_diagonal": [
+        -0.8649675882728836,
+        -0.30493491519849714,
+        -0.30493491519849714,
+        -0.30493491519849714
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.948828566916043,
+        "spatial_quadratic": -0.6098698303969943,
+        "temporal_affine": 6.703619272404818,
+        "temporal_cubic": 0.42830341165859254,
+        "temporal_quadratic": -1.7299351765457671,
+        "temporal_spatial_cubic": 0.18732984235396222
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.4046384475941926,
+      "events": 20000,
+      "metric_diagonal": [
+        0.6980562056986729,
+        -0.6419013157756993,
+        -0.6419013157756993,
+        -0.6419013157756993
+      ],
+      "metric_relative_error": 0.9356458013876451,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 0.9584125786418095,
+      "operator_values": {
+        "constant": 0.16532533187567822,
+        "spatial_quadratic": -1.2838026315513986,
+        "temporal_affine": 1.4555469610044602,
+        "temporal_cubic": -1.0307415490313703,
+        "temporal_quadratic": 1.3961124113973458,
+        "temporal_spatial_cubic": 0.36026367668345605
+      },
+      "past_count": 1246,
+      "principal_symbol_mismatch": 0.0419079627697344,
+      "realization": 2,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spawn_key": [
+        10
+      ],
+      "target_metric_diagonal": [
+        -0.22381959403220436,
+        -0.5607329845279937,
+        -0.5607329845279937,
+        -0.5607329845279937
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -10.784614271026934,
+        "spatial_quadratic": -1.1214659690559874,
+        "temporal_affine": 6.193790802128904,
+        "temporal_cubic": -0.34349002184947963,
+        "temporal_quadratic": -0.4476391880644087,
+        "temporal_spatial_cubic": 0.31004694485184087
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.33719870632849386,
+      "events": 20000,
+      "metric_diagonal": [
+        -0.34353923847153583,
+        -0.43558647541168916,
+        -0.43558647541168916,
+        -0.43558647541168916
+      ],
+      "metric_relative_error": 0.238928914483741,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.18839431996091513,
+      "operator_values": {
+        "constant": -7.319148422564478,
+        "spatial_quadratic": -0.8711729508233783,
+        "temporal_affine": 5.3260274245141686,
+        "temporal_cubic": -0.20864083780601222,
+        "temporal_quadratic": -0.6870784769430717,
+        "temporal_spatial_cubic": 0.27081941201242393
+      },
+      "past_count": 1261,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 3,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        11
+      ],
+      "target_metric_diagonal": [
+        -0.5449324462720462,
+        -0.40001304625018874,
+        -0.40001304625018874,
+        -0.40001304625018874
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.212047078409241,
+        "spatial_quadratic": -0.8000260925003775,
+        "temporal_affine": 5.798409275798299,
+        "temporal_cubic": 0.0445672439964684,
+        "temporal_quadratic": -1.0898648925440924,
+        "temporal_spatial_cubic": 0.2525049877753145
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.4046384475941926,
+      "events": 20000,
+      "metric_diagonal": [
+        1.1832107535091574,
+        -0.6431305002175274,
+        -0.6431305002175274,
+        -0.6431305002175274
+      ],
+      "metric_relative_error": 0.3172149904552544,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 0.36578091763101445,
+      "operator_values": {
+        "constant": -2.4888688900877227,
+        "spatial_quadratic": -1.2862610004350548,
+        "temporal_affine": 1.0027121168657858,
+        "temporal_cubic": -1.7598830086959378,
+        "temporal_quadratic": 2.3664215070183148,
+        "temporal_spatial_cubic": 0.32001135997316493
+      },
+      "past_count": 1261,
+      "principal_symbol_mismatch": 0.2957170529820677,
+      "realization": 3,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spawn_key": [
+        11
+      ],
+      "target_metric_diagonal": [
+        0.7648203987783109,
+        -0.6234812688926987,
+        -0.6234812688926987,
+        -0.6234812688926987
+      ],
+      "target_principal_symbol_mismatch": 0.10180721753559525,
+      "target_signature": [
+        1,
+        3,
+        0
+      ],
+      "target_values": {
+        "constant": -3.367622752881808,
+        "spatial_quadratic": -1.2469625377853975,
+        "temporal_affine": 2.2506710791396136,
+        "temporal_cubic": -1.2976408898429783,
+        "temporal_quadratic": 1.5296407975566217,
+        "temporal_spatial_cubic": 0.3295466454627286
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.33719870632849386,
+      "events": 20000,
+      "metric_diagonal": [
+        -0.975401233175942,
+        -0.3804497919874797,
+        -0.3804497919874797,
+        -0.3804497919874797
+      ],
+      "metric_relative_error": 0.16890597712071323,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.18642571886361586,
+      "operator_values": {
+        "constant": -11.009882798524274,
+        "spatial_quadratic": -0.7608995839749594,
+        "temporal_affine": 7.575409769760632,
+        "temporal_cubic": 0.4691296203092165,
+        "temporal_quadratic": -1.950802466351884,
+        "temporal_spatial_cubic": 0.2377219201403897
+      },
+      "past_count": 1261,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 3,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        11
+      ],
+      "target_metric_diagonal": [
+        -0.8649675882728836,
+        -0.30493491519849714,
+        -0.30493491519849714,
+        -0.30493491519849714
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.948828566916043,
+        "spatial_quadratic": -0.6098698303969943,
+        "temporal_affine": 6.703619272404818,
+        "temporal_cubic": 0.42830341165859254,
+        "temporal_quadratic": -1.7299351765457671,
+        "temporal_spatial_cubic": 0.18732984235396222
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.4046384475941926,
+      "events": 20000,
+      "metric_diagonal": [
+        -0.30110851820368245,
+        -0.6978555484547879,
+        -0.6978555484547879,
+        -0.6978555484547879
+      ],
+      "metric_relative_error": 0.25059603660580754,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 0.2250155709921049,
+      "operator_values": {
+        "constant": -15.377803342138726,
+        "spatial_quadratic": -1.3957110969095758,
+        "temporal_affine": 7.267858746871344,
+        "temporal_cubic": -0.3817461206563144,
+        "temporal_quadratic": -0.6022170364073649,
+        "temporal_spatial_cubic": 0.39472205693506374
+      },
+      "past_count": 1261,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 3,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        11
+      ],
+      "target_metric_diagonal": [
+        -0.22381959403220436,
+        -0.5607329845279937,
+        -0.5607329845279937,
+        -0.5607329845279937
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -10.784614271026934,
+        "spatial_quadratic": -1.1214659690559874,
+        "temporal_affine": 6.193790802128904,
+        "temporal_cubic": -0.34349002184947963,
+        "temporal_quadratic": -0.4476391880644087,
+        "temporal_spatial_cubic": 0.31004694485184087
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.33719870632849386,
+      "events": 20000,
+      "metric_diagonal": [
+        -1.4575514488029626,
+        -0.4744442388561591,
+        -0.4744442388561591,
+        -0.4744442388561591
+      ],
+      "metric_relative_error": 1.0456211227918275,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 1.0789030324606121,
+      "operator_values": {
+        "constant": -19.679993604203943,
+        "spatial_quadratic": -0.9488884777123182,
+        "temporal_affine": 10.662220540013102,
+        "temporal_cubic": 0.7240653004057491,
+        "temporal_quadratic": -2.9151028976059252,
+        "temporal_spatial_cubic": 0.3100883198039301
+      },
+      "past_count": 1260,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 4,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        12
+      ],
+      "target_metric_diagonal": [
+        -0.5449324462720462,
+        -0.40001304625018874,
+        -0.40001304625018874,
+        -0.40001304625018874
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.212047078409241,
+        "spatial_quadratic": -0.8000260925003775,
+        "temporal_affine": 5.798409275798299,
+        "temporal_cubic": 0.0445672439964684,
+        "temporal_quadratic": -1.0898648925440924,
+        "temporal_spatial_cubic": 0.2525049877753145
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.4046384475941926,
+      "events": 20000,
+      "metric_diagonal": [
+        -1.433978039594749,
+        -0.9031499469233502,
+        -0.9031499469233502,
+        -0.9031499469233502
+      ],
+      "metric_relative_error": 1.7014392252982795,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 5.164793255386701,
+      "operator_values": {
+        "constant": -39.838403281880204,
+        "spatial_quadratic": -1.8062998938467003,
+        "temporal_affine": 15.176416153312546,
+        "temporal_cubic": 0.16743960263344032,
+        "temporal_quadratic": -2.867956079189498,
+        "temporal_spatial_cubic": 0.5331704584333413
+      },
+      "past_count": 1260,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 4,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        12
+      ],
+      "target_metric_diagonal": [
+        0.7648203987783109,
+        -0.6234812688926987,
+        -0.6234812688926987,
+        -0.6234812688926987
+      ],
+      "target_principal_symbol_mismatch": 0.10180721753559525,
+      "target_signature": [
+        1,
+        3,
+        0
+      ],
+      "target_values": {
+        "constant": -3.367622752881808,
+        "spatial_quadratic": -1.2469625377853975,
+        "temporal_affine": 2.2506710791396136,
+        "temporal_cubic": -1.2976408898429783,
+        "temporal_quadratic": 1.5296407975566217,
+        "temporal_spatial_cubic": 0.3295466454627286
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.33719870632849386,
+      "events": 20000,
+      "metric_diagonal": [
+        -1.6265918525290357,
+        -0.38332800958729873,
+        -0.38332800958729873,
+        -0.38332800958729873
+      ],
+      "metric_relative_error": 0.7633493620571048,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.7466129813086007,
+      "operator_values": {
+        "constant": -18.762807718551514,
+        "spatial_quadratic": -0.7666560191745975,
+        "temporal_affine": 10.854304416666787,
+        "temporal_cubic": 0.9823715095595933,
+        "temporal_quadratic": -3.2531837050580714,
+        "temporal_spatial_cubic": 0.24645394249697605
+      },
+      "past_count": 1260,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 4,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        12
+      ],
+      "target_metric_diagonal": [
+        -0.8649675882728836,
+        -0.30493491519849714,
+        -0.30493491519849714,
+        -0.30493491519849714
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.948828566916043,
+        "spatial_quadratic": -0.6098698303969943,
+        "temporal_affine": 6.703619272404818,
+        "temporal_cubic": 0.42830341165859254,
+        "temporal_quadratic": -1.7299351765457671,
+        "temporal_spatial_cubic": 0.18732984235396222
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.4046384475941926,
+      "events": 20000,
+      "metric_diagonal": [
+        -2.261405855144491,
+        -0.8245504058586779,
+        -0.8245504058586779,
+        -0.8245504058586779
+      ],
+      "metric_relative_error": 2.0951624872456684,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 2.3114019431967394,
+      "operator_values": {
+        "constant": -44.18059926690826,
+        "spatial_quadratic": -1.6491008117173558,
+        "temporal_affine": 18.068486017772607,
+        "temporal_cubic": 1.0442677551071,
+        "temporal_quadratic": -4.522811710288982,
+        "temporal_spatial_cubic": 0.5009677463022377
+      },
+      "past_count": 1260,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 4,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        12
+      ],
+      "target_metric_diagonal": [
+        -0.22381959403220436,
+        -0.5607329845279937,
+        -0.5607329845279937,
+        -0.5607329845279937
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -10.784614271026934,
+        "spatial_quadratic": -1.1214659690559874,
+        "temporal_affine": 6.193790802128904,
+        "temporal_cubic": -0.34349002184947963,
+        "temporal_quadratic": -0.4476391880644087,
+        "temporal_spatial_cubic": 0.31004694485184087
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.33719870632849386,
+      "events": 20000,
+      "metric_diagonal": [
+        -0.13874272769303223,
+        -0.33689321059716154,
+        -0.33689321059716154,
+        -0.33689321059716154
+      ],
+      "metric_relative_error": 0.477210863970475,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.411078853696189,
+      "operator_values": {
+        "constant": -3.831342204877707,
+        "spatial_quadratic": -0.6737864211943231,
+        "temporal_affine": 4.0344337974561135,
+        "temporal_cubic": -0.3113232901802913,
+        "temporal_quadratic": -0.27748545538606445,
+        "temporal_spatial_cubic": 0.19398046468708743
+      },
+      "past_count": 1275,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 5,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        13
+      ],
+      "target_metric_diagonal": [
+        -0.5449324462720462,
+        -0.40001304625018874,
+        -0.40001304625018874,
+        -0.40001304625018874
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.212047078409241,
+        "spatial_quadratic": -0.8000260925003775,
+        "temporal_affine": 5.798409275798299,
+        "temporal_cubic": 0.0445672439964684,
+        "temporal_quadratic": -1.0898648925440924,
+        "temporal_spatial_cubic": 0.2525049877753145
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.4046384475941926,
+      "events": 20000,
+      "metric_diagonal": [
+        1.499047974996008,
+        -0.4519397692887203,
+        -0.4519397692887203,
+        -0.4519397692887203
+      ],
+      "metric_relative_error": 0.5985517159281857,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 1.0681297402794383,
+      "operator_values": {
+        "constant": 2.8642912968184895,
+        "spatial_quadratic": -0.9038795385774406,
+        "temporal_affine": -1.0792962279415323,
+        "temporal_cubic": -1.8932078758310862,
+        "temporal_quadratic": 2.998095949992016,
+        "temporal_spatial_cubic": 0.17488559744628834
+      },
+      "past_count": 1275,
+      "principal_symbol_mismatch": 0.5367067060132552,
+      "realization": 5,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spawn_key": [
+        13
+      ],
+      "target_metric_diagonal": [
+        0.7648203987783109,
+        -0.6234812688926987,
+        -0.6234812688926987,
+        -0.6234812688926987
+      ],
+      "target_principal_symbol_mismatch": 0.10180721753559525,
+      "target_signature": [
+        1,
+        3,
+        0
+      ],
+      "target_values": {
+        "constant": -3.367622752881808,
+        "spatial_quadratic": -1.2469625377853975,
+        "temporal_affine": 2.2506710791396136,
+        "temporal_cubic": -1.2976408898429783,
+        "temporal_quadratic": 1.5296407975566217,
+        "temporal_spatial_cubic": 0.3295466454627286
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.33719870632849386,
+      "events": 20000,
+      "metric_diagonal": [
+        -0.8642108306917695,
+        -0.31094489236547745,
+        -0.31094489236547745,
+        -0.31094489236547745
+      ],
+      "metric_relative_error": 0.01029832135358188,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.05576224557634144,
+      "operator_values": {
+        "constant": -9.017621216242443,
+        "spatial_quadratic": -0.6218897847309549,
+        "temporal_affine": 6.834352309132434,
+        "temporal_cubic": 0.4211803666384608,
+        "temporal_quadratic": -1.728421661383539,
+        "temporal_spatial_cubic": 0.1883313280350865
+      },
+      "past_count": 1275,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 5,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        13
+      ],
+      "target_metric_diagonal": [
+        -0.8649675882728836,
+        -0.30493491519849714,
+        -0.30493491519849714,
+        -0.30493491519849714
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.948828566916043,
+        "spatial_quadratic": -0.6098698303969943,
+        "temporal_affine": 6.703619272404818,
+        "temporal_cubic": 0.42830341165859254,
+        "temporal_quadratic": -1.7299351765457671,
+        "temporal_spatial_cubic": 0.18732984235396222
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.4046384475941926,
+      "events": 20000,
+      "metric_diagonal": [
+        -0.2673917844493678,
+        -0.5733419308220747,
+        -0.5733419308220747,
+        -0.5733419308220747
+      ],
+      "metric_relative_error": 0.048901655421311745,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 0.14400775058288726,
+      "operator_values": {
+        "constant": -14.317384992534741,
+        "spatial_quadratic": -1.1466838616441495,
+        "temporal_affine": 6.763849045895609,
+        "temporal_cubic": -0.31996921767748526,
+        "temporal_quadratic": -0.5347835688987356,
+        "temporal_spatial_cubic": 0.3096791184821279
+      },
+      "past_count": 1275,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 5,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        13
+      ],
+      "target_metric_diagonal": [
+        -0.22381959403220436,
+        -0.5607329845279937,
+        -0.5607329845279937,
+        -0.5607329845279937
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -10.784614271026934,
+        "spatial_quadratic": -1.1214659690559874,
+        "temporal_affine": 6.193790802128904,
+        "temporal_cubic": -0.34349002184947963,
+        "temporal_quadratic": -0.4476391880644087,
+        "temporal_spatial_cubic": 0.31004694485184087
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.33719870632849386,
+      "events": 20000,
+      "metric_diagonal": [
+        0.05114058708872448,
+        -0.4556773211678607,
+        -0.4556773211678607,
+        -0.4556773211678607
+      ],
+      "metric_relative_error": 0.6850177517696564,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.6736965069252587,
+      "operator_values": {
+        "constant": 0.03583619985884923,
+        "spatial_quadratic": -0.9113546423357214,
+        "temporal_affine": 2.8441656849395214,
+        "temporal_cubic": -0.4489591184742885,
+        "temporal_quadratic": 0.10228117417744896,
+        "temporal_spatial_cubic": 0.28703516756804454
+      },
+      "past_count": 1275,
+      "principal_symbol_mismatch": 0.7981895025586441,
+      "realization": 6,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spawn_key": [
+        14
+      ],
+      "target_metric_diagonal": [
+        -0.5449324462720462,
+        -0.40001304625018874,
+        -0.40001304625018874,
+        -0.40001304625018874
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.212047078409241,
+        "spatial_quadratic": -0.8000260925003775,
+        "temporal_affine": 5.798409275798299,
+        "temporal_cubic": 0.0445672439964684,
+        "temporal_quadratic": -1.0898648925440924,
+        "temporal_spatial_cubic": 0.2525049877753145
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.4046384475941926,
+      "events": 20000,
+      "metric_diagonal": [
+        2.7414023775650818,
+        -0.5892097682005656,
+        -0.5892097682005656,
+        -0.5892097682005656
+      ],
+      "metric_relative_error": 1.4943438332167691,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 4.342310260067158,
+      "operator_values": {
+        "constant": 27.022121020684892,
+        "spatial_quadratic": -1.1784195364011312,
+        "temporal_affine": -8.71823077559274,
+        "temporal_cubic": -2.7566429103256844,
+        "temporal_quadratic": 5.4828047551301635,
+        "temporal_spatial_cubic": 0.29219082633592136
+      },
+      "past_count": 1275,
+      "principal_symbol_mismatch": 0.6461853002309778,
+      "realization": 6,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spawn_key": [
+        14
+      ],
+      "target_metric_diagonal": [
+        0.7648203987783109,
+        -0.6234812688926987,
+        -0.6234812688926987,
+        -0.6234812688926987
+      ],
+      "target_principal_symbol_mismatch": 0.10180721753559525,
+      "target_signature": [
+        1,
+        3,
+        0
+      ],
+      "target_values": {
+        "constant": -3.367622752881808,
+        "spatial_quadratic": -1.2469625377853975,
+        "temporal_affine": 2.2506710791396136,
+        "temporal_cubic": -1.2976408898429783,
+        "temporal_quadratic": 1.5296407975566217,
+        "temporal_spatial_cubic": 0.3295466454627286
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.33719870632849386,
+      "events": 20000,
+      "metric_diagonal": [
+        -0.5469184296944507,
+        -0.3666414004576603,
+        -0.3666414004576603,
+        -0.3666414004576603
+      ],
+      "metric_relative_error": 0.33106692993280834,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.3093567534526787,
+      "operator_values": {
+        "constant": -3.6183564726921738,
+        "spatial_quadratic": -0.7332828009153206,
+        "temporal_affine": 5.020917339701579,
+        "temporal_cubic": 0.17874451516425358,
+        "temporal_quadratic": -1.0938368593889014,
+        "temporal_spatial_cubic": 0.22840530493831684
+      },
+      "past_count": 1275,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 6,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        14
+      ],
+      "target_metric_diagonal": [
+        -0.8649675882728836,
+        -0.30493491519849714,
+        -0.30493491519849714,
+        -0.30493491519849714
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.948828566916043,
+        "spatial_quadratic": -0.6098698303969943,
+        "temporal_affine": 6.703619272404818,
+        "temporal_cubic": 0.42830341165859254,
+        "temporal_quadratic": -1.7299351765457671,
+        "temporal_spatial_cubic": 0.18732984235396222
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.4046384475941926,
+      "events": 20000,
+      "metric_diagonal": [
+        1.053258026322864,
+        -0.6032203307625029,
+        -0.6032203307625029,
+        -0.6032203307625029
+      ],
+      "metric_relative_error": 1.2834645673854301,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 1.478695090869871,
+      "operator_values": {
+        "constant": 11.597366598446827,
+        "spatial_quadratic": -1.2064406615250058,
+        "temporal_affine": -1.4239877855995422,
+        "temporal_cubic": -1.2205068061141753,
+        "temporal_quadratic": 2.106516052645728,
+        "temporal_spatial_cubic": 0.3388571961976564
+      },
+      "past_count": 1275,
+      "principal_symbol_mismatch": 0.27168341417524977,
+      "realization": 6,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spawn_key": [
+        14
+      ],
+      "target_metric_diagonal": [
+        -0.22381959403220436,
+        -0.5607329845279937,
+        -0.5607329845279937,
+        -0.5607329845279937
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -10.784614271026934,
+        "spatial_quadratic": -1.1214659690559874,
+        "temporal_affine": 6.193790802128904,
+        "temporal_cubic": -0.34349002184947963,
+        "temporal_quadratic": -0.4476391880644087,
+        "temporal_spatial_cubic": 0.31004694485184087
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.33719870632849386,
+      "events": 20000,
+      "metric_diagonal": [
+        -1.176289132128443,
+        -0.4756120531358805,
+        -0.4756120531358805,
+        -0.4756120531358805
+      ],
+      "metric_relative_error": 0.731499544750156,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.7134835568103423,
+      "operator_values": {
+        "constant": -14.849473707520673,
+        "spatial_quadratic": -0.951224106271761,
+        "temporal_affine": 8.880127220484773,
+        "temporal_cubic": 0.5754765813492105,
+        "temporal_quadratic": -2.352578264256886,
+        "temporal_spatial_cubic": 0.3105758055464383
+      },
+      "past_count": 1232,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 7,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        15
+      ],
+      "target_metric_diagonal": [
+        -0.5449324462720462,
+        -0.40001304625018874,
+        -0.40001304625018874,
+        -0.40001304625018874
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.212047078409241,
+        "spatial_quadratic": -0.8000260925003775,
+        "temporal_affine": 5.798409275798299,
+        "temporal_cubic": 0.0445672439964684,
+        "temporal_quadratic": -1.0898648925440924,
+        "temporal_spatial_cubic": 0.2525049877753145
+      }
+    },
+    {
+      "cutoff": "primary",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.4046384475941926,
+      "events": 20000,
+      "metric_diagonal": [
+        -0.9491799781984105,
+        -0.8771095734561789,
+        -0.8771095734561789,
+        -0.8771095734561789
+      ],
+      "metric_relative_error": 1.3371070250820076,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 3.4570851777501415,
+      "operator_values": {
+        "constant": -27.04860442589466,
+        "spatial_quadratic": -1.7542191469123578,
+        "temporal_affine": 11.253448694096932,
+        "temporal_cubic": 0.02261969473058341,
+        "temporal_quadratic": -1.898359956396821,
+        "temporal_spatial_cubic": 0.5216722484861913
+      },
+      "past_count": 1232,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 7,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        15
+      ],
+      "target_metric_diagonal": [
+        0.7648203987783109,
+        -0.6234812688926987,
+        -0.6234812688926987,
+        -0.6234812688926987
+      ],
+      "target_principal_symbol_mismatch": 0.10180721753559525,
+      "target_signature": [
+        1,
+        3,
+        0
+      ],
+      "target_values": {
+        "constant": -3.367622752881808,
+        "spatial_quadratic": -1.2469625377853975,
+        "temporal_affine": 2.2506710791396136,
+        "temporal_cubic": -1.2976408898429783,
+        "temporal_quadratic": 1.5296407975566217,
+        "temporal_spatial_cubic": 0.3295466454627286
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.33719870632849386,
+      "events": 20000,
+      "metric_diagonal": [
+        -1.1330112145324398,
+        -0.3082667865762434,
+        -0.3082667865762434,
+        -0.3082667865762434
+      ],
+      "metric_relative_error": 0.2645419206527546,
+      "nonlocality_ratio": 0.3,
+      "normalized_field_error": 0.25034418142593223,
+      "operator_values": {
+        "constant": -11.433111122489379,
+        "spatial_quadratic": -0.6165335731524868,
+        "temporal_affine": 8.070534379895266,
+        "temporal_cubic": 0.6433342147367915,
+        "temporal_quadratic": -2.2660224290648796,
+        "temporal_spatial_cubic": 0.18793873429547653
+      },
+      "past_count": 1232,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 7,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        15
+      ],
+      "target_metric_diagonal": [
+        -0.8649675882728836,
+        -0.30493491519849714,
+        -0.30493491519849714,
+        -0.30493491519849714
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -7.948828566916043,
+        "spatial_quadratic": -0.6098698303969943,
+        "temporal_affine": 6.703619272404818,
+        "temporal_cubic": 0.42830341165859254,
+        "temporal_quadratic": -1.7299351765457671,
+        "temporal_spatial_cubic": 0.18732984235396222
+      }
+    },
+    {
+      "cutoff": "robustness",
+      "cutoff_at_bottom": 0.0,
+      "cutoff_at_pivot": 1.0,
+      "cutoff_at_top": 0.0,
+      "ell": 0.10115961189854815,
+      "ell_over_nonlocality": 0.4046384475941926,
+      "events": 20000,
+      "metric_diagonal": [
+        -1.3357992887138992,
+        -0.6423278373131134,
+        -0.6423278373131134,
+        -0.6423278373131134
+      ],
+      "metric_relative_error": 1.1246649226180223,
+      "nonlocality_ratio": 0.25,
+      "normalized_field_error": 1.2038576427934435,
+      "operator_values": {
+        "constant": -26.386706341538392,
+        "spatial_quadratic": -1.2846556746262268,
+        "temporal_affine": 12.086892944470316,
+        "temporal_cubic": 0.5093211990126725,
+        "temporal_quadratic": -2.6715985774277984,
+        "temporal_spatial_cubic": 0.3646446786186711
+      },
+      "past_count": 1232,
+      "principal_symbol_mismatch": 1.0,
+      "realization": 7,
+      "signature": [
+        0,
+        4,
+        0
+      ],
+      "spawn_key": [
+        15
+      ],
+      "target_metric_diagonal": [
+        -0.22381959403220436,
+        -0.5607329845279937,
+        -0.5607329845279937,
+        -0.5607329845279937
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_signature": [
+        0,
+        4,
+        0
+      ],
+      "target_values": {
+        "constant": -10.784614271026934,
+        "spatial_quadratic": -1.1214659690559874,
+        "temporal_affine": 6.193790802128904,
+        "temporal_cubic": -0.34349002184947963,
+        "temporal_quadratic": -0.4476391880644087,
+        "temporal_spatial_cubic": 0.31004694485184087
+      }
+    }
+  ],
+  "settings": {
+    "block_size": 64,
+    "continuum_target": "AgentTasks\\causal-continuum-kernel-moments-stage-a41e-2026-07-15.json",
+    "diagonal_variance": "AgentTasks\\causal-kernel-diagonal-variance-audit-2026-07-15.json",
+    "duration": 2.0,
+    "events": [
+      10000,
+      20000
+    ],
+    "live_project_coefficient_relative_error": 0.0,
+    "nonlocality_ratios": [
+      0.3,
+      0.25
+    ],
+    "profiles": [
+      {
+        "depth_one": 0.08,
+        "depth_zero": 0.02,
+        "name": "primary"
+      },
+      {
+        "depth_one": 0.12,
+        "depth_zero": 0.04,
+        "name": "robustness"
+      }
+    ],
+    "realizations_per_density": 8,
+    "seed": 20261480
+  },
+  "split": "development",
+  "stage": "A43",
+  "summaries": [
+    {
+      "all_endpoint_cutoffs_exact": true,
+      "all_scale_admissible": true,
+      "cutoff": "primary",
+      "ell_over_nonlocality": 0.40099910073555795,
+      "ensemble_mean_field_error": 0.31712893210141196,
+      "ensemble_mean_metric_diagonal": [
+        -0.24990739281749125,
+        -0.3592578177478727,
+        -0.3592578177478727,
+        -0.3592578177478727
+      ],
+      "ensemble_mean_metric_error": 0.3441453688750735,
+      "ensemble_mean_principal_symbol_mismatch": 1.0,
+      "events": 10000,
+      "lower_order_response_error": 0.2029996437898086,
+      "mean_operator_values": {
+        "constant": -4.151870844096186,
+        "spatial_quadratic": -0.7185156354957454,
+        "temporal_affine": 4.458969349638341,
+        "temporal_cubic": -0.21863842918117418,
+        "temporal_quadratic": -0.4998147856349825,
+        "temporal_spatial_cubic": 0.22107647443985798
+      },
+      "mean_past_count": 616.875,
+      "median_individual_field_error": 0.4300472668944876,
+      "median_individual_metric_error": 0.3631919069299033,
+      "nonlocality_ratio": 0.3,
+      "potential_response": -4.151870844096186,
+      "quadratic_response_error": 0.38714027592927136,
+      "realizations": 8,
+      "signature_match_rate": 0.75,
+      "standard_deviations": {
+        "constant": 4.734713188266759,
+        "spatial_quadratic": 0.16834961889876815,
+        "temporal_affine": 1.6039330837932413,
+        "temporal_cubic": 0.2545066729209203,
+        "temporal_quadratic": 0.5912938082557196,
+        "temporal_spatial_cubic": 0.058375007056743394
+      },
+      "target_metric_diagonal": [
+        -0.5449324462720462,
+        -0.40001304625018874,
+        -0.40001304625018874,
+        -0.40001304625018874
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_values": {
+        "constant": -7.212047078409241,
+        "spatial_quadratic": -0.8000260925003775,
+        "temporal_affine": 5.798409275798299,
+        "temporal_cubic": 0.0445672439964684,
+        "temporal_quadratic": -1.0898648925440924,
+        "temporal_spatial_cubic": 0.2525049877753145
+      }
+    },
+    {
+      "all_endpoint_cutoffs_exact": true,
+      "all_scale_admissible": true,
+      "cutoff": "primary",
+      "ell_over_nonlocality": 0.4811989208826695,
+      "ensemble_mean_field_error": 1.1499099737471346,
+      "ensemble_mean_metric_diagonal": [
+        1.388124352888453,
+        -0.5320749063177292,
+        -0.5320749063177292,
+        -0.5320749063177292
+      ],
+      "ensemble_mean_metric_error": 0.48597747003671155,
+      "ensemble_mean_principal_symbol_mismatch": 0.445812819928187,
+      "events": 10000,
+      "lower_order_response_error": 0.8259305073798688,
+      "mean_operator_values": {
+        "constant": 4.312926065632551,
+        "spatial_quadratic": -1.0641498126354585,
+        "temporal_affine": -0.8453314656267628,
+        "temporal_cubic": -1.7989563791177172,
+        "temporal_quadratic": 2.776248705776906,
+        "temporal_spatial_cubic": 0.2589505340882562
+      },
+      "mean_past_count": 616.875,
+      "median_individual_field_error": 3.250193042631932,
+      "median_individual_metric_error": 1.18395201938374,
+      "nonlocality_ratio": 0.25,
+      "potential_response": 4.312926065632551,
+      "quadratic_response_error": 0.5855193707598413,
+      "realizations": 8,
+      "signature_match_rate": 0.75,
+      "standard_deviations": {
+        "constant": 27.239218197242387,
+        "spatial_quadratic": 0.7032218307124775,
+        "temporal_affine": 9.281115379518038,
+        "temporal_cubic": 1.1794628924270216,
+        "temporal_quadratic": 3.2292766794412233,
+        "temporal_spatial_cubic": 0.2551798337984783
+      },
+      "target_metric_diagonal": [
+        0.7648203987783109,
+        -0.6234812688926987,
+        -0.6234812688926987,
+        -0.6234812688926987
+      ],
+      "target_principal_symbol_mismatch": 0.10180721753559525,
+      "target_values": {
+        "constant": -3.367622752881808,
+        "spatial_quadratic": -1.2469625377853975,
+        "temporal_affine": 2.2506710791396136,
+        "temporal_cubic": -1.2976408898429783,
+        "temporal_quadratic": 1.5296407975566217,
+        "temporal_spatial_cubic": 0.3295466454627286
+      }
+    },
+    {
+      "all_endpoint_cutoffs_exact": true,
+      "all_scale_admissible": true,
+      "cutoff": "robustness",
+      "ell_over_nonlocality": 0.40099910073555795,
+      "ensemble_mean_field_error": 0.13022837898342457,
+      "ensemble_mean_metric_diagonal": [
+        -0.7096164999315131,
+        -0.2882346926526797,
+        -0.2882346926526797,
+        -0.2882346926526797
+      ],
+      "ensemble_mean_metric_error": 0.15592054135200825,
+      "ensemble_mean_principal_symbol_mismatch": 1.0,
+      "events": 10000,
+      "lower_order_response_error": 0.10085100893196186,
+      "mean_operator_values": {
+        "constant": -6.401952049928823,
+        "spatial_quadratic": -0.5764693853053594,
+        "temporal_affine": 6.009242735318443,
+        "temporal_cubic": 0.2881122738568263,
+        "temporal_quadratic": -1.4192329998630262,
+        "temporal_spatial_cubic": 0.1759314754236483
+      },
+      "mean_past_count": 616.875,
+      "median_individual_field_error": 0.3199222062063447,
+      "median_individual_metric_error": 0.2847599966383133,
+      "nonlocality_ratio": 0.3,
+      "potential_response": -6.401952049928823,
+      "quadratic_response_error": 0.12917615488751688,
+      "realizations": 8,
+      "signature_match_rate": 1.0,
+      "standard_deviations": {
+        "constant": 5.429748666994289,
+        "spatial_quadratic": 0.13506632279766545,
+        "temporal_affine": 1.7870796477200652,
+        "temporal_cubic": 0.2049765657568223,
+        "temporal_quadratic": 0.5880798079190569,
+        "temporal_spatial_cubic": 0.04449818916965362
+      },
+      "target_metric_diagonal": [
+        -0.8649675882728836,
+        -0.30493491519849714,
+        -0.30493491519849714,
+        -0.30493491519849714
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_values": {
+        "constant": -7.948828566916043,
+        "spatial_quadratic": -0.6098698303969943,
+        "temporal_affine": 6.703619272404818,
+        "temporal_cubic": 0.42830341165859254,
+        "temporal_quadratic": -1.7299351765457671,
+        "temporal_spatial_cubic": 0.18732984235396222
+      }
+    },
+    {
+      "all_endpoint_cutoffs_exact": true,
+      "all_scale_admissible": true,
+      "cutoff": "robustness",
+      "ell_over_nonlocality": 0.4811989208826695,
+      "ensemble_mean_field_error": 0.39470684818030183,
+      "ensemble_mean_metric_diagonal": [
+        0.15667844870066427,
+        -0.5278932364919666,
+        -0.5278932364919666,
+        -0.5278932364919666
+      ],
+      "ensemble_mean_metric_error": 0.3860097709683181,
+      "ensemble_mean_principal_symbol_mismatch": 0.5422584600279613,
+      "events": 10000,
+      "lower_order_response_error": 0.25299718611829125,
+      "mean_operator_values": {
+        "constant": -6.468164079481195,
+        "spatial_quadratic": -1.0557864729839332,
+        "temporal_affine": 4.392585815832017,
+        "temporal_cubic": -0.670536969116214,
+        "temporal_quadratic": 0.31335689740132855,
+        "temporal_spatial_cubic": 0.28782917206272435
+      },
+      "mean_past_count": 616.875,
+      "median_individual_field_error": 1.3169709431340069,
+      "median_individual_metric_error": 1.1840623230523684,
+      "nonlocality_ratio": 0.25,
+      "potential_response": -6.468164079481195,
+      "quadratic_response_error": 0.539696669073897,
+      "realizations": 8,
+      "signature_match_rate": 0.375,
+      "standard_deviations": {
+        "constant": 23.00538663105318,
+        "spatial_quadratic": 0.49866838870990016,
+        "temporal_affine": 7.3328229739450235,
+        "temporal_cubic": 0.7542312113724979,
+        "temporal_quadratic": 2.323428412555473,
+        "temporal_spatial_cubic": 0.16756236200618552
+      },
+      "target_metric_diagonal": [
+        -0.22381959403220436,
+        -0.5607329845279937,
+        -0.5607329845279937,
+        -0.5607329845279937
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_values": {
+        "constant": -10.784614271026934,
+        "spatial_quadratic": -1.1214659690559874,
+        "temporal_affine": 6.193790802128904,
+        "temporal_cubic": -0.34349002184947963,
+        "temporal_quadratic": -0.4476391880644087,
+        "temporal_spatial_cubic": 0.31004694485184087
+      }
+    },
+    {
+      "all_endpoint_cutoffs_exact": true,
+      "all_scale_admissible": true,
+      "cutoff": "primary",
+      "ell_over_nonlocality": 0.33719870632849386,
+      "ensemble_mean_field_error": 0.13130914824298046,
+      "ensemble_mean_metric_diagonal": [
+        -0.6121763589659758,
+        -0.4351564176974241,
+        -0.4351564176974241,
+        -0.4351564176974241
+      ],
+      "ensemble_mean_metric_error": 0.10289938874710443,
+      "ensemble_mean_principal_symbol_mismatch": 1.0,
+      "events": 20000,
+      "lower_order_response_error": 0.05789542844421604,
+      "mean_operator_values": {
+        "constant": -9.163695066658336,
+        "spatial_quadratic": -0.8703128353948482,
+        "temporal_affine": 6.353959140192465,
+        "temporal_cubic": 0.06418946026812089,
+        "temporal_quadratic": -1.2243527179319516,
+        "temporal_spatial_cubic": 0.274661550371534
+      },
+      "mean_past_count": 1251.0,
+      "median_individual_field_error": 0.6172718288541597,
+      "median_individual_metric_error": 0.648791922815086,
+      "nonlocality_ratio": 0.3,
+      "potential_response": -9.163695066658336,
+      "quadratic_diagonal_prediction": {
+        "spatial_quadratic": 0.10500747092720612,
+        "temporal_quadratic": 0.42385805905058405
+      },
+      "quadratic_empirical_to_diagonal_ratio": {
+        "spatial_quadratic": 1.2400240736375128,
+        "temporal_quadratic": 2.7634406815395116
+      },
+      "quadratic_response_error": 0.10041774250811861,
+      "realizations": 8,
+      "signature_match_rate": 0.875,
+      "standard_deviations": {
+        "constant": 7.287347248160991,
+        "spatial_quadratic": 0.13021179186152682,
+        "temporal_affine": 2.9556343705313632,
+        "temporal_cubic": 0.4692725756606234,
+        "temporal_quadratic": 1.1713066035787605,
+        "temporal_spatial_cubic": 0.05014568795553376
+      },
+      "target_metric_diagonal": [
+        -0.5449324462720462,
+        -0.40001304625018874,
+        -0.40001304625018874,
+        -0.40001304625018874
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_values": {
+        "constant": -7.212047078409241,
+        "spatial_quadratic": -0.8000260925003775,
+        "temporal_affine": 5.798409275798299,
+        "temporal_cubic": 0.0445672439964684,
+        "temporal_quadratic": -1.0898648925440924,
+        "temporal_spatial_cubic": 0.2525049877753145
+      }
+    },
+    {
+      "all_endpoint_cutoffs_exact": true,
+      "all_scale_admissible": true,
+      "cutoff": "primary",
+      "ell_over_nonlocality": 0.4046384475941926,
+      "ensemble_mean_field_error": 0.8697055445604266,
+      "ensemble_mean_metric_diagonal": [
+        0.4478306529804178,
+        -0.7214908563290983,
+        -0.7214908563290983,
+        -0.7214908563290983
+      ],
+      "ensemble_mean_metric_error": 0.27173115800667075,
+      "ensemble_mean_principal_symbol_mismatch": 0.23403332716446543,
+      "events": 20000,
+      "lower_order_response_error": 0.5254917510825888,
+      "mean_operator_values": {
+        "constant": -9.679926945775232,
+        "spatial_quadratic": -1.4429817126581965,
+        "temporal_affine": 4.265309151407776,
+        "temporal_cubic": -1.0995663442401111,
+        "temporal_quadratic": 0.8956613059608356,
+        "temporal_spatial_cubic": 0.39176814456021086
+      },
+      "mean_past_count": 1251.0,
+      "median_individual_field_error": 2.745367866975887,
+      "median_individual_metric_error": 1.0504307088564795,
+      "nonlocality_ratio": 0.25,
+      "potential_response": -9.679926945775232,
+      "quadratic_diagonal_prediction": {
+        "spatial_quadratic": 0.3090767600773611,
+        "temporal_quadratic": 1.2702346428547842
+      },
+      "quadratic_empirical_to_diagonal_ratio": {
+        "spatial_quadratic": 1.560610900652019,
+        "temporal_quadratic": 2.7366196115014745
+      },
+      "quadratic_response_error": 0.3134410352601202,
+      "realizations": 8,
+      "signature_match_rate": 0.625,
+      "standard_deviations": {
+        "constant": 25.511324027112856,
+        "spatial_quadratic": 0.48234856091493855,
+        "temporal_affine": 9.502755560494766,
+        "temporal_cubic": 1.2785052253926592,
+        "temporal_quadratic": 3.4761490348449735,
+        "temporal_spatial_cubic": 0.18142638209980683
+      },
+      "target_metric_diagonal": [
+        0.7648203987783109,
+        -0.6234812688926987,
+        -0.6234812688926987,
+        -0.6234812688926987
+      ],
+      "target_principal_symbol_mismatch": 0.10180721753559525,
+      "target_values": {
+        "constant": -3.367622752881808,
+        "spatial_quadratic": -1.2469625377853975,
+        "temporal_affine": 2.2506710791396136,
+        "temporal_cubic": -1.2976408898429783,
+        "temporal_quadratic": 1.5296407975566217,
+        "temporal_spatial_cubic": 0.3295466454627286
+      }
+    },
+    {
+      "all_endpoint_cutoffs_exact": true,
+      "all_scale_admissible": true,
+      "cutoff": "robustness",
+      "ell_over_nonlocality": 0.33719870632849386,
+      "ensemble_mean_field_error": 0.18329306768936043,
+      "ensemble_mean_metric_diagonal": [
+        -1.0273173077611162,
+        -0.34593113863716396,
+        -0.34593113863716396,
+        -0.34593113863716396
+      ],
+      "ensemble_mean_metric_error": 0.1748436111492127,
+      "ensemble_mean_principal_symbol_mismatch": 1.0,
+      "events": 20000,
+      "lower_order_response_error": 0.10532803877624192,
+      "mean_operator_values": {
+        "constant": -10.77423285247958,
+        "spatial_quadratic": -0.6918622772743279,
+        "temporal_affine": 7.6656691847730665,
+        "temporal_cubic": 0.53747852531291,
+        "temporal_quadratic": -2.0546346155222324,
+        "temporal_spatial_cubic": 0.21502611009866915
+      },
+      "mean_past_count": 1251.0,
+      "median_individual_field_error": 0.21838495014477405,
+      "median_individual_metric_error": 0.2421236105672318,
+      "nonlocality_ratio": 0.3,
+      "potential_response": -10.77423285247958,
+      "quadratic_diagonal_prediction": {
+        "spatial_quadratic": 0.07676768075902558,
+        "temporal_quadratic": 0.2790014131411573
+      },
+      "quadratic_empirical_to_diagonal_ratio": {
+        "spatial_quadratic": 1.147156871674042,
+        "temporal_quadratic": 2.7153454846627714
+      },
+      "quadratic_response_error": 0.14483095823728534,
+      "realizations": 8,
+      "signature_match_rate": 1.0,
+      "standard_deviations": {
+        "constant": 5.246451315824455,
+        "spatial_quadratic": 0.08806457250519532,
+        "temporal_affine": 2.0370680058903616,
+        "temporal_cubic": 0.28152412109488656,
+        "temporal_quadratic": 0.7575852273873739,
+        "temporal_spatial_cubic": 0.030351212990068314
+      },
+      "target_metric_diagonal": [
+        -0.8649675882728836,
+        -0.30493491519849714,
+        -0.30493491519849714,
+        -0.30493491519849714
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_values": {
+        "constant": -7.948828566916043,
+        "spatial_quadratic": -0.6098698303969943,
+        "temporal_affine": 6.703619272404818,
+        "temporal_cubic": 0.42830341165859254,
+        "temporal_quadratic": -1.7299351765457671,
+        "temporal_spatial_cubic": 0.18732984235396222
+      }
+    },
+    {
+      "all_endpoint_cutoffs_exact": true,
+      "all_scale_admissible": true,
+      "cutoff": "robustness",
+      "ell_over_nonlocality": 0.4046384475941926,
+      "ensemble_mean_field_error": 0.46844723315154624,
+      "ensemble_mean_metric_diagonal": [
+        -0.6167173977648406,
+        -0.6691316714538144,
+        -0.6691316714538144,
+        -0.6691316714538144
+      ],
+      "ensemble_mean_metric_error": 0.4369062450941847,
+      "ensemble_mean_principal_symbol_mismatch": 1.0,
+      "events": 20000,
+      "lower_order_response_error": 0.27118299459382783,
+      "mean_operator_values": {
+        "constant": -17.947988384002088,
+        "spatial_quadratic": -1.3382633429076287,
+        "temporal_affine": 8.569194082460651,
+        "temporal_cubic": -0.08213819766443005,
+        "temporal_quadratic": -1.2334347955296812,
+        "temporal_spatial_cubic": 0.38238751837036833
+      },
+      "mean_past_count": 1251.0,
+      "median_individual_field_error": 1.0811351107176266,
+      "median_individual_metric_error": 1.0301553620028336,
+      "nonlocality_ratio": 0.25,
+      "potential_response": -17.947988384002088,
+      "quadratic_diagonal_prediction": {
+        "spatial_quadratic": 0.22192548915271515,
+        "temporal_quadratic": 0.8912700928069223
+      },
+      "quadratic_empirical_to_diagonal_ratio": {
+        "spatial_quadratic": 1.2761309033970563,
+        "temporal_quadratic": 2.8078680285507205
+      },
+      "quadratic_response_error": 0.5722088048792576,
+      "realizations": 8,
+      "signature_match_rate": 0.75,
+      "standard_deviations": {
+        "constant": 19.673900746019925,
+        "spatial_quadratic": 0.283205974959288,
+        "temporal_affine": 7.113217666417684,
+        "temporal_cubic": 0.8821738080681526,
+        "temporal_quadratic": 2.5025687983959903,
+        "temporal_spatial_cubic": 0.09784788217063906
+      },
+      "target_metric_diagonal": [
+        -0.22381959403220436,
+        -0.5607329845279937,
+        -0.5607329845279937,
+        -0.5607329845279937
+      ],
+      "target_principal_symbol_mismatch": 1.0,
+      "target_values": {
+        "constant": -10.784614271026934,
+        "spatial_quadratic": -1.1214659690559874,
+        "temporal_affine": 6.193790802128904,
+        "temporal_cubic": -0.34349002184947963,
+        "temporal_quadratic": -0.4476391880644087,
+        "temporal_spatial_cubic": 0.31004694485184087
+      }
+    }
+  ]
+}

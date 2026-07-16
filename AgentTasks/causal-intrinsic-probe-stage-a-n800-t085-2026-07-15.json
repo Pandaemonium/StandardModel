@@ -1,0 +1,171 @@
+{
+  "marked_target_selected_by_embedding_oracle": true,
+  "probe_construction_uses_embedding_coordinates": false,
+  "scoring_uses_embedding_coordinates": true,
+  "settings": {
+    "duration": 1.0,
+    "ell": 0.11309988439132511,
+    "epsilon": 0.1558685960357305,
+    "events": 800,
+    "filter_strength": 0.1,
+    "inner_profile_quantile": 0.08,
+    "maximum_fit_error": 0.25,
+    "maximum_metric_error": 0.5,
+    "nonlocality_scale": 0.18,
+    "outer_profile_quantile": 0.3,
+    "probe_count": 4,
+    "realizations": 20,
+    "seed": 20260715,
+    "target_time_fraction": 0.85
+  },
+  "status": "external intrinsic-probe prototype; not a proof",
+  "summary": {
+    "filtered_profile": {
+      "affine_probe_covariance_relative_error": {
+        "count": 20,
+        "mean": 2.701193813349673e-16,
+        "median": 2.0659811893212842e-16,
+        "std": 1.9834113355829502e-16
+      },
+      "coordinate_pulled_relative_error": {
+        "count": 20,
+        "mean": 1569.6819679524901,
+        "median": 1.8345688352359393,
+        "std": 6252.483483928146
+      },
+      "local_affine_fit_relative_error": {
+        "count": 20,
+        "mean": 0.1700604219560291,
+        "median": 0.1634841159869715,
+        "std": 0.02870674089594959
+      },
+      "local_jacobian_condition": {
+        "count": 20,
+        "mean": 18.745012141977934,
+        "median": 2.2004817897088915,
+        "std": 57.648056443430974
+      },
+      "pairing_relative_error": {
+        "count": 20,
+        "mean": 2.8049069070775374,
+        "median": 2.714589704917162,
+        "std": 1.1903010647005388
+      },
+      "prototype_gate_success_rate": 0.0,
+      "prototype_gate_successes": 0,
+      "relabeling_subspace_relative_error": {
+        "count": 20,
+        "mean": 1.1798063180428296e-14,
+        "median": 1.0678456417469986e-14,
+        "std": 3.7867721934767895e-15
+      },
+      "relative_boundary_gap": {
+        "count": 20,
+        "mean": 0.15268492583428023,
+        "median": 0.15790253877960148,
+        "std": 0.05948516780880794
+      },
+      "samples": 20,
+      "signature_success_rate": 0.3,
+      "signature_successes": 6
+    },
+    "operator_svd": {
+      "affine_probe_covariance_relative_error": {
+        "count": 20,
+        "mean": 5.040016484398756e-15,
+        "median": 2.8816322667223143e-15,
+        "std": 4.541490441981777e-15
+      },
+      "coordinate_pulled_relative_error": {
+        "count": 20,
+        "mean": 7672.481203874851,
+        "median": 141.83797641552292,
+        "std": 22675.249223507206
+      },
+      "local_affine_fit_relative_error": {
+        "count": 20,
+        "mean": 0.5969664156889853,
+        "median": 0.5552257400701268,
+        "std": 0.18779925889954255
+      },
+      "local_jacobian_condition": {
+        "count": 20,
+        "mean": 128.2983728736044,
+        "median": 16.56913235454389,
+        "std": 340.4319939679197
+      },
+      "pairing_relative_error": {
+        "count": 20,
+        "mean": 13.443425073037044,
+        "median": 4.569096264193454,
+        "std": 30.175662574112813
+      },
+      "prototype_gate_success_rate": 0.0,
+      "prototype_gate_successes": 0,
+      "relabeling_subspace_relative_error": {
+        "count": 20,
+        "mean": 1.1278061105502189e-14,
+        "median": 1.0240845467598546e-14,
+        "std": 5.686402681106351e-15
+      },
+      "relative_boundary_gap": {
+        "count": 20,
+        "mean": 0.06288586045361005,
+        "median": 0.06433105314479207,
+        "std": 0.033703130141961114
+      },
+      "samples": 20,
+      "signature_success_rate": 0.35,
+      "signature_successes": 7
+    },
+    "profile_pca": {
+      "affine_probe_covariance_relative_error": {
+        "count": 20,
+        "mean": 1.838474991240231e-16,
+        "median": 1.6707152041908107e-16,
+        "std": 1.1416907167488762e-16
+      },
+      "coordinate_pulled_relative_error": {
+        "count": 20,
+        "mean": 513.7399899422209,
+        "median": 1.824381012034073,
+        "std": 1928.325295910498
+      },
+      "local_affine_fit_relative_error": {
+        "count": 20,
+        "mean": 0.13684302402430398,
+        "median": 0.13379648883483797,
+        "std": 0.014677269294811049
+      },
+      "local_jacobian_condition": {
+        "count": 20,
+        "mean": 14.325834506526173,
+        "median": 2.5380980754567544,
+        "std": 38.64508625259159
+      },
+      "pairing_relative_error": {
+        "count": 20,
+        "mean": 2.9128203357888283,
+        "median": 2.9094826049045546,
+        "std": 1.1131204472699465
+      },
+      "prototype_gate_success_rate": 0.0,
+      "prototype_gate_successes": 0,
+      "relabeling_subspace_relative_error": {
+        "count": 20,
+        "mean": 3.709002884340513e-15,
+        "median": 3.0500369407902547e-15,
+        "std": 2.274168425480533e-15
+      },
+      "relative_boundary_gap": {
+        "count": 20,
+        "mean": 0.15268492583428023,
+        "median": 0.15790253877960148,
+        "std": 0.05948516780880794
+      },
+      "samples": 20,
+      "signature_success_rate": 0.2,
+      "signature_successes": 4
+    }
+  }
+}

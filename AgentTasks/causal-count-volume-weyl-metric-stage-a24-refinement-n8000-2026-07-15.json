@@ -1,0 +1,1223 @@
+{
+  "claim_boundary": {
+    "conformal_class_is_supplied": true,
+    "event_counts_supply_scale": true,
+    "fit_and_validation_counts_are_disjoint_poisson_thinnings": true,
+    "operator_metric_is_not_used": true,
+    "window_placement_uses_embedding_coordinates": true
+  },
+  "mode": "held-out",
+  "samples": [
+    {
+      "center_count": 192,
+      "center_multiplier": 1.2,
+      "coordinate_center_radius": 0.19670965794028206,
+      "coordinate_ell": 0.06360073886749304,
+      "coordinate_window_half_duration": 0.16392471495023506,
+      "count_metric_volume_relative_mismatch": 0.0723448759740151,
+      "design_condition": 16.366215980646952,
+      "design_rank": 5,
+      "duration": 1.0,
+      "factor_first_gradient": [
+        0.32049486128844584,
+        0.28845584358232507,
+        0.25346231861470336,
+        -0.2549482206982219
+      ],
+      "factor_relative_error": 0.051185392727808754,
+      "first_gradient_dimensionless_error": 0.5613960028391916,
+      "hubble": 0.0,
+      "independent_count_volume_density": 0.843930891994229,
+      "inverse_metric": [
+        [
+          1.0511853927278088,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1.0511853927278088,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0511853927278088,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -1.0511853927278088
+        ]
+      ],
+      "inverse_metric_weyl_factor": 1.0511853927278088,
+      "median_fit_window_count": 42.0,
+      "metric_relative_error": 0.051185392727808754,
+      "metric_signature": [
+        1,
+        3,
+        0
+      ],
+      "metric_volume_density": 0.9049849677061914,
+      "minimum_fit_window_count": 27,
+      "oracle_volume_relative_error": 0.09501503229380859,
+      "pivot_validation_count": 39,
+      "spatial_gradient_dimensionless_noise": 0.46092137712577563,
+      "target_factor_first_gradient": [
+        -0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "target_inverse_metric": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -1.0
+        ]
+      ],
+      "target_inverse_metric_weyl_factor": 1.0,
+      "target_volume_density": 1.0,
+      "temporal_gradient_relative_error": null,
+      "window_multiplier": 0.65
+    },
+    {
+      "center_count": 192,
+      "center_multiplier": 1.2,
+      "coordinate_center_radius": 0.19670965794028206,
+      "coordinate_ell": 0.06360073886749304,
+      "coordinate_window_half_duration": 0.16392471495023506,
+      "count_metric_volume_relative_mismatch": 0.1749758936960388,
+      "design_condition": 16.43732046381143,
+      "design_rank": 5,
+      "duration": 1.0,
+      "factor_first_gradient": [
+        -0.6179061234179596,
+        -0.2980834591895827,
+        -0.1922329109726658,
+        -0.12876010942436428
+      ],
+      "factor_relative_error": 0.058426098157565054,
+      "first_gradient_dimensionless_error": 0.7240126959106707,
+      "hubble": 0.0,
+      "independent_count_volume_density": 1.0819626820438835,
+      "inverse_metric": [
+        [
+          1.058426098157565,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1.058426098157565,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.058426098157565,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -1.058426098157565
+        ]
+      ],
+      "inverse_metric_weyl_factor": 1.058426098157565,
+      "median_fit_window_count": 42.0,
+      "metric_relative_error": 0.058426098157565054,
+      "metric_signature": [
+        1,
+        3,
+        0
+      ],
+      "metric_volume_density": 0.8926452948074919,
+      "minimum_fit_window_count": 27,
+      "oracle_volume_relative_error": 0.10735470519250812,
+      "pivot_validation_count": 50,
+      "spatial_gradient_dimensionless_noise": 0.3773412334776398,
+      "target_factor_first_gradient": [
+        -0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "target_inverse_metric": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -1.0
+        ]
+      ],
+      "target_inverse_metric_weyl_factor": 1.0,
+      "target_volume_density": 1.0,
+      "temporal_gradient_relative_error": null,
+      "window_multiplier": 0.65
+    },
+    {
+      "center_count": 192,
+      "center_multiplier": 1.2,
+      "coordinate_center_radius": 0.19670965794028206,
+      "coordinate_ell": 0.06360073886749304,
+      "coordinate_window_half_duration": 0.16392471495023506,
+      "count_metric_volume_relative_mismatch": 0.12044835379204803,
+      "design_condition": 16.23675417645294,
+      "design_rank": 5,
+      "duration": 1.0,
+      "factor_first_gradient": [
+        0.2858596677364976,
+        0.14520802077737294,
+        -0.07303146456468529,
+        0.38724486762999294
+      ],
+      "factor_relative_error": 0.009035048411712543,
+      "first_gradient_dimensionless_error": 0.5080288390030003,
+      "hubble": 0.0,
+      "independent_count_volume_density": 0.908848652916862,
+      "inverse_metric": [
+        [
+          0.9909649515882875,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.9909649515882875,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -0.9909649515882875,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.9909649515882875
+        ]
+      ],
+      "inverse_metric_weyl_factor": 0.9909649515882875,
+      "median_fit_window_count": 48.0,
+      "metric_relative_error": 0.009035048411712543,
+      "metric_signature": [
+        1,
+        3,
+        0
+      ],
+      "metric_volume_density": 1.0183179770068185,
+      "minimum_fit_window_count": 31,
+      "oracle_volume_relative_error": 0.018317977006818476,
+      "pivot_validation_count": 42,
+      "spatial_gradient_dimensionless_noise": 0.41997327488819525,
+      "target_factor_first_gradient": [
+        -0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "target_inverse_metric": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -1.0
+        ]
+      ],
+      "target_inverse_metric_weyl_factor": 1.0,
+      "target_volume_density": 1.0,
+      "temporal_gradient_relative_error": null,
+      "window_multiplier": 0.65
+    },
+    {
+      "center_count": 192,
+      "center_multiplier": 1.2,
+      "coordinate_center_radius": 0.19670965794028206,
+      "coordinate_ell": 0.06360073886749304,
+      "coordinate_window_half_duration": 0.16392471495023506,
+      "count_metric_volume_relative_mismatch": 0.09980542428865376,
+      "design_condition": 17.300993888558633,
+      "design_rank": 5,
+      "duration": 1.0,
+      "factor_first_gradient": [
+        0.07194584542930457,
+        -0.10285436355271343,
+        0.06436455198529437,
+        -0.30162147579389664
+      ],
+      "factor_relative_error": 0.016733469516430306,
+      "first_gradient_dimensionless_error": 0.4626127771325293,
+      "hubble": 0.1,
+      "independent_count_volume_density": 1.4106740401040387,
+      "inverse_metric": [
+        [
+          0.8873980437614216,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.8873980437614216,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -0.8873980437614216,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.8873980437614216
+        ]
+      ],
+      "inverse_metric_weyl_factor": 0.8873980437614216,
+      "median_fit_window_count": 49.0,
+      "metric_relative_error": 0.016733469516430427,
+      "metric_signature": [
+        1,
+        3,
+        0
+      ],
+      "metric_volume_density": 1.2698811189984658,
+      "minimum_fit_window_count": 34,
+      "oracle_volume_relative_error": 0.03432610818124415,
+      "pivot_validation_count": 53,
+      "spatial_gradient_dimensionless_noise": 0.3602340812883295,
+      "target_factor_first_gradient": [
+        -0.19,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "target_inverse_metric": [
+        [
+          0.9025000000000001,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.9025000000000001,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -0.9025000000000001,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.9025000000000001
+        ]
+      ],
+      "target_inverse_metric_weyl_factor": 0.9025,
+      "target_volume_density": 1.2277376631548254,
+      "temporal_gradient_relative_error": 1.3786623443647608,
+      "window_multiplier": 0.65
+    },
+    {
+      "center_count": 192,
+      "center_multiplier": 1.2,
+      "coordinate_center_radius": 0.19670965794028206,
+      "coordinate_ell": 0.06360073886749304,
+      "coordinate_window_half_duration": 0.16392471495023506,
+      "count_metric_volume_relative_mismatch": 0.04639394543316425,
+      "design_condition": 16.742920956190186,
+      "design_rank": 5,
+      "duration": 1.0,
+      "factor_first_gradient": [
+        -0.8165586626965213,
+        -0.3724499999688909,
+        0.23929258086240968,
+        0.007851564179819168
+      ],
+      "factor_relative_error": 0.000929386002311053,
+      "first_gradient_dimensionless_error": 0.8500986328645447,
+      "hubble": 0.1,
+      "independent_count_volume_density": 1.1711256181995795,
+      "inverse_metric": [
+        [
+          0.9033387708670857,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.9033387708670857,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -0.9033387708670857,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.9033387708670857
+        ]
+      ],
+      "inverse_metric_weyl_factor": 0.9033387708670857,
+      "median_fit_window_count": 48.0,
+      "metric_relative_error": 0.0009293860023109298,
+      "metric_signature": [
+        1,
+        3,
+        0
+      ],
+      "metric_volume_density": 1.2254587562257115,
+      "minimum_fit_window_count": 26,
+      "oracle_volume_relative_error": 0.001856183936931506,
+      "pivot_validation_count": 44,
+      "spatial_gradient_dimensionless_noise": 0.4905992683499394,
+      "target_factor_first_gradient": [
+        -0.19,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "target_inverse_metric": [
+        [
+          0.9025000000000001,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.9025000000000001,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -0.9025000000000001,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.9025000000000001
+        ]
+      ],
+      "target_inverse_metric_weyl_factor": 0.9025,
+      "target_volume_density": 1.2277376631548254,
+      "temporal_gradient_relative_error": 3.2976771720869547,
+      "window_multiplier": 0.65
+    },
+    {
+      "center_count": 192,
+      "center_multiplier": 1.2,
+      "coordinate_center_radius": 0.19670965794028206,
+      "coordinate_ell": 0.06360073886749304,
+      "coordinate_window_half_duration": 0.16392471495023506,
+      "count_metric_volume_relative_mismatch": 0.12601535830930385,
+      "design_condition": 16.437360674443678,
+      "design_rank": 5,
+      "duration": 1.0,
+      "factor_first_gradient": [
+        -0.9466158751937856,
+        -0.4540918925570374,
+        -0.2003987916159904,
+        0.10974127885967414
+      ],
+      "factor_relative_error": 0.08297699105411792,
+      "first_gradient_dimensionless_error": 1.0099951545716843,
+      "hubble": 0.1,
+      "independent_count_volume_density": 1.197742109522297,
+      "inverse_metric": [
+        [
+          0.9773867344263414,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.9773867344263414,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -0.9773867344263414,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.9773867344263414
+        ]
+      ],
+      "inverse_metric_weyl_factor": 0.9773867344263414,
+      "median_fit_window_count": 40.0,
+      "metric_relative_error": 0.08297699105411778,
+      "metric_signature": [
+        1,
+        3,
+        0
+      ],
+      "metric_volume_density": 1.0468082084287034,
+      "minimum_fit_window_count": 24,
+      "oracle_volume_relative_error": 0.1473681716835184,
+      "pivot_validation_count": 45,
+      "spatial_gradient_dimensionless_noise": 0.5632496783584402,
+      "target_factor_first_gradient": [
+        -0.19,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "target_inverse_metric": [
+        [
+          0.9025000000000001,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.9025000000000001,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -0.9025000000000001,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.9025000000000001
+        ]
+      ],
+      "target_inverse_metric_weyl_factor": 0.9025,
+      "target_volume_density": 1.2277376631548254,
+      "temporal_gradient_relative_error": 3.982188816809398,
+      "window_multiplier": 0.65
+    },
+    {
+      "center_count": 192,
+      "center_multiplier": 1.2,
+      "coordinate_center_radius": 0.19670965794028206,
+      "coordinate_ell": 0.06360073886749304,
+      "coordinate_window_half_duration": 0.16392471495023506,
+      "count_metric_volume_relative_mismatch": 0.1524924221427746,
+      "design_condition": 16.287440162221664,
+      "design_rank": 5,
+      "duration": 1.0,
+      "factor_first_gradient": [
+        -0.41668982373371194,
+        0.2625167161700797,
+        -0.2574489068010879,
+        -0.08534147946617071
+      ],
+      "factor_relative_error": 0.03672239035177697,
+      "first_gradient_dimensionless_error": 0.4712296841268639,
+      "hubble": 0.2,
+      "independent_count_volume_density": 1.2304583770775042,
+      "inverse_metric": [
+        [
+          0.8397451361849394,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.8397451361849394,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -0.8397451361849394,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.8397451361849394
+        ]
+      ],
+      "inverse_metric_weyl_factor": 0.8397451361849394,
+      "median_fit_window_count": 43.5,
+      "metric_relative_error": 0.03672239035177711,
+      "metric_signature": [
+        1,
+        3,
+        0
+      ],
+      "metric_volume_density": 1.4180939553439202,
+      "minimum_fit_window_count": 27,
+      "oracle_volume_relative_error": 0.06958855589885377,
+      "pivot_validation_count": 37,
+      "spatial_gradient_dimensionless_noise": 0.46600340546535435,
+      "target_factor_first_gradient": [
+        -0.36000000000000004,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "target_inverse_metric": [
+        [
+          0.8099999999999999,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.8099999999999999,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -0.8099999999999999,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.8099999999999999
+        ]
+      ],
+      "target_inverse_metric_weyl_factor": 0.81,
+      "target_volume_density": 1.5241579027587255,
+      "temporal_gradient_relative_error": 0.15747173259364414,
+      "window_multiplier": 0.65
+    },
+    {
+      "center_count": 192,
+      "center_multiplier": 1.2,
+      "coordinate_center_radius": 0.19670965794028206,
+      "coordinate_ell": 0.06360073886749304,
+      "coordinate_window_half_duration": 0.16392471495023506,
+      "count_metric_volume_relative_mismatch": 0.08155424821731999,
+      "design_condition": 16.455515658961087,
+      "design_rank": 5,
+      "duration": 1.0,
+      "factor_first_gradient": [
+        -0.6281044280665704,
+        -0.040754863505374495,
+        -0.3183569166190769,
+        0.44546366505329515
+      ],
+      "factor_relative_error": 0.030402006395693456,
+      "first_gradient_dimensionless_error": 0.7543300261022868,
+      "hubble": 0.2,
+      "independent_count_volume_density": 1.5630146952065593,
+      "inverse_metric": [
+        [
+          0.8346256251805118,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.8346256251805118,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -0.8346256251805118,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.8346256251805118
+        ]
+      ],
+      "inverse_metric_weyl_factor": 0.8346256251805118,
+      "median_fit_window_count": 45.0,
+      "metric_relative_error": 0.030402006395693598,
+      "metric_signature": [
+        1,
+        3,
+        0
+      ],
+      "metric_volume_density": 1.4355442067863649,
+      "minimum_fit_window_count": 28,
+      "oracle_volume_relative_error": 0.05813944592746585,
+      "pivot_validation_count": 47,
+      "spatial_gradient_dimensionless_noise": 0.6778328275348745,
+      "target_factor_first_gradient": [
+        -0.36000000000000004,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "target_inverse_metric": [
+        [
+          0.8099999999999999,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.8099999999999999,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -0.8099999999999999,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.8099999999999999
+        ]
+      ],
+      "target_inverse_metric_weyl_factor": 0.81,
+      "target_volume_density": 1.5241579027587255,
+      "temporal_gradient_relative_error": 0.7447345224071398,
+      "window_multiplier": 0.65
+    },
+    {
+      "center_count": 192,
+      "center_multiplier": 1.2,
+      "coordinate_center_radius": 0.19670965794028206,
+      "coordinate_ell": 0.06360073886749304,
+      "coordinate_window_half_duration": 0.16392471495023506,
+      "count_metric_volume_relative_mismatch": 0.24180839608685623,
+      "design_condition": 16.5227967761343,
+      "design_rank": 5,
+      "duration": 1.0,
+      "factor_first_gradient": [
+        -0.13725267608565186,
+        0.0667088354523195,
+        0.22036959599980696,
+        -0.05452230253820414
+      ],
+      "factor_relative_error": 0.048362672658809044,
+      "first_gradient_dimensionless_error": 0.40119065163953344,
+      "hubble": 0.2,
+      "independent_count_volume_density": 1.8290597497098036,
+      "inverse_metric": [
+        [
+          0.8491737648536354,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.8491737648536354,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -0.8491737648536354,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.8491737648536354
+        ]
+      ],
+      "inverse_metric_weyl_factor": 0.8491737648536354,
+      "median_fit_window_count": 42.0,
+      "metric_relative_error": 0.04836267265880919,
+      "metric_signature": [
+        1,
+        3,
+        0
+      ],
+      "metric_volume_density": 1.3867777452854493,
+      "minimum_fit_window_count": 27,
+      "oracle_volume_relative_error": 0.09013512131821656,
+      "pivot_validation_count": 55,
+      "spatial_gradient_dimensionless_noise": 0.2921142859348615,
+      "target_factor_first_gradient": [
+        -0.36000000000000004,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "target_inverse_metric": [
+        [
+          0.8099999999999999,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.8099999999999999,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -0.8099999999999999,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.8099999999999999
+        ]
+      ],
+      "target_inverse_metric_weyl_factor": 0.81,
+      "target_volume_density": 1.5241579027587255,
+      "temporal_gradient_relative_error": 0.6187425664287448,
+      "window_multiplier": 0.65
+    }
+  ],
+  "schedule": {
+    "asymptotics": [
+      "ell_coord/W_coord -> 0",
+      "W_coord,C -> 0"
+    ],
+    "centers": "C = cC * W",
+    "window": "W_coord = cW * sqrt(ell_coord * T_coord)"
+  },
+  "selected_background_summaries": {
+    "H=0.000000": {
+      "center_count": {
+        "count": 3,
+        "mean": 192.0,
+        "median": 192.0,
+        "std": 0.0
+      },
+      "center_multiplier": 1.2,
+      "coordinate_center_radius": 0.19670965794028206,
+      "coordinate_window_half_duration": 0.16392471495023506,
+      "count_metric_volume_relative_mismatch": {
+        "count": 3,
+        "mean": 0.12258970782070065,
+        "median": 0.12044835379204803,
+        "std": 0.04192628847132871
+      },
+      "design_condition": {
+        "count": 3,
+        "mean": 16.346763540303776,
+        "median": 16.366215980646952,
+        "std": 0.08302813572386517
+      },
+      "duration": 1.0,
+      "ensemble_factor_relative_error": 0.033525480824553755,
+      "ensemble_gradient_dimensionless_error": 0.04554275310599201,
+      "ensemble_mean_factor": 1.0335254808245538,
+      "ensemble_mean_gradient": [
+        -0.003850531464338706,
+        0.04519346839003844,
+        -0.003934018974215904,
+        0.001178845835802263
+      ],
+      "ensemble_temporal_gradient_relative_error": null,
+      "factor_relative_error": {
+        "count": 3,
+        "mean": 0.03954884643236212,
+        "median": 0.051185392727808754,
+        "std": 0.021778060152576703
+      },
+      "factor_response_relative_to_flat": {
+        "estimate": 1.0,
+        "relative_error": 0.0,
+        "target": 1.0
+      },
+      "first_gradient_dimensionless_error": {
+        "count": 3,
+        "mean": 0.5978125125842876,
+        "median": 0.5613960028391916,
+        "std": 0.09185814515758983
+      },
+      "hubble": 0.0,
+      "median_fit_window_count": {
+        "count": 3,
+        "mean": 44.0,
+        "median": 42.0,
+        "std": 2.8284271247461903
+      },
+      "metric_relative_error": {
+        "count": 3,
+        "mean": 0.03954884643236212,
+        "median": 0.051185392727808754,
+        "std": 0.021778060152576703
+      },
+      "minimum_fit_window_count": {
+        "count": 3,
+        "mean": 28.333333333333332,
+        "median": 27.0,
+        "std": 1.8856180831641267
+      },
+      "oracle_volume_relative_error": {
+        "count": 3,
+        "mean": 0.07356257149771173,
+        "median": 0.09501503229380859,
+        "std": 0.03938731434661969
+      },
+      "pivot_validation_count": {
+        "count": 3,
+        "mean": 43.666666666666664,
+        "median": 42.0,
+        "std": 4.642796092394707
+      },
+      "signature_success_rate": 1.0,
+      "spatial_gradient_dimensionless_noise": {
+        "count": 3,
+        "mean": 0.4194119618305369,
+        "median": 0.41997327488819525,
+        "std": 0.03412375914542318
+      },
+      "target_factor": 1.0,
+      "target_gradient": [
+        -0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "temporal_gradient_relative_error": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "window_multiplier": 0.65
+    },
+    "H=0.100000": {
+      "center_count": {
+        "count": 3,
+        "mean": 192.0,
+        "median": 192.0,
+        "std": 0.0
+      },
+      "center_multiplier": 1.2,
+      "coordinate_center_radius": 0.19670965794028206,
+      "coordinate_window_half_duration": 0.16392471495023506,
+      "count_metric_volume_relative_mismatch": {
+        "count": 3,
+        "mean": 0.09073824267704063,
+        "median": 0.09980542428865376,
+        "std": 0.033131582957269576
+      },
+      "design_condition": {
+        "count": 3,
+        "mean": 16.82709183973083,
+        "median": 16.742920956190186,
+        "std": 0.35756503870637923
+      },
+      "duration": 1.0,
+      "ensemble_factor_relative_error": 0.022390969179999554,
+      "ensemble_gradient_dimensionless_error": 0.5435088474550087,
+      "ensemble_mean_factor": 0.9227078496849496,
+      "ensemble_mean_gradient": [
+        -0.5637428974870008,
+        -0.30979875202621393,
+        0.034419447077237875,
+        -0.06134287758480111
+      ],
+      "ensemble_temporal_gradient_relative_error": 1.9670678815105305,
+      "factor_relative_error": {
+        "count": 3,
+        "mean": 0.03354661552428643,
+        "median": 0.016733469516430306,
+        "std": 0.03554306104521141
+      },
+      "factor_response_relative_to_flat": {
+        "estimate": 0.8927770691718281,
+        "relative_error": 0.010773330557531173,
+        "target": 0.9025
+      },
+      "first_gradient_dimensionless_error": {
+        "count": 3,
+        "mean": 0.7742355215229194,
+        "median": 0.8500986328645447,
+        "std": 0.22981626796140037
+      },
+      "hubble": 0.1,
+      "median_fit_window_count": {
+        "count": 3,
+        "mean": 45.666666666666664,
+        "median": 48.0,
+        "std": 4.027681991198191
+      },
+      "metric_relative_error": {
+        "count": 3,
+        "mean": 0.03354661552428638,
+        "median": 0.016733469516430427,
+        "std": 0.03554306104521136
+      },
+      "minimum_fit_window_count": {
+        "count": 3,
+        "mean": 28.0,
+        "median": 26.0,
+        "std": 4.320493798938574
+      },
+      "oracle_volume_relative_error": {
+        "count": 3,
+        "mean": 0.06118348793389802,
+        "median": 0.03432610818124415,
+        "std": 0.062366784855799696
+      },
+      "pivot_validation_count": {
+        "count": 3,
+        "mean": 47.333333333333336,
+        "median": 45.0,
+        "std": 4.027681991198191
+      },
+      "signature_success_rate": 1.0,
+      "spatial_gradient_dimensionless_noise": {
+        "count": 3,
+        "mean": 0.4713610093322364,
+        "median": 0.4905992683499394,
+        "std": 0.0839897458858622
+      },
+      "target_factor": 0.9025,
+      "target_gradient": [
+        -0.19,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "temporal_gradient_relative_error": {
+        "count": 3,
+        "mean": 2.8861761110870376,
+        "median": 3.2976771720869547,
+        "std": 1.1019943634408322
+      },
+      "window_multiplier": 0.65
+    },
+    "H=0.200000": {
+      "center_count": {
+        "count": 3,
+        "mean": 192.0,
+        "median": 192.0,
+        "std": 0.0
+      },
+      "center_multiplier": 1.2,
+      "coordinate_center_radius": 0.19670965794028206,
+      "coordinate_window_half_duration": 0.16392471495023506,
+      "count_metric_volume_relative_mismatch": {
+        "count": 3,
+        "mean": 0.15861835548231693,
+        "median": 0.1524924221427746,
+        "std": 0.06556672566583441
+      },
+      "design_condition": {
+        "count": 3,
+        "mean": 16.421917532439014,
+        "median": 16.455515658961087,
+        "std": 0.0989774705255364
+      },
+      "duration": 1.0,
+      "ensemble_factor_relative_error": 0.038495689802093204,
+      "ensemble_gradient_dimensionless_error": 0.23036267851637038,
+      "ensemble_mean_factor": 0.8411815087396955,
+      "ensemble_mean_gradient": [
+        -0.39401564262864475,
+        0.09615689603900823,
+        -0.11847874247345262,
+        0.10186662768297343
+      ],
+      "ensemble_temporal_gradient_relative_error": 0.09448789619067972,
+      "factor_relative_error": {
+        "count": 3,
+        "mean": 0.038495689802093155,
+        "median": 0.03672239035177697,
+        "std": 0.007438854139320266
+      },
+      "factor_response_relative_to_flat": {
+        "estimate": 0.8138952781972972,
+        "relative_error": 0.004808985428761951,
+        "target": 0.81
+      },
+      "first_gradient_dimensionless_error": {
+        "count": 3,
+        "mean": 0.5422501206228947,
+        "median": 0.4712296841268639,
+        "std": 0.1526647334281917
+      },
+      "hubble": 0.2,
+      "median_fit_window_count": {
+        "count": 3,
+        "mean": 43.5,
+        "median": 43.5,
+        "std": 1.224744871391589
+      },
+      "metric_relative_error": {
+        "count": 3,
+        "mean": 0.0384956898020933,
+        "median": 0.03672239035177711,
+        "std": 0.007438854139320268
+      },
+      "minimum_fit_window_count": {
+        "count": 3,
+        "mean": 27.333333333333332,
+        "median": 27.0,
+        "std": 0.4714045207910317
+      },
+      "oracle_volume_relative_error": {
+        "count": 3,
+        "mean": 0.07262104104817872,
+        "median": 0.06958855589885377,
+        "std": 0.013237013398377294
+      },
+      "pivot_validation_count": {
+        "count": 3,
+        "mean": 46.333333333333336,
+        "median": 47.0,
+        "std": 7.363574011458175
+      },
+      "signature_success_rate": 1.0,
+      "spatial_gradient_dimensionless_noise": {
+        "count": 3,
+        "mean": 0.47865017297836343,
+        "median": 0.46600340546535435,
+        "std": 0.157722655062415
+      },
+      "target_factor": 0.81,
+      "target_gradient": [
+        -0.36000000000000004,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "temporal_gradient_relative_error": {
+        "count": 3,
+        "mean": 0.5069829404765095,
+        "median": 0.6187425664287448,
+        "std": 0.25243752569645184
+      },
+      "window_multiplier": 0.65
+    }
+  },
+  "selected_setting": {
+    "center_multiplier": 1.2,
+    "factor_selection_tolerance": 0.03,
+    "key": "cW=0.650000|cC=1.200000",
+    "selection_data": "frozen before held-out seeds",
+    "window_multiplier": 0.65
+  },
+  "settings": {
+    "center_multipliers": [
+      1.2
+    ],
+    "duration": 1.0,
+    "events": 8000,
+    "factor_selection_tolerance": 0.03,
+    "hubble_values": [
+      0.0,
+      0.1,
+      0.2
+    ],
+    "maximum_centers": 192,
+    "pivot_fraction": 0.5,
+    "realizations_per_background": 3,
+    "seed": 20260980,
+    "window_multipliers": [
+      0.65
+    ]
+  },
+  "status": "count-volume Weyl-scale calibration; not bare-order reconstruction"
+}

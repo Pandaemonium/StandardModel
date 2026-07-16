@@ -1,4 +1,8 @@
-# GOAL PROMPT - Claude Opus, Section 7 six-gate run
+# GOAL PROMPT - interactive Claude Code, Section 7 six-gate run
+
+The filename is retained only for provenance and compatibility. This prompt is
+for the user-started interactive Claude Code session; it must not be dispatched
+through an API or repository review wrapper.
 
 Execute `AgentTasks/24h-six-gates-run-2026-07-13/RUN_PLAN.md` continuously
 until 10:30 PDT on July 13, 2026. You are co-equal with Codex. Coordinate only
@@ -68,13 +72,14 @@ verbatim Lean declarations and intended readings. Audit for:
 - arithmetic anomaly cancellation presented as a gauge-field anomaly theorem;
 - a realized random structure confused with invariance of its distribution.
 
-Use the repository model-call wrappers for any additional Claude/Gemini calls
-and preserve full logs. Use primary full text for theorem content and record
-the exact source, theorem/hypothesis, convention, and manuscript consequence.
+Use the AFPL mailbox for durable cross-family review requests and preserve the
+linked artifacts and verdicts. Use primary full text for theorem content and
+record the exact source, theorem/hypothesis, convention, and manuscript
+consequence.
 
 ## Aristotle
 
-Keep useful `opus-6gate-` proof, strategy, and hostile-audit jobs active when
+Keep useful `claude-6gate-` proof, strategy, and hostile-audit jobs active when
 capacity permits. Statements must typecheck before submission and may not be
 weakened. Include context packs, nonzero witnesses, controls, expected axiom
 footprints, and kill conditions. Download and semantically inspect results

@@ -1,8 +1,10 @@
 # GOAL PROMPT - Codex, Section 7 six-gate run
 
 Execute `AgentTasks/24h-six-gates-run-2026-07-13/RUN_PLAN.md` continuously
-until 10:30 PDT on July 13, 2026. You are co-equal with Claude Opus when Opus is
-available. Coordinate only through this run's append-only `LEDGER.md`.
+until 10:30 PDT on July 13, 2026. You are co-equal with the user-started
+interactive Claude Code session when it is available. Coordinate through the
+AFPL mailbox and preserve this run's append-only `LEDGER.md` as its historical
+record.
 `AGENTS.md`, the Lean kernel, convention locks, provenance requirements, and
 trust rules are binding.
 
@@ -18,9 +20,9 @@ run's final report/scorecard. Immediately:
 4. prepare focused semantic context packs;
 5. launch a proof wave, a strategy job, and an adversarial audit job.
 
-The configured Opus wrapper was out of credit at startup. Retry it no more than
-once per hour through the repository wrapper. Continue independently between
-retries and never claim Opus reviewed work it did not return.
+Never invoke Claude through an API or repository review wrapper. Check the AFPL
+Claude mailbox for handoffs and reviews, and never claim Claude Code reviewed
+work unless an actual verdict was returned.
 
 ## Primary lanes
 
@@ -53,7 +55,7 @@ sources before fixing conventions.
 
 Own all new module integration, guard pins, root imports, exact fixtures,
 manuscript claim mapping, aggregate builds, deterministic verifier runs, and
-the final full build. Cross-audit Opus outputs for source support and
+the final full build. Cross-audit Claude Code outputs for source support and
 finite-to-continuum slippage.
 
 ## Shared high-value targets

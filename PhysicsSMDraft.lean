@@ -1,9 +1,20 @@
 import PhysicsSM
+
+-- SPL (Sphere-Packing-Lean) decoupling: the following E8 theta-series / SPL
+-- bridge modules transitively import the external `SpherePacking` package,
+-- which is intentionally disabled in the default and Windows workspaces (SPL
+-- ships files named `Aux.lean`, a Windows reserved device name; see the
+-- lakefile.toml SPL section). They are commented out here so the draft
+-- aggregate `PhysicsSMDraft` builds SPL-free. The modules remain in-repo and
+-- are still reachable through the optional `PhysicsSMSPL` root for SPL-enabled
+-- (WSL2 / Linux / macOS) checkouts. Re-enable by uncommenting AND turning the
+-- SPL `[[require]]` back on in lakefile.toml. Non-SPL E8 theta modules
+-- (e.g. E8SpherePackingIsometryHelper) are deliberately left active.
 import PhysicsSM.Draft.E8ThetaSeriesMoonshot
 import PhysicsSM.Draft.E8SpherePackingIsometryHelper
 import PhysicsSM.Draft.E8EvenUnimodularUniqueness
 import PhysicsSM.Draft.Hamming844Uniqueness
-import PhysicsSM.Draft.E8SpherePackingBridge
+-- import PhysicsSM.Draft.E8SpherePackingBridge
 import PhysicsSM.Draft.E8ThetaModularAristotle
 import PhysicsSM.Draft.E8ShortVectorsStructuralAristotle
 import PhysicsSM.Draft.E8RootSemanticAristotle
@@ -11,15 +22,15 @@ import PhysicsSM.Draft.HammingE8E8StructuralAristotle
 import PhysicsSM.Draft.ConstructionAThetaConvolutionAristotle
 import PhysicsSM.Draft.ConstructionAThetaNoNativeAristotle
 import PhysicsSM.Draft.ConstructionAThetaBoundedShellAristotle
-import PhysicsSM.Draft.E8ThetaWeightEnumeratorBridgeAristotle
+-- import PhysicsSM.Draft.E8ThetaWeightEnumeratorBridgeAristotle
 import PhysicsSM.Draft.E8ThetaDuplicationHelper
-import PhysicsSM.Draft.E8ThetaQExpansionBridgeAristotle
-import PhysicsSM.Draft.E8ThetaCoeffGapAristotle
-import PhysicsSM.Draft.E8ThetaDuplicationAristotle
-import PhysicsSM.Draft.E8ThetaMFBridgeHelper
-import PhysicsSM.Draft.E8ThetaMFBridgeAristotle
-import PhysicsSM.Draft.ThetaDuplicationIdentities
-import PhysicsSM.Draft.E8ThetaSPLBridgeAristotle
+-- import PhysicsSM.Draft.E8ThetaQExpansionBridgeAristotle
+-- import PhysicsSM.Draft.E8ThetaCoeffGapAristotle
+-- import PhysicsSM.Draft.E8ThetaDuplicationAristotle
+-- import PhysicsSM.Draft.E8ThetaMFBridgeHelper
+-- import PhysicsSM.Draft.E8ThetaMFBridgeAristotle
+-- import PhysicsSM.Draft.ThetaDuplicationIdentities
+-- import PhysicsSM.Draft.E8ThetaSPLBridgeAristotle
 import PhysicsSM.Draft.E8WeylSemanticAristotle
 import PhysicsSM.Draft.E8ShortVectorsNoNativeAristotle
 import PhysicsSM.Draft.Hamming844SystematicNoNativeAristotle
@@ -29,7 +40,7 @@ import PhysicsSM.Draft.Hamming844UniquenessNoNativeAristotle
 import PhysicsSM.Draft.Hamming844ConcreteNoNativeAristotle
 import PhysicsSM.Draft.E8ThetaDim8Helpers
 import PhysicsSM.Draft.DualLatticeHelper
-import PhysicsSM.Draft.E8ThetaDim8MF
+-- import PhysicsSM.Draft.E8ThetaDim8MF
 import PhysicsSM.Draft.ConstructionATypeIIAristotle
 import PhysicsSM.Draft.Sedenions.CayleyDicksonSignTable
 import PhysicsSM.Draft.Sedenions.ReedMullerCode
@@ -83,7 +94,24 @@ import PhysicsSM.Draft.NullEdge.GateC1.D4AddedStepCausalClassification
 import PhysicsSM.Draft.NullEdge.GateC1.D4DisconnectedCopy
 import PhysicsSM.Draft.NullEdge.GateC1.D4ConcreteQuotient
 import PhysicsSM.Draft.NullEdge.NondegenerateSolderingGeometry
+import PhysicsSM.Draft.NullEdge.TetradSpinReconstructionBoundary
+import PhysicsSM.Draft.NullEdge.HermitianSpinLiftBoundary
+import PhysicsSM.Draft.NullEdge.GraphSpinLiftCocycle
+import PhysicsSM.Draft.NullEdge.FiniteSpinCochainObstruction
+import PhysicsSM.Draft.NullEdge.SpinLiftDefectFromTransport
+import PhysicsSM.Draft.NullEdge.SL2CCentralSign
+import PhysicsSM.Draft.NullEdge.CausalOperatorMetric
+import PhysicsSM.Draft.NullEdge.CausalMetricFirstJet
+import PhysicsSM.Draft.NullEdge.CausalLeviCivita
+import PhysicsSM.Draft.NullEdge.FiniteCausalOrderOperator
+import PhysicsSM.Draft.NullEdge.AlexandrovGermPairEstimand
+import PhysicsSM.Draft.NullEdge.AlexandrovGermInternalOperator
+import PhysicsSM.Draft.NullEdge.IntrinsicProbeSubspace
+import PhysicsSM.Draft.NullEdge.ProbeFrameLorentzGauge
+import PhysicsSM.Draft.NullEdge.RetardedProbeSupportGate
+import PhysicsSM.Draft.NullEdge.RetardedShellInfraredNoGo
 import PhysicsSM.Draft.NullEdge.U1HistoryClosureHolonomy
+import PhysicsSM.Draft.NullEdge.EqualMagnitudePhaseInterferometer
 import PhysicsSM.Draft.NullEdge.NonabelianHistoryClosureHolonomy
 import PhysicsSM.Draft.NullEdgeTwoTwistorHiddenChannelAristotle
 import PhysicsSM.Draft.NullEdgeQuantumMeasureFiniteAristotle
@@ -271,6 +299,9 @@ import PhysicsSM.Draft.NullEdge.Carrier.WardQuotientFactorization
 import PhysicsSM.Draft.NullEdge.ChannelSolderDegreeNoGo
 import PhysicsSM.Draft.NullEdge.ChannelTraceSelectorNoGo
 import PhysicsSM.Draft.NullEdge.ChannelQuadraticSelectorFamily
+import PhysicsSM.Draft.NullEdge.S3QuadraticSelectorClassification
+import PhysicsSM.Draft.NullEdge.S3SelectorPhaseDiagram
+import PhysicsSM.Draft.NullEdge.ChannelInformationSelectorClassification
 import PhysicsSM.Draft.NullEdge.ChannelKreinMetricNoGo
 import PhysicsSM.Draft.NullEdge.ChannelCommutatorSelectorClassification
 import PhysicsSM.Draft.NullEdge.ChannelQuadraticInnerLift
@@ -477,6 +508,25 @@ import PhysicsSM.Draft.NullEdgeGateCReleaseCriterion
 import PhysicsSM.Draft.NullEdgeMassiveBranchLifting
 import PhysicsSM.Draft.NullEdgeForbiddenCountertermCodim
 import PhysicsSM.Draft.NullEdgeFiniteLichnerowiczBridge
+import PhysicsSM.Draft.NullEdge.NullTickProperTime
+import PhysicsSM.Draft.NullEdge.FiniteConnectionGeometry
+import PhysicsSM.Draft.NullEdge.FiniteCartanBianchi
+import PhysicsSM.Draft.NullEdge.FiniteContractedBianchi
+import PhysicsSM.Draft.NullEdge.CurvatureConvergenceInterface
+import PhysicsSM.Draft.NullEdge.GraphPlaquetteCurvatureLimit
+import PhysicsSM.Draft.NullEdge.TrigonometricHolonomyCurvatureLimit
+import PhysicsSM.Draft.NullEdge.FiniteGravityConservation
+import PhysicsSM.Draft.NullEdge.StressEnergyPhysicalControls
+import PhysicsSM.Draft.NullEdge.HomogeneousScalarStressVariation
+import PhysicsSM.Draft.NullEdge.DiagonalScalarGradientStressVariation
+import PhysicsSM.Draft.NullEdge.ADMShiftScalarFluxVariation
+import PhysicsSM.Draft.NullEdge.FlatFLRWFriedmannControl
+import PhysicsSM.Draft.NullEdge.FlatFLRWAccelerationControl
+import PhysicsSM.Draft.NullEdge.BareGraphScaleReconstruction
+import PhysicsSM.Draft.NullEdge.RelativeGraphScaleReconstruction
+import PhysicsSM.Draft.NullEdge.RelativeScaleCurvatureBridge
+import PhysicsSM.Draft.NullEdge.RelativeScaleTetradBridge
+import PhysicsSM.Draft.NullEdge.ProbeFrameWeylScaleBridge
 import PhysicsSM.Draft.NullEdgeScalarGaugeNullQuadrature
 import PhysicsSM.Draft.NullEdgeFMSFiniteComposite
 import PhysicsSM.Draft.NullEdgeD0PositiveProxy
@@ -626,6 +676,7 @@ import PhysicsSM.Draft.NullEdge.Carrier.PluckerJointTheoryWitness
 import PhysicsSM.Draft.NullEdge.Carrier.PluckerDiracCarrierBridge
 import PhysicsSM.Draft.NullEdge.PluckerMassOperator
 import PhysicsSM.Draft.NullEdge.PluckerMassDynamics
+import PhysicsSM.Draft.NullEdge.PluckerMassOperatorExponential
 import PhysicsSM.Draft.NullEdge.ConcreteD4InvariantSector
 import PhysicsSM.Draft.NullEdge.AxisCoinPositiveCliffordNoGo
 import PhysicsSM.Draft.NullEdge.AxisCoinComplexCliffordNoGo
@@ -640,6 +691,7 @@ import PhysicsSM.Draft.NullEdge.Finite3Plus1FourierBridge
 import PhysicsSM.Draft.NullEdge.Finite3Plus1ProductDFTCore
 import PhysicsSM.Draft.NullEdge.Finite3Plus1AnalyticSignBridge
 import PhysicsSM.Draft.NullEdge.Pluecker3Plus1ComplexMass
+import PhysicsSM.Draft.NullEdge.PlueckerHNUIntertwiner
 import PhysicsSM.Draft.NullEdge.ComplexPlueckerLocalWalk
 import PhysicsSM.Draft.NullEdge.ComplexPlueckerRateTransfer
 import PhysicsSM.Draft.NullEdge.FiniteTorus3Plancherel
@@ -673,6 +725,55 @@ import PhysicsSM.Draft.NullEdge.HalfWindingFullWalkControls
 import PhysicsSM.Draft.NullEdge.WallModeWitness
 import PhysicsSM.Draft.NullEdge.PauliTraceConventions
 import PhysicsSM.Draft.NullEdge.StrictQCAMinimalArchitecture
+import PhysicsSM.Draft.NullEdge.Strict3Plus1Frontier
+import PhysicsSM.Draft.NullEdge.FloquetTaggedCrossingBalance
+import PhysicsSM.Draft.NullEdge.FloquetMicromotionSchedule
+import PhysicsSM.Draft.NullEdge.FloquetWeylOrientationCharge
+import PhysicsSM.Draft.NullEdge.FloquetMicromotionObservable
+import PhysicsSM.Draft.NullEdge.OpenDiamondCausalExhaustion
+import PhysicsSM.Draft.NullEdge.OpenBoundaryReflectingShift
+import PhysicsSM.Draft.NullEdge.ReflectingCycleControl
+import PhysicsSM.Draft.NullEdge.OpenBoundaryWeyl3DLift
+import PhysicsSM.Draft.NullEdge.GaugeTwistedMagneticDecoder
+import PhysicsSM.Draft.NullEdge.ProjectorConditionedStep
+import PhysicsSM.Draft.NullEdge.SpinBlindWindingObstruction
+import PhysicsSM.Draft.NullEdge.HairpinLunePhaseAristotle
+import PhysicsSM.Draft.NullEdge.ChiralSpiralCommutatorAristotle
+import PhysicsSM.Draft.NullEdge.CelestialCycleReversalAristotle
+import PhysicsSM.Draft.NullEdge.SpinCornerBargmannAristotle
+import PhysicsSM.Draft.NullEdge.SpinBlindScheduleCollapse
+import PhysicsSM.Draft.NullEdge.ConditionedShiftIrreducible
+import PhysicsSM.Draft.NullEdge.FiniteTransportTraceNoGo
+import PhysicsSM.Draft.NullEdge.BoundaryTransportIndex
+import PhysicsSM.Draft.NullEdge.HalfSpaceDefectIndex
+import PhysicsSM.Draft.NullEdge.HalfSpaceRelativeFlow
+import PhysicsSM.Draft.NullEdge.HNUExactCore
+import PhysicsSM.Draft.NullEdge.HNUInfraredTangent
+import PhysicsSM.Draft.NullEdge.HNUGlobalZeroPiChargeLedger
+import PhysicsSM.Draft.NullEdge.HNUSU2FixedVectorCensus
+import PhysicsSM.Draft.NullEdge.HNUSU2MinusEigenvectorCensus
+import PhysicsSM.Draft.NullEdge.AntiperiodicHNU
+import PhysicsSM.Draft.NullEdge.AntiperiodicPiDilation
+import PhysicsSM.Draft.NullEdge.HNUGlobalHolonomyClassification
+import PhysicsSM.Draft.NullEdge.HNURealSpaceCore
+import PhysicsSM.Draft.NullEdge.HNURealSpaceBridge
+import PhysicsSM.Draft.NullEdge.NullDilationConditionedShift
+import PhysicsSM.Draft.NullEdge.FloquetTransverseComposite
+import PhysicsSM.Draft.NullEdge.HNUTransversePiComposite
+import PhysicsSM.Draft.NullEdge.FiniteTransverseWeylLift
+import PhysicsSM.Draft.NullEdge.GammaTransverseControl
+import PhysicsSM.Draft.NullEdge.AnomalyIndexLedger
+import PhysicsSM.Draft.NullEdge.Finite3450QuarticResonance
+import PhysicsSM.Draft.NullEdge.TargetMirrorBilinearNoGo
+import PhysicsSM.Draft.NullEdge.WeylSphereChargeBridge
+import PhysicsSM.Draft.NullEdge.FlavorCoverChargeObstruction
+import PhysicsSM.Draft.NullEdge.FlavorCoverChargeObstructionAxiomGuard
+import PhysicsSM.Draft.NullEdge.CliffordCoverDecoder
+import PhysicsSM.Draft.NullEdge.CliffordCoverDecoderAxiomGuard
+import PhysicsSM.Draft.NullEdge.QCAOctonionFlavorBridge
+import PhysicsSM.Draft.NullEdge.PiFluxCocycleDecoder
+import PhysicsSM.Draft.NullEdge.PiFlux3Plus1Census
+import PhysicsSM.Draft.NullEdge.NullMicrostepHyperdiamond
 import PhysicsSM.Draft.NullEdge.LaurentUnitResource
 import PhysicsSM.Draft.NullEdge.LaurentFlowIndex
 import PhysicsSM.Draft.NullEdge.LaurentFourierWalkBridge
@@ -779,6 +880,70 @@ import PhysicsSM.Draft.NullEdge.StationaryAmplitudeWeylBoundaryScaffold
 import PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionStrongScaffold
 import PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionGeometry
 import PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionThreeTerm
+import PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionCompactCore
+import PhysicsSM.Draft.NullEdge.ChangingMomentumCellProjectionStrongL2
+import PhysicsSM.Draft.NullEdge.ChangingMomentumCellCoefficientBridge
+import PhysicsSM.Draft.NullEdge.ChangingCellScaledLiveWalk
+import PhysicsSM.Draft.NullEdge.VariablePointwiseL2Isometry
+import PhysicsSM.Draft.NullEdge.ChangingCellFourierPDE
+import PhysicsSM.Draft.NullEdge.FourierPartialCorrespondence
+import PhysicsSM.Draft.NullEdge.FourierDiracSchwartzCapstone
+import PhysicsSM.Draft.NullEdge.PositionDiracSchwartzOperator
+import PhysicsSM.Draft.NullEdge.ChangingCellFourierTemperate
+import PhysicsSM.Draft.NullEdge.MomMultL2StrongContinuity
+import PhysicsSM.Draft.NullEdge.PositionExactFlowL2
+import PhysicsSM.Draft.NullEdge.ExactFlowGenerator
+import PhysicsSM.Draft.NullEdge.CompactSupportL2Generator
+import PhysicsSM.Draft.NullEdge.ExactFlowTimeGroup
+import PhysicsSM.Draft.NullEdge.ExactFlowL2GroupCapstone
+import PhysicsSM.Draft.NullEdge.ExactFlowSchwartzGroup
+import PhysicsSM.Draft.NullEdge.ExactFlowSchwartzGeneratorCapstone
+import PhysicsSM.Draft.NullEdge.ExactFlowGeneratorAllTime
+import PhysicsSM.Draft.NullEdge.HermitianExpLipschitz
+import PhysicsSM.Draft.NullEdge.ExactFlowMomentumLipschitz
+import PhysicsSM.Draft.NullEdge.ExactFlowCellSampleEnergy
+import PhysicsSM.Draft.NullEdge.ExactFlowCellIntegral
+import PhysicsSM.Draft.NullEdge.L0FiniteSupportBoostNoGo
+import PhysicsSM.Draft.NullEdge.L0DecorationInvarianceKill
+import PhysicsSM.Draft.NullEdge.FinitePoissonConfigurationInvariance
+import PhysicsSM.Draft.NullEdge.MarkedPoissonConfigurationInvariance
+import PhysicsSM.Draft.NullEdge.DeterministicDecorationEquivariance
+import PhysicsSM.Draft.NullEdge.HermitianPartitionPositive
+import PhysicsSM.Draft.NullEdge.LogSumInequality
+import PhysicsSM.Draft.NullEdge.ShannonSubadditivity
+import PhysicsSM.Draft.NullEdge.FiniteGibbsInequality
+import PhysicsSM.Draft.NullEdge.GibbsVariational
+import PhysicsSM.Draft.NullEdge.GibbsFreeEnergy
+import PhysicsSM.Draft.NullEdge.GibbsVariationalControls
+import PhysicsSM.Draft.NullEdge.QuantumKleinShared
+import PhysicsSM.Draft.NullEdge.GeneralQuantumKlein
+import PhysicsSM.Draft.NullEdge.ScalarKleinEqualityCore
+import PhysicsSM.Draft.NullEdge.GeneralQuantumKleinEquality
+import PhysicsSM.Draft.NullEdge.GeneralMaxEntropy
+import PhysicsSM.Draft.NullEdge.FiniteClassicalDPI
+import PhysicsSM.Draft.NullEdge.ProjectiveMeasurementDPI
+import PhysicsSM.Draft.NullEdge.PSDTraceProductNonneg
+import PhysicsSM.Draft.NullEdge.HilbertSchmidtCauchySchwarz
+import PhysicsSM.Draft.NullEdge.FiniteUniformMaxEntropy
+import PhysicsSM.Draft.NullEdge.VonNeumannEntropyBound
+import PhysicsSM.Draft.NullEdge.PinskerInequality
+import PhysicsSM.Draft.NullEdge.ClassicalStrongSubadditivity
+import PhysicsSM.Draft.NullEdge.ClassicalStrongSubadditivityControls
+import PhysicsSM.Draft.NullEdge.PurityBounds
+import PhysicsSM.Draft.NullEdge.CollisionShannonEntropy
+import PhysicsSM.Draft.NullEdge.VNEntropyPurity
+import PhysicsSM.Draft.NullEdge.QubitFixedEnergyMaxEntropy
+import PhysicsSM.Draft.NullEdge.QubitEntropyBridge
+import PhysicsSM.Draft.NullEdge.PairModularSelection
+import PhysicsSM.Draft.NullEdge.ThermalBzEuler
+import PhysicsSM.Draft.NullEdge.QubitGibbsBridge
+import PhysicsSM.Draft.NullEdge.DYNModularMaxEntCapstone
+import PhysicsSM.Draft.NullEdge.PhaseCovariantModularSelection
+import PhysicsSM.Draft.NullEdge.PhaseCovariantS2Capstone
+import PhysicsSM.Draft.NullEdge.PairActiveSectorExponential
+import PhysicsSM.Draft.NullEdge.FullFockPairExponential
+import PhysicsSM.Draft.NullEdge.CanonicalFullFockPairExponential
+import PhysicsSM.Draft.NullEdge.GateC2.OverlapGaugeCovarianceCapstone
 import PhysicsSM.Draft.NullEdge.Z2CubedFlavourCorner
 import PhysicsSM.Draft.NullEdge.Z2CubedFlavourIntertwine
 import PhysicsSM.Draft.NullEdge.MasslessChargeCensusComposition

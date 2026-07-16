@@ -1,0 +1,1145 @@
+{
+  "density_is_supplied": true,
+  "depth_filter_uses_only_causal_order": true,
+  "dimension_is_supplied": true,
+  "interval_endpoints_are_supplied": true,
+  "latent_fit_uses_embedding_coordinates": false,
+  "metric_scores_opened": false,
+  "samples": [
+    {
+      "affine_cocycle_maximum": 5.42477737333404e-15,
+      "chart_availability_fraction": 1.0,
+      "consensus_event_count": 627,
+      "depth_eligible_target_count": 34,
+      "depth_excluded_target_count": 0,
+      "depth_retention_fraction": 1.0,
+      "fit_converged": false,
+      "fit_iterations": 50,
+      "independent_affine_residual_median": 0.4802671802044802,
+      "joint_geometry_residual_maximum": 3.9307918949041256,
+      "joint_geometry_residual_median": 0.44091756283091976,
+      "lightcone_too_small_count": 0,
+      "o3_geometry_residual_median": 0.6301132386971136,
+      "other_chart_failure_count": 0,
+      "pairwise_edge_fraction": 1.0,
+      "pairwise_graph_connected": true,
+      "passes_latent_affine_atlas_gate": false,
+      "raw_target_count": 34,
+      "regularization": 0.0,
+      "transform_condition_maximum": 24.268739616941698,
+      "transform_condition_median": 6.383973059873989,
+      "transform_singular_maximum": 1.0,
+      "transform_singular_minimum": 0.015685744492605836
+    },
+    {
+      "affine_cocycle_maximum": 4.0220528033817944e-16,
+      "chart_availability_fraction": 1.0,
+      "consensus_event_count": 627,
+      "depth_eligible_target_count": 34,
+      "depth_excluded_target_count": 0,
+      "depth_retention_fraction": 1.0,
+      "fit_converged": false,
+      "fit_iterations": 50,
+      "independent_affine_residual_median": 0.4802671802044802,
+      "joint_geometry_residual_maximum": 1.3205878474776824,
+      "joint_geometry_residual_median": 0.6341151143505684,
+      "lightcone_too_small_count": 0,
+      "o3_geometry_residual_median": 0.6301132386971136,
+      "other_chart_failure_count": 0,
+      "pairwise_edge_fraction": 1.0,
+      "pairwise_graph_connected": true,
+      "passes_latent_affine_atlas_gate": false,
+      "raw_target_count": 34,
+      "regularization": 0.01,
+      "transform_condition_maximum": 2.1716461259450432,
+      "transform_condition_median": 1.2400292266532338,
+      "transform_singular_maximum": 1.0249580286246478,
+      "transform_singular_minimum": 0.4271359709877901
+    },
+    {
+      "affine_cocycle_maximum": 3.198672041575565e-16,
+      "chart_availability_fraction": 1.0,
+      "consensus_event_count": 627,
+      "depth_eligible_target_count": 34,
+      "depth_excluded_target_count": 0,
+      "depth_retention_fraction": 1.0,
+      "fit_converged": false,
+      "fit_iterations": 50,
+      "independent_affine_residual_median": 0.4802671802044802,
+      "joint_geometry_residual_maximum": 1.346752862551623,
+      "joint_geometry_residual_median": 0.6862002220106943,
+      "lightcone_too_small_count": 0,
+      "o3_geometry_residual_median": 0.6301132386971136,
+      "other_chart_failure_count": 0,
+      "pairwise_edge_fraction": 1.0,
+      "pairwise_graph_connected": true,
+      "passes_latent_affine_atlas_gate": false,
+      "raw_target_count": 34,
+      "regularization": 0.1,
+      "transform_condition_maximum": 1.1160322657398605,
+      "transform_condition_median": 1.0291891694095765,
+      "transform_singular_maximum": 1.0083624978689574,
+      "transform_singular_minimum": 0.8867141559180668
+    },
+    {
+      "affine_cocycle_maximum": 2.745032041236506e-16,
+      "chart_availability_fraction": 1.0,
+      "consensus_event_count": 627,
+      "depth_eligible_target_count": 34,
+      "depth_excluded_target_count": 0,
+      "depth_retention_fraction": 1.0,
+      "fit_converged": true,
+      "fit_iterations": 14,
+      "independent_affine_residual_median": 0.4802671802044802,
+      "joint_geometry_residual_maximum": 1.400211918859995,
+      "joint_geometry_residual_median": 0.6722435005443463,
+      "lightcone_too_small_count": 0,
+      "o3_geometry_residual_median": 0.6301132386971136,
+      "other_chart_failure_count": 0,
+      "pairwise_edge_fraction": 1.0,
+      "pairwise_graph_connected": true,
+      "passes_latent_affine_atlas_gate": false,
+      "raw_target_count": 34,
+      "regularization": 1.0,
+      "transform_condition_maximum": 1.012076575660397,
+      "transform_condition_median": 1.0030929749195154,
+      "transform_singular_maximum": 1.000908977004024,
+      "transform_singular_minimum": 0.9869721975830427
+    },
+    {
+      "affine_cocycle_maximum": 6.615451973408162e-16,
+      "chart_availability_fraction": 1.0,
+      "consensus_event_count": 316,
+      "depth_eligible_target_count": 5,
+      "depth_excluded_target_count": 0,
+      "depth_retention_fraction": 1.0,
+      "fit_converged": false,
+      "fit_iterations": 50,
+      "independent_affine_residual_median": 0.4320060034769949,
+      "joint_geometry_residual_maximum": 0.6366955094105913,
+      "joint_geometry_residual_median": 0.3426671507922593,
+      "lightcone_too_small_count": 0,
+      "o3_geometry_residual_median": 0.5081388370972737,
+      "other_chart_failure_count": 0,
+      "pairwise_edge_fraction": 1.0,
+      "pairwise_graph_connected": true,
+      "passes_latent_affine_atlas_gate": false,
+      "raw_target_count": 5,
+      "regularization": 0.0,
+      "transform_condition_maximum": 8.184195401377957,
+      "transform_condition_median": 3.44532093352471,
+      "transform_singular_maximum": 1.0,
+      "transform_singular_minimum": 0.11543080811646575
+    },
+    {
+      "affine_cocycle_maximum": 1.816517243014953e-16,
+      "chart_availability_fraction": 1.0,
+      "consensus_event_count": 316,
+      "depth_eligible_target_count": 5,
+      "depth_excluded_target_count": 0,
+      "depth_retention_fraction": 1.0,
+      "fit_converged": true,
+      "fit_iterations": 41,
+      "independent_affine_residual_median": 0.4320060034769949,
+      "joint_geometry_residual_maximum": 0.6919122623634396,
+      "joint_geometry_residual_median": 0.4603416298266888,
+      "lightcone_too_small_count": 0,
+      "o3_geometry_residual_median": 0.5081388370972737,
+      "other_chart_failure_count": 0,
+      "pairwise_edge_fraction": 1.0,
+      "pairwise_graph_connected": true,
+      "passes_latent_affine_atlas_gate": false,
+      "raw_target_count": 5,
+      "regularization": 0.01,
+      "transform_condition_maximum": 1.4830958537058745,
+      "transform_condition_median": 1.2767598457998781,
+      "transform_singular_maximum": 1.0,
+      "transform_singular_minimum": 0.6693043033622049
+    },
+    {
+      "affine_cocycle_maximum": 1.6191171919999593e-16,
+      "chart_availability_fraction": 1.0,
+      "consensus_event_count": 316,
+      "depth_eligible_target_count": 5,
+      "depth_excluded_target_count": 0,
+      "depth_retention_fraction": 1.0,
+      "fit_converged": true,
+      "fit_iterations": 29,
+      "independent_affine_residual_median": 0.4320060034769949,
+      "joint_geometry_residual_maximum": 0.8361363172940923,
+      "joint_geometry_residual_median": 0.5016069504819146,
+      "lightcone_too_small_count": 0,
+      "o3_geometry_residual_median": 0.5081388370972737,
+      "other_chart_failure_count": 0,
+      "pairwise_edge_fraction": 1.0,
+      "pairwise_graph_connected": true,
+      "passes_latent_affine_atlas_gate": false,
+      "raw_target_count": 5,
+      "regularization": 0.1,
+      "transform_condition_maximum": 1.053849921463129,
+      "transform_condition_median": 1.031065320499977,
+      "transform_singular_maximum": 1.0,
+      "transform_singular_minimum": 0.9488430328442459
+    },
+    {
+      "affine_cocycle_maximum": 1.4615238316857585e-16,
+      "chart_availability_fraction": 1.0,
+      "consensus_event_count": 316,
+      "depth_eligible_target_count": 5,
+      "depth_excluded_target_count": 0,
+      "depth_retention_fraction": 1.0,
+      "fit_converged": true,
+      "fit_iterations": 11,
+      "independent_affine_residual_median": 0.4320060034769949,
+      "joint_geometry_residual_maximum": 0.856943187433019,
+      "joint_geometry_residual_median": 0.5083060207260734,
+      "lightcone_too_small_count": 0,
+      "o3_geometry_residual_median": 0.5081388370972737,
+      "other_chart_failure_count": 0,
+      "pairwise_edge_fraction": 1.0,
+      "pairwise_graph_connected": true,
+      "passes_latent_affine_atlas_gate": false,
+      "raw_target_count": 5,
+      "regularization": 1.0,
+      "transform_condition_maximum": 1.0054513791155388,
+      "transform_condition_median": 1.0031678172155793,
+      "transform_singular_maximum": 1.0000048492443474,
+      "transform_singular_minimum": 0.9945830002481248
+    },
+    {
+      "affine_cocycle_maximum": 2.86198882832881e-15,
+      "chart_availability_fraction": 1.0,
+      "consensus_event_count": 525,
+      "depth_eligible_target_count": 18,
+      "depth_excluded_target_count": 1,
+      "depth_retention_fraction": 0.9473684210526315,
+      "fit_converged": false,
+      "fit_iterations": 50,
+      "independent_affine_residual_median": 0.5342201300945278,
+      "joint_geometry_residual_maximum": 3.1777235019059806,
+      "joint_geometry_residual_median": 0.5978247100563887,
+      "lightcone_too_small_count": 0,
+      "o3_geometry_residual_median": 0.7018061989354415,
+      "other_chart_failure_count": 0,
+      "pairwise_edge_fraction": 1.0,
+      "pairwise_graph_connected": true,
+      "passes_latent_affine_atlas_gate": false,
+      "raw_target_count": 19,
+      "regularization": 0.0,
+      "transform_condition_maximum": 14.086122553953222,
+      "transform_condition_median": 3.8328686172790634,
+      "transform_singular_maximum": 1.0,
+      "transform_singular_minimum": 0.024553314746449225
+    },
+    {
+      "affine_cocycle_maximum": 3.740894072064024e-16,
+      "chart_availability_fraction": 1.0,
+      "consensus_event_count": 525,
+      "depth_eligible_target_count": 18,
+      "depth_excluded_target_count": 1,
+      "depth_retention_fraction": 0.9473684210526315,
+      "fit_converged": false,
+      "fit_iterations": 50,
+      "independent_affine_residual_median": 0.5342201300945278,
+      "joint_geometry_residual_maximum": 1.2291777810846722,
+      "joint_geometry_residual_median": 0.685064704550165,
+      "lightcone_too_small_count": 0,
+      "o3_geometry_residual_median": 0.7018061989354415,
+      "other_chart_failure_count": 0,
+      "pairwise_edge_fraction": 1.0,
+      "pairwise_graph_connected": true,
+      "passes_latent_affine_atlas_gate": false,
+      "raw_target_count": 19,
+      "regularization": 0.01,
+      "transform_condition_maximum": 1.7276877073257184,
+      "transform_condition_median": 1.257390109315252,
+      "transform_singular_maximum": 1.0,
+      "transform_singular_minimum": 0.5316916747071695
+    },
+    {
+      "affine_cocycle_maximum": 2.578005702899418e-16,
+      "chart_availability_fraction": 1.0,
+      "consensus_event_count": 525,
+      "depth_eligible_target_count": 18,
+      "depth_excluded_target_count": 1,
+      "depth_retention_fraction": 0.9473684210526315,
+      "fit_converged": false,
+      "fit_iterations": 50,
+      "independent_affine_residual_median": 0.5342201300945278,
+      "joint_geometry_residual_maximum": 1.3412776200659475,
+      "joint_geometry_residual_median": 0.7253280851628437,
+      "lightcone_too_small_count": 0,
+      "o3_geometry_residual_median": 0.7018061989354415,
+      "other_chart_failure_count": 0,
+      "pairwise_edge_fraction": 1.0,
+      "pairwise_graph_connected": true,
+      "passes_latent_affine_atlas_gate": false,
+      "raw_target_count": 19,
+      "regularization": 0.1,
+      "transform_condition_maximum": 1.0783486065065215,
+      "transform_condition_median": 1.0319905861481988,
+      "transform_singular_maximum": 1.0,
+      "transform_singular_minimum": 0.9223820939477827
+    },
+    {
+      "affine_cocycle_maximum": 2.897770412823963e-16,
+      "chart_availability_fraction": 1.0,
+      "consensus_event_count": 525,
+      "depth_eligible_target_count": 18,
+      "depth_excluded_target_count": 1,
+      "depth_retention_fraction": 0.9473684210526315,
+      "fit_converged": true,
+      "fit_iterations": 14,
+      "independent_affine_residual_median": 0.5342201300945278,
+      "joint_geometry_residual_maximum": 1.3250779503425767,
+      "joint_geometry_residual_median": 0.7221974529459174,
+      "lightcone_too_small_count": 0,
+      "o3_geometry_residual_median": 0.7018061989354415,
+      "other_chart_failure_count": 0,
+      "pairwise_edge_fraction": 1.0,
+      "pairwise_graph_connected": true,
+      "passes_latent_affine_atlas_gate": false,
+      "raw_target_count": 19,
+      "regularization": 1.0,
+      "transform_condition_maximum": 1.0077876661002478,
+      "transform_condition_median": 1.0033135177812933,
+      "transform_singular_maximum": 1.0,
+      "transform_singular_minimum": 0.9917885948661754
+    },
+    {
+      "affine_cocycle_maximum": 2.8954816160978617e-16,
+      "chart_availability_fraction": 1.0,
+      "consensus_event_count": 317,
+      "depth_eligible_target_count": 5,
+      "depth_excluded_target_count": 0,
+      "depth_retention_fraction": 1.0,
+      "fit_converged": false,
+      "fit_iterations": 50,
+      "independent_affine_residual_median": 0.3524621094811491,
+      "joint_geometry_residual_maximum": 0.7531812788790699,
+      "joint_geometry_residual_median": 0.40045767855330205,
+      "lightcone_too_small_count": 0,
+      "o3_geometry_residual_median": 0.3900740887661201,
+      "other_chart_failure_count": 0,
+      "pairwise_edge_fraction": 1.0,
+      "pairwise_graph_connected": true,
+      "passes_latent_affine_atlas_gate": false,
+      "raw_target_count": 5,
+      "regularization": 0.0,
+      "transform_condition_maximum": 3.1471775246946767,
+      "transform_condition_median": 1.7948600782637492,
+      "transform_singular_maximum": 1.0,
+      "transform_singular_minimum": 0.2833777711266
+    },
+    {
+      "affine_cocycle_maximum": 1.7951677266300516e-16,
+      "chart_availability_fraction": 1.0,
+      "consensus_event_count": 317,
+      "depth_eligible_target_count": 5,
+      "depth_excluded_target_count": 0,
+      "depth_retention_fraction": 1.0,
+      "fit_converged": true,
+      "fit_iterations": 40,
+      "independent_affine_residual_median": 0.3524621094811491,
+      "joint_geometry_residual_maximum": 0.6275429562929881,
+      "joint_geometry_residual_median": 0.38889413500351694,
+      "lightcone_too_small_count": 0,
+      "o3_geometry_residual_median": 0.3900740887661201,
+      "other_chart_failure_count": 0,
+      "pairwise_edge_fraction": 1.0,
+      "pairwise_graph_connected": true,
+      "passes_latent_affine_atlas_gate": false,
+      "raw_target_count": 5,
+      "regularization": 0.01,
+      "transform_condition_maximum": 1.3309723203093982,
+      "transform_condition_median": 1.1493174963032218,
+      "transform_singular_maximum": 1.0075595853046602,
+      "transform_singular_minimum": 0.7334561909596724
+    },
+    {
+      "affine_cocycle_maximum": 1.7031459960373087e-16,
+      "chart_availability_fraction": 1.0,
+      "consensus_event_count": 317,
+      "depth_eligible_target_count": 5,
+      "depth_excluded_target_count": 0,
+      "depth_retention_fraction": 1.0,
+      "fit_converged": true,
+      "fit_iterations": 31,
+      "independent_affine_residual_median": 0.3524621094811491,
+      "joint_geometry_residual_maximum": 0.6832435021675337,
+      "joint_geometry_residual_median": 0.3924591090982169,
+      "lightcone_too_small_count": 0,
+      "o3_geometry_residual_median": 0.3900740887661201,
+      "other_chart_failure_count": 0,
+      "pairwise_edge_fraction": 1.0,
+      "pairwise_graph_connected": true,
+      "passes_latent_affine_atlas_gate": false,
+      "raw_target_count": 5,
+      "regularization": 0.1,
+      "transform_condition_maximum": 1.040061817334468,
+      "transform_condition_median": 1.0185760609058254,
+      "transform_singular_maximum": 1.0037972513723803,
+      "transform_singular_minimum": 0.9589080533924286
+    },
+    {
+      "affine_cocycle_maximum": 1.2643266404855218e-16,
+      "chart_availability_fraction": 1.0,
+      "consensus_event_count": 317,
+      "depth_eligible_target_count": 5,
+      "depth_excluded_target_count": 0,
+      "depth_retention_fraction": 1.0,
+      "fit_converged": true,
+      "fit_iterations": 12,
+      "independent_affine_residual_median": 0.3524621094811491,
+      "joint_geometry_residual_maximum": 0.6902448535058685,
+      "joint_geometry_residual_median": 0.39329937991421005,
+      "lightcone_too_small_count": 0,
+      "o3_geometry_residual_median": 0.3900740887661201,
+      "other_chart_failure_count": 0,
+      "pairwise_edge_fraction": 1.0,
+      "pairwise_graph_connected": true,
+      "passes_latent_affine_atlas_gate": false,
+      "raw_target_count": 5,
+      "regularization": 1.0,
+      "transform_condition_maximum": 1.0041047349370553,
+      "transform_condition_median": 1.0019131081708639,
+      "transform_singular_maximum": 1.0004464622325024,
+      "transform_singular_minimum": 0.9956443330646352
+    },
+    {
+      "affine_cocycle_maximum": 2.066870426004963e-16,
+      "chart_availability_fraction": 1.0,
+      "consensus_event_count": 332,
+      "depth_eligible_target_count": 5,
+      "depth_excluded_target_count": 1,
+      "depth_retention_fraction": 0.8333333333333334,
+      "fit_converged": false,
+      "fit_iterations": 50,
+      "independent_affine_residual_median": 0.37376455672689357,
+      "joint_geometry_residual_maximum": 0.446356576841003,
+      "joint_geometry_residual_median": 0.36715287612823383,
+      "lightcone_too_small_count": 0,
+      "o3_geometry_residual_median": 0.3789295182712358,
+      "other_chart_failure_count": 0,
+      "pairwise_edge_fraction": 1.0,
+      "pairwise_graph_connected": true,
+      "passes_latent_affine_atlas_gate": false,
+      "raw_target_count": 6,
+      "regularization": 0.0,
+      "transform_condition_maximum": 2.413181040106641,
+      "transform_condition_median": 2.1697947211367734,
+      "transform_singular_maximum": 1.0169709985316477,
+      "transform_singular_minimum": 0.3986945882060945
+    },
+    {
+      "affine_cocycle_maximum": 2.3851659270976536e-16,
+      "chart_availability_fraction": 1.0,
+      "consensus_event_count": 332,
+      "depth_eligible_target_count": 5,
+      "depth_excluded_target_count": 1,
+      "depth_retention_fraction": 0.8333333333333334,
+      "fit_converged": true,
+      "fit_iterations": 36,
+      "independent_affine_residual_median": 0.37376455672689357,
+      "joint_geometry_residual_maximum": 0.5942901718121618,
+      "joint_geometry_residual_median": 0.34943852777409634,
+      "lightcone_too_small_count": 0,
+      "o3_geometry_residual_median": 0.3789295182712358,
+      "other_chart_failure_count": 0,
+      "pairwise_edge_fraction": 1.0,
+      "pairwise_graph_connected": true,
+      "passes_latent_affine_atlas_gate": false,
+      "raw_target_count": 6,
+      "regularization": 0.01,
+      "transform_condition_maximum": 1.2340759283161238,
+      "transform_condition_median": 1.1486146582270023,
+      "transform_singular_maximum": 1.0221721464846067,
+      "transform_singular_minimum": 0.8057791840894729
+    },
+    {
+      "affine_cocycle_maximum": 1.4092960140259168e-16,
+      "chart_availability_fraction": 1.0,
+      "consensus_event_count": 332,
+      "depth_eligible_target_count": 5,
+      "depth_excluded_target_count": 1,
+      "depth_retention_fraction": 0.8333333333333334,
+      "fit_converged": true,
+      "fit_iterations": 28,
+      "independent_affine_residual_median": 0.37376455672689357,
+      "joint_geometry_residual_maximum": 0.643267135376739,
+      "joint_geometry_residual_median": 0.373883897522294,
+      "lightcone_too_small_count": 0,
+      "o3_geometry_residual_median": 0.3789295182712358,
+      "other_chart_failure_count": 0,
+      "pairwise_edge_fraction": 1.0,
+      "pairwise_graph_connected": true,
+      "passes_latent_affine_atlas_gate": false,
+      "raw_target_count": 6,
+      "regularization": 0.1,
+      "transform_condition_maximum": 1.0314027876071645,
+      "transform_condition_median": 1.0166288699745,
+      "transform_singular_maximum": 1.0050058179974537,
+      "transform_singular_minimum": 0.9692193891324494
+    },
+    {
+      "affine_cocycle_maximum": 1.8055296611878764e-16,
+      "chart_availability_fraction": 1.0,
+      "consensus_event_count": 332,
+      "depth_eligible_target_count": 5,
+      "depth_excluded_target_count": 1,
+      "depth_retention_fraction": 0.8333333333333334,
+      "fit_converged": true,
+      "fit_iterations": 12,
+      "independent_affine_residual_median": 0.37376455672689357,
+      "joint_geometry_residual_maximum": 0.6493545484693247,
+      "joint_geometry_residual_median": 0.3788579933848707,
+      "lightcone_too_small_count": 0,
+      "o3_geometry_residual_median": 0.3789295182712358,
+      "other_chart_failure_count": 0,
+      "pairwise_edge_fraction": 1.0,
+      "pairwise_graph_connected": true,
+      "passes_latent_affine_atlas_gate": false,
+      "raw_target_count": 6,
+      "regularization": 1.0,
+      "transform_condition_maximum": 1.003294769514554,
+      "transform_condition_median": 1.0017002296072695,
+      "transform_singular_maximum": 1.000543451974584,
+      "transform_singular_minimum": 0.9966972498218215
+    }
+  ],
+  "selected_regularization": {
+    "affine_cocycle_maximum": {
+      "count": 5,
+      "mean": 2.034836517483925e-16,
+      "median": 1.8055296611878764e-16,
+      "std": 6.669313503320282e-17
+    },
+    "chart_availability_fraction": {
+      "count": 5,
+      "mean": 1.0,
+      "median": 1.0,
+      "std": 0.0
+    },
+    "consensus_event_count": {
+      "count": 5,
+      "mean": 423.4,
+      "median": 332.0,
+      "std": 128.8294997273528
+    },
+    "depth_eligible_target_count": {
+      "count": 5,
+      "mean": 13.4,
+      "median": 5.0,
+      "std": 11.46472851837321
+    },
+    "depth_excluded_target_count": {
+      "count": 5,
+      "mean": 0.4,
+      "median": 0.0,
+      "std": 0.48989794855663565
+    },
+    "depth_retention_fraction": {
+      "count": 5,
+      "mean": 0.956140350877193,
+      "median": 1.0,
+      "std": 0.06469855759503779
+    },
+    "fit_convergence_rate": 1.0,
+    "fit_iterations": {
+      "count": 5,
+      "mean": 12.6,
+      "median": 12.0,
+      "std": 1.2
+    },
+    "independent_affine_residual_median": {
+      "count": 5,
+      "mean": 0.43454399599680915,
+      "median": 0.4320060034769949,
+      "std": 0.0670282910728309
+    },
+    "joint_geometry_residual_maximum": {
+      "count": 5,
+      "mean": 0.9843664917221568,
+      "median": 0.856943187433019,
+      "std": 0.31748667876676007
+    },
+    "joint_geometry_residual_median": {
+      "count": 5,
+      "mean": 0.5349808695030835,
+      "median": 0.5083060207260734,
+      "std": 0.14074844474678835
+    },
+    "latent_affine_atlas_gate_success_rate": 0.0,
+    "lightcone_too_small_count": {
+      "count": 5,
+      "mean": 0.0,
+      "median": 0.0,
+      "std": 0.0
+    },
+    "o3_geometry_residual_median": {
+      "count": 5,
+      "mean": 0.5218123763534368,
+      "median": 0.5081388370972737,
+      "std": 0.12812829990133562
+    },
+    "other_chart_failure_count": {
+      "count": 5,
+      "mean": 0.0,
+      "median": 0.0,
+      "std": 0.0
+    },
+    "pairwise_edge_fraction": {
+      "count": 5,
+      "mean": 1.0,
+      "median": 1.0,
+      "std": 0.0
+    },
+    "pairwise_graph_connected_rate": 1.0,
+    "raw_target_count": {
+      "count": 5,
+      "mean": 13.8,
+      "median": 6.0,
+      "std": 11.408768557561329
+    },
+    "regularization": 1.0,
+    "samples": 5,
+    "transform_condition_maximum": {
+      "count": 5,
+      "mean": 1.0065430250655587,
+      "median": 1.0054513791155388,
+      "std": 0.0031577658952637146
+    },
+    "transform_condition_median": {
+      "count": 5,
+      "mean": 1.0026375295389043,
+      "median": 1.0030929749195154,
+      "std": 0.0006854069008870356
+    },
+    "transform_singular_maximum": {
+      "count": 5,
+      "mean": 1.0003807480910916,
+      "median": 1.0004464622325024,
+      "std": 0.00034527836259926585
+    },
+    "transform_singular_minimum": {
+      "count": 5,
+      "mean": 0.9931370751167599,
+      "median": 0.9945830002481248,
+      "std": 0.003489297918642226
+    }
+  },
+  "selected_regularization_key": "regularization=1.000000",
+  "selection_rule": "maximum latent-atlas gate rate and convergence rate, then minimum median common-event geometry residual and transform condition",
+  "selector_uses_full_recovered_chart": true,
+  "settings": {
+    "averaging_radius": 0.075,
+    "density": 19098.59317102744,
+    "dimension": 4,
+    "duration": 1.0,
+    "events_including_endpoints": 2500,
+    "maximum_cocycle_error": 1e-10,
+    "maximum_geometry_error": 0.25,
+    "maximum_transform_condition": 10.0,
+    "maximum_transform_singular_value": 10.0,
+    "minimum_edge_fraction": 0.8,
+    "minimum_lightcone_count": 6,
+    "minimum_transform_singular_value": 0.1,
+    "realizations": 5,
+    "registration_radius": 0.1,
+    "regularizations": [
+      0.0,
+      0.01,
+      0.1,
+      1.0
+    ],
+    "seed": 20260806
+  },
+  "spatial_rank_is_supplied": true,
+  "status": "closed latent-affine-atlas development selection",
+  "summaries": {
+    "regularization=0.000000": {
+      "affine_cocycle_maximum": {
+        "count": 5,
+        "mean": 1.8889093206427894e-15,
+        "median": 6.615451973408162e-16,
+        "std": 2.0171017433562987e-15
+      },
+      "chart_availability_fraction": {
+        "count": 5,
+        "mean": 1.0,
+        "median": 1.0,
+        "std": 0.0
+      },
+      "consensus_event_count": {
+        "count": 5,
+        "mean": 423.4,
+        "median": 332.0,
+        "std": 128.8294997273528
+      },
+      "depth_eligible_target_count": {
+        "count": 5,
+        "mean": 13.4,
+        "median": 5.0,
+        "std": 11.46472851837321
+      },
+      "depth_excluded_target_count": {
+        "count": 5,
+        "mean": 0.4,
+        "median": 0.0,
+        "std": 0.48989794855663565
+      },
+      "depth_retention_fraction": {
+        "count": 5,
+        "mean": 0.956140350877193,
+        "median": 1.0,
+        "std": 0.06469855759503779
+      },
+      "fit_convergence_rate": 0.0,
+      "fit_iterations": {
+        "count": 5,
+        "mean": 50.0,
+        "median": 50.0,
+        "std": 0.0
+      },
+      "independent_affine_residual_median": {
+        "count": 5,
+        "mean": 0.43454399599680915,
+        "median": 0.4320060034769949,
+        "std": 0.0670282910728309
+      },
+      "joint_geometry_residual_maximum": {
+        "count": 5,
+        "mean": 1.7889497523881541,
+        "median": 0.7531812788790699,
+        "std": 1.4641887103108073
+      },
+      "joint_geometry_residual_median": {
+        "count": 5,
+        "mean": 0.4298039956722207,
+        "median": 0.40045767855330205,
+        "std": 0.09025926066764628
+      },
+      "latent_affine_atlas_gate_success_rate": 0.0,
+      "lightcone_too_small_count": {
+        "count": 5,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "o3_geometry_residual_median": {
+        "count": 5,
+        "mean": 0.5218123763534368,
+        "median": 0.5081388370972737,
+        "std": 0.12812829990133562
+      },
+      "other_chart_failure_count": {
+        "count": 5,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "pairwise_edge_fraction": {
+        "count": 5,
+        "mean": 1.0,
+        "median": 1.0,
+        "std": 0.0
+      },
+      "pairwise_graph_connected_rate": 1.0,
+      "raw_target_count": {
+        "count": 5,
+        "mean": 13.8,
+        "median": 6.0,
+        "std": 11.408768557561329
+      },
+      "regularization": 0.0,
+      "samples": 5,
+      "transform_condition_maximum": {
+        "count": 5,
+        "mean": 10.41988322741484,
+        "median": 8.184195401377957,
+        "std": 8.089869743170272
+      },
+      "transform_condition_median": {
+        "count": 5,
+        "mean": 3.525363482015657,
+        "median": 3.44532093352471,
+        "std": 1.6189393831934125
+      },
+      "transform_singular_maximum": {
+        "count": 5,
+        "mean": 1.0033941997063294,
+        "median": 1.0,
+        "std": 0.006788399412659097
+      },
+      "transform_singular_minimum": {
+        "count": 5,
+        "mean": 0.16754844533764307,
+        "median": 0.11543080811646575,
+        "std": 0.15038025632771543
+      }
+    },
+    "regularization=0.010000": {
+      "affine_cocycle_maximum": {
+        "count": 5,
+        "mean": 2.751959554437695e-16,
+        "median": 2.3851659270976536e-16,
+        "std": 9.503861137435537e-17
+      },
+      "chart_availability_fraction": {
+        "count": 5,
+        "mean": 1.0,
+        "median": 1.0,
+        "std": 0.0
+      },
+      "consensus_event_count": {
+        "count": 5,
+        "mean": 423.4,
+        "median": 332.0,
+        "std": 128.8294997273528
+      },
+      "depth_eligible_target_count": {
+        "count": 5,
+        "mean": 13.4,
+        "median": 5.0,
+        "std": 11.46472851837321
+      },
+      "depth_excluded_target_count": {
+        "count": 5,
+        "mean": 0.4,
+        "median": 0.0,
+        "std": 0.48989794855663565
+      },
+      "depth_retention_fraction": {
+        "count": 5,
+        "mean": 0.956140350877193,
+        "median": 1.0,
+        "std": 0.06469855759503779
+      },
+      "fit_convergence_rate": 0.6,
+      "fit_iterations": {
+        "count": 5,
+        "mean": 43.4,
+        "median": 41.0,
+        "std": 5.642694391866353
+      },
+      "independent_affine_residual_median": {
+        "count": 5,
+        "mean": 0.43454399599680915,
+        "median": 0.4320060034769949,
+        "std": 0.0670282910728309
+      },
+      "joint_geometry_residual_maximum": {
+        "count": 5,
+        "mean": 0.8927022038061889,
+        "median": 0.6919122623634396,
+        "std": 0.31495323657019647
+      },
+      "joint_geometry_residual_median": {
+        "count": 5,
+        "mean": 0.503570822301007,
+        "median": 0.4603416298266888,
+        "std": 0.13323521410515368
+      },
+      "latent_affine_atlas_gate_success_rate": 0.0,
+      "lightcone_too_small_count": {
+        "count": 5,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "o3_geometry_residual_median": {
+        "count": 5,
+        "mean": 0.5218123763534368,
+        "median": 0.5081388370972737,
+        "std": 0.12812829990133562
+      },
+      "other_chart_failure_count": {
+        "count": 5,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "pairwise_edge_fraction": {
+        "count": 5,
+        "mean": 1.0,
+        "median": 1.0,
+        "std": 0.0
+      },
+      "pairwise_graph_connected_rate": 1.0,
+      "raw_target_count": {
+        "count": 5,
+        "mean": 13.8,
+        "median": 6.0,
+        "std": 11.408768557561329
+      },
+      "regularization": 0.01,
+      "samples": 5,
+      "transform_condition_maximum": {
+        "count": 5,
+        "mean": 1.5894955871204313,
+        "median": 1.4830958537058745,
+        "std": 0.33540263223729366
+      },
+      "transform_condition_median": {
+        "count": 5,
+        "mean": 1.2144222672597176,
+        "median": 1.2400292266532338,
+        "std": 0.054694054752672555
+      },
+      "transform_singular_maximum": {
+        "count": 5,
+        "mean": 1.010937952082783,
+        "median": 1.0075595853046602,
+        "std": 0.010709440916460146
+      },
+      "transform_singular_minimum": {
+        "count": 5,
+        "mean": 0.633473464821262,
+        "median": 0.6693043033622049,
+        "std": 0.13704331400652733
+      }
+    },
+    "regularization=0.100000": {
+      "affine_cocycle_maximum": {
+        "count": 5,
+        "mean": 2.1016473893076337e-16,
+        "median": 1.7031459960373087e-16,
+        "std": 6.784348913813678e-17
+      },
+      "chart_availability_fraction": {
+        "count": 5,
+        "mean": 1.0,
+        "median": 1.0,
+        "std": 0.0
+      },
+      "consensus_event_count": {
+        "count": 5,
+        "mean": 423.4,
+        "median": 332.0,
+        "std": 128.8294997273528
+      },
+      "depth_eligible_target_count": {
+        "count": 5,
+        "mean": 13.4,
+        "median": 5.0,
+        "std": 11.46472851837321
+      },
+      "depth_excluded_target_count": {
+        "count": 5,
+        "mean": 0.4,
+        "median": 0.0,
+        "std": 0.48989794855663565
+      },
+      "depth_retention_fraction": {
+        "count": 5,
+        "mean": 0.956140350877193,
+        "median": 1.0,
+        "std": 0.06469855759503779
+      },
+      "fit_convergence_rate": 0.6,
+      "fit_iterations": {
+        "count": 5,
+        "mean": 37.6,
+        "median": 31.0,
+        "std": 10.170545708072895
+      },
+      "independent_affine_residual_median": {
+        "count": 5,
+        "mean": 0.43454399599680915,
+        "median": 0.4320060034769949,
+        "std": 0.0670282910728309
+      },
+      "joint_geometry_residual_maximum": {
+        "count": 5,
+        "mean": 0.9701354874911872,
+        "median": 0.8361363172940923,
+        "std": 0.3119912941862405
+      },
+      "joint_geometry_residual_median": {
+        "count": 5,
+        "mean": 0.5358956528551927,
+        "median": 0.5016069504819146,
+        "std": 0.14592715715757015
+      },
+      "latent_affine_atlas_gate_success_rate": 0.0,
+      "lightcone_too_small_count": {
+        "count": 5,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "o3_geometry_residual_median": {
+        "count": 5,
+        "mean": 0.5218123763534368,
+        "median": 0.5081388370972737,
+        "std": 0.12812829990133562
+      },
+      "other_chart_failure_count": {
+        "count": 5,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "pairwise_edge_fraction": {
+        "count": 5,
+        "mean": 1.0,
+        "median": 1.0,
+        "std": 0.0
+      },
+      "pairwise_graph_connected_rate": 1.0,
+      "raw_target_count": {
+        "count": 5,
+        "mean": 13.8,
+        "median": 6.0,
+        "std": 11.408768557561329
+      },
+      "regularization": 0.1,
+      "samples": 5,
+      "transform_condition_maximum": {
+        "count": 5,
+        "mean": 1.0639390797302286,
+        "median": 1.053849921463129,
+        "std": 0.03050199852377794
+      },
+      "transform_condition_median": {
+        "count": 5,
+        "mean": 1.0254900013876156,
+        "median": 1.0291891694095765,
+        "std": 0.0065321949204708496
+      },
+      "transform_singular_maximum": {
+        "count": 5,
+        "mean": 1.0034331134477583,
+        "median": 1.0037972513723803,
+        "std": 0.003177337334659275
+      },
+      "transform_singular_minimum": {
+        "count": 5,
+        "mean": 0.9372133450469947,
+        "median": 0.9488430328442459,
+        "std": 0.02966624674036859
+      }
+    },
+    "regularization=1.000000": {
+      "affine_cocycle_maximum": {
+        "count": 5,
+        "mean": 2.034836517483925e-16,
+        "median": 1.8055296611878764e-16,
+        "std": 6.669313503320282e-17
+      },
+      "chart_availability_fraction": {
+        "count": 5,
+        "mean": 1.0,
+        "median": 1.0,
+        "std": 0.0
+      },
+      "consensus_event_count": {
+        "count": 5,
+        "mean": 423.4,
+        "median": 332.0,
+        "std": 128.8294997273528
+      },
+      "depth_eligible_target_count": {
+        "count": 5,
+        "mean": 13.4,
+        "median": 5.0,
+        "std": 11.46472851837321
+      },
+      "depth_excluded_target_count": {
+        "count": 5,
+        "mean": 0.4,
+        "median": 0.0,
+        "std": 0.48989794855663565
+      },
+      "depth_retention_fraction": {
+        "count": 5,
+        "mean": 0.956140350877193,
+        "median": 1.0,
+        "std": 0.06469855759503779
+      },
+      "fit_convergence_rate": 1.0,
+      "fit_iterations": {
+        "count": 5,
+        "mean": 12.6,
+        "median": 12.0,
+        "std": 1.2
+      },
+      "independent_affine_residual_median": {
+        "count": 5,
+        "mean": 0.43454399599680915,
+        "median": 0.4320060034769949,
+        "std": 0.0670282910728309
+      },
+      "joint_geometry_residual_maximum": {
+        "count": 5,
+        "mean": 0.9843664917221568,
+        "median": 0.856943187433019,
+        "std": 0.31748667876676007
+      },
+      "joint_geometry_residual_median": {
+        "count": 5,
+        "mean": 0.5349808695030835,
+        "median": 0.5083060207260734,
+        "std": 0.14074844474678835
+      },
+      "latent_affine_atlas_gate_success_rate": 0.0,
+      "lightcone_too_small_count": {
+        "count": 5,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "o3_geometry_residual_median": {
+        "count": 5,
+        "mean": 0.5218123763534368,
+        "median": 0.5081388370972737,
+        "std": 0.12812829990133562
+      },
+      "other_chart_failure_count": {
+        "count": 5,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "pairwise_edge_fraction": {
+        "count": 5,
+        "mean": 1.0,
+        "median": 1.0,
+        "std": 0.0
+      },
+      "pairwise_graph_connected_rate": 1.0,
+      "raw_target_count": {
+        "count": 5,
+        "mean": 13.8,
+        "median": 6.0,
+        "std": 11.408768557561329
+      },
+      "regularization": 1.0,
+      "samples": 5,
+      "transform_condition_maximum": {
+        "count": 5,
+        "mean": 1.0065430250655587,
+        "median": 1.0054513791155388,
+        "std": 0.0031577658952637146
+      },
+      "transform_condition_median": {
+        "count": 5,
+        "mean": 1.0026375295389043,
+        "median": 1.0030929749195154,
+        "std": 0.0006854069008870356
+      },
+      "transform_singular_maximum": {
+        "count": 5,
+        "mean": 1.0003807480910916,
+        "median": 1.0004464622325024,
+        "std": 0.00034527836259926585
+      },
+      "transform_singular_minimum": {
+        "count": 5,
+        "mean": 0.9931370751167599,
+        "median": 0.9945830002481248,
+        "std": 0.003489297918642226
+      }
+    }
+  }
+}

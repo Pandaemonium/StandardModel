@@ -1,0 +1,131 @@
+{
+  "embedding_coordinates_used_after_sprinkling": false,
+  "frozen_local_scales_across_volume_ladder": true,
+  "results": [
+    {
+      "common_interior_count": {
+        "count": 5,
+        "mean": 5713.2,
+        "median": 5726.0,
+        "std": 163.6281149436123
+      },
+      "common_interior_fraction": {
+        "count": 5,
+        "mean": 0.5950630142693469,
+        "median": 0.5963962087282575,
+        "std": 0.017042820012874976
+      },
+      "common_marks_evaluated": 28566,
+      "diamond_volume": 1.0471975511965974,
+      "duration": 1.681792830507429,
+      "duration_over_operator_scale": 9.34329350281905,
+      "ell": 0.10219728214404318,
+      "ell_relative_error_from_reference": 0.0,
+      "events": 9600,
+      "interior_count_by_scale": [
+        {
+          "count": 5,
+          "mean": 9060.4,
+          "median": 9074.0,
+          "std": 45.924285514311485
+        },
+        {
+          "count": 5,
+          "mean": 7750.8,
+          "median": 7780.0,
+          "std": 115.13713562530553
+        },
+        {
+          "count": 5,
+          "mean": 5714.2,
+          "median": 5727.0,
+          "std": 164.47054447529501
+        }
+      ],
+      "largest_selector_scale_over_duration": 0.10080763867742662,
+      "minimum_shell_count_across_scales": {
+        "count": 28566,
+        "mean": 64.44237905201989,
+        "median": 4.0,
+        "std": 113.50051679506402
+      },
+      "passes_availability_gate": false,
+      "realizations_evaluated": 5,
+      "realizations_with_common_interior_rate": 1.0,
+      "realizations_with_rank_capable_common_mark_rate": 1.0,
+      "retarded_shell_count_by_scale": [
+        {
+          "count": 28566,
+          "mean": 134.52275432332144,
+          "median": 95.0,
+          "std": 125.60349238745764
+        },
+        {
+          "count": 28566,
+          "mean": 90.27025134775607,
+          "median": 39.0,
+          "std": 117.85827822897205
+        },
+        {
+          "count": 28566,
+          "mean": 66.25694882027585,
+          "median": 4.0,
+          "std": 120.1092905888981
+        }
+      ],
+      "runtime_seconds": {
+        "inclusive_interval_counts": {
+          "count": 5,
+          "mean": 1.026958300000001,
+          "median": 1.0222146000000976,
+          "std": 0.05914575471318698
+        },
+        "relation": {
+          "count": 5,
+          "mean": 3.6909563199999864,
+          "median": 3.718581599999993,
+          "std": 0.09919646070757344
+        },
+        "support_gate": {
+          "count": 5,
+          "mean": 0.2438916000000063,
+          "median": 0.23771030000000337,
+          "std": 0.02107516632502926
+        }
+      },
+      "triple_shell_nonempty_rate": 0.5803052579990198,
+      "triple_shell_rank_capable_rate": 0.5084716096058252,
+      "volume_multiplier": 8
+    }
+  ],
+  "scale_schedule": "s = sqrt(ell * L), evaluated at (s/r, s, r*s)",
+  "settings": {
+    "adjacent_ratio": 1.25,
+    "adjacent_scales": [
+      0.10850404095237087,
+      0.1356300511904636,
+      0.16953756398807948
+    ],
+    "interior_abundance_threshold": 0.25,
+    "interior_band": [
+      0.5,
+      2.0
+    ],
+    "minimum_availability_rate": 0.8,
+    "minimum_shell_count": 4,
+    "nonlocality_scale": 0.18,
+    "realizations": 5,
+    "reference_duration": 1.0,
+    "reference_ell": 0.10219728214404318,
+    "reference_events": 1200,
+    "retarded_shell_band": [
+      0.5,
+      4.0
+    ],
+    "seed": 2026071604,
+    "volume_multipliers": [
+      8
+    ]
+  },
+  "status": "order-only fixed-density larger-diamond boundary control; external numerical oracle"
+}

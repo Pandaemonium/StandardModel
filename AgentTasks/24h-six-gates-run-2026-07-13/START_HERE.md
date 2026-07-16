@@ -22,12 +22,10 @@ or submitting it. Do not edit the same manuscript section concurrently.
 Executor prompts:
 
 - Codex: `GOAL_PROMPT_CODEX.md`;
-- Opus: `GOAL_PROMPT_OPUS.md`;
-- compatibility pointer: `GOAL_PROMPT_CLAUDE.md`.
+- interactive Claude Code: `GOAL_PROMPT_CLAUDE.md`;
+- legacy filename retained for provenance: `GOAL_PROMPT_OPUS.md`.
 
-The Opus wrapper reported `Credit balance is too low` at 10:13 PDT. The failed
-call is logged at
-`AgentTasks/model-calls/claude/2026-07-12-101329-six-open-gates-24h-strategy.md`.
-Retry through the repository wrapper; do not silently replace Opus with a
-different model. Codex work continues while that external service is
-unavailable.
+Claude-family work occurs only in the user-started interactive Claude Code
+session. Do not invoke a Claude API or repository review wrapper. The earlier
+failed wrapper call remains in the historical log for provenance and must not
+be retried.

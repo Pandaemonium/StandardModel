@@ -1,0 +1,323 @@
+{
+  "embedding_coordinates_used_after_sprinkling": false,
+  "frozen_local_scales_across_volume_ladder": true,
+  "results": [
+    {
+      "common_interior_count": {
+        "count": 10,
+        "mean": 238.5,
+        "median": 233.0,
+        "std": 26.116086996332356
+      },
+      "common_interior_fraction": {
+        "count": 10,
+        "mean": 0.19858451290591175,
+        "median": 0.19400499583680267,
+        "std": 0.021745284759643928
+      },
+      "common_marks_evaluated": 2385,
+      "diamond_volume": 0.1308996938995747,
+      "duration": 1.0,
+      "duration_over_operator_scale": 5.555555555555555,
+      "ell": 0.10219728214404318,
+      "ell_relative_error_from_reference": 0.0,
+      "events": 1200,
+      "interior_count_by_scale": [
+        {
+          "count": 10,
+          "mean": 1029.4,
+          "median": 1028.5,
+          "std": 18.995789007040482
+        },
+        {
+          "count": 10,
+          "mean": 666.3,
+          "median": 660.0,
+          "std": 25.357641846196977
+        },
+        {
+          "count": 10,
+          "mean": 238.6,
+          "median": 233.0,
+          "std": 26.142685401465553
+        }
+      ],
+      "largest_selector_scale_over_duration": 0.16953756398807948,
+      "minimum_shell_count_across_scales": {
+        "count": 2385,
+        "mean": 0.23060796645702306,
+        "median": 0.0,
+        "std": 1.3895636191842513
+      },
+      "passes_availability_gate": false,
+      "realizations_evaluated": 10,
+      "realizations_with_common_interior_rate": 1.0,
+      "realizations_with_rank_capable_common_mark_rate": 1.0,
+      "retarded_shell_count_by_scale": [
+        {
+          "count": 2385,
+          "mean": 26.664150943396226,
+          "median": 20.0,
+          "std": 21.118195726342865
+        },
+        {
+          "count": 2385,
+          "mean": 4.138364779874214,
+          "median": 1.0,
+          "std": 8.33452418214901
+        },
+        {
+          "count": 2385,
+          "mean": 0.23060796645702306,
+          "median": 0.0,
+          "std": 1.3895636191842513
+        }
+      ],
+      "runtime_seconds": {
+        "inclusive_interval_counts": {
+          "count": 10,
+          "mean": 0.008275459999981648,
+          "median": 0.008323249999989457,
+          "std": 0.0005395734152056281
+        },
+        "relation": {
+          "count": 10,
+          "mean": 0.04942995000001247,
+          "median": 0.04959825000003093,
+          "std": 0.0008972598522735814
+        },
+        "support_gate": {
+          "count": 10,
+          "mean": 0.002624170000012782,
+          "median": 0.0025981000000001586,
+          "std": 0.00027105801241927906
+        }
+      },
+      "triple_shell_nonempty_rate": 0.061215932914046124,
+      "triple_shell_rank_capable_rate": 0.01928721174004193,
+      "volume_multiplier": 1
+    },
+    {
+      "common_interior_count": {
+        "count": 10,
+        "mean": 848.0,
+        "median": 864.0,
+        "std": 71.18286310622803
+      },
+      "common_interior_fraction": {
+        "count": 10,
+        "mean": 0.3531861724281549,
+        "median": 0.35985006247396917,
+        "std": 0.02964717330538444
+      },
+      "common_marks_evaluated": 8480,
+      "diamond_volume": 0.2617993877991494,
+      "duration": 1.189207115002721,
+      "duration_over_operator_scale": 6.606706194459561,
+      "ell": 0.10219728214404318,
+      "ell_relative_error_from_reference": 0.0,
+      "events": 2400,
+      "interior_count_by_scale": [
+        {
+          "count": 10,
+          "mean": 2170.2,
+          "median": 2171.5,
+          "std": 19.898743678936118
+        },
+        {
+          "count": 10,
+          "mean": 1616.9,
+          "median": 1612.0,
+          "std": 43.55789251100195
+        },
+        {
+          "count": 10,
+          "mean": 848.6,
+          "median": 865.5,
+          "std": 71.47754892272117
+        }
+      ],
+      "largest_selector_scale_over_duration": 0.1425635298084233,
+      "minimum_shell_count_across_scales": {
+        "count": 8480,
+        "mean": 4.7036556603773585,
+        "median": 0.0,
+        "std": 15.341299108428217
+      },
+      "passes_availability_gate": false,
+      "realizations_evaluated": 10,
+      "realizations_with_common_interior_rate": 1.0,
+      "realizations_with_rank_capable_common_mark_rate": 1.0,
+      "retarded_shell_count_by_scale": [
+        {
+          "count": 8480,
+          "mean": 50.20070754716981,
+          "median": 36.0,
+          "std": 44.24343091064096
+        },
+        {
+          "count": 8480,
+          "mean": 18.223584905660378,
+          "median": 4.0,
+          "std": 30.217814007218767
+        },
+        {
+          "count": 8480,
+          "mean": 4.7036556603773585,
+          "median": 0.0,
+          "std": 15.341299108428217
+        }
+      ],
+      "runtime_seconds": {
+        "inclusive_interval_counts": {
+          "count": 10,
+          "mean": 0.03783499999999549,
+          "median": 0.037301399999989826,
+          "std": 0.0023893022090192397
+        },
+        "relation": {
+          "count": 10,
+          "mean": 0.19308326999999964,
+          "median": 0.19296660000003385,
+          "std": 0.002419713023074625
+        },
+        "support_gate": {
+          "count": 10,
+          "mean": 0.01263959000000341,
+          "median": 0.013134100000002036,
+          "std": 0.0012509381482989138
+        }
+      },
+      "triple_shell_nonempty_rate": 0.25837264150943395,
+      "triple_shell_rank_capable_rate": 0.17193396226415095,
+      "volume_multiplier": 2
+    },
+    {
+      "common_interior_count": {
+        "count": 10,
+        "mean": 2346.0,
+        "median": 2326.5,
+        "std": 123.12432740933045
+      },
+      "common_interior_fraction": {
+        "count": 10,
+        "mean": 0.4886481982920225,
+        "median": 0.4845865444699021,
+        "std": 0.025645558718877418
+      },
+      "common_marks_evaluated": 23460,
+      "diamond_volume": 0.523598775598299,
+      "duration": 1.4142135623730951,
+      "duration_over_operator_scale": 7.856742013183863,
+      "ell": 0.1021972821440432,
+      "ell_relative_error_from_reference": 1.3579409859700813e-16,
+      "events": 4800,
+      "interior_count_by_scale": [
+        {
+          "count": 10,
+          "mean": 4459.3,
+          "median": 4461.0,
+          "std": 28.14977797425763
+        },
+        {
+          "count": 10,
+          "mean": 3619.7,
+          "median": 3608.0,
+          "std": 72.68156575088348
+        },
+        {
+          "count": 10,
+          "mean": 2349.1,
+          "median": 2330.0,
+          "std": 126.71894096779691
+        }
+      ],
+      "largest_selector_scale_over_duration": 0.11988116116181921,
+      "minimum_shell_count_across_scales": {
+        "count": 23460,
+        "mean": 23.926044330775788,
+        "median": 0.0,
+        "std": 53.389231158584494
+      },
+      "passes_availability_gate": false,
+      "realizations_evaluated": 10,
+      "realizations_with_common_interior_rate": 1.0,
+      "realizations_with_rank_capable_common_mark_rate": 1.0,
+      "retarded_shell_count_by_scale": [
+        {
+          "count": 23460,
+          "mean": 83.94565217391305,
+          "median": 59.0,
+          "std": 77.25978080496193
+        },
+        {
+          "count": 23460,
+          "mean": 46.00920716112532,
+          "median": 15.0,
+          "std": 65.8133537223747
+        },
+        {
+          "count": 23460,
+          "mean": 24.008056265984656,
+          "median": 0.0,
+          "std": 53.84713906257654
+        }
+      ],
+      "runtime_seconds": {
+        "inclusive_interval_counts": {
+          "count": 10,
+          "mean": 0.18225428000000649,
+          "median": 0.17819240000000036,
+          "std": 0.012563147672301525
+        },
+        "relation": {
+          "count": 10,
+          "mean": 0.8075255699999957,
+          "median": 0.8149373999999625,
+          "std": 0.05836014711734125
+        },
+        "support_gate": {
+          "count": 10,
+          "mean": 0.056477419999987434,
+          "median": 0.05579929999998967,
+          "std": 0.0030181879858248166
+        }
+      },
+      "triple_shell_nonempty_rate": 0.45439045183290705,
+      "triple_shell_rank_capable_rate": 0.36965046888320546,
+      "volume_multiplier": 4
+    }
+  ],
+  "scale_schedule": "s = sqrt(ell * L), evaluated at (s/r, s, r*s)",
+  "settings": {
+    "adjacent_ratio": 1.25,
+    "adjacent_scales": [
+      0.10850404095237087,
+      0.1356300511904636,
+      0.16953756398807948
+    ],
+    "interior_abundance_threshold": 0.25,
+    "interior_band": [
+      0.5,
+      2.0
+    ],
+    "minimum_availability_rate": 0.8,
+    "minimum_shell_count": 4,
+    "nonlocality_scale": 0.18,
+    "realizations": 10,
+    "reference_duration": 1.0,
+    "reference_ell": 0.10219728214404318,
+    "reference_events": 1200,
+    "retarded_shell_band": [
+      0.5,
+      4.0
+    ],
+    "seed": 2026071603,
+    "volume_multipliers": [
+      1,
+      2,
+      4
+    ]
+  },
+  "status": "order-only fixed-density larger-diamond boundary control; external numerical oracle"
+}

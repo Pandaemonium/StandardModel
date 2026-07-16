@@ -1,0 +1,61 @@
+{
+  "claim_boundary": "measured resource scaling; not physical concentration",
+  "free_bytes_before": 432608346112,
+  "gate": {
+    "checks": {
+      "build_within_factor_three": true,
+      "exact_raw_storage": true,
+      "finite_responses": true,
+      "large_projection_at_most_12_hours": true,
+      "large_storage_at_most_24_gib": true,
+      "minimum_pivots": true,
+      "response_within_factor_three": true,
+      "temporary_volume_margin": true
+    },
+    "large_run_authorized": false,
+    "physical_stage_authorized": false,
+    "resource_precondition_passes": true
+  },
+  "prediction_from_a44r": {
+    "build_seconds": 323.05469204756963,
+    "response_seconds": 3.9611892867113037
+  },
+  "quadratic_extrapolation": {
+    "packed_relation_bytes": 20000550003,
+    "projected_build_seconds": 5328.475755292077,
+    "projected_response_seconds": 900.3961924217731,
+    "projected_total_seconds": 6228.87194771385,
+    "target_pivots": 256,
+    "target_random_events": 400000,
+    "target_total_points": 400003
+  },
+  "result": {
+    "all_responses_finite": true,
+    "build_seconds": 333.0447211000137,
+    "cache_file_bytes": 1250137503,
+    "cache_storage_bytes": 1250137503,
+    "compression_ratio_vs_dense_boolean": 7.99960003199744,
+    "dense_boolean_bytes": 10000600009,
+    "depth_threshold": 5795,
+    "direct_count_match": null,
+    "expected_cache_bytes": 1250137503,
+    "minimum_selected_depth": 5795,
+    "random_events": 100000,
+    "response_seconds": 3.517330900009256,
+    "selected_pivots": 16,
+    "spawn_key": [
+      0
+    ],
+    "total_points": 100003
+  },
+  "settings": {
+    "column_block_size": 4096,
+    "duration": 2.0,
+    "events": 100000,
+    "minimum_pivots": 16,
+    "popcount_block_size": 128,
+    "row_block_size": 32,
+    "seed": 20261530
+  },
+  "stage": "A44r2"
+}

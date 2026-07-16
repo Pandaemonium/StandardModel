@@ -1,0 +1,341 @@
+{
+  "caveat": "this is a constant-metric Minkowski control with supplied dimension, density, endpoints, scale, and Lorentz prior; curvature requires position-dependent metric jets",
+  "events": 4000,
+  "mode": "held-out",
+  "parameters": {
+    "density": 30557.749073643907,
+    "dimension": 4,
+    "local_selector_fraction": 0.5,
+    "maximum_exact_residual": 1e-10,
+    "metric_regularization": 0.1,
+    "patch_radius": 0.4,
+    "transition_fit_fraction": 0.6,
+    "transition_selector_fraction": 0.2
+  },
+  "realization_seeds": [
+    7286627536455845616,
+    4454563766049224038,
+    2195281602087941438
+  ],
+  "realizations": 3,
+  "samples": [
+    {
+      "constructed_patch_count": 12,
+      "coordinate_eligible_patch_count": 7,
+      "exact_spin_obstruction_class_computed": false,
+      "global_gauge_design_condition": 22.410121130347154,
+      "global_metric_condition": 52.14282972314561,
+      "global_metric_signature": [
+        1,
+        3,
+        0
+      ],
+      "maximum_coframe_factorization_error": 5.38587222591936e-16,
+      "maximum_exact_affine_cocycle_error": 1.3157998030315216e-16,
+      "maximum_exact_internal_cocycle_error": 2.34981991669998e-16,
+      "maximum_exact_lorentz_defect": 3.861410022671848e-16,
+      "maximum_exact_metric_covariance_error": 2.406375537145788e-16,
+      "maximum_global_map_linear_condition": 1.2656432012388195,
+      "maximum_internal_identity_error": 1.97949010226545e-16,
+      "maximum_metric_adjustment": 0.17986960397976756,
+      "maximum_oracle_affine_map_error": 0.15078335258284517,
+      "maximum_pulledback_oracle_metric_error": 0.2620806607838941,
+      "maximum_selected_patch_oracle_coordinate_error": 0.28808789925475453,
+      "maximum_selector_interval_error": 0.07403935654843441,
+      "maximum_selector_noncausal_violation_fraction": 0.0584,
+      "maximum_selector_transition_error": 0.15934899021679674,
+      "maximum_test_interval_error": 0.0838440721433243,
+      "maximum_test_noncausal_violation_fraction": 0.04476418864908074,
+      "maximum_test_transition_error": 0.19324576038536018,
+      "minimum_pair_overlap": 203,
+      "minimum_selector_causal_sign_fraction": 1.0,
+      "minimum_test_causal_sign_fraction": 0.9929577464788732,
+      "orientation_time_orientation_gauge_exists": true,
+      "passes_exact_flat_bundle_gate": true,
+      "passes_heldout_local_metric_gate": true,
+      "passes_heldout_transition_gate": true,
+      "passes_selector_gate": true,
+      "passes_trivial_flat_spin_control_gate": true,
+      "selected_core_counts": [
+        93,
+        211,
+        37
+      ],
+      "selected_domain_counts": [
+        480,
+        487,
+        417
+      ],
+      "selected_pivot_indices": [
+        2738,
+        2510,
+        2347
+      ],
+      "triple_overlap_count": 193
+    },
+    {
+      "constructed_patch_count": 8,
+      "coordinate_eligible_patch_count": 7,
+      "exact_spin_obstruction_class_computed": false,
+      "global_gauge_design_condition": 31.96431170138442,
+      "global_metric_condition": 56.44971015001838,
+      "global_metric_signature": [
+        1,
+        3,
+        0
+      ],
+      "maximum_coframe_factorization_error": 7.520032204379655e-16,
+      "maximum_exact_affine_cocycle_error": 8.809556546285335e-17,
+      "maximum_exact_internal_cocycle_error": 1.2473040231636041e-16,
+      "maximum_exact_lorentz_defect": 2.629106006327174e-16,
+      "maximum_exact_metric_covariance_error": 1.5910339156025196e-16,
+      "maximum_global_map_linear_condition": 2.4017555288148444,
+      "maximum_internal_identity_error": 1.378207816215881e-16,
+      "maximum_metric_adjustment": 0.13790646646192453,
+      "maximum_oracle_affine_map_error": 0.20719418742806836,
+      "maximum_pulledback_oracle_metric_error": 0.5015816993204741,
+      "maximum_selected_patch_oracle_coordinate_error": 0.40737531678307703,
+      "maximum_selector_interval_error": 0.12498351552228698,
+      "maximum_selector_noncausal_violation_fraction": 0.04938271604938271,
+      "maximum_selector_transition_error": 0.18667578284043324,
+      "maximum_test_interval_error": 0.11520922205270115,
+      "maximum_test_noncausal_violation_fraction": 0.06261859582542695,
+      "maximum_test_transition_error": 0.17127564939184278,
+      "minimum_pair_overlap": 206,
+      "minimum_selector_causal_sign_fraction": 0.9761904761904762,
+      "minimum_test_causal_sign_fraction": 1.0,
+      "orientation_time_orientation_gauge_exists": true,
+      "passes_exact_flat_bundle_gate": true,
+      "passes_heldout_local_metric_gate": true,
+      "passes_heldout_transition_gate": true,
+      "passes_selector_gate": true,
+      "passes_trivial_flat_spin_control_gate": true,
+      "selected_core_counts": [
+        52,
+        94,
+        78
+      ],
+      "selected_domain_counts": [
+        447,
+        398,
+        430
+      ],
+      "selected_pivot_indices": [
+        128,
+        2343,
+        3943
+      ],
+      "triple_overlap_count": 150
+    },
+    {
+      "constructed_patch_count": 6,
+      "coordinate_eligible_patch_count": 5,
+      "exact_spin_obstruction_class_computed": false,
+      "global_gauge_design_condition": 22.14991709980261,
+      "global_metric_condition": 58.68620625632281,
+      "global_metric_signature": [
+        1,
+        3,
+        0
+      ],
+      "maximum_coframe_factorization_error": 4.2035037861356734e-16,
+      "maximum_exact_affine_cocycle_error": 1.4277998977762899e-16,
+      "maximum_exact_internal_cocycle_error": 2.518683156114907e-16,
+      "maximum_exact_lorentz_defect": 4.039702121105912e-16,
+      "maximum_exact_metric_covariance_error": 2.6019705821549606e-16,
+      "maximum_global_map_linear_condition": 1.4371682907563557,
+      "maximum_internal_identity_error": 2.2832332401622623e-16,
+      "maximum_metric_adjustment": 0.14948142305364268,
+      "maximum_oracle_affine_map_error": 0.22762881233451213,
+      "maximum_pulledback_oracle_metric_error": 0.3592879816403779,
+      "maximum_selected_patch_oracle_coordinate_error": 0.4768247530749123,
+      "maximum_selector_interval_error": 0.13189276137009015,
+      "maximum_selector_noncausal_violation_fraction": 0.07413010590015129,
+      "maximum_selector_transition_error": 0.17011493205105463,
+      "maximum_test_interval_error": 0.11657999287617435,
+      "maximum_test_noncausal_violation_fraction": 0.04682779456193353,
+      "maximum_test_transition_error": 0.18754863170776104,
+      "minimum_pair_overlap": 255,
+      "minimum_selector_causal_sign_fraction": 0.9823529411764705,
+      "minimum_test_causal_sign_fraction": 0.9705882352941176,
+      "orientation_time_orientation_gauge_exists": true,
+      "passes_exact_flat_bundle_gate": true,
+      "passes_heldout_local_metric_gate": true,
+      "passes_heldout_transition_gate": true,
+      "passes_selector_gate": true,
+      "passes_trivial_flat_spin_control_gate": true,
+      "selected_core_counts": [
+        131,
+        79,
+        78
+      ],
+      "selected_domain_counts": [
+        464,
+        442,
+        448
+      ],
+      "selected_pivot_indices": [
+        1785,
+        1619,
+        34
+      ],
+      "triple_overlap_count": 236
+    }
+  ],
+  "seed": 20260890,
+  "selection_blinding": "triple selection excludes local test constraints, overlap test events, and all sprinkling-coordinate oracle controls",
+  "stage": "A21 exact global-affine flat tetrad-bundle control",
+  "summary": {
+    "constructed_patch_count": {
+      "count": 3,
+      "mean": 8.666666666666666,
+      "median": 8.0,
+      "std": 2.494438257849294
+    },
+    "coordinate_eligible_patch_count": {
+      "count": 3,
+      "mean": 6.333333333333333,
+      "median": 7.0,
+      "std": 0.9428090415820634
+    },
+    "global_gauge_design_condition": {
+      "count": 3,
+      "mean": 25.50811664384473,
+      "median": 22.410121130347154,
+      "std": 4.566455043767749
+    },
+    "global_metric_condition": {
+      "count": 3,
+      "mean": 55.75958204316226,
+      "median": 56.44971015001838,
+      "std": 2.715529625031813
+    },
+    "maximum_exact_affine_cocycle_error": {
+      "count": 3,
+      "mean": 1.2081851184787818e-16,
+      "median": 1.3157998030315216e-16,
+      "std": 2.3586061818299934e-17
+    },
+    "maximum_exact_internal_cocycle_error": {
+      "count": 3,
+      "mean": 2.0386023653261638e-16,
+      "median": 2.34981991669998e-16,
+      "std": 5.637632470806265e-17
+    },
+    "maximum_exact_lorentz_defect": {
+      "count": 3,
+      "mean": 3.510072716701645e-16,
+      "median": 3.861410022671848e-16,
+      "std": 6.271755611108253e-17
+    },
+    "maximum_exact_metric_covariance_error": {
+      "count": 3,
+      "mean": 2.199793344967756e-16,
+      "median": 2.406375537145788e-16,
+      "std": 4.378016198682164e-17
+    },
+    "maximum_global_map_linear_condition": {
+      "count": 3,
+      "mean": 1.7015223402700066,
+      "median": 1.4371682907563557,
+      "std": 0.5000667307725057
+    },
+    "maximum_internal_identity_error": {
+      "count": 3,
+      "mean": 1.880310386214531e-16,
+      "median": 1.97949010226545e-16,
+      "std": 3.760719935989983e-17
+    },
+    "maximum_metric_adjustment": {
+      "count": 3,
+      "mean": 0.15575249783177825,
+      "median": 0.14948142305364268,
+      "std": 0.017695969630400356
+    },
+    "maximum_oracle_affine_map_error": {
+      "count": 3,
+      "mean": 0.19520211744847524,
+      "median": 0.20719418742806836,
+      "std": 0.032497830470231505
+    },
+    "maximum_pulledback_oracle_metric_error": {
+      "count": 3,
+      "mean": 0.3743167805815821,
+      "median": 0.3592879816403779,
+      "std": 0.0983517004199265
+    },
+    "maximum_selected_patch_oracle_coordinate_error": {
+      "count": 3,
+      "mean": 0.3907626563709146,
+      "median": 0.40737531678307703,
+      "std": 0.07794179607014572
+    },
+    "maximum_selector_interval_error": {
+      "count": 3,
+      "mean": 0.11030521114693718,
+      "median": 0.12498351552228698,
+      "std": 0.025798495781293847
+    },
+    "maximum_selector_noncausal_violation_fraction": {
+      "count": 3,
+      "mean": 0.060637607316511334,
+      "median": 0.0584,
+      "std": 0.010226224164166024
+    },
+    "maximum_selector_transition_error": {
+      "count": 3,
+      "mean": 0.17204656836942822,
+      "median": 0.17011493205105463,
+      "std": 0.011239419110839411
+    },
+    "maximum_test_interval_error": {
+      "count": 3,
+      "mean": 0.10521109569073328,
+      "median": 0.11520922205270115,
+      "std": 0.015119127501706093
+    },
+    "maximum_test_noncausal_violation_fraction": {
+      "count": 3,
+      "mean": 0.051403526345480406,
+      "median": 0.04682779456193353,
+      "std": 0.00797487533532287
+    },
+    "maximum_test_transition_error": {
+      "count": 3,
+      "mean": 0.18402334716165467,
+      "median": 0.18754863170776104,
+      "std": 0.009309212913923165
+    },
+    "minimum_pair_overlap": {
+      "count": 3,
+      "mean": 221.33333333333334,
+      "median": 206.0,
+      "std": 23.837412238374835
+    },
+    "minimum_selector_causal_sign_fraction": {
+      "count": 3,
+      "mean": 0.9861811391223156,
+      "median": 0.9823529411764705,
+      "std": 0.010090083602015716
+    },
+    "minimum_test_causal_sign_fraction": {
+      "count": 3,
+      "mean": 0.987848660590997,
+      "median": 0.9929577464788732,
+      "std": 0.012539006997786794
+    },
+    "orientation_time_orientation_gauge_exists_rate": 1.0,
+    "passes_exact_flat_bundle_gate_rate": 1.0,
+    "passes_heldout_local_metric_gate_rate": 1.0,
+    "passes_heldout_transition_gate_rate": 1.0,
+    "passes_selector_gate_rate": 1.0,
+    "passes_trivial_flat_spin_control_gate_rate": 1.0,
+    "samples": 3,
+    "triple_overlap_count": {
+      "count": 3,
+      "mean": 193.0,
+      "median": 193.0,
+      "std": 35.10935297989222
+    }
+  }
+}

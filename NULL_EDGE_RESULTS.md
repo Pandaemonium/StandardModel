@@ -345,6 +345,14 @@ build-enforced axiom pins (`[propext, Classical.choice, Quot.sound]`) in
 `PhysicsSM/Draft/NullEdge/Carrier/CarrierAxiomGuard.lean` - none of it is in
 the trusted namespace yet.
 
+- **Null-tick aggregate proper time (finite identity, 2026-07-14).**
+  `NullTickProperTime.lean` kernel-checks the standard 1+1 formula
+  `tau^2 = 4 * epsilon^2 * nPlus * nMinus` and the exact nonempty-history
+  identity `tau^2 = t^2 * (1 - v^2)`, proves that one-direction support is null
+  while two-direction support is timelike, and proves that balanced populations
+  uniquely saturate the coordinate-time bound for nonzero tick scale. This is
+  endpoint Lorentzian geometry, not positive proper time on individual null
+  segments and not a claim that reversal count defines time.
 - **Discrete Weitzenbock decomposition (finite identity).** For the carrier
   `D = sum_e c(alpha_e) nabla_e + Gamma phi` with null soldering
   (`c(alpha_e)^2 = 0`, kernel-checked), the square decomposes exactly:
@@ -352,6 +360,60 @@ the trusted namespace yet.
   `4 D^#D = Q_A^# + Q_C^# + 4 Q_T + 4 E_#` with varying soldering - aperture,
   closure, turn, and soldering-gradient (gravity-shaped) channels separated in
   one operator identity. "Unification is decomposition, not identification."
+- **Finite connection/Dirac geometry chain (finite identity, 2026-07-14).**
+  `PhysicsSM/Draft/NullEdge/FiniteConnectionGeometry.lean` proves that the
+  adjoint commutator curvature obeys the cyclic Jacobi/Bianchi identity, and
+  that the strong finite tetrad postulate `[nabla_a, C_b] = 0` implies both
+  compatibility of the Clifford-anticommutator metric proxy and compatibility
+  of commutator curvature with the fixed Clifford generators. Its guarded
+  `finite_connection_dirac_chain` composes those G3/G4 identities with the
+  tetrad-specialized finite Lichnerowicz square. This is associative-ring
+  algebra with globally fixed frame labels, not a continuum Riemann tensor,
+  contracted Bianchi identity, conserved stress tensor, or Einstein equation.
+  An Aristotle-reviewed strengthening proves covariance of commutators,
+  anticommutators, and curvature under a fixed conjugation-shaped transform
+  using only a displayed left inverse. Without a right inverse this is not yet
+  an automorphism or local Lorentz group action.
+  The companion `NondegenerateSolderingGeometry` module proves that zero
+  matrix-coframe defect is exactly parallel transport, that an internally
+  Lorentz edge then preserves the induced metric, and that zero-defect metric
+  preservation composes across two edges. `FiniteCartanBianchi.lean` adds the
+  torsionful fixed-label Cartan identity
+  `D_a T_bc + cyclic = [F_ab,E_c] + cyclic`, its torsion-free cyclic-curvature
+  corollary, and a paired first/second algebraic Bianchi theorem. Torsion and
+  both sides of the Cartan identity are also covariant under one common fixed
+  sandwiching with a displayed left inverse. It does not yet supply graded
+  cellular cochains, site-dependent local frame rotations and their connection
+  correction terms, anholonomic structure coefficients, or nonvacuous 3-cell
+  content.
+- **Finite-index contracted Bianchi bridge (component identity, 2026-07-14).**
+  `FiniteContractedBianchi.lean` explicitly contracts a finite-index
+  all-lowered curvature derivative with first/last pair antisymmetry and the
+  uncontracted differential Bianchi identity. It proves
+  `2 * divRic = gradScalar` and zero divergence of the Einstein combination for
+  diagonal orthonormal-frame weights squaring to one. A nonzero `1+1`
+  Lorentz-signature area-form witness has `divRic = -1` and
+  `gradScalar = -2`, so the contracted equality itself is nontrivial. This
+  closes the tensor contraction algebra, not the geometric derivation of those
+  components or hypotheses from null-edge holonomy and refinement.
+- **Finite Noether link (finite identity).**
+  `FiniteDynamicsNoetherThermoCapstone.action_symmetry_conservation_packet`
+  proves that one unitary-commutation hypothesis both transports finite
+  mass-shell solutions at fixed eigenvalue and conserves the corresponding
+  real operator expectation along the discrete orbit. This is not a local
+  stress-energy current, diffeomorphism Noether identity, or proof of
+  covariant source conservation.
+- **Finite conditional Bianchi-to-source conservation (finite identity,
+  2026-07-14).** `FiniteGravityConservation.lean` proves in an arbitrary
+  associative ring that `G = kappa * T`, adjoint conservation of `G`, parallel
+  `kappa`, and left cancellation by `kappa` imply adjoint conservation of `T`.
+  The proof uses a separately checked noncommutative adjoint Leibniz rule; a
+  displayed left inverse is a convenient sufficient condition. A nonzero
+  `2 x 2` rational matrix witness with mutually noncommuting coupling and
+  source establishes simultaneous satisfiability of the left-invertible
+  hypotheses. This is the exact final cancellation step,
+  not a construction of an Einstein operator or stress tensor, a contracted
+  Bianchi theorem, or a derivation of universal coupling.
 - **Closure-current square algebra, abstract rung (finite identity,
   2026-07-08 early).**
   In the GateYM lane, `S1ClosureCurrentAlgebra.closure_current_square`

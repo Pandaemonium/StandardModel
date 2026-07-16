@@ -1,0 +1,74 @@
+{
+  "status": "exact algebra plus external flat numerical control; not a graph convergence proof",
+  "signature": "(+---)",
+  "spacings": [
+    0.16,
+    0.08,
+    0.04
+  ],
+  "affine_control": {
+    "spacing": 0.04,
+    "metric_frobenius_error": 0.0,
+    "hessian_frobenius_error": 0.0,
+    "weak_ricci_frobenius_error": 0.0,
+    "weak_scalar_curvature_error": 0.0
+  },
+  "quadratic_chart_controls": {
+    "temporal_quadratic": {
+      "samples": [
+        {
+          "spacing": 0.16,
+          "metric_frobenius_error": 0.0040960000000000996,
+          "hessian_frobenius_error": 0.0032768000000000796,
+          "expected_hessian_signal": 0.8,
+          "weak_ricci_frobenius_error": 3.6637359812630166e-15,
+          "weak_scalar_curvature_error": 3.648790535230711e-15
+        },
+        {
+          "spacing": 0.08,
+          "metric_frobenius_error": 0.0010239999999999139,
+          "hessian_frobenius_error": 0.0008192000000000199,
+          "expected_hessian_signal": 0.8,
+          "weak_ricci_frobenius_error": 2.5868196473766147e-14,
+          "weak_scalar_curvature_error": 2.5841734537599648e-14
+        },
+        {
+          "spacing": 0.04,
+          "metric_frobenius_error": 0.000256000000000034,
+          "hessian_frobenius_error": 0.00020480000000033804,
+          "expected_hessian_signal": 0.8,
+          "weak_ricci_frobenius_error": 1.9317880628477724e-14,
+          "weak_scalar_curvature_error": 1.931293651672944e-14
+        }
+      ]
+    },
+    "shear_quadratic": {
+      "samples": [
+        {
+          "spacing": 0.16,
+          "metric_frobenius_error": 0.014399999999999968,
+          "hessian_frobenius_error": 0.021600000000000064,
+          "expected_hessian_signal": 1.5,
+          "weak_ricci_frobenius_error": 0.0004802928402658502,
+          "weak_scalar_curvature_error": 0.0004873101057892148
+        },
+        {
+          "spacing": 0.08,
+          "metric_frobenius_error": 0.0036000000000000476,
+          "hessian_frobenius_error": 0.005399999999999405,
+          "expected_hessian_signal": 1.5,
+          "weak_ricci_frobenius_error": 2.9371091228025392e-05,
+          "weak_scalar_curvature_error": 2.9477209181077275e-05
+        },
+        {
+          "spacing": 0.04,
+          "metric_frobenius_error": 0.0009000000000000119,
+          "hessian_frobenius_error": 0.001350000000001128,
+          "expected_hessian_signal": 1.5,
+          "weak_ricci_frobenius_error": 1.825785002296243e-06,
+          "weak_scalar_curvature_error": 1.8274296890163576e-06
+        }
+      ]
+    }
+  }
+}

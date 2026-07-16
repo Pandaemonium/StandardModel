@@ -7,7 +7,9 @@ This module upgrades vector-valued soldering covariance to square matrix
 coframes.  It proves preservation of coframe nondegeneracy, invariance of the
 induced metric and volume under the appropriate finite frame groups, covariance
 and exact refinement of matrix soldering defects, and invariance of a
-Lorentzian quadratic defect action.
+Lorentzian quadratic defect action. Zero soldering defect is identified with
+exact coframe transport, and Lorentz transport then preserves the induced
+metric along single edges and composed two-edge paths.
 
 The exact rational 1+1 fixture uses a nonidentity Lorentz boost, invertible
 source and target coframes, and a nonzero defect action.  This remains finite
@@ -97,6 +99,50 @@ theorem coframeDefect_composition
       coframeDefect Uyz eY eZ + Uyz * coframeDefect Uxy eX eY := by
   unfold coframeDefect
   noncomm_ring
+
+omit [DecidableEq n] in
+/-- Zero coframe defect is exactly the finite parallel-transport equation. -/
+theorem coframeDefect_eq_zero_iff
+    (U eX eY : Matrix n n ℚ) :
+    coframeDefect U eX eY = 0 ↔ eY = U * eX := by
+  simp [coframeDefect, sub_eq_zero]
+
+omit [DecidableEq n] in
+/-- Exact parallel transport by an `eta`-orthogonal edge transport preserves
+the metric induced by the coframe. -/
+theorem inducedMetric_parallel_transport
+    (eta U eX eY : Matrix n n ℚ)
+    (hparallel : coframeDefect U eX eY = 0)
+    (hLorentz : Uᵀ * eta * U = eta) :
+    inducedMetric eta eY = inducedMetric eta eX := by
+  have hEY : eY = U * eX := (coframeDefect_eq_zero_iff U eX eY).mp hparallel
+  rw [hEY]
+  simpa [transformCoframe] using inducedMetric_frame_invariant eta U eX hLorentz
+
+omit [DecidableEq n] in
+/-- Zero soldering defect composes exactly along two adjacent edges. -/
+theorem coframeDefect_zero_composition
+    (Uxy Uyz eX eY eZ : Matrix n n ℚ)
+    (hxy : coframeDefect Uxy eX eY = 0)
+    (hyz : coframeDefect Uyz eY eZ = 0) :
+    coframeDefect (Uyz * Uxy) eX eZ = 0 := by
+  rw [coframeDefect_composition Uxy Uyz eX eY eZ, hyz, hxy, mul_zero, add_zero]
+
+omit [DecidableEq n] in
+/-- Lorentz-parallel coframe transport preserves the induced metric across a
+composed two-edge path. -/
+theorem inducedMetric_parallel_transport_twoEdge
+    (eta Uxy Uyz eX eY eZ : Matrix n n ℚ)
+    (hxy : coframeDefect Uxy eX eY = 0)
+    (hyz : coframeDefect Uyz eY eZ = 0)
+    (hLorentzXY : Uxyᵀ * eta * Uxy = eta)
+    (hLorentzYZ : Uyzᵀ * eta * Uyz = eta) :
+    inducedMetric eta eZ = inducedMetric eta eX := by
+  calc
+    inducedMetric eta eZ = inducedMetric eta eY :=
+      inducedMetric_parallel_transport eta Uyz eY eZ hyz hLorentzYZ
+    _ = inducedMetric eta eX :=
+      inducedMetric_parallel_transport eta Uxy eX eY hxy hLorentzXY
 
 /-- Lorentzian quadratic action of a matrix-valued soldering defect. -/
 def defectAction (eta T : Matrix n n ℚ) : ℚ :=
@@ -216,6 +262,10 @@ theorem nondegenerate_soldering_geometry_verdict :
 /-- info: 'PhysicsSM.Draft.NullEdge.NondegenerateSolderingGeometry.nondegenerate_nonzero_defect_witness' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.NondegenerateSolderingGeometry.nondegenerate_nonzero_defect_witness
+
+/-- info: 'PhysicsSM.Draft.NullEdge.NondegenerateSolderingGeometry.inducedMetric_parallel_transport_twoEdge' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.NondegenerateSolderingGeometry.inducedMetric_parallel_transport_twoEdge
 
 /-- info: 'PhysicsSM.Draft.NullEdge.NondegenerateSolderingGeometry.nondegenerate_soldering_geometry_verdict' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in

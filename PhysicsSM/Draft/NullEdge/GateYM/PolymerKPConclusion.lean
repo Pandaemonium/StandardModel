@@ -1461,6 +1461,42 @@ lemma fiber_card_mul_le_factorial {n k : Nat} (m : Fin k -> Nat)
   rwa [Fintype.card_perm, Fintype.card_fin] at hle
 
 open Classical in
+/-- Expand the right-hand exponential partial sum into ordered child *forests*:
+the `k`-th power becomes a sum over child-polymer tuples `φ`, and each factor
+`boundedTouchSum` unfolds (by its definition) into a sum over child clusters
+`Q i`, so the product distributes into a sum over cluster tuples `Q`. -/
+lemma rhs_forest_expand2 (S : PolymerSystem Gamma)
+    (hdec : forall g h, Decidable (S.incompatible g h)) (K : Nat) (g : Gamma) :
+    |S.weight g| *
+        ∑ k ∈ Finset.range (K + 3),
+          (∑ h ∈ nbhd S hdec g, boundedTouchSum S hdec K h) ^ k
+            / (Nat.factorial k : Real)
+      = |S.weight g| *
+        ∑ k ∈ Finset.range (K + 3),
+          (∑ φ ∈ Fintype.piFinset (fun _ : Fin k => nbhd S hdec g),
+            ∑ Q : (Fin k → (Σ m : Fin (K + 2), (Fin m.val -> Gamma))),
+              ∏ i : Fin k,
+                (if Cluster.Connected S hdec ⟨(Q i).1.val, (Q i).2⟩
+                    ∧ Cluster.Touches S ⟨(Q i).1.val, (Q i).2⟩ (φ i)
+                  then treeTerm S hdec ⟨(Q i).1.val, (Q i).2⟩ else 0))
+            / (Nat.factorial k : Real) := by
+  rw [rhs_forest_expand]
+  congr 1
+  apply Finset.sum_congr rfl
+  intro k _
+  congr 1
+  apply Finset.sum_congr rfl
+  intro φ _
+  have : ∀ i : Fin k, boundedTouchSum S hdec K (φ i)
+      = ∑ q : (Σ m : Fin (K + 2), (Fin m.val -> Gamma)),
+          (if Cluster.Connected S hdec ⟨q.1.val, q.2⟩
+              ∧ Cluster.Touches S ⟨q.1.val, q.2⟩ (φ i)
+            then treeTerm S hdec ⟨q.1.val, q.2⟩ else 0) := by
+    intro i; rfl
+  simp_rw [this]
+  rw [Finset.prod_univ_sum, Fintype.piFinset_univ]
+
+open Classical in
 /-- The labeled rooted-tree exponential inequality, now the single remaining
 combinatorial crux of Q6 (stated with only the `Touches g` guard, via
 `boundedTouchSum_eq_touchOnly`).
@@ -1561,6 +1597,41 @@ lemma pairSum_le_expBound (S : PolymerSystem Gamma)
   -- codomain Finset, (ii) `Set.MapsTo`, (iii) constancy on fibers, and
   -- (iv) the injection above; then `Finset.sum_fiberwise_of_maps_to` +
   -- `fiber_value_bound` + `Finset.sum_le_sum_of_subset_of_nonneg` assemble it.
+  --
+  -- ======================================================================
+  -- CORRECTION (verified this session, by hand and by `#eval`): the per-fibre
+  -- plan described above is UNSOUND, because the integer fibre bound it needs,
+  --     (#Φ⁻¹ e) * (k! * ∏_j m_j!) ≤ n!,
+  -- is FALSE.  Counterexample: a single self-incompatible polymer `g` (so the
+  -- incompatibility graph on any cluster is complete), weight `w`, and
+  -- `K ≥ 5`.  Take the size-7 cluster `[g,…,g]` (n = 7) and the atom
+  --     e = (k = 2, φ = (g,g), q = ([g,g,g],[g,g,g]), fixed child trees).
+  -- The fibre `Φ⁻¹ e` consists of the spanning trees whose canonical root has
+  -- two children with size-3 components of the prescribed induced-tree shape;
+  -- there are exactly `#Φ⁻¹ e = 90` of them
+  --   (10 unordered 3|3 partitions of the 6 non-root slots × 3 root-connection
+  --    choices per block), and
+  --     90 * (2! * (3!)^2) = 90 * (2 * 36) = 6480 > 5040 = 7! .
+  -- Equivalently the fibre summand sum `90 * |w|^7 / 7! = |w|^7 / 56` EXCEEDS
+  -- the matching RHS atom value `|w|/2! * (|w|^3/3!)^2 = |w|^7 / 72`, so
+  -- `fiber_value_bound` is simply not applicable here (its hypothesis fails).
+  -- More strongly, even after summing over an entire `(k, child-size)` class the
+  -- LHS can beat the RHS: for this system the `k = 2, sizes (3,3)` class gives
+  -- LHS piece `9/56 · |w|^7 ≈ 0.161·|w|^7` versus RHS piece `1/8 · |w|^7 =
+  -- 0.125·|w|^7`.  The full inequality nevertheless holds because it is GLOBAL:
+  -- the total `|w|^7` coefficient is `2401/720 ≈ 3.34` on the left and `≈ 4.07`
+  -- on the right, the surplus of the `(3,3)` class being absorbed by deficits
+  -- of other `(k, sizes)` classes.  Hence `pairSum_le_expBound` is the
+  -- truncated labelled-rooted-tree exponential-formula inequality and CANNOT be
+  -- discharged fibre-by-fibre (nor pair-by-pair); a genuinely global argument
+  -- (the tree-function / EGF composition bound `T - T^2/2 ≤ x·exp T`, or an
+  -- induction on cluster size using the exponential formula for the unordered
+  -- multiset of root subtrees) is required.  The RHS forest expansion
+  -- `rhs_forest_expand2` proved above is a correct first step of such a global
+  -- proof; the per-fibre helpers `fiber_value_bound`,
+  -- `fiber_card_mul_le_factorial`, `perPair_absWeight_bound` are, by the
+  -- counterexample above, insufficient on their own.
+  -- ======================================================================
   sorry
 
 open Classical in

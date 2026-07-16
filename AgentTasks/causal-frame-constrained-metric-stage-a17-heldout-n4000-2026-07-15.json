@@ -1,0 +1,402 @@
+{
+  "boundary_anchors_fix_gauge_but_are_excluded_from_metric_regression": true,
+  "coframe_is_factored_from_the_fitted_local_metric": true,
+  "connection_and_curvature_scores_opened": false,
+  "construction_uses_known_embedding": false,
+  "density_is_supplied": true,
+  "global_interval_endpoints_are_supplied": true,
+  "metric_prior_uses_chart_transported_minkowski_forms": true,
+  "oracle_scores_use_known_embedding": true,
+  "samples": [
+    {
+      "active_causal_coverage_fraction": 1.0,
+      "carrier_count": 85,
+      "causal_heldout_pairs": 184,
+      "causal_sensitivity": 0.8777686628383922,
+      "causal_specificity": 0.997466644147948,
+      "causal_training_pairs": 1035,
+      "chart_consensus_dispersion_relative_error": 0.4876180070197237,
+      "chart_leave_one_out_relative_error": 0.581610060809518,
+      "coframe_factorization_relative_error": 4.786943714832141e-16,
+      "consensus_frame_maximum_condition": 27.555917867275536,
+      "evaluation_count": 73,
+      "heldout_causal_sign_fraction": 0.9836956521739131,
+      "heldout_interval_relative_rmse": 0.10571759679659208,
+      "metric_condition": 1.5291053324369157,
+      "metric_eigenvalues": [
+        -1.6593510295060823,
+        -1.2605531838200157,
+        -1.1890553568881363,
+        1.085177714253076
+      ],
+      "metric_prior_signature": [
+        1,
+        3,
+        0
+      ],
+      "metric_signature": [
+        1,
+        3,
+        0
+      ],
+      "noncausal_pairs": 2351,
+      "noncausal_violation_fraction": 0.0063802637175669925,
+      "normalized_consensus_frame_minimum_singular_value": 0.13114442806542032,
+      "oracle_coordinate_relative_error": 0.5229036872567691,
+      "oracle_metric_conformal_relative_error": 0.2935992484053439,
+      "oracle_metric_relative_error": 0.3165833623674625,
+      "oracle_metric_volume_relative_error": 0.19777332809400916,
+      "passes_intrinsic_coordinate_gate": true,
+      "passes_intrinsic_metric_gate": true,
+      "passes_local_tetrad_gate": true,
+      "passes_oracle_coordinate_gate": true,
+      "passes_oracle_metric_gate": true,
+      "regularization": 0.1
+    },
+    {
+      "active_causal_coverage_fraction": 1.0,
+      "carrier_count": 110,
+      "causal_heldout_pairs": 257,
+      "causal_sensitivity": 0.974581166955517,
+      "causal_specificity": 0.9831367579686129,
+      "causal_training_pairs": 1474,
+      "chart_consensus_dispersion_relative_error": 0.48684403375268237,
+      "chart_leave_one_out_relative_error": 0.515709651135446,
+      "coframe_factorization_relative_error": 8.7179324274869335e-16,
+      "consensus_frame_maximum_condition": 22.86542981662693,
+      "evaluation_count": 98,
+      "heldout_causal_sign_fraction": 1.0,
+      "heldout_interval_relative_rmse": 0.09386186246547938,
+      "metric_condition": 1.7331901701792203,
+      "metric_eigenvalues": [
+        -1.0972988893577824,
+        -0.8657377129183983,
+        -0.633109342666256,
+        0.9850854154706231
+      ],
+      "metric_prior_signature": [
+        1,
+        3,
+        0
+      ],
+      "metric_signature": [
+        1,
+        3,
+        0
+      ],
+      "noncausal_pairs": 4264,
+      "noncausal_violation_fraction": 0.040572232645403376,
+      "normalized_consensus_frame_minimum_singular_value": 0.1686959054020461,
+      "oracle_coordinate_relative_error": 0.23724942256139833,
+      "oracle_metric_conformal_relative_error": 0.32826759363597074,
+      "oracle_metric_relative_error": 0.3489979978906431,
+      "oracle_metric_volume_relative_error": 0.20981417888056386,
+      "passes_intrinsic_coordinate_gate": true,
+      "passes_intrinsic_metric_gate": true,
+      "passes_local_tetrad_gate": true,
+      "passes_oracle_coordinate_gate": true,
+      "passes_oracle_metric_gate": true,
+      "regularization": 0.1
+    },
+    {
+      "active_causal_coverage_fraction": 1.0,
+      "carrier_count": 106,
+      "causal_heldout_pairs": 179,
+      "causal_sensitivity": 0.95,
+      "causal_specificity": 0.9776302349336057,
+      "causal_training_pairs": 1161,
+      "chart_consensus_dispersion_relative_error": 0.8241803474210313,
+      "chart_leave_one_out_relative_error": 0.8088466400287941,
+      "coframe_factorization_relative_error": 7.829339527198242e-16,
+      "consensus_frame_maximum_condition": 22.53752435978836,
+      "evaluation_count": 94,
+      "heldout_causal_sign_fraction": 1.0,
+      "heldout_interval_relative_rmse": 0.09035933843705385,
+      "metric_condition": 3.1275126215717357,
+      "metric_eigenvalues": [
+        -0.45546356582934966,
+        -0.3777679184771449,
+        -0.3218597848473097,
+        1.0066205394863244
+      ],
+      "metric_prior_signature": [
+        1,
+        3,
+        0
+      ],
+      "metric_signature": [
+        1,
+        3,
+        0
+      ],
+      "noncausal_pairs": 4225,
+      "noncausal_violation_fraction": 0.05183431952662722,
+      "normalized_consensus_frame_minimum_singular_value": 0.1627227803175068,
+      "oracle_coordinate_relative_error": 0.18422392032088494,
+      "oracle_metric_conformal_relative_error": 0.17072277998469473,
+      "oracle_metric_relative_error": 0.1710333487202968,
+      "oracle_metric_volume_relative_error": 0.10299166059146736,
+      "passes_intrinsic_coordinate_gate": true,
+      "passes_intrinsic_metric_gate": true,
+      "passes_local_tetrad_gate": true,
+      "passes_oracle_coordinate_gate": true,
+      "passes_oracle_metric_gate": true,
+      "regularization": 0.1
+    }
+  ],
+  "selected_regularization_key": "regularization=0.100000",
+  "selected_regularization_summary": {
+    "carrier_count": {
+      "count": 3,
+      "mean": 100.33333333333333,
+      "median": 106.0,
+      "std": 10.96458946893235
+    },
+    "causal_heldout_pairs": {
+      "count": 3,
+      "mean": 206.66666666666666,
+      "median": 184.0,
+      "std": 35.64952859280034
+    },
+    "causal_sensitivity": {
+      "count": 3,
+      "mean": 0.9341166099313031,
+      "median": 0.95,
+      "std": 0.0410883340979153
+    },
+    "causal_specificity": {
+      "count": 3,
+      "mean": 0.9860778790167221,
+      "median": 0.9831367579686129,
+      "std": 0.008360957975193763
+    },
+    "causal_training_pairs": {
+      "count": 3,
+      "mean": 1223.3333333333333,
+      "median": 1161.0,
+      "std": 184.56134180507274
+    },
+    "chart_consensus_dispersion_relative_error": {
+      "count": 3,
+      "mean": 0.5995474627311458,
+      "median": 0.4876180070197237,
+      "std": 0.15883975031821448
+    },
+    "chart_leave_one_out_relative_error": {
+      "count": 3,
+      "mean": 0.6353887839912528,
+      "median": 0.581610060809518,
+      "std": 0.1255692023405367
+    },
+    "evaluation_count": {
+      "count": 3,
+      "mean": 88.33333333333333,
+      "median": 94.0,
+      "std": 10.96458946893235
+    },
+    "heldout_causal_sign_fraction": {
+      "count": 3,
+      "mean": 0.9945652173913043,
+      "median": 1.0,
+      "std": 0.007685943273766802
+    },
+    "heldout_interval_relative_rmse": {
+      "count": 3,
+      "mean": 0.09664626589970844,
+      "median": 0.09386186246547938,
+      "std": 0.006571844075193883
+    },
+    "intrinsic_coordinate_gate_success_rate": 1.0,
+    "intrinsic_metric_gate_success_rate": 1.0,
+    "local_tetrad_gate_success_rate": 1.0,
+    "metric_condition": {
+      "count": 3,
+      "mean": 2.129936041395957,
+      "median": 1.7331901701792203,
+      "std": 0.7102966189020269
+    },
+    "metric_signature_counts": {
+      "(1, 3, 0)": 3
+    },
+    "noncausal_violation_fraction": {
+      "count": 3,
+      "mean": 0.032928938629865866,
+      "median": 0.040572232645403376,
+      "std": 0.019327575376979805
+    },
+    "oracle_coordinate_gate_success_rate": 1.0,
+    "oracle_coordinate_relative_error": {
+      "count": 3,
+      "mean": 0.31479234337968415,
+      "median": 0.23724942256139833,
+      "std": 0.14874065698324135
+    },
+    "oracle_metric_conformal_relative_error": {
+      "count": 3,
+      "mean": 0.2641965406753365,
+      "median": 0.2935992484053439,
+      "std": 0.06759428720188317
+    },
+    "oracle_metric_gate_success_rate": 1.0,
+    "oracle_metric_relative_error": {
+      "count": 3,
+      "mean": 0.27887156965946747,
+      "median": 0.3165833623674625,
+      "std": 0.07739288757381263
+    },
+    "oracle_metric_volume_relative_error": {
+      "count": 3,
+      "mean": 0.1701930558553468,
+      "median": 0.19777332809400916,
+      "std": 0.04777214087712026
+    },
+    "regularization": 0.1,
+    "samples": 3
+  },
+  "selection_rule": "maximize intrinsic metric and coordinate gate rates, then minimize held-out interval error, noncausal violation, and ridge",
+  "settings": {
+    "active_count": 12,
+    "anchor_time_multiplier": 8.0,
+    "density": 30557.749073643907,
+    "dimension": 4,
+    "duration": 1.0,
+    "events_including_endpoints": 4000,
+    "heldout_fraction": 0.2,
+    "maximum_chart_consistency_error": 0.85,
+    "maximum_conformal_metric_error": 0.6,
+    "maximum_coordinate_error": 0.75,
+    "maximum_interval_error": 0.2,
+    "maximum_lower_candidates": 10,
+    "maximum_metric_error": 0.75,
+    "maximum_noncausal_pairs": 6000,
+    "maximum_noncausal_violation_fraction": 0.1,
+    "maximum_upper_candidates": 18,
+    "minimum_causal_sensitivity": 0.8,
+    "minimum_causal_specificity": 0.95,
+    "minimum_chart_support": 2,
+    "minimum_evaluation_count": 24,
+    "minimum_heldout_causal_sign_fraction": 0.95,
+    "minimum_heldout_open_count": 2,
+    "minimum_lightcone_count": 20,
+    "realizations": 3,
+    "regularizations": [
+      0.1
+    ],
+    "relative_time_shell_width": 0.35,
+    "scaffold_scale": 0.05,
+    "seed": 20260825
+  },
+  "signature_and_dimension_are_not_derived_from_bare_order": true,
+  "spin_structure_is_not_derived": true,
+  "status": "frozen held-out frame-constrained metric audit",
+  "summaries": {
+    "regularization=0.100000": {
+      "carrier_count": {
+        "count": 3,
+        "mean": 100.33333333333333,
+        "median": 106.0,
+        "std": 10.96458946893235
+      },
+      "causal_heldout_pairs": {
+        "count": 3,
+        "mean": 206.66666666666666,
+        "median": 184.0,
+        "std": 35.64952859280034
+      },
+      "causal_sensitivity": {
+        "count": 3,
+        "mean": 0.9341166099313031,
+        "median": 0.95,
+        "std": 0.0410883340979153
+      },
+      "causal_specificity": {
+        "count": 3,
+        "mean": 0.9860778790167221,
+        "median": 0.9831367579686129,
+        "std": 0.008360957975193763
+      },
+      "causal_training_pairs": {
+        "count": 3,
+        "mean": 1223.3333333333333,
+        "median": 1161.0,
+        "std": 184.56134180507274
+      },
+      "chart_consensus_dispersion_relative_error": {
+        "count": 3,
+        "mean": 0.5995474627311458,
+        "median": 0.4876180070197237,
+        "std": 0.15883975031821448
+      },
+      "chart_leave_one_out_relative_error": {
+        "count": 3,
+        "mean": 0.6353887839912528,
+        "median": 0.581610060809518,
+        "std": 0.1255692023405367
+      },
+      "evaluation_count": {
+        "count": 3,
+        "mean": 88.33333333333333,
+        "median": 94.0,
+        "std": 10.96458946893235
+      },
+      "heldout_causal_sign_fraction": {
+        "count": 3,
+        "mean": 0.9945652173913043,
+        "median": 1.0,
+        "std": 0.007685943273766802
+      },
+      "heldout_interval_relative_rmse": {
+        "count": 3,
+        "mean": 0.09664626589970844,
+        "median": 0.09386186246547938,
+        "std": 0.006571844075193883
+      },
+      "intrinsic_coordinate_gate_success_rate": 1.0,
+      "intrinsic_metric_gate_success_rate": 1.0,
+      "local_tetrad_gate_success_rate": 1.0,
+      "metric_condition": {
+        "count": 3,
+        "mean": 2.129936041395957,
+        "median": 1.7331901701792203,
+        "std": 0.7102966189020269
+      },
+      "metric_signature_counts": {
+        "(1, 3, 0)": 3
+      },
+      "noncausal_violation_fraction": {
+        "count": 3,
+        "mean": 0.032928938629865866,
+        "median": 0.040572232645403376,
+        "std": 0.019327575376979805
+      },
+      "oracle_coordinate_gate_success_rate": 1.0,
+      "oracle_coordinate_relative_error": {
+        "count": 3,
+        "mean": 0.31479234337968415,
+        "median": 0.23724942256139833,
+        "std": 0.14874065698324135
+      },
+      "oracle_metric_conformal_relative_error": {
+        "count": 3,
+        "mean": 0.2641965406753365,
+        "median": 0.2935992484053439,
+        "std": 0.06759428720188317
+      },
+      "oracle_metric_gate_success_rate": 1.0,
+      "oracle_metric_relative_error": {
+        "count": 3,
+        "mean": 0.27887156965946747,
+        "median": 0.3165833623674625,
+        "std": 0.07739288757381263
+      },
+      "oracle_metric_volume_relative_error": {
+        "count": 3,
+        "mean": 0.1701930558553468,
+        "median": 0.19777332809400916,
+        "std": 0.04777214087712026
+      },
+      "regularization": 0.1,
+      "samples": 3
+    }
+  }
+}

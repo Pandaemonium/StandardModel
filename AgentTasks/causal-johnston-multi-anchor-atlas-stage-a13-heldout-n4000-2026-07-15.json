@@ -1,0 +1,328 @@
+{
+  "coordinate_affine_control_uses_embedding_coordinates": true,
+  "density_is_supplied": true,
+  "depth_filter_and_local_endpoints_use_only_causal_order": true,
+  "dimension_is_supplied": true,
+  "global_interval_endpoints_are_supplied": true,
+  "metric_scores_opened": false,
+  "samples": [
+    {
+      "anchor_half_time": 0.25,
+      "carrier_count_median": 320.0,
+      "carrier_count_minimum": 162,
+      "chart_availability_fraction": 1.0,
+      "depth_eligible_target_count": 12,
+      "dominant_rank_three_fraction": 0.08333333333333333,
+      "independent_o3_residual_median": 1.0737200428823102,
+      "local_affine_fit_maximum": 0.8900912460358141,
+      "local_affine_fit_median": 0.7288382986434785,
+      "lower_anchor_error_median": 0.0014866859365870733,
+      "pairwise_edge_fraction": 1.0,
+      "pairwise_graph_connected": true,
+      "passes_full_atlas_gate": false,
+      "passes_transition_gate": false,
+      "raw_target_count": 12,
+      "synchronization_mismatch_median": 0.47404310620189943,
+      "synchronized_cocycle_maximum": 1.7495108391980503e-15,
+      "synchronized_geometry_residual_maximum": 1.411518228879768,
+      "synchronized_geometry_residual_median": 1.1529219361196397,
+      "upper_anchor_error_median": 0.0014866859365870733,
+      "used_target_count": 12
+    },
+    {
+      "anchor_half_time": 0.25,
+      "carrier_count_median": 318.0,
+      "carrier_count_minimum": 223,
+      "chart_availability_fraction": 1.0,
+      "depth_eligible_target_count": 13,
+      "dominant_rank_three_fraction": 0.0,
+      "independent_o3_residual_median": 1.0743531782000595,
+      "local_affine_fit_maximum": 0.9781683986807893,
+      "local_affine_fit_median": 0.6734242565726594,
+      "lower_anchor_error_median": 0.0014866859365870733,
+      "pairwise_edge_fraction": 1.0,
+      "pairwise_graph_connected": true,
+      "passes_full_atlas_gate": false,
+      "passes_transition_gate": false,
+      "raw_target_count": 13,
+      "synchronization_mismatch_median": 0.639267970363042,
+      "synchronized_cocycle_maximum": 2.4226446928625934e-15,
+      "synchronized_geometry_residual_maximum": 1.7270289680687991,
+      "synchronized_geometry_residual_median": 1.139865921439273,
+      "upper_anchor_error_median": 0.0014866859365870733,
+      "used_target_count": 12
+    },
+    {
+      "anchor_half_time": 0.25,
+      "carrier_count_median": 331.5,
+      "carrier_count_minimum": 206,
+      "chart_availability_fraction": 1.0,
+      "depth_eligible_target_count": 6,
+      "dominant_rank_three_fraction": 0.0,
+      "independent_o3_residual_median": 1.121641246254211,
+      "local_affine_fit_maximum": 1.0383566441489382,
+      "local_affine_fit_median": 0.6100528536188039,
+      "lower_anchor_error_median": 0.0014866859365870733,
+      "pairwise_edge_fraction": 1.0,
+      "pairwise_graph_connected": true,
+      "passes_full_atlas_gate": false,
+      "passes_transition_gate": false,
+      "raw_target_count": 7,
+      "synchronization_mismatch_median": 0.4036926314082921,
+      "synchronized_cocycle_maximum": 1.4271872719387392e-15,
+      "synchronized_geometry_residual_maximum": 1.5444106540313933,
+      "synchronized_geometry_residual_median": 1.1633073345999045,
+      "upper_anchor_error_median": 0.0014866859365870733,
+      "used_target_count": 6
+    }
+  ],
+  "selected_anchor_key": "anchor_half_time=0.250000",
+  "selected_anchor_scale": {
+    "anchor_half_time": 0.25,
+    "carrier_count_median": {
+      "count": 3,
+      "mean": 323.1666666666667,
+      "median": 320.0,
+      "std": 5.948856099191582
+    },
+    "carrier_count_minimum": {
+      "count": 3,
+      "mean": 197.0,
+      "median": 206.0,
+      "std": 25.703436864876
+    },
+    "chart_availability_fraction": {
+      "count": 3,
+      "mean": 1.0,
+      "median": 1.0,
+      "std": 0.0
+    },
+    "depth_eligible_target_count": {
+      "count": 3,
+      "mean": 10.333333333333334,
+      "median": 12.0,
+      "std": 3.0912061651652345
+    },
+    "dominant_rank_three_fraction": {
+      "count": 3,
+      "mean": 0.027777777777777776,
+      "median": 0.0,
+      "std": 0.039283710065919304
+    },
+    "full_atlas_gate_success_rate": 0.0,
+    "independent_o3_residual_median": {
+      "count": 3,
+      "mean": 1.0899048224455268,
+      "median": 1.0743531782000595,
+      "std": 0.022442529004933938
+    },
+    "local_affine_fit_maximum": {
+      "count": 3,
+      "mean": 0.9688720962885139,
+      "median": 0.9781683986807893,
+      "std": 0.0608849899293045
+    },
+    "local_affine_fit_median": {
+      "count": 3,
+      "mean": 0.6707718029449806,
+      "median": 0.6734242565726594,
+      "std": 0.048530211347247304
+    },
+    "lower_anchor_error_median": {
+      "count": 3,
+      "mean": 0.0014866859365870733,
+      "median": 0.0014866859365870733,
+      "std": 0.0
+    },
+    "pairwise_edge_fraction": {
+      "count": 3,
+      "mean": 1.0,
+      "median": 1.0,
+      "std": 0.0
+    },
+    "pairwise_graph_connected_rate": 1.0,
+    "raw_target_count": {
+      "count": 3,
+      "mean": 10.666666666666666,
+      "median": 12.0,
+      "std": 2.6246692913372702
+    },
+    "samples": 3,
+    "synchronization_mismatch_median": {
+      "count": 3,
+      "mean": 0.5056679026577445,
+      "median": 0.47404310620189943,
+      "std": 0.09873881673069461
+    },
+    "synchronized_cocycle_maximum": {
+      "count": 3,
+      "mean": 1.866447601333128e-15,
+      "median": 1.7495108391980503e-15,
+      "std": 4.14720406998956e-16
+    },
+    "synchronized_geometry_residual_maximum": {
+      "count": 3,
+      "mean": 1.5609859503266534,
+      "median": 1.5444106540313933,
+      "std": 0.12933886235095504
+    },
+    "synchronized_geometry_residual_median": {
+      "count": 3,
+      "mean": 1.1520317307196057,
+      "median": 1.1529219361196397,
+      "std": 0.009590596504998857
+    },
+    "transition_gate_success_rate": 0.0,
+    "upper_anchor_error_median": {
+      "count": 3,
+      "mean": 0.0014866859365870733,
+      "median": 0.0014866859365870733,
+      "std": 0.0
+    },
+    "used_target_count": {
+      "count": 3,
+      "mean": 10.0,
+      "median": 12.0,
+      "std": 2.8284271247461903
+    }
+  },
+  "selection_rule": "maximum full and transition gate rates, then chart availability, common-event geometry, and local affine control",
+  "selector_uses_full_recovered_chart": true,
+  "settings": {
+    "affine_radius": 0.2,
+    "anchor_half_times": [
+      0.25
+    ],
+    "averaging_radius": 0.075,
+    "density": 30557.749073643907,
+    "dimension": 4,
+    "duration": 1.0,
+    "events_including_endpoints": 4000,
+    "maximum_affine_error": 0.25,
+    "maximum_cocycle_error": 1e-10,
+    "maximum_geometry_error": 0.25,
+    "maximum_synchronization_mismatch": 0.15,
+    "maximum_targets": 12,
+    "minimum_chart_events": 12,
+    "minimum_edge_fraction": 0.8,
+    "minimum_lightcone_count": 6,
+    "minimum_rank_three_fraction": 0.8,
+    "realizations": 3,
+    "registration_radius": 0.2,
+    "seed": 20260811
+  },
+  "spatial_rank_is_supplied": true,
+  "status": "frozen held-out multi-anchor-atlas evaluation",
+  "summaries": {
+    "anchor_half_time=0.250000": {
+      "anchor_half_time": 0.25,
+      "carrier_count_median": {
+        "count": 3,
+        "mean": 323.1666666666667,
+        "median": 320.0,
+        "std": 5.948856099191582
+      },
+      "carrier_count_minimum": {
+        "count": 3,
+        "mean": 197.0,
+        "median": 206.0,
+        "std": 25.703436864876
+      },
+      "chart_availability_fraction": {
+        "count": 3,
+        "mean": 1.0,
+        "median": 1.0,
+        "std": 0.0
+      },
+      "depth_eligible_target_count": {
+        "count": 3,
+        "mean": 10.333333333333334,
+        "median": 12.0,
+        "std": 3.0912061651652345
+      },
+      "dominant_rank_three_fraction": {
+        "count": 3,
+        "mean": 0.027777777777777776,
+        "median": 0.0,
+        "std": 0.039283710065919304
+      },
+      "full_atlas_gate_success_rate": 0.0,
+      "independent_o3_residual_median": {
+        "count": 3,
+        "mean": 1.0899048224455268,
+        "median": 1.0743531782000595,
+        "std": 0.022442529004933938
+      },
+      "local_affine_fit_maximum": {
+        "count": 3,
+        "mean": 0.9688720962885139,
+        "median": 0.9781683986807893,
+        "std": 0.0608849899293045
+      },
+      "local_affine_fit_median": {
+        "count": 3,
+        "mean": 0.6707718029449806,
+        "median": 0.6734242565726594,
+        "std": 0.048530211347247304
+      },
+      "lower_anchor_error_median": {
+        "count": 3,
+        "mean": 0.0014866859365870733,
+        "median": 0.0014866859365870733,
+        "std": 0.0
+      },
+      "pairwise_edge_fraction": {
+        "count": 3,
+        "mean": 1.0,
+        "median": 1.0,
+        "std": 0.0
+      },
+      "pairwise_graph_connected_rate": 1.0,
+      "raw_target_count": {
+        "count": 3,
+        "mean": 10.666666666666666,
+        "median": 12.0,
+        "std": 2.6246692913372702
+      },
+      "samples": 3,
+      "synchronization_mismatch_median": {
+        "count": 3,
+        "mean": 0.5056679026577445,
+        "median": 0.47404310620189943,
+        "std": 0.09873881673069461
+      },
+      "synchronized_cocycle_maximum": {
+        "count": 3,
+        "mean": 1.866447601333128e-15,
+        "median": 1.7495108391980503e-15,
+        "std": 4.14720406998956e-16
+      },
+      "synchronized_geometry_residual_maximum": {
+        "count": 3,
+        "mean": 1.5609859503266534,
+        "median": 1.5444106540313933,
+        "std": 0.12933886235095504
+      },
+      "synchronized_geometry_residual_median": {
+        "count": 3,
+        "mean": 1.1520317307196057,
+        "median": 1.1529219361196397,
+        "std": 0.009590596504998857
+      },
+      "transition_gate_success_rate": 0.0,
+      "upper_anchor_error_median": {
+        "count": 3,
+        "mean": 0.0014866859365870733,
+        "median": 0.0014866859365870733,
+        "std": 0.0
+      },
+      "used_target_count": {
+        "count": 3,
+        "mean": 10.0,
+        "median": 12.0,
+        "std": 2.8284271247461903
+      }
+    }
+  },
+  "transition_construction_uses_embedding_coordinates": false
+}

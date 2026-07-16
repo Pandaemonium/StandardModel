@@ -3,7 +3,7 @@
 Complete independently during the final audit. Blank executor cells are not
 endorsement.
 
-| Gate | Intended deliverable | Exact declaration/source | Witness/control | Trust | Overclaim audit | Codex | Opus | Final verdict |
+| Gate | Intended deliverable | Exact declaration/source | Witness/control | Trust | Overclaim audit | Codex | Claude Code | Final verdict |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 7.1 Continuum | Strong changing-lattice convergence at exact function class |  |  |  | No PDE without inverse Fourier commuting square |  |  |  |
 | 7.2 Lorentz | Fixed finite-support no-go plus distributional finite shadow |  |  |  | No finite theorem promoted to BHS/continuum invariance |  |  |  |
@@ -24,7 +24,7 @@ Final checklist:
 - [ ] every external theorem was checked in primary full text;
 - [ ] finite, asymptotic, reconstruction, consistency, and prediction grades
       remain distinct;
-- [ ] Opus participation or unavailability is stated exactly;
+- [ ] interactive Claude Code participation or unavailability is stated exactly;
 - [ ] aggregate guards and full build pass;
 - [ ] final verifier runs twice with identical output;
 - [ ] user-owned release decisions remain user-owned.

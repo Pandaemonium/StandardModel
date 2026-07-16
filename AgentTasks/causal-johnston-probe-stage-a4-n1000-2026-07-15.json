@@ -1,0 +1,677 @@
+{
+  "density_is_supplied": true,
+  "dimension_is_supplied": true,
+  "pivot_selection_uses_embedding_coordinates": false,
+  "probe_construction_uses_embedding_coordinates": false,
+  "samples": [
+    {
+      "affine_probe_covariance_relative_error": 1.6879177691684783e-15,
+      "coordinate_pulled_relative_error": 28.584197703040125,
+      "direct_metric_relative_error": 1.5430107340281198,
+      "dominant_spatial_gap_rank": 4,
+      "eigenvalues": [
+        -0.6359073502595116,
+        -0.15312896786301095,
+        0.5219805574209261,
+        3.226083894491764
+      ],
+      "local_affine_fit_relative_error": 0.7731832457987603,
+      "local_jacobian_condition": 9.02568069796986,
+      "local_jacobian_rank": 4,
+      "oracle_probe_eigenvalues": [
+        -0.24442403989152076,
+        -0.11618831782789213,
+        0.10734201219825434,
+        2.4127098654878045
+      ],
+      "oracle_probe_metric_relative_error": 1.1459265331898107,
+      "oracle_probe_signature": [
+        2,
+        2,
+        0
+      ],
+      "passes_conditional_dimension_gate": false,
+      "passes_operator_control_gate": false,
+      "passes_prototype_gate": false,
+      "pivot_future_count": 56,
+      "pivot_intrinsic_radius": 0.10608144170274811,
+      "pivot_intrinsic_time": 0.5,
+      "pivot_oracle_radius": 0.22976192164375495,
+      "pivot_oracle_time": 0.5012463481144431,
+      "pivot_past_count": 56,
+      "relabeling_spatial_subspace_relative_error": 1.7142002071357031e-15,
+      "relabeling_time_relative_error": 7.937423000002702e-16,
+      "scale_balance_residual": 0.9500958476182193,
+      "signature": [
+        2,
+        2,
+        0
+      ],
+      "spatial_rank_gap": 0.23111003092074894,
+      "spatial_rank_gate": false,
+      "spatial_singular_values": [
+        0.9235891069135327,
+        0.6535072718285948,
+        0.27900763779886534,
+        0.21452617400004445,
+        0.0674672215737183,
+        0.04823758930897309,
+        0.04473410069518358,
+        0.032371085357552266
+      ]
+    },
+    {
+      "affine_probe_covariance_relative_error": 2.9861141037646817e-15,
+      "coordinate_pulled_relative_error": 73.82144279354621,
+      "direct_metric_relative_error": 1.1258586163765318,
+      "dominant_spatial_gap_rank": 4,
+      "eigenvalues": [
+        -1.9364754088998697,
+        -0.36052166806875213,
+        -0.019191085971989257,
+        0.5450654290832765
+      ],
+      "local_affine_fit_relative_error": 0.5581399435371645,
+      "local_jacobian_condition": 14.115591136715011,
+      "local_jacobian_rank": 4,
+      "oracle_probe_eigenvalues": [
+        -0.9280924951967789,
+        -0.5630693144958275,
+        -0.20949237215764255,
+        0.4572742208956802
+      ],
+      "oracle_probe_metric_relative_error": 0.913435123285666,
+      "oracle_probe_signature": [
+        1,
+        3,
+        0
+      ],
+      "passes_conditional_dimension_gate": false,
+      "passes_operator_control_gate": false,
+      "passes_prototype_gate": false,
+      "pivot_future_count": 52,
+      "pivot_intrinsic_radius": 0.1367589979905293,
+      "pivot_intrinsic_time": 0.5010808560540091,
+      "pivot_oracle_radius": 0.14716815428189509,
+      "pivot_oracle_time": 0.472508015344694,
+      "pivot_past_count": 53,
+      "relabeling_spatial_subspace_relative_error": 1.0678248272414025e-14,
+      "relabeling_time_relative_error": 2.428415961572062e-15,
+      "scale_balance_residual": 0.44358084025250843,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spatial_rank_gap": 0.22858591630909292,
+      "spatial_rank_gate": false,
+      "spatial_singular_values": [
+        0.6846684660082486,
+        0.4792243524726214,
+        0.3894431753756999,
+        0.30042195028212276,
+        0.1047707843331418,
+        0.04060938162995334,
+        0.038235973667844675,
+        0.030080077870424885
+      ]
+    },
+    {
+      "affine_probe_covariance_relative_error": 3.59421348220383e-15,
+      "coordinate_pulled_relative_error": 1.9436668883319277,
+      "direct_metric_relative_error": 1.1868439330362435,
+      "dominant_spatial_gap_rank": 4,
+      "eigenvalues": [
+        -1.7176670083802845,
+        -0.7424547891760604,
+        -0.48413116980316395,
+        0.1084218895972216
+      ],
+      "local_affine_fit_relative_error": 0.4874070833517419,
+      "local_jacobian_condition": 2.492515183271216,
+      "local_jacobian_rank": 4,
+      "oracle_probe_eigenvalues": [
+        -1.5504282533945715,
+        -0.20770227944781333,
+        0.23967358742118552,
+        0.5619226383420936
+      ],
+      "oracle_probe_metric_relative_error": 1.066618797700116,
+      "oracle_probe_signature": [
+        2,
+        2,
+        0
+      ],
+      "passes_conditional_dimension_gate": false,
+      "passes_operator_control_gate": false,
+      "passes_prototype_gate": false,
+      "pivot_future_count": 51,
+      "pivot_intrinsic_radius": 0.12898751276507583,
+      "pivot_intrinsic_time": 0.5053558213532194,
+      "pivot_oracle_radius": 0.18206297311113942,
+      "pivot_oracle_time": 0.48860969063537274,
+      "pivot_past_count": 56,
+      "relabeling_spatial_subspace_relative_error": 3.1401654274282487e-15,
+      "relabeling_time_relative_error": 7.26566061854897e-16,
+      "scale_balance_residual": 0.5751323527703218,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spatial_rank_gap": 0.3400948748618477,
+      "spatial_rank_gate": false,
+      "spatial_singular_values": [
+        0.9318799059018019,
+        0.4568835441734119,
+        0.41622622022159206,
+        0.27466981594110984,
+        0.06190922197650621,
+        0.03769259172053309,
+        0.03564223618400274,
+        0.03155351224706616
+      ]
+    },
+    {
+      "affine_probe_covariance_relative_error": 2.4862379170816197e-15,
+      "coordinate_pulled_relative_error": 92.48024514349675,
+      "direct_metric_relative_error": 1.3250161297385807,
+      "dominant_spatial_gap_rank": 4,
+      "eigenvalues": [
+        -2.2676844691830276,
+        -0.5386917171837357,
+        -0.05108239609556106,
+        0.5440003810397052
+      ],
+      "local_affine_fit_relative_error": 0.5067929064217781,
+      "local_jacobian_condition": 26.50505244092899,
+      "local_jacobian_rank": 4,
+      "oracle_probe_eigenvalues": [
+        -1.7130505915310694,
+        -0.9772107471812841,
+        -0.2568923178161057,
+        0.8727957963040422
+      ],
+      "oracle_probe_metric_relative_error": 1.3193884777212084,
+      "oracle_probe_signature": [
+        1,
+        3,
+        0
+      ],
+      "passes_conditional_dimension_gate": false,
+      "passes_operator_control_gate": false,
+      "passes_prototype_gate": false,
+      "pivot_future_count": 55,
+      "pivot_intrinsic_radius": 0.12858716791811264,
+      "pivot_intrinsic_time": 0.5308427432397707,
+      "pivot_oracle_radius": 0.06439300320991753,
+      "pivot_oracle_time": 0.5285735789482756,
+      "pivot_past_count": 88,
+      "relabeling_spatial_subspace_relative_error": 3.800369355446715e-15,
+      "relabeling_time_relative_error": 2.4411763963685307e-15,
+      "scale_balance_residual": 1.8692833479119548,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spatial_rank_gap": 0.13839252765912324,
+      "spatial_rank_gate": false,
+      "spatial_singular_values": [
+        1.6952080641290916,
+        0.5715545503434136,
+        0.4679277532699773,
+        0.4031700487330906,
+        0.09498477652249207,
+        0.06104753143712926,
+        0.05059935645657393,
+        0.04226493286976009
+      ]
+    },
+    {
+      "affine_probe_covariance_relative_error": 7.055503239258724e-15,
+      "coordinate_pulled_relative_error": 6.907846836256429,
+      "direct_metric_relative_error": 0.7653888568625726,
+      "dominant_spatial_gap_rank": 5,
+      "eigenvalues": [
+        -1.174848485840723,
+        -0.7880655502901586,
+        0.0890916263533313,
+        0.9494240669515447
+      ],
+      "local_affine_fit_relative_error": 0.4888396251476597,
+      "local_jacobian_condition": 4.9530614635625305,
+      "local_jacobian_rank": 4,
+      "oracle_probe_eigenvalues": [
+        -0.9974009282338496,
+        -0.7814628501945424,
+        0.5548627596506367,
+        1.237353628108555
+      ],
+      "oracle_probe_metric_relative_error": 0.9115639384333771,
+      "oracle_probe_signature": [
+        2,
+        2,
+        0
+      ],
+      "passes_conditional_dimension_gate": false,
+      "passes_operator_control_gate": false,
+      "passes_prototype_gate": false,
+      "pivot_future_count": 70,
+      "pivot_intrinsic_radius": 0.14508049079755142,
+      "pivot_intrinsic_time": 0.5046113615761599,
+      "pivot_oracle_radius": 0.07691780852998384,
+      "pivot_oracle_time": 0.4941549432106447,
+      "pivot_past_count": 75,
+      "relabeling_spatial_subspace_relative_error": 9.044054647557072e-15,
+      "relabeling_time_relative_error": 1.5909160695653827e-15,
+      "scale_balance_residual": 1.8477850234025093,
+      "signature": [
+        2,
+        2,
+        0
+      ],
+      "spatial_rank_gap": 0.05661386274192918,
+      "spatial_rank_gate": false,
+      "spatial_singular_values": [
+        1.1105550932666406,
+        0.7181411481365549,
+        0.47747674632184794,
+        0.4504449433431199,
+        0.18505875488656096,
+        0.054214923535057545,
+        0.04170882191583476,
+        0.03898623599178871
+      ]
+    },
+    {
+      "affine_probe_covariance_relative_error": 5.239233961245864e-15,
+      "coordinate_pulled_relative_error": 6.442897716191619,
+      "direct_metric_relative_error": 1.3109806424881172,
+      "dominant_spatial_gap_rank": 4,
+      "eigenvalues": [
+        -0.8604109863495031,
+        -0.14883684779130066,
+        0.8555177220961351,
+        2.1482635361276694
+      ],
+      "local_affine_fit_relative_error": 0.5732936691252716,
+      "local_jacobian_condition": 5.13230117539934,
+      "local_jacobian_rank": 4,
+      "oracle_probe_eigenvalues": [
+        -1.3456749779731665,
+        -0.1311128175066937,
+        0.36083200901828466,
+        2.1651971351487562
+      ],
+      "oracle_probe_metric_relative_error": 1.1662887516003424,
+      "oracle_probe_signature": [
+        2,
+        2,
+        0
+      ],
+      "passes_conditional_dimension_gate": false,
+      "passes_operator_control_gate": false,
+      "passes_prototype_gate": false,
+      "pivot_future_count": 56,
+      "pivot_intrinsic_radius": 0.1010533390146692,
+      "pivot_intrinsic_time": 0.5010425819247897,
+      "pivot_oracle_radius": 0.11494135724304423,
+      "pivot_oracle_time": 0.5082808190574064,
+      "pivot_past_count": 57,
+      "relabeling_spatial_subspace_relative_error": 1.8937482710194895e-15,
+      "relabeling_time_relative_error": 7.309558501926681e-16,
+      "scale_balance_residual": 0.7973156026131399,
+      "signature": [
+        2,
+        2,
+        0
+      ],
+      "spatial_rank_gap": 0.2835362783698848,
+      "spatial_rank_gate": false,
+      "spatial_singular_values": [
+        1.0303088796210427,
+        0.6437138712481253,
+        0.45108270430759295,
+        0.32318439309119484,
+        0.115733799379609,
+        0.042080612988553076,
+        0.03936503103451726,
+        0.032294995257866735
+      ]
+    },
+    {
+      "affine_probe_covariance_relative_error": 1.4531887107208965e-15,
+      "coordinate_pulled_relative_error": 25.136051045951536,
+      "direct_metric_relative_error": 2.417459784120356,
+      "dominant_spatial_gap_rank": 5,
+      "eigenvalues": [
+        -2.3134496361438233,
+        -0.7147808014070163,
+        -0.05352416281330659,
+        4.902443946326166
+      ],
+      "local_affine_fit_relative_error": 0.5752662328135004,
+      "local_jacobian_condition": 8.065546080955848,
+      "local_jacobian_rank": 4,
+      "oracle_probe_eigenvalues": [
+        -1.3502200599067247,
+        -0.6441745225300811,
+        0.4320752530587337,
+        4.253027352717803
+      ],
+      "oracle_probe_metric_relative_error": 2.0791514706225676,
+      "oracle_probe_signature": [
+        2,
+        2,
+        0
+      ],
+      "passes_conditional_dimension_gate": false,
+      "passes_operator_control_gate": false,
+      "passes_prototype_gate": false,
+      "pivot_future_count": 48,
+      "pivot_intrinsic_radius": 0.1225245214443953,
+      "pivot_intrinsic_time": 0.5138192778739941,
+      "pivot_oracle_radius": 0.1427099138943202,
+      "pivot_oracle_time": 0.512645576834835,
+      "pivot_past_count": 61,
+      "relabeling_spatial_subspace_relative_error": 1.4908484732699403e-14,
+      "relabeling_time_relative_error": 3.3030134991579543e-15,
+      "scale_balance_residual": 0.6820052034870585,
+      "signature": [
+        1,
+        3,
+        0
+      ],
+      "spatial_rank_gap": 0.048613323293994815,
+      "spatial_rank_gate": false,
+      "spatial_singular_values": [
+        0.9855817615461006,
+        0.5678849259715052,
+        0.41532657576270243,
+        0.39513617066256235,
+        0.14316781918658741,
+        0.04010043931841087,
+        0.03270970710666293,
+        0.029615073831647448
+      ]
+    },
+    {
+      "affine_probe_covariance_relative_error": 1.3955076130368203e-15,
+      "coordinate_pulled_relative_error": 10.25533356386392,
+      "direct_metric_relative_error": 2.882282109351695,
+      "dominant_spatial_gap_rank": 4,
+      "eigenvalues": [
+        -2.35538297743289,
+        -0.5567791520702804,
+        0.07440579111299939,
+        5.5159196501378585
+      ],
+      "local_affine_fit_relative_error": 0.5078892032159047,
+      "local_jacobian_condition": 7.372459953118024,
+      "local_jacobian_rank": 4,
+      "oracle_probe_eigenvalues": [
+        -2.931402511606893,
+        -0.4901903779875816,
+        -0.25906025126666365,
+        5.593400437920021
+      ],
+      "oracle_probe_metric_relative_error": 2.984956506735382,
+      "oracle_probe_signature": [
+        1,
+        3,
+        0
+      ],
+      "passes_conditional_dimension_gate": false,
+      "passes_operator_control_gate": false,
+      "passes_prototype_gate": false,
+      "pivot_future_count": 67,
+      "pivot_intrinsic_radius": 0.11255216692095785,
+      "pivot_intrinsic_time": 0.5019035174491766,
+      "pivot_oracle_radius": 0.10529560565189017,
+      "pivot_oracle_time": 0.5071363939178695,
+      "pivot_past_count": 69,
+      "relabeling_spatial_subspace_relative_error": 1.800268310234552e-15,
+      "relabeling_time_relative_error": 1.004339050210942e-15,
+      "scale_balance_residual": 1.7019434417544055,
+      "signature": [
+        2,
+        2,
+        0
+      ],
+      "spatial_rank_gap": 0.2107694374716174,
+      "spatial_rank_gate": false,
+      "spatial_singular_values": [
+        1.2377413756843794,
+        0.6963658248667276,
+        0.5461703652495653,
+        0.4310543446022466,
+        0.15570879079705052,
+        0.06162103695638219,
+        0.049070969985800704,
+        0.04203229082161756
+      ]
+    },
+    {
+      "affine_probe_covariance_relative_error": 6.56624847427203e-16,
+      "coordinate_pulled_relative_error": 4.292005273321216,
+      "direct_metric_relative_error": 1.5987230674106987,
+      "dominant_spatial_gap_rank": 5,
+      "eigenvalues": [
+        -0.6161025045561899,
+        -0.5050826393336351,
+        0.07974658159710567,
+        3.272979530623304
+      ],
+      "local_affine_fit_relative_error": 0.5403011252236792,
+      "local_jacobian_condition": 3.8687799422917486,
+      "local_jacobian_rank": 4,
+      "oracle_probe_eigenvalues": [
+        -0.9901491948227055,
+        -0.25075821525399544,
+        0.5962187752789574,
+        3.4261485641665606
+      ],
+      "oracle_probe_metric_relative_error": 1.6647436583367974,
+      "oracle_probe_signature": [
+        2,
+        2,
+        0
+      ],
+      "passes_conditional_dimension_gate": false,
+      "passes_operator_control_gate": false,
+      "passes_prototype_gate": false,
+      "pivot_future_count": 49,
+      "pivot_intrinsic_radius": 0.13740648322331467,
+      "pivot_intrinsic_time": 0.5075699649881438,
+      "pivot_oracle_radius": 0.10927180979463694,
+      "pivot_oracle_time": 0.49659012201083674,
+      "pivot_past_count": 56,
+      "relabeling_spatial_subspace_relative_error": 1.7709964442387994e-15,
+      "relabeling_time_relative_error": 4.130883841019048e-16,
+      "scale_balance_residual": 0.3837062960090452,
+      "signature": [
+        2,
+        2,
+        0
+      ],
+      "spatial_rank_gap": 0.16915249426301338,
+      "spatial_rank_gate": false,
+      "spatial_singular_values": [
+        0.8186924944832151,
+        0.569321208873845,
+        0.4084371569032739,
+        0.3393489930633914,
+        0.13647194288716277,
+        0.0349861429625581,
+        0.03431943392865053,
+        0.030470315915269296
+      ]
+    },
+    {
+      "affine_probe_covariance_relative_error": 2.1197204589548212e-15,
+      "coordinate_pulled_relative_error": 104.18082076181699,
+      "direct_metric_relative_error": 1.2093647631789146,
+      "dominant_spatial_gap_rank": 4,
+      "eigenvalues": [
+        -0.8372452740799886,
+        -0.16013552597455666,
+        0.09008042422384965,
+        2.8503292201745856
+      ],
+      "local_affine_fit_relative_error": 0.5636703810406735,
+      "local_jacobian_condition": 18.431064552122017,
+      "local_jacobian_rank": 4,
+      "oracle_probe_eigenvalues": [
+        -0.362750291344236,
+        -0.25789274207552465,
+        0.18708610791109337,
+        3.214397461165139
+      ],
+      "oracle_probe_metric_relative_error": 1.3793977364250085,
+      "oracle_probe_signature": [
+        2,
+        2,
+        0
+      ],
+      "passes_conditional_dimension_gate": false,
+      "passes_operator_control_gate": false,
+      "passes_prototype_gate": false,
+      "pivot_future_count": 48,
+      "pivot_intrinsic_radius": 0.1625096442917916,
+      "pivot_intrinsic_time": 0.5022361798004689,
+      "pivot_oracle_radius": 0.19711721678200067,
+      "pivot_oracle_time": 0.49303163268464134,
+      "pivot_past_count": 50,
+      "relabeling_spatial_subspace_relative_error": 1.0954243574429298e-15,
+      "relabeling_time_relative_error": 4.453741855115958e-16,
+      "scale_balance_residual": 0.7009480457052414,
+      "signature": [
+        2,
+        2,
+        0
+      ],
+      "spatial_rank_gap": 0.21651355645159231,
+      "spatial_rank_gate": false,
+      "spatial_singular_values": [
+        0.7305890495260267,
+        0.5415565025540839,
+        0.32027985818668064,
+        0.2509349270308708,
+        0.08813623425188076,
+        0.041878303001016214,
+        0.035008794191175176,
+        0.026647362501717203
+      ]
+    }
+  ],
+  "scoring_uses_embedding_coordinates": true,
+  "settings": {
+    "density": 7639.437268410977,
+    "dimension": 4,
+    "duration": 1.0,
+    "ell": 0.10696326664232499,
+    "epsilon": 0.19973708175594293,
+    "events_including_endpoints": 1000,
+    "maximum_fit_error": 0.25,
+    "maximum_metric_error": 0.5,
+    "minimum_rank_gap": 0.15,
+    "nonlocality_scale": 0.16,
+    "realizations": 10,
+    "seed": 20260719,
+    "support_radius": 0.5
+  },
+  "status": "external Johnston-probe metric prototype; not a proof",
+  "summary": {
+    "affine_probe_covariance_relative_error": {
+      "count": 10,
+      "mean": 2.867426210286294e-15,
+      "median": 2.3029791880182204e-15,
+      "std": 1.8670198461463176e-15
+    },
+    "conditional_dimension_gate_success_rate": 0.0,
+    "coordinate_pulled_relative_error": {
+      "count": 10,
+      "mean": 35.404450772581676,
+      "median": 17.695692304907727,
+      "std": 37.39862423084183
+    },
+    "direct_metric_relative_error": {
+      "count": 10,
+      "mean": 1.536492863659183,
+      "median": 1.317998386113349,
+      "std": 0.6065668721334497
+    },
+    "local_affine_fit_relative_error": {
+      "count": 10,
+      "mean": 0.5574783415676133,
+      "median": 0.5492205343804218,
+      "std": 0.07878979997407652
+    },
+    "local_jacobian_condition": {
+      "count": 10,
+      "mean": 9.996205262633458,
+      "median": 7.719003017036936,
+      "std": 7.177417340773703
+    },
+    "operator_control_gate_success_rate": 0.0,
+    "oracle_probe_metric_relative_error": {
+      "count": 10,
+      "mean": 1.4631470994050277,
+      "median": 1.2428386146607755,
+      "std": 0.609598443877619
+    },
+    "pivot_intrinsic_radius": {
+      "count": 10,
+      "mean": 0.12815417660691458,
+      "median": 0.12878734034159423,
+      "std": 0.017675138130048902
+    },
+    "pivot_intrinsic_time": {
+      "count": 10,
+      "mean": 0.5068462304259731,
+      "median": 0.5034237706883145,
+      "std": 0.008897592340582964
+    },
+    "pivot_oracle_radius": {
+      "count": 10,
+      "mean": 0.13696397641425834,
+      "median": 0.1288256355686822,
+      "std": 0.050525001232562206
+    },
+    "pivot_oracle_time": {
+      "count": 10,
+      "mean": 0.5002777120759019,
+      "median": 0.49891823506263994,
+      "std": 0.01441020721914139
+    },
+    "prototype_gate_success_rate": 0.0,
+    "relabeling_spatial_subspace_relative_error": {
+      "count": 10,
+      "mean": 4.984596002561694e-15,
+      "median": 2.5169568492238693e-15,
+      "std": 4.560991279356833e-15
+    },
+    "relabeling_time_relative_error": {
+      "count": 10,
+      "mean": 1.387758775853621e-15,
+      "median": 8.990406751056062e-16,
+      "std": 9.543915778650314e-16
+    },
+    "samples": 10,
+    "scale_balance_residual": {
+      "count": 10,
+      "mean": 0.9951796001524403,
+      "median": 0.7491318241591907,
+      "std": 0.5541608157979996
+    },
+    "signature_success_rate": 0.4,
+    "spatial_rank_gap": {
+      "count": 10,
+      "mean": 0.19233823023428448,
+      "median": 0.21364149696160484,
+      "std": 0.08741629314525921
+    },
+    "spatial_rank_gate_success_rate": 0.0
+  }
+}

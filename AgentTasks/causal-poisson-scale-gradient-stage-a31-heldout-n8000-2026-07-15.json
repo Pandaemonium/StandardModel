@@ -1,0 +1,4328 @@
+{
+  "background_summaries": {
+    "H=0.000000": {
+      "calibrated_count_gradient_dimensionless_error": {
+        "count": 4,
+        "mean": 0.4122667147330942,
+        "median": 0.4697428968368303,
+        "std": 0.1603405595036539
+      },
+      "calibrated_fused_first_jet_dimensionless_error": {
+        "count": 4,
+        "mean": 3.550791528209947,
+        "median": 3.9506109073623423,
+        "std": 0.798989035483579
+      },
+      "calibrated_fused_spatial_first_jet_dimensionless_noise": {
+        "count": 4,
+        "mean": 2.6080943021642233,
+        "median": 2.710128961583645,
+        "std": 0.4227543328460591
+      },
+      "calibrated_fused_temporal_first_jet_relative_error": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "std": null
+      },
+      "corrected_operator_first_jet_dimensionless_error": {
+        "count": 4,
+        "mean": 2.208958925689611,
+        "median": 2.3650150570382067,
+        "std": 0.5163295838578031
+      },
+      "count_center_count": {
+        "count": 4,
+        "mean": 219.25,
+        "median": 216.0,
+        "std": 20.716840975399702
+      },
+      "count_factor_relative_error": {
+        "count": 4,
+        "mean": 0.02221727145083499,
+        "median": 0.027989436932091827,
+        "std": 0.012771426948602066
+      },
+      "ensemble_calibrated_count_gradient_dimensionless_error": 0.15077280097090415,
+      "ensemble_calibrated_fused_first_jet_dimensionless_error": 2.1791443667747608,
+      "ensemble_mean_calibrated_count_gradient": [
+        0.12595446120087117,
+        0.03731274190790445,
+        -0.045220262976892564,
+        0.05857301702853376
+      ],
+      "fused_count_volume_relative_mismatch": {
+        "count": 4,
+        "mean": 0.13028217790653832,
+        "median": 0.12062613642896153,
+        "std": 0.045462877786582534
+      },
+      "fused_metric_relative_error": {
+        "count": 4,
+        "mean": 0.17016719201141645,
+        "median": 0.17067089195946478,
+        "std": 0.04859021435594417
+      },
+      "fused_oracle_volume_relative_error": {
+        "count": 4,
+        "mean": 0.04356302126793102,
+        "median": 0.05574953514466352,
+        "std": 0.024784704099103518
+      },
+      "fused_signature_success_rate": 1.0,
+      "gradient_penalty": 0.1,
+      "hubble": 0.0,
+      "median_count_window_count": {
+        "count": 4,
+        "mean": 47.0,
+        "median": 47.5,
+        "std": 1.8708286933869707
+      },
+      "minimum_count_window_count": {
+        "count": 4,
+        "mean": 30.25,
+        "median": 30.5,
+        "std": 2.165063509461097
+      },
+      "operator_row_count": {
+        "count": 4,
+        "mean": 256.0,
+        "median": 256.0,
+        "std": 0.0
+      },
+      "oracle_scale_fused_first_jet_dimensionless_error": {
+        "count": 4,
+        "mean": 3.527294840105747,
+        "median": 3.947819634930836,
+        "std": 0.8253893657073582
+      },
+      "poisson_information_condition": {
+        "count": 4,
+        "mean": 304.87316221217014,
+        "median": 301.48207488129515,
+        "std": 26.031061594413398
+      },
+      "raw_count_gradient_dimensionless_error": {
+        "count": 4,
+        "mean": 0.4828763433319455,
+        "median": 0.514908356421324,
+        "std": 0.1439796370458619
+      },
+      "raw_fused_first_jet_dimensionless_error": {
+        "count": 4,
+        "mean": 3.554726351736787,
+        "median": 3.9438235386966376,
+        "std": 0.7885600591093069
+      },
+      "target_count_gradient": [
+        -0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "temporal_response_weight": 0.6,
+      "zero_scale_fused_first_jet_dimensionless_error": {
+        "count": 4,
+        "mean": 3.527294840105747,
+        "median": 3.947819634930836,
+        "std": 0.8253893657073582
+      }
+    },
+    "H=0.100000": {
+      "calibrated_count_gradient_dimensionless_error": {
+        "count": 4,
+        "mean": 0.426828662202051,
+        "median": 0.4466608439630514,
+        "std": 0.18153950370756508
+      },
+      "calibrated_fused_first_jet_dimensionless_error": {
+        "count": 4,
+        "mean": 4.307485967614098,
+        "median": 4.233316214790205,
+        "std": 1.4106675593610059
+      },
+      "calibrated_fused_spatial_first_jet_dimensionless_noise": {
+        "count": 4,
+        "mean": 2.6353294587051432,
+        "median": 2.3850806589245037,
+        "std": 0.6270155947541806
+      },
+      "calibrated_fused_temporal_first_jet_relative_error": {
+        "count": 4,
+        "mean": 15.52081856916694,
+        "median": 14.380733130380005,
+        "std": 6.682633806120257
+      },
+      "corrected_operator_first_jet_dimensionless_error": {
+        "count": 4,
+        "mean": 2.764067317328892,
+        "median": 2.6390172208996665,
+        "std": 0.892932881472341
+      },
+      "count_center_count": {
+        "count": 4,
+        "mean": 220.0,
+        "median": 215.0,
+        "std": 16.658331248957683
+      },
+      "count_factor_relative_error": {
+        "count": 4,
+        "mean": 0.003660239971441951,
+        "median": 0.002489622574603215,
+        "std": 0.002693081397418541
+      },
+      "ensemble_calibrated_count_gradient_dimensionless_error": 0.18563711544092906,
+      "ensemble_calibrated_fused_first_jet_dimensionless_error": 2.850775398918038,
+      "ensemble_mean_calibrated_count_gradient": [
+        -0.2782490194033966,
+        0.0885588928640172,
+        -0.08207847149852875,
+        0.05185835948774086
+      ],
+      "fused_count_volume_relative_mismatch": {
+        "count": 4,
+        "mean": 0.12655249684488568,
+        "median": 0.08982839517342307,
+        "std": 0.12736120789965177
+      },
+      "fused_metric_relative_error": {
+        "count": 4,
+        "mean": 0.16797933364139486,
+        "median": 0.16987582783182156,
+        "std": 0.03501348166272617
+      },
+      "fused_oracle_volume_relative_error": {
+        "count": 4,
+        "mean": 0.007277792264966267,
+        "median": 0.0049900091104061834,
+        "std": 0.0053017657579377585
+      },
+      "fused_signature_success_rate": 1.0,
+      "gradient_penalty": 0.1,
+      "hubble": 0.1,
+      "median_count_window_count": {
+        "count": 4,
+        "mean": 48.25,
+        "median": 48.0,
+        "std": 1.0897247358851685
+      },
+      "minimum_count_window_count": {
+        "count": 4,
+        "mean": 31.5,
+        "median": 31.5,
+        "std": 1.118033988749895
+      },
+      "operator_row_count": {
+        "count": 4,
+        "mean": 256.0,
+        "median": 256.0,
+        "std": 0.0
+      },
+      "oracle_scale_fused_first_jet_dimensionless_error": {
+        "count": 4,
+        "mean": 4.300355183811706,
+        "median": 4.23539479252428,
+        "std": 1.4503599024111216
+      },
+      "poisson_information_condition": {
+        "count": 4,
+        "mean": 308.2363928245948,
+        "median": 304.1446077693122,
+        "std": 27.727335733409994
+      },
+      "raw_count_gradient_dimensionless_error": {
+        "count": 4,
+        "mean": 0.5162575851791323,
+        "median": 0.5547056443615667,
+        "std": 0.18208021042687988
+      },
+      "raw_fused_first_jet_dimensionless_error": {
+        "count": 4,
+        "mean": 4.30876236669023,
+        "median": 4.242146409604427,
+        "std": 1.4003474043399782
+      },
+      "target_count_gradient": [
+        -0.18600000000000003,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "temporal_response_weight": 0.6,
+      "zero_scale_fused_first_jet_dimensionless_error": {
+        "count": 4,
+        "mean": 4.314487743638704,
+        "median": 4.260043019477624,
+        "std": 1.4696014827502841
+      }
+    },
+    "H=0.200000": {
+      "calibrated_count_gradient_dimensionless_error": {
+        "count": 4,
+        "mean": 0.5881826950476104,
+        "median": 0.5915018078487648,
+        "std": 0.03248048594416814
+      },
+      "calibrated_fused_first_jet_dimensionless_error": {
+        "count": 4,
+        "mean": 4.22621148258088,
+        "median": 4.369791446413301,
+        "std": 0.36766428575520704
+      },
+      "calibrated_fused_spatial_first_jet_dimensionless_noise": {
+        "count": 4,
+        "mean": 3.4110920284454376,
+        "median": 3.3693186643847817,
+        "std": 0.2915462994933283
+      },
+      "calibrated_fused_temporal_first_jet_relative_error": {
+        "count": 4,
+        "mean": 5.268182394835118,
+        "median": 5.266592084674997,
+        "std": 1.120142004673711
+      },
+      "corrected_operator_first_jet_dimensionless_error": {
+        "count": 4,
+        "mean": 2.69569679612738,
+        "median": 2.7548453013889698,
+        "std": 0.3285544150586436
+      },
+      "count_center_count": {
+        "count": 4,
+        "mean": 236.5,
+        "median": 235.5,
+        "std": 14.739402972983676
+      },
+      "count_factor_relative_error": {
+        "count": 4,
+        "mean": 0.015540989416530194,
+        "median": 0.007607089989364052,
+        "std": 0.01828466213196068
+      },
+      "ensemble_calibrated_count_gradient_dimensionless_error": 0.3646270167687843,
+      "ensemble_calibrated_fused_first_jet_dimensionless_error": 2.1650673463676102,
+      "ensemble_mean_calibrated_count_gradient": [
+        -0.17782066726482895,
+        -0.10983520575515725,
+        0.12863349000094315,
+        0.12845381370985143
+      ],
+      "fused_count_volume_relative_mismatch": {
+        "count": 4,
+        "mean": 0.10124771605552377,
+        "median": 0.08525902289032322,
+        "std": 0.04898811942969959
+      },
+      "fused_metric_relative_error": {
+        "count": 4,
+        "mean": 0.16526905098044953,
+        "median": 0.1661255893954505,
+        "std": 0.02604735068778497
+      },
+      "fused_oracle_volume_relative_error": {
+        "count": 4,
+        "mean": 0.029451487857300573,
+        "median": 0.01502651175831388,
+        "std": 0.0339908531203755
+      },
+      "fused_signature_success_rate": 1.0,
+      "gradient_penalty": 0.1,
+      "hubble": 0.2,
+      "median_count_window_count": {
+        "count": 4,
+        "mean": 51.375,
+        "median": 51.5,
+        "std": 1.6345871038277526
+      },
+      "minimum_count_window_count": {
+        "count": 4,
+        "mean": 33.0,
+        "median": 34.0,
+        "std": 2.449489742783178
+      },
+      "operator_row_count": {
+        "count": 4,
+        "mean": 256.0,
+        "median": 256.0,
+        "std": 0.0
+      },
+      "oracle_scale_fused_first_jet_dimensionless_error": {
+        "count": 4,
+        "mean": 4.192930449666727,
+        "median": 4.3212823645648095,
+        "std": 0.35368194844417894
+      },
+      "poisson_information_condition": {
+        "count": 4,
+        "mean": 311.85899620065504,
+        "median": 307.3636499731539,
+        "std": 19.444424761312604
+      },
+      "raw_count_gradient_dimensionless_error": {
+        "count": 4,
+        "mean": 0.6303999597954302,
+        "median": 0.6320844113695689,
+        "std": 0.03700277131899451
+      },
+      "raw_fused_first_jet_dimensionless_error": {
+        "count": 4,
+        "mean": 4.225956924584284,
+        "median": 4.365557067420934,
+        "std": 0.3667532668551853
+      },
+      "target_count_gradient": [
+        -0.34400000000000003,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "temporal_response_weight": 0.6,
+      "zero_scale_fused_first_jet_dimensionless_error": {
+        "count": 4,
+        "mean": 4.238332276653537,
+        "median": 4.393478562614146,
+        "std": 0.3816894459864944
+      }
+    }
+  },
+  "calibration": {
+    "gradient_input": "AgentTasks\\causal-poisson-scale-gradient-stage-a31-development-2026-07-15.json",
+    "response_flat_density_scores": {
+      "N=4000": {
+        "r=0.300000": {
+          "maximum_unit_volume_shape_error": 0.4400347217789046,
+          "mean_unit_volume_shape_error": 0.28706961823216065,
+          "median_unit_volume_shape_error": 0.26519946107547043,
+          "valid_signature_rate": 1.0,
+          "weight": 0.3
+        },
+        "r=0.350000": {
+          "maximum_unit_volume_shape_error": 0.39445753570763603,
+          "mean_unit_volume_shape_error": 0.2436307725805417,
+          "median_unit_volume_shape_error": 0.21730465520120523,
+          "valid_signature_rate": 1.0,
+          "weight": 0.35
+        },
+        "r=0.400000": {
+          "maximum_unit_volume_shape_error": 0.35620078928433213,
+          "mean_unit_volume_shape_error": 0.21167026404766628,
+          "median_unit_volume_shape_error": 0.1912863268993478,
+          "valid_signature_rate": 1.0,
+          "weight": 0.4
+        },
+        "r=0.450000": {
+          "maximum_unit_volume_shape_error": 0.32425856592493274,
+          "mean_unit_volume_shape_error": 0.1919738879244187,
+          "median_unit_volume_shape_error": 0.18037051109219582,
+          "valid_signature_rate": 1.0,
+          "weight": 0.45
+        },
+        "r=0.500000": {
+          "maximum_unit_volume_shape_error": 0.2981712790157488,
+          "mean_unit_volume_shape_error": 0.1847161277179914,
+          "median_unit_volume_shape_error": 0.18045754147528145,
+          "valid_signature_rate": 1.0,
+          "weight": 0.5
+        },
+        "r=0.550000": {
+          "maximum_unit_volume_shape_error": 0.2777892790513564,
+          "mean_unit_volume_shape_error": 0.18832685494029452,
+          "median_unit_volume_shape_error": 0.1786151096338413,
+          "valid_signature_rate": 1.0,
+          "weight": 0.55
+        },
+        "r=0.600000": {
+          "maximum_unit_volume_shape_error": 0.27133347378636635,
+          "mean_unit_volume_shape_error": 0.2001263085684376,
+          "median_unit_volume_shape_error": 0.19387532124573548,
+          "valid_signature_rate": 1.0,
+          "weight": 0.6
+        },
+        "r=0.650000": {
+          "maximum_unit_volume_shape_error": 0.31130043610202063,
+          "mean_unit_volume_shape_error": 0.2178101187201622,
+          "median_unit_volume_shape_error": 0.21494333386780623,
+          "valid_signature_rate": 1.0,
+          "weight": 0.65
+        },
+        "r=0.700000": {
+          "maximum_unit_volume_shape_error": 0.3521404983280084,
+          "mean_unit_volume_shape_error": 0.2396886883632038,
+          "median_unit_volume_shape_error": 0.23990168599075345,
+          "valid_signature_rate": 1.0,
+          "weight": 0.7
+        }
+      },
+      "N=8000": {
+        "r=0.300000": {
+          "maximum_unit_volume_shape_error": 0.39049372645260033,
+          "mean_unit_volume_shape_error": 0.30392512820276835,
+          "median_unit_volume_shape_error": 0.30375825055052036,
+          "valid_signature_rate": 1.0,
+          "weight": 0.3
+        },
+        "r=0.350000": {
+          "maximum_unit_volume_shape_error": 0.34295690775423876,
+          "mean_unit_volume_shape_error": 0.25567413737976574,
+          "median_unit_volume_shape_error": 0.2554253153010053,
+          "valid_signature_rate": 1.0,
+          "weight": 0.35
+        },
+        "r=0.400000": {
+          "maximum_unit_volume_shape_error": 0.30165740498646554,
+          "mean_unit_volume_shape_error": 0.21484676314549192,
+          "median_unit_volume_shape_error": 0.2140507740842591,
+          "valid_signature_rate": 1.0,
+          "weight": 0.4
+        },
+        "r=0.450000": {
+          "maximum_unit_volume_shape_error": 0.2652912098373338,
+          "mean_unit_volume_shape_error": 0.18147170474758892,
+          "median_unit_volume_shape_error": 0.17920052164913888,
+          "valid_signature_rate": 1.0,
+          "weight": 0.45
+        },
+        "r=0.500000": {
+          "maximum_unit_volume_shape_error": 0.23315913833828858,
+          "mean_unit_volume_shape_error": 0.15695128796172284,
+          "median_unit_volume_shape_error": 0.15145017865254384,
+          "valid_signature_rate": 1.0,
+          "weight": 0.5
+        },
+        "r=0.550000": {
+          "maximum_unit_volume_shape_error": 0.20498349564325977,
+          "mean_unit_volume_shape_error": 0.14327397642597584,
+          "median_unit_volume_shape_error": 0.1409446727899764,
+          "valid_signature_rate": 1.0,
+          "weight": 0.55
+        },
+        "r=0.600000": {
+          "maximum_unit_volume_shape_error": 0.1808291092165534,
+          "mean_unit_volume_shape_error": 0.13997215410596833,
+          "median_unit_volume_shape_error": 0.1424222260785959,
+          "valid_signature_rate": 1.0,
+          "weight": 0.6
+        },
+        "r=0.650000": {
+          "maximum_unit_volume_shape_error": 0.1888703258289207,
+          "mean_unit_volume_shape_error": 0.14482901503989018,
+          "median_unit_volume_shape_error": 0.1387214924625555,
+          "valid_signature_rate": 1.0,
+          "weight": 0.65
+        },
+        "r=0.700000": {
+          "maximum_unit_volume_shape_error": 0.21783848609819842,
+          "mean_unit_volume_shape_error": 0.15601454573640214,
+          "median_unit_volume_shape_error": 0.1451905845760309,
+          "valid_signature_rate": 1.0,
+          "weight": 0.7
+        }
+      }
+    },
+    "response_inputs": [
+      "AgentTasks\\causal-retarded-moment-stage-a29-development-flat-n4000-2026-07-15.json",
+      "AgentTasks\\causal-retarded-moment-stage-a29-development-flat-n8000-2026-07-15.json"
+    ],
+    "selected_gradient_penalty": 0.1,
+    "selected_temporal_response_weight": 0.6
+  },
+  "claim_boundary": {
+    "a29_tensor_and_a24_pivot_factor_are_retained": true,
+    "coordinates_density_dimension_and_windows_are_supplied": true,
+    "gradient_penalty_is_frozen_before_curved_evaluation": true,
+    "levi_civita_connection_is_not_computed": true,
+    "only_the_count_factor_gradient_is_replaced": true
+  },
+  "mode": "held-out",
+  "samples": [
+    {
+      "calibrated_count_gradient": [
+        -0.04352158687743125,
+        0.058916517846828755,
+        -0.18132712415319105,
+        0.388873958192212
+      ],
+      "calibrated_count_gradient_dimensionless_error": 0.43527895183809484,
+      "calibrated_fused_first_jet": [
+        [
+          [
+            2.5919338855694303,
+            0.6541454178187008,
+            -1.7097489149927896,
+            -2.836441850498591
+          ],
+          [
+            0.6541454178187008,
+            0.8580109409876376,
+            0.01792669724591353,
+            -0.26276621315951604
+          ],
+          [
+            -1.7097489149927896,
+            0.01792669724591353,
+            1.589672066663546,
+            -0.10020700285324494
+          ],
+          [
+            -2.836441850498591,
+            -0.26276621315951604,
+            -0.10020700285324494,
+            -0.1405458807823811
+          ]
+        ],
+        [
+          [
+            -0.7558793603972344,
+            0.2867110185623613,
+            0.5251343579430406,
+            1.3933745284586245
+          ],
+          [
+            0.2867110185623613,
+            -0.635894685543659,
+            0.28486962914216346,
+            0.3747408198801978
+          ],
+          [
+            0.5251343579430406,
+            0.28486962914216346,
+            -0.45198199001675815,
+            -0.14799884115148262
+          ],
+          [
+            1.3933745284586245,
+            0.3747408198801978,
+            -0.14799884115148262,
+            0.04071684525043536
+          ]
+        ],
+        [
+          [
+            2.3743924455518477,
+            0.549494741884981,
+            -0.4879303092539784,
+            0.39297883377611476
+          ],
+          [
+            0.549494741884981,
+            1.022091848778141,
+            0.013678829226700606,
+            -0.5033479184069795
+          ],
+          [
+            -0.4879303092539784,
+            0.013678829226700606,
+            1.2724597545776573,
+            0.3260147751688359
+          ],
+          [
+            0.39297883377611476,
+            -0.5033479184069795,
+            0.3260147751688359,
+            0.8459506528454213
+          ]
+        ],
+        [
+          [
+            2.6002993903668026,
+            -0.9241935492041712,
+            0.19725003218188414,
+            0.8198948695369993
+          ],
+          [
+            -0.9241935492041712,
+            0.5220017691345777,
+            0.06427928076450685,
+            -0.09023005197106893
+          ],
+          [
+            0.19725003218188414,
+            0.06427928076450685,
+            0.7809606000693431,
+            0.3395433385900994
+          ],
+          [
+            0.8198948695369993,
+            -0.09023005197106893,
+            0.3395433385900994,
+            0.47631575687827893
+          ]
+        ]
+      ],
+      "calibrated_fused_first_jet_dimensionless_error": 3.9243737344129457,
+      "calibrated_fused_spatial_first_jet_dimensionless_noise": 2.6762756152645015,
+      "calibrated_fused_temporal_first_jet_relative_error": null,
+      "corrected_operator_first_jet_dimensionless_error": 2.425916865425022,
+      "count_center_count": 211,
+      "count_factor_relative_error": 0.02609871391461238,
+      "count_weyl_factor": 0.9739012860853876,
+      "duration": 1.0,
+      "fused_count_volume_relative_mismatch": 0.08271793314120432,
+      "fused_metric": [
+        [
+          0.8664679856876408,
+          -0.2176020242961373,
+          0.032736971853489075,
+          0.0553017512687384
+        ],
+        [
+          -0.2176020242961373,
+          -1.0438005250567637,
+          -0.011254408185811497,
+          0.01339699293485041
+        ],
+        [
+          0.032736971853489075,
+          -0.011254408185811497,
+          -0.9873322322974745,
+          0.027841638485447
+        ],
+        [
+          0.0553017512687384,
+          0.01339699293485041,
+          0.027841638485447,
+          -0.953961109903411
+        ]
+      ],
+      "fused_metric_relative_error": 0.17829273715563052,
+      "fused_oracle_volume_relative_error": 0.05431435895462067,
+      "fused_signature": [
+        1,
+        3,
+        0
+      ],
+      "gradient_penalty": 0.1,
+      "hubble": 0.0,
+      "median_count_window_count": 49.0,
+      "minimum_count_window_count": 33,
+      "operator_row_count": 256,
+      "oracle_scale_fused_first_jet_dimensionless_error": 3.903654420146328,
+      "poisson_information_condition": 271.8038189136914,
+      "poisson_iterations": 4,
+      "raw_count_gradient": [
+        -0.03142672877579267,
+        0.07210628698093853,
+        -0.19772380687707816,
+        0.41682996286888835
+      ],
+      "raw_count_gradient_dimensionless_error": 0.46800521114082444,
+      "raw_fused_first_jet_dimensionless_error": 3.927544524387834,
+      "target_count_gradient": [
+        -0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "target_count_weyl_factor": 1.0,
+      "target_first_jet": [
+        [
+          [
+            -0.0,
+            -0.0,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            0.0,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            -0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "target_metric": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -1.0
+        ]
+      ],
+      "temporal_response_weight": 0.6,
+      "zero_scale_fused_first_jet_dimensionless_error": 3.903654420146328
+    },
+    {
+      "calibrated_count_gradient": [
+        0.12443759729625468,
+        -0.01667266200419435,
+        -0.05081252869895238,
+        0.05431834349433211
+      ],
+      "calibrated_count_gradient_dimensionless_error": 0.14592836870163753,
+      "calibrated_fused_first_jet": [
+        [
+          [
+            4.0877719529511465,
+            0.9693359672861923,
+            -1.0297776845429756,
+            0.2776334746093675
+          ],
+          [
+            0.9693359672861923,
+            1.8055449030547412,
+            0.2735465803744918,
+            0.8105338931578296
+          ],
+          [
+            -1.0297776845429756,
+            0.2735465803744918,
+            2.6240840754522763,
+            0.21552867947237409
+          ],
+          [
+            0.2776334746093675,
+            0.8105338931578296,
+            0.21552867947237409,
+            0.7596561477160606
+          ]
+        ],
+        [
+          [
+            0.05378641373414802,
+            0.9492338448905323,
+            1.2347060095997808,
+            -1.0831198367135073
+          ],
+          [
+            0.9492338448905323,
+            0.07171234870749774,
+            0.33162750500054633,
+            -0.3846249149840493
+          ],
+          [
+            1.2347060095997808,
+            0.33162750500054633,
+            0.037492818596086205,
+            0.09389367933007663
+          ],
+          [
+            -1.0831198367135073,
+            -0.3846249149840493,
+            0.09389367933007663,
+            0.2301285247245953
+          ]
+        ],
+        [
+          [
+            2.546529486075421,
+            0.7137817767166857,
+            -0.5153228602126189,
+            1.0555429583349176
+          ],
+          [
+            0.7137817767166857,
+            1.5158940820304247,
+            -0.24517867595380985,
+            0.10250354019265434
+          ],
+          [
+            -0.5153228602126189,
+            -0.24517867595380985,
+            1.3774737951297717,
+            -0.07274468314290064
+          ],
+          [
+            1.0555429583349176,
+            0.10250354019265434,
+            -0.07274468314290064,
+            0.9668119715371063
+          ]
+        ],
+        [
+          [
+            -0.1451710497210682,
+            -0.8464379886741209,
+            -0.07154249621790133,
+            1.2867190423303858
+          ],
+          [
+            -0.8464379886741209,
+            -0.37195535717305483,
+            0.25022715453470795,
+            -0.5574541005269221
+          ],
+          [
+            -0.07154249621790133,
+            0.25022715453470795,
+            -0.7759192766767263,
+            -0.08962082654526338
+          ],
+          [
+            1.2867190423303858,
+            -0.5574541005269221,
+            -0.08962082654526338,
+            0.7075565378296476
+          ]
+        ]
+      ],
+      "calibrated_fused_first_jet_dimensionless_error": 3.976848080311739,
+      "calibrated_fused_spatial_first_jet_dimensionless_noise": 2.7439823079027885,
+      "calibrated_fused_temporal_first_jet_relative_error": null,
+      "corrected_operator_first_jet_dimensionless_error": 2.304113248651392,
+      "count_center_count": 251,
+      "count_factor_relative_error": 0.0004448537718124701,
+      "count_weyl_factor": 1.0004448537718125,
+      "duration": 1.0,
+      "fused_count_volume_relative_mismatch": 0.09468182912424693,
+      "fused_metric": [
+        [
+          0.767009576702993,
+          0.032233177581387405,
+          0.08437647015608836,
+          0.04188191762576439
+        ],
+        [
+          0.032233177581387405,
+          -1.062946811121938,
+          -0.007198417975856485,
+          -0.05645523406131454
+        ],
+        [
+          0.08437647015608836,
+          -0.007198417975856485,
+          -1.104946486286281,
+          0.011927463998802975
+        ],
+        [
+          0.04188191762576439,
+          -0.05645523406131454,
+          0.011927463998802975,
+          -1.1024299279598637
+        ]
+      ],
+      "fused_metric_relative_error": 0.16304904676329907,
+      "fused_oracle_volume_relative_error": 0.0008891142109316297,
+      "fused_signature": [
+        1,
+        3,
+        0
+      ],
+      "gradient_penalty": 0.1,
+      "hubble": 0.0,
+      "median_count_window_count": 48.0,
+      "minimum_count_window_count": 27,
+      "operator_row_count": 256,
+      "oracle_scale_fused_first_jet_dimensionless_error": 3.9919848497153434,
+      "poisson_information_condition": 303.17629659498203,
+      "poisson_iterations": 4,
+      "raw_count_gradient": [
+        0.2416408358407184,
+        -0.016677373184903938,
+        -0.057720186316438334,
+        0.06736538384819396
+      ],
+      "raw_count_gradient_dimensionless_error": 0.257949885000107,
+      "raw_fused_first_jet_dimensionless_error": 3.960102553005441,
+      "target_count_gradient": [
+        -0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "target_count_weyl_factor": 1.0,
+      "target_first_jet": [
+        [
+          [
+            -0.0,
+            -0.0,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            0.0,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            -0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "target_metric": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -1.0
+        ]
+      ],
+      "temporal_response_weight": 0.6,
+      "zero_scale_fused_first_jet_dimensionless_error": 3.9919848497153434
+    },
+    {
+      "calibrated_count_gradient": [
+        0.06366987147876553,
+        -0.20066409543931682,
+        -0.16302334316792988,
+        -0.4281681879863856
+      ],
+      "calibrated_count_gradient_dimensionless_error": 0.5042068418355657,
+      "calibrated_fused_first_jet": [
+        [
+          [
+            1.2966118720099897,
+            2.31149129822044,
+            1.6377181895794357,
+            1.84339002829021
+          ],
+          [
+            2.31149129822044,
+            1.3204423728650705,
+            0.12439615903865779,
+            0.9105631476372811
+          ],
+          [
+            1.6377181895794357,
+            0.12439615903865779,
+            0.9924586568548832,
+            -0.6771071241972488
+          ],
+          [
+            1.84339002829021,
+            0.9105631476372811,
+            -0.6771071241972488,
+            0.5040261944699581
+          ]
+        ],
+        [
+          [
+            1.208488825683614,
+            0.24115233704206265,
+            0.6185088074376051,
+            -1.3591972130429109
+          ],
+          [
+            0.24115233704206265,
+            0.4101484374028965,
+            0.4151518663826888,
+            -0.27211953855933024
+          ],
+          [
+            0.6185088074376051,
+            0.4151518663826888,
+            1.1453307017093877,
+            -0.3546911337877143
+          ],
+          [
+            -1.3591972130429109,
+            -0.27211953855933024,
+            -0.3546911337877143,
+            1.231345310701436
+          ]
+        ],
+        [
+          [
+            -1.1902204129551137,
+            0.2065100723155948,
+            1.6923865613318214,
+            1.315667006191145
+          ],
+          [
+            0.2065100723155948,
+            -0.12558637382778118,
+            -0.21179856374857853,
+            0.08318145260330939
+          ],
+          [
+            1.6923865613318214,
+            -0.21179856374857853,
+            1.0141013109939887,
+            -0.5621110355242486
+          ],
+          [
+            1.315667006191145,
+            0.08318145260330939,
+            -0.5621110355242486,
+            -1.1084909403850791
+          ]
+        ],
+        [
+          [
+            -1.4081978116600564,
+            -2.122776912622955,
+            0.7913858708188719,
+            0.5788256220381751
+          ],
+          [
+            -2.122776912622955,
+            0.18215602266121986,
+            -0.33086769321077114,
+            -0.1788149055541117
+          ],
+          [
+            0.7913858708188719,
+            -0.33086769321077114,
+            0.01681186479318708,
+            -0.11632847601813494
+          ],
+          [
+            0.5788256220381751,
+            -0.1788149055541117,
+            -0.11632847601813494,
+            -1.1558158252450343
+          ]
+        ]
+      ],
+      "calibrated_fused_first_jet_dimensionless_error": 4.128912585132249,
+      "calibrated_fused_spatial_first_jet_dimensionless_noise": 3.0852610406864462,
+      "calibrated_fused_temporal_first_jet_relative_error": null,
+      "corrected_operator_first_jet_dimensionless_error": 2.746283220806733,
+      "count_center_count": 194,
+      "count_factor_relative_error": 0.03244535816734384,
+      "count_weyl_factor": 1.0324453581673438,
+      "duration": 1.0,
+      "fused_count_volume_relative_mismatch": 0.1971585056270259,
+      "fused_metric": [
+        [
+          0.8574934580696913,
+          0.2666981005279002,
+          0.1284227640301387,
+          -0.06440869313915454
+        ],
+        [
+          0.2666981005279002,
+          -1.0009219811141075,
+          0.029262366321242923,
+          0.03502043113392751
+        ],
+        [
+          0.1284227640301387,
+          0.029262366321242923,
+          -1.0974700981313488,
+          -0.013291469869604446
+        ],
+        [
+          -0.06440869313915454,
+          0.03502043113392751,
+          -0.013291469869604446,
+          -1.092845610660623
+        ]
+      ],
+      "fused_metric_relative_error": 0.23795271457207415,
+      "fused_oracle_volume_relative_error": 0.0618639005714654,
+      "fused_signature": [
+        1,
+        3,
+        0
+      ],
+      "gradient_penalty": 0.1,
+      "hubble": 0.0,
+      "median_count_window_count": 44.0,
+      "minimum_count_window_count": 30,
+      "operator_row_count": 256,
+      "oracle_scale_fused_first_jet_dimensionless_error": 4.1102153291518135,
+      "poisson_information_condition": 299.7878531676082,
+      "poisson_iterations": 5,
+      "raw_count_gradient": [
+        0.04576896547203324,
+        -0.21807289200024324,
+        -0.2020682883339094,
+        -0.4744997216738196
+      ],
+      "raw_count_gradient_dimensionless_error": 0.5618115017018236,
+      "raw_fused_first_jet_dimensionless_error": 4.135472288966588,
+      "target_count_gradient": [
+        -0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "target_count_weyl_factor": 1.0,
+      "target_first_jet": [
+        [
+          [
+            -0.0,
+            -0.0,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            0.0,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            -0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "target_metric": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -1.0
+        ]
+      ],
+      "temporal_response_weight": 0.6,
+      "zero_scale_fused_first_jet_dimensionless_error": 4.1102153291518135
+    },
+    {
+      "calibrated_count_gradient": [
+        0.35923196290589576,
+        0.3076712072283002,
+        0.21428194411250306,
+        0.21926795441397653
+      ],
+      "calibrated_count_gradient_dimensionless_error": 0.5636526965570786,
+      "calibrated_fused_first_jet": [
+        [
+          [
+            0.04925283313244616,
+            -0.4539650806068246,
+            -0.6207478263020543,
+            -0.12992308160091848
+          ],
+          [
+            -0.4539650806068246,
+            -1.2555890795268527,
+            0.5411143229596044,
+            0.0006546430984402368
+          ],
+          [
+            -0.6207478263020543,
+            0.5411143229596044,
+            0.48465907690180393,
+            -0.30114337602371405
+          ],
+          [
+            -0.12992308160091848,
+            0.0006546430984402368,
+            -0.30114337602371405,
+            -0.48963562619818984
+          ]
+        ],
+        [
+          [
+            0.5679219956597952,
+            0.9684574386586047,
+            0.3862143336542405,
+            1.3071931135848736
+          ],
+          [
+            0.9684574386586047,
+            -0.1763158581009018,
+            0.5603772891180041,
+            0.05197097015666207
+          ],
+          [
+            0.3862143336542405,
+            0.5603772891180041,
+            -0.46140694720273834,
+            -0.4035424944271358
+          ],
+          [
+            1.3071931135848736,
+            0.05197097015666207,
+            -0.4035424944271358,
+            -0.20400552346716877
+          ]
+        ],
+        [
+          [
+            0.8536663856547766,
+            -0.9844805164670271,
+            -0.9741078350168804,
+            0.5612688503451614
+          ],
+          [
+            -0.9844805164670271,
+            0.2706928062518676,
+            0.20554918083973187,
+            -0.3357082928083457
+          ],
+          [
+            -0.9741078350168804,
+            0.20554918083973187,
+            0.2705609230559103,
+            -0.03942739522745859
+          ],
+          [
+            0.5612688503451614,
+            -0.3357082928083457,
+            -0.03942739522745859,
+            -0.2812065578101072
+          ]
+        ],
+        [
+          [
+            0.5277577190322954,
+            -0.10497350684970065,
+            0.6535673706814737,
+            0.011301549725324848
+          ],
+          [
+            -0.10497350684970065,
+            -0.4706511864299595,
+            0.0554169642837438,
+            0.11649593448782646
+          ],
+          [
+            0.6535673706814737,
+            0.0554169642837438,
+            -0.39093606333898023,
+            -0.3523536449036808
+          ],
+          [
+            0.011301549725324848,
+            0.11649593448782646,
+            -0.3523536449036808,
+            0.3842036562823541
+          ]
+        ]
+      ],
+      "calibrated_fused_first_jet_dimensionless_error": 2.173031712982854,
+      "calibrated_fused_spatial_first_jet_dimensionless_noise": 1.9268582448031584,
+      "calibrated_fused_temporal_first_jet_relative_error": null,
+      "corrected_operator_first_jet_dimensionless_error": 1.3595223678752986,
+      "count_center_count": 221,
+      "count_factor_relative_error": 0.029880159949571272,
+      "count_weyl_factor": 1.0298801599495713,
+      "duration": 1.0,
+      "fused_count_volume_relative_mismatch": 0.14657044373367611,
+      "fused_metric": [
+        [
+          0.9509338165964778,
+          -0.007026291798973427,
+          -0.1130563601353172,
+          -0.03889971617023159
+        ],
+        [
+          -0.007026291798973427,
+          -1.0538026418234046,
+          -0.01293460710174502,
+          0.01053469125598792
+        ],
+        [
+          -0.1130563601353172,
+          -0.01293460710174502,
+          -1.0322499729393086,
+          -0.01155790597852708
+        ],
+        [
+          -0.03889971617023159,
+          0.01053469125598792,
+          -0.01155790597852708,
+          -1.0724731831058534
+        ]
+      ],
+      "fused_metric_relative_error": 0.10137426955466208,
+      "fused_oracle_volume_relative_error": 0.05718471133470637,
+      "fused_signature": [
+        1,
+        3,
+        0
+      ],
+      "gradient_penalty": 0.1,
+      "hubble": 0.0,
+      "median_count_window_count": 47.0,
+      "minimum_count_window_count": 31,
+      "operator_row_count": 256,
+      "oracle_scale_fused_first_jet_dimensionless_error": 2.1033247614095036,
+      "poisson_information_condition": 344.7246801723989,
+      "poisson_iterations": 5,
+      "raw_count_gradient": [
+        0.4608691380879499,
+        0.31179477223496277,
+        0.21111322651347447,
+        0.24538637741131852
+      ],
+      "raw_count_gradient_dimensionless_error": 0.6437387754850269,
+      "raw_fused_first_jet_dimensionless_error": 2.195786040587285,
+      "target_count_gradient": [
+        -0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "target_count_weyl_factor": 1.0,
+      "target_first_jet": [
+        [
+          [
+            -0.0,
+            -0.0,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            0.0,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            -0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "target_metric": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -1.0
+        ]
+      ],
+      "temporal_response_weight": 0.6,
+      "zero_scale_fused_first_jet_dimensionless_error": 2.1033247614095036
+    },
+    {
+      "calibrated_count_gradient": [
+        -0.26925173680693837,
+        0.09565162447417642,
+        -0.06531423168108008,
+        -0.0288379030528245
+      ],
+      "calibrated_count_gradient_dimensionless_error": 0.16825697351526858,
+      "calibrated_fused_first_jet": [
+        [
+          [
+            4.6053114271754065,
+            1.5467545292336244,
+            -2.127261454142801,
+            2.1028231722051847
+          ],
+          [
+            1.5467545292336244,
+            1.4575209384488093,
+            0.3226839292042299,
+            0.16144064482004955
+          ],
+          [
+            -2.127261454142801,
+            0.3226839292042299,
+            2.060289392193772,
+            -0.07291307855853221
+          ],
+          [
+            2.1028231722051847,
+            0.16144064482004955,
+            -0.07291307855853221,
+            1.2996125599065433
+          ]
+        ],
+        [
+          [
+            -0.19588486192603327,
+            -1.2168795917382216,
+            -0.42368586070203396,
+            -0.5218106907769444
+          ],
+          [
+            -1.2168795917382216,
+            0.045121996303530615,
+            0.3037512285760187,
+            0.2832308538450445
+          ],
+          [
+            -0.42368586070203396,
+            0.3037512285760187,
+            -0.25141989569077394,
+            -0.015053681638145432
+          ],
+          [
+            -0.5218106907769444,
+            0.2832308538450445,
+            -0.015053681638145432,
+            -0.30618209074540464
+          ]
+        ],
+        [
+          [
+            3.5894234769179167,
+            -0.17402930605987094,
+            0.8151459493533401,
+            -0.7223532511877523
+          ],
+          [
+            -0.17402930605987094,
+            1.0092697916043711,
+            -0.4522264966076838,
+            0.036758443177787446
+          ],
+          [
+            0.8151459493533401,
+            -0.4522264966076838,
+            1.6525914991326762,
+            0.10354440701977716
+          ],
+          [
+            -0.7223532511877523,
+            0.036758443177787446,
+            0.10354440701977716,
+            0.7989240263566061
+          ]
+        ],
+        [
+          [
+            -1.1356033614601937,
+            -0.5785627595820505,
+            -1.6516273023716135,
+            1.6248915086783133
+          ],
+          [
+            -0.5785627595820505,
+            0.05827129951409337,
+            0.5780632321877732,
+            0.33101090991211557
+          ],
+          [
+            -1.6516273023716135,
+            0.5780632321877732,
+            0.19786776312234855,
+            0.3261770243030084
+          ],
+          [
+            1.6248915086783133,
+            0.33101090991211557,
+            0.3261770243030084,
+            -1.4238882442592828
+          ]
+        ]
+      ],
+      "calibrated_fused_first_jet_dimensionless_error": 5.565661207536624,
+      "calibrated_fused_spatial_first_jet_dimensionless_noise": 3.6750045790932258,
+      "calibrated_fused_temporal_first_jet_relative_error": 19.43618012581325,
+      "corrected_operator_first_jet_dimensionless_error": 3.3617173890899474,
+      "count_center_count": 246,
+      "count_factor_relative_error": 0.008185386188067741,
+      "count_weyl_factor": 0.8719795405140599,
+      "duration": 1.0,
+      "fused_count_volume_relative_mismatch": 0.1480607807977716,
+      "fused_metric": [
+        [
+          0.9693912351047406,
+          0.021038609887837966,
+          -0.013800289003432822,
+          -0.08107278107035591
+        ],
+        [
+          0.021038609887837966,
+          -0.78980184562687,
+          0.02440937885319147,
+          -0.026177337495169307
+        ],
+        [
+          -0.013800289003432822,
+          0.02440937885319147,
+          -0.8901941692760451,
+          0.05642348412245686
+        ],
+        [
+          -0.08107278107035591,
+          -0.026177337495169307,
+          0.05642348412245686,
+          -0.8456212452000482
+        ]
+      ],
+      "fused_metric_relative_error": 0.11692910358941636,
+      "fused_oracle_volume_relative_error": 0.016171942209417898,
+      "fused_signature": [
+        1,
+        3,
+        0
+      ],
+      "gradient_penalty": 0.1,
+      "hubble": 0.1,
+      "median_count_window_count": 47.0,
+      "minimum_count_window_count": 33,
+      "operator_row_count": 256,
+      "oracle_scale_fused_first_jet_dimensionless_error": 5.573044129064695,
+      "poisson_information_condition": 305.7946970397118,
+      "poisson_iterations": 4,
+      "raw_count_gradient": [
+        -0.36353601256594237,
+        0.11144627044547697,
+        -0.07722436661939844,
+        -0.018604057464641846
+      ],
+      "raw_count_gradient_dimensionless_error": 0.2591778626364856,
+      "raw_fused_first_jet_dimensionless_error": 5.561138374404203,
+      "target_count_gradient": [
+        -0.18600000000000003,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "target_count_weyl_factor": 0.8649000000000001,
+      "target_first_jet": [
+        [
+          [
+            -0.18600000000000003,
+            -0.0,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            0.18600000000000003,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            0.18600000000000003,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            -0.0,
+            0.18600000000000003
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "target_metric": [
+        [
+          0.8649000000000001,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.8649000000000001,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -0.8649000000000001,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.8649000000000001
+        ]
+      ],
+      "temporal_response_weight": 0.6,
+      "zero_scale_fused_first_jet_dimensionless_error": 5.591402929525826
+    },
+    {
+      "calibrated_count_gradient": [
+        -0.4268527361619949,
+        -0.34527110315245596,
+        -0.1298524048395328,
+        -0.1466032267111443
+      ],
+      "calibrated_count_gradient_dimensionless_error": 0.5368273553672852,
+      "calibrated_fused_first_jet": [
+        [
+          [
+            6.540850456353361,
+            0.45662417066320876,
+            0.3790177800638637,
+            -3.5146802075982477
+          ],
+          [
+            0.45662417066320876,
+            2.2669507783883285,
+            -0.09680079308726376,
+            -0.23052960078880752
+          ],
+          [
+            0.3790177800638637,
+            -0.09680079308726376,
+            1.7186113415381261,
+            -0.6935025400900096
+          ],
+          [
+            -3.5146802075982477,
+            -0.23052960078880752,
+            -0.6935025400900096,
+            2.3099220713214663
+          ]
+        ],
+        [
+          [
+            1.3626213600797654,
+            0.3543546224798497,
+            -0.30694055751808974,
+            0.7318242125154691
+          ],
+          [
+            0.3543546224798497,
+            0.20112656390089426,
+            -0.03412664238783213,
+            0.26856190483594006
+          ],
+          [
+            -0.30694055751808974,
+            -0.03412664238783213,
+            1.2786458942711771,
+            -0.22434283480255574
+          ],
+          [
+            0.7318242125154691,
+            0.26856190483594006,
+            -0.22434283480255574,
+            0.6380712528325359
+          ]
+        ],
+        [
+          [
+            -0.6048518950510953,
+            -0.8308611632821694,
+            -1.0046814112690754,
+            0.4488242216338143
+          ],
+          [
+            -0.8308611632821694,
+            -0.10210897505143669,
+            -0.47052895106689385,
+            -0.042622483326010166
+          ],
+          [
+            -1.0046814112690754,
+            -0.47052895106689385,
+            0.37702899621549435,
+            1.0818665118758914
+          ],
+          [
+            0.4488242216338143,
+            -0.042622483326010166,
+            1.0818665118758914,
+            -0.13646081490549725
+          ]
+        ],
+        [
+          [
+            1.9087043969151563,
+            0.75773661145843,
+            -0.06419090284498008,
+            -0.7294024849951605
+          ],
+          [
+            0.75773661145843,
+            0.2313314689223176,
+            -0.09690115125846147,
+            -0.2583432720974662
+          ],
+          [
+            -0.06419090284498008,
+            -0.09690115125846147,
+            0.7259965254532516,
+            0.0029089175104478914
+          ],
+          [
+            -0.7294024849951605,
+            -0.2583432720974662,
+            0.0029089175104478914,
+            0.7009411676213313
+          ]
+        ]
+      ],
+      "calibrated_fused_first_jet_dimensionless_error": 5.862810824369616,
+      "calibrated_fused_spatial_first_jet_dimensionless_noise": 2.5796424045960804,
+      "calibrated_fused_temporal_first_jet_relative_error": 24.48126558746537,
+      "corrected_operator_first_jet_dimensionless_error": 3.90945445380558,
+      "count_center_count": 204,
+      "count_factor_relative_error": 0.003205039267096957,
+      "count_weyl_factor": 0.862127961537888,
+      "duration": 1.0,
+      "fused_count_volume_relative_mismatch": 0.03159600954907454,
+      "fused_metric": [
+        [
+          1.0602287067230323,
+          -0.18380687914228422,
+          0.082536509664063,
+          -0.01082824245474328
+        ],
+        [
+          -0.18380687914228422,
+          -0.8049127717009935,
+          -0.0044645804760991645,
+          -0.004336032634236582
+        ],
+        [
+          0.082536509664063,
+          -0.0044645804760991645,
+          -0.8226464242564698,
+          0.019221184921575336
+        ],
+        [
+          -0.01082824245474328,
+          -0.004336032634236582,
+          0.019221184921575336,
+          -0.7516000779254154
+        ]
+      ],
+      "fused_metric_relative_error": 0.21523657531251997,
+      "fused_oracle_volume_relative_error": 0.006441027586140708,
+      "fused_signature": [
+        1,
+        3,
+        0
+      ],
+      "gradient_penalty": 0.1,
+      "hubble": 0.1,
+      "median_count_window_count": 48.0,
+      "minimum_count_window_count": 31,
+      "operator_row_count": 256,
+      "oracle_scale_fused_first_jet_dimensionless_error": 5.91752118023801,
+      "poisson_information_condition": 273.5802477510446,
+      "poisson_iterations": 5,
+      "raw_count_gradient": [
+        -0.5240687388069964,
+        -0.41438986768166314,
+        -0.14381645572601523,
+        -0.1964745777533651
+      ],
+      "raw_count_gradient_dimensionless_error": 0.6794056657117995,
+      "raw_fused_first_jet_dimensionless_error": 5.849600332497968,
+      "target_count_gradient": [
+        -0.18600000000000003,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "target_count_weyl_factor": 0.8649000000000001,
+      "target_first_jet": [
+        [
+          [
+            -0.18600000000000003,
+            -0.0,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            0.18600000000000003,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            0.18600000000000003,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            -0.0,
+            0.18600000000000003
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "target_metric": [
+        [
+          0.8649000000000001,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.8649000000000001,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -0.8649000000000001,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.8649000000000001
+        ]
+      ],
+      "temporal_response_weight": 0.6,
+      "zero_scale_fused_first_jet_dimensionless_error": 5.962986848974455
+    },
+    {
+      "calibrated_count_gradient": [
+        -0.08312651698939476,
+        0.37694095249117887,
+        0.013444939769870155,
+        0.3988367578289972
+      ],
+      "calibrated_count_gradient_dimensionless_error": 0.6457359873668327,
+      "calibrated_fused_first_jet": [
+        [
+          [
+            2.318153559346793,
+            0.22178234767676952,
+            0.5565743595826259,
+            -0.5574599225872996
+          ],
+          [
+            0.22178234767676952,
+            1.3690815379965204,
+            -0.08241944269795852,
+            -0.1172954522363731
+          ],
+          [
+            0.5565743595826259,
+            -0.08241944269795852,
+            0.7062103784911592,
+            0.24304481115515647
+          ],
+          [
+            -0.5574599225872996,
+            -0.1172954522363731,
+            0.24304481115515647,
+            1.7966607223392896
+          ]
+        ],
+        [
+          [
+            0.635751462415001,
+            1.0864429731418999,
+            -0.25065320947661385,
+            -0.05737957883301968
+          ],
+          [
+            1.0864429731418999,
+            -0.2995574092530531,
+            -0.47742835380322224,
+            0.33390024427224874
+          ],
+          [
+            -0.25065320947661385,
+            -0.47742835380322224,
+            0.15980300693106314,
+            0.06598434028721077
+          ],
+          [
+            -0.05737957883301968,
+            0.33390024427224874,
+            0.06598434028721077,
+            -0.5276046797746738
+          ]
+        ],
+        [
+          [
+            -0.2623129743222102,
+            0.36482721582119254,
+            0.6179908329329451,
+            -0.0378024129477095
+          ],
+          [
+            0.36482721582119254,
+            -0.4124332387850439,
+            -0.12038775795849117,
+            -0.22778007505665118
+          ],
+          [
+            0.6179908329329451,
+            -0.12038775795849117,
+            0.48219027031047584,
+            -0.5461913594582319
+          ],
+          [
+            -0.0378024129477095,
+            -0.22778007505665118,
+            -0.5461913594582319,
+            -0.3666585904551046
+          ]
+        ],
+        [
+          [
+            -0.9519673174681511,
+            0.09176542434356766,
+            0.6273277647035133,
+            0.767295856885364
+          ],
+          [
+            0.09176542434356766,
+            -0.9812389215814916,
+            -0.39651843891914035,
+            -0.3401525849901361
+          ],
+          [
+            0.6273277647035133,
+            -0.39651843891914035,
+            -1.196323518230619,
+            0.3782493832344693
+          ],
+          [
+            0.767295856885364,
+            -0.3401525849901361,
+            0.3782493832344693,
+            -0.828956979833138
+          ]
+        ]
+      ],
+      "calibrated_fused_first_jet_dimensionless_error": 2.9009712220437853,
+      "calibrated_fused_spatial_first_jet_dimensionless_noise": 2.0961519378783406,
+      "calibrated_fused_temporal_first_jet_relative_error": 9.325286134946756,
+      "corrected_operator_first_jet_dimensionless_error": 1.9163170527093858,
+      "count_center_count": 223,
+      "count_factor_relative_error": 0.0014763285484936338,
+      "count_weyl_factor": 0.863623123438408,
+      "duration": 1.0,
+      "fused_count_volume_relative_mismatch": 0.32561397724553054,
+      "fused_metric": [
+        [
+          0.6475274453085503,
+          0.04594402312220835,
+          0.061135566475157554,
+          0.004755988334631028
+        ],
+        [
+          0.04594402312220835,
+          -0.967335760201216,
+          -0.01663100427710203,
+          0.004555626414228038
+        ],
+        [
+          0.061135566475157554,
+          -0.01663100427710203,
+          -0.9288482024143766,
+          -0.0018805873996101106
+        ],
+        [
+          0.004755988334631028,
+          0.004555626414228038,
+          -0.0018805873996101106,
+          -0.9474824435599821
+        ]
+      ],
+      "fused_metric_relative_error": 0.16452749475353678,
+      "fused_oracle_volume_relative_error": 0.002959208629634805,
+      "fused_signature": [
+        1,
+        3,
+        0
+      ],
+      "gradient_penalty": 0.1,
+      "hubble": 0.1,
+      "median_count_window_count": 50.0,
+      "minimum_count_window_count": 32,
+      "operator_row_count": 256,
+      "oracle_scale_fused_first_jet_dimensionless_error": 2.813109969960252,
+      "poisson_information_condition": 351.0761080087103,
+      "poisson_iterations": 5,
+      "raw_count_gradient": [
+        -0.10933535595859621,
+        0.39811871201564314,
+        -0.031090103792012585,
+        0.4443932294543571
+      ],
+      "raw_count_gradient_dimensionless_error": 0.6964411893569105,
+      "raw_fused_first_jet_dimensionless_error": 2.9231544448046494,
+      "target_count_gradient": [
+        -0.18600000000000003,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "target_count_weyl_factor": 0.8649000000000001,
+      "target_first_jet": [
+        [
+          [
+            -0.18600000000000003,
+            -0.0,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            0.18600000000000003,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            0.18600000000000003,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            -0.0,
+            0.18600000000000003
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "target_metric": [
+        [
+          0.8649000000000001,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.8649000000000001,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -0.8649000000000001,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.8649000000000001
+        ]
+      ],
+      "temporal_response_weight": 0.6,
+      "zero_scale_fused_first_jet_dimensionless_error": 2.7748780866251135
+    },
+    {
+      "calibrated_count_gradient": [
+        -0.3337650876552584,
+        0.2269140976431695,
+        -0.14659218924337225,
+        -0.01596219011406494
+      ],
+      "calibrated_count_gradient_dimensionless_error": 0.35649433255881763,
+      "calibrated_fused_first_jet": [
+        [
+          [
+            1.2121692800612194,
+            0.5885673713426821,
+            -1.2505062239594738,
+            1.1062542449612378
+          ],
+          [
+            0.5885673713426821,
+            0.7799821570063512,
+            -0.7535363969778066,
+            0.37231752073123403
+          ],
+          [
+            -1.2505062239594738,
+            -0.7535363969778066,
+            0.8985653444455013,
+            0.3663431788838911
+          ],
+          [
+            1.1062542449612378,
+            0.37231752073123403,
+            0.3663431788838911,
+            0.4112669440860084
+          ]
+        ],
+        [
+          [
+            0.6680569961620914,
+            -0.25133466049005904,
+            0.9334911330789599,
+            -1.2540367759553523
+          ],
+          [
+            -0.25133466049005904,
+            0.023195597649201483,
+            0.2071140555835578,
+            -0.07457128380853771
+          ],
+          [
+            0.9334911330789599,
+            0.2071140555835578,
+            -0.21253613691794784,
+            3.309113959534295e-05
+          ],
+          [
+            -1.2540367759553523,
+            -0.07457128380853771,
+            3.309113959534295e-05,
+            -0.232375607698572
+          ]
+        ],
+        [
+          [
+            0.6980904432558476,
+            0.5525705805401967,
+            -0.7049201582296414,
+            0.34541128953410066
+          ],
+          [
+            0.5525705805401967,
+            0.3481915247797216,
+            -0.01718840032651346,
+            -0.08607657383936694
+          ],
+          [
+            -0.7049201582296414,
+            -0.01718840032651346,
+            0.6914665084165836,
+            -0.1383650328536387
+          ],
+          [
+            0.34541128953410066,
+            -0.08607657383936694,
+            -0.1383650328536387,
+            -0.020439031788672374
+          ]
+        ],
+        [
+          [
+            -0.8892494710291394,
+            -1.1044274048457043,
+            0.8887835246464151,
+            -0.37789479296875
+          ],
+          [
+            -1.1044274048457043,
+            0.07780735684212463,
+            0.18672371661200018,
+            -0.04040292362962422
+          ],
+          [
+            0.8887835246464151,
+            0.18672371661200018,
+            -0.7261952097131087,
+            0.0007715152731931255
+          ],
+          [
+            -0.37789479296875,
+            -0.04040292362962422,
+            0.0007715152731931255,
+            0.11976605038835307
+          ]
+        ]
+      ],
+      "calibrated_fused_first_jet_dimensionless_error": 2.9005006165063656,
+      "calibrated_fused_spatial_first_jet_dimensionless_noise": 2.1905189132529266,
+      "calibrated_fused_temporal_first_jet_relative_error": 8.840542428442374,
+      "corrected_operator_first_jet_dimensionless_error": 1.868780373710654,
+      "count_center_count": 207,
+      "count_factor_relative_error": 0.0017742058821094736,
+      "count_weyl_factor": 0.8664345106674366,
+      "duration": 1.0,
+      "fused_count_volume_relative_mismatch": 0.0009392197871660228,
+      "fused_metric": [
+        [
+          1.1237433275092843,
+          -0.012953139856969985,
+          0.029622052701154915,
+          0.049289420042858904
+        ],
+        [
+          -0.012953139856969985,
+          -0.8025179719847038,
+          0.015323824416505745,
+          0.00182229098511841
+        ],
+        [
+          0.029622052701154915,
+          0.015323824416505745,
+          -0.788702575964176,
+          0.03369210361856268
+        ],
+        [
+          0.049289420042858904,
+          0.00182229098511841,
+          0.03369210361856268,
+          -0.7908874587930758
+        ]
+      ],
+      "fused_metric_relative_error": 0.17522416091010634,
+      "fused_oracle_volume_relative_error": 0.003538990634671659,
+      "fused_signature": [
+        1,
+        3,
+        0
+      ],
+      "gradient_penalty": 0.1,
+      "hubble": 0.1,
+      "median_count_window_count": 48.0,
+      "minimum_count_window_count": 30,
+      "operator_row_count": 256,
+      "oracle_scale_fused_first_jet_dimensionless_error": 2.897745455983866,
+      "poisson_information_condition": 302.4945184989125,
+      "poisson_iterations": 4,
+      "raw_count_gradient": [
+        -0.4326357006554366,
+        0.24531759850567297,
+        -0.1290702856384384,
+        -0.02548337665451056
+      ],
+      "raw_count_gradient_dimensionless_error": 0.4300056230113339,
+      "raw_fused_first_jet_dimensionless_error": 2.9011563150540987,
+      "target_count_gradient": [
+        -0.18600000000000003,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "target_count_weyl_factor": 0.8649000000000001,
+      "target_first_jet": [
+        [
+          [
+            -0.18600000000000003,
+            -0.0,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            0.18600000000000003,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            0.18600000000000003,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            -0.0,
+            0.18600000000000003
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "target_metric": [
+        [
+          0.8649000000000001,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.8649000000000001,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -0.8649000000000001,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.8649000000000001
+        ]
+      ],
+      "temporal_response_weight": 0.6,
+      "zero_scale_fused_first_jet_dimensionless_error": 2.928683109429424
+    },
+    {
+      "calibrated_count_gradient": [
+        -0.1840579554768706,
+        0.0714493186811418,
+        0.42865669637961273,
+        -0.04095204012587391
+      ],
+      "calibrated_count_gradient_dimensionless_error": 0.6285511500235315,
+      "calibrated_fused_first_jet": [
+        [
+          [
+            -0.21464483210881113,
+            1.7737630194380405,
+            0.06045476667796016,
+            -0.458840070334922
+          ],
+          [
+            1.7737630194380405,
+            -0.668128107593811,
+            -0.14546945882359444,
+            0.3086427684481494
+          ],
+          [
+            0.06045476667796016,
+            -0.14546945882359444,
+            0.7143133666209138,
+            -0.04740943802990296
+          ],
+          [
+            -0.458840070334922,
+            0.3086427684481494,
+            -0.04740943802990296,
+            0.08118906594469183
+          ]
+        ],
+        [
+          [
+            -3.022531144805391,
+            2.086106476154356,
+            0.5597877789021652,
+            -0.25820065681807186
+          ],
+          [
+            2.086106476154356,
+            -0.6749201041774954,
+            -0.30058941411396123,
+            -0.6402570915687034
+          ],
+          [
+            0.5597877789021652,
+            -0.30058941411396123,
+            -1.71960583470896,
+            -0.3131383975310411
+          ],
+          [
+            -0.25820065681807186,
+            -0.6402570915687034,
+            -0.3131383975310411,
+            -0.5263898645040332
+          ]
+        ],
+        [
+          [
+            0.591059834574006,
+            -0.5751595080245699,
+            -1.6466807524514955,
+            0.12715741171788372
+          ],
+          [
+            -0.5751595080245699,
+            0.19709116831960877,
+            -0.3705118224968771,
+            0.007782467564330102
+          ],
+          [
+            -1.6466807524514955,
+            -0.3705118224968771,
+            -1.2189374100649424,
+            -0.28563422951842876
+          ],
+          [
+            0.12715741171788372,
+            0.007782467564330102,
+            -0.28563422951842876,
+            0.002740975819595315
+          ]
+        ],
+        [
+          [
+            -0.44343584928349966,
+            0.04968484806676609,
+            0.3363682546068433,
+            0.07730730894624697
+          ],
+          [
+            0.04968484806676609,
+            -0.18987610771352909,
+            0.0706021077892967,
+            0.025809814640306284
+          ],
+          [
+            0.3363682546068433,
+            0.0706021077892967,
+            0.20508812078074842,
+            -0.0028544922479403437
+          ],
+          [
+            0.07730730894624697,
+            0.025809814640306284,
+            -0.0028544922479403437,
+            -0.2012612907580179
+          ]
+        ]
+      ],
+      "calibrated_fused_first_jet_dimensionless_error": 4.312377711134073,
+      "calibrated_fused_spatial_first_jet_dimensionless_noise": 3.853104927341983,
+      "calibrated_fused_temporal_first_jet_relative_error": 4.163559207414539,
+      "corrected_operator_first_jet_dimensionless_error": 2.5555791125781426,
+      "count_center_count": 245,
+      "count_factor_relative_error": 0.009937712967546523,
+      "count_weyl_factor": 0.7469499325107973,
+      "duration": 1.0,
+      "fused_count_volume_relative_mismatch": 0.05446642173546065,
+      "fused_metric": [
+        [
+          0.8991332196225456,
+          -0.08087011284003133,
+          -0.0013975391819977861,
+          0.08345061357874761
+        ],
+        [
+          -0.08087011284003133,
+          -0.6842579494085509,
+          0.009705248782153338,
+          0.023183365958543214
+        ],
+        [
+          -0.0013975391819977861,
+          0.009705248782153338,
+          -0.7020241208540721,
+          0.0035833214668612454
+        ],
+        [
+          0.08345061357874761,
+          0.023183365958543214,
+          0.0035833214668612454,
+          -0.7069187513364998
+        ]
+      ],
+      "fused_metric_relative_error": 0.1646190886908736,
+      "fused_oracle_volume_relative_error": 0.01958302904720063,
+      "fused_signature": [
+        1,
+        3,
+        0
+      ],
+      "gradient_penalty": 0.1,
+      "hubble": 0.2,
+      "median_count_window_count": 51.0,
+      "minimum_count_window_count": 35,
+      "operator_row_count": 256,
+      "oracle_scale_fused_first_jet_dimensionless_error": 4.277565800440798,
+      "poisson_information_condition": 292.03648126119083,
+      "poisson_iterations": 5,
+      "raw_count_gradient": [
+        -0.2514943267869593,
+        0.06386322621920426,
+        0.46929228549660107,
+        -0.05808936179906655
+      ],
+      "raw_count_gradient_dimensionless_error": 0.6571807136243388,
+      "raw_fused_first_jet_dimensionless_error": 4.319808930725354,
+      "target_count_gradient": [
+        -0.34400000000000003,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "target_count_weyl_factor": 0.7395999999999999,
+      "target_first_jet": [
+        [
+          [
+            -0.34400000000000003,
+            -0.0,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            0.34400000000000003,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            0.34400000000000003,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            -0.0,
+            0.34400000000000003
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "target_metric": [
+        [
+          0.7395999999999999,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.7395999999999999,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -0.7395999999999999,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.7395999999999999
+        ]
+      ],
+      "temporal_response_weight": 0.6,
+      "zero_scale_fused_first_jet_dimensionless_error": 4.298147233201935
+    },
+    {
+      "calibrated_count_gradient": [
+        -0.22035527835780055,
+        -0.19830150369423272,
+        -0.3249450704186378,
+        -0.0015120512359920665
+      ],
+      "calibrated_count_gradient_dimensionless_error": 0.5411760144693806,
+      "calibrated_fused_first_jet": [
+        [
+          [
+            3.6665727088582534,
+            -0.0985414532193121,
+            -0.33246738031021084,
+            0.44062057604772775
+          ],
+          [
+            -0.0985414532193121,
+            1.5690896484080616,
+            -0.12351210780324415,
+            0.14585393323117218
+          ],
+          [
+            -0.33246738031021084,
+            -0.12351210780324415,
+            1.2695318698491147,
+            -0.11776041711488187
+          ],
+          [
+            0.44062057604772775,
+            0.14585393323117218,
+            -0.11776041711488187,
+            0.5252403293092769
+          ]
+        ],
+        [
+          [
+            0.5583950027069544,
+            -0.49280494150999166,
+            -0.33869294857999815,
+            -0.06684975514404518
+          ],
+          [
+            -0.49280494150999166,
+            0.47381986360999945,
+            0.14800497955719824,
+            0.03424900657569169
+          ],
+          [
+            -0.33869294857999815,
+            0.14800497955719824,
+            0.1712971268192689,
+            0.0035535903015802696
+          ],
+          [
+            -0.06684975514404518,
+            0.03424900657569169,
+            0.0035535903015802696,
+            0.44905329952191303
+          ]
+        ],
+        [
+          [
+            -0.4217432117854871,
+            0.09819498804527872,
+            -1.864342639137493,
+            -1.6436538784296169
+          ],
+          [
+            0.09819498804527872,
+            0.16700021809142393,
+            0.3327753078619673,
+            0.12208495956229468
+          ],
+          [
+            -1.864342639137493,
+            0.3327753078619673,
+            0.3504503014079046,
+            0.31359924180090326
+          ],
+          [
+            -1.6436538784296169,
+            0.12208495956229468,
+            0.31359924180090326,
+            0.0811938324676384
+          ]
+        ],
+        [
+          [
+            -1.6915775956764825,
+            0.8090644486422016,
+            0.9352370798138746,
+            0.8346085161677521
+          ],
+          [
+            0.8090644486422016,
+            0.23766077042109326,
+            0.05701573528503998,
+            0.48451562162116385
+          ],
+          [
+            0.9352370798138746,
+            0.05701573528503998,
+            -0.32305322113724105,
+            0.3494973147579994
+          ],
+          [
+            0.8346085161677521,
+            0.48451562162116385,
+            0.3494973147579994,
+            -0.8900661974579911
+          ]
+        ]
+      ],
+      "calibrated_fused_first_jet_dimensionless_error": 4.427205181692529,
+      "calibrated_fused_spatial_first_jet_dimensionless_noise": 3.2898405141737355,
+      "calibrated_fused_temporal_first_jet_relative_error": 6.369624961935455,
+      "corrected_operator_first_jet_dimensionless_error": 3.047877723263354,
+      "count_center_count": 219,
+      "count_factor_relative_error": 0.00527646701118158,
+      "count_weyl_factor": 0.7435024750014698,
+      "duration": 1.0,
+      "fused_count_volume_relative_mismatch": 0.06659558956858395,
+      "fused_metric": [
+        [
+          0.9906203669050969,
+          -0.004742472458919454,
+          0.009985310385041551,
+          0.07315811083130178
+        ],
+        [
+          -0.004742472458919454,
+          -0.7076373416859009,
+          -0.002458841951912206,
+          0.0045080815496886875
+        ],
+        [
+          0.009985310385041551,
+          -0.002458841951912206,
+          -0.6561435626602689,
+          0.0057464672193603605
+        ],
+        [
+          0.07315811083130178,
+          0.0045080815496886875,
+          0.0057464672193603605,
+          -0.6589279290027512
+        ]
+      ],
+      "fused_metric_relative_error": 0.2011982719733943,
+      "fused_oracle_volume_relative_error": 0.010469994469427129,
+      "fused_signature": [
+        1,
+        3,
+        0
+      ],
+      "gradient_penalty": 0.1,
+      "hubble": 0.2,
+      "median_count_window_count": 52.0,
+      "minimum_count_window_count": 35,
+      "operator_row_count": 256,
+      "oracle_scale_fused_first_jet_dimensionless_error": 4.364998928688821,
+      "poisson_information_condition": 318.5169751029384,
+      "poisson_iterations": 5,
+      "raw_count_gradient": [
+        -0.29662451128915773,
+        -0.22625790696113715,
+        -0.36361890508503575,
+        -0.013255677074274289
+      ],
+      "raw_count_gradient_dimensionless_error": 0.5828580003354762,
+      "raw_fused_first_jet_dimensionless_error": 4.411305204116514,
+      "target_count_gradient": [
+        -0.34400000000000003,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "target_count_weyl_factor": 0.7395999999999999,
+      "target_first_jet": [
+        [
+          [
+            -0.34400000000000003,
+            -0.0,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            0.34400000000000003,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            0.34400000000000003,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            -0.0,
+            0.34400000000000003
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "target_metric": [
+        [
+          0.7395999999999999,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.7395999999999999,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -0.7395999999999999,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.7395999999999999
+        ]
+      ],
+      "temporal_response_weight": 0.6,
+      "zero_scale_fused_first_jet_dimensionless_error": 4.4888098920263575
+    },
+    {
+      "calibrated_count_gradient": [
+        -0.08045124054657646,
+        -0.15548812666182105,
+        0.13158027263298686,
+        0.2986637814658652
+      ],
+      "calibrated_count_gradient_dimensionless_error": 0.604893123560392,
+      "calibrated_fused_first_jet": [
+        [
+          [
+            -1.6828482394821367,
+            1.1284678471992367,
+            -0.07870736021643257,
+            0.4738411178955582
+          ],
+          [
+            1.1284678471992367,
+            -0.9369490860567158,
+            -0.3283798167639393,
+            -0.39262162093102465
+          ],
+          [
+            -0.07870736021643257,
+            -0.3283798167639393,
+            -0.4308387202205173,
+            -0.5070597361367535
+          ],
+          [
+            0.4738411178955582,
+            -0.39262162093102465,
+            -0.5070597361367535,
+            0.41055595023068586
+          ]
+        ],
+        [
+          [
+            -1.0575843788565413,
+            1.7230460697313883,
+            0.5089694279855157,
+            1.5511423361515844
+          ],
+          [
+            1.7230460697313883,
+            -0.11187339735801616,
+            0.13447566517783482,
+            0.4403211641656129
+          ],
+          [
+            0.5089694279855157,
+            0.13447566517783482,
+            0.05460297285961557,
+            -0.2481234960812614
+          ],
+          [
+            1.5511423361515844,
+            0.4403211641656129,
+            -0.2481234960812614,
+            0.047927143156150154
+          ]
+        ],
+        [
+          [
+            0.5204002142891948,
+            0.4907579127518889,
+            -0.1803078813592656,
+            0.037651185035761855
+          ],
+          [
+            0.4907579127518889,
+            -0.25664588002241023,
+            0.1492612246774779,
+            -0.09499906426278074
+          ],
+          [
+            -0.1803078813592656,
+            0.1492612246774779,
+            0.3162543977709269,
+            -0.19041662287678113
+          ],
+          [
+            0.037651185035761855,
+            -0.09499906426278074,
+            -0.19041662287678113,
+            -0.13043581770226684
+          ]
+        ],
+        [
+          [
+            -1.1630891343587482,
+            0.3728863732028305,
+            1.1323525836064436,
+            0.6891678404450522
+          ],
+          [
+            0.3728863732028305,
+            -0.5110699972826206,
+            0.03573490906362914,
+            -0.11182727252363639
+          ],
+          [
+            1.1323525836064436,
+            0.03573490906362914,
+            -0.5945443026412188,
+            0.01492887811044107
+          ],
+          [
+            0.6891678404450522,
+            -0.11182727252363639,
+            0.01492887811044107,
+            -0.7152980533555922
+          ]
+        ]
+      ],
+      "calibrated_fused_first_jet_dimensionless_error": 3.607418613817605,
+      "calibrated_fused_spatial_first_jet_dimensionless_noise": 3.052625857670204,
+      "calibrated_fused_temporal_first_jet_relative_error": 4.132781220955633,
+      "corrected_operator_first_jet_dimensionless_error": 2.225218858468226,
+      "count_center_count": 226,
+      "count_factor_relative_error": 0.04665532056643841,
+      "count_weyl_factor": 0.7741062750909378,
+      "duration": 1.0,
+      "fused_count_volume_relative_mismatch": 0.1039224562120625,
+      "fused_metric": [
+        [
+          0.9655647726110066,
+          0.027245222159382073,
+          0.03723738749230155,
+          0.021569134303726232
+        ],
+        [
+          0.027245222159382073,
+          -0.7442471075540615,
+          -0.026861262967959945,
+          0.006395132446127762
+        ],
+        [
+          0.03723738749230155,
+          -0.026861262967959945,
+          -0.7342002769724967,
+          0.0002684428290529587
+        ],
+        [
+          0.021569134303726232,
+          0.006395132446127762,
+          0.0002684428290529587,
+          -0.6790961256007904
+        ]
+      ],
+      "fused_metric_relative_error": 0.1676320901000274,
+      "fused_oracle_volume_relative_error": 0.08716427368356827,
+      "fused_signature": [
+        1,
+        3,
+        0
+      ],
+      "gradient_penalty": 0.1,
+      "hubble": 0.2,
+      "median_count_window_count": 49.0,
+      "minimum_count_window_count": 33,
+      "operator_row_count": 256,
+      "oracle_scale_fused_first_jet_dimensionless_error": 3.600550221822414,
+      "poisson_information_condition": 340.6722035951213,
+      "poisson_iterations": 5,
+      "raw_count_gradient": [
+        -0.09096607334581794,
+        -0.17088516770206916,
+        0.12671819368378787,
+        0.3037289977543537
+      ],
+      "raw_count_gradient_dimensionless_error": 0.6069881091147991,
+      "raw_fused_first_jet_dimensionless_error": 3.6089192196237914,
+      "target_count_gradient": [
+        -0.34400000000000003,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "target_count_weyl_factor": 0.7395999999999999,
+      "target_first_jet": [
+        [
+          [
+            -0.34400000000000003,
+            -0.0,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            0.34400000000000003,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            0.34400000000000003,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            -0.0,
+            0.34400000000000003
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "target_metric": [
+        [
+          0.7395999999999999,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.7395999999999999,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -0.7395999999999999,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.7395999999999999
+        ]
+      ],
+      "temporal_response_weight": 0.6,
+      "zero_scale_fused_first_jet_dimensionless_error": 3.599300814341438
+    },
+    {
+      "calibrated_count_gradient": [
+        -0.22641819467806823,
+        -0.15700051134571702,
+        0.27924206140981084,
+        0.25761556473540653
+      ],
+      "calibrated_count_gradient_dimensionless_error": 0.5781104921371376,
+      "calibrated_fused_first_jet": [
+        [
+          [
+            1.2885284145048566,
+            -0.8426671228279927,
+            -2.5870951294940756,
+            0.74199853629445
+          ],
+          [
+            -0.8426671228279927,
+            0.7448780170341612,
+            0.22004813548374144,
+            -0.22626450655526548
+          ],
+          [
+            -2.5870951294940756,
+            0.22004813548374144,
+            0.9885862598560589,
+            -0.20010677156127815
+          ],
+          [
+            0.74199853629445,
+            -0.22626450655526548,
+            -0.20010677156127815,
+            0.3109811995109441
+          ]
+        ],
+        [
+          [
+            3.1631017338442775,
+            0.19280121410005127,
+            -0.07880207470542179,
+            0.46777019787545426
+          ],
+          [
+            0.19280121410005127,
+            1.0044575584661248,
+            0.23752799246300524,
+            -0.29604964123467725
+          ],
+          [
+            -0.07880207470542179,
+            0.23752799246300524,
+            1.391355385315174,
+            0.06155063655821551
+          ],
+          [
+            0.46777019787545426,
+            -0.29604964123467725,
+            0.06155063655821551,
+            0.9990967625558337
+          ]
+        ],
+        [
+          [
+            1.066208726329061,
+            -0.34703490992263614,
+            0.40581847241066904,
+            1.831511113522561
+          ],
+          [
+            -0.34703490992263614,
+            0.06149901156279852,
+            0.22235293856159777,
+            -0.32909654474709576
+          ],
+          [
+            0.40581847241066904,
+            0.22235293856159777,
+            0.16343657166550252,
+            -9.800636837652816e-05
+          ],
+          [
+            1.831511113522561,
+            -0.32909654474709576,
+            -9.800636837652816e-05,
+            0.06616333765415278
+          ]
+        ],
+        [
+          [
+            -0.3801450087986394,
+            -0.04657575777101876,
+            0.801936840483533,
+            0.4039687240501623
+          ],
+          [
+            -0.04657575777101876,
+            -0.29642197580314816,
+            0.028543734634977218,
+            -0.11217841309068492
+          ],
+          [
+            0.801936840483533,
+            0.028543734634977218,
+            -0.2424018440876212,
+            0.2957185845777712
+          ],
+          [
+            0.4039687240501623,
+            -0.11217841309068492,
+            0.2957185845777712,
+            -0.6169008111501644
+          ]
+        ]
+      ],
+      "calibrated_fused_first_jet_dimensionless_error": 4.557844423679314,
+      "calibrated_fused_spatial_first_jet_dimensionless_noise": 3.4487968145958283,
+      "calibrated_fused_temporal_first_jet_relative_error": 6.406764189034845,
+      "corrected_operator_first_jet_dimensionless_error": 2.954111490199797,
+      "count_center_count": 256,
+      "count_factor_relative_error": 0.0002944571209542596,
+      "count_weyl_factor": 0.7398177804866577,
+      "duration": 1.0,
+      "fused_count_volume_relative_mismatch": 0.18000639670598792,
+      "fused_metric": [
+        [
+          0.8221788775719381,
+          -0.024255201687355746,
+          0.025930120535332984,
+          0.09308661553438409
+        ],
+        [
+          -0.024255201687355746,
+          -0.7204799977079567,
+          0.04583225697092574,
+          0.0168043913392568
+        ],
+        [
+          0.025930120535332984,
+          0.04583225697092574,
+          -0.7366498533773744,
+          -0.0033728253552515546
+        ],
+        [
+          0.09308661553438409,
+          0.0168043913392568,
+          -0.0033728253552515546,
+          -0.677906506857052
+        ]
+      ],
+      "fused_metric_relative_error": 0.1276267531575028,
+      "fused_oracle_volume_relative_error": 0.0005886542290062615,
+      "fused_signature": [
+        1,
+        3,
+        0
+      ],
+      "gradient_penalty": 0.1,
+      "hubble": 0.2,
+      "median_count_window_count": 53.5,
+      "minimum_count_window_count": 29,
+      "operator_row_count": 256,
+      "oracle_scale_fused_first_jet_dimensionless_error": 4.5286068477148715,
+      "poisson_information_condition": 296.21032484336945,
+      "poisson_iterations": 5,
+      "raw_count_gradient": [
+        -0.32730542273229196,
+        -0.19796901786409654,
+        0.34049836349415236,
+        0.3057871893689243
+      ],
+      "raw_count_gradient_dimensionless_error": 0.6745730161071065,
+      "raw_fused_first_jet_dimensionless_error": 4.563794343871476,
+      "target_count_gradient": [
+        -0.34400000000000003,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "target_count_weyl_factor": 0.7395999999999999,
+      "target_first_jet": [
+        [
+          [
+            -0.34400000000000003,
+            -0.0,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            0.34400000000000003,
+            -0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            0.34400000000000003,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            -0.0,
+            0.34400000000000003
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "target_metric": [
+        [
+          0.7395999999999999,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.7395999999999999,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -0.7395999999999999,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          -0.7395999999999999
+        ]
+      ],
+      "temporal_response_weight": 0.6,
+      "zero_scale_fused_first_jet_dimensionless_error": 4.567071167044417
+    }
+  ],
+  "settings": {
+    "count_center_multiplier": 1.2,
+    "count_window_multiplier": 0.65,
+    "duration": 1.0,
+    "events": 8000,
+    "hubble_values": [
+      0.0,
+      0.1,
+      0.2
+    ],
+    "maximum_count_centers": 256,
+    "maximum_operator_rows": 256,
+    "operator_averaging_multiplier": 1.1,
+    "operator_nonlocality_multiplier": 0.75,
+    "operator_support_multiplier": 1.8,
+    "pivot_fraction": 0.7,
+    "realizations_per_background": 4,
+    "seed": 20261290
+  },
+  "stage": "A31",
+  "status": "conditional Poisson-calibrated scale jet; not connection"
+}

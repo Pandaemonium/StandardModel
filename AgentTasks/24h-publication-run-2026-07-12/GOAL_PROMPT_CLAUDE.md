@@ -88,15 +88,16 @@ chirality, anomaly, unwanted-generator, and empirical gates.
 
 Null-edge results are not evidence for this paper.
 
-## Aristotle and model calls
+## Aristotle and collaboration
 
 Keep about 5-7 useful `fable-24h-` Aristotle jobs running when capacity
 permits: proofs, strategy, and at least one hostile audit. Submit a grand
 strategy job at startup and every 90 minutes. Apply the two-hour stall rule.
 
-External Claude/Gemini calls must use the repository wrappers and create full
-prompt/response logs. Prompts must be standalone and include verbatim Lean
-source when reviewing formal statements.
+Do not invoke Claude through an API or repository review wrapper. Claude-family
+work occurs only in the user-started interactive Claude Code session. Coordinate
+through the AFPL mailbox and include verbatim Lean source when requesting review
+of formal statements.
 
 ## Literature
 

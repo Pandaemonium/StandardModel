@@ -1,0 +1,231 @@
+{
+  "calibration": {
+    "candidate_summaries": {
+      "lambda=0.000000": {
+        "error": {
+          "count": 96,
+          "mean": 0.20220112440716612,
+          "median": 0.19066492155214823,
+          "std": 0.09316146863669855
+        },
+        "nonzero_gradient_response": {
+          "count": 72,
+          "mean": 0.4922219840626515,
+          "median": 0.4627360049203501,
+          "std": 0.11622329206238052
+        },
+        "normalized_error": {
+          "count": 96,
+          "mean": 0.4493358320159247,
+          "median": 0.4236998256714405,
+          "std": 0.20702548585933012
+        },
+        "penalty": 0.0,
+        "worst_cell_median_normalized_error": 0.5830859893932232,
+        "zero_gradient_response": {
+          "count": 24,
+          "mean": 0.20824570630629602,
+          "median": 0.20745870582457998,
+          "std": 0.07762981064468925
+        }
+      },
+      "lambda=0.100000": {
+        "error": {
+          "count": 96,
+          "mean": 0.1791611658281985,
+          "median": 0.16722654026477993,
+          "std": 0.0741149223021525
+        },
+        "nonzero_gradient_response": {
+          "count": 72,
+          "mean": 0.4153187462643978,
+          "median": 0.3966636667222845,
+          "std": 0.09055925664113754
+        },
+        "normalized_error": {
+          "count": 96,
+          "mean": 0.3981359240626632,
+          "median": 0.37161453392173316,
+          "std": 0.16469982733811664
+        },
+        "penalty": 0.1,
+        "worst_cell_median_normalized_error": 0.5637333175961139,
+        "zero_gradient_response": {
+          "count": 24,
+          "mean": 0.1760411031016406,
+          "median": 0.17376329990900713,
+          "std": 0.06322829820572332
+        }
+      },
+      "lambda=0.300000": {
+        "error": {
+          "count": 96,
+          "mean": 0.18651349031427675,
+          "median": 0.17586790644380673,
+          "std": 0.06934792572684485
+        },
+        "nonzero_gradient_response": {
+          "count": 72,
+          "mean": 0.3261825178461286,
+          "median": 0.3243039671210747,
+          "std": 0.07426994443244118
+        },
+        "normalized_error": {
+          "count": 96,
+          "mean": 0.41447442292061504,
+          "median": 0.39081756987512606,
+          "std": 0.15410650161521078
+        },
+        "penalty": 0.3,
+        "worst_cell_median_normalized_error": 0.5897669676213668,
+        "zero_gradient_response": {
+          "count": 24,
+          "mean": 0.1392447468929827,
+          "median": 0.13938642790919661,
+          "std": 0.049794577384444906
+        }
+      },
+      "lambda=1.000000": {
+        "error": {
+          "count": 96,
+          "mean": 0.23614783064811987,
+          "median": 0.25613857232381276,
+          "std": 0.10103659306802938
+        },
+        "nonzero_gradient_response": {
+          "count": 72,
+          "mean": 0.19591564318027344,
+          "median": 0.19527295116502824,
+          "std": 0.05344203088242981
+        },
+        "normalized_error": {
+          "count": 96,
+          "mean": 0.5247729569958219,
+          "median": 0.5691968273862505,
+          "std": 0.2245257623733986
+        },
+        "penalty": 1.0,
+        "worst_cell_median_normalized_error": 0.7824287794858091,
+        "zero_gradient_response": {
+          "count": 24,
+          "mean": 0.084875977839998,
+          "median": 0.08482374256948261,
+          "std": 0.03128443872314324
+        }
+      },
+      "lambda=10.000000": {
+        "error": {
+          "count": 96,
+          "mean": 0.319309091990725,
+          "median": 0.41284187329869226,
+          "std": 0.17613145680579956
+        },
+        "nonzero_gradient_response": {
+          "count": 72,
+          "mean": 0.03368486932648471,
+          "median": 0.03429038166261303,
+          "std": 0.010979097280088003
+        },
+        "normalized_error": {
+          "count": 96,
+          "mean": 0.7095757599793888,
+          "median": 0.917426385108205,
+          "std": 0.3914032373462212
+        },
+        "penalty": 10.0,
+        "worst_cell_median_normalized_error": 0.971397566770779,
+        "zero_gradient_response": {
+          "count": 24,
+          "mean": 0.014830342171757724,
+          "median": 0.01451326640660453,
+          "std": 0.005675916057423303
+        }
+      },
+      "lambda=3.000000": {
+        "error": {
+          "count": 96,
+          "mean": 0.2871888964674924,
+          "median": 0.34894316677186354,
+          "std": 0.14486797945890467
+        },
+        "nonzero_gradient_response": {
+          "count": 72,
+          "mean": 0.09418264282505102,
+          "median": 0.09478191327074884,
+          "std": 0.029035355978117523
+        },
+        "normalized_error": {
+          "count": 96,
+          "mean": 0.6381975477055386,
+          "median": 0.7754292594930301,
+          "std": 0.3219288432420104
+        },
+        "penalty": 3.0,
+        "worst_cell_median_normalized_error": 0.9123960721743709,
+        "zero_gradient_response": {
+          "count": 24,
+          "mean": 0.04124376061275248,
+          "median": 0.04051949668461501,
+          "std": 0.015593370954220096
+        }
+      }
+    },
+    "control_log_volume_gradients": [
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.9,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.9,
+        0.0,
+        0.0
+      ],
+      [
+        0.45,
+        0.45,
+        -0.45,
+        0.45
+      ]
+    ],
+    "density_values": [
+      4000,
+      8000
+    ],
+    "realizations_per_density": 12,
+    "selected_key": "lambda=0.100000",
+    "selected_penalty": 0.1
+  },
+  "claim_boundary": {
+    "coordinates_density_dimension_and_windows_are_supplied": true,
+    "curved_background_targets_are_not_used": true,
+    "selection_uses_only_synthetic_poisson_controls": true,
+    "two_density_selection_is_required": true,
+    "zero_and_nonzero_gradients_are_included": true
+  },
+  "mode": "development",
+  "selected_penalty": 0.1,
+  "settings": {
+    "calibration_events": [
+      4000,
+      8000
+    ],
+    "calibration_maximum_centers_factor": 2.9,
+    "calibration_realizations": 12,
+    "count_center_multiplier": 1.2,
+    "count_window_multiplier": 0.65,
+    "duration": 1.0,
+    "pivot_fraction": 0.7,
+    "seed": 20261270
+  },
+  "stage": "A31",
+  "status": "Poisson count-gradient calibration; not metric reconstruction"
+}

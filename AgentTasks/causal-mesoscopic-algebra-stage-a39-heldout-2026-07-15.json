@@ -1,0 +1,707 @@
+{
+  "status": "conditional order-derived A39 algebra audit; not convergence",
+  "phase": "heldout",
+  "calibration": {
+    "seed": 20261400,
+    "development_seed": 20261390,
+    "events": [
+      300,
+      600
+    ],
+    "realizations": 4,
+    "duration": 2.0,
+    "dimension": 4,
+    "nonlocality_multiplier": 0.6,
+    "retained_fraction": 0.15,
+    "minimum_evaluation_events": 30,
+    "supplied_inputs": [
+      "dimension",
+      "density",
+      "interval endpoints",
+      "duration",
+      "spatial rank",
+      "operator coefficient family"
+    ]
+  },
+  "summaries": {
+    "oracle": {
+      "300": {
+        "sample_count": 4,
+        "evaluation_count_median": 49.5,
+        "rank_15_rate": 1.0,
+        "mean_lorentzian_rate": 0.0,
+        "eventwise_lorentzian_fraction_median": 0.4548857368006304,
+        "generator_product_closure_defect_median": 1.6863419306046183e-14,
+        "envelope_product_closure_defect_median": 0.6034439244725218,
+        "gl_envelope_projector_error_max": 1.1288728468919332e-14,
+        "operator_closure_defect_median": 0.675460459976404,
+        "gamma_closure_defect_median": 0.704655364732587,
+        "double_multiplication_defect_median": 0.6739139775807752,
+        "triple_commutator_defect_median": 1.0928904686804728,
+        "determinant_volume_cv_median": 1.4643174075943017
+      },
+      "600": {
+        "sample_count": 4,
+        "evaluation_count_median": 97.5,
+        "rank_15_rate": 1.0,
+        "mean_lorentzian_rate": 0.0,
+        "eventwise_lorentzian_fraction_median": 0.44393939393939397,
+        "generator_product_closure_defect_median": 4.1794561563518396e-15,
+        "envelope_product_closure_defect_median": 0.6625766378257607,
+        "gl_envelope_projector_error_max": 6.305796498931846e-15,
+        "operator_closure_defect_median": 0.674661930171031,
+        "gamma_closure_defect_median": 0.7673894987110772,
+        "double_multiplication_defect_median": 0.5474242774712554,
+        "triple_commutator_defect_median": 1.040369310799206,
+        "determinant_volume_cv_median": 2.4214018525203285
+      }
+    },
+    "johnston": {
+      "300": {
+        "sample_count": 4,
+        "evaluation_count_median": 49.5,
+        "rank_15_rate": 1.0,
+        "mean_lorentzian_rate": 0.75,
+        "eventwise_lorentzian_fraction_median": 0.5408496732026145,
+        "generator_product_closure_defect_median": 1.985278808088047e-14,
+        "envelope_product_closure_defect_median": 0.5360838391734977,
+        "gl_envelope_projector_error_max": 1.4869490429271486e-14,
+        "operator_closure_defect_median": 0.676958548650788,
+        "gamma_closure_defect_median": 0.656370365891847,
+        "double_multiplication_defect_median": 0.8617649440689099,
+        "triple_commutator_defect_median": 1.0224306033818136,
+        "determinant_volume_cv_median": 1.4876267657876745
+      },
+      "600": {
+        "sample_count": 4,
+        "evaluation_count_median": 97.5,
+        "rank_15_rate": 1.0,
+        "mean_lorentzian_rate": 0.25,
+        "eventwise_lorentzian_fraction_median": 0.6819444444444445,
+        "generator_product_closure_defect_median": 7.0571724813979205e-15,
+        "envelope_product_closure_defect_median": 0.61584236343392,
+        "gl_envelope_projector_error_max": 2.4960683297213922e-14,
+        "operator_closure_defect_median": 0.7118312763636545,
+        "gamma_closure_defect_median": 0.6921273235354356,
+        "double_multiplication_defect_median": 0.6248572096498471,
+        "triple_commutator_defect_median": 1.024144319980147,
+        "determinant_volume_cv_median": 2.103048971360012
+      }
+    },
+    "random": {
+      "300": {
+        "sample_count": 4,
+        "evaluation_count_median": 49.5,
+        "rank_15_rate": 1.0,
+        "mean_lorentzian_rate": 0.0,
+        "eventwise_lorentzian_fraction_median": 0.4761029411764706,
+        "generator_product_closure_defect_median": 1.1770029100214789e-14,
+        "envelope_product_closure_defect_median": 0.5576813589697712,
+        "gl_envelope_projector_error_max": 5.081980725945345e-15,
+        "operator_closure_defect_median": 0.6367226488814554,
+        "gamma_closure_defect_median": 0.5986297249879907,
+        "double_multiplication_defect_median": 0.5004927405279718,
+        "triple_commutator_defect_median": 1.1633983625364275,
+        "determinant_volume_cv_median": 1.2492158270333373
+      },
+      "600": {
+        "sample_count": 4,
+        "evaluation_count_median": 97.5,
+        "rank_15_rate": 1.0,
+        "mean_lorentzian_rate": 0.0,
+        "eventwise_lorentzian_fraction_median": 0.44027777777777777,
+        "generator_product_closure_defect_median": 1.7998790529435498e-14,
+        "envelope_product_closure_defect_median": 0.6104911058007753,
+        "gl_envelope_projector_error_max": 2.1942693404765733e-14,
+        "operator_closure_defect_median": 0.6208245805511297,
+        "gamma_closure_defect_median": 0.6379720834781969,
+        "double_multiplication_defect_median": 0.351082027190768,
+        "triple_commutator_defect_median": 1.1609536419845488,
+        "determinant_volume_cv_median": 1.1667155841508532
+      }
+    }
+  },
+  "pass_summary": {
+    "structural_pass": true,
+    "oracle_refinement_pass": false,
+    "oracle_control_pass": false,
+    "johnston_signature_pass": false,
+    "johnston_beats_random_pass": false,
+    "johnston_improving_diagnostic_count": 1,
+    "johnston_high_density_threshold_pass": false,
+    "johnston_refinement_pass": false,
+    "heldout_pass": false
+  },
+  "samples": {
+    "oracle": {
+      "300": [
+        {
+          "sector": "oracle",
+          "events": 300,
+          "evaluation_count": 48,
+          "generator_rank": 4,
+          "envelope_rank": 15,
+          "generator_condition": 1.9510750353292399,
+          "envelope_condition": 103.6379185493771,
+          "generator_product_closure_defect": 2.032861108901169e-14,
+          "envelope_product_closure_defect": 0.6068018442672146,
+          "operator_closure_defect": 0.7771673341998874,
+          "gamma_closure_defect": 0.8041249614073613,
+          "double_multiplication_defect": 0.5849211960695443,
+          "triple_commutator_defect": 1.1767130364208926,
+          "mean_pairing_signature": [
+            0,
+            4,
+            0
+          ],
+          "eventwise_lorentzian_fraction": 0.5,
+          "determinant_volume_coefficient_of_variation": 1.6241469581115309,
+          "gl_envelope_projector_error": 5.509625052986465e-15
+        },
+        {
+          "sector": "oracle",
+          "events": 300,
+          "evaluation_count": 51,
+          "generator_rank": 4,
+          "envelope_rank": 15,
+          "generator_condition": 2.2022062868325976,
+          "envelope_condition": 123.3817420535174,
+          "generator_product_closure_defect": 3.731171302533472e-15,
+          "envelope_product_closure_defect": 0.600086004677829,
+          "operator_closure_defect": 0.6565206097840712,
+          "gamma_closure_defect": 0.7082468696109384,
+          "double_multiplication_defect": 0.6938970560217178,
+          "triple_commutator_defect": 1.120382270640788,
+          "mean_pairing_signature": [
+            0,
+            4,
+            0
+          ],
+          "eventwise_lorentzian_fraction": 0.43137254901960786,
+          "determinant_volume_coefficient_of_variation": 1.1139954172927942,
+          "gl_envelope_projector_error": 4.454960395193391e-15
+        },
+        {
+          "sector": "oracle",
+          "events": 300,
+          "evaluation_count": 47,
+          "generator_rank": 4,
+          "envelope_rank": 15,
+          "generator_condition": 2.935069652792174,
+          "envelope_condition": 98.97718676861234,
+          "generator_product_closure_defect": 2.1232043251375598e-14,
+          "envelope_product_closure_defect": 0.5992679779646144,
+          "operator_closure_defect": 0.60426069570088,
+          "gamma_closure_defect": 0.6892112914864553,
+          "double_multiplication_defect": 0.7024758341403622,
+          "triple_commutator_defect": 1.0530839498725955,
+          "mean_pairing_signature": [
+            0,
+            4,
+            0
+          ],
+          "eventwise_lorentzian_fraction": 0.44680851063829785,
+          "determinant_volume_coefficient_of_variation": 1.3044878570770726,
+          "gl_envelope_projector_error": 8.610339013926911e-15
+        },
+        {
+          "sector": "oracle",
+          "events": 300,
+          "evaluation_count": 54,
+          "generator_rank": 4,
+          "envelope_rank": 15,
+          "generator_condition": 2.7531909394453558,
+          "envelope_condition": 95.21457287276364,
+          "generator_product_closure_defect": 1.3398227523080677e-14,
+          "envelope_product_closure_defect": 0.6146287875113815,
+          "operator_closure_defect": 0.6944003101687368,
+          "gamma_closure_defect": 0.7010638598542357,
+          "double_multiplication_defect": 0.6539308991398327,
+          "triple_commutator_defect": 1.0653986667201578,
+          "mean_pairing_signature": [
+            0,
+            4,
+            0
+          ],
+          "eventwise_lorentzian_fraction": 0.46296296296296297,
+          "determinant_volume_coefficient_of_variation": 1.648193868637932,
+          "gl_envelope_projector_error": 1.1288728468919332e-14
+        }
+      ],
+      "600": [
+        {
+          "sector": "oracle",
+          "events": 600,
+          "evaluation_count": 108,
+          "generator_rank": 4,
+          "envelope_rank": 15,
+          "generator_condition": 2.4634348717534973,
+          "envelope_condition": 162.95050243287795,
+          "generator_product_closure_defect": 6.01594582392841e-15,
+          "envelope_product_closure_defect": 0.6628635874535582,
+          "operator_closure_defect": 0.7113067511513482,
+          "gamma_closure_defect": 0.8084245371197297,
+          "double_multiplication_defect": 0.5038418626149669,
+          "triple_commutator_defect": 1.0434791568935826,
+          "mean_pairing_signature": [
+            0,
+            4,
+            0
+          ],
+          "eventwise_lorentzian_fraction": 0.5185185185185185,
+          "determinant_volume_coefficient_of_variation": 3.0225210949406844,
+          "gl_envelope_projector_error": 5.107389500529632e-15
+        },
+        {
+          "sector": "oracle",
+          "events": 600,
+          "evaluation_count": 96,
+          "generator_rank": 4,
+          "envelope_rank": 15,
+          "generator_condition": 2.7537608425623215,
+          "envelope_condition": 146.87231210874504,
+          "generator_product_closure_defect": 4.056696352993591e-15,
+          "envelope_product_closure_defect": 0.6667334100209221,
+          "operator_closure_defect": 0.7159110717898486,
+          "gamma_closure_defect": 0.7423732127517488,
+          "double_multiplication_defect": 0.5463141025316003,
+          "triple_commutator_defect": 1.0917575155069037,
+          "mean_pairing_signature": [
+            0,
+            4,
+            0
+          ],
+          "eventwise_lorentzian_fraction": 0.40625,
+          "determinant_volume_coefficient_of_variation": 2.620477354088267,
+          "gl_envelope_projector_error": 4.648502233952796e-15
+        },
+        {
+          "sector": "oracle",
+          "events": 600,
+          "evaluation_count": 99,
+          "generator_rank": 4,
+          "envelope_rank": 15,
+          "generator_condition": 2.870267235686928,
+          "envelope_condition": 157.0547826824345,
+          "generator_product_closure_defect": 4.173294404307633e-15,
+          "envelope_product_closure_defect": 0.6622896881979631,
+          "operator_closure_defect": 0.6177360239637583,
+          "gamma_closure_defect": 0.7727250970736046,
+          "double_multiplication_defect": 0.6118594527593526,
+          "triple_commutator_defect": 1.0372594647048292,
+          "mean_pairing_signature": [
+            0,
+            4,
+            0
+          ],
+          "eventwise_lorentzian_fraction": 0.45454545454545453,
+          "determinant_volume_coefficient_of_variation": 1.9777617041443092,
+          "gl_envelope_projector_error": 6.305796498931846e-15
+        },
+        {
+          "sector": "oracle",
+          "events": 600,
+          "evaluation_count": 90,
+          "generator_rank": 4,
+          "envelope_rank": 15,
+          "generator_condition": 2.934028192525956,
+          "envelope_condition": 133.52468196300416,
+          "generator_product_closure_defect": 4.185617908396046e-15,
+          "envelope_product_closure_defect": 0.6540402935307107,
+          "operator_closure_defect": 0.638017109190714,
+          "gamma_closure_defect": 0.7620539003485499,
+          "double_multiplication_defect": 0.5485344524109106,
+          "triple_commutator_defect": 1.0362586876762598,
+          "mean_pairing_signature": [
+            0,
+            4,
+            0
+          ],
+          "eventwise_lorentzian_fraction": 0.43333333333333335,
+          "determinant_volume_coefficient_of_variation": 2.2223263509523905,
+          "gl_envelope_projector_error": 6.088212787562366e-15
+        }
+      ]
+    },
+    "johnston": {
+      "300": [
+        {
+          "sector": "johnston",
+          "events": 300,
+          "evaluation_count": 48,
+          "generator_rank": 4,
+          "envelope_rank": 15,
+          "generator_condition": 5.523838771289454,
+          "envelope_condition": 158.12506428305628,
+          "generator_product_closure_defect": 1.9182338376621153e-14,
+          "envelope_product_closure_defect": 0.5503651413123856,
+          "operator_closure_defect": 0.6109654921588292,
+          "gamma_closure_defect": 0.6026377850982539,
+          "double_multiplication_defect": 0.9344866130772365,
+          "triple_commutator_defect": 1.0018633980145537,
+          "mean_pairing_signature": [
+            1,
+            3,
+            0
+          ],
+          "eventwise_lorentzian_fraction": 0.4583333333333333,
+          "determinant_volume_coefficient_of_variation": 1.2893828307138657,
+          "gl_envelope_projector_error": 9.837768959103997e-15
+        },
+        {
+          "sector": "johnston",
+          "events": 300,
+          "evaluation_count": 51,
+          "generator_rank": 4,
+          "envelope_rank": 15,
+          "generator_condition": 3.9053252423260676,
+          "envelope_condition": 121.15526758003502,
+          "generator_product_closure_defect": 2.0523237785139793e-14,
+          "envelope_product_closure_defect": 0.5495348652862706,
+          "operator_closure_defect": 0.6369489723381132,
+          "gamma_closure_defect": 0.5956951107224708,
+          "double_multiplication_defect": 0.8437370295287929,
+          "triple_commutator_defect": 1.0251875476917383,
+          "mean_pairing_signature": [
+            1,
+            3,
+            0
+          ],
+          "eventwise_lorentzian_fraction": 0.47058823529411764,
+          "determinant_volume_coefficient_of_variation": 1.6858707008614833,
+          "gl_envelope_projector_error": 1.4869490429271486e-14
+        },
+        {
+          "sector": "johnston",
+          "events": 300,
+          "evaluation_count": 47,
+          "generator_rank": 4,
+          "envelope_rank": 15,
+          "generator_condition": 3.7147084053569843,
+          "envelope_condition": 162.5985437861614,
+          "generator_product_closure_defect": 3.632075506068541e-15,
+          "envelope_product_closure_defect": 0.5226328130607247,
+          "operator_closure_defect": 0.7250385126237548,
+          "gamma_closure_defect": 0.7580802305961543,
+          "double_multiplication_defect": 0.8797928586090268,
+          "triple_commutator_defect": 1.023054155659657,
+          "mean_pairing_signature": [
+            1,
+            3,
+            0
+          ],
+          "eventwise_lorentzian_fraction": 0.6170212765957447,
+          "determinant_volume_coefficient_of_variation": 1.1990044059394862,
+          "gl_envelope_projector_error": 5.160289128052927e-15
+        },
+        {
+          "sector": "johnston",
+          "events": 300,
+          "evaluation_count": 54,
+          "generator_rank": 4,
+          "envelope_rank": 15,
+          "generator_condition": 2.737525380681412,
+          "envelope_condition": 214.49079754632706,
+          "generator_product_closure_defect": 2.0978421459568423e-14,
+          "envelope_product_closure_defect": 0.49691894892254745,
+          "operator_closure_defect": 0.7169681249634627,
+          "gamma_closure_defect": 0.7101029466854402,
+          "double_multiplication_defect": 0.7950685987242255,
+          "triple_commutator_defect": 1.02180705110397,
+          "mean_pairing_signature": [
+            0,
+            4,
+            0
+          ],
+          "eventwise_lorentzian_fraction": 0.6111111111111112,
+          "determinant_volume_coefficient_of_variation": 3.3330889171478053,
+          "gl_envelope_projector_error": 6.7896472171430494e-15
+        }
+      ],
+      "600": [
+        {
+          "sector": "johnston",
+          "events": 600,
+          "evaluation_count": 108,
+          "generator_rank": 4,
+          "envelope_rank": 15,
+          "generator_condition": 4.431179717006357,
+          "envelope_condition": 225.55285090902677,
+          "generator_product_closure_defect": 5.671019378906371e-15,
+          "envelope_product_closure_defect": 0.597115231742595,
+          "operator_closure_defect": 0.7509085746473932,
+          "gamma_closure_defect": 0.7315625906990989,
+          "double_multiplication_defect": 0.6093228205919339,
+          "triple_commutator_defect": 1.005144514655025,
+          "mean_pairing_signature": [
+            0,
+            4,
+            0
+          ],
+          "eventwise_lorentzian_fraction": 0.7314814814814815,
+          "determinant_volume_coefficient_of_variation": 1.14823212281054,
+          "gl_envelope_projector_error": 6.322284554861355e-15
+        },
+        {
+          "sector": "johnston",
+          "events": 600,
+          "evaluation_count": 96,
+          "generator_rank": 4,
+          "envelope_rank": 15,
+          "generator_condition": 2.4315812826457233,
+          "envelope_condition": 197.2128135408779,
+          "generator_product_closure_defect": 7.727974160409237e-15,
+          "envelope_product_closure_defect": 0.634569495125245,
+          "operator_closure_defect": 0.721834909796909,
+          "gamma_closure_defect": 0.6966522009452276,
+          "double_multiplication_defect": 0.6027199518975016,
+          "triple_commutator_defect": 1.0463728830905956,
+          "mean_pairing_signature": [
+            0,
+            4,
+            0
+          ],
+          "eventwise_lorentzian_fraction": 0.7083333333333334,
+          "determinant_volume_coefficient_of_variation": 2.5281380620744396,
+          "gl_envelope_projector_error": 5.676747404972194e-15
+        },
+        {
+          "sector": "johnston",
+          "events": 600,
+          "evaluation_count": 99,
+          "generator_rank": 4,
+          "envelope_rank": 15,
+          "generator_condition": 3.324184867028536,
+          "envelope_condition": 208.69615383347383,
+          "generator_product_closure_defect": 6.386370802386604e-15,
+          "envelope_product_closure_defect": 0.5879190101773971,
+          "operator_closure_defect": 0.6033066641232903,
+          "gamma_closure_defect": 0.6460219502179729,
+          "double_multiplication_defect": 0.6751230267672863,
+          "triple_commutator_defect": 1.0149233057649305,
+          "mean_pairing_signature": [
+            1,
+            3,
+            0
+          ],
+          "eventwise_lorentzian_fraction": 0.6060606060606061,
+          "determinant_volume_coefficient_of_variation": 2.7435340112719437,
+          "gl_envelope_projector_error": 8.077426609050738e-15
+        },
+        {
+          "sector": "johnston",
+          "events": 600,
+          "evaluation_count": 90,
+          "generator_rank": 4,
+          "envelope_rank": 15,
+          "generator_condition": 2.707813340938953,
+          "envelope_condition": 182.73268665818233,
+          "generator_product_closure_defect": 1.1640019799936223e-14,
+          "envelope_product_closure_defect": 0.63988067516348,
+          "operator_closure_defect": 0.7018276429304,
+          "gamma_closure_defect": 0.6876024461256436,
+          "double_multiplication_defect": 0.6403915987077604,
+          "triple_commutator_defect": 1.0333653341953632,
+          "mean_pairing_signature": [
+            0,
+            4,
+            0
+          ],
+          "eventwise_lorentzian_fraction": 0.6555555555555556,
+          "determinant_volume_coefficient_of_variation": 1.677959880645584,
+          "gl_envelope_projector_error": 2.4960683297213922e-14
+        }
+      ]
+    },
+    "random": {
+      "300": [
+        {
+          "sector": "random",
+          "events": 300,
+          "evaluation_count": 48,
+          "generator_rank": 4,
+          "envelope_rank": 15,
+          "generator_condition": 1.8020550126428176,
+          "envelope_condition": 87.30482648159102,
+          "generator_product_closure_defect": 9.807550534582168e-15,
+          "envelope_product_closure_defect": 0.5647823816204114,
+          "operator_closure_defect": 0.6815609228361696,
+          "gamma_closure_defect": 0.7129912327776152,
+          "double_multiplication_defect": 0.4950250461291,
+          "triple_commutator_defect": 1.1255070341732738,
+          "mean_pairing_signature": [
+            0,
+            4,
+            0
+          ],
+          "eventwise_lorentzian_fraction": 0.5208333333333334,
+          "determinant_volume_coefficient_of_variation": 1.102582466542031,
+          "gl_envelope_projector_error": 5.081980725945345e-15
+        },
+        {
+          "sector": "random",
+          "events": 300,
+          "evaluation_count": 51,
+          "generator_rank": 4,
+          "envelope_rank": 15,
+          "generator_condition": 1.3080765128063083,
+          "envelope_condition": 100.49292439419429,
+          "generator_product_closure_defect": 1.1071198298256385e-14,
+          "envelope_product_closure_defect": 0.5596851601594056,
+          "operator_closure_defect": 0.6066579891393781,
+          "gamma_closure_defect": 0.5193306708728792,
+          "double_multiplication_defect": 0.47564451730500273,
+          "triple_commutator_defect": 1.1532055833109909,
+          "mean_pairing_signature": [
+            0,
+            4,
+            0
+          ],
+          "eventwise_lorentzian_fraction": 0.43137254901960786,
+          "determinant_volume_coefficient_of_variation": 1.1387286791459945,
+          "gl_envelope_projector_error": 3.739952798613743e-15
+        },
+        {
+          "sector": "random",
+          "events": 300,
+          "evaluation_count": 47,
+          "generator_rank": 4,
+          "envelope_rank": 15,
+          "generator_condition": 1.413749009892878,
+          "envelope_condition": 120.33015647777835,
+          "generator_product_closure_defect": 2.0425209040118584e-14,
+          "envelope_product_closure_defect": 0.5226688345160503,
+          "operator_closure_defect": 0.6667873086235326,
+          "gamma_closure_defect": 0.6479913798636262,
+          "double_multiplication_defect": 0.5149536791987246,
+          "triple_commutator_defect": 1.1735911417618639,
+          "mean_pairing_signature": [
+            0,
+            4,
+            0
+          ],
+          "eventwise_lorentzian_fraction": 0.425531914893617,
+          "determinant_volume_coefficient_of_variation": 1.456202316998275,
+          "gl_envelope_projector_error": 4.64127783447201e-15
+        },
+        {
+          "sector": "random",
+          "events": 300,
+          "evaluation_count": 54,
+          "generator_rank": 4,
+          "envelope_rank": 15,
+          "generator_condition": 1.49252878490561,
+          "envelope_condition": 92.88754055280896,
+          "generator_product_closure_defect": 1.2468859902173193e-14,
+          "envelope_product_closure_defect": 0.5556775577801368,
+          "operator_closure_defect": 0.5849209489718905,
+          "gamma_closure_defect": 0.5492680701123552,
+          "double_multiplication_defect": 0.5059604349268435,
+          "triple_commutator_defect": 1.1846648344867459,
+          "mean_pairing_signature": [
+            0,
+            4,
+            0
+          ],
+          "eventwise_lorentzian_fraction": 0.5925925925925926,
+          "determinant_volume_coefficient_of_variation": 1.35970297492068,
+          "gl_envelope_projector_error": 4.7129608808756165e-15
+        }
+      ],
+      "600": [
+        {
+          "sector": "random",
+          "events": 600,
+          "evaluation_count": 108,
+          "generator_rank": 4,
+          "envelope_rank": 15,
+          "generator_condition": 1.2816430095625153,
+          "envelope_condition": 162.43072658929333,
+          "generator_product_closure_defect": 1.052861322285106e-14,
+          "envelope_product_closure_defect": 0.6102305711272266,
+          "operator_closure_defect": 0.6079506623211339,
+          "gamma_closure_defect": 0.6398737183330202,
+          "double_multiplication_defect": 0.31618316450113854,
+          "triple_commutator_defect": 1.1626222923499965,
+          "mean_pairing_signature": [
+            0,
+            4,
+            0
+          ],
+          "eventwise_lorentzian_fraction": 0.46296296296296297,
+          "determinant_volume_coefficient_of_variation": 1.1733654668140723,
+          "gl_envelope_projector_error": 1.0543278855491635e-14
+        },
+        {
+          "sector": "random",
+          "events": 600,
+          "evaluation_count": 96,
+          "generator_rank": 4,
+          "envelope_rank": 15,
+          "generator_condition": 1.3912845176437856,
+          "envelope_condition": 134.15132307108266,
+          "generator_product_closure_defect": 2.5468967836019935e-14,
+          "envelope_product_closure_defect": 0.610751640474324,
+          "operator_closure_defect": 0.5827727748470881,
+          "gamma_closure_defect": 0.618705999791295,
+          "double_multiplication_defect": 0.34110311558075895,
+          "triple_commutator_defect": 1.1592849916191008,
+          "mean_pairing_signature": [
+            0,
+            4,
+            0
+          ],
+          "eventwise_lorentzian_fraction": 0.4583333333333333,
+          "determinant_volume_coefficient_of_variation": 1.160065701487634,
+          "gl_envelope_projector_error": 2.113404058174888e-14
+        },
+        {
+          "sector": "random",
+          "events": 600,
+          "evaluation_count": 99,
+          "generator_rank": 4,
+          "envelope_rank": 15,
+          "generator_condition": 1.1886024683122969,
+          "envelope_condition": 147.53535952447015,
+          "generator_product_closure_defect": 2.5562888916492687e-14,
+          "envelope_product_closure_defect": 0.6374069477129205,
+          "operator_closure_defect": 0.6783691212756467,
+          "gamma_closure_defect": 0.7784515194062313,
+          "double_multiplication_defect": 0.36106093880077705,
+          "triple_commutator_defect": 1.1974843248079379,
+          "mean_pairing_signature": [
+            0,
+            4,
+            0
+          ],
+          "eventwise_lorentzian_fraction": 0.35353535353535354,
+          "determinant_volume_coefficient_of_variation": 0.93931112916488,
+          "gl_envelope_projector_error": 2.1942693404765733e-14
+        },
+        {
+          "sector": "random",
+          "events": 600,
+          "evaluation_count": 90,
+          "generator_rank": 4,
+          "envelope_rank": 15,
+          "generator_condition": 1.6014093796204765,
+          "envelope_condition": 141.02466707508196,
+          "generator_product_closure_defect": 6.1084327249429315e-15,
+          "envelope_product_closure_defect": 0.6097153646445465,
+          "operator_closure_defect": 0.6336984987811254,
+          "gamma_closure_defect": 0.6360704486233736,
+          "double_multiplication_defect": 0.37053956702347696,
+          "triple_commutator_defect": 1.150287934960064,
+          "mean_pairing_signature": [
+            0,
+            4,
+            0
+          ],
+          "eventwise_lorentzian_fraction": 0.4222222222222222,
+          "determinant_volume_coefficient_of_variation": 1.796687787244255,
+          "gl_envelope_projector_error": 5.85503483634016e-15
+        }
+      ]
+    }
+  }
+}

@@ -2445,10 +2445,12 @@ conjugate to `Λ`* — is the decidable open question where this program can exc
 the borrowed mechanism (grade **C**, a pre-registered kill). The fork is not
 symmetric, and an adversarial audit
 (`AgentTasks/.../audits/REDTEAM_gravity_lambda_20260709.md`) sharpened exactly why —
-two statements must be kept apart. The genuine "hyperuniform costs Lorentz invariance" result is the
-**Bombelli–Henson–Sorkin** uniqueness theorem — Poisson sprinkling is the *unique*
-Lorentz-invariant discrete point process on Minkowski space, so a hyperuniform
-(non-Poisson) process is *not* Lorentz-invariant (BHS 2009, `[import]`). Our finite
+two statements must be kept apart. The genuine **Bombelli-Henson-Sorkin** result is a
+no-equivariant-extraction theorem: from a Poisson sprinkling of Minkowski space, no
+measurable Lorentz-equivariant rule can select a preferred finite spacetime direction set
+or finite-valency graph (BHS 2009, `[import]`). It does *not* prove that Poisson is the
+unique Lorentz-invariant point-process law, so it does not by itself show that every
+hyperuniform process breaks Lorentz invariance. Our finite
 `LambdaFrameConstraint` does **not** prove that; it proves a *weaker and different* fact
 — the de Finetti / **exchangeability** statement that a permutation-invariant (`S_N`)
 count covariance is exactly `a·I + b·J`, whose only suppressible mode is the uniform

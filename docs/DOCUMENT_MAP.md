@@ -57,6 +57,14 @@ as current state.
 
 - `NULL-EDGE_TARGET_AUDIENCE.md` - publication-positioning memo: optimize Paper I for discrete relativistic quantum dynamics and the quantum-walk/QCA community; specifies the required comparison, spectrum, doubling, continuum, `3+1`, artifact, and outreach audits. [LIVE]
 - `Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex` - focused principal theorem draft: null-spinor area, the Pluecker-derived odd mass operator and exact unitary corner dictionary, full-zone `1+1` audit, and an exactly local finite `3+1` successive-axis extension with a phase-retaining complex rest operator, compact-box rate, exact three-torus Plancherel/wave-packet control, compact-support momentum-space `L2` convergence, explicit reversibility/causal cone, and an exact high-symmetry audit. The latter classifies all massless corners and proves explicit `+1`/`-1` body-center modes for every mass angle, so the current cubic regulator is globally ungapped; a separate theorem excludes the naive degree-one stationary-amplitude repair under the full involutory Dirac tangent. This is the impact-first Paper I draft; lattice-to-PDE identification, regulator replacement, interactions, and broader ontology are explicitly deferred. [DRAFT-MS]
+- `Sources/Null_Edge_General_Relativity_Framework_Note_2026-07-14.md` - claim-graded general-relativity reconstruction and conditional derivation: kernel-checked 1+1 null-tick aggregation; an operator-first metric proposal with exact potential-canceling principal-symbol algebra and four-probe convergence transport in `PhysicsSM/Draft/NullEdge/CausalOperatorMetric.lean`; a concrete finite strict-order realization with exact local/smeared four-dimensional Benincasa-Dowker kernels, relabeling and scale covariance, function-level corrected pairing, and a varying-carrier intrinsic-probe convergence interface in `PhysicsSM/Draft/NullEdge/FiniteCausalOrderOperator.lean`; an executable 4D coordinate-probe calibration with a finite two-scale signature/variance window; Stage A2/A3 intrinsic-probe and support kills; an A3b max-clearance adjacent schedule; an A3c fixed-density larger-diamond control and guarded arbitrary-cardinality theorem that reject the global count shell as local support; and a Stage A4 Johnston interval-volume construction that conditionally recovers relabeling-covariant local charts while failing the frozen operator and emergent-dimension gates; relative count/scale controls; finite coframe, concrete `SL(2,C)` central-sign, quotient spin-obstruction, parallel transport, Cartan/commutator and component-contracted Bianchi, and Lichnerowicz geometry; a selected interval-count/effective-action dynamics route with Jacobson, spectral, and teleparallel comparisons; and a falsifiable G0-G8 ladder. Its guarded finite G3/G4/G5 theorem chain is `PhysicsSM/Draft/NullEdge/FiniteConnectionGeometry.lean`, with the torsionful companion in `PhysicsSM/Draft/NullEdge/FiniteCartanBianchi.lean`, explicit tensor contraction in `PhysicsSM/Draft/NullEdge/FiniteContractedBianchi.lean`, and conditional final Bianchi-to-source cancellation in `PhysicsSM/Draft/NullEdge/FiniteGravityConservation.lean`; it explicitly separates machine-checked finite algebra and embedding-based calibration from the still-open compact intrinsic probe carrier, dimensional selection, operator convergence, manifoldlike phase, and continuum Einstein-action bridge. [LIVE]
+- `PhysicsSM/Draft/NullEdge/RelativeScaleTetradBridge.lean` - guarded finite
+  G2-G3-G4 composition of count-derived relative length, Weyl-Lorentz coframe
+  transitions, and inverse-area holonomy-curvature normalization. Relative
+  scales and supplied Lorentz transitions combine into an exact overlap
+  cocycle; the sixteen-to-one witness gives transition `2 I` and metric/area
+  factor four. Regions, coframes, Lorentz transitions, plaquettes, holonomies,
+  and the global unit remain reconstruction inputs. [DRAFT-LEAN]
 - `AgentTasks/overnight-null-information-run-2026-07-10/PAPER_I_NOVELTY_AUDIT_2026-07-10.md` - claim-by-claim priority/positioning audit: separates classical Pluecker and established tangent/successive-axis machinery from the defensible new synthesis, and corrects the Floquet `pi` mode to pseudo-doubler terminology. [LIVE]
 - `Sources/Null_Edge_General_Audience_Manuscript_2026-07-09.tex` - illustrated general-audience companion, centered on null primitive motion, emergent timelike drift, stepped-time checkerboards, and visual explanations of aperture/closure/turn/soldering; technical qualifications are carried in footnotes and a formal-anchor appendix. [DRAFT-MS]
 - `Sources/Null_Edge_Mass_Rank_Defect_Manuscript_2026-07-09.tex` - broad technical research-program manuscript: canonical null-edge mass invariant, information/concurrence dictionary, finite carrier square, positive Hodge decoder, exact checkerboard/tetrahedral dynamics, binding, protected modes, falsifiers, and build anchors. It remains a source/companion draft, not the focused Paper I lede. [DRAFT-MS]
@@ -501,6 +509,622 @@ as current state.
   `ComplexPlueckerRateTransfer.lean` proves Hamiltonian/flow conjugacy, equality
   of the conjugacy-defined and explicit complex steps, and the uniform
   complex-phase compact rate. [DRAFT-LEAN]
+- `Scripts/experiments/causal_operator_metric.py`,
+  `Scripts/experiments/test_causal_operator_metric.py`, and
+  `AgentTasks/null-edge-causal-operator-metric-stage-a-benchmark-2026-07-15.md`
+  - external 4D Minkowski sprinkling calibration of the corrected
+  Benincasa-Dowker operator pairing, with explicit source/project signature
+  conversion, compact calibration probes, affine-covariance controls, density
+  and nonlocality-scale sweeps, and pre-registered successor/kill conditions.
+  This is positive evidence for a finite metric-recovery window, not intrinsic
+  reconstruction from a bare order. [ORACLE]
+- `Scripts/experiments/causal_intrinsic_probe_metric.py`,
+  `Scripts/experiments/causal_interior_support_scan.py`,
+  `Scripts/experiments/causal_adjacent_scale_availability.py`,
+  `Scripts/experiments/causal_larger_diamond_support.py`, and the Stage
+  A2/A3/A3b/A3c benchmark notes under `AgentTasks/` - order-only construction
+  audits for intrinsic causal-operator metric probes. Stage A2 kills profile
+  PCA, raw lowest singular modes, and fixed normal smoothing; Stage A3 confirms
+  their retarded-support failure and records every proposed interior/shell tuple.
+  Stage A3b proves analytically when its max-clearance three-scale schedule fits
+  between `ell` and `L`: the hierarchy and common interior are recovered above
+  `N > 743.239`. Stage A3c holds all local scales fixed and finds rank-capable
+  mark rates rising from `1.93%` to `36.97%` over a fourfold volume increase,
+  then `50.85%` at exploratory volume eight. The growth diagnoses an infrared
+  boundary cutoff rather than local convergence and kills the global shell as
+  a probe carrier; a compact Alexandrov germ remains open. [ORACLE]
+- `Scripts/experiments/causal_johnston_probe_metric.py`,
+  `Scripts/experiments/test_causal_johnston_probe_metric.py`, and
+  `AgentTasks/null-edge-johnston-probe-stage-a4-benchmark-2026-07-15.md` -
+  clean-room interval-volume lightcone embedding after Johnston
+  (arXiv:2111.09331v2). With dimension, density, endpoints, and rank three
+  supplied, it recovers relabeling-covariant local probe charts whose
+  high-density metric error approaches the coordinate control. The frozen
+  operator-error and emergent-rank gates both fail, so this is a conditional
+  reconstruction result rather than a bare-order G2 pass. [ORACLE]
+- `Scripts/experiments/causal_johnston_operator_control_scan.py`,
+  `Scripts/experiments/test_causal_johnston_operator_control_scan.py`, and
+  `AgentTasks/null-edge-johnston-operator-stage-a5-benchmark-2026-07-15.md` -
+  coordinate-only operator-window selection at order-selected pivots followed
+  by a held-out Johnston test. All frozen per-realization flat-space gates
+  fail. A target-fitted scalar reveals a good ensemble conformal shape but
+  cannot repair absolute normalization or eventwise concentration, so curved
+  benchmarks remain blocked by the flat operator control. [ORACLE]
+- `PhysicsSM/Draft/NullEdge/CausalMetricFirstJet.lean` - guarded finite
+  coordinate-derivative identity: a supplied inverse metric and exact corrected
+  principal-symbol pairing recover the target first jet by lowering an index,
+  with exact invariance under scalar zeroth-order potentials. This is a
+  conditional algebraic bridge, not a construction of probes, charts, or the
+  metric. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/CausalLeviCivita.lean` - guarded componentwise
+  recovery of metric first jets followed by the standard finite Christoffel
+  construction. Exact inverse and metric-jet symmetry premises imply coordinate
+  torsion-freeness and metric compatibility. This closes the finite algebraic
+  interface while leaving probe, atlas, invertibility, and convergence premises
+  open. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/FiniteCausalOrderOperator.lean`,
+  `Scripts/experiments/causal_johnston_operator_control_scan.py`, and
+  `AgentTasks/null-edge-intrinsic-quadratic-normalization-stage-a6-benchmark-2026-07-15.md`
+  - kernel-checked centered-product identity and its interval-volume
+  quadratic-moment calibration. The exact identity lands, but the tested
+  single-interval estimator is biased, frequently nonpositive, and has zero
+  development or held-out normalization-gate passes. This is a scoped
+  estimator kill, not count-derived scale reconstruction. [DRAFT-LEAN/ORACLE]
+- `Scripts/experiments/causal_johnston_quadratic_probe.py`,
+  `Scripts/experiments/test_causal_johnston_quadratic_probe.py`, and
+  `AgentTasks/null-edge-johnston-quadratic-normalization-stage-a7-benchmark-2026-07-15.md`
+  - two-stage validation of the basis-gauge-invariant Johnston Lorentzian
+  quadratic followed by a trace-normalization test. The quadratic reaches 100%
+  held-out probe passes at `N=10000` and is retained; single-row `Bq=8`
+  rescaling worsens held-out metric errors and is killed. Conformal-shape
+  averaging, dimension selection, and count-volume agreement remain open.
+  [ORACLE]
+- `Scripts/experiments/causal_johnston_multirow_metric.py`,
+  `Scripts/experiments/test_causal_johnston_multirow_metric.py`, and
+  `AgentTasks/null-edge-johnston-multirow-metric-stage-a8-benchmark-2026-07-15.md`
+  - common-chart averaging of order-selected nearby operator rows, with
+  scale-free shape scored before the independently validated Johnston trace.
+  Sparse averaging gives a paired reduction in pulled metric error but misses
+  the held-out gate; broader strict-past neighborhoods collapse to
+  negative-definite averages. This retains a variance-reduction clue while
+  killing the current one-sided averaging rule. [ORACLE]
+- `Scripts/experiments/causal_johnston_full_embedding.py`,
+  `Scripts/experiments/causal_johnston_full_multirow_metric.py`, their tests,
+  and
+  `AgentTasks/null-edge-johnston-full-chart-stage-a9-benchmark-2026-07-15.md`
+  - clean-room Johnston 2025 full-interval spatial-distance completion and
+  MDS, followed by genuinely two-sided operator-row averaging. The frozen
+  held-out coordinate controls close both flat metric gates, and direct chart
+  components are Lorentzian, but local coordinate pullback and emergent-rank
+  gates fail. This advances G2 from operator concentration to local-atlas and
+  chart-transition convergence without claiming covariant metric recovery.
+  [ORACLE]
+- `Scripts/experiments/causal_johnston_local_atlas_metric.py`,
+  `Scripts/experiments/test_causal_johnston_local_atlas_metric.py`, and
+  `AgentTasks/null-edge-johnston-local-atlas-stage-a10-benchmark-2026-07-15.md`
+  - overlapping Johnston lightcone charts with order-derived pairwise spatial
+  registration, explicit chart-availability and cocycle gates, and transported
+  row metrics kept closed behind those gates. Local coordinate controls and
+  higher-density cocycles improve, but the frozen transition gate has zero
+  `N=4000` passes. This kills independent pairwise Procrustes registration at
+  current density and points to simultaneous chart synchronization. [ORACLE]
+- `Scripts/experiments/causal_johnston_synchronized_atlas.py`,
+  `Scripts/experiments/test_causal_johnston_synchronized_atlas.py`, and
+  `AgentTasks/null-edge-johnston-synchronized-atlas-stage-a11-benchmark-2026-07-15.md`
+  - overlap-weighted connection-Laplacian synchronization of every available
+  local Johnston spatial frame. It makes transition cocycles exact to
+  roundoff and lowers held-out synchronization mismatch, but common-event
+  geometry and chart availability still fail the frozen atlas gate. This kills
+  frame synchronization alone and moves the next test to a shared latent
+  overlap geometry or revised multi-anchor chart. [ORACLE]
+- `Scripts/experiments/causal_johnston_latent_affine_atlas.py`,
+  `Scripts/experiments/test_causal_johnston_latent_affine_atlas.py`, and
+  `AgentTasks/null-edge-johnston-latent-affine-atlas-stage-a12-benchmark-2026-07-15.md`
+  - order-only causal-depth filtering followed by a pivot-anchored shared
+  affine latent atlas. The filter repairs the observed chart-availability
+  defect and is retained; stable affine consensus still fails common-event
+  geometry, while unregularized improvements are nonconvergent and can collapse
+  spatial directions. This kills further gauge-only repair and points to a
+  revised multi-anchor coordinate construction. [ORACLE]
+- `Scripts/experiments/causal_johnston_multi_anchor_atlas.py`,
+  `Scripts/experiments/test_causal_johnston_multi_anchor_atlas.py`, and
+  `AgentTasks/null-edge-johnston-multi-anchor-atlas-stage-a13-benchmark-2026-07-15.md`
+  - count-derived local Alexandrov intervals followed by separate full
+  Johnston distance completion and MDS in each interval. Larger intervals fix
+  availability and overlap coverage but strongly fail common-event geometry,
+  local affine, and emergent-rank controls. This kills separate local full-MDS
+  charts and moves the next test to a joint shared-coordinate spacetime
+  factorization. [ORACLE]
+- `Scripts/experiments/causal_johnston_shared_factorization.py`,
+  `Scripts/experiments/test_causal_johnston_shared_factorization.py`, and
+  `AgentTasks/null-edge-johnston-shared-factorization-stage-a14-benchmark-2026-07-15.md`
+  - one shared spatial coordinate vector per event, fitted against frozen
+  training comparable-pair distances and noncausal inequalities, with
+  held-out rank selection and post-fit affine controls. Held-out causal stress
+  improves, but every `N=4000` realization selects four spatial dimensions,
+  unrelated-pair and affine controls fail, and the fit degrades its Johnston
+  initialization. This kills direct partial-distance stress and moves the next
+  test to order-volume-chain conditioning and an intrinsic anchor scaffold.
+  [ORACLE]
+- `Scripts/experiments/causal_well_conditioning_audit.py`,
+  `Scripts/experiments/test_causal_well_conditioning_audit.py`, and
+  `AgentTasks/null-edge-causal-well-conditioning-stage-a15-benchmark-2026-07-15.md`
+  - sampled implementation of Madsen's F1 exact order, F2 count-volume, and
+  F3 longest-chain proper-time conditions, followed by a separate intrinsic
+  anchor-scaffold audit. Every frozen `N=4000` F1/F2/F3 audit passes, providing
+  positive manifoldlikeness and timelike-scale evidence, but the recovered
+  five-anchor frame is nearly rank-deficient and has zero scaffold passes.
+  This kills nearest-ideal-anchor selection and moves tetrad extraction to a
+  combinatorial max-volume trilateration selector. [ORACLE]
+- `Scripts/experiments/causal_trilateration_tetrad_selector.py`,
+  `Scripts/experiments/test_causal_trilateration_tetrad_selector.py`, and
+  `AgentTasks/null-edge-causal-trilateration-tetrad-selector-stage-a16-benchmark-2026-07-15.md`
+  - exact common-bracket construction and a combinatorial max-volume frame
+  selected by worst-case conditioning across three order-derived Johnston
+  lightcone charts. Every held-out intrinsic and true-coordinate frame passes
+  its conditioning gate, repairing Stage A15's rank defect, but chart
+  transitions and held-out local affine reconstruction still fail. Retain the
+  frame selector as a scaffold component; a joint frame-constrained coordinate
+  solve is required before claiming a tetrad field or opening curvature.
+  [ORACLE]
+- `Scripts/experiments/causal_frame_constrained_metric.py`,
+  `Scripts/experiments/test_causal_frame_constrained_metric.py`, and
+  `AgentTasks/null-edge-causal-frame-constrained-metric-stage-a17-benchmark-2026-07-15.md`
+  - three A16 anchor-aligned lightcone charts form one shared-event patch;
+  count-derived proper times then fit a common symmetric metric with a frozen
+  transported-chart ridge, followed by exact Lorentzian coframe factorization.
+  Every held-out local coordinate, metric, causal-sign, volume, and coframe
+  gate passes. This is a conditional local metric/coframe bridge, not bare-order
+  signature emergence or a tetrad/spin bundle; overlapping-patch transition
+  and spin-lift controls are next. [ORACLE]
+- `Scripts/experiments/causal_tetrad_bundle_atlas.py`,
+  `Scripts/experiments/test_causal_tetrad_bundle_atlas.py`, and
+  `AgentTasks/null-edge-causal-tetrad-bundle-atlas-stage-a18-benchmark-2026-07-15.md`
+  - several independently reconstructed A17 patches are selected by intrinsic
+  quality and overlap, then audited for held-out affine transitions, metric
+  covariance, Lorentz coframe defects, cocycles, and orientation/time-
+  orientation sign gauges. Held-out overlap and orientability pass throughout,
+  but the metric-bundle and spin-prerequisite gates pass only one of three
+  realizations. This rejects overlap maximization as a sufficient tetrad-bundle
+  selector and keeps the exact spin obstruction unopened. [ORACLE]
+- `Scripts/experiments/causal_compatible_tetrad_bundle.py`,
+  `Scripts/experiments/test_causal_compatible_tetrad_bundle.py`, and
+  `AgentTasks/null-edge-causal-compatible-tetrad-bundle-stage-a19-benchmark-2026-07-15.md`
+  - A18's independently fitted local patches are selected by affine/Lorentz
+  compatibility, metric covariance, cocycles, and orientability using disjoint
+  transition-fit and selector-validation overlap slices; a third overlap slice
+  remains untouched for final testing. The selector passes four of five
+  development realizations but zero of three frozen held-out realizations.
+  Retain the three-way evaluation protocol, reject compatibility-only selection
+  as a tetrad-bundle construction, and move the conditional atlas lane to joint
+  metric/coframe synchronization while retaining operator-metric reconstruction
+  as the primary bare-graph G2 target. No exact spin class is computed. [ORACLE]
+- `Scripts/experiments/causal_synchronized_tetrad_bundle.py`,
+  `Scripts/experiments/test_causal_synchronized_tetrad_bundle.py`, and
+  `AgentTasks/null-edge-causal-synchronized-tetrad-bundle-stage-a20-benchmark-2026-07-15.md`
+  - three local metrics are fitted jointly against their retained
+  count-interval regressions and overlap-covariance penalties, with disjoint
+  selector and untouched test slices for both local constraints and affine
+  transitions. Development freezes synchronization weight `0.1`; all three
+  fresh held-out realizations pass local fidelity, transition, metric-bundle,
+  orientation, and spin-prerequisite gates. This closes a conditional
+  synchronized metric-bundle subgate, not bare-order signature or scale
+  emergence and not an exact spin structure. Global affine-gauge
+  synchronization is next; the corrected causal-operator metric remains the
+  primary G2 target. [ORACLE]
+- `PhysicsSM/Draft/NullEdge/SynchronizedTetradBundle.lean` and
+  `PhysicsSM/Draft/NullEdge/SynchronizedTetradBundleAxiomGuard.lean` - exact
+  rational matrix bridge from supplied row-metric covariance and affine chart
+  cocycles to Lorentz internal transitions and their internal cocycle, with a
+  nonidentity 1+1 boost witness. The axiom guard pins every theorem to the
+  standard Mathlib base. Charts, coframes, exact covariance, orientation, spin
+  lifts, and convergence remain inputs or separate debts. [DRAFT-LEAN]
+- `Scripts/experiments/causal_global_affine_tetrad_bundle.py`,
+  `Scripts/experiments/test_causal_global_affine_tetrad_bundle.py`, and
+  `AgentTasks/null-edge-causal-global-affine-tetrad-bundle-stage-a21-benchmark-2026-07-15.md`
+  - three chart-to-global affine gauges are fitted from overlap training events;
+  exact gauge ratios define pair transitions, and one pooled constant metric
+  and coframe are pulled back to every patch. All three held-out realizations
+  preserve untouched interval and transition geometry while affine, metric,
+  Lorentz, and internal cocycles hold to roundoff. This closes an exact
+  conditional flat-bundle and identity-spin control, not curved geometry or a
+  nontrivial spin structure. Position-dependent metric jets are next. [ORACLE]
+- `Scripts/experiments/causal_conformal_operator_metric.py`,
+  `Scripts/experiments/test_causal_conformal_operator_metric.py`, and
+  `AgentTasks/null-edge-causal-conformal-operator-metric-stage-a22-benchmark-2026-07-15.md`
+  - flat-selected corrected causal-operator metric calibration on
+  physical-volume sprinklings of conformal de Sitter diamonds. Fresh curved
+  controls detect the relative conformal response, and `N=8000` stabilizes
+  Lorentzian signature, but absolute metric normalization and determinant
+  volume remain biased. This retains a curved operator-response signal while
+  failing the absolute G2 scale/volume gate. [ORACLE]
+- `Scripts/experiments/causal_conformal_multirow_metric.py`,
+  `Scripts/experiments/test_causal_conformal_multirow_metric.py`, and
+  `AgentTasks/null-edge-causal-conformal-multirow-metric-stage-a23-benchmark-2026-07-15.md`
+  - shrinking-scale, target-centered multirow causal-operator calibration on
+  conformal de Sitter controls. It closes all held-out and refinement signature
+  checks and sharply improves relative conformal response, but absolute metric
+  volume and the unrestricted metric first jet fail to converge. This retains
+  the multirow schedule while moving G2 to independent count-volume Weyl-scale
+  reconstruction before another derivative attempt. [ORACLE]
+- `Scripts/experiments/causal_count_volume_weyl_metric.py`,
+  `Scripts/experiments/test_causal_count_volume_weyl_metric.py`, and
+  `AgentTasks/null-edge-causal-count-volume-weyl-metric-stage-a24-benchmark-2026-07-15.md`
+  - shrinking local Alexandrov count windows with disjoint Poisson fit and
+  pivot-validation thinnings. Given the conformal class, held-out counts
+  recover the absolute inverse-metric Weyl factor to a few percent and the
+  independent count/metric volume mismatch reaches roughly `10-15%` at
+  `N=8000`. Window placement remains coordinate-defined and the scale gradient
+  fails uniformly, so this closes only a conditional absolute-scale control.
+  [ORACLE]
+- `Scripts/experiments/causal_fused_operator_count_metric.py`,
+  `Scripts/experiments/test_causal_operator_count_fused_metric.py`, and
+  `AgentTasks/null-edge-causal-fused-operator-count-metric-stage-a25-benchmark-2026-07-15.md`
+  - same-sprinkling fusion of A23's operator conformal ray with A24's disjoint-
+  count volume form through determinant normalization. Held-out volume errors
+  fall from order one to a few percent while every fused metric stays
+  Lorentzian, but tensor-shape and first-jet errors remain large and fail
+  refinement. This closes conditional volume fusion, not full G2 metric
+  reconstruction. [ORACLE]
+- `Scripts/experiments/causal_shape_selected_fused_metric.py`,
+  `Scripts/experiments/test_causal_shape_selected_fused_metric.py`, and
+  `AgentTasks/null-edge-causal-shape-selected-fused-metric-stage-a26-benchmark-2026-07-15.md`
+  - flat-only reselection of the A23 regulator by determinant-normalized
+  conformal-shape error, followed by unchanged A25 count-volume fusion on fresh
+  curved seeds. Several tensor scores improve sharply and volume remains
+  controlled, but one held-out curved cell loses Lorentzian signature and flat
+  error worsens at doubled density. Retain shape-first selection; reject the
+  current setting as a uniform G2 limit. [ORACLE]
+- `Scripts/experiments/causal_multidensity_shape_selected_fused_metric.py`,
+  `Scripts/experiments/test_causal_multidensity_shape_selected_fused_metric.py`,
+  and
+  `AgentTasks/null-edge-causal-multidensity-shape-selected-fused-metric-stage-a27-benchmark-2026-07-15.md`
+  - minimax determinant-normalized shape selection over independent flat
+  `N=4000` and `N=8000` development ensembles, followed by untouched curved
+  seeds. The selected smaller averaging ball fails held-out signature and tail
+  errors at `N=4000` despite better high-density curved scores. This kills
+  median-only multi-density selection and adds minimum row support, conditioning,
+  and tail-risk gates to the next operator-shape stage. [ORACLE]
+- `Scripts/experiments/causal_support_tail_selected_fused_metric.py`,
+  `Scripts/experiments/test_causal_support_tail_selected_fused_metric.py`, and
+  `AgentTasks/null-edge-causal-support-tail-selected-metric-stage-a28-benchmark-2026-07-15.md`
+  - expanded compact-probe support with two-density flat selection on signature
+  tails, worst shape, row support, and conditioning. All fresh metrics remain
+  Lorentzian with saturated rows, but tensor errors plateau near `0.3-0.4`,
+  isolating a systematic temporal/spatial response bias. [ORACLE]
+- `Scripts/experiments/causal_retarded_moment_debiased_metric.py`,
+  `Scripts/experiments/test_causal_retarded_moment_debiased_metric.py`, and
+  `AgentTasks/null-edge-causal-retarded-moment-debiased-metric-stage-a29-benchmark-2026-07-15.md`
+  - affine-covariant temporal projector derived from the retarded kernel's
+  positive first moment, with one response weight selected on two flat
+  densities before curved evaluation. All `27` fresh metrics are Lorentzian;
+  median full-tensor errors are below `0.30` in every cell and mostly below
+  `0.20`. This closes a conditional pivot-tensor control, not intrinsic G2 or a
+  differentiated metric field. [ORACLE]
+- `Scripts/experiments/causal_retarded_moment_metric_first_jet.py`,
+  `Scripts/experiments/test_causal_retarded_moment_metric_first_jet.py`, and
+  `AgentTasks/null-edge-causal-retarded-moment-first-jet-stage-a30-benchmark-2026-07-15.md`
+  - exact derivative of the A29 moment projector followed by determinant and
+  count-scale fusion. Finite-difference and affine covariance tests pass, and
+  operator-only jet errors improve, but the noisy count-factor gradient makes
+  the fused first jet fail at both densities. Connection and curvature remain
+  closed pending a separately calibrated count-volume gradient. [ORACLE]
+- `Scripts/experiments/causal_poisson_scale_gradient.py`,
+  `Scripts/experiments/test_causal_poisson_scale_gradient.py`, and
+  `AgentTasks/null-edge-causal-poisson-scale-gradient-stage-a31-benchmark-2026-07-15.md`
+  - affine-covariant penalized Poisson fit selected on zero- and nonzero-gradient
+  controls at two densities. It improves the count gradient in five of six
+  held-out cells, but zero-gradient and exact-target-gradient fusion controls
+  leave the `4-6` first-jet error unchanged. This revises the A30 diagnosis:
+  the determinant-normalized operator-shape derivative is now the active gate.
+  Connection and curvature remain closed. [ORACLE]
+- `Scripts/experiments/causal_rowwise_shape_first_jet.py`,
+  `Scripts/experiments/test_causal_rowwise_shape_first_jet.py`, and
+  `AgentTasks/null-edge-causal-rowwise-shape-first-jet-stage-a32-benchmark-2026-07-15.md`
+  - order-of-operations test that applies the A29 correction and determinant
+  normalization to individual rows before fitting the shape field. It rejects
+  `20%-30%` of rows and destroys the stable pivot tensor, with rowwise shape
+  errors `0.56-1.33` and signature rates at most `40%`. This implementation is
+  killed; the successor must constrain the derivative around the aggregate
+  tensor and retain a nonzero-shape-jet coordinate control. [ORACLE]
+- `Scripts/experiments/causal_quadratic_chart_shape_jet.py`,
+  `Scripts/experiments/test_causal_quadratic_chart_shape_jet.py`, and
+  `AgentTasks/null-edge-causal-quadratic-chart-shape-jet-stage-a33-benchmark-2026-07-15.md`
+  - exact nonlinear-coordinate controls on flat spacetime with zero, temporal,
+  and shear unit-volume shape jets. Two-density selection chooses zero tangent
+  weight; every nonzero response is worse, and the high-density shear amplitude
+  is only `0.134` with larger orthogonal noise. Returning zero is rejected as a
+  vacuous derivative. The present first-jet estimator therefore fails probe-
+  chart covariance and cannot feed a connection. [ORACLE]
+- `Scripts/experiments/causal_spread_chart_shape_jet.py`,
+  `Scripts/experiments/test_causal_spread_chart_shape_jet.py`, and
+  `AgentTasks/null-edge-causal-spread-chart-shape-jet-stage-a34-benchmark-2026-07-15.md`
+  - deterministic farthest-point spread across the supplied averaging-ball
+  coordinates. Two-density flat-chart selection freezes averaging multiplier
+  `1.7` and nonzero tangent weight `0.2`; it beats the zero derivative while
+  preserving the pivot-tensor gate. This is a positive conditional nonvacuity
+  control, not intrinsic bare-order reconstruction. [ORACLE]
+- `Scripts/experiments/causal_spread_fused_first_jet.py`,
+  `Scripts/experiments/test_causal_spread_fused_first_jet.py`, and
+  `AgentTasks/null-edge-causal-spread-fused-first-jet-stage-a35-benchmark-2026-07-15.md`
+  - fresh flat and conformally curved evaluation with the A34 setting frozen.
+  All metrics are Lorentzian; selected shape-jet medians are `0.324-0.533` and
+  full-jet medians are below `0.70`. Shape improves with density, but the full
+  high-curvature result does not because the count-scale gradient worsens.
+  This opens a conditional first-jet bridge without establishing convergence.
+  [ORACLE]
+- `Scripts/experiments/causal_spread_levi_civita_connection.py`,
+  `Scripts/experiments/test_causal_spread_levi_civita_connection.py`, and
+  `AgentTasks/null-edge-causal-spread-levi-civita-connection-stage-a36-benchmark-2026-07-15.md`
+  - Levi-Civita connection derived from the A35 inverse metric and first jet.
+  Torsion and metric compatibility hold algebraically and all median connection
+  errors are subunit, but the `H=0.2` error worsens at doubled density. This is
+  finite conditional control, not connection convergence; curvature remains
+  closed. [ORACLE]
+- `AgentTasks/null-edge-causal-connection-convergence-stage-a37-plan-2026-07-15.md`
+  - preregistered successor using affine and exact quadratic flat charts to
+  separate nonzero coordinate connection from physical curvature. It requires
+  two-density connection improvement and removal of the A36 high-curvature
+  regression before any second-jet or curvature estimator is opened. [PLAN]
+- `Scripts/experiments/causal_connection_convergence.py`,
+  `Scripts/experiments/test_causal_connection_convergence.py`, and
+  `AgentTasks/null-edge-causal-connection-convergence-stage-a37-benchmark-2026-07-15.md`
+  - flat-only selection of a mapped-coordinate count-scale schedule followed by
+  eight fresh realizations in affine/quadratic flat charts and held-out curved
+  backgrounds at two densities. Every preregistered conditional connection
+  gate passes: worst median and ensemble errors improve and the A36 `H=0.2`
+  regression disappears. This opens exact second-jet controls, not a bare-order
+  or asymptotic theorem. [ORACLE]
+- `PhysicsSM/Draft/NullEdge/CausalOperatorWeakGeometry.lean`,
+  `Scripts/experiments/causal_operator_weak_geometry.py`,
+  `Scripts/experiments/test_causal_operator_weak_geometry.py`, and
+  `AgentTasks/null-edge-causal-operator-weak-geometry-stage-a38-benchmark-2026-07-15.md`
+  - one-operator weak-geometry successor to A37. Exact finite theorems identify
+  the corrected pairing with the double multiplication commutator on one and
+  prove multiplication-potential invariance of the normalized operator,
+  double/triple commutators, weak Hessian, and normalized `Gamma2`. Flat
+  temporal/shear quadratic-chart controls retain a nonzero Hessian signal while
+  weak Ricci tends to zero. This is a supplied-operator control, not an
+  intrinsic mesoscopic-algebra or causal-set curvature result. [LIVE/ORACLE]
+- `Scripts/experiments/causal_mesoscopic_algebra.py`,
+  `Scripts/experiments/test_causal_mesoscopic_algebra.py`, and
+  `AgentTasks/null-edge-causal-mesoscopic-algebra-stage-a39-benchmark-2026-07-15.md`
+  - first basis-independent degree-two mesoscopic-algebra audit. Rank 15,
+  generator-product closure, and affine `GL(4)` projector covariance pass near
+  roundoff. The preregistered strong operator/locality gate fails even for the
+  oracle sector: region-mean signature is unstable, strong triple commutators
+  remain near one, and Johnston does not beat the random control. Retain the
+  algebra projector; kill this global-region/strong-`L2` topology and move to a
+  projected weak calculus before causal `Gamma2`. [ORACLE]
+- `Scripts/experiments/causal_projected_weak_geometry.py`,
+  `Scripts/experiments/test_causal_projected_weak_geometry.py`, and
+  `AgentTasks/null-edge-causal-projected-weak-geometry-stage-a40-benchmark-2026-07-15.md`
+  - projected weak-calculus successor retaining A39's rank-15 envelope. The
+  implementation independently reproduces flat nonlinear-coordinate Ricci
+  cancellation for a local finite-difference d'Alembertian, but the causal
+  operator fails: weak triple defects and flat Ricci residuals stay near one,
+  weak signature is unstable, and Johnston does not beat random fields. This
+  kills global projection as the repair and redirects the graph-side program
+  to analytic kernel normalization or a local Alexandrov algebra germ.
+  [ORACLE]
+- `PhysicsSM/Draft/NullEdge/AlexandrovAlgebraGerm.lean` - exact marked-diamond
+  local-germ API with two-sided count depth, protected cores, tapered cutoffs,
+  zero extension, nesting, and relabeling covariance. It supplies no preferred
+  interval, dimension, continuum chart, or physical scale. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/AlexandrovGermPacking.lean` - finite bare-order
+  ensemble of all maximum-cardinality eligible marked-diamond packings with
+  pairwise vertex-disjoint closed carriers. Maximum packings exist, transport
+  exactly under order isomorphism, have invariant ensemble cardinality and
+  uniform averages, and admit explicit nonvacuity controls. The ensemble avoids
+  a symmetry-breaking canonical representative but proves no packing-growth,
+  stochastic-independence, or continuum theorem. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/AlexandrovGermPairEstimand.lean` - exact uniform
+  distinct-ordered-pair average over the complete maximum-packing ensemble,
+  including the intrinsic mean-square score difference and normalized
+  covariance estimand `1-q/2`. All constructions are relabeling invariant;
+  marginal variance, internally local germ scores, covariance decay, and a
+  random-order limit remain open. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/AlexandrovGermInternalOperator.lean` - induced
+  causal order on a marked diamond's closed carrier, causal-convexity and exact
+  ambient/induced interval-count equality, internal boundary depth and taper,
+  and exact equality between induced local/smeared operators and ambient
+  operators on zero extension. It adds uniform protected-anchor residual
+  scores and a fully order-derived cutoff-control score connected to the
+  maximum-packing pair estimand. Physical metric probes, targets, stochastic
+  covariance decay, and continuum convergence remain open. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/IntrinsicProbeSubspace.lean` - basis-free natural
+  scalar-probe sectors under finite-order isomorphism. The zero-sum field
+  subspace transports exactly, has real rank four on the five-event antichain,
+  and feeds an exactly covariant corrected operator pairing on every closed
+  Alexandrov carrier. The same symmetric control proves that every zero-sum
+  probe selected as an individually natural vector vanishes, so a physical
+  probe frame must transform inside a subspace up to basis change. The rank-four
+  control is cardinality-driven and does not establish causal dimension,
+  Lorentzian signature, or continuum probe convergence. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/ProbeFrameLorentzGauge.lean` - packages the active
+  smeared causal operator as a linear map and its corrected carrier pairing as
+  a symmetric bilinear form. Four-probe frames are bases of the natural probe
+  subspace; their Gram matrices obey exact change-of-basis congruence. If one
+  frame gives the mostly-minus Minkowski matrix, the other normalized frames
+  differ from it exactly by Lorentz transformations. The existence of such a
+  frame is invariant under order isomorphism and implies nondegeneracy. Frame
+  existence, Lorentzian inertia on physical carriers, mode convergence, and a
+  smooth tetrad remain open. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/RetardedProbeSupportGate.lean` - formalizes the
+  order-only two-sided interior and retarded-shell architecture used by the A3
+  intrinsic-probe support audit. Interval-band abundance, shell membership,
+  shell cardinality, and qualitative visibility of every intrinsic probe
+  subspace are exactly invariant under order isomorphism. Injective restriction
+  to a shell gives `finrank P <= shell.card`, so fewer than four shell events
+  kernel-checkably forbid a visible rank-four sector. A four-leaf, one-top
+  order realizes the sharp rank-four/cardinality-four case. This necessary
+  availability gate does not prove quantitative coverage, Lorentzian inertia,
+  product quality, or continuum convergence. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/RetardedShellInfraredNoGo.lean` - explicit
+  arbitrary-cardinality counterweight to the shell rank obstruction. For every
+  `n`, a three-level finite strict order has `n` two-sided-interior shell
+  sources in one fixed minimal interval-count band, with nonzero past/future
+  abundance and zero intervening events to the mark. Hence shell cardinality
+  can grow without any change in local interval count. Together with the A3c
+  larger-diamond oracle, this rejects the global count shell as a locality
+  certificate while preserving its necessary rank bound. [DRAFT-LEAN/ORACLE]
+- `PhysicsSM/Draft/NullEdge/ProbeFrameWeylScaleBridge.lean` - proves that
+  simultaneous rescaling of the active operator's discreteness and nonlocality
+  lengths preserves its smearing ratio and gives the operator, corrected
+  carrier form, and fixed-frame Gram matrix exact inverse-square Weyl weight.
+  Composition with count-derived relative scale gives reciprocal covariant and
+  contravariant factors: the supplied coframe metric scales by
+  `relativeAreaScale`, while the operator principal-symbol Gram matrix scales
+  by its inverse. A sixteen-to-one count witness realizes factors `4` and
+  `1/4`. This is finite scale compatibility, not derivation of the probe frame,
+  Lorentzian inertia, convergence, or absolute scale. [DRAFT-LEAN]
+- `Scripts/experiments/causal_continuum_kernel_moments.py`,
+  `Scripts/experiments/test_causal_continuum_kernel_moments.py`, and
+  `AgentTasks/null-edge-causal-continuum-kernel-moments-stage-a41c-benchmark-2026-07-15.md`
+  - analytic Poisson-mean and segmented-quadrature audit of the project-sign
+  smeared causal operator on two smooth Alexandrov germs. A41c passes the
+  small-scale metric, principal-symbol, lower-moment, and quadrature gates
+  without the A29 correction. This is deterministic continuum normalization,
+  not discrete concentration or intrinsic algebra reconstruction. [ORACLE]
+- `Scripts/experiments/causal_discrete_germ_moments.py`,
+  `Scripts/experiments/test_causal_discrete_germ_moments.py`, and
+  `AgentTasks/null-edge-causal-discrete-germ-moments-stage-a42-benchmark-2026-07-15.md`
+  - marked-row finite-sprinkling concentration test against quadrature-certified
+  A41d finite targets. Coefficient, relabeling, endpoint-cutoff, and scale checks
+  pass, but all four held-out field/metric strata fail at `ell/L=0.51-0.63`.
+  This kills the tested schedule and moves G2 to analytic variance control and
+  stronger two-scale separation or mesoscopic averaging. [ORACLE]
+- `Scripts/experiments/causal_kernel_diagonal_variance.py`,
+  `Scripts/experiments/test_causal_kernel_diagonal_variance.py`, and
+  `AgentTasks/null-edge-causal-kernel-diagonal-variance-audit-2026-07-15.md`
+  - exact Poisson and finite-binomial kernel second moments plus the positive
+  diagonal Mecke contribution on the marked germ. It explains the scale and
+  much of the magnitude of A42 fluctuations while explicitly excluding
+  off-diagonal shared-sprinkling and random-taper covariance. [ORACLE]
+- `PhysicsSM/Draft/NullEdge/CausalOperatorTwoScale.lean` - exact scale
+  identities for broad-layer epsilon, effective kernel count, and the
+  conditional amplitude diagnostic `ell^2/L^4`. It proves that the schedule
+  `L^2=c^2 ell R` leaves this diagnostic constant; no probabilistic theorem is
+  claimed. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/CausalOperatorKernelMoments.lean` and
+  `AgentTasks/null-edge-causal-operator-concentration-variance-aristotle-2026-07-15.md`
+  - exact broad-layer falling-factorial product identity, source-locked closed
+  Poisson and finite-binomial moment formulas, nonnegative fixed-`z` leading
+  coefficient, and a Chebyshev wrapper conditional on an explicit total
+  variance bound. The formulas are not promoted to a causal-set probability
+  law, and random atoms, taper depth, and same-graph covariance remain open.
+  [DRAFT-LEAN/AUDIT]
+- `Sources/Null_Edge_Causal_Operator_Locality_Variance_Audit_2026-07-15.md` -
+  source- and convention-locked interpretation of the compact-support limit,
+  the A42-A43 variance obstruction, and the Boguna-Krioukov intrinsic local
+  d'Alembertian. It opens a preregistered comparison between a compact nonlocal
+  regional observable with full overlap covariance and a clean-room local
+  distance/neighborhood challenger; neither is promoted. [LIVE]
+- `AgentTasks/null-edge-causal-operator-fork-stage-a44-plan-2026-07-15.md` -
+  frozen architecture-level preregistration for that comparison. It requires
+  common polynomial controls and held-out concentration gates, full same-graph
+  covariance for the regional branch, and explicit intrinsic-distance error
+  for the local branch before either can advance to curvature. [PLAN]
+- `PhysicsSM/Draft/NullEdge/LocalCausalOperatorMoments.lean`,
+  `Scripts/experiments/causal_local_operator_moments.py`,
+  `Scripts/experiments/test_causal_local_operator_moments.py`, and
+  `AgentTasks/null-edge-causal-local-operator-moments-stage-a44a-benchmark-2026-07-15.md`
+  - exact and coordinate-oracle Phase A control for the Boguna-Krioukov local
+  stencil after source-to-project sign conversion. Constants, affine and mixed
+  moments, temporal/spatial quadratics, hyperboloid moments, and the `(+---)`
+  diagonal pass in dimensions `1+1` through `3+1`; an asymmetric neighborhood
+  exposes affine leakage. Intrinsic distances, random concentration, and
+  curved response remain open. [DRAFT-LEAN/ORACLE]
+- `PhysicsSM/Draft/NullEdge/RegionalCovariance.lean`,
+  `Scripts/experiments/causal_regional_operator_covariance.py`,
+  `Scripts/experiments/test_causal_regional_operator_covariance.py`, and
+  `AgentTasks/null-edge-causal-regional-covariance-stage-a44n-control-2026-07-15.md`
+  - exact A44 regional support layer. A tied count-depth selector and the full
+  compact-row pipeline are relabeling covariant, while the finite and empirical
+  ledgers retain every ordered off-diagonal same-graph product. The live module
+  also proves the conditional dependency-degree covariance and Chebyshev
+  bounds, plus the complete-dependency identity separating the persistent
+  `sigmaSq*kappa` term. Positive and negative shared-covariance controls pass;
+  no physical concentration claim is opened. [DRAFT-LEAN/ORACLE]
+- `PhysicsSM/Draft/NullEdge/FiniteCausalOverlap.lean`,
+  `Scripts/experiments/causal_overlap_distance.py`, and
+  `Scripts/experiments/test_causal_overlap_distance.py` - exact finite
+  common-Alexandrov count ratio used by the local operator's spacelike-distance
+  input. The ratio is symmetric, bounded in `[0,1]`, and invariant under order
+  isomorphism, with explicit finite fork and partial-overlap controls. The
+  conditional `1+1` distance and arbitrary-dimensional asymptotic proxy are
+  homogeneous in supplied proper time, making the scale debt explicit. The
+  module does not derive proper time, dimension, inversion, or absolute scale.
+  [DRAFT-LEAN/ORACLE]
+- `Scripts/experiments/causal_reusable_relation.py`,
+  `Scripts/experiments/causal_regional_resource_gate.py`,
+  `Scripts/experiments/causal_regional_scaling_gate.py`, and the A44r/A44r2
+  plans, benchmarks, and JSON artifacts under `AgentTasks/` - exact bit-packed
+  strict relation reused for global depth and per-pivot interval popcounts.
+  Direct semantics pass, and measured `N=100000` storage/time follows the
+  preregistered quadratic prediction. This closes a resource precondition, not
+  regional concentration or large-run authorization. [ORACLE]
+- `Scripts/experiments/causal_offcenter_continuum_targets.py`,
+  `Scripts/experiments/causal_offcenter_target_audit.py`, and the A44t records
+  under `AgentTasks/` - relative-null and exact angular-cap quadrature for the
+  finite Poisson-mean target at arbitrary pivots. Quadrature and signature
+  controls pass, while center-target reuse fails because compact retarded
+  boundary bias is strongly time-asymmetric. A44N now requires one oracle
+  finite target per order-selected pivot. [ORACLE]
+- `Scripts/experiments/causal_selected_pivot_target_calibration.py` and the
+  A44p plan, benchmark, and JSON artifact under `AgentTasks/` - one-graph
+  `N=100000` meeting of the exact packed rows, tied-depth selector, full
+  17-channel affine/quadratic envelope, and certified target at each selected
+  pivot. The target gate passes and the regional mean is Lorentzian, but full
+  metric error is `0.546` and major-channel effective pivot counts are only
+  about `4-12`. This opens a fresh multi-graph development covariance gate,
+  not held-out concentration or curvature. [ORACLE]
+- `Scripts/experiments/causal_regional_multigraph_development.py`, its tests,
+  and the A44N plan, benchmark, checkpoints, and aggregate JSON under
+  `AgentTasks/` - three fresh independent `N=100000` graphs pass every frozen
+  development gate. All regional metrics are Lorentzian, `44/48` pivot metrics
+  are Lorentzian, metric errors are `0.203-0.400`, and the exact covariance
+  decomposition closes to `5.33e-15`. This retains Branch N and permits a
+  separate `N=200000` development preregistration, not held-out concentration,
+  curvature, or `N=400000`. [ORACLE]
+- `AgentTasks/null-edge-causal-regional-dependency-stage-a44d-audit-2026-07-15.md`
+  - implementation-level information-flow audit showing that global pivot
+  selection and global predecessor future counts make the conservative
+  selected-row read-overlap graph complete. Density escalation is deferred
+  until covariance-ratio decay is proved or the selector/taper is localized.
+  [AUDIT]
+- `AgentTasks/null-edge-causal-regional-kappa-decay-aristotle-2026-07-15.md`,
+  its standalone `RegionalCovarianceDecayAudit.lean`, and semantic context pack
+  - focused Aristotle strategy/no-go audit for the remaining complete-graph
+  covariance ratio. The returned audit gives a `REVISE` verdict: deepest-pivot
+  coalescence is incompatible with the separated-germ regime normally needed
+  for covariance decay, while global selection and future counts defeat direct
+  stabilization. The integrated Lean endpoint proves that vanishing normalized
+  row difference and unit normalized variances imply `kappa_N -> 1`; the
+  coalescence and stochastic-continuity premises remain open. It recommends
+  separated order-derived outer germs for same-graph concentration and
+  independent whole graphs for inference on unchanged A44. Project
+  `476b4880-407d-4661-9dec-48b2b3797ec3`. [ARISTOTLE-COMPLETE]
+- `AgentTasks/null-edge-causal-regional-covariance-bound-aristotle-2026-07-15.md`
+  and its standalone `RegionalCovarianceBound.lean` - completed focused
+  Aristotle task integrated into the live regional module. The kernel-checked
+  dependency-degree bound `sigmaSq*(1+degree*kappa)/m` and conditional
+  Chebyshev wrapper keep graph-overlap degree, covariance ratio, outside signs,
+  and physical variance as explicit unproved obligations. [ARISTOTLE-COMPLETE]
+- `Scripts/experiments/causal_discrete_germ_concentration.py`,
+  `Scripts/experiments/test_causal_discrete_germ_concentration.py`, and
+  `AgentTasks/null-edge-causal-discrete-germ-concentration-stage-a43-benchmark-2026-07-15.md`
+  - low-epsilon successor stopped after development because three of four
+  finite targets are negative definite. This exposes a finite no-overlap
+  between the tested low-noise and two-profile Lorentzian-mean windows; its
+  held-out seed was never opened. [ORACLE]
+- `PhysicsSM/Draft/NullEdge/RetardedMomentMetricDebias.lean` and
+  `PhysicsSM/Draft/NullEdge/RetardedMomentMetricDebiasAxiomGuard.lean` - exact
+  affine-probe covariance of the A29-A30 moment norm, temporal response
+  projector, corrected inverse metric, and first jets, plus a nonidentity
+  rational correction witness. Aristotle supplied six reviewed proof bodies;
+  the guard pins their standard dependency footprint. All graph, chart, response,
+  and continuum inputs remain conditional. [DRAFT-LEAN]
 - `PhysicsSM/Draft/NullEdge/DiscreteDimensionalTransmutation.lean` - exact
   positive discrete one-loop-shaped flow, inverse-coupling invariant,
   step-independent exponential scale, nonperturbative flatness beyond every

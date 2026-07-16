@@ -1,0 +1,299 @@
+{
+  "density_is_supplied": true,
+  "dimension_is_supplied": true,
+  "interval_endpoints_are_supplied": true,
+  "metric_scores_opened": false,
+  "samples": [
+    {
+      "chart_availability_fraction": 0.47368421052631576,
+      "independent_residual_maximum": 0.42546153640840767,
+      "independent_residual_median": 0.2673690150430935,
+      "overlap_median": 374.0,
+      "overlap_minimum": 258,
+      "pairwise_edge_fraction": 0.21052631578947367,
+      "pairwise_graph_connected": true,
+      "passes_synchronized_atlas_gate": false,
+      "registration_radius": 0.1,
+      "spacelike_target_count": 16,
+      "strict_future_target_count": 1,
+      "strict_past_target_count": 1,
+      "synchronization_mismatch_maximum": 0.09336439336611105,
+      "synchronization_mismatch_median": 0.023690708988437746,
+      "synchronized_cocycle_maximum": 1.3257980004727897e-15,
+      "synchronized_cocycle_median": 5.93684790810309e-16,
+      "synchronized_geometry_residual_maximum": 0.42738788868196587,
+      "synchronized_geometry_residual_median": 0.2713388024440089,
+      "target_count": 19
+    },
+    {
+      "chart_availability_fraction": 0.6923076923076923,
+      "independent_residual_maximum": 0.7543364113911379,
+      "independent_residual_median": 0.5170809366121978,
+      "overlap_median": 355.0,
+      "overlap_minimum": 298,
+      "pairwise_edge_fraction": 0.46153846153846156,
+      "pairwise_graph_connected": true,
+      "passes_synchronized_atlas_gate": false,
+      "registration_radius": 0.1,
+      "spacelike_target_count": 12,
+      "strict_future_target_count": 0,
+      "strict_past_target_count": 0,
+      "synchronization_mismatch_maximum": 1.1547627243860628,
+      "synchronization_mismatch_median": 0.11336464055672074,
+      "synchronized_cocycle_maximum": 2.4739615994856558e-15,
+      "synchronized_cocycle_median": 1.3254260437860616e-15,
+      "synchronized_geometry_residual_maximum": 0.9655517187604504,
+      "synchronized_geometry_residual_median": 0.5199482694507742,
+      "target_count": 13
+    },
+    {
+      "chart_availability_fraction": 1.0,
+      "independent_residual_maximum": 0.7184007257968225,
+      "independent_residual_median": 0.3437776464679948,
+      "overlap_median": 351.0,
+      "overlap_minimum": 271,
+      "pairwise_edge_fraction": 1.0,
+      "pairwise_graph_connected": true,
+      "passes_synchronized_atlas_gate": false,
+      "registration_radius": 0.1,
+      "spacelike_target_count": 12,
+      "strict_future_target_count": 1,
+      "strict_past_target_count": 1,
+      "synchronization_mismatch_maximum": 0.2507276053872987,
+      "synchronization_mismatch_median": 0.04929541753059447,
+      "synchronized_cocycle_maximum": 1.4061607576083049e-15,
+      "synchronized_cocycle_median": 8.379318946422635e-16,
+      "synchronized_geometry_residual_maximum": 0.7243839500006324,
+      "synchronized_geometry_residual_median": 0.34939977188996546,
+      "target_count": 15
+    }
+  ],
+  "selected_registration_key": "registration_radius=0.100000",
+  "selected_registration_radius": {
+    "chart_availability_fraction": {
+      "count": 3,
+      "mean": 0.7219973009446693,
+      "median": 0.6923076923076923,
+      "std": 0.21589068562290117
+    },
+    "independent_residual_maximum": {
+      "count": 3,
+      "mean": 0.6327328911987894,
+      "median": 0.7184007257968225,
+      "std": 0.14729540445934622
+    },
+    "independent_residual_median": {
+      "count": 3,
+      "mean": 0.3760758660410954,
+      "median": 0.3437776464679948,
+      "std": 0.10447134275046524
+    },
+    "overlap_median": {
+      "count": 3,
+      "mean": 360.0,
+      "median": 355.0,
+      "std": 10.03327796219494
+    },
+    "overlap_minimum": {
+      "count": 3,
+      "mean": 275.6666666666667,
+      "median": 271.0,
+      "std": 16.659998666133067
+    },
+    "pairwise_edge_fraction": {
+      "count": 3,
+      "mean": 0.5573549257759783,
+      "median": 0.46153846153846156,
+      "std": 0.32934558407997516
+    },
+    "pairwise_graph_connected_rate": 1.0,
+    "registration_radius": 0.1,
+    "samples": 3,
+    "spacelike_target_count": {
+      "count": 3,
+      "mean": 13.333333333333334,
+      "median": 12.0,
+      "std": 1.8856180831641267
+    },
+    "strict_future_target_count": {
+      "count": 3,
+      "mean": 0.6666666666666666,
+      "median": 1.0,
+      "std": 0.4714045207910317
+    },
+    "strict_past_target_count": {
+      "count": 3,
+      "mean": 0.6666666666666666,
+      "median": 1.0,
+      "std": 0.4714045207910317
+    },
+    "synchronization_mismatch_maximum": {
+      "count": 3,
+      "mean": 0.49961824104649083,
+      "median": 0.2507276053872987,
+      "std": 0.46769043583843095
+    },
+    "synchronization_mismatch_median": {
+      "count": 3,
+      "mean": 0.06211692235858432,
+      "median": 0.04929541753059447,
+      "std": 0.03771513171366722
+    },
+    "synchronized_atlas_gate_success_rate": 0.0,
+    "synchronized_cocycle_maximum": {
+      "count": 3,
+      "mean": 1.7353067858555835e-15,
+      "median": 1.4061607576083049e-15,
+      "std": 5.233372038865974e-16
+    },
+    "synchronized_cocycle_median": {
+      "count": 3,
+      "mean": 9.190142430795447e-16,
+      "median": 8.379318946422635e-16,
+      "std": 3.041842377548072e-16
+    },
+    "synchronized_geometry_residual_maximum": {
+      "count": 3,
+      "mean": 0.705774519147683,
+      "median": 0.7243839500006324,
+      "std": 0.22009817535013632
+    },
+    "synchronized_geometry_residual_median": {
+      "count": 3,
+      "mean": 0.3802289479282495,
+      "median": 0.34939977188996546,
+      "std": 0.10380910474759786
+    },
+    "target_count": {
+      "count": 3,
+      "mean": 15.666666666666666,
+      "median": 15.0,
+      "std": 2.494438257849294
+    }
+  },
+  "selection_rule": "maximum synchronized-atlas gate rate, then minimum median overlap-geometry residual and synchronization mismatch",
+  "selector_uses_full_recovered_chart": true,
+  "settings": {
+    "averaging_radius": 0.075,
+    "density": 30557.749073643907,
+    "dimension": 4,
+    "duration": 1.0,
+    "events_including_endpoints": 4000,
+    "maximum_cocycle_error": 1e-10,
+    "maximum_geometry_error": 0.25,
+    "maximum_synchronization_mismatch": 0.15,
+    "minimum_edge_fraction": 0.8,
+    "realizations": 3,
+    "registration_radii": [
+      0.1
+    ],
+    "seed": 20260805
+  },
+  "spatial_rank_is_supplied": true,
+  "status": "frozen held-out synchronized-atlas transition evaluation",
+  "summaries": {
+    "registration_radius=0.100000": {
+      "chart_availability_fraction": {
+        "count": 3,
+        "mean": 0.7219973009446693,
+        "median": 0.6923076923076923,
+        "std": 0.21589068562290117
+      },
+      "independent_residual_maximum": {
+        "count": 3,
+        "mean": 0.6327328911987894,
+        "median": 0.7184007257968225,
+        "std": 0.14729540445934622
+      },
+      "independent_residual_median": {
+        "count": 3,
+        "mean": 0.3760758660410954,
+        "median": 0.3437776464679948,
+        "std": 0.10447134275046524
+      },
+      "overlap_median": {
+        "count": 3,
+        "mean": 360.0,
+        "median": 355.0,
+        "std": 10.03327796219494
+      },
+      "overlap_minimum": {
+        "count": 3,
+        "mean": 275.6666666666667,
+        "median": 271.0,
+        "std": 16.659998666133067
+      },
+      "pairwise_edge_fraction": {
+        "count": 3,
+        "mean": 0.5573549257759783,
+        "median": 0.46153846153846156,
+        "std": 0.32934558407997516
+      },
+      "pairwise_graph_connected_rate": 1.0,
+      "registration_radius": 0.1,
+      "samples": 3,
+      "spacelike_target_count": {
+        "count": 3,
+        "mean": 13.333333333333334,
+        "median": 12.0,
+        "std": 1.8856180831641267
+      },
+      "strict_future_target_count": {
+        "count": 3,
+        "mean": 0.6666666666666666,
+        "median": 1.0,
+        "std": 0.4714045207910317
+      },
+      "strict_past_target_count": {
+        "count": 3,
+        "mean": 0.6666666666666666,
+        "median": 1.0,
+        "std": 0.4714045207910317
+      },
+      "synchronization_mismatch_maximum": {
+        "count": 3,
+        "mean": 0.49961824104649083,
+        "median": 0.2507276053872987,
+        "std": 0.46769043583843095
+      },
+      "synchronization_mismatch_median": {
+        "count": 3,
+        "mean": 0.06211692235858432,
+        "median": 0.04929541753059447,
+        "std": 0.03771513171366722
+      },
+      "synchronized_atlas_gate_success_rate": 0.0,
+      "synchronized_cocycle_maximum": {
+        "count": 3,
+        "mean": 1.7353067858555835e-15,
+        "median": 1.4061607576083049e-15,
+        "std": 5.233372038865974e-16
+      },
+      "synchronized_cocycle_median": {
+        "count": 3,
+        "mean": 9.190142430795447e-16,
+        "median": 8.379318946422635e-16,
+        "std": 3.041842377548072e-16
+      },
+      "synchronized_geometry_residual_maximum": {
+        "count": 3,
+        "mean": 0.705774519147683,
+        "median": 0.7243839500006324,
+        "std": 0.22009817535013632
+      },
+      "synchronized_geometry_residual_median": {
+        "count": 3,
+        "mean": 0.3802289479282495,
+        "median": 0.34939977188996546,
+        "std": 0.10380910474759786
+      },
+      "target_count": {
+        "count": 3,
+        "mean": 15.666666666666666,
+        "median": 15.0,
+        "std": 2.494438257849294
+      }
+    }
+  },
+  "transitions_use_embedding_coordinates": false
+}

@@ -1,7 +1,8 @@
 """Semantic vector search over the StandardModel repo's OWN documents (Neo4j).
 
 The `coglab` graph is shared with other projects (AutoLab). To stay isolated,
-this ingests *this repo's* prose (Sources/, AgentTasks/, docs/, top-level *.md)
+this ingests *this repo's* prose (Markdown and LaTeX under Sources/,
+AgentTasks/, docs/, AutonomousLab/, plus top-level Markdown)
 and Lean source (PhysicsSM/**/*.lean) under project-scoped labels - `:NEDoc`
 (source file) and `:NEChunk` (a chunk), both `project='null-edge'` - so they
 never collide with AutoLab's `Doc`/`LeanFile`/`Chunk` nodes. Files are read FULL
@@ -19,7 +20,10 @@ Run with the lean-explore tool-env interpreter (it carries `+xpu` torch,
     "$PY" Scripts/lit/neo4j_doc_search.py --dry-run     # list files + chunk counts, no writes/model
     "$PY" Scripts/lit/neo4j_doc_search.py               # ingest (sha-skips unchanged) + build index
     "$PY" Scripts/lit/neo4j_doc_search.py --changed     # fast: only git-changed files (avoids full per-file scan)
+    "$PY" Scripts/lit/neo4j_doc_search.py --path Sources/Paper.tex  # targeted refresh
     "$PY" Scripts/lit/neo4j_doc_search.py --reembed     # re-ingest everything
+    "$PY" Scripts/lit/neo4j_doc_search.py --exact-path PhysicsSM/Draft/NullEdge/PluckerMassOperator.lean
+    "$PY" Scripts/lit/neo4j_doc_search.py --exact-declaration plucker_mass_operator
     "$PY" Scripts/lit/neo4j_doc_search.py --query "where is the Plucker mass determinant identity proved"
     "$PY" Scripts/lit/neo4j_doc_search.py --query "Dirac slash" --format markdown
 
@@ -55,8 +59,9 @@ MAX_CHARS = 1800
 OVERLAP = 200
 BATCH = 64
 
-MD_DIRS = ["Sources", "AgentTasks", "docs"]
+MD_DIRS = ["Sources", "AgentTasks", "docs", "AutonomousLab"]
 LEAN_DIRS = ["PhysicsSM"]
+PROSE_SUFFIXES = {".md", ".tex"}
 
 # Build/vendor/extraction trees to never ingest. Aristotle submission bundles
 # (aristotle-output / *extracted* / *project_aristotle*) contain nested duplicate
@@ -135,25 +140,73 @@ def _git_changed_paths():
     return paths
 
 
+def _ingestible(p: Path) -> bool:
+    """Whether a resolved repository path belongs to an indexed source root."""
+    try:
+        rel = p.resolve().relative_to(REPO.resolve())
+    except ValueError:
+        return False
+    if _excluded(rel):
+        return False
+    if len(rel.parts) == 1:
+        return rel.suffix.lower() == ".md"
+    root = rel.parts[0]
+    return ((root in MD_DIRS and rel.suffix.lower() in PROSE_SUFFIXES) or
+            (root in LEAN_DIRS and rel.suffix.lower() == ".lean"))
+
+
 def iter_files(changed_only: bool = False):
     """Repo docs/lean to ingest, excluding build/vendor/extraction trees. With
     `changed_only`, restrict to git-changed files (cheap incremental refresh)."""
     changed = _git_changed_paths() if changed_only else None
 
+    if changed is not None:
+        candidates: set[Path] = set()
+        for path in changed:
+            if path.is_file():
+                if _ingestible(path):
+                    candidates.add(path)
+                continue
+            if not path.is_dir() or _excluded(path):
+                continue
+            for child in path.rglob("*"):
+                if child.is_file() and _ingestible(child):
+                    candidates.add(child)
+        yield from sorted(candidates)
+        return
+
     def keep(p: Path) -> bool:
-        return changed is None or p.resolve() in changed
+        return True
 
     for p in sorted(REPO.glob("*.md")):
         if keep(p):
             yield p
     for d in MD_DIRS:
-        for p in sorted((REPO / d).rglob("*.md")):
+        prose = [
+            p
+            for suffix in PROSE_SUFFIXES
+            for p in (REPO / d).rglob(f"*{suffix}")
+        ]
+        for p in sorted(prose):
             if not _excluded(p) and keep(p):
                 yield p
     for d in LEAN_DIRS:
         for p in sorted((REPO / d).rglob("*.lean")):
             if not _excluded(p) and keep(p):
                 yield p
+
+
+def selected_files(paths: list[str]) -> list[Path]:
+    """Validate and resolve explicitly selected repository files."""
+    selected = []
+    for raw in paths:
+        path = (REPO / _normalize_repo_path(raw)).resolve()
+        if not path.is_file():
+            raise SystemExit(f"Selected path is not a file: {raw}")
+        if not _ingestible(path):
+            raise SystemExit(f"Selected path is outside indexed source roots: {raw}")
+        selected.append(path)
+    return sorted(set(selected))
 
 
 def _window(text: str):
@@ -182,6 +235,33 @@ def _chunk_markdown(text: str):
         if line.lstrip().startswith("#"):
             flush(cur_h, cur)
             cur, cur_h = [line], line.strip("# ").strip()
+        else:
+            cur.append(line)
+    flush(cur_h, cur)
+    return [(h, w) for h, body in sections for w in _window(body)]
+
+
+LATEX_SECTION_RE = re.compile(
+    r"^\\(?P<level>part|chapter|section|subsection|subsubsection)\*?"
+    r"\{(?P<title>[^}]*)\}"
+)
+
+
+def _chunk_latex(text: str):
+    """Split LaTeX prose at section commands, then window long sections."""
+    sections, cur, cur_h = [], [], "preamble"
+
+    def flush(heading, lines):
+        body = "\n".join(lines).strip()
+        if body:
+            sections.append((heading, body))
+
+    for line in text.splitlines():
+        match = LATEX_SECTION_RE.match(line.strip())
+        if match:
+            flush(cur_h, cur)
+            cur = [line]
+            cur_h = match.group("title").strip() or match.group("level")
         else:
             cur.append(line)
     flush(cur_h, cur)
@@ -233,7 +313,11 @@ def _chunk_lean(text: str):
 
 
 def _chunks_for(path: Path, text: str):
-    return _chunk_markdown(text) if path.suffix == ".md" else _chunk_lean(text)
+    if path.suffix == ".lean":
+        return _chunk_lean(text)
+    if path.suffix == ".tex":
+        return _chunk_latex(text)
+    return _chunk_markdown(text)
 
 
 def _title(path: Path, text: str) -> str:
@@ -242,6 +326,9 @@ def _title(path: Path, text: str) -> str:
             if line.lstrip().startswith("# "):
                 return line.strip("# ").strip()[:200]
         return path.stem
+    if path.suffix == ".tex":
+        match = re.search(r"\\title\{([^}]*)\}", text)
+        return (match.group(1).strip() if match else path.stem)[:200]
     return path.relative_to(REPO).as_posix()
 
 
@@ -254,9 +341,13 @@ def _read(path: Path):
         return None
 
 
-def dry_run(changed_only: bool = False) -> None:
-    files = list(iter_files(changed_only=changed_only))
-    total, by_kind, biggest = 0, {"md": 0, "lean": 0}, []
+def dry_run(changed_only: bool = False, selected_paths: list[str] | None = None) -> None:
+    files = (
+        selected_files(selected_paths)
+        if selected_paths
+        else list(iter_files(changed_only=changed_only))
+    )
+    total, by_kind, biggest = 0, {"md": 0, "tex": 0, "lean": 0}, []
     leaked = [p for p in files if ".lake" in p.parts]
     for p in files:
         text = _read(p)
@@ -264,10 +355,14 @@ def dry_run(changed_only: bool = False) -> None:
             continue
         ch = _chunks_for(p, text)
         total += len(ch)
-        by_kind["lean" if p.suffix == ".lean" else "md"] += 1
+        kind = "lean" if p.suffix == ".lean" else "tex" if p.suffix == ".tex" else "md"
+        by_kind[kind] += 1
         biggest.append((len(ch), p.relative_to(REPO).as_posix()))
     biggest.sort(reverse=True)
-    print(f"files: {len(files)}  ({by_kind['md']} md, {by_kind['lean']} lean)")
+    print(
+        f"files: {len(files)}  "
+        f"({by_kind['md']} md, {by_kind['tex']} tex, {by_kind['lean']} lean)"
+    )
     print(f"total chunks: {total}")
     print(f".lake leakage (must be 0): {len(leaked)}")
     print("largest:")
@@ -292,8 +387,16 @@ def _setup(session) -> None:
     )
 
 
-def ingest(reembed: bool, changed_only: bool = False) -> None:
-    files = list(iter_files(changed_only=changed_only))
+def ingest(
+    reembed: bool,
+    changed_only: bool = False,
+    selected_paths: list[str] | None = None,
+) -> None:
+    files = (
+        selected_files(selected_paths)
+        if selected_paths
+        else list(iter_files(changed_only=changed_only))
+    )
     driver, db = _driver()
     model = None
     try:
@@ -327,7 +430,11 @@ def ingest(reembed: bool, changed_only: bool = False) -> None:
                     f"WITH d OPTIONAL MATCH (d)-[:HAS_CHUNK]->(c:{CHUNK_LABEL}) DETACH DELETE c",
                     path=relp,
                     proj=PROJECT,
-                    kind=("lean" if p.suffix == ".lean" else "md"),
+                    kind=(
+                        "lean" if p.suffix == ".lean"
+                        else "tex" if p.suffix == ".tex"
+                        else "md"
+                    ),
                     title=_title(p, text),
                     sha=sha,
                 )
@@ -338,7 +445,7 @@ def ingest(reembed: bool, changed_only: bool = False) -> None:
                     dev = _device()
                     print(f"loading {MODEL_NAME} on {dev} ...", flush=True)
                     model = SentenceTransformer(MODEL_NAME, device=dev)
-                    if int(model.get_sentence_embedding_dimension()) != EMB_DIM:
+                    if int(model.get_embedding_dimension()) != EMB_DIM:
                         raise SystemExit("embedding dim mismatch; update EMB_DIM")
 
                 vecs = model.encode(
@@ -441,10 +548,92 @@ def query(text: str, k: int, fmt: str) -> None:
         _print_text(text, results)
 
 
+def _normalize_repo_path(path: str) -> str:
+    """Normalize a user-supplied repository-relative path for exact lookup."""
+    normalized = path.replace("\\", "/")
+    while normalized.startswith("./"):
+        normalized = normalized[2:]
+    return normalized
+
+
+def exact_results(path: str | None, declaration: str | None):
+    """Return deterministic graph records by exact path and/or declaration.
+
+    Unlike semantic vector search, this route does not load an embedding model
+    and is suitable for Archivist known-answer checks. A path-only lookup
+    returns one document summary. A declaration lookup returns every exactly
+    named declaration chunk, optionally restricted to one repository path.
+    """
+    if path is None and declaration is None:
+        raise ValueError("exact lookup requires a path or declaration")
+
+    normalized_path = _normalize_repo_path(path) if path is not None else None
+    driver, db = _driver()
+    try:
+        with driver.session(database=db) as session:
+            if declaration is None:
+                return session.run(
+                    f"MATCH (d:{DOC_LABEL} {{project: $project, path: $path}}) "
+                    f"OPTIONAL MATCH (d)-[:HAS_CHUNK]->(c:{CHUNK_LABEL}) "
+                    "RETURN d.path AS path, d.title AS title, d.kind AS kind, "
+                    "d.sha AS sha, count(c) AS chunk_count",
+                    project=PROJECT,
+                    path=normalized_path,
+                ).data()
+
+            return session.run(
+                f"MATCH (d:{DOC_LABEL} {{project: $project}})-[:HAS_CHUNK]->"
+                f"(c:{CHUNK_LABEL} {{project: $project, heading: $declaration}}) "
+                "WHERE $path IS NULL OR d.path = $path "
+                "RETURN d.path AS path, d.sha AS sha, c.heading AS declaration, "
+                "c.ord AS ord, c.text AS text ORDER BY d.path, c.ord",
+                project=PROJECT,
+                path=normalized_path,
+                declaration=declaration,
+            ).data()
+    finally:
+        driver.close()
+
+
+def exact(path: str | None, declaration: str | None, fmt: str) -> None:
+    results = exact_results(path, declaration)
+    payload = {"path": path, "declaration": declaration, "results": results}
+    if fmt == "json":
+        print(json.dumps(payload, indent=2, ensure_ascii=False))
+        return
+
+    label = declaration or _normalize_repo_path(path or "")
+    print(f'\nExact repository records for: "{label}"\n')
+    for row in results:
+        if declaration is None:
+            print(
+                f"  {row['path']}  kind={row['kind']}  "
+                f"chunks={row['chunk_count']}  sha={row['sha']}"
+            )
+        else:
+            snippet = " ".join((row.get("text") or "").split())[:180]
+            print(f"  {row['path']}#{row['ord']} [{row['declaration']}]\n         {snippet}")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--query", help="natural-language search; omit to ingest")
+    ap.add_argument(
+        "--exact-path",
+        help="deterministic repository-relative path lookup; may restrict "
+        "--exact-declaration",
+    )
+    ap.add_argument(
+        "--exact-declaration",
+        help="deterministic exact Lean declaration-heading lookup (no embedding model)",
+    )
     ap.add_argument("--reembed", action="store_true", help="re-ingest all files")
+    ap.add_argument(
+        "--path",
+        action="append",
+        default=[],
+        help="refresh one repository-relative file; repeat for multiple files",
+    )
     ap.add_argument(
         "--changed",
         action="store_true",
@@ -461,12 +650,17 @@ def main() -> None:
     )
     ns = ap.parse_args()
 
+    if ns.changed and ns.path:
+        ap.error("--changed and --path are mutually exclusive")
+
     if ns.dry_run:
-        dry_run(changed_only=ns.changed)
+        dry_run(changed_only=ns.changed, selected_paths=ns.path)
+    elif ns.exact_path or ns.exact_declaration:
+        exact(ns.exact_path, ns.exact_declaration, ns.format)
     elif ns.query:
         query(ns.query, ns.k, ns.format)
     else:
-        ingest(ns.reembed, changed_only=ns.changed)
+        ingest(ns.reembed, changed_only=ns.changed, selected_paths=ns.path)
 
 
 if __name__ == "__main__":

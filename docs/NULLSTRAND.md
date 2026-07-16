@@ -41,6 +41,33 @@ anomaly control, a finite spectral-action or variational principle with genuine
 codimension, and at least one non-inserted prediction if the goal is stronger
 than reconstruction.
 
+### GR order-side gate status (2026-07-16)
+
+Do not launch the proposed intrinsic generalized-cluster eigensolver yet. The
+Stage A3b max-clearance schedule `s = sqrt(ell * L)` repairs the earlier fixed
+`s/L` scale-window artifact: `(s/r, s, r*s)` lies strictly between `ell` and
+`L` exactly when `L/ell > r^2`. For the frozen benchmark this requires
+`N > 743.239`, and common three-scale interiors occur in every evaluated
+realization above that threshold.
+
+Stage A3c resolves the boundary question. Holding `ell`, `L`, the ratio, and
+all count bands fixed while multiplying the global four-volume by `1,2,4`
+raises the all-scale rank-capable mark rate from `1.93%` to `17.19%` to
+`36.97%`; an exploratory volume-eight point reaches `50.85%`. This is strong
+infrared-boundary dependence, not local convergence. A fixed proper-time shell
+has a noncompact rapidity direction, so the finite diamond is its infrared
+cutoff.
+
+Do not enlarge the global diamond until the old support threshold passes.
+`RetardedShellInfraredNoGo.lean` also kernel-checks that arbitrary shell
+cardinality is possible in one fixed minimal interval-count band with nonzero
+two-sided abundance. Preserve the necessary theorem `finrank P <= shell.card`,
+but reject global shell cardinality as a locality certificate. The successor
+must use a compact order-derived Alexandrov carrier, or the full equivariant
+ensemble of eligible brackets, and prove refinement/overlap stability before
+spectral rank selection. See
+`AgentTasks/null-edge-causal-larger-diamond-support-stage-a3c-benchmark-2026-07-16.md`.
+
 ### All-mass program: strategic guidance (2026-07-08)
 
 The all-mass manuscript
@@ -323,6 +350,53 @@ The finite square can be exact while the continuum limit fails. Watch for
 surviving frame terms, wrong holonomy normalization, wrong Pauli coefficient,
 high-frequency branches that do not decouple, and wrong Lichnerowicz
 endomorphism.
+
+For same-graph causal-operator concentration, do not treat several globally
+selected rows as independent samples. The active finite successor is the
+complete ensemble of maximum eligible Alexandrov-germ packings with pairwise
+disjoint closed carriers. Average over the whole ensemble rather than choosing
+one automorphism-breaking packing. Even then, disjoint carriers yield local
+random variables only after every score input is computed internally, and a
+fixed-total-count graph law can retain dependence across disjoint carriers.
+The active finite locality bridge uses the induced causal order on each closed
+carrier. Causal convexity makes every induced interval count equal its ambient
+count, and the induced smeared operator equals the ambient operator on zero
+extension. This validates the local read architecture; it does not make the
+current cutoff-control score a complete metric-reconstruction probe family.
+
+Do not require a physical scalar-probe basis to be pointwise natural under all
+order isomorphisms. On an automorphism-transitive order, every such individual
+probe is constant, and a zero-sum one vanishes. The viable finite object is a
+natural probe subspace transported up to basis change. The canonical zero-sum
+subspace gives a rank-four control on a five-event antichain and an exactly
+covariant carrier pairing, but that rank comes from cardinality rather than
+causal dimension and is not evidence by itself for Lorentzian signature.
+
+Once a natural carrier subspace has rank four, treat a probe tetrad as a basis
+of that subspace. The active corrected pairing is a symmetric bilinear form,
+and its matrices in two probe frames obey `G_c = M^T G_b M`. Conditional on one
+frame giving the project matrix `diag(1,-1,-1,-1)`, the normalized frame changes
+are exactly the `eta`-orthogonal transformations. This identifies the correct
+finite Lorentz-gauge quotient, but it is not a proof that physical carriers
+have rank four or that their operator pairing has Lorentzian inertia.
+
+Open target-metric and signature scores only after the intrinsic retarded-shell
+availability gate. Build the shell from count-band past/future abundance and a
+marked event, and treat visibility basis-freely as injectivity of probe-space
+restriction to that shell. Exact finite dimension gives
+`finrank P <= shell.card`; in particular, fewer than four shell events forbid a
+visible rank-four probe sector. Four events are only the sharp qualitative
+minimum. They do not imply a positive quantitative coverage quotient, local
+affinity, product closure, Lorentzian inertia, or metric convergence.
+
+Keep the tensor variance explicit when composing probe frames with relative
+scale. Simultaneously scaling the operator lengths by `r` leaves the smearing
+ratio fixed and scales its corrected-pairing Gram matrix by `r^-2`; this is the
+principal-symbol inverse metric. The row-coframe metric scales by `r^2`.
+Therefore count-derived relative area appears directly in the covariant metric
+and inversely in the probe Gram matrix. Do not compare those matrices as though
+they were the same tensor, and do not infer rank four, Lorentzian inertia, or
+continuum convergence from their reciprocal finite scale laws.
 
 ## Claim-boundary labels
 

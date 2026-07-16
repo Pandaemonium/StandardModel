@@ -1,0 +1,274 @@
+{
+  "marked_target_selected_by_embedding_oracle": false,
+  "probe_construction_uses_embedding_coordinates": false,
+  "scoring_uses_embedding_coordinates": true,
+  "settings": {
+    "duration": 1.0,
+    "ell": 0.10219728214404318,
+    "epsilon": 0.10391239735715359,
+    "events": 1200,
+    "filter_strength": 0.1,
+    "inner_profile_quantile": 0.08,
+    "interior_abundance_threshold": 0.25,
+    "interior_band": [
+      0.5,
+      2.0
+    ],
+    "maximum_fit_error": 0.25,
+    "maximum_metric_error": 0.5,
+    "minimum_row_coverage": 0.7,
+    "minimum_support_coverage": 0.8,
+    "nonlocality_scale": 0.18,
+    "outer_profile_quantile": 0.3,
+    "probe_count": 4,
+    "realizations": 12,
+    "retarded_shell_band": [
+      0.5,
+      4.0
+    ],
+    "seed": 20260715,
+    "selector_scale_ratio": 0.75,
+    "target_selection": "intrinsic_interior",
+    "target_time_fraction": 0.85
+  },
+  "status": "external intrinsic-probe prototype; not a proof",
+  "summary": {
+    "filtered_profile": {
+      "affine_probe_covariance_relative_error": {
+        "count": 12,
+        "mean": 2.612333902122051e-16,
+        "median": 2.0139129794752396e-16,
+        "std": 1.7151068235055797e-16
+      },
+      "coordinate_pulled_relative_error": {
+        "count": 12,
+        "mean": 302.45565824468275,
+        "median": 51.725066952396396,
+        "std": 553.0502390256219
+      },
+      "interior_count": {
+        "count": 12,
+        "mean": 683.0,
+        "median": 685.0,
+        "std": 34.99285641384538
+      },
+      "local_affine_fit_relative_error": {
+        "count": 12,
+        "mean": 0.3090013172105776,
+        "median": 0.3126503073287343,
+        "std": 0.04411491504666109
+      },
+      "local_jacobian_condition": {
+        "count": 12,
+        "mean": 94.8958526141992,
+        "median": 68.96919045475472,
+        "std": 112.18947418710843
+      },
+      "minimum_row_coverage": {
+        "count": 12,
+        "mean": 0.00040597620486176373,
+        "median": 0.0,
+        "std": 0.0013464707453389282
+      },
+      "minimum_support_coverage": {
+        "count": 12,
+        "mean": 0.00014911448565397976,
+        "median": 0.0,
+        "std": 0.0004945567997210839
+      },
+      "order_side_gate_success_rate": 0.0,
+      "pairing_relative_error": {
+        "count": 12,
+        "mean": 1.0283629964588208,
+        "median": 1.0087077885103986,
+        "std": 0.04371717180611395
+      },
+      "prototype_gate_success_rate": 0.0,
+      "prototype_gate_successes": 0,
+      "relabeling_subspace_relative_error": {
+        "count": 12,
+        "mean": 9.738310489423113e-15,
+        "median": 8.959486235765548e-15,
+        "std": 2.455937924381474e-15
+      },
+      "relative_boundary_gap": {
+        "count": 12,
+        "mean": 0.11158422796119943,
+        "median": 0.09181382620440676,
+        "std": 0.07657882084006438
+      },
+      "retarded_shell_count": {
+        "count": 12,
+        "mean": 2.0833333333333335,
+        "median": 0.0,
+        "std": 6.034046919126683
+      },
+      "retarded_shell_nonempty_rate": 0.25,
+      "retarded_shell_rank_capable_rate": 0.08333333333333333,
+      "row_coverage_success_rate": 0.0,
+      "samples": 12,
+      "signature_success_rate": 0.5833333333333334,
+      "signature_successes": 7,
+      "support_coverage_success_rate": 0.0,
+      "target_interior_rate": 1.0
+    },
+    "operator_svd": {
+      "affine_probe_covariance_relative_error": {
+        "count": 12,
+        "mean": 2.1620690865072184e-15,
+        "median": 1.4420691628195931e-15,
+        "std": 2.185182096291892e-15
+      },
+      "coordinate_pulled_relative_error": {
+        "count": 12,
+        "mean": 2145.148169033921,
+        "median": 759.4541872456998,
+        "std": 4219.802785016688
+      },
+      "interior_count": {
+        "count": 12,
+        "mean": 683.0,
+        "median": 685.0,
+        "std": 34.99285641384538
+      },
+      "local_affine_fit_relative_error": {
+        "count": 12,
+        "mean": 0.7571701612963969,
+        "median": 0.7176282097479378,
+        "std": 0.23509035232733966
+      },
+      "local_jacobian_condition": {
+        "count": 12,
+        "mean": 88.95681287498002,
+        "median": 38.34818799256109,
+        "std": 119.4427171143558
+      },
+      "minimum_row_coverage": {
+        "count": 12,
+        "mean": 0.002586920097059902,
+        "median": 0.0,
+        "std": 0.008579843324577468
+      },
+      "minimum_support_coverage": {
+        "count": 12,
+        "mean": 0.00019467750307640368,
+        "median": 0.0,
+        "std": 0.00064567223282769
+      },
+      "order_side_gate_success_rate": 0.0,
+      "pairing_relative_error": {
+        "count": 12,
+        "mean": 6.09323959350219,
+        "median": 2.2697754744008356,
+        "std": 6.83528768510033
+      },
+      "prototype_gate_success_rate": 0.0,
+      "prototype_gate_successes": 0,
+      "relabeling_subspace_relative_error": {
+        "count": 12,
+        "mean": 1.2499372886008108e-14,
+        "median": 1.111376476461377e-14,
+        "std": 4.7140145550758595e-15
+      },
+      "relative_boundary_gap": {
+        "count": 12,
+        "mean": 0.03811024590148188,
+        "median": 0.03196207192494035,
+        "std": 0.016685368402662742
+      },
+      "retarded_shell_count": {
+        "count": 12,
+        "mean": 2.0833333333333335,
+        "median": 0.0,
+        "std": 6.034046919126683
+      },
+      "retarded_shell_nonempty_rate": 0.25,
+      "retarded_shell_rank_capable_rate": 0.08333333333333333,
+      "row_coverage_success_rate": 0.0,
+      "samples": 12,
+      "signature_success_rate": 0.3333333333333333,
+      "signature_successes": 4,
+      "support_coverage_success_rate": 0.0,
+      "target_interior_rate": 1.0
+    },
+    "profile_pca": {
+      "affine_probe_covariance_relative_error": {
+        "count": 12,
+        "mean": 9.79318498448494e-16,
+        "median": 2.0630520995963233e-16,
+        "std": 1.5810230758738895e-15
+      },
+      "coordinate_pulled_relative_error": {
+        "count": 12,
+        "mean": 1702.6227863823299,
+        "median": 10.321113991330519,
+        "std": 5361.982062092479
+      },
+      "interior_count": {
+        "count": 12,
+        "mean": 683.0,
+        "median": 685.0,
+        "std": 34.99285641384538
+      },
+      "local_affine_fit_relative_error": {
+        "count": 12,
+        "mean": 0.3035644850547768,
+        "median": 0.31106975193549125,
+        "std": 0.04586821531904824
+      },
+      "local_jacobian_condition": {
+        "count": 12,
+        "mean": 179.43611404282146,
+        "median": 48.178659570907286,
+        "std": 402.79808151347027
+      },
+      "minimum_row_coverage": {
+        "count": 12,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "minimum_support_coverage": {
+        "count": 12,
+        "mean": 0.0,
+        "median": 0.0,
+        "std": 0.0
+      },
+      "order_side_gate_success_rate": 0.0,
+      "pairing_relative_error": {
+        "count": 12,
+        "mean": 1.0303793739714655,
+        "median": 1.0145661735806095,
+        "std": 0.04072427265517799
+      },
+      "prototype_gate_success_rate": 0.0,
+      "prototype_gate_successes": 0,
+      "relabeling_subspace_relative_error": {
+        "count": 12,
+        "mean": 4.526700906186723e-15,
+        "median": 2.8989571559210706e-15,
+        "std": 3.084802996956123e-15
+      },
+      "relative_boundary_gap": {
+        "count": 12,
+        "mean": 0.11158422796119943,
+        "median": 0.09181382620440676,
+        "std": 0.07657882084006438
+      },
+      "retarded_shell_count": {
+        "count": 12,
+        "mean": 2.0833333333333335,
+        "median": 0.0,
+        "std": 6.034046919126683
+      },
+      "retarded_shell_nonempty_rate": 0.25,
+      "retarded_shell_rank_capable_rate": 0.08333333333333333,
+      "row_coverage_success_rate": 0.0,
+      "samples": 12,
+      "signature_success_rate": 0.0,
+      "signature_successes": 0,
+      "support_coverage_success_rate": 0.0,
+      "target_interior_rate": 1.0
+    }
+  }
+}

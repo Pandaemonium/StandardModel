@@ -1,0 +1,368 @@
+{
+  "affine_and_causal_controls_use_embedding_coordinates": true,
+  "construction_uses_embedding_coordinates": false,
+  "density_is_supplied": true,
+  "dimension_is_supplied": true,
+  "global_interval_endpoints_are_supplied": true,
+  "initialization_uses_order_derived_johnston_embedding": true,
+  "metric_scores_opened": false,
+  "rank_selection_uses_only_heldout_order_derived_distances": true,
+  "samples": [
+    {
+      "baseline_affine_fit_median": 0.11884788181264111,
+      "best_heldout_causal_mse": 0.035231427404233476,
+      "carrier_count": 383,
+      "causal_heldout_pairs": 511,
+      "causal_sensitivity": 0.9093789607097592,
+      "causal_specificity": 0.9588992602011328,
+      "causal_training_pairs": 7379,
+      "noncausal_heldout_pairs": 1200,
+      "noncausal_penalty": 0.0,
+      "noncausal_training_pairs": 4800,
+      "passes_factorization_gate": false,
+      "passes_geometry_gate": false,
+      "rank_heldout_causal_mse": {
+        "1": 0.23798066128233883,
+        "2": 0.05464028809372808,
+        "3": 0.04093649874963762,
+        "4": 0.03620066245435779,
+        "5": 0.035231427404233476
+      },
+      "rank_heldout_causal_relative_rmse": {
+        "1": 0.48783261605015593,
+        "2": 0.23375262157616133,
+        "3": 0.20232770138969508,
+        "4": 0.19026471678784218,
+        "5": 0.18770036602051013
+      },
+      "rank_selection_threshold": 0.03759542204097007,
+      "selected_converged": false,
+      "selected_heldout_causal_relative_rmse": 0.19026471678784218,
+      "selected_heldout_noncausal_margin_relative_rmse": 0.10681895442985208,
+      "selected_heldout_noncausal_violation_fraction": 0.1025,
+      "selected_iterations": 400,
+      "selected_objective": 0.03104196193897337,
+      "selected_spatial_rank": 4,
+      "shared_affine_fit_maximum": 0.5518318290176801,
+      "shared_affine_fit_median": 0.4972156972575754,
+      "shared_condition_median": 2.768534109271288,
+      "shared_rank_four_fraction": 1.0
+    },
+    {
+      "baseline_affine_fit_median": 0.10203333648553785,
+      "best_heldout_causal_mse": 0.016805002704953047,
+      "carrier_count": 319,
+      "causal_heldout_pairs": 306,
+      "causal_sensitivity": 0.9036927073668584,
+      "causal_specificity": 0.9587415281146867,
+      "causal_training_pairs": 5083,
+      "noncausal_heldout_pairs": 1200,
+      "noncausal_penalty": 0.0,
+      "noncausal_training_pairs": 4800,
+      "passes_factorization_gate": false,
+      "passes_geometry_gate": false,
+      "rank_heldout_causal_mse": {
+        "1": 0.033777760409853974,
+        "2": 0.022831354515407135,
+        "3": 0.019691492340072763,
+        "4": 0.017226134071236784,
+        "5": 0.016805002704953047
+      },
+      "rank_heldout_causal_relative_rmse": {
+        "1": 0.18378726944446935,
+        "2": 0.15110047821038533,
+        "3": 0.14032637791973668,
+        "4": 0.13124836788027797,
+        "5": 0.12963411088503307
+      },
+      "rank_selection_threshold": 0.0187199042608464,
+      "selected_converged": true,
+      "selected_heldout_causal_relative_rmse": 0.13124836788027797,
+      "selected_heldout_noncausal_margin_relative_rmse": 0.0803839562998246,
+      "selected_heldout_noncausal_violation_fraction": 0.0975,
+      "selected_iterations": 363,
+      "selected_objective": 0.018675902057151597,
+      "selected_spatial_rank": 4,
+      "shared_affine_fit_maximum": 0.5307193395274555,
+      "shared_affine_fit_median": 0.49301919985911746,
+      "shared_condition_median": 2.4323848772744237,
+      "shared_rank_four_fraction": 1.0
+    },
+    {
+      "baseline_affine_fit_median": 0.11331045624697264,
+      "best_heldout_causal_mse": 0.04339525730412222,
+      "carrier_count": 410,
+      "causal_heldout_pairs": 681,
+      "causal_sensitivity": 0.9274176179194487,
+      "causal_specificity": 0.9563584252922906,
+      "causal_training_pairs": 8605,
+      "noncausal_heldout_pairs": 1200,
+      "noncausal_penalty": 0.0,
+      "noncausal_training_pairs": 4800,
+      "passes_factorization_gate": false,
+      "passes_geometry_gate": false,
+      "rank_heldout_causal_mse": {
+        "1": 0.0982171754574218,
+        "2": 0.07089079074903107,
+        "3": 0.04778244460143065,
+        "4": 0.04373429822879352,
+        "5": 0.04339525730412222
+      },
+      "rank_heldout_causal_relative_rmse": {
+        "1": 0.3133961956652023,
+        "2": 0.2662532455183055,
+        "3": 0.21859195914175492,
+        "4": 0.2091274688528351,
+        "5": 0.20831528341464103
+      },
+      "rank_selection_threshold": 0.046043630849352604,
+      "selected_converged": true,
+      "selected_heldout_causal_relative_rmse": 0.2091274688528351,
+      "selected_heldout_noncausal_margin_relative_rmse": 0.1167064308573591,
+      "selected_heldout_noncausal_violation_fraction": 0.105,
+      "selected_iterations": 400,
+      "selected_objective": 0.04190906890621589,
+      "selected_spatial_rank": 4,
+      "shared_affine_fit_maximum": 0.5795169595224512,
+      "shared_affine_fit_median": 0.5380695639372141,
+      "shared_condition_median": 2.3163221642421084,
+      "shared_rank_four_fraction": 1.0
+    }
+  ],
+  "selected_penalty_key": "noncausal_penalty=0.000000",
+  "selected_penalty_summary": {
+    "baseline_affine_fit_median": {
+      "count": 3,
+      "mean": 0.11139722484838388,
+      "median": 0.11331045624697264,
+      "std": 0.006996550313200166
+    },
+    "carrier_count": {
+      "count": 3,
+      "mean": 370.6666666666667,
+      "median": 383.0,
+      "std": 38.16047984790315
+    },
+    "causal_heldout_pairs": {
+      "count": 3,
+      "mean": 499.3333333333333,
+      "median": 511.0,
+      "std": 153.31521632100174
+    },
+    "causal_sensitivity": {
+      "count": 3,
+      "mean": 0.9134964286653554,
+      "median": 0.9093789607097592,
+      "std": 0.010113786035444352
+    },
+    "causal_specificity": {
+      "count": 3,
+      "mean": 0.9579997378693701,
+      "median": 0.9587415281146867,
+      "std": 0.0011623682963481487
+    },
+    "causal_training_pairs": {
+      "count": 3,
+      "mean": 7022.333333333333,
+      "median": 7379.0,
+      "std": 1459.8012041218337
+    },
+    "factorization_gate_success_rate": 0.0,
+    "geometry_gate_success_rate": 0.0,
+    "noncausal_heldout_pairs": {
+      "count": 3,
+      "mean": 1200.0,
+      "median": 1200.0,
+      "std": 0.0
+    },
+    "noncausal_penalty": 0.0,
+    "noncausal_training_pairs": {
+      "count": 3,
+      "mean": 4800.0,
+      "median": 4800.0,
+      "std": 0.0
+    },
+    "samples": 3,
+    "selected_convergence_rate": 0.6666666666666666,
+    "selected_heldout_causal_relative_rmse": {
+      "count": 3,
+      "mean": 0.17688018450698506,
+      "median": 0.19026471678784218,
+      "std": 0.03317275860658779
+    },
+    "selected_heldout_noncausal_margin_relative_rmse": {
+      "count": 3,
+      "mean": 0.10130311386234525,
+      "median": 0.10681895442985208,
+      "std": 0.0153329473655111
+    },
+    "selected_heldout_noncausal_violation_fraction": {
+      "count": 3,
+      "mean": 0.10166666666666667,
+      "median": 0.1025,
+      "std": 0.0031180478223116147
+    },
+    "selected_spatial_rank": {
+      "count": 3,
+      "mean": 4.0,
+      "median": 4.0,
+      "std": 0.0
+    },
+    "selected_spatial_rank_counts": {
+      "4": 3
+    },
+    "shared_affine_fit_median": {
+      "count": 3,
+      "mean": 0.5094348203513023,
+      "median": 0.4972156972575754,
+      "std": 0.020320171468715537
+    },
+    "shared_condition_median": {
+      "count": 3,
+      "mean": 2.5057470502626065,
+      "median": 2.4323848772744237,
+      "std": 0.1917644685995983
+    },
+    "shared_rank_four_fraction": {
+      "count": 3,
+      "mean": 1.0,
+      "median": 1.0,
+      "std": 0.0
+    }
+  },
+  "selection_rule": "maximum geometry and factorization gate rates, then held-out causal error, noncausal violation, and smaller penalty",
+  "settings": {
+    "affine_radius": 0.15,
+    "anchor_half_time": 0.25,
+    "density": 30557.749073643907,
+    "dimension": 4,
+    "duration": 1.0,
+    "events_including_endpoints": 4000,
+    "heldout_fraction": 0.2,
+    "maximum_affine_error": 0.25,
+    "maximum_affine_targets": 12,
+    "maximum_causal_error": 0.25,
+    "maximum_iterations": 400,
+    "maximum_noncausal_pairs": 6000,
+    "maximum_noncausal_violation_fraction": 0.05,
+    "minimum_causal_sensitivity": 0.9,
+    "minimum_causal_specificity": 0.9,
+    "minimum_heldout_open_count": 2,
+    "minimum_lightcone_count": 6,
+    "noncausal_penalties": [
+      0.0
+    ],
+    "rank_candidates": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "realizations": 3,
+    "seed": 20260817
+  },
+  "status": "frozen held-out shared-factorization evaluation",
+  "summaries": {
+    "noncausal_penalty=0.000000": {
+      "baseline_affine_fit_median": {
+        "count": 3,
+        "mean": 0.11139722484838388,
+        "median": 0.11331045624697264,
+        "std": 0.006996550313200166
+      },
+      "carrier_count": {
+        "count": 3,
+        "mean": 370.6666666666667,
+        "median": 383.0,
+        "std": 38.16047984790315
+      },
+      "causal_heldout_pairs": {
+        "count": 3,
+        "mean": 499.3333333333333,
+        "median": 511.0,
+        "std": 153.31521632100174
+      },
+      "causal_sensitivity": {
+        "count": 3,
+        "mean": 0.9134964286653554,
+        "median": 0.9093789607097592,
+        "std": 0.010113786035444352
+      },
+      "causal_specificity": {
+        "count": 3,
+        "mean": 0.9579997378693701,
+        "median": 0.9587415281146867,
+        "std": 0.0011623682963481487
+      },
+      "causal_training_pairs": {
+        "count": 3,
+        "mean": 7022.333333333333,
+        "median": 7379.0,
+        "std": 1459.8012041218337
+      },
+      "factorization_gate_success_rate": 0.0,
+      "geometry_gate_success_rate": 0.0,
+      "noncausal_heldout_pairs": {
+        "count": 3,
+        "mean": 1200.0,
+        "median": 1200.0,
+        "std": 0.0
+      },
+      "noncausal_penalty": 0.0,
+      "noncausal_training_pairs": {
+        "count": 3,
+        "mean": 4800.0,
+        "median": 4800.0,
+        "std": 0.0
+      },
+      "samples": 3,
+      "selected_convergence_rate": 0.6666666666666666,
+      "selected_heldout_causal_relative_rmse": {
+        "count": 3,
+        "mean": 0.17688018450698506,
+        "median": 0.19026471678784218,
+        "std": 0.03317275860658779
+      },
+      "selected_heldout_noncausal_margin_relative_rmse": {
+        "count": 3,
+        "mean": 0.10130311386234525,
+        "median": 0.10681895442985208,
+        "std": 0.0153329473655111
+      },
+      "selected_heldout_noncausal_violation_fraction": {
+        "count": 3,
+        "mean": 0.10166666666666667,
+        "median": 0.1025,
+        "std": 0.0031180478223116147
+      },
+      "selected_spatial_rank": {
+        "count": 3,
+        "mean": 4.0,
+        "median": 4.0,
+        "std": 0.0
+      },
+      "selected_spatial_rank_counts": {
+        "4": 3
+      },
+      "shared_affine_fit_median": {
+        "count": 3,
+        "mean": 0.5094348203513023,
+        "median": 0.4972156972575754,
+        "std": 0.020320171468715537
+      },
+      "shared_condition_median": {
+        "count": 3,
+        "mean": 2.5057470502626065,
+        "median": 2.4323848772744237,
+        "std": 0.1917644685995983
+      },
+      "shared_rank_four_fraction": {
+        "count": 3,
+        "mean": 1.0,
+        "median": 1.0,
+        "std": 0.0
+      }
+    }
+  }
+}

@@ -130,33 +130,62 @@ def _zotero_data(payload: dict) -> dict | None:
     return None
 
 
-def zotero_add(arxiv_id: str, collection: str, tags: list[str]) -> dict | None:
-    """Add (idempotently) via the zotero_write MCP server; return the parsed
-    JSON-RPC content payload, or None on failure."""
-    args = {"arxiv_id": arxiv_id, "collection_key": collection, "tags": tags}
+def _zotero_call(tool: str, args: dict) -> dict | None:
+    """Call one Zotero MCP tool with a deterministic UTF-8 pipe."""
     with tempfile.NamedTemporaryFile(
         "w", suffix=".json", delete=False, encoding="utf-8"
     ) as fh:
         json.dump(args, fh)
         args_path = fh.name
+    env = os.environ.copy()
+    env["PYTHONUTF8"] = "1"
     try:
         proc = subprocess.run(
-            [sys.executable, MCP_CALL, "zotero_write", "zotero_add_item_by_arxiv",
+            [sys.executable, MCP_CALL, "zotero_write", tool,
              "--args-file", args_path],
             cwd=REPO_ROOT, text=True, encoding="utf-8",
+            errors="replace", env=env,
             stdout=subprocess.PIPE, stderr=subprocess.PIPE,
         )
     finally:
         os.unlink(args_path)
     if proc.returncode != 0:
-        print(f"  ! zotero add failed for {arxiv_id}: {proc.stderr.strip()}", flush=True)
+        print(f"  ! Zotero tool {tool} failed: {proc.stderr.strip()}", flush=True)
         return None
     try:
         return json.loads(proc.stdout.strip())
     except json.JSONDecodeError:
-        print(f"  ! could not parse zotero response for {arxiv_id}:\n{proc.stdout[:400]}",
+        print(f"  ! could not parse Zotero response from {tool}:\n{proc.stdout[:400]}",
               flush=True)
         return None
+
+
+def zotero_find_existing(arxiv_id: str, title: str) -> dict | None:
+    """Find an already-created Zotero item by exact normalized arXiv id.
+
+    This recovers safely when a previous run wrote Zotero but failed before the
+    corresponding Neo4j node was committed.
+    """
+    payload = _zotero_call("zotero_search_items", {"query": title, "limit": 25})
+    if not payload:
+        return None
+    target = normalize_arxiv(arxiv_id)
+    for result in payload.get("results", []):
+        data = result.get("data") if isinstance(result, dict) else None
+        if not isinstance(data, dict):
+            continue
+        archive_id = normalize_arxiv(str(data.get("archiveLocation") or ""))
+        url = str(data.get("url") or "")
+        if archive_id == target or re.search(rf"(?:abs/|arxiv:){re.escape(target)}(?:v\d+)?$", url,
+                                             flags=re.IGNORECASE):
+            return result
+    return None
+
+
+def zotero_add(arxiv_id: str, collection: str, tags: list[str]) -> dict | None:
+    """Add via the zotero_write MCP server and return its content payload."""
+    args = {"arxiv_id": arxiv_id, "collection_key": collection, "tags": tags}
+    return _zotero_call("zotero_add_item_by_arxiv", args)
 
 
 def existing_paper(session, arxiv_id: str, doi: str):
@@ -261,17 +290,23 @@ def main() -> int:
                 if ns.dry_run:
                     print(f"would-add  {arxiv_id}: {meta.get('title', '(no metadata)')}", flush=True)
                     continue
-                payload = zotero_add(arxiv_id, collection, tags)
-                if payload is None:
-                    failed += 1
-                    continue
-                key = _scan_zotero_key(payload)
+                prior = zotero_find_existing(arxiv_id, meta.get("title") or arxiv_id)
+                if prior:
+                    key = prior.get("key") or (prior.get("data") or {}).get("key")
+                    zdata = prior.get("data") or {}
+                    print(f"reuse  {arxiv_id}: existing Zotero item [{key}]", flush=True)
+                else:
+                    payload = zotero_add(arxiv_id, collection, tags)
+                    if payload is None:
+                        failed += 1
+                        continue
+                    key = _scan_zotero_key(payload)
+                    zdata = _zotero_data(payload) or {}
                 if not key:
                     print(f"  ! no Zotero key returned for {arxiv_id}; skipping node", flush=True)
                     failed += 1
                     continue
                 # Prefer Zotero's normalized metadata; fall back to the arXiv fetch.
-                zdata = _zotero_data(payload) or {}
                 node = {
                     "paper_key": key,
                     "arxiv_id": arxiv_id,
