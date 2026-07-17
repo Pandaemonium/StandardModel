@@ -2,7 +2,7 @@
 
 Date: 2026-07-17
 Work item: `GRAV-ORDER-OPERATOR-001`
-Status: submitted
+Status: integrated
 
 ## Target
 
@@ -63,6 +63,26 @@ any statement changes, remaining proof holes, and assumptions used.
   null-link semantics: path extraction does not itself prove that the supplied
   primitive relation is a continuum null relation.
 
+## Harvest and integration
+
+Aristotle reported `COMPLETE_WITH_ERRORS` because its final repository push did
+not complete, but the returned source solved all five targets without changing
+their mathematical content. The returned proof was reviewed and ported to:
+
+`PhysicsSM/Draft/NullEdge/FiniteKernelPathExtraction.lean`
+
+The production port replaces Boolean inequality notation in the returned public
+statements with proposition-level `ne`, preserves the target/source orientation,
+and includes axiom guards. It contains no proof holes. The original standalone
+file is retained unchanged as the submitted task artifact.
+
+Focused verification passed:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdge/FiniteKernelPathExtraction.lean
+lake build PhysicsSM.Draft.NullEdge.FiniteKernelPathExtraction
+```
+
 ## Operations note
 
 The document-index refresh attempted immediately before context-pack creation
@@ -80,5 +100,5 @@ aristotle:
   expected_module: FiniteKernelPathExtraction.PathExtraction
   submission_project: AgentTasks/aristotle-submit/finite-kernel-path-extraction-20260717-project
   output_dir: AgentTasks/aristotle-output/16309cb8-603b-4074-a0c7-1d1cc9b30468
-  status: submitted
+  status: integrated
 ```

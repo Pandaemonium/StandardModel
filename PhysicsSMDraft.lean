@@ -965,6 +965,8 @@ import PhysicsSM.Draft.JordanCliffordExteriorCoverAction
 import PhysicsSM.Draft.JordanCliffordBlockKernelCore
 import PhysicsSM.Draft.JordanCliffordExactExteriorKernel
 import PhysicsSM.Draft.JordanCliffordH2BlockStabilizer
+import PhysicsSM.Draft.NullEdge.FiniteKernelPathExtraction
+import PhysicsSM.Draft.NullEdge.HiggsRetardedPathSemantics
 
 /-!
 # PhysicsSM draft root
