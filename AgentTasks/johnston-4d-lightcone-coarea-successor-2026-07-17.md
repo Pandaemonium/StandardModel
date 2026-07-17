@@ -91,6 +91,16 @@ The first four steps may initially use an abstract bounded continuous
 separate public theorem so an abstract radial lift is not mislabeled as a full
 Minkowski distribution theorem.
 
+Mathlib already provides the general-dimensional radial measure machinery in
+its additive-Haar sphere decomposition. Relevant declarations include
+`MeasureTheory.Measure.toSphere`,
+`MeasureTheory.Measure.measurePreserving_homeomorphUnitSphereProd`, and
+`MeasureTheory.integral_fun_norm_addHaar`; the last displays the radial density
+`r^(finrank-1)` explicitly. These APIs should be preferred over the
+two-dimensional `polarCoord` chart. The timelike substitution
+`t = sqrt(r^2+s)` remains a separate one-dimensional change-of-variables
+lemma.
+
 ## Scope split
 
 This successor proves an ensemble-expectation distributional limit only. It
