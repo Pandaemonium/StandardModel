@@ -2,7 +2,7 @@
 
 Date: 2026-07-17
 Work item: `GRAV-ORDER-OPERATOR-001`
-Status: submitted
+Status: integrated
 
 ## Target
 
@@ -94,5 +94,28 @@ aristotle:
   expected_module: JohnstonLightconeDelta.GaussianKernel
   submission_project: AgentTasks/aristotle-submit/johnston-4d-lightcone-delta-20260717-project
   output_dir: AgentTasks/aristotle-output/60ff4409-badc-44a5-9b52-78a82eac751c
-  status: submitted
+  status: integrated
 ```
+
+## Integration record
+
+Aristotle proved all five locked targets without changing any public
+definition, theorem statement, or hypothesis. The returned source contains no
+proof holes or added assumption declarations and replays locally under the
+pinned repository toolchain. The production port is:
+
+`PhysicsSM/Draft/NullEdge/Johnston4DLightconeDelta.lean`
+
+The production module adds build-enforced axiom guards. They report only
+`propext`, `Classical.choice`, and `Quot.sound`.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdge/Johnston4DLightconeDelta.lean
+lake build PhysicsSM.Draft.NullEdge.Johnston4DLightconeDelta
+```
+
+Both commands pass. The theorem remains explicitly scoped to the one-sided
+normal coordinate and the ensemble-expected link kernel; the coarea and random
+concentration gates remain open.

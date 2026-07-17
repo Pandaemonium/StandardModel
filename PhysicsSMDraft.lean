@@ -970,6 +970,7 @@ import PhysicsSM.Draft.NullEdge.HiggsRetardedPathSemantics
 import PhysicsSM.Draft.NullEdge.FiniteDiagonalCausalResolvent
 import PhysicsSM.Draft.NullEdge.FiniteDiagonalCausalSupport
 import PhysicsSM.Draft.NullEdge.HiggsDoubletRadialCurvature
+import PhysicsSM.Draft.NullEdge.Johnston4DLightconeDelta
 import PhysicsSM.Draft.NullEdge.Johnston3Plus1ScalarNormalization
 
 /-!
