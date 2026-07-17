@@ -37,6 +37,13 @@ Provenance: the value `beta = 1/2` is motivated by D. M. T. Benincasa and
 F. Dowker, "The Scalar Curvature of a Causal Set," arXiv:1001.2725. No source
 implementation or proof text was copied. Claim grade: `M [orig/comp]` for the
 finite algebra and `T|H [import]` for its continuum reading.
+
+The base-to-target scattering convention is also compared with N. X,
+F. Dowker, and S. Surya, "Scalar Field Green Functions on Causal Sets,"
+arXiv:1701.07212. Relative to a base pair `(baseMassSq, baseXi)`, only the
+difference of the target and base effective mass-squared values is inserted.
+In four dimensions this distinguishes a minimal massless base from a
+conformal massless base with `baseXi = 1/6`.
 -/
 
 noncomputable section
@@ -57,6 +64,42 @@ def physicalCurvatureCoupling
 def countertermForTarget
     (operatorBeta targetXi : Real) : Real :=
   targetXi - operatorBeta
+
+/-- Residual constant-curvature insertion required to pass from one calibrated
+scalar kernel to another. -/
+def residualEffectiveMassSq
+    (baseMassSq baseXi targetMassSq targetXi curvatureValue : Real) : Real :=
+  (targetMassSq + targetXi * curvatureValue) -
+    (baseMassSq + baseXi * curvatureValue)
+
+/-- Adding the residual insertion to the base effective mass gives the target
+effective mass exactly. -/
+theorem baseEffectiveMass_add_residual_eq_target
+    (baseMassSq baseXi targetMassSq targetXi curvatureValue : Real) :
+    baseMassSq + baseXi * curvatureValue +
+        residualEffectiveMassSq baseMassSq baseXi
+          targetMassSq targetXi curvatureValue =
+      targetMassSq + targetXi * curvatureValue := by
+  unfold residualEffectiveMassSq
+  ring
+
+/-- Relative to a minimally coupled massless base, the residual coefficient is
+`targetMassSq + targetXi * R`. -/
+theorem residual_from_minimal_massless
+    (targetMassSq targetXi curvatureValue : Real) :
+    residualEffectiveMassSq 0 0 targetMassSq targetXi curvatureValue =
+      targetMassSq + targetXi * curvatureValue := by
+  unfold residualEffectiveMassSq
+  ring
+
+/-- Relative to the four-dimensional conformally coupled massless base, the
+residual coefficient is `targetMassSq + (targetXi - 1/6) * R`. -/
+theorem residual_from_fourDimensional_conformal_massless
+    (targetMassSq targetXi curvatureValue : Real) :
+    residualEffectiveMassSq 0 (1 / 6) targetMassSq targetXi curvatureValue =
+      targetMassSq + (targetXi - 1 / 6) * curvatureValue := by
+  unfold residualEffectiveMassSq
+  ring
 
 /-- The target counterterm produces exactly the requested physical coupling. -/
 theorem physicalCurvatureCoupling_countertermForTarget
@@ -165,6 +208,10 @@ theorem curvatureSplit_nontrivial_propagator_degeneracy
 /-- info: 'PhysicsSM.Draft.NullEdge.HiggsCurvatureConventionBridge.benincasaDowker_conformal_counterterm' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms benincasaDowker_conformal_counterterm
+
+/-- info: 'PhysicsSM.Draft.NullEdge.HiggsCurvatureConventionBridge.residual_from_fourDimensional_conformal_massless' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms residual_from_fourDimensional_conformal_massless
 
 /-- info: 'PhysicsSM.Draft.NullEdge.HiggsCurvatureConventionBridge.curvatureSplit_nontrivial_propagator_degeneracy' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
