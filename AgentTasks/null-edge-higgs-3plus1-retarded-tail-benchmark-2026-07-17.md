@@ -171,6 +171,8 @@ Passing this gate would validate a free scalar retarded kernel with a supplied
 mass. It would not yet prove:
 
 - the gauge-invariant FMS remainder is controlled;
+- the gauge-invariant radial spectral measure is positive and free of
+  unwanted physical poles or cuts;
 - the Higgs mass is dynamically generated;
 - a curved-spacetime Hadamard state exists;
 - the full nonabelian doublet propagates by the same kernel;
