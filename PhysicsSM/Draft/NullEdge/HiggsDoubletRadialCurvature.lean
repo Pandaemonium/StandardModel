@@ -1,4 +1,5 @@
 import PhysicsSM.Draft.NullEdge.HiggsTangentDecomposition
+import PhysicsSM.Draft.NullEdge.HiggsRadialCurvature
 
 /-!
 # Standard-doublet Higgs radial curvature
@@ -85,6 +86,42 @@ theorem doubletPotential_eq_massTerm_add_interactions (lam v h : Real) :
   unfold radialMassSquared
   ring
 
+/-- Exact coordinate bridge to the one-component control: substitute both the
+vacuum and fluctuation by their standard-doublet coordinates. -/
+theorem doubletPotential_eq_oneComponent_rescaled (lam v h : Real) :
+    doubletPotentialDensity lam v (radialDoubletField v h) =
+      GeometryWeightedHiggsFunctional.radialPotentialDensity
+        lam (v / Real.sqrt 2)
+        (PhysicsSM.Draft.NullEdge.HiggsRadialCurvature.radialFluctuation
+          (v / Real.sqrt 2) (h / Real.sqrt 2)) := by
+  rw [doubletPotential_exact_expansion,
+    PhysicsSM.Draft.NullEdge.HiggsRadialCurvature.radialPotential_exact_expansion]
+  have hsq : (Real.sqrt 2) ^ 2 = (2 : Real) := Real.sq_sqrt (by norm_num)
+  have hsqrt : Real.sqrt 2 ≠ 0 := Real.sqrt_ne_zero'.mpr (by norm_num)
+  have hfour : (Real.sqrt 2) ^ 4 = (4 : Real) := by
+    calc
+      (Real.sqrt 2) ^ 4 = ((Real.sqrt 2) ^ 2) ^ 2 := by ring
+      _ = (2 : Real) ^ 2 := by rw [hsq]
+      _ = 4 := by norm_num
+  field_simp [hsqrt]
+  rw [hfour]
+  ring
+
+/-- The one-component mass parameter is twice the doublet mass parameter after
+rescaling the field coordinate; the kinetic coordinate rescaling supplies the
+compensating factor. -/
+theorem oneComponentMassSquared_rescaled (lam v : Real) :
+    PhysicsSM.Draft.NullEdge.HiggsRadialCurvature.radialMassSquared
+        lam (v / Real.sqrt 2) =
+      2 * radialMassSquared lam v := by
+  unfold PhysicsSM.Draft.NullEdge.HiggsRadialCurvature.radialMassSquared
+    radialMassSquared
+  have hsq : (Real.sqrt 2) ^ 2 = (2 : Real) := Real.sq_sqrt (by norm_num)
+  have hsqrt : Real.sqrt 2 ≠ 0 := Real.sqrt_ne_zero'.mpr (by norm_num)
+  field_simp [hsqrt]
+  rw [hsq]
+  ring
+
 /-- Positive quartic coupling and a nonzero electroweak vacuum give positive
 radial mass squared in the standard doublet normalization. -/
 theorem radialMassSquared_pos
@@ -106,6 +143,10 @@ theorem radialMassSquared_pos
 /-- info: 'PhysicsSM.Draft.NullEdge.HiggsDoubletRadialCurvature.doubletPotential_eq_massTerm_add_interactions' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms doubletPotential_eq_massTerm_add_interactions
+
+/-- info: 'PhysicsSM.Draft.NullEdge.HiggsDoubletRadialCurvature.doubletPotential_eq_oneComponent_rescaled' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms doubletPotential_eq_oneComponent_rescaled
 
 /-- info: 'PhysicsSM.Draft.NullEdge.HiggsDoubletRadialCurvature.radialMassSquared_pos' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
