@@ -27,6 +27,11 @@ The present finite model has the following kernel-checked inputs:
   tangents, with zero directions exactly at stabilizers;
 - the gauge-invariant radial observable is
   `O(H; H0) = ||H||^2 - ||H0||^2`;
+- at a nonzero standard doublet reference section, every fluctuation splits
+  into one real radial tangent plus one electroweak orbit tangent, with their
+  intersection equal to the electromagnetic stabilizer redundancy;
+- the leading radial observable annihilates every orbit tangent and extracts
+  exactly the radial coordinate times the vacuum value;
 - its exact finite expansion has linear, mixed, and quadratic terms;
 - the leading FMS response is a nonzero scalar multiple of the elementary
   radial response when the supplied vacuum is nonzero;
@@ -34,6 +39,11 @@ The present finite model has the following kernel-checked inputs:
   finite two-sided retarded resolvents on strict orders;
 - diagonal local physics changes causal-chain amplitudes but does not create
   support outside the primitive strict-past relation;
+- every nonzero positive matrix-power entry supplies an explicit primitive
+  path of the same length, so every nonzero uniform massive summand has an
+  explicit strict-past history;
+- a diagonal-plus-nilpotent massless kernel `b * I + N` has an exact finite
+  two-sided massive resolvent, including a truncated `exp(L)` witness;
 - the local nonminimal action response separates volume and curvature channels.
 
 These statements do not yet define a continuum quantum field or particle.
@@ -59,7 +69,9 @@ scattering series applies. The abstract strict-past algebra accommodates
 functions of either primitive once their support convention is stated, but it
 does not select `C`, `L`, `exp(L)`, or their normalization. In particular, the
 identity term in `exp(L)` requires a diagonal-support convention separate from
-the present strictly off-diagonal kernel.
+the present strictly off-diagonal kernel. Treat that identity term as a local
+zero-length contact contribution. Prove entrywise that the response minus its
+diagonal contact coefficient remains supported in the strict past.
 
 For
 
@@ -79,6 +91,17 @@ The theorem must state the density/nonlocality scaling, boundary treatment,
 probability mode if sprinklings are random, operator normalization, and whether
 the convergence is pointwise, in probability, in expectation, or
 distributional. Distributional convergence is the preferred primary target.
+The mass insertion must also lock density units: literature formulas use a
+coefficient of the form `m^2 / rho`, so a finite parameter named `massSq` is not
+yet a physical mass squared unless the kernel normalization proves where the
+density factor lives.
+
+Audit curvature twice: first through the complete curved calibration of the
+base kernel `K_n[C_n, mu_n]`, and only then through the explicit `xi * R_n`
+insertion. Curved causal-set controls indicate that order and density can carry
+curvature while retaining flat jump amplitudes; the explicit insertion must not
+double-count that built-in response. At quantum level, state the
+renormalization scale and scheme for `xi` or derive its running.
 
 Kill condition: a stable nonvanishing discrepancy in the test-function pairing
 after all pre-registered finite-size, boundary, and normalization controls.
@@ -104,6 +127,10 @@ the mixed and quadratic FMS channels. A continuum Higgs claim requires:
 - convergence of `Z_n` under a declared field normalization;
 - a proved bound or convergent description of `Remainder_n`;
 - compatibility with the operator limit in H1.
+
+Do not promote this radial theorem to the full electroweak doublet. A full
+claim additionally requires path-ordered nonabelian transport, interaction
+control, and higher FMS terms.
 
 The leading finite scaling alone is not evidence that the full composite and
 elementary propagators share a continuum pole.
@@ -173,5 +200,17 @@ Until H1-H4 are passed, the defensible ontology is:
   Set*, arXiv:1001.2725.
 - Axel Maas and Rene Sondenheimer, *Gauge-invariant description of the Higgs
   resonance and its phenomenological implications*, arXiv:2009.06671.
+- Andrea Quadri, *Gauge-Invariant Quantum Fields*, arXiv:2402.01016.
 - Stefan Hollands and Robert M. Wald, *Quantum fields in curved spacetime*,
   arXiv:1401.2026.
+- Christopher Fewster and Rainer Verch, *Algebraic quantum field theory in
+  curved spacetimes*, arXiv:1504.00586.
+- Steven Johnston, *Particle propagators on discrete spacetime*,
+  arXiv:0806.3083.
+- Haye Hinrichsen and Arsim Kastrati, *Link-based causal set propagators in
+  (1+1) dimensions*, arXiv:2604.24812.
+- Arsim Kastrati and Haye Hinrichsen, *Numerical Evaluation of the Causal Set
+  Propagator in 2D Anti-de Sitter Spacetime*, arXiv:2504.12919.
+- Tommi Markkanen, Sami Nurmi, Arttu Rajantie, and Stephen Stopyra, *The 1-loop
+  effective potential for the Standard Model in curved spacetime*,
+  arXiv:1804.02020.
