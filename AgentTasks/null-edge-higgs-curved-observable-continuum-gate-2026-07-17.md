@@ -8,7 +8,7 @@ Status: pre-registered reconstruction gate
 
 What would be required to upgrade the finite statement
 
-> a gauge-invariant radial Higgs response is a weighted sum over causal chains
+> a gauge-invariant radial Higgs response is a weighted sum over causal histories
 
 to a continuum statement about a Higgs excitation in curved spacetime?
 
@@ -48,6 +48,18 @@ into a globally hyperbolic spacetime region, together with:
 - curvature estimators `R_n`;
 - bare mass and curvature-coupling conventions;
 - source and field sampling maps.
+
+Lock the dimension-dependent massless kernel before taking the limit.
+Johnston's original controls use causal-matrix chains in `1+1` dimensions and
+link-matrix paths in `3+1` dimensions. Hinrichsen and Kastrati's 2026 analysis
+(arXiv:2604.24812) instead gives asymptotic and numerical evidence that a
+normalized `exp(L)` - a factorially weighted sum of link paths - can reproduce
+the averaged `1+1` massless retarded kernel, after which the usual massive
+scattering series applies. The abstract strict-past algebra accommodates
+functions of either primitive once their support convention is stated, but it
+does not select `C`, `L`, `exp(L)`, or their normalization. In particular, the
+identity term in `exp(L)` requires a diagonal-support convention separate from
+the present strictly off-diagonal kernel.
 
 For
 
@@ -146,7 +158,7 @@ Until H1-H4 are passed, the defensible ontology is:
 
 - a Higgs configuration is local field data on events;
 - its covariant variation is link-supported;
-- its retarded response is a sum over causal chains;
+- its retarded response is a sum over causal histories;
 - its physical radial channel is gauge-invariant and composite;
 - its vacuum can be link-parallel while changing fermion, gauge, and gravity
   operators;
