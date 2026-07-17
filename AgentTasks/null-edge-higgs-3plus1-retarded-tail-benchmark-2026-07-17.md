@@ -33,6 +33,37 @@ G_ret(tau) = delta(tau^2)/(2*pi)
 The delta contribution must be tested distributionally. No pointwise error at
 the light cone is admissible as the primary metric.
 
+## Analytic massless precursor
+
+For two fixed future-timelike endpoints in four-dimensional Minkowski space,
+the Poisson probability that their causal interval is empty is
+
+```text
+E[L] = exp(-rho * V),
+V = pi * tau^4 / 24.
+```
+
+Writing `s = tau^2`, Johnston's normalized expected link kernel is therefore
+
+```text
+k_rho(s) = sqrt(rho)/(2*pi*sqrt(6))
+           * exp(-(rho*pi/24) * s^2),    s > 0.
+```
+
+The focused Lean task
+`AgentTasks/johnston-4d-lightcone-delta-aristotle-2026-07-17.md` locks the
+analytic precursor: positivity, exact one-sided mass
+`integral k_rho(s) ds = 1/(2*pi)`, decay at every `s != 0`, and convergence
+against every bounded continuous test function of `s`. This is the normal-
+coordinate delta sequence expected from the continuum light-cone term.
+
+That result is necessary but not sufficient for this benchmark. The full
+spacetime statement must additionally derive the future-cone
+coarea/disintegration factor, retain angular and radial test-function
+dependence, and establish ensemble concentration rather than only the expected
+link probability. None of those three steps may be inferred from the
+one-variable theorem.
+
 ## Locked finite kernel
 
 For each Poisson sprinkling of density `rho` into a fixed physical
