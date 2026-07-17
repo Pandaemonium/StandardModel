@@ -2,7 +2,7 @@
 
 Date: 2026-07-17
 Work item: `GRAV-ORDER-OPERATOR-001`
-Status: submitted
+Status: integrated
 
 ## Target
 
@@ -68,6 +68,25 @@ lake env lean FiniteDiagonalCausalResolvent/DiagonalResolvent.lean
 Return the completed target file and a short report listing solved targets,
 any statement changes, remaining proof holes, and assumptions used.
 
+## Harvest and integration
+
+Aristotle completed all five targets. An in-progress snapshot already contained
+the final proof bodies; the completed-project dry-run scan subsequently found
+no executable placeholders. The proofs were reviewed and ported without public
+statement changes to:
+
+`PhysicsSM/Draft/NullEdge/FiniteDiagonalCausalResolvent.lean`
+
+The production module adds project provenance, clarifies that the identity term
+is a contact convention rather than positive-length propagation, and carries
+build-enforced axiom guards. It contains no proof holes. Focused verification
+passed:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdge/FiniteDiagonalCausalResolvent.lean
+lake build PhysicsSM.Draft.NullEdge.FiniteDiagonalCausalResolvent
+```
+
 ## Aristotle metadata
 
 ```yaml
@@ -78,5 +97,5 @@ aristotle:
   expected_module: FiniteDiagonalCausalResolvent.DiagonalResolvent
   submission_project: AgentTasks/aristotle-submit/finite-diagonal-causal-resolvent-20260717-project
   output_dir: AgentTasks/aristotle-output/18ad01bc-dd21-4cbe-9424-81ff8451d03f
-  status: submitted
+  status: integrated
 ```

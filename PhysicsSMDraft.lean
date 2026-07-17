@@ -967,6 +967,7 @@ import PhysicsSM.Draft.JordanCliffordExactExteriorKernel
 import PhysicsSM.Draft.JordanCliffordH2BlockStabilizer
 import PhysicsSM.Draft.NullEdge.FiniteKernelPathExtraction
 import PhysicsSM.Draft.NullEdge.HiggsRetardedPathSemantics
+import PhysicsSM.Draft.NullEdge.FiniteDiagonalCausalResolvent
 
 /-!
 # PhysicsSM draft root
