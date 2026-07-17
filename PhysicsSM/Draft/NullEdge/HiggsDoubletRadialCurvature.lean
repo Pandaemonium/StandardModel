@@ -47,6 +47,16 @@ def doubletPotentialDensity
 def radialMassSquared (lam v : Real) : Real :=
   2 * lam * v ^ 2
 
+/-- The standard-doublet potential is invariant under every unitary internal
+transformation, hence in particular under the supplied electroweak action. -/
+theorem doubletPotentialDensity_unitary
+    (lam v : Real) (g : Matrix.unitaryGroup (Fin 2) Complex)
+    (field : Fin 2 -> Complex) :
+    doubletPotentialDensity lam v (unitaryTransform g field) =
+      doubletPotentialDensity lam v field := by
+  unfold doubletPotentialDensity
+  rw [vectorNormSq_unitary]
+
 /-- The norm squared of the normalized radial doublet is `(v+h)^2/2`. -/
 theorem vectorNormSq_radialDoubletField (v h : Real) :
     vectorNormSq (radialDoubletField v h) = (v + h) ^ 2 / 2 := by
@@ -88,6 +98,10 @@ theorem radialMassSquared_pos
 /-- info: 'PhysicsSM.Draft.NullEdge.HiggsDoubletRadialCurvature.doubletPotential_exact_expansion' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms doubletPotential_exact_expansion
+
+/-- info: 'PhysicsSM.Draft.NullEdge.HiggsDoubletRadialCurvature.doubletPotentialDensity_unitary' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms doubletPotentialDensity_unitary
 
 /-- info: 'PhysicsSM.Draft.NullEdge.HiggsDoubletRadialCurvature.doubletPotential_eq_massTerm_add_interactions' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
