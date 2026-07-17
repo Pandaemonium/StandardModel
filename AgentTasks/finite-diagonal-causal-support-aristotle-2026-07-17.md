@@ -2,7 +2,7 @@
 
 Date: 2026-07-17
 Work item: `GRAV-ORDER-OPERATOR-001`
-Status: submitted
+Status: integrated
 
 ## Target
 
@@ -72,5 +72,35 @@ aristotle:
   expected_module: FiniteDiagonalCausalSupport.DiagonalSupport
   submission_project: AgentTasks/aristotle-submit/finite-diagonal-causal-support-20260717-project
   output_dir: AgentTasks/aristotle-output/e96fbff2-66b7-4319-943f-07f09f5bd64d
-  status: submitted
+  status: integrated
 ```
+
+## Integration record
+
+Aristotle's API ended with `COMPLETE_WITH_ERRORS`, but its completion report
+states that all six locked targets were proved and that the standalone file
+passes Lean with no proof holes. The reported trailing error was operational;
+the returned theorem statements were unchanged. The conservative integration
+helper found the final candidate and reported no placeholders.
+
+The proof bodies were reviewed and normalized against the repository's
+existing `FiniteStrictRelation` and `MatrixSupportedInStrictPast` APIs. The
+production result is:
+
+`PhysicsSM/Draft/NullEdge/FiniteDiagonalCausalSupport.lean`
+
+The production module reuses the existing multiplication and positive-power
+support theorems, integrates Aristotle's four new contact/support results, and
+adds two project-side corollaries for the leading gauge-invariant FMS radial
+observable. No public target statement was weakened, and no nonvanishing or
+positivity assumption was added.
+
+Verification:
+
+```text
+lake env lean PhysicsSM/Draft/NullEdge/FiniteDiagonalCausalSupport.lean
+lake build PhysicsSM.Draft.NullEdge.FiniteDiagonalCausalSupport
+```
+
+Both commands pass. The production axiom guards report only `propext`,
+`Classical.choice`, and `Quot.sound`.
