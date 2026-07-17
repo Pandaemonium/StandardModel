@@ -58,6 +58,11 @@ theorem doubletPotentialDensity_unitary
   unfold doubletPotentialDensity
   rw [vectorNormSq_unitary]
 
+lemma radialDoubletField_zero (v : Real) :
+    radialDoubletField v 0 = H0 v := by
+  funext i
+  fin_cases i <;> simp [radialDoubletField, radialTangent, H0]
+
 /-- The norm squared of the normalized radial doublet is `(v+h)^2/2`. -/
 theorem vectorNormSq_radialDoubletField (v h : Real) :
     vectorNormSq (radialDoubletField v h) = (v + h) ^ 2 / 2 := by
@@ -74,6 +79,14 @@ theorem doubletPotential_exact_expansion (lam v h : Real) :
       lam * v ^ 2 * h ^ 2 + lam * v * h ^ 3 + (lam / 4) * h ^ 4 := by
   unfold doubletPotentialDensity
   rw [vectorNormSq_radialDoubletField]
+  ring
+
+/-- The supplied electroweak reference section is exactly a zero of the
+vacuum-subtracted doublet potential. -/
+theorem doubletPotential_vacuum_zero (lam v : Real) :
+    doubletPotentialDensity lam v (H0 v) = 0 := by
+  rw [← radialDoubletField_zero]
+  rw [doubletPotential_exact_expansion]
   ring
 
 /-- The quadratic term is exactly one half of the standard-doublet radial mass
@@ -139,6 +152,10 @@ theorem radialMassSquared_pos
 /-- info: 'PhysicsSM.Draft.NullEdge.HiggsDoubletRadialCurvature.doubletPotentialDensity_unitary' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms doubletPotentialDensity_unitary
+
+/-- info: 'PhysicsSM.Draft.NullEdge.HiggsDoubletRadialCurvature.doubletPotential_vacuum_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms doubletPotential_vacuum_zero
 
 /-- info: 'PhysicsSM.Draft.NullEdge.HiggsDoubletRadialCurvature.doubletPotential_eq_massTerm_add_interactions' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
