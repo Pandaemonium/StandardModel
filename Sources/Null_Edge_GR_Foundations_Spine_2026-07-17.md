@@ -139,6 +139,9 @@ infrared phase.
 In F8, the canonical exponential variation curves are now proved to remain in
 the proper eta-Lorentz subgroup when the base links do. The table's remaining
 Lorentz-component debt is specifically the separate orthochronous sign.
+The F6/F8 backreaction debt now means a **nonlinear** continuation: the finite
+identity-background linearized system has a curved jointly stationary witness,
+as recorded below.
 
 The program is strongest at F0 and in the exact algebraic interfaces inside
 F4-F7. Its decisive bottleneck remains F4, but F1 and F2 are logically prior
@@ -545,6 +548,23 @@ shear, repairs these fixed links. A viable witness must now include
 simultaneous connection/coframe backreaction, a larger carrier, or modified
 finite dual-cell weights. Levi-Civita compatibility and graph-derived
 refinement remain open.
+
+`PeriodicVacuumWeylLinearizedBackreaction` now supplies that simultaneous
+backreaction at first order. It linearizes all 48 Lorentz-link equations and
+all 32 tetrad equations of the concrete Palatini action at the identity
+connection/coframe pair. An explicit plus-like link/coframe perturbation is
+jointly stationary, its additive curl is exactly twice the previously guarded
+vacuum-Weyl null-wave curvature, and that curvature is nonzero at both sites.
+The same module proves that every two-site infinitesimal local Lorentz gauge
+parameter gives a flat jointly stationary mode, that this 12-real-parameter
+family is injectively represented in the combined link/coframe tangent space,
+and that the curved plus mode is not in that gauge family. Thus a nonzero
+gauge-reduced linearized curvature class is kernel-checked. The independent
+exact SymPy audit reports joint Hessian rank 52, nullity 28, and curvature rank
+two on the kernel; the rank-two statement and its cross-like second generator
+remain oracle evidence until separately proved in Lean. No nonlinear branch,
+Levi-Civita selection, or refinement-limit theorem follows from this finite
+linearized result.
 
 `LorentzCoframePalatiniFace` now separates two face notions that the four-form
 must not conflate. With orientation `0123`, it defines the Lorentz Hodge star,
