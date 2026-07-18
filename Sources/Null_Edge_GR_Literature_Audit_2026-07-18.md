@@ -53,6 +53,13 @@ Ten arXiv papers were added to Zotero collection `9W59V3K9`, synced to Neo4j,
 abstract-embedded, and full-text chunked. Menotti and Pelissetto was added by
 DOI. The local keys are recorded in `Sources/Null_Edge_References.md`.
 
+A second, gap-driven pass tested the remaining F2/P8/P9 obligations against
+recent primary literature. Five further papers were added and full-text
+chunked, and two already-keyed 2025-2026 papers were read end to end. This pass
+searched specifically for distributional Einstein convergence, weak Cartan
+curvature, DEC/FEEC operator convergence, simplicial Holst actions, practical
+manifoldlikeness tests, and noncompact Lorentz gauge fixing.
+
 ## Closest prior art
 
 | Source | What it establishes | What it does not establish | Consequence for this repo |
@@ -68,6 +75,45 @@ DOI. The local keys are recorded in `Sources/Null_Edge_References.md`.
 | Foster and Jacobson, [Propagating Spinors on a Tetrahedral Spacetime Lattice](https://arxiv.org/abs/hep-th/0310166) | A tetrahedral hyperdiamond Weyl propagator, bend amplitudes, a continuum limit, and a no-doubling result for its retarded scheme | A gravity theory; its links are not null in the convergent construction, while its faces are null | "Null edges" and "null faces" cannot be conflated; Courant stability and determinant-level doubling remain mandatory audits |
 | Menotti and Pelissetto, [Poincare, de Sitter, and Conformal Gravity on the Lattice](https://doi.org/10.1103/PhysRevD.35.1194) | An early gauge-theoretic lattice gravity with link variables, vierbeins, reflection positivity, and a reported graviton-doubling phenomenon | A Lorentzian null lattice or the present action | Graviton doubling is old and must be tested explicitly in any translationally invariant wave sector |
 | Dupuis, Girelli, Hrytseniak, and Wieland, [Topological Field Theory Plus Local Lorentz Symmetry Is Gravity](https://arxiv.org/abs/2603.12100) | A 2026 continuum formulation using Weyl-spinor-valued one-forms encoding frame data, with gravity arising when `SL(2,C)` is localized | A discrete implementation or continuum limit from a graph | A modern spinorial frame/connection comparator; it does not replace the finite Palatini program |
+
+## Gap-driven second pass
+
+The second pass found a concrete analytic route for refinement and a useful
+empirical route for carrier selection. It did not locate a paper that closes
+the Lorentzian null-edge Palatini program.
+
+| Source | Theorem-level result | Scope boundary | Action for this repo |
+|---|---|---|---|
+| Gawlik and Neunteufel, [Finite Element Approximation of the Einstein Tensor](https://arxiv.org/abs/2310.18802) | For optimal-order degree-`r` Regge interpolants of a smooth Riemannian metric, the distributional densitized Einstein tensor converges in `H^-2` at rate `O(h^(r+1))` under the displayed mesh and regularity hypotheses | Riemannian metric variables, not Lorentzian tetrad/connection variables; convergence of interpolated curvature, not of stationary fields or Euler equations | Make a weak test-tensor pairing the first continuum Einstein target. Prove null-edge curvature convergence in a negative Sobolev or distributional norm before seeking pointwise equations |
+| Gawlik and Neunteufel, [Finite Element Approximation of Scalar Curvature](https://arxiv.org/abs/2301.02159) | Defines distributional densitized scalar curvature for Regge metrics, proves the corresponding `H^-2` convergence rate, and identifies its boundaryless first variation with the distributional densitized Einstein tensor | The same Riemannian and interpolation restrictions apply | Use its action-variation identity as the model for a commuting square: finite action variation, weak Einstein response, and refinement |
+| Gawlik and McKee, [On the Curvature of Regge Metrics](https://arxiv.org/abs/2510.25027) | Constructs a measure-valued curvature from moving frames that satisfies weak Cartan structure equations and the appropriate frame-gauge transformation law, and proves equivalence with existing densitized distributional curvature | Piecewise-smooth Riemannian Regge metrics; no null carrier or independent Lorentzian Palatini dynamics | Provides the direct template for P8(b): define the null-edge connection and curvature as weak objects, then prove gauge covariance and agreement with the coframe-side Einstein tensor |
+| Beltran and Zapata, [A Discretization of Holst's Action for General Relativity](https://arxiv.org/abs/2208.13808) | On a compact oriented four-manifold with a uniformly refining, shape-regular simplicial sequence, the action sampled from a continuous tetrad and a `C^1` Lorentz connection converges to the Holst action; the paper also derives finite field equations | Action consistency does not prove convergence of the discrete field equations or of discrete stationary solutions; the matter examples are sketches | A stronger action-limit comparator than was previously recorded. Borrow its explicit refinement hypotheses and atom-local matter organization, but retain the variation-limit and stability gates |
+| Guzman and Potu, [DEC Approximations via Generalized Whitney Forms](https://arxiv.org/abs/2505.08934), and Dabetic and Hiptmair, [DEC for the Hodge-Dirac Operator](https://arxiv.org/abs/2507.19405) | Identify primal/dual cochains with Whitney/generalized Whitney forms and prove convergence estimates for Hodge-Laplacian and Hodge-Dirac boundary-value problems on suitable mesh families | Bounded Euclidean domains, de Rham Hodge-Dirac rather than the spinorial Lorentzian Dirac operator, and strong well-centered/shape-regular/topological hypotheses | Useful analytic infrastructure for cochain maps, adjoints, stability, and error norms. It does not justify calling the current soldered Dirac operator convergent |
+| Eichhorn, Mack, Le, and Wagner, [Charting Causal Set Configuration Space with Graph Observables](https://arxiv.org/abs/2605.27514) | In large ensembles from nine tested classes, link-degree distributions, symmetrized-Hasse graph-Laplacian spectra, and causal-interval abundances distinguish manifoldlike, nonmanifoldlike, and candidate coarse-grainable classes with relatively small fluctuations | Primarily finite, mostly two-dimensional, size-2048 ensemble evidence; no universal single-causet classifier, coarse-graining map, or dynamical selection theorem | Add an F2 screening layer before expensive reconstruction: compute these three label-invariant observables on candidate carriers and pre-register acceptance regions against sprinkled controls |
+
+The noncompact-gauge search did not locate a discrete-gravity theorem stronger
+than Schaden's conditional `SL(2,C)/SU(2)` boost slice for this purpose.
+Canonical time-gauge and unrelated noncompact Abelian lattice results do not
+solve the null-frame measure problem. The boost-slice Jacobian, residual
+`SU(2)` stabilizer, and Faddeev-Popov factor therefore remain source-audit and
+formalization obligations rather than imported facts.
+
+### Revised bridge architecture
+
+The new convergence sources suggest splitting the final continuum gate into a
+sequence that can fail honestly at each interface:
+
+```text
+finite null-edge action and Euler identities
+  -> uniformly controlled refinement family
+  -> weak Cartan connection/curvature with gauge covariance
+  -> distributional densitized Einstein tensor convergence
+  -> convergence or compactness of stationary fields
+  -> Lorentzian Einstein equations for the limit
+```
+
+The first four arrows are now supported by close mathematical templates. The
+last two remain genuinely open for this program.
 
 ## Schaden deep read
 
@@ -378,6 +424,15 @@ Christiansen provides rigorous holonomy/curvature and Regge-measure techniques
 that can seed this gate, but no located source closes it for Lorentzian
 tetradic Palatini gravity on a null carrier.
 
+The second search substantially sharpens this gate. Gawlik and Neunteufel show
+that distributional densitized scalar and Einstein curvature can converge at a
+controlled rate in `H^-2`; Gawlik and McKee supply the compatible weak Cartan
+and gauge-covariant curvature side; Beltran and Zapata prove convergence of a
+sampled tetrad/connection action on uniformly refining simplicial families.
+Together these results support a weak-curvature commuting-square strategy.
+They still do not justify interchanging variation and refinement or passing
+from sampled smooth fields to convergent discrete stationary solutions.
+
 ## Revised originality matrix
 
 | Candidate claim | Revised grade | Reason |
@@ -408,9 +463,13 @@ tetradic Palatini gravity on a null carrier.
    the Gionti small-curvature style.
 6. **Test nonlinear continuation.** Compute the second-order obstruction and
    apply an implicit-function or Lyapunov-Schmidt reduction where possible.
-7. **Build the convergence theorem.** Combine holonomy-curvature estimates,
-   coframe/dual-volume convergence, boundary control, and variation-limit
-   interchange on one refinement family.
+7. **Build a weak-curvature commuting square.** On one uniformly controlled
+   refinement family, prove gauge-covariant weak Cartan curvature, convergence
+   of the densitized Einstein response against test tensors, and agreement
+   with the refined finite action variation.
+8. **Add stability and variation-limit interchange.** Only after step 7, prove
+   compactness or stability for stationary fields, boundary control, and the
+   passage from discrete Euler equations to the Lorentzian continuum equation.
 
 ## Kill conditions
 
