@@ -53,7 +53,7 @@ import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniCurveDerivative
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEuler
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniCoframeVariation
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniCurvatureExtraction
-import PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylNullWave
+import PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylNullWaveProperLift
 import PhysicsSM.Draft.NullEdge.CurvatureConvergenceInterface
 import PhysicsSM.Draft.NullEdge.GraphPlaquetteCurvatureLimit
 import PhysicsSM.Draft.NullEdge.FiniteGravityConservation
@@ -114,8 +114,11 @@ imports one representative route through each established layer:
     vacuum-Weyl target satisfying metric-lowered pair exchange and first
     Bianchi, the exact periodic zero-mean and discrete-Bianchi obstructions to
     realizing it as a site-independent or scalar-checkerboard additive curl,
-    and a two-site periodically exact additive null-wave curvature that mixes
-    bivector planes and satisfies all identity-coframe vacuum-Riemann tests,
+    and a two-site periodically exact null-wave curvature that mixes bivector
+    planes, lifts to exact proper eta-Lorentz links, satisfies all
+    identity-coframe vacuum-Riemann and coframe-stationarity tests, and has an
+    exact nonzero-area connection/joint-stationarity obstruction at the static
+    identity coframe,
     and a conditional passage from finite coframe
     stationarity with convergent varying tetrads to the limiting mixed vacuum
     Einstein equation, and
@@ -275,15 +278,22 @@ realization; the explicit zero-mean `2 x 2` checkerboard fails this test. Thus
 the next escape must use genuinely site-dependent frame/component mixing,
 boundary data, a twisted bundle sector, or nonlinear leading-order curvature,
 rather than scalar signs alone. The null-wave successor realizes the first of
-these escapes at additive order on a two-site carrier. Its time and
+these escapes on a two-site carrier. Its time and
 longitudinal shifts toggle the same null coordinate, and two transverse link
 potentials carry null-rotation bivectors. Their exact additive curl is nonzero
 at both sites with opposite amplitudes, obeys both Bianchi identities and
 metric-lowered pair exchange, and has zero mixed Ricci, scalar, and Einstein
-entries pointwise at the identity coframe. This proves that genuine bivector
-plane mixing is sufficient for a periodically exact linearized vacuum-Riemann
-field. It does not yet prove nonlinear proper-Lorentz link stationarity,
-Levi-Civita compatibility with a varying coframe, or graph refinement.
+entries pointwise at the identity coframe. Because the two generators commute,
+exponentiating the links gives exact proper eta-Lorentz plaquettes with no BCH
+correction, and the action extractor returns exactly area times this curvature.
+The identity coframe is therefore exactly stationary in the finite Einstein
+sector. One link Euler coefficient is exactly `-2 * area`, so the static
+coframe fails connection and joint stationarity whenever area is nonzero. This
+proves that genuine bivector-plane mixing is sufficient for a periodically
+exact finite vacuum-Riemann field and isolates the varying-coframe problem in
+the independent-connection equation. It does not yet construct that jointly
+stationary varying coframe, prove Levi-Civita compatibility, or graph
+refinement.
 The combined result does not
 derive the refinement or convergence data from a bare graph, prove the
 orthochronous sign, identify the link equation with Levi-Civita selection, or

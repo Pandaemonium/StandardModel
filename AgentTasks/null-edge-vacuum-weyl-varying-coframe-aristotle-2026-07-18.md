@@ -94,6 +94,19 @@ adds beyond this linearized construction: nonlinear proper-Lorentz links,
 joint link/coframe stationarity, Levi-Civita compatibility, or a stronger
 no-go theorem.
 
+`PeriodicVacuumWeylNullWaveProperLift.lean` was then proved locally while this
+job remained in progress. It exponentiates the commuting nilpotent
+null-rotation links to exact proper eta-Lorentz transports and proves every
+plaquette is exactly the exponential of its additive null-wave curl. The
+action-visible extractor is exactly area times the curvature, so the identity
+coframe satisfies all finite mixed vacuum Einstein equations and is exactly
+coframe-stationary. A separate exact coefficient calculation gives
+`-2 * area` in the direction-`1`, component-`1` connection equation at site
+`1`; hence the identity coframe is not connection- or jointly stationary at
+nonzero area. Harvest review must now require a genuinely varying-coframe
+joint-stationary construction, a Levi-Civita theorem, or a stronger no-go than
+this static-coframe obstruction.
+
 ## Requested output
 
 Create
@@ -141,3 +154,7 @@ aristotle:
 Live check on 2026-07-18 after the local null-wave result: project status
 `RUNNING`; task status `IN_PROGRESS`. A 30-second progress-stream check
 returned no new event before timing out, so the job was left undisturbed.
+
+Second live check after the exact proper-Lorentz lift and static connection
+obstruction were proved locally: the project remained `RUNNING` about two
+hours after submission. It was again left undisturbed.
