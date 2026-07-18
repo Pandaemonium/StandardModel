@@ -1,0 +1,840 @@
+{
+  "claim_boundary": "deterministic consumed-seed diagnosis only; no selector, gate, outcome, independent trial, or downstream geometry claim",
+  "expected_replay": [
+    {
+      "bulk_counts": {
+        "0.80": 4230,
+        "1.00": 3272
+      },
+      "candidate_count": 198,
+      "events": 6000,
+      "realization": 0
+    },
+    {
+      "bulk_counts": {
+        "0.80": 4324,
+        "1.00": 3381
+      },
+      "candidate_count": 234,
+      "events": 6000,
+      "realization": 1
+    },
+    {
+      "bulk_counts": {
+        "0.80": 4147,
+        "1.00": 3279
+      },
+      "candidate_count": 193,
+      "events": 6000,
+      "realization": 2
+    },
+    {
+      "bulk_counts": {
+        "0.80": 8688,
+        "1.00": 7207
+      },
+      "candidate_count": 1318,
+      "events": 12000,
+      "realization": 0
+    },
+    {
+      "bulk_counts": {
+        "0.80": 8761,
+        "1.00": 7307
+      },
+      "candidate_count": 1271,
+      "events": 12000,
+      "realization": 1
+    },
+    {
+      "bulk_counts": {
+        "0.80": 8816,
+        "1.00": 7283
+      },
+      "candidate_count": 1504,
+      "events": 12000,
+      "realization": 2
+    }
+  ],
+  "protocol": {
+    "candidate_ceiling": 4000,
+    "comparators_called": false,
+    "consumed_betas": [
+      0.8,
+      1.0
+    ],
+    "consumed_development_seed": 2026071610,
+    "densities": [
+      6000,
+      12000
+    ],
+    "diagnostic_betas": [
+      0.8,
+      1.0,
+      1.25
+    ],
+    "diagnostic_name": "A3f-R4-D",
+    "duration": 1.0,
+    "gates_evaluated": false,
+    "heldout_seed": 2026071611,
+    "heldout_seed_status": "retired_unconsumed",
+    "independent_trial": false,
+    "maximum_dense_relation_entries": 144024001,
+    "maximum_peak_working_set_bytes": 6442450944,
+    "maximum_realization_seconds": 600.0,
+    "outer_band": [
+      0.9,
+      1.1
+    ],
+    "realizations_per_density": 3,
+    "selectors_called": false
+  },
+  "records": [
+    {
+      "candidate_ceiling": 4000,
+      "complete_candidate_count": 198,
+      "diamond_event_count": 6001,
+      "events": 6000,
+      "interpretation_label": "mixed_rung_pattern",
+      "phase_peak_working_set_bytes": 207917056,
+      "realization": 0,
+      "replay_assertions": [
+        {
+          "beta": "0.80",
+          "bulk_count_actual": 4230,
+          "bulk_count_expected": 4230,
+          "bulk_count_matches": true,
+          "candidate_count_actual": 198,
+          "candidate_count_expected": 198,
+          "candidate_count_matches": true,
+          "events": 6000,
+          "realization": 0
+        },
+        {
+          "beta": "1.00",
+          "bulk_count_actual": 3272,
+          "bulk_count_expected": 3272,
+          "bulk_count_matches": true,
+          "candidate_count_actual": 198,
+          "candidate_count_expected": 198,
+          "candidate_count_matches": true,
+          "events": 6000,
+          "realization": 0
+        }
+      ],
+      "rungs": [
+        {
+          "beta": "0.80",
+          "buffer_count": 5.815560863343528,
+          "bulk_count": 4230,
+          "complete_candidate_count": 198,
+          "complete_family_certificate_dead": true,
+          "core_size": {
+            "maximum": 1647,
+            "median": 1352.0,
+            "minimum": 1152
+          },
+          "core_size_fraction": {
+            "maximum": 0.2744542576237294,
+            "median": 0.225295784035994,
+            "minimum": 0.1919680053324446
+          },
+          "diagnostic_only_new_rung": false,
+          "diamond_event_count": 6001,
+          "events_attaining_maximum_multiplicity": 10,
+          "family_empty": false,
+          "global_intersection_nonempty": true,
+          "global_intersection_size": 10,
+          "maximum_event_multiplicity": 198
+        },
+        {
+          "beta": "1.00",
+          "buffer_count": 14.198146639022282,
+          "bulk_count": 3272,
+          "complete_candidate_count": 198,
+          "complete_family_certificate_dead": false,
+          "core_size": {
+            "maximum": 1118,
+            "median": 863.0,
+            "minimum": 701
+          },
+          "core_size_fraction": {
+            "maximum": 0.18630228295284118,
+            "median": 0.14380936510581568,
+            "minimum": 0.11681386435594068
+          },
+          "diagnostic_only_new_rung": false,
+          "diamond_event_count": 6001,
+          "events_attaining_maximum_multiplicity": 1,
+          "family_empty": false,
+          "global_intersection_nonempty": false,
+          "global_intersection_size": 0,
+          "maximum_event_multiplicity": 197
+        },
+        {
+          "beta": "1.25",
+          "buffer_count": 34.66344394292549,
+          "bulk_count": 2237,
+          "complete_candidate_count": 198,
+          "complete_family_certificate_dead": false,
+          "core_size": {
+            "maximum": 573,
+            "median": 412.5,
+            "minimum": 289
+          },
+          "core_size_fraction": {
+            "maximum": 0.09548408598566906,
+            "median": 0.06873854357607065,
+            "minimum": 0.04815864022662889
+          },
+          "diagnostic_only_new_rung": true,
+          "diamond_event_count": 6001,
+          "events_attaining_maximum_multiplicity": 1,
+          "family_empty": false,
+          "global_intersection_nonempty": false,
+          "global_intersection_size": 0,
+          "maximum_event_multiplicity": 173
+        }
+      ],
+      "runtime_seconds": 3.3034064000021317,
+      "schedule": {
+        "buffer_count": 14.198146639022282,
+        "buffer_to_local_radius": 1.3932496966146501,
+        "local_count": 3.768042812790519,
+        "local_to_discreteness_radius": 1.3932496966146501,
+        "outer_count": 2421.09851904813,
+        "outer_to_buffer_radius": 3.6136426321507944,
+        "protected_core_count": 880.3191954425168,
+        "protected_core_fraction": 0.36360321090470116
+      },
+      "sprinkling_seed_state": [
+        664881359,
+        4207010971,
+        1493783796,
+        180902396
+      ]
+    },
+    {
+      "candidate_ceiling": 4000,
+      "complete_candidate_count": 234,
+      "diamond_event_count": 6001,
+      "events": 6000,
+      "interpretation_label": "chart_scale_breaks_common_intersection",
+      "phase_peak_working_set_bytes": 208285696,
+      "realization": 1,
+      "replay_assertions": [
+        {
+          "beta": "0.80",
+          "bulk_count_actual": 4324,
+          "bulk_count_expected": 4324,
+          "bulk_count_matches": true,
+          "candidate_count_actual": 234,
+          "candidate_count_expected": 234,
+          "candidate_count_matches": true,
+          "events": 6000,
+          "realization": 1
+        },
+        {
+          "beta": "1.00",
+          "bulk_count_actual": 3381,
+          "bulk_count_expected": 3381,
+          "bulk_count_matches": true,
+          "candidate_count_actual": 234,
+          "candidate_count_expected": 234,
+          "candidate_count_matches": true,
+          "events": 6000,
+          "realization": 1
+        }
+      ],
+      "rungs": [
+        {
+          "beta": "0.80",
+          "buffer_count": 5.815560863343528,
+          "bulk_count": 4324,
+          "complete_candidate_count": 234,
+          "complete_family_certificate_dead": true,
+          "core_size": {
+            "maximum": 1667,
+            "median": 1388.0,
+            "minimum": 1154
+          },
+          "core_size_fraction": {
+            "maximum": 0.27778703549408434,
+            "median": 0.23129478420263289,
+            "minimum": 0.19230128311948008
+          },
+          "diagnostic_only_new_rung": false,
+          "diamond_event_count": 6001,
+          "events_attaining_maximum_multiplicity": 41,
+          "family_empty": false,
+          "global_intersection_nonempty": true,
+          "global_intersection_size": 41,
+          "maximum_event_multiplicity": 234
+        },
+        {
+          "beta": "1.00",
+          "buffer_count": 14.198146639022282,
+          "bulk_count": 3381,
+          "complete_candidate_count": 234,
+          "complete_family_certificate_dead": true,
+          "core_size": {
+            "maximum": 1132,
+            "median": 891.5,
+            "minimum": 690
+          },
+          "core_size_fraction": {
+            "maximum": 0.18863522746208966,
+            "median": 0.1485585735710715,
+            "minimum": 0.11498083652724546
+          },
+          "diagnostic_only_new_rung": false,
+          "diamond_event_count": 6001,
+          "events_attaining_maximum_multiplicity": 8,
+          "family_empty": false,
+          "global_intersection_nonempty": true,
+          "global_intersection_size": 8,
+          "maximum_event_multiplicity": 234
+        },
+        {
+          "beta": "1.25",
+          "buffer_count": 34.66344394292549,
+          "bulk_count": 2322,
+          "complete_candidate_count": 234,
+          "complete_family_certificate_dead": false,
+          "core_size": {
+            "maximum": 595,
+            "median": 417.0,
+            "minimum": 300
+          },
+          "core_size_fraction": {
+            "maximum": 0.09915014164305949,
+            "median": 0.06948841859690051,
+            "minimum": 0.04999166805532411
+          },
+          "diagnostic_only_new_rung": true,
+          "diamond_event_count": 6001,
+          "events_attaining_maximum_multiplicity": 1,
+          "family_empty": false,
+          "global_intersection_nonempty": false,
+          "global_intersection_size": 0,
+          "maximum_event_multiplicity": 229
+        }
+      ],
+      "runtime_seconds": 2.853227199997491,
+      "schedule": {
+        "buffer_count": 14.198146639022282,
+        "buffer_to_local_radius": 1.3932496966146501,
+        "local_count": 3.768042812790519,
+        "local_to_discreteness_radius": 1.3932496966146501,
+        "outer_count": 2421.09851904813,
+        "outer_to_buffer_radius": 3.6136426321507944,
+        "protected_core_count": 880.3191954425168,
+        "protected_core_fraction": 0.36360321090470116
+      },
+      "sprinkling_seed_state": [
+        1756998594,
+        2367495301,
+        3534183446,
+        54720695
+      ]
+    },
+    {
+      "candidate_ceiling": 4000,
+      "complete_candidate_count": 193,
+      "diamond_event_count": 6001,
+      "events": 6000,
+      "interpretation_label": "chart_scale_breaks_common_intersection",
+      "phase_peak_working_set_bytes": 208285696,
+      "realization": 2,
+      "replay_assertions": [
+        {
+          "beta": "0.80",
+          "bulk_count_actual": 4147,
+          "bulk_count_expected": 4147,
+          "bulk_count_matches": true,
+          "candidate_count_actual": 193,
+          "candidate_count_expected": 193,
+          "candidate_count_matches": true,
+          "events": 6000,
+          "realization": 2
+        },
+        {
+          "beta": "1.00",
+          "bulk_count_actual": 3279,
+          "bulk_count_expected": 3279,
+          "bulk_count_matches": true,
+          "candidate_count_actual": 193,
+          "candidate_count_expected": 193,
+          "candidate_count_matches": true,
+          "events": 6000,
+          "realization": 2
+        }
+      ],
+      "rungs": [
+        {
+          "beta": "0.80",
+          "buffer_count": 5.815560863343528,
+          "bulk_count": 4147,
+          "complete_candidate_count": 193,
+          "complete_family_certificate_dead": true,
+          "core_size": {
+            "maximum": 1664,
+            "median": 1360.0,
+            "minimum": 1122
+          },
+          "core_size_fraction": {
+            "maximum": 0.2772871188135311,
+            "median": 0.22662889518413598,
+            "minimum": 0.18696883852691218
+          },
+          "diagnostic_only_new_rung": false,
+          "diamond_event_count": 6001,
+          "events_attaining_maximum_multiplicity": 47,
+          "family_empty": false,
+          "global_intersection_nonempty": true,
+          "global_intersection_size": 47,
+          "maximum_event_multiplicity": 193
+        },
+        {
+          "beta": "1.00",
+          "buffer_count": 14.198146639022282,
+          "bulk_count": 3279,
+          "complete_candidate_count": 193,
+          "complete_family_certificate_dead": true,
+          "core_size": {
+            "maximum": 1122,
+            "median": 873.0,
+            "minimum": 659
+          },
+          "core_size_fraction": {
+            "maximum": 0.18696883852691218,
+            "median": 0.14547575404099317,
+            "minimum": 0.1098150308281953
+          },
+          "diagnostic_only_new_rung": false,
+          "diamond_event_count": 6001,
+          "events_attaining_maximum_multiplicity": 14,
+          "family_empty": false,
+          "global_intersection_nonempty": true,
+          "global_intersection_size": 14,
+          "maximum_event_multiplicity": 193
+        },
+        {
+          "beta": "1.25",
+          "buffer_count": 34.66344394292549,
+          "bulk_count": 2274,
+          "complete_candidate_count": 193,
+          "complete_family_certificate_dead": false,
+          "core_size": {
+            "maximum": 610,
+            "median": 405.0,
+            "minimum": 293
+          },
+          "core_size_fraction": {
+            "maximum": 0.1016497250458257,
+            "median": 0.06748875187468756,
+            "minimum": 0.04882519580069988
+          },
+          "diagnostic_only_new_rung": true,
+          "diamond_event_count": 6001,
+          "events_attaining_maximum_multiplicity": 2,
+          "family_empty": false,
+          "global_intersection_nonempty": false,
+          "global_intersection_size": 0,
+          "maximum_event_multiplicity": 188
+        }
+      ],
+      "runtime_seconds": 2.5436263999981747,
+      "schedule": {
+        "buffer_count": 14.198146639022282,
+        "buffer_to_local_radius": 1.3932496966146501,
+        "local_count": 3.768042812790519,
+        "local_to_discreteness_radius": 1.3932496966146501,
+        "outer_count": 2421.09851904813,
+        "outer_to_buffer_radius": 3.6136426321507944,
+        "protected_core_count": 880.3191954425168,
+        "protected_core_fraction": 0.36360321090470116
+      },
+      "sprinkling_seed_state": [
+        1082421593,
+        1810178242,
+        4123286707,
+        3329138369
+      ]
+    },
+    {
+      "candidate_ceiling": 4000,
+      "complete_candidate_count": 1318,
+      "diamond_event_count": 12001,
+      "events": 12000,
+      "interpretation_label": "mixed_rung_pattern",
+      "phase_peak_working_set_bytes": 424988672,
+      "realization": 0,
+      "replay_assertions": [
+        {
+          "beta": "0.80",
+          "bulk_count_actual": 8688,
+          "bulk_count_expected": 8688,
+          "bulk_count_matches": true,
+          "candidate_count_actual": 1318,
+          "candidate_count_expected": 1318,
+          "candidate_count_matches": true,
+          "events": 12000,
+          "realization": 0
+        },
+        {
+          "beta": "1.00",
+          "bulk_count_actual": 7207,
+          "bulk_count_expected": 7207,
+          "bulk_count_matches": true,
+          "candidate_count_actual": 1318,
+          "candidate_count_expected": 1318,
+          "candidate_count_matches": true,
+          "events": 12000,
+          "realization": 0
+        }
+      ],
+      "rungs": [
+        {
+          "beta": "0.80",
+          "buffer_count": 8.224445045746602,
+          "bulk_count": 8688,
+          "complete_candidate_count": 1318,
+          "complete_family_certificate_dead": true,
+          "core_size": {
+            "maximum": 2793,
+            "median": 2313.5,
+            "minimum": 1951
+          },
+          "core_size_fraction": {
+            "maximum": 0.23273060578285143,
+            "median": 0.1927756020331639,
+            "minimum": 0.16256978585117907
+          },
+          "diagnostic_only_new_rung": false,
+          "diamond_event_count": 12001,
+          "events_attaining_maximum_multiplicity": 4,
+          "family_empty": false,
+          "global_intersection_nonempty": true,
+          "global_intersection_size": 4,
+          "maximum_event_multiplicity": 1318
+        },
+        {
+          "beta": "1.00",
+          "buffer_count": 20.079211537467287,
+          "bulk_count": 7207,
+          "complete_candidate_count": 1318,
+          "complete_family_certificate_dead": false,
+          "core_size": {
+            "maximum": 1992,
+            "median": 1599.5,
+            "minimum": 1279
+          },
+          "core_size_fraction": {
+            "maximum": 0.16598616781934838,
+            "median": 0.13328055995333724,
+            "minimum": 0.10657445212898925
+          },
+          "diagnostic_only_new_rung": false,
+          "diamond_event_count": 12001,
+          "events_attaining_maximum_multiplicity": 2,
+          "family_empty": false,
+          "global_intersection_nonempty": false,
+          "global_intersection_size": 0,
+          "maximum_event_multiplicity": 1309
+        },
+        {
+          "beta": "1.25",
+          "buffer_count": 49.02151254264474,
+          "bulk_count": 5257,
+          "complete_candidate_count": 1318,
+          "complete_family_certificate_dead": false,
+          "core_size": {
+            "maximum": 1109,
+            "median": 817.0,
+            "minimum": 605
+          },
+          "core_size_fraction": {
+            "maximum": 0.0924089659195067,
+            "median": 0.06807766019498375,
+            "minimum": 0.05041246562786435
+          },
+          "diagnostic_only_new_rung": true,
+          "diamond_event_count": 12001,
+          "events_attaining_maximum_multiplicity": 1,
+          "family_empty": false,
+          "global_intersection_nonempty": false,
+          "global_intersection_size": 0,
+          "maximum_event_multiplicity": 1233
+        }
+      ],
+      "runtime_seconds": 12.214304099998117,
+      "schedule": {
+        "buffer_count": 20.079211537467287,
+        "buffer_to_local_radius": 1.4549341305496275,
+        "local_count": 4.480983322605351,
+        "local_to_discreteness_radius": 1.4549341305496275,
+        "outer_count": 4071.786131287299,
+        "outer_to_buffer_radius": 3.7736322598170657,
+        "protected_core_count": 1630.048864819529,
+        "protected_core_fraction": 0.40032772160953045
+      },
+      "sprinkling_seed_state": [
+        2763826149,
+        1334519297,
+        1572949027,
+        749115551
+      ]
+    },
+    {
+      "candidate_ceiling": 4000,
+      "complete_candidate_count": 1271,
+      "diamond_event_count": 12001,
+      "events": 12000,
+      "interpretation_label": "mixed_rung_pattern",
+      "phase_peak_working_set_bytes": 425189376,
+      "realization": 1,
+      "replay_assertions": [
+        {
+          "beta": "0.80",
+          "bulk_count_actual": 8761,
+          "bulk_count_expected": 8761,
+          "bulk_count_matches": true,
+          "candidate_count_actual": 1271,
+          "candidate_count_expected": 1271,
+          "candidate_count_matches": true,
+          "events": 12000,
+          "realization": 1
+        },
+        {
+          "beta": "1.00",
+          "bulk_count_actual": 7307,
+          "bulk_count_expected": 7307,
+          "bulk_count_matches": true,
+          "candidate_count_actual": 1271,
+          "candidate_count_expected": 1271,
+          "candidate_count_matches": true,
+          "events": 12000,
+          "realization": 1
+        }
+      ],
+      "rungs": [
+        {
+          "beta": "0.80",
+          "buffer_count": 8.224445045746602,
+          "bulk_count": 8761,
+          "complete_candidate_count": 1271,
+          "complete_family_certificate_dead": true,
+          "core_size": {
+            "maximum": 2752,
+            "median": 2284.0,
+            "minimum": 1921
+          },
+          "core_size_fraction": {
+            "maximum": 0.2293142238146821,
+            "median": 0.19031747354387135,
+            "minimum": 0.16006999416715273
+          },
+          "diagnostic_only_new_rung": false,
+          "diamond_event_count": 12001,
+          "events_attaining_maximum_multiplicity": 9,
+          "family_empty": false,
+          "global_intersection_nonempty": true,
+          "global_intersection_size": 9,
+          "maximum_event_multiplicity": 1271
+        },
+        {
+          "beta": "1.00",
+          "buffer_count": 20.079211537467287,
+          "bulk_count": 7307,
+          "complete_candidate_count": 1271,
+          "complete_family_certificate_dead": false,
+          "core_size": {
+            "maximum": 1983,
+            "median": 1571.0,
+            "minimum": 1289
+          },
+          "core_size_fraction": {
+            "maximum": 0.16523623031414048,
+            "median": 0.13090575785351222,
+            "minimum": 0.1074077160236647
+          },
+          "diagnostic_only_new_rung": false,
+          "diamond_event_count": 12001,
+          "events_attaining_maximum_multiplicity": 1,
+          "family_empty": false,
+          "global_intersection_nonempty": false,
+          "global_intersection_size": 0,
+          "maximum_event_multiplicity": 1270
+        },
+        {
+          "beta": "1.25",
+          "buffer_count": 49.02151254264474,
+          "bulk_count": 5318,
+          "complete_candidate_count": 1271,
+          "complete_family_certificate_dead": false,
+          "core_size": {
+            "maximum": 1092,
+            "median": 795.0,
+            "minimum": 593
+          },
+          "core_size_fraction": {
+            "maximum": 0.09099241729855845,
+            "median": 0.06624447962669777,
+            "minimum": 0.049412548954253815
+          },
+          "diagnostic_only_new_rung": true,
+          "diamond_event_count": 12001,
+          "events_attaining_maximum_multiplicity": 1,
+          "family_empty": false,
+          "global_intersection_nonempty": false,
+          "global_intersection_size": 0,
+          "maximum_event_multiplicity": 1218
+        }
+      ],
+      "runtime_seconds": 12.160531199999241,
+      "schedule": {
+        "buffer_count": 20.079211537467287,
+        "buffer_to_local_radius": 1.4549341305496275,
+        "local_count": 4.480983322605351,
+        "local_to_discreteness_radius": 1.4549341305496275,
+        "outer_count": 4071.786131287299,
+        "outer_to_buffer_radius": 3.7736322598170657,
+        "protected_core_count": 1630.048864819529,
+        "protected_core_fraction": 0.40032772160953045
+      },
+      "sprinkling_seed_state": [
+        3495649327,
+        184877866,
+        84460640,
+        3206287961
+      ]
+    },
+    {
+      "candidate_ceiling": 4000,
+      "complete_candidate_count": 1504,
+      "diamond_event_count": 12001,
+      "events": 12000,
+      "interpretation_label": "mixed_rung_pattern",
+      "phase_peak_working_set_bytes": 425267200,
+      "realization": 2,
+      "replay_assertions": [
+        {
+          "beta": "0.80",
+          "bulk_count_actual": 8816,
+          "bulk_count_expected": 8816,
+          "bulk_count_matches": true,
+          "candidate_count_actual": 1504,
+          "candidate_count_expected": 1504,
+          "candidate_count_matches": true,
+          "events": 12000,
+          "realization": 2
+        },
+        {
+          "beta": "1.00",
+          "bulk_count_actual": 7283,
+          "bulk_count_expected": 7283,
+          "bulk_count_matches": true,
+          "candidate_count_actual": 1504,
+          "candidate_count_expected": 1504,
+          "candidate_count_matches": true,
+          "events": 12000,
+          "realization": 2
+        }
+      ],
+      "rungs": [
+        {
+          "beta": "0.80",
+          "buffer_count": 8.224445045746602,
+          "bulk_count": 8816,
+          "complete_candidate_count": 1504,
+          "complete_family_certificate_dead": true,
+          "core_size": {
+            "maximum": 2765,
+            "median": 2286.0,
+            "minimum": 1910
+          },
+          "core_size_fraction": {
+            "maximum": 0.2303974668777602,
+            "median": 0.19048412632280642,
+            "minimum": 0.15915340388300975
+          },
+          "diagnostic_only_new_rung": false,
+          "diamond_event_count": 12001,
+          "events_attaining_maximum_multiplicity": 2,
+          "family_empty": false,
+          "global_intersection_nonempty": true,
+          "global_intersection_size": 2,
+          "maximum_event_multiplicity": 1504
+        },
+        {
+          "beta": "1.00",
+          "buffer_count": 20.079211537467287,
+          "bulk_count": 7283,
+          "complete_candidate_count": 1504,
+          "complete_family_certificate_dead": false,
+          "core_size": {
+            "maximum": 1975,
+            "median": 1568.0,
+            "minimum": 1248
+          },
+          "core_size_fraction": {
+            "maximum": 0.16456961919840013,
+            "median": 0.13065577868510958,
+            "minimum": 0.10399133405549538
+          },
+          "diagnostic_only_new_rung": false,
+          "diamond_event_count": 12001,
+          "events_attaining_maximum_multiplicity": 1,
+          "family_empty": false,
+          "global_intersection_nonempty": false,
+          "global_intersection_size": 0,
+          "maximum_event_multiplicity": 1500
+        },
+        {
+          "beta": "1.25",
+          "buffer_count": 49.02151254264474,
+          "bulk_count": 5313,
+          "complete_candidate_count": 1504,
+          "complete_family_certificate_dead": false,
+          "core_size": {
+            "maximum": 1127,
+            "median": 801.0,
+            "minimum": 563
+          },
+          "core_size_fraction": {
+            "maximum": 0.09390884092992251,
+            "median": 0.06674443796350304,
+            "minimum": 0.04691275727022748
+          },
+          "diagnostic_only_new_rung": true,
+          "diamond_event_count": 12001,
+          "events_attaining_maximum_multiplicity": 1,
+          "family_empty": false,
+          "global_intersection_nonempty": false,
+          "global_intersection_size": 0,
+          "maximum_event_multiplicity": 1405
+        }
+      ],
+      "runtime_seconds": 12.490363699998852,
+      "schedule": {
+        "buffer_count": 20.079211537467287,
+        "buffer_to_local_radius": 1.4549341305496275,
+        "local_count": 4.480983322605351,
+        "local_to_discreteness_radius": 1.4549341305496275,
+        "outer_count": 4071.786131287299,
+        "outer_to_buffer_radius": 3.7736322598170657,
+        "protected_core_count": 1630.048864819529,
+        "protected_core_fraction": 0.40032772160953045
+      },
+      "sprinkling_seed_state": [
+        589884654,
+        1403376009,
+        155200042,
+        2204614876
+      ]
+    }
+  ],
+  "stage": "A3f-R4-D",
+  "status": "diagnostic_completed"
+}

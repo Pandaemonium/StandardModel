@@ -14,7 +14,7 @@ aristotle:
   submission_project: AgentTasks/aristotle-submit/spin-corner-four-cycle-20260716-project
   source_root: AgentTasks/aristotle-standalone/spin-corner-four-cycle-20260716
   output_dir: AgentTasks/aristotle-output/3b35a00c-6139-4105-9ac9-7742c7810bb2
-  status: submitted
+  status: integrated
   integration_target: PhysicsSM/Draft/NullEdge/SpinCornerFourCycleAristotle.lean
 ```
 

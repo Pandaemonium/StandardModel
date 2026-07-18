@@ -1,0 +1,79 @@
+[
+  {
+    "id": "SPIRAL-POLYGON-SOLID-ANGLE",
+    "statement": "Fan factorization: for a unit apex and unit rim directions (length >= 2), the polygon Bargmann invariant times the interior fan-diagonal pair traces equals the product of fan-triangle invariants, with no nondegeneracy hypothesis; under -1 < apex.diagonal for interior diagonals the polygon phase equals the phase of the product of fan-triangle invariants. With the landed triangle arctan law (+ the documented Van Oosterom-Strackee import), polygon corner phases are sums of signed half solid angles at every order. Exact nonplanar pentagon witness (9+i)/25.",
+    "grade": "M",
+    "srl": 3,
+    "decl_anchors": [
+      "PhysicsSM.Draft.NullEdge.BargmannFanInduction.bargmann_cocycle_matrix",
+      "PhysicsSM.Draft.NullEdge.BargmannFanInduction.fan_factorization",
+      "PhysicsSM.Draft.NullEdge.BargmannFanInduction.fan_arg",
+      "PhysicsSM.Draft.NullEdge.BargmannFanInduction.pentagon_witness",
+      "PhysicsSM.Draft.NullEdge.BargmannFanInduction.proj_collapse"
+    ],
+    "guard_file": "PhysicsSM/Draft/NullEdge/BargmannFanInductionAristotle.lean in-file #guard_msgs blocks (6)",
+    "manuscript_uses": [],
+    "notes": "Closes the C1-polygon gate at the packaged level. The matrix-slot cocycle is strictly stronger than the wave-4 direction-slot form (b/d slots arbitrary matrices). Statements verbatim from the submitted package (20/20 signatures); Aristotle project 6a413e71. Row prepared by claude 2026-07-16 for the current lab_manager's JSON window."
+  },
+  {
+    "id": "SPIRAL-CP-JARLSKOG-TOY",
+    "statement": "Two-family CP-odd interference decomposes exactly: Im(z_A conj z_B) = [triple_A (1+dots_B) - triple_B (1+dots_A)]/16 - a function of oriented volumes and CP-even dot sums only, with no unit hypotheses. Family swap and simultaneous corner-order reversal (CP) are odd; simultaneous proper rotation is invariant; both-planar families are protected; one spiraling family against one PLANAR family still interferes CP-oddly (exact witness 3/20).",
+    "grade": "M",
+    "srl": 3,
+    "decl_anchors": [
+      "PhysicsSM.Draft.NullEdge.BargmannJarlskogToy.jarlskog_decomposition",
+      "PhysicsSM.Draft.NullEdge.BargmannJarlskogToy.jarlskog_cp_odd",
+      "PhysicsSM.Draft.NullEdge.BargmannJarlskogToy.jarlskog_rotation_invariant",
+      "PhysicsSM.Draft.NullEdge.BargmannJarlskogToy.jarlskog_both_planar",
+      "PhysicsSM.Draft.NullEdge.BargmannJarlskogToy.jarlskog_witness"
+    ],
+    "guard_file": "PhysicsSM/Draft/NullEdge/BargmannJarlskogToyAristotle.lean in-file #guard_msgs blocks (7)",
+    "manuscript_uses": [],
+    "notes": "Completes C2's displayed gate together with the landed all-orders planar CP-inertness (SPIRAL-PLANAR-CP-INERT). CKM-shaped toy; no physical CKM value claimed. Aristotle project 958c6429; verbatim 22/22. Row prepared by claude 2026-07-16 for the current lab_manager's JSON window."
+  },
+  {
+    "id": "SPIRAL-BERRY-CLOSURE",
+    "statement": "Cap-square family (u^2 + t^2 = 1): the closed four-corner invariant equals cornerAmp(t)^4 with cornerAmp = (1+t)/2 + i(1-t)/2; squared magnitude ((1+t^2)/2)^4 (poles 1, equator 1/16); the equatorial value is exactly -(1/4) - the hemisphere Berry sign as a kernel fact; rewalking one edge multiplies by exactly the single right-angle corner factor 1/2 leaving the phase untouched. Reading: smooth closure costs phase, kinks cost magnitude.",
+    "grade": "M",
+    "srl": 3,
+    "decl_anchors": [
+      "PhysicsSM.Draft.NullEdge.CapSquareBerry.cap_square_invariant",
+      "PhysicsSM.Draft.NullEdge.CapSquareBerry.cap_square_normSq",
+      "PhysicsSM.Draft.NullEdge.CapSquareBerry.equator_square_invariant",
+      "PhysicsSM.Draft.NullEdge.CapSquareBerry.kink_insertion_penalty"
+    ],
+    "guard_file": "PhysicsSM/Draft/NullEdge/CapSquareBerryAristotle.lean in-file #guard_msgs blocks (5)",
+    "manuscript_uses": [],
+    "notes": "C3 target T1. Cross-checks the wave-1 hairpin -1/4 (same enclosed hemisphere). Aristotle project 8eb64e1f; verbatim 17/17. Row prepared by claude 2026-07-16 for the current lab_manager's JSON window."
+  },
+  {
+    "id": "SPIRAL-FRAMED-AREA-LAW",
+    "statement": "Framing transfer on the landed strong-coupling interface: any deterministic framing scalar with norm <= 1 preserves the Wilson area-law bound, entering as a pure area-independent prefactor at the SAME string tension sigma_R (the character-expansion factorization remains the displayed hypothesis). Unit-direction corner matrices are idempotent, so constant direction runs collapse: an a x b axis-aligned rectangle's spin factor equals the four-corner square factor for all side lengths, and the exact framed rectangle bound is norm <= (1/4) exp(-sigma_R A) with the hemisphere-Berry constant.",
+    "grade": "M",
+    "srl": 3,
+    "decl_anchors": [
+      "PhysicsSM.Draft.NullEdge.GateYM.FramedAreaLawTransfer.framed_wilson_area_law_sharp",
+      "PhysicsSM.Draft.NullEdge.GateYM.FramedAreaLawTransfer.framed_wilson_area_law_strict",
+      "PhysicsSM.Draft.NullEdge.GateYM.FramedAreaLawTransfer.proj_pow_collapse",
+      "PhysicsSM.Draft.NullEdge.GateYM.FramedAreaLawTransfer.rectangle_sequence_collapse",
+      "PhysicsSM.Draft.NullEdge.GateYM.FramedAreaLawTransfer.equator_square_trace",
+      "PhysicsSM.Draft.NullEdge.GateYM.FramedAreaLawTransfer.framed_rectangle_area_law"
+    ],
+    "guard_file": "PhysicsSM/Draft/NullEdge/GateYM/FramedAreaLawTransfer.lean in-file #guard_msgs blocks (9)",
+    "manuscript_uses": [],
+    "notes": "C3 target T2 (honest composition layer + exact instantiation; claude-proved locally, no Aristotle). Grade M [orig/comp]: the sigma_R machinery and factorization hypothesis are the landed GateYM.StrongCouplingAreaLaw interface. Row prepared by claude 2026-07-16 for the current lab_manager's JSON window."
+  },
+  {
+    "id": "SPIRAL-COCYCLE-GENERAL",
+    "statement": "Strengthened Bargmann cocycle: the four-corner factorization tr(PaPbPc) tr(PaPcPd) = tr(PaPbPcPd) tr(PaPc) requires unit hypotheses only on the DIAGONAL directions a, c; the off-diagonal slots are arbitrary (rank-one collapse acts only on the diagonal). Same for the phase form under -1 < a.c.",
+    "grade": "M",
+    "srl": 3,
+    "decl_anchors": [
+      "PhysicsSM.Draft.NullEdge.BargmannCocycle.bargmann_cocycle_general",
+      "PhysicsSM.Draft.NullEdge.BargmannCocycle.bargmann_cocycle_arg_general"
+    ],
+    "guard_file": "PhysicsSM/Draft/NullEdge/BargmannCocycleAristotle.lean in-file #guard_msgs blocks (6 incl. the 2 general forms)",
+    "manuscript_uses": [],
+    "notes": "Post-integration strengthening pass (linter-flagged unused hypotheses, kernel-confirmed); originals kept verbatim per integration provenance. Fully polynomial form remains false - the diagonal unit hypotheses are essential. Row prepared by claude 2026-07-16 for the current lab_manager's JSON window."
+  }
+]

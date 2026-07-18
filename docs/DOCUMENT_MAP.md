@@ -55,9 +55,31 @@ as current state.
 
 ## The null-edge program: core documents
 
+- `AutonomousLab/work/SPIRAL-LAYER/CLAUDE_SPIRAL_LAYER_PROGRAM_NOTE_2026-07-16.md` -
+  the spiral-layer program note: the kernel-checked answer to "does mass
+  zig-zag or spiral?" - the three-layer breakdown (mass magnitude
+  orientation-blind; per-corner amplitude hairpin-maximal; phase/spin/CP
+  in the oriented content), the conjecture ledger with all three gates
+  now anchored (C1 polygon solid-angle law closed via the fan induction;
+  C2 complete via all-orders planar CP-inertness plus the two-family
+  Jarlskog toy; C3 anchored via the cap-square Berry factor and the
+  framed area law with exact rectangle constant in
+  `PhysicsSM/Draft/NullEdge/GateYM/FramedAreaLawTransfer.lean`). Lean
+  anchors: fourteen `PhysicsSM/Draft/NullEdge/*Aristotle.lean` spiral
+  modules (SpinCornerBargmann, HairpinLunePhase, ChiralSpiralCommutator,
+  SpinCornerFourCycle, ChiralSpiralMassive, PlanarCornerReality,
+  BargmannSolidAngle, BargmannCocycle, BargmannFanInduction,
+  BargmannJarlskogToy, CapSquareBerry) with build-enforced
+  standard-three guards throughout. [LIVE]
 - `NULL-EDGE_TARGET_AUDIENCE.md` - publication-positioning memo: optimize Paper I for discrete relativistic quantum dynamics and the quantum-walk/QCA community; specifies the required comparison, spectrum, doubling, continuum, `3+1`, artifact, and outreach audits. [LIVE]
 - `Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex` - focused principal theorem draft: null-spinor area, the Pluecker-derived odd mass operator and exact unitary corner dictionary, full-zone `1+1` audit, and an exactly local finite `3+1` successive-axis extension with a phase-retaining complex rest operator, compact-box rate, exact three-torus Plancherel/wave-packet control, compact-support momentum-space `L2` convergence, explicit reversibility/causal cone, and an exact high-symmetry audit. The latter classifies all massless corners and proves explicit `+1`/`-1` body-center modes for every mass angle, so the current cubic regulator is globally ungapped; a separate theorem excludes the naive degree-one stationary-amplitude repair under the full involutory Dirac tangent. This is the impact-first Paper I draft; lattice-to-PDE identification, regulator replacement, interactions, and broader ontology are explicitly deferred. [DRAFT-MS]
+- `Sources/Null_Edge_GR_Foundations_Spine_2026-07-17.md` - canonical concise GR architecture and literature audit. It separates manifold-conditioned reconstruction from dynamical manifold selection, enforces one operator-derived metric/curvature/matter/action chain, lists F0-F9 completeness gates, and points to `PhysicsSM/Draft/NullEdge/GRFoundations.lean` as the Lean facade. The facade includes the affine interval-action no-go, determinant coframe-volume response, finite Palatini-to-Einstein composition, exact incidence boundary cancellation, the nonlinear and joint two-field chart actions, spinor-null coframe reconstruction, directed-carrier Levi-Civita/Ricci reconstruction, aggregate-weight coframe coverage, exact independent pointwise-connection variation, its local Euler coefficient and conformal Levi-Civita no-go, gauge-covariant periodic link/plaquette holonomy, scalar and Euclidean finite-fiber link/face Palatini divergence equations, an exact abstract Krein predecessor adjoint, a spacetime-derived Lorentz-bivector representation preserved by the concrete null-edge `SL(2,C)` action, an exact nonlinear right-trivialized Lorentz-plaquette tangent with additive identity-link limit, the full Krein-paired face Euler/divergence chain, a continuous action-visible curvature extractor with a conditional stationarity-to-limit Einstein theorem, a shrinking-plaquette curvature control, and Bianchi-to-source conservation. The long framework note remains the experimental ledger. [LIVE]
+- `PhysicsSM/Draft/NullEdge/EinsteinEquationVariation.lean` through `FiniteEinsteinHilbertActionResponse.lean`, together with `CoframeVolumeMetricVariation.lean`, `FinitePalatiniEinsteinHilbertVariation.lean`, `FinitePalatiniBoundaryCancellation.lean`, `FinitePalatiniCoframeChartAction.lean`, `NullEdgeCoframeEinsteinBridge.lean`, `DirectedNullEdgeLeviCivitaEinstein.lean`, `NullEdgeAggregateCoframeEinstein.lean`, `FiniteDirectedPalatiniConnectionVariation.lean`, `FinitePeriodicPalatiniEulerEquation.lean`, `NullEdgePalatiniJointAction.lean`, `FinitePeriodicLinkConnection.lean`, `FinitePeriodicLinkPalatiniVariation.lean`, `FinitePeriodicCovariantLinkPalatiniVariation.lean`, `FinitePeriodicKreinLinkAdjoint.lean`, `LorentzBivectorKreinBridge.lean`, `LorentzBivectorLieAlgebraBridge.lean`, `LorentzPlaquetteTangent.lean`, `LorentzCoframePalatiniFace.lean`, `FinitePeriodicKreinLinkPalatiniVariation.lean`, `FinitePeriodicCoframeKreinPalatiniVariation.lean`, `NonlinearLorentzPalatiniResponse.lean`, `NonlinearLorentzPalatiniAction.lean`, `NonlinearLorentzPalatiniCurveDerivative.lean`, `NonlinearLorentzPalatiniEuler.lean`, `NonlinearLorentzPalatiniCoframeVariation.lean`, `NonlinearLorentzPalatiniCurvatureExtraction.lean`, `NonlinearLorentzPalatiniEinsteinBridge.lean`, `NonlinearLorentzPalatiniEinsteinResponse.lean`, `NonlinearLorentzPalatiniCurvatureLimit.lean`, and `GraphPlaquetteCurvatureLimit.lean` - guarded F6-F8 curvature, action-variation, and decorated-geometry chain. The fixed interval action is affine and nonstationary, but the Palatini successor derives `delta det(e)=-(det(e)/2)<g,delta gInv>`, composes a Ricci-plus-boundary response into the weighted Einstein tensor, proves closed-carrier incidence cancellation, and constructs nonlinear finite actions. Four spinor null edges derive the primitive coframe, Gram metric, inverse, and volume; directed targets derive forward Levi-Civita coefficients, coordinate curvature, symmetric Ricci response, and scalar contraction. Null-column-preserving tangents cannot alone reach all ten metric components, but every coframe is uniquely an aggregate `EA` of a nondegenerate null frame, and aggregate weights have full symmetric metric reach. The joint action has the finite Einstein equation as its metric partial and the exact `Delta H + Gamma H + H Gamma` pointwise-connection response as its independent-connection partial; the canonical periodic flat chart is stationary in that channel. The periodic local audit derives the exact six-term ordered Euler coefficient and proves that the forward-difference null-edge Christoffel candidate fails even torsion-free stationarity on a three-site conformal witness. The corrected curvature substrate attaches group-valued transports to periodic links and proves conjugation covariance and flatness/path-independence. Its additive tangent actions pair scalar and finite-fiber face weights with plaquette curls; exact periodic summation by parts reduces antisymmetric-face stationarity to vanishing backward discrete divergence, with predecessor finite-fiber transport entering through its transpose. An abstract fundamental symmetry upgrades that transpose to the exact Krein predecessor adjoint `J U^T J`; the mostly-minus spacetime metric derives the rotation/boost bivector ordering and split `J`, and every eta-Lorentz matrix, including the concrete null-edge `SL(2,C)` action, preserves it. The six-vector is exactly equivalent to the matrix Lorentz Lie algebra, and the exact nonlinear right-trivialized plaquette response remains in that image and reduces to the additive curl at identity transport. The scalar ordered holonomy action has the matching holonomy-weighted response, exactly recovers the Krein/additive response at identity links, and now has canonical invertible curves `U exp(t hat(delta A))` whose ordinary derivatives equal that response, plus exact four-family nonidentity local link Euler coefficients whose vanishing is equivalent to derivative stationarity. The same action has an exact quadratic coframe-line expansion, sixteen local tetrad equations, and joint `6 + 16` stationarity. Its trace functional has a unique six-component Krein-dual curvature representative; antisymmetrizing that field leaves the ordered action unchanged and rewrites it exactly as a finite Palatini pairing. The full ordered face action uses the complementary coframe-derived curvature-face coefficient, whose proper-Lorentz covariance gives exact gauge invariance of the concrete scalar action. The arbitrary-coframe determinant identity, exact coframe-response formula, and equivalence between finite coframe stationarity and the mixed vacuum Einstein equations are kernel-checked. A continuous linear trace extractor is exactly calibrated on Lorentz generators; supplied first-order group-holonomy refinements give convergence of the action-visible antisymmetric curvature, and stationary refinements at fixed coframe pass to the limiting mixed vacuum Einstein equation. A shrinking-plaquette witness supplies nonzero curvature. Derivation of the frame and weights from the operator sector, equality with the causal-operator metric, graph-derived refinement and coframe convergence, metric dual-cell weighting, Levi-Civita selection, identification of the limiting target with common Riemann curvature, and global continuum variation remain open. [DRAFT-LEAN]
 - `Sources/Null_Edge_General_Relativity_Framework_Note_2026-07-14.md` - claim-graded general-relativity reconstruction and conditional derivation: kernel-checked 1+1 null-tick aggregation; an operator-first metric proposal with exact potential-canceling principal-symbol algebra and four-probe convergence transport in `PhysicsSM/Draft/NullEdge/CausalOperatorMetric.lean`; a concrete finite strict-order realization with exact local/smeared four-dimensional Benincasa-Dowker kernels, relabeling and scale covariance, function-level corrected pairing, and a varying-carrier intrinsic-probe convergence interface in `PhysicsSM/Draft/NullEdge/FiniteCausalOrderOperator.lean`; an executable 4D coordinate-probe calibration with a finite two-scale signature/variance window; Stage A2/A3 intrinsic-probe and support kills; an A3b max-clearance adjacent schedule; an A3c fixed-density larger-diamond control and guarded arbitrary-cardinality theorem that reject the global count shell as local support; and a Stage A4 Johnston interval-volume construction that conditionally recovers relabeling-covariant local charts while failing the frozen operator and emergent-dimension gates; relative count/scale controls; finite coframe, concrete `SL(2,C)` central-sign, quotient spin-obstruction, parallel transport, Cartan/commutator and component-contracted Bianchi, and Lichnerowicz geometry; a selected interval-count/effective-action dynamics route with Jacobson, spectral, and teleparallel comparisons; and a falsifiable G0-G8 ladder. Its guarded finite G3/G4/G5 theorem chain is `PhysicsSM/Draft/NullEdge/FiniteConnectionGeometry.lean`, with the torsionful companion in `PhysicsSM/Draft/NullEdge/FiniteCartanBianchi.lean`, explicit tensor contraction in `PhysicsSM/Draft/NullEdge/FiniteContractedBianchi.lean`, and conditional final Bianchi-to-source cancellation in `PhysicsSM/Draft/NullEdge/FiniteGravityConservation.lean`; it explicitly separates machine-checked finite algebra and embedding-based calibration from the still-open compact intrinsic probe carrier, dimensional selection, operator convergence, manifoldlike phase, and continuum Einstein-action bridge. [LIVE]
+- `PhysicsSM/Draft/NullEdge/LorentzBivectorLieAlgebraBridge.lean` - exact convention bridge from the physical six-component `(12,13,23,01,02,03)` bivector fiber to the matrix Lorentz Lie algebra. It proves two-sided coordinate recovery and identifies the Krein product with `-1/2` times the generator trace pairing. This makes the nonlinear plaquette/face contraction type-correct; the action-curve successor closes differentiable variation, while Levi-Civita selection remains open. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/LorentzPlaquetteTangent.lean` - exact nonlinear product/inverse response of group-valued Lorentz plaquette holonomy. It proves the four-corner adjoint formula, Lorentz Lie-algebra closure under eta-Lorentz links, and exact reduction to the oriented additive plaquette curl at identity transport. It is the guarded right-trivialized response used by the scalar action successor. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/ProperLorentzExponential.lean`, `NonlinearLorentzPalatiniResponse.lean`, `NonlinearLorentzPalatiniAction.lean`, `NonlinearLorentzPalatiniCurveDerivative.lean`, `NonlinearLorentzPalatiniEuler.lean`, `NonlinearLorentzPalatiniCoframeVariation.lean`, `NonlinearLorentzPalatiniCurvatureExtraction.lean`, `NonlinearLorentzPalatiniEinsteinBridge.lean`, `NonlinearLorentzPalatiniEinsteinResponse.lean`, `NonlinearLorentzPalatiniCurvatureLimit.lean`, `NonlinearLorentzPalatiniVaryingCoframeLimit.lean`, `PhysicalLorentzPlaquetteRefinement.lean`, `PhysicalLorentzPlaquetteEinsteinAudit.lean`, `VacuumWeylCurvatureTarget.lean`, `PeriodicVacuumWeylMeanObstruction.lean`, and `PeriodicVacuumWeylNullWave.lean` - exact six-coordinate nonlinear response, scalar ordered action `-1/2 tr(hat(B_ab)(H_ab-I))`, inverse orientation `H_ba=H_ab^(-1)`, holonomy-weighted product/inverse response, exact identity-link agreement with the coframe-derived Krein/additive theory, exact proper-Lorentz gauge invariance of the concrete coframe action, canonical invertible curves `U exp(t hat(delta A))` realizing every link variation, exact preservation of the proper eta-Lorentz subgroup along those curves, equality between ordinary action derivatives and the nonlinear response, exact four-family nonidentity local link Euler coefficients, supported component extraction, derivative stationarity iff all six local coefficients vanish, an ordinary coframe derivative with sixteen local coefficients, joint `6 + 16` stationarity, an exact rewrite as a Palatini pairing with the unique extracted antisymmetric six-component curvature field, the arbitrary-coframe determinant/scalar-curvature bridge, the exact response and stationarity-to-mixed-Einstein identities, a conditional action-visible curvature-limit passage to the mixed vacuum equation for jointly convergent varying coframes and curvature, a nonzero commuting-shift periodic-square realization with exact proper eta-Lorentz exponential links and plaquettes, a proof that this square cannot be jointly stationary at all shrinking levels with a static identity coframe unless its target is zero, a separate nonzero algebraic vacuum-Weyl target satisfying metric-lowered pair exchange, first Bianchi, and all identity-coframe vacuum equations, exact periodic mean/Bianchi no-go theorems ruling out site-independent and scalar-checkerboard additive realizations, and a periodically exact two-site additive null wave that mixes bivector planes while satisfying all pointwise identity-coframe vacuum-Riemann tests. The separate orthochronous sign, metric dual-cell weighting, Levi-Civita selection, graph-derived refinement/convergence proofs, construction of a nonflat nonlinear jointly stationary varying-coframe witness, and identification of the limiting target with continuum Riemann curvature remain open. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/LorentzCoframePalatiniFace.lean` and `FinitePeriodicCoframeKreinPalatiniVariation.lean` - explicit orientation-`0123` Lorentz Hodge star, internal coframe bivector `star(e_a wedge e_b)`, and the complementary curvature-face coefficient `(1/2) epsilon^(cdab) star(e_c wedge e_d)`. All six complement signs, ordered antisymmetry, proper-Lorentz Hodge commutation, covariance of both face fields, and exact specialization into the Krein link Euler/divergence equation are checked. Metric dual-cell volume weighting and Levi-Civita selection remain open. [DRAFT-LEAN]
 - `PhysicsSM/Draft/NullEdge/RelativeScaleTetradBridge.lean` - guarded finite
   G2-G3-G4 composition of count-derived relative length, Weyl-Lorentz coframe
   transitions, and inverse-area holonomy-curvature normalization. Relative
@@ -401,6 +423,20 @@ as current state.
   an exact quartic unit witness has derivative four.  The theorem does not
   exclude dimensional transmutation in a refining family with running
   dimensionless couplings.
+  `BareGraphScaleReconstruction.lean` now separates relabeling symmetry from
+  physical identifiability. Positive invariant data remain closed under
+  global rescaling, while the sharper observation-level theorem proves that a
+  scale-blind bare observation cannot exactly reconstruct a positive
+  Weyl-weight-one target across a nonunit rescaling. The theorem has an
+  explicit constant-observation witness and does not derive a continuum
+  realization map, density, or coframe. `RelativeGraphScaleReconstruction.lean`
+  then proves the density-free relative four-dimensional Weyl profile from
+  positive counts and supplied representative volumes. [DRAFT-LEAN]
+  `OneLoopDimensionalTransmutation.lean` proves the complementary unit-
+  covariance boundary: simultaneous rescaling of reference and invariant
+  scales leaves the running dimensionless coupling unchanged and rescales the
+  generated scale linearly. It does not derive the beta function, physical
+  coupling, reference unit, or measured scale. [DRAFT-LEAN]
   `TemporalBlockingRG.lean` defines exact two-step temporal blocking, proves
   closure of the mass-only Pluecker subgroup, gives an exact x-y quarter-turn
   counterexample to closure of the scalar-parameter split family, and
@@ -909,7 +945,7 @@ as current state.
   [ORACLE]
 - `PhysicsSM/Draft/NullEdge/AlexandrovAlgebraGerm.lean` - exact marked-diamond
   local-germ API with two-sided count depth, protected cores, tapered cutoffs,
-  zero extension, nesting, and relabeling covariance. It supplies no preferred
+  localization, and relabeling covariance. It supplies no preferred
   interval, dimension, continuum chart, or physical scale. [DRAFT-LEAN]
 - `PhysicsSM/Draft/NullEdge/AlexandrovGermPacking.lean` - finite bare-order
   ensemble of all maximum-cardinality eligible marked-diamond packings with
@@ -932,6 +968,38 @@ as current state.
   scores and a fully order-derived cutoff-control score connected to the
   maximum-packing pair estimand. Physical metric probes, targets, stochastic
   covariance decay, and continuum convergence remain open. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/AlexandrovNestedGerm.lean` - exact finite
+  outer-regulator/inner-germ interface. A supplied two-sided count buffer gives
+  closed-carrier inclusion, induced interval-count preservation, equality of
+  layered operators under nested zero extension, and additive protected-core
+  depth transport. A five-event chain witness prevents vacuity. It derives neither
+  a preferred nested pair nor buffer scale, and does not prove stochastic
+  availability or continuum convergence. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/GreedyAtlasCoverage.lean` - finite set-system core
+  for order-equivariant atlas selection. It proves the average-marginal
+  witness, greedy dominance, one-step and finite-horizon residual contraction,
+  the exact `1-(1-1/k)^k` coverage factor, relabeling preservation, and the
+  cardinality bound `card(union) <= K*B`. The latter forces
+  `K_N=Omega(N^(1/4))` for nonzero global coverage when chart cardinalities are
+  `O(N^(3/4))`. It controls a selector and necessary atlas growth; it does not
+  prove candidate-family saturation or G2. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/AtlasCoreBulkContainment.lean` - exact finite
+  bridge from protected chart cores to the independently defined order bulk.
+  Endpoint-plus-open-interval embeddings prove every protected core and every
+  finite protected-core union lies in the two-sided predecessor/successor bulk
+  at the same threshold. This factors all-event union coverage into bulk
+  fraction times family saturation, but does not prove saturation or a
+  continuum limit. [DRAFT-LEAN]
+- `Scripts/experiments/causal_atlas_scaling.py` and
+  `AgentTasks/null-edge-causal-atlas-scaling-stage-a3f-r3-benchmark-2026-07-16.md`
+  - fresh two-density complete-family test of the post-hoc
+  `1-S_N = O(N^(-1/2))` form. All six cells pass the frozen scaling, flat
+  `F_4`, capability, resource, and tripwire gates. This is finite stochastic
+  evidence only; growing atlas cardinality, overlap complexity, and G2 remain
+  open. Every citation carries
+  `INC-2026-07-16-A3F-R3-DUPLICATE-RUN` until Director review because two blind
+  concurrent launches wrote the frozen path; independent review retained the
+  second artifact with full disclosure. [EXPERIMENT]
 - `PhysicsSM/Draft/NullEdge/IntrinsicProbeSubspace.lean` - basis-free natural
   scalar-probe sectors under finite-order isomorphism. The zero-sum field
   subspace transports exactly, has real rank four on the five-event antichain,
@@ -941,6 +1009,59 @@ as current state.
   probe frame must transform inside a subspace up to basis change. The rank-four
   control is cardinality-driven and does not establish causal dimension,
   Lorentzian signature, or continuum probe convergence. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/RankFourCarrierProbeSector.lean`,
+  `PhysicsSM/Draft/NullEdge/EquivariantProbeSectorSelector.lean`, and
+  `PhysicsSM/Draft/NullEdge/EquivariantInvolutionProbeProjector.lean` - the
+  corrected local target is a supplied rank-four subspace of the full carrier
+  probe space, selected basis-free as a kernel, range, projector, or positive
+  eigenspace. Intertwining maps transport each sector exactly. Projectors and
+  involutions are polynomially equivalent, so the involution interface removes
+  eigenvector ordering but does not derive graph structure, a four-mode gap,
+  or Lorentzian inertia. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/EquivariantPolynomialProbeProjector.lean` - exact
+  basis-free functional-calculus naturality. Intertwining carrier operators
+  transport every common real-polynomial filter and its range; source
+  idempotence and rank-four certificates transport to the target, and the
+  selected range packages as the existing carrier projector. The module does
+  not derive the operator, polynomial, spectral gap, source rank, Lorentzian
+  inertia, overlap compatibility, or continuum tetrad. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/RetardedPolynomialProjectorNoGo.lean` - exact
+  algebraic obstruction to selecting a proper sector from a one-spectrum
+  operator: every idempotent real-polynomial filter of `a I + N` with
+  nilpotent `N` is zero or identity. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/FiniteStrictPastNilpotence.lean` - exact finite
+  causal-combinatorial bridge: every arbitrarily weighted strict-past operator
+  on a nonempty finite transitive irreflexive relation is nilpotent at the
+  event-cardinality power, with a nonzero two-event square-zero control.
+  [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/LayeredOperatorPolynomialNoGo.lean` - composes the
+  abstract polynomial obstruction with strict-past nilpotence and proves that
+  the bundled operator is pointwise equal to the production layered causal
+  operator. Direct idempotent polynomial filters of both the local source and
+  active smeared project-sign operators are therefore zero or identity. This
+  excludes only one-sided retarded polynomial selection, not corrected
+  symmetric, normal, Hermitian, or richer constraint operators. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/BareGraphPermutationProjectorNoGo.lean` - exact
+  symmetry obstruction for the natural real scalar vertex-probe module. A
+  fully permutation-equivariant idempotent has range dimension among
+  `0,1,n-1,n`, hence cannot have rank four for `n>=6`. Together with the
+  five-event zero-sum control, this rules out a refinement-stable universal
+  scalar selector on maximally symmetric bare graphs while leaving asymmetric,
+  decorated, edge/cochain, and spin-probe routes open. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/ProtectedCoreProbeProjectorTransition.lean` - on
+  the literal protected-core overlap of the active atlas, a supplied shared
+  idempotent projector, two intertwining restriction squares, shared-range
+  liftability, and restricted injectivity derive equal selected images and a
+  unique pair transition. An overlap with fewer than four events fails the
+  rank-four injectivity gate. The graph still owes all projectors, liftability,
+  Lorentzian inertia, triple compatibility, and refinement convergence.
+  [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/AtlasFractionalPackingDual.lean` - kernel-checked
+  weighted incidence dual for bounded-multiplicity atlases. A nonnegative
+  rational hitting certificate on the complete candidate family bounds every
+  selected subfamily by `cap * totalWeight`; the common-event obstruction is
+  its unit point-mass case. External optimization may search for certificates,
+  but the module neither produces one nor constructs an atlas. [DRAFT-LEAN]
 - `PhysicsSM/Draft/NullEdge/ProbeFrameLorentzGauge.lean` - packages the active
   smeared causal operator as a linear map and its corrected carrier pairing as
   a symmetric bilinear form. Four-probe frames are bases of the natural probe
@@ -1154,6 +1275,16 @@ as current state.
 - `Sources/Null_Edge_Unified_Mass_Model_Working_Plan.md` - the unified-mass-model working plan (detail behind the results map). [LIVE]
 - `Sources/Luminal_Motion_Checkerboard_Research_Program.md` - the checkerboard program (bridges to the carrier via the turn/corner dictionary). [LIVE]
 - `docs/NERD_ROADMAP.md` - see operational guides; also the program's gate structure. [LIVE]
+
+- `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniEinsteinBridge.lean` - exact site-local density/scalar-contraction base for the nonlinear action. It proves the left-inverse cofactor identity `PalatiniDensity(e,F) = -det(e) ScalarCurvature(e^{-1},F)` for every ordered curvature field, rewrites the concrete nonlinear action as the corresponding determinant-weighted scalar-curvature sum, rewrites its ordinary coframe response as a sum of extracted-curvature Palatini-density responses, and proves the mixed Ricci/scalar contraction identities used by the response successor. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniEinsteinResponse.lean` - exact arbitrary-coframe first-response bridge. For face-antisymmetric curvature it proves that the Palatini-density response is `det(e)` times the mixed Einstein coframe coefficient paired with an arbitrary tetrad variation. It follows that each of the sixteen concrete coframe Euler coefficients has this form, coframe stationarity is equivalent to all finite equations `2 Ric^d_c - delta^d_c R = 0`, and joint stationarity is exactly the six-component link Euler system together with those sixteen equations. Levi-Civita selection, dual-cell weighting, and continuum Riemann/refinement identification remain open. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniCurvatureLimit.lean` - exact and conditional action-visible curvature-limit bridge. It packages the six Palatini trace probes as a continuous linear map on arbitrary `4 x 4` matrix increments, proves identity on Lorentz-generator coordinates, and carries supplied shrinking-area first-order group-holonomy expansions to the exact antisymmetrized curvature field used by the action. At fixed invertible coframe, stationarity at every refinement implies the mixed vacuum Einstein equation for the limiting target. A flat identity-holonomy family witnesses the first-order interface. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniVaryingCoframeLimit.lean` - exact conditional successor allowing the finite coframe and its inverse to vary with refinement. It proves joint continuity of mixed Ricci, scalar, and Einstein entries in inverse-coframe and curvature components; proves that exact finite left inverses remain left inverses under simultaneous componentwise convergence; and passes stationary varying-coframe refinements to all limiting mixed vacuum Einstein equations. The graph still owes the refinement and convergence proofs, Levi-Civita selection, and identification of the target with continuum Riemann curvature. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/PhysicalLorentzPlaquetteRefinement.lean` - nonflat physical refinement witness and conditional Einstein specialization. It proves `exp(A_n hat(F))` has action-visible first-order limit `F`, certifies the exponential links as eta-preserving with determinant `+1`, and realizes exact opposite exponential plaquettes on the two columns of a commuting-shift `2 x 2` periodic square. Every other ordered face is flat, and nonzero `F` gives a nonzero target field. A stronger refinement structure records proper eta-Lorentz membership for every link, and the varying-coframe Einstein endpoint accepts it directly. The successor audit rules out joint stationarity of every nonzero target for the static identity-coframe ansatz. Graph derivation, orthochronous sign, construction of a stationary varying-coframe replacement, Levi-Civita selection, and continuum Riemann identification remain open. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/PhysicalLorentzPlaquetteEinsteinAudit.lean` - exact Einstein and Euler audit of the physical square. At the identity coframe it classifies the limiting mixed vacuum equation: five target components vanish and only the internal `23` rotation on the spacetime `01` plaquette survives. That component violates metric-lowered curvature pair exchange. An exact local link Euler coefficient has area-normalized limit twice its amplitude, so the survivor eventually fails connection stationarity. Combining both sectors proves that no nonzero target in the square family can be jointly stationary at every shrinking refinement level with a static identity coframe. A varying-coframe stationary construction remains open. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/VacuumWeylCurvatureTarget.lean` - nonzero convention-locked algebraic target for the next refinement. It constructs a two-parameter diagonal curvature operator with bivector coordinates `(-x-y,y,x,x,y,-x-y)`, proves face antisymmetry, metric-lowered pair exchange, algebraic first Bianchi, and vanishing mixed Ricci, scalar, and Einstein tensors at the identity coframe, and packages the nonzero unit member. It is not yet a group-valued plaquette refinement or stationary varying-coframe solution. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/PeriodicVacuumWeylMeanObstruction.lean` - exact necessary conditions for realizing the vacuum-Weyl target by first-order periodic links. It proves componentwise zero site sum and the three-direction discrete Bianchi identity for every additive plaquette curl, rules out exact and fixed-carrier site-independent nonzero Weyl limits, and shows that both parameters of any site-decorated diagonal Weyl field with fixed bivector eigenplanes must be shift invariant. The scalar unit specialization and explicit zero-mean `2 x 2` checkerboard are therefore not realizable. Boundary, twisted-bundle, nonlinear-leading, or genuinely frame-mixed escapes remain open. [DRAFT-LEAN]
+- `PhysicsSM/Draft/NullEdge/PeriodicVacuumWeylNullWave.lean` - first constructive frame-mixed escape from the periodic diagonal no-go. On a two-site carrier it realizes a plus-polarized null-wave curvature as the exact additive curl of two transverse null-rotation link potentials. The curvature is nonzero pointwise with opposite site amplitudes, face-antisymmetric, metric-lowered pair symmetric, algebraic- and discrete-Bianchi, and exactly Ricci, scalar, and mixed-Einstein flat at identity coframe. This is a finite linearized witness, not yet a nonlinear proper-Lorentz jointly stationary varying-coframe or Levi-Civita refinement. [DRAFT-LEAN]
 
 ## Overnight run 2026-07-08 (AgentTasks/overnight-allmass-run-2026-07-08/)
 

@@ -1,0 +1,2393 @@
+{
+  "coordinates_used_for_postselection_control": false,
+  "passes_all_gates": false,
+  "phase1": {
+    "minimum_realizations_passing": 4,
+    "passes_phase1": false,
+    "realizations": [
+      {
+        "common_marks_available": 5763,
+        "induced_count_tripwire": true,
+        "mark_results": [
+          {
+            "has_overlap_pair": false,
+            "mark": 132,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 1197,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 1669,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 1705,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 3061,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 6467,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [
+                {
+                  "carrier_size": 4838,
+                  "future_endpoint": 6713,
+                  "future_half_count": 374,
+                  "inclusive_carrier_count": 4839,
+                  "mark_is_common_interior": true,
+                  "past_endpoint": 1965,
+                  "past_half_count": 238,
+                  "rank_capable": true,
+                  "rapidity_excess": 1.0072569275399927,
+                  "raw_shell_counts": [
+                    130,
+                    94,
+                    102
+                  ],
+                  "shell_counts": [
+                    121,
+                    68,
+                    35
+                  ],
+                  "source_closure_rates": [
+                    0.9307692307692308,
+                    0.723404255319149,
+                    0.3431372549019608
+                  ]
+                }
+              ],
+              "carrier_size": {
+                "count": 1,
+                "mean": 4838.0,
+                "median": 4838.0,
+                "std": 0.0
+              },
+              "minimum_source_closure_rate": {
+                "count": 1,
+                "mean": 0.3431372549019608,
+                "median": 0.3431372549019608,
+                "std": 0.0
+              },
+              "orbit_size": 1,
+              "rank_capable_rate": 1.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 8950,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 9144,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          }
+        ],
+        "marks_evaluated": 8,
+        "median_nested_shell_disagreement": null,
+        "median_rank_capable_rate": {
+          "refinement": null,
+          "tight": null
+        },
+        "median_source_closure_rate": {
+          "refinement": null,
+          "tight": null
+        },
+        "nonvacuity_precondition": false,
+        "passes_phase1": false,
+        "qualifying_mark_overlap_rate": 0.0,
+        "qualifying_mark_rate": 0.0,
+        "resource_failure": false,
+        "sampled_marks": [
+          132,
+          1197,
+          1669,
+          1705,
+          3061,
+          6467,
+          8950,
+          9144
+        ]
+      },
+      {
+        "common_marks_available": 5744,
+        "induced_count_tripwire": null,
+        "mark_results": [
+          {
+            "has_overlap_pair": false,
+            "mark": 1278,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 1999,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 4508,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 6976,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 8015,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 9135,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 9139,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 9492,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          }
+        ],
+        "marks_evaluated": 8,
+        "median_nested_shell_disagreement": null,
+        "median_rank_capable_rate": {
+          "refinement": null,
+          "tight": null
+        },
+        "median_source_closure_rate": {
+          "refinement": null,
+          "tight": null
+        },
+        "nonvacuity_precondition": false,
+        "passes_phase1": false,
+        "qualifying_mark_overlap_rate": 0.0,
+        "qualifying_mark_rate": 0.0,
+        "resource_failure": false,
+        "sampled_marks": [
+          1278,
+          1999,
+          4508,
+          6976,
+          8015,
+          9135,
+          9139,
+          9492
+        ]
+      },
+      {
+        "common_marks_available": 5919,
+        "induced_count_tripwire": null,
+        "mark_results": [
+          {
+            "has_overlap_pair": false,
+            "mark": 1560,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 2771,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 4659,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 4810,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 6148,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 7065,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 7575,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 9445,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          }
+        ],
+        "marks_evaluated": 8,
+        "median_nested_shell_disagreement": null,
+        "median_rank_capable_rate": {
+          "refinement": null,
+          "tight": null
+        },
+        "median_source_closure_rate": {
+          "refinement": null,
+          "tight": null
+        },
+        "nonvacuity_precondition": false,
+        "passes_phase1": false,
+        "qualifying_mark_overlap_rate": 0.0,
+        "qualifying_mark_rate": 0.0,
+        "resource_failure": false,
+        "sampled_marks": [
+          1560,
+          2771,
+          4659,
+          4810,
+          6148,
+          7065,
+          7575,
+          9445
+        ]
+      },
+      {
+        "common_marks_available": 5620,
+        "induced_count_tripwire": null,
+        "mark_results": [
+          {
+            "has_overlap_pair": false,
+            "mark": 531,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 2128,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 3275,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 4166,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 4725,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 5937,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 7996,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 9120,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          }
+        ],
+        "marks_evaluated": 8,
+        "median_nested_shell_disagreement": null,
+        "median_rank_capable_rate": {
+          "refinement": null,
+          "tight": null
+        },
+        "median_source_closure_rate": {
+          "refinement": null,
+          "tight": null
+        },
+        "nonvacuity_precondition": false,
+        "passes_phase1": false,
+        "qualifying_mark_overlap_rate": 0.0,
+        "qualifying_mark_rate": 0.0,
+        "resource_failure": false,
+        "sampled_marks": [
+          531,
+          2128,
+          3275,
+          4166,
+          4725,
+          5937,
+          7996,
+          9120
+        ]
+      },
+      {
+        "common_marks_available": 5888,
+        "induced_count_tripwire": null,
+        "mark_results": [
+          {
+            "has_overlap_pair": false,
+            "mark": 600,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 2038,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 2405,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 2773,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 4378,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 4666,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 6812,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          },
+          {
+            "has_overlap_pair": false,
+            "mark": 7202,
+            "nested_overlap_jaccard": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "nested_pair_count": 0,
+            "nested_pairs": [],
+            "nested_shell_disagreement": {
+              "count": 0,
+              "mean": null,
+              "median": null,
+              "std": null
+            },
+            "qualifies_nonempty_orbits": false,
+            "refinement": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            },
+            "resource_failure": false,
+            "tight": {
+              "brackets": [],
+              "carrier_size": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "minimum_source_closure_rate": {
+                "count": 0,
+                "mean": null,
+                "median": null,
+                "std": null
+              },
+              "orbit_size": 0,
+              "rank_capable_rate": 0.0
+            }
+          }
+        ],
+        "marks_evaluated": 8,
+        "median_nested_shell_disagreement": null,
+        "median_rank_capable_rate": {
+          "refinement": null,
+          "tight": null
+        },
+        "median_source_closure_rate": {
+          "refinement": null,
+          "tight": null
+        },
+        "nonvacuity_precondition": false,
+        "passes_phase1": false,
+        "qualifying_mark_overlap_rate": 0.0,
+        "qualifying_mark_rate": 0.0,
+        "resource_failure": false,
+        "sampled_marks": [
+          600,
+          2038,
+          2405,
+          2773,
+          4378,
+          4666,
+          6812,
+          7202
+        ]
+      }
+    ],
+    "realizations_passing": 0,
+    "runtime_seconds": {
+      "count": 5,
+      "mean": 6.620129059999999,
+      "median": 6.50559770000018,
+      "std": 0.37308422914215633
+    }
+  },
+  "phase2": null,
+  "primary_inference_unit": "realization clustered through marks",
+  "selector_uses_embedding_coordinates": false,
+  "settings": {
+    "adjacent_ratio": 1.25,
+    "adjacent_scales": [
+      0.10850404095237087,
+      0.1356300511904636,
+      0.16953756398807948
+    ],
+    "analytic_minimum_buffer_ratio": 20.353759577123824,
+    "duration": 1.681792830507429,
+    "ell": 0.10219728214404318,
+    "endpoint_count_band": [
+      0.75,
+      1.25
+    ],
+    "events": 9600,
+    "half_count_target": 9.623490800264529,
+    "marks_per_realization": 8,
+    "maximum_admitted_refinement_carrier_count": 9238.551168253947,
+    "maximum_orbit_members": 64,
+    "minimum_shell_count": 4,
+    "nonlocality_scale": 0.18,
+    "rapidity_excess_cap": 1.5,
+    "realizations": 5,
+    "reference_duration": 1.0,
+    "reference_events": 1200,
+    "refinement_buffer_ratio": 32.0,
+    "seed": 2026071606,
+    "tight_buffer_ratio": 24.0,
+    "volume_multiplier": 8
+  },
+  "status": "external finite nested-regulator inner-germ gate"
+}

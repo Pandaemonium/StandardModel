@@ -32,16 +32,15 @@ recorded human/agent review step with named reviewers.
 
 ```mermaid
 flowchart LR
-  A["psi_1, psi_2, ... : each a two-component
-     complex spinor, one per light-speed edge"]
-  P["P = sum_i psi_i psi_i-dagger
-     (2x2 momentum matrix of the bundle)"]
-  D["det P = sum over pairs of
-     |psi_i wedge psi_j| squared
+  A["psi_1, psi_2 : two two-component complex
+     spinors, one per light-speed edge (a PAIR)"]
+  P["P = psi_1 psi_1-dagger + psi_2 psi_2-dagger
+     (2x2 momentum matrix of the edge pair)"]
+  D["det P = |psi_1 wedge psi_2| squared
      [KERNEL]"]
   B["rest operator B_z with
      B_z squared = det P times identity
-     [KERNEL]"]
+     [KERNEL, pair case]"]
   W["mass term of the finite
      Dirac walk, built FROM the area"]
   A --> P --> D --> B --> W
@@ -50,11 +49,16 @@ flowchart LR
 Caption (identical across all three levels): each light-speed constituent
 is a two-component spinor. A single spinor spans no area: the wedge
 psi wedge psi is zero, the determinant vanishes, and the object is
-massless. Two non-parallel spinors span a parallelogram; the kernel-checked
-identity says the squared rest mass of the bundle is exactly the sum of
-those squared areas, and the operator that implements "being at rest"
-squares to that same number. Reading: mass is not an ingredient here; it is
-the geometry of at least two null things failing to be parallel. The
+massless. Two non-parallel spinors span a parallelogram, and the
+kernel-checked identity says the squared rest mass of the PAIR is exactly
+that squared area, det(P) = |psi_1 wedge psi_2| squared, with the rest
+operator squaring to that same number. Reading: mass is not an ingredient
+here; it is the geometry of at least two null things failing to be
+parallel. Extension (exact, kernel-checked): for an arbitrary family
+psi_1, ..., psi_n the determinant is still the sum over pairs
+sum_{i<j} |psi_i wedge psi_j| squared, but the rest operator then obeys the
+CUBE law B^3 = (budget) times B on a rank-four support block - the scalar
+square is the two-edge (n = 2) specialization, not the general law. The
 identity is exact at every finite size. It does not predict any particular
 mass value and makes no continuum claim.
 

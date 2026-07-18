@@ -23,6 +23,8 @@ ladders with nonzero entry `2`.  Aristotle project
 `9858b0d2-baf3-42d1-b939-142dfbef45cb` supplied the proof bodies; despite its
 remote `COMPLETE_WITH_ERRORS` label, the returned file preserved every
 statement and passed the pinned local Lean kernel on 2026-07-14.
+Standard-three axiom guards backfilled 2026-07-16 to match the wave-2
+integration pattern.
 -/
 
 noncomputable section
@@ -113,5 +115,47 @@ theorem spin_half_iff_zitter_radius (r m : ℝ) (hm : m ≠ 0) :
   grind
 
 end PhysicsSM.Draft.NullEdge.ChiralSpiralCommutator
+
+/-! ## Build-enforced assumption-footprint guards (backfilled 2026-07-16) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChiralSpiralCommutator.g5_sq' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChiralSpiralCommutator.g5_sq
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChiralSpiralCommutator.comm_D0_g5' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChiralSpiralCommutator.comm_D0_g5
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChiralSpiralCommutator.comm_D0_APlus' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChiralSpiralCommutator.comm_D0_APlus
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChiralSpiralCommutator.comm_D0_AMinus' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChiralSpiralCommutator.comm_D0_AMinus
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChiralSpiralCommutator.zitter_double_comm_APlus' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChiralSpiralCommutator.zitter_double_comm_APlus
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChiralSpiralCommutator.zitter_double_comm_AMinus' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChiralSpiralCommutator.zitter_double_comm_AMinus
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChiralSpiralCommutator.mass_comm_g5_odd' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChiralSpiralCommutator.mass_comm_g5_odd
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChiralSpiralCommutator.mass_comm_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChiralSpiralCommutator.mass_comm_ne_zero
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChiralSpiralCommutator.transverse_momentum_sq_eq_mass_sq' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChiralSpiralCommutator.transverse_momentum_sq_eq_mass_sq
+
+/-- info: 'PhysicsSM.Draft.NullEdge.ChiralSpiralCommutator.spin_half_iff_zitter_radius' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.ChiralSpiralCommutator.spin_half_iff_zitter_radius
 
 end

@@ -13,7 +13,7 @@ aristotle:
   submission_project: AgentTasks/aristotle-submit/chiral-spiral-massive-20260716-project
   source_root: AgentTasks/aristotle-standalone/chiral-spiral-massive-20260716
   output_dir: AgentTasks/aristotle-output/469070a8-55af-45b0-bf07-40372330c22b
-  status: submitted
+  status: integrated
   integration_target: PhysicsSM/Draft/NullEdge/ChiralSpiralMassiveAristotle.lean
 ```
 

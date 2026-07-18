@@ -1,0 +1,154 @@
+import Mathlib
+
+/-!
+# The Bargmann three-cycle phase is the half solid angle (VOS-arctan law)
+
+Standalone Aristotle package (Mathlib-only imports). Spiral-layer wave 3,
+job A, 2026-07-16. SUBMIT ONLY WHEN FLEET CAPACITY FREES.
+
+## What this file states
+
+Wave 1 landed the polynomial three-cycle identity
+tr(P(a)P(b)P(c)) = (1 + a.b + b.c + c.a + i a.(b x c)) / 4. Standard
+spherical trigonometry (the Van Oosterom-Strackee formula, cited in the
+provenance) says that for unit vectors the oriented solid angle Omega of
+the spherical triangle (a, b, c) satisfies
+tan(Omega/2) = a.(b x c) / (1 + a.b + b.c + c.a). The right-hand side is
+EXACTLY Im/Re of the landed trace. This file kernel-checks the
+trace-side half of that correspondence:
+
+1. `bargmann_arg_eq_arctan`: on the domain where the real part
+   1 + a.b + b.c + c.a is positive, the complex argument of the Bargmann
+   three-cycle equals arctan(triple / (1 + dots)). Combined with the cited
+   VOS formula this reads: the corner phase IS the signed half solid angle
+   (the identification with Omega is an IMPORT, documented, not claimed as
+   a Lean theorem here).
+2. `bargmann_arg_octant`: the octant witness x -> y -> z has argument
+   exactly pi/4 (= half the octant solid angle pi/2).
+3. `bargmann_arg_planar`: a coplanar (zigzag) triple with positive real
+   part has argument exactly 0 - no enclosed angle, no phase.
+4. `bargmann_arg_neg`: orientation reversal negates the argument on the
+   positive-real-part domain (conjugation = opposite handedness).
+
+## Conventions
+
+Identical to the wave-1/wave-2 packages: standard Pauli matrices, raw real
+triples `Fin 3 -> R`, proj a = (1 + a.sigma)/2, `dot`/`triple` the
+Euclidean dot and right-handed oriented triple product. The positivity
+hypothesis `0 < 1 + dot a b + dot b c + dot c a` delimits the principal
+branch (it holds for every triangle strictly inside an open hemisphere;
+obtuse configurations need branch care and are deliberately out of scope).
+
+## Intended reading (spiral layer)
+
+This turns the wave-1 numerical confirmations (octant arg = pi/4;
+tetrahedral ir/3) into the general triangle law "corner phase = half the
+enclosed solid angle" with exactly one imported classical identity. It is
+the C1-triangle gate of the spiral-layer conjecture ledger
+(`AutonomousLab/work/SPIRAL-LAYER/CLAUDE_SPIRAL_LAYER_PROGRAM_NOTE_2026-07-16.md`).
+M-grade once proved; the solid-angle reading carries the [import] tag for
+Van Oosterom-Strackee.
+
+## Provenance
+
+Clean-room from standard Pauli algebra; the solid-angle identification is
+A. Van Oosterom and J. Strackee, "The solid angle of a plane triangle,"
+IEEE Trans. Biomed. Eng. BME-30 (1983) 125-126 (standard result; also in
+spherical-trigonometry references as L'Huilier-type formulas). Wave-1
+companion: the parent repo's SpinCornerBargmannAristotle (three-cycle
+identity and witnesses).
+
+## Proof guidance
+
+`bargmann_arg_eq_arctan`: rewrite the trace with the three-cycle identity
+(prove it inline as a helper - same entrywise computation as wave 1 - or
+re-derive Re/Im directly), then apply Mathlib's arg-of-positive-real-part
+characterization (`Complex.arg_eq_arctan` shape: for 0 < z.re,
+arg z = arctan (z.im / z.re); search `Complex.arg` API for the exact
+name). Note the trace is the quarter of (Re + i Im) with Re > 0 by
+hypothesis, and arg is scaling-invariant (`Complex.arg_real_mul` with
+positive scalar 1/4). The witnesses are finite 2x2 computations plus
+`Real.arctan_one` and `Real.arctan_zero` / `Real.arctan_neg`.
+
+Do not weaken or modify any statement or definition; the placeholder
+proofs are the only intended gaps.
+-/
+
+noncomputable section
+
+namespace BargmannSolidAngle
+
+open Matrix
+
+/-- 2x2 complex matrices: the spin-coherent corner algebra. -/
+abbrev SpinMat := Matrix (Fin 2) (Fin 2) ℂ
+
+/-- Raw real direction triples (no normalization built in). -/
+abbrev Vec3 := Fin 3 → ℝ
+
+/-- Standard Pauli sigma_x. -/
+def sigmaX : SpinMat := !![0, 1; 1, 0]
+
+/-- Standard Pauli sigma_y. -/
+def sigmaY : SpinMat := !![0, -Complex.I; Complex.I, 0]
+
+/-- Standard Pauli sigma_z. -/
+def sigmaZ : SpinMat := !![1, 0; 0, -1]
+
+/-- Pauli vector a.sigma for a raw real triple a. -/
+def pauli (a : Vec3) : SpinMat :=
+  ((a 0 : ℂ)) • sigmaX + ((a 1 : ℂ)) • sigmaY + ((a 2 : ℂ)) • sigmaZ
+
+/-- Spin-coherent corner matrix (1 + a.sigma)/2. -/
+def proj (a : Vec3) : SpinMat := (1 / 2 : ℂ) • (1 + pauli a)
+
+/-- Euclidean dot product of raw triples. -/
+def dot (a b : Vec3) : ℝ := a 0 * b 0 + a 1 * b 1 + a 2 * b 2
+
+/-- Oriented triple product a.(b x c). -/
+def triple (a b c : Vec3) : ℝ :=
+  a 0 * (b 1 * c 2 - b 2 * c 1) + a 1 * (b 2 * c 0 - b 0 * c 2)
+    + a 2 * (b 0 * c 1 - b 1 * c 0)
+
+/-- **VOS-arctan law (trace side).** On the principal domain
+(positive real part), the Bargmann three-cycle phase is
+arctan(triple / (1 + pairwise dots)) - by the cited Van Oosterom-Strackee
+formula, the signed half solid angle of the corner triangle. -/
+theorem bargmann_arg_eq_arctan (a b c : Vec3)
+    (h : 0 < 1 + dot a b + dot b c + dot c a) :
+    Complex.arg ((proj a * proj b * proj c).trace)
+      = Real.arctan (triple a b c / (1 + dot a b + dot b c + dot c a)) := by
+  sorry
+
+/-- Unit x direction. -/
+def ex : Vec3 := ![1, 0, 0]
+
+/-- Unit y direction. -/
+def ey : Vec3 := ![0, 1, 0]
+
+/-- Unit z direction. -/
+def ez : Vec3 := ![0, 0, 1]
+
+/-- Octant witness: the handed triple x -> y -> z has phase exactly pi/4,
+half the octant solid angle pi/2. -/
+theorem bargmann_arg_octant :
+    Complex.arg ((proj ex * proj ey * proj ez).trace) = Real.pi / 4 := by
+  sorry
+
+/-- Planar control: a coplanar triple with positive real part has phase
+exactly zero (zigzag content encloses nothing). -/
+theorem bargmann_arg_planar :
+    Complex.arg ((proj ex * proj ey * proj (fun i => (ex i + ey i) / 2)).trace)
+      = 0 := by
+  sorry
+
+/-- Orientation reversal negates the phase on the principal domain. -/
+theorem bargmann_arg_neg (a b c : Vec3)
+    (h : 0 < 1 + dot a b + dot b c + dot c a) :
+    Complex.arg ((proj c * proj b * proj a).trace)
+      = -Complex.arg ((proj a * proj b * proj c).trace) := by
+  sorry
+
+end BargmannSolidAngle
+
+end

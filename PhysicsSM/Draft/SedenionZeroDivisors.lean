@@ -1,0 +1,129 @@
+import PhysicsSM.Algebra.Octonion.Conjugation
+import PhysicsSM.Algebra.Octonion.Norm
+
+/-!
+# The sedenions have zero divisors: `O` is the maximal composition/division algebra
+
+**Status: DRAFT / Aristotle handoff skeleton. Contains `s o r r y`.**
+
+SM-branch, item 5 (why the internal algebra is `R⊗C⊗H⊗O` and not larger). The
+mass mechanism forces a positive-definite composition norm, hence a DIVISION
+algebra (`Octonion.octonion_no_zero_divisors`, landed). By the Cayley-Dickson
+tower `R ↪ C ↪ H ↪ O ↪ S ↪ ...`, the NEXT algebra after the octonions is the
+16-dimensional SEDENIONS `S = O × O`, with the doubling product
+
+  `(a, b) · (c, d) = (a·c - conj d · b,  d·a + b·conj c)`.
+
+Doubling the NON-associative (merely alternative) octonions breaks the division
+property: `S` has ZERO DIVISORS. So the octonions are the MAXIMAL member of the
+tower that is a division algebra - which is exactly why the null-edge mass
+mechanism can use `O` but nothing larger. This is the "upper" half of the
+Hurwitz-type selection (the "lower" half - that R,C,H,O are the ONLY finite-dim
+real normed division algebras - is the separate, unproved Hurwitz classification).
+
+## Aristotle handoff
+
+Prove `sedenions_have_zero_divisors`: exhibit two NONZERO sedenions whose product
+(under `sedenionMul`) is zero. A classic witness exists (the sedenion zero
+divisors are well documented, e.g. `(e_3 + e_{10})(e_6 - e_{15}) = 0` in a
+standard basis); FIND a valid pair for THIS project's octonion convention (XOR
+basis, `Octonion.conj`) - do not assume a literature basis matches. If the chosen
+`sedenionMul` convention needs adjusting to a genuine Cayley-Dickson double
+(sign/conjugate placement) to make `S` the true sedenions, adjust it and note the
+change; the theorem (existence of a zero divisor in the octonion double) holds
+for every genuine Cayley-Dickson convention.
+
+Narrow build: `lake build PhysicsSM.Draft.SedenionZeroDivisors`.
+Grade target: `M [orig formalization; comp Cayley-Dickson/Hurwitz theory]`.
+-/
+
+noncomputable section
+
+namespace PhysicsSM.Draft.SedenionZeroDivisors
+
+open PhysicsSM.Algebra.Octonion
+
+/-- A sedenion is a pair of octonions (the Cayley-Dickson double of `O`). -/
+abbrev Sedenion := Octonion × Octonion
+
+/-- The Cayley-Dickson product on `S = O × O`:
+`(a,b)(c,d) = (a c - conj d · b, d a + b · conj c)`. Written with `Neg`/`Add`
+since `Octonion` carries no bundled `Sub`/ring. -/
+def sedenionMul (p q : Sedenion) : Sedenion :=
+  (p.1 * q.1 + (-(conj q.2 * p.2)),
+   q.2 * p.1 + p.2 * conj q.1)
+
+/-- **The sedenions have zero divisors.** The explicit witness `a = (e₁, e₂)`,
+`b = (e₄, e₇)` (i.e. `e₁+e₁₀` and `e₄+e₁₅`) satisfies `a, b ≠ 0` and
+`sedenionMul a b = 0`. So the Cayley-Dickson double of the octonions is NOT a
+division algebra, and `O` is the maximal division algebra in the tower - the
+"why nothing larger than O" half of the item-5 selection. Witness found by
+Aristotle (6af39d1c) in the project XOR convention; proof kernel-verified here
+(standard-three axioms). -/
+theorem sedenions_have_zero_divisors :
+    ∃ a b : Sedenion, a ≠ 0 ∧ b ≠ 0 ∧ sedenionMul a b = 0 := by
+  use (⟨0, 1, 0, 0, 0, 0, 0, 0⟩, ⟨0, 0, 1, 0, 0, 0, 0, 0⟩),
+    (⟨0, 0, 0, 0, 1, 0, 0, 0⟩, ⟨0, 0, 0, 0, 0, 0, 0, 1⟩)
+  refine ⟨?_, ?_, ?_⟩
+  · intro h; rw [Prod.ext_iff] at h; simp [Octonion.ext_iff] at h
+  · intro h; rw [Prod.ext_iff] at h; simp [Octonion.ext_iff] at h
+  · ext <;>
+      simp [sedenionMul, conj, Octonion.mul_c0, Octonion.mul_c1, Octonion.mul_c2,
+        Octonion.mul_c3, Octonion.mul_c4, Octonion.mul_c5, Octonion.mul_c6,
+        Octonion.mul_c7]
+
+/-- The Cayley-Dickson norm on `S = O × O`: `N(a, b) = normSq a + normSq b`. -/
+def sedenionNormSq (p : Sedenion) : ℝ :=
+  normSq p.1 + normSq p.2
+
+/-- **The sedenion norm is NOT multiplicative (composition fails).** The same
+zero-divisor witness `a = (e₁, e₂)`, `b = (e₄, e₇)` has `N(a · b) = N(0) = 0`
+but `N(a) · N(b) = 2 · 2 = 4`. So the sedenions are not a composition algebra -
+the deeper structural reason (beyond just having zero divisors) that the
+Cayley-Dickson tower's division/composition property stops at `O`. -/
+theorem sedenion_composition_fails :
+    ∃ a b : Sedenion,
+      sedenionNormSq (sedenionMul a b) ≠ sedenionNormSq a * sedenionNormSq b := by
+  refine ⟨(⟨0, 1, 0, 0, 0, 0, 0, 0⟩, ⟨0, 0, 1, 0, 0, 0, 0, 0⟩),
+    (⟨0, 0, 0, 0, 1, 0, 0, 0⟩, ⟨0, 0, 0, 0, 0, 0, 0, 1⟩), ?_⟩
+  have hz : sedenionMul (⟨0, 1, 0, 0, 0, 0, 0, 0⟩, ⟨0, 0, 1, 0, 0, 0, 0, 0⟩)
+      (⟨0, 0, 0, 0, 1, 0, 0, 0⟩, ⟨0, 0, 0, 0, 0, 0, 0, 1⟩) = 0 := by
+    ext <;>
+      simp [sedenionMul, conj, Octonion.mul_c0, Octonion.mul_c1, Octonion.mul_c2,
+        Octonion.mul_c3, Octonion.mul_c4, Octonion.mul_c5, Octonion.mul_c6,
+        Octonion.mul_c7]
+  rw [hz]
+  simp [sedenionNormSq, normSq]
+  norm_num
+
+/-- **The octonions are non-associative.** Explicit witness:
+`(e₁ · e₂) · e₄ ≠ e₁ · (e₂ · e₄)` (the two differ by a sign in the `e₇`
+component, since `e₄` lies outside the quaternion subalgebra generated by
+`e₁, e₂`). This is the ROOT CAUSE of `sedenion_composition_fails`: Cayley-Dickson
+doubling preserves the composition law only over an ASSOCIATIVE base, and `O` is
+the FIRST non-associative member of the tower - which is exactly why `O` is the
+LAST division algebra (doubling it loses composition). -/
+theorem octonion_not_associative :
+    ∃ a b c : Octonion, (a * b) * c ≠ a * (b * c) := by
+  refine ⟨⟨0, 1, 0, 0, 0, 0, 0, 0⟩, ⟨0, 0, 1, 0, 0, 0, 0, 0⟩,
+    ⟨0, 0, 0, 0, 1, 0, 0, 0⟩, fun h => ?_⟩
+  simp [Octonion.ext_iff, Octonion.mul_c0, Octonion.mul_c1, Octonion.mul_c2,
+    Octonion.mul_c3, Octonion.mul_c4, Octonion.mul_c5, Octonion.mul_c6,
+    Octonion.mul_c7] at h
+  norm_num at h
+
+end PhysicsSM.Draft.SedenionZeroDivisors
+
+/-! ## Build-enforced assumption-footprint guard -/
+
+/-- info: 'PhysicsSM.Draft.SedenionZeroDivisors.sedenions_have_zero_divisors' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.SedenionZeroDivisors.sedenions_have_zero_divisors
+
+/-- info: 'PhysicsSM.Draft.SedenionZeroDivisors.sedenion_composition_fails' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.SedenionZeroDivisors.sedenion_composition_fails
+
+/-- info: 'PhysicsSM.Draft.SedenionZeroDivisors.octonion_not_associative' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.SedenionZeroDivisors.octonion_not_associative

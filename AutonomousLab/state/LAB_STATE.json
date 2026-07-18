@@ -6,11 +6,11 @@
   "strategic_year": 1,
   "strategic_quarter": "Y1-Q1",
   "current_cycle": {
-    "id": "GR-CONTINUUM-2026-07-16",
+    "id": "GR-NULL-EDGE-OVERNIGHT-2026-07-16",
     "status": "active",
     "phase": "focused_execution",
-    "started_at": "2026-07-16T05:47:58-07:00",
-    "planned_end_at": "2026-07-16T17:56:58-07:00"
+    "started_at": "2026-07-16T21:04:29-07:00",
+    "planned_end_at": "2026-07-17T08:04:29-07:00"
   },
   "active_project_ids": [
     "LAB-INFRA",
@@ -24,8 +24,8 @@
   "availability": {
     "codex": {
       "status": "available",
-      "last_checked": "2026-07-13T17:48:25-07:00",
-      "detail": "Concurrent transaction-lock verification after Windows race fix."
+      "last_checked": "2026-07-17T02:23:53-07:00",
+      "detail": "Overnight GR goal active to 08:00 PDT. Integrated Higgs Hilbert stress and massive retarded-link series; finite strict-past Higgs radial propagation capstone targeted-built and audited."
     },
     "claude": {
       "status": "available",
@@ -34,8 +34,8 @@
     },
     "aristotle": {
       "status": "available",
-      "last_checked": "2026-07-16T05:48:34-07:00",
-      "detail": "Live list responsive; ~25 IDLE projects awaiting harvest triage incl untracked 07-15 causal-operator wave"
+      "last_checked": "2026-07-16T23:53:48-07:00",
+      "detail": "Generic unitary Higgs link project 49e42dc1 submitted; old comparison 9a705eeb remains independent and in progress; fleet has open capacity."
     }
   },
   "work_in_progress_limits": {
@@ -45,7 +45,7 @@
     "aristotle_projects": 8
   },
   "last_reviews": {
-    "daily": "2026-07-13T00:16:48-07:00",
+    "daily": "2026-07-17T01:25:10-07:00",
     "weekly": null,
     "monthly": null,
     "quarterly": null,

@@ -13,7 +13,7 @@ aristotle:
   submission_project: AgentTasks/aristotle-submit/planar-corner-reality-20260716-project
   source_root: AgentTasks/aristotle-standalone/planar-corner-reality-20260716
   output_dir: AgentTasks/aristotle-output/058a9901-a302-4726-8962-588fa33eb1cc
-  status: submitted
+  status: integrated
   integration_target: PhysicsSM/Draft/NullEdge/PlanarCornerRealityAristotle.lean
 ```
 

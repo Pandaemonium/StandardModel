@@ -20,11 +20,20 @@ Real directions use `Fin 3 -> Real`, the Pauli matrices are standard, and
 Aristotle project `48ee063f-9478-4817-beae-1eb531c5f520` supplied the proof
 bodies.  Every submitted signature was preserved and the result was checked
 with the pinned Lean toolchain on 2026-07-14.
+Standard-three axiom guards backfilled 2026-07-16 to match the wave-2
+integration pattern.
+Promoted from `PhysicsSM/Draft/NullEdge/SpinCornerBargmannAristotle.lean`
+to the trusted tree on 2026-07-16 after: kernel-checked proofs with no
+placeholders, standard-three axiom pins on all ten public theorems
+(build-enforced below), integration-time semantic review, and
+cross-family (codex) anchor confirmation of the registry rows citing
+this module. Statement semantics unchanged; namespace renamed from the
+draft path; downstream draft modules updated.
 -/
 
 noncomputable section
 
-namespace PhysicsSM.Draft.NullEdge.SpinCornerBargmann
+namespace PhysicsSM.Spinor.SpinCornerBargmann
 
 open Matrix
 
@@ -173,6 +182,48 @@ theorem witness_mirror :
   rw [witness_handed]
   norm_num [Complex.ext_iff]
 
-end PhysicsSM.Draft.NullEdge.SpinCornerBargmann
+end PhysicsSM.Spinor.SpinCornerBargmann
+
+/-! ## Build-enforced assumption-footprint guards (backfilled 2026-07-16) -/
+
+/-- info: 'PhysicsSM.Spinor.SpinCornerBargmann.pauli_sq' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Spinor.SpinCornerBargmann.pauli_sq
+
+/-- info: 'PhysicsSM.Spinor.SpinCornerBargmann.pair_trace' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Spinor.SpinCornerBargmann.pair_trace
+
+/-- info: 'PhysicsSM.Spinor.SpinCornerBargmann.bargmann_three_cycle' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Spinor.SpinCornerBargmann.bargmann_three_cycle
+
+/-- info: 'PhysicsSM.Spinor.SpinCornerBargmann.bargmann_im' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Spinor.SpinCornerBargmann.bargmann_im
+
+/-- info: 'PhysicsSM.Spinor.SpinCornerBargmann.planar_cp_inert' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Spinor.SpinCornerBargmann.planar_cp_inert
+
+/-- info: 'PhysicsSM.Spinor.SpinCornerBargmann.reversal_conj' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Spinor.SpinCornerBargmann.reversal_conj
+
+/-- info: 'PhysicsSM.Spinor.SpinCornerBargmann.antipodal_annihilation' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Spinor.SpinCornerBargmann.antipodal_annihilation
+
+/-- info: 'PhysicsSM.Spinor.SpinCornerBargmann.corner_channel_sum' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Spinor.SpinCornerBargmann.corner_channel_sum
+
+/-- info: 'PhysicsSM.Spinor.SpinCornerBargmann.witness_handed' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Spinor.SpinCornerBargmann.witness_handed
+
+/-- info: 'PhysicsSM.Spinor.SpinCornerBargmann.witness_mirror' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Spinor.SpinCornerBargmann.witness_mirror
 
 end

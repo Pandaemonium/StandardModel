@@ -3,11 +3,14 @@ repos:
     rev: v5.0.0
     hooks:
       - id: end-of-file-fixer
+        exclude: '^AgentTasks/.*\.json$'
       - id: fix-byte-order-marker
+        exclude: '^AgentTasks/.*\.json$'
       - id: mixed-line-ending
         args: ["--fix=lf"]
+        exclude: '^AgentTasks/.*\.json$'
       - id: trailing-whitespace
-        exclude: '\.md$'
+        exclude: '(?:\.md$|^AgentTasks/.*\.json$)'
       - id: check-yaml
       - id: check-json
       - id: check-toml

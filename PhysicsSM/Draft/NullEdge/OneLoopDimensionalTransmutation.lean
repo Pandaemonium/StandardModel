@@ -8,6 +8,13 @@ proves positivity on the physical branch, the exact inverse-coupling cocycle,
 and reconstruction of an RG-invariant dimensionful scale. The explicit
 `b = 1/2`, `Lambda = 1`, `mu = exp 1` fixture is nondegenerate.
 
+It also records the absolute-scale boundary. Simultaneously rescaling the
+reference and invariant scales leaves the dimensionless running coupling
+unchanged, while the reconstructed dimensionful scale transforms linearly.
+Dimensional transmutation can therefore turn a supplied reference unit and a
+dimensionless coupling into an invariant scale; it does not create an
+absolute unit from scale-blind data.
+
 The beta function and its coefficient are inputs. This module does not identify
 the running coupling with QCD, derive the law from null information, or predict
 a measured energy scale.
@@ -31,6 +38,50 @@ noncomputable def runningGSq (b Lambda mu : ℝ) : ℝ :=
 /-- RG-invariant scale reconstructed from a scale and squared coupling. -/
 noncomputable def dynScale (b mu gSq : ℝ) : ℝ :=
   mu * Real.exp (-1 / (2 * b * gSq))
+
+/-! ## Simultaneous reference-scale covariance -/
+
+/-- A common nonzero rescaling of the reference and invariant scales leaves
+the dimensionless inverse running coupling unchanged. -/
+theorem runningInv_simultaneous_scale
+    (b Lambda mu lambda : Real) (hlambda : lambda ≠ 0) :
+    runningInv b (lambda * Lambda) (lambda * mu) =
+      runningInv b Lambda mu := by
+  unfold runningInv
+  rw [mul_div_mul_left mu Lambda hlambda]
+
+/-- The squared running coupling is likewise blind to a common nonzero
+rescaling of both dimensionful inputs. -/
+theorem runningGSq_simultaneous_scale
+    (b Lambda mu lambda : Real) (hlambda : lambda ≠ 0) :
+    runningGSq b (lambda * Lambda) (lambda * mu) =
+      runningGSq b Lambda mu := by
+  unfold runningGSq
+  rw [runningInv_simultaneous_scale b Lambda mu lambda hlambda]
+
+/-- At fixed dimensionless coupling, the generated scale has Weyl weight
+one in the supplied reference scale. -/
+theorem dynScale_reference_scale
+    (b mu gSq lambda : Real) :
+    dynScale b (lambda * mu) gSq = lambda * dynScale b mu gSq := by
+  unfold dynScale
+  ring
+
+/-- **Dimensional-transmutation scale package.** A common positive change of
+unit is invisible to the dimensionless running coupling and is inherited
+linearly by the reconstructed dimensionful scale. -/
+theorem transmutation_simultaneous_scale_package
+    (b Lambda mu lambda : Real) (hlambda : 0 < lambda) :
+    runningGSq b (lambda * Lambda) (lambda * mu) =
+        runningGSq b Lambda mu ∧
+      dynScale b (lambda * mu)
+          (runningGSq b (lambda * Lambda) (lambda * mu)) =
+        lambda * dynScale b mu (runningGSq b Lambda mu) := by
+  have hlambdaNe : lambda ≠ 0 := hlambda.ne'
+  constructor
+  · exact runningGSq_simultaneous_scale b Lambda mu lambda hlambdaNe
+  · rw [runningGSq_simultaneous_scale b Lambda mu lambda hlambdaNe]
+    exact dynScale_reference_scale b mu (runningGSq b Lambda mu) lambda
 
 /-- The inverse coupling is positive above a positive reference scale. -/
 theorem runningInv_pos {b Lambda mu : ℝ}
@@ -93,3 +144,25 @@ theorem exponential_witness :
     norm_num
 
 end PhysicsSM.Draft.NullEdge.OneLoopDimensionalTransmutation
+
+/-! ## Build-enforced assumption-footprint guards -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.OneLoopDimensionalTransmutation.runningGSq_pos' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.OneLoopDimensionalTransmutation.runningGSq_pos
+
+/-- info: 'PhysicsSM.Draft.NullEdge.OneLoopDimensionalTransmutation.dynScale_running' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.OneLoopDimensionalTransmutation.dynScale_running
+
+/-- info: 'PhysicsSM.Draft.NullEdge.OneLoopDimensionalTransmutation.runningInv_cocycle' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.OneLoopDimensionalTransmutation.runningInv_cocycle
+
+/-- info: 'PhysicsSM.Draft.NullEdge.OneLoopDimensionalTransmutation.exponential_witness' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.OneLoopDimensionalTransmutation.exponential_witness
+
+/-- info: 'PhysicsSM.Draft.NullEdge.OneLoopDimensionalTransmutation.transmutation_simultaneous_scale_package' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.OneLoopDimensionalTransmutation.transmutation_simultaneous_scale_package

@@ -1,6 +1,6 @@
 # General Relativity and the Null-Edge Framework
 
-**Status:** research note and reconstruction roadmap, updated 2026-07-16  
+**Status:** research note and reconstruction roadmap, updated 2026-07-17
 **Scope:** standard general relativity, causal reconstruction, finite null-edge
 geometry, and the precise gap between the current formalization and a continuum
 gravitational theory
@@ -42,6 +42,29 @@ This decision removes competing scale fields and competing curvature actions.
 It does not remove the main theorem debts: the wave operator, probe sector,
 manifoldlike phase, connection, and effective action must still be derived and
 shown to converge from order and number.
+
+## Current gate dashboard
+
+| Gate | Current result | Status and exact debt |
+|---|---|---|
+| G1: causal/conformal structure | Continuum causal reconstruction is established under standard causality hypotheses; finite order supplies the intended causal datum | `T [import]` in the continuum, but a bare finite graph still needs a manifoldlike/refinement theorem |
+| G2a: scale and volume | Exact hidden-rescaling no-go, density-free relative Weyl reconstruction, and unit-covariant dimensional-transmutation algebra | Absolute physical scale remains impossible from any scale-blind bare observation; a graph-sensitive calibration mechanism, density/reference unit, carrier selection, and concentration remain underived |
+| G2b: rank-four metric/coframe | Basis-free rank-four sector, projector/involution equivalence, polynomial-filter naturality, overlap transition, Weyl scale, and nonvacuity interfaces are exact | Principal bottleneck; the graph does not yet construct an order-native operator with a certified stable rank-four Lorentzian sector or tetrad |
+| G3: spin structure | Finite transition cocycles, component characters, spin-lift obstruction cochains, and exact lift criteria are available | Conditional on a supplied nondegenerate atlas, Lorentz transitions, and compatible lifts |
+| G4: curvature | Nontrivial holonomy regulators, finite Bianchi identities, and a directed-null-edge Levi-Civita/Ricci construction are available | Direction synchronization, local Lorentz covariance, equivalence of coordinate/holonomy/operator curvature, common refinement, and convergence remain open |
+| G5: Dirac/Lichnerowicz bridge | The finite super-Dirac square and separation of spacetime/internal gradings are exact | Principal-symbol convergence and the continuum scalar-curvature coefficient are unproved |
+| G6: stress-energy | Genuine coframe variations recover density, anisotropic pressure, and one flux component in controlled finite matter models | No arbitrary local coframe variation, full tensor identification, discrete Noether theorem, or conserved continuum source |
+| G7: Einstein dynamics and constants | Exact affine-action no-go, determinant and Palatini bridges, incidence cancellation, nonlinear and joint two-field chart actions, null-edge coframe and directed Levi-Civita/Ricci reconstruction, bijective aggregate-weight coverage, exact independent pointwise-connection variation, its local periodic Euler coefficient and torsion-free Levi-Civita no-go, a gauge-covariant periodic link/plaquette substrate, scalar, Euclidean finite-fiber, and full Krein-paired link/face Euler chains, plus a spacetime-derived Lorentz-bivector representation preserved by the concrete null-edge `SL(2,C)` action and exactly equivalent to the matrix Lorentz Lie algebra with normalized trace pairing, the exact nonlinear right-logarithmic plaquette tangent, the scalar ordered holonomy action with exact derivative along canonical exponential link curves and four-family nonidentity local Euler coefficients, the exact coframe-response and stationarity-to-mixed-Einstein identity, a continuous action-visible curvature extractor with a conditional jointly convergent varying-coframe stationarity-to-limit theorem, a nonzero proper eta-Lorentz periodic-square refinement with exact exponential plaquettes, its exact static identity-coframe joint-stationarity no-go, a nonzero algebraic vacuum-Weyl target with metric-lowered pair exchange and first Bianchi, and the complementary coframe-derived curvature-face coefficient `(1/2) epsilon^(cdab) star(e_c wedge e_d)` with exact divergence, proper-Lorentz covariance, and concrete action gauge invariance | Aggregate weights and frame synchronization are not yet derived from the operator sector, and the Gram metric is not identified with the operator metric; the corrected link/face action must supply a graph-derived nonflat stationary varying-coframe refinement satisfying the curvature/coframe convergence hypotheses and realizing the vacuum-Weyl target, metric dual-cell weighting of its Hodge face field, Levi-Civita selection, and identification of the limiting target with Riemann curvature, while the orthochronous sign, Newton constant, physical boundaries, global variation-limit interchange, and backreaction remain open |
+| G8: continuum controls | Weak-field and cosmological reductions provide consistency and normalization targets | They validate a future limit; they do not derive that limit from the graph |
+
+At G7, the canonical exponential variation curves are now proved to remain in
+the proper eta-Lorentz subgroup when based there. The unresolved component
+condition is the separate orthochronous sign, not determinant properness.
+
+The dependency is strongly upstream. Progress on G3-G8 cannot compensate for
+an open G2: until scale, a rank-four Lorentzian sector, and compatible overlap
+transport are reconstructed, the later results remain conditional finite
+architecture rather than a derivation of general relativity.
 
 ## Claim notation
 
@@ -449,6 +472,26 @@ This avoids two local scale fields, but it does not derive an absolute unit
 from a bare order: the value of \(\ell\), or one equivalent positive anchor,
 remains supplied. The existing relative scale theorems therefore remain useful
 as normalization and no-double-counting audits.
+
+That boundary is now exact at the observation level. If a nontrivial positive
+rescaling leaves the bare observation unchanged while a positive physical
+length has Weyl weight one, no estimator of that length from the observation
+can be exact on all realizations. This is stronger than automorphism
+invariance, which by itself only leaves a rescaling ray admissible and does not
+forbid choosing a conventional constant. The theorem is conditional on the
+rescaling-degenerate realization map; it does not derive continuum
+realizations from a graph. It is kernel-checked in
+`BareGraphScaleReconstruction.lean` and independently approved in
+`AutonomousLab/reviews/CLAUDE_REVIEW_BARE_GRAPH_SCALE_NOGO_2026-07-16.md`.
+
+Dimensional transmutation does not silently evade this boundary. In the
+one-loop algebra already formalized here, a common rescaling of the reference
+and invariant scales cancels from the dimensionless running coupling and is
+inherited linearly by the generated scale. A derived beta function could
+select a scale relative to a supplied reference; the physical unit of that
+reference still requires graph-sensitive dynamics or calibration. The exact
+reading was independently approved in
+`AutonomousLab/reviews/CLAUDE_REVIEW_TRANSMUTATION_SCALE_ADDENDUM_2026-07-16.md`.
 
 ### 3.5 Executable Stage A calibration
 
@@ -2800,6 +2843,931 @@ or larger global diamond, but a nested outer regulator and inner evaluation
 region with an explicit count buffer. G2 and every downstream tetrad,
 curvature, and Einstein-dynamics gate remain closed.
 
+### 3.71 Stage A3e proves the nested finite calculus but kills fixed-count buffers
+
+Stage A3e separates the two roles. An outer count-balanced bracket regulates
+the boundary, while the unchanged three-scale source sets around the mark form
+the inner evaluation germ. A clearance calculation first gives the necessary
+half-count ratio
+
+\[
+ B_{\min}=20.3537595771.
+\]
+
+Before execution, the tight and refinement ratios were frozen at \(24\) and
+\(32\), the global control size at \(N=9600\), and the outer selector at the
+complete minimum-excess orbit. A tight bracket was required to be genuinely
+nested inside a refinement bracket. Separate random streams generated the
+sprinkling and sampled the eight order-only common-interior marks in each of
+five realizations.
+
+The exact finite architecture is sound. In
+`AlexandrovNestedGerm.lean`, a `CountBufferedNestedDiamond` embeds its inner
+closed carrier into the outer one, preserves induced interval counts between
+inner events, and makes the inner layered causal operator equal the
+outer-carrier operator on the displayed nested zero extension. A cardinality
+injection also proves that an inner protected core at depth \(t\) lies in the
+outer protected core at depth \(B+t\). An explicit five-event chain witnesses
+a one-unit endpoint buffer and transports a nonempty inner depth-one core to
+outer depth two. These are finite restriction identities; the outer and inner
+diamonds, zero-extension condition, and count buffer remain supplied.
+
+The frozen stochastic availability gate fails decisively. Across \(40\)
+sampled marks, only one has any \(B=32\) outer bracket, none has a nested
+\(B=24\) bracket, and no nested pair exists. The single \(B=32\) bracket is
+rank-capable, but its worst raw-to-retained source-closure rate is only
+\(0.343\), below the frozen \(0.80\) gate. Thus zero of five realizations pass
+Phase 1, and coordinate controls are correctly not evaluated.
+
+The arithmetic clearance bound was necessary but far from sufficient for
+probabilistic bracket availability. The fixed symmetric (B=24/32) endpoint
+bands and their exact-minimum nested-orbit selector are therefore killed; they
+may not be rescued by larger global diamonds, capable-mark selection, widened
+bands, different buffers, or lower gates. The exact nested-carrier calculus is
+retained.
+
+A distinct successor must select an order-only outer atlas and separate three
+roles inside each carrier: a larger probe-data region, a protected evaluation
+core, and the retarded source support of each evaluated row. A source may
+contribute to the row without itself satisfying the evaluation-center
+predicate. Before execution, the outer scale and coverage gate must be checked
+against an analytic typical-event core-coverage estimate; at the A3e scales,
+the exact flat four-dimensional protected-core law gives ideal eligible
+fractions of \(7.545\%\) at \(B=24\) and \(3.580\%\) at \(B=32\), before
+endpoint-band, excess, nesting, and finite-count losses. Only after this support
+architecture passes may the compact nonlocal and intrinsic local operator
+branches be compared on the same germs. G2 and every tetrad, curvature,
+stress-energy, and Einstein-dynamics gate remain closed.
+
+### 3.72 Stage A3f-R1 calibrates individual cores but kills uniform atlas sampling
+
+The A3e postmortem exposed a normalization error in the first atlas design.
+Fourth roots of interval counts are Alexandrov four-volume radii, not proper
+times. For a flat four-dimensional interval of duration \(T\), let \(s\) be
+the required proper-time depth from each endpoint and put \(z=2s/T\). Direct
+integration of the admitted spatial three-balls gives the protected fraction
+
+\[
+ F_4(z)=\frac12\left((2-5z^2)\sqrt{1-z^2}
+ +3z^4\operatorname{acosh}(1/z)\right),\qquad 0<z<1.
+\]
+
+If \(M\) is the expected outer count and \(H\) the count associated with one
+one-sided depth, then \(z=2(H/M)^{1/4}\) and the expected protected-core count
+is \(M F_4(z)\). This is an external flat-space calibration, not a metric
+reconstruction theorem. The A3f-R1 schedule also makes all three physical
+scales shrink: its expected outer, buffer, and source counts scale as
+\(N^{3/4}\), \(N^{1/2}\), and \(N^{1/4}\), respectively.
+
+The corrected order-only benchmark used \(N=4800,9600\), five realizations at
+each density, buffer-radius multipliers \(0.8,1.0,1.25\), and a uniform atlas
+of \(K=16\) complete count-band candidates. Candidate scarcity was absent:
+the median complete-family sizes were \(79\) and \(504\). Individual core
+sizes followed the flat calibration. Nevertheless, the measured median
+all-event coverage was only \((0.496,0.365,0.193)\) at \(N=4800\) and
+\((0.503,0.400,0.230)\) at \(N=9600\), ordered by increasing buffer rung. The
+narrowest rung passed only two of five and three of five realizations; the
+other rungs passed none. No rung reached the required four of five at either
+density, so no adjacent pair passed.
+
+The failure is a joint-placement effect rather than an individual-volume
+failure. In 29 of the 30 sampled atlases, all \(120\) pairs of protected cores
+overlapped; the remaining atlas had \(119\) overlapping pairs. Median core
+Jaccard overlaps were about \(0.3\) to \(0.5\), and repeated-given-covered
+rates were about \(0.84\) to \(0.88\). Uniform sampling therefore spent roughly
+five to seven union-volumes on duplicate central coverage. The cross-density
+drifts remained below the frozen \(0.10\) bound, making this a stable negative
+result rather than a refinement sign change. **`M [comp]`**.
+
+This killed only the uniformly sampled \(K=16\) atlas on the displayed
+schedule. It retained the exact \(F_4\) law, balanced shrinking exponents,
+candidate abundance, individual-core calibration, and the measured overlap
+diagnostic. These retained facts motivated the separately preregistered greedy
+packing test below.
+
+### 3.73 Stage A3f-R2 retains greedy packing but kills the fixed-cardinality two-density gate
+
+Before the held-out run, `GreedyAtlasCoverage.lean` kernel-checked the finite
+maximum-coverage architecture. For every nonempty benchmark family, some core
+has at least its average share of the benchmark union still uncovered; a
+marginal maximizer over a larger available family inherits that bound.
+One-step residual contraction and finite geometric iteration then give the
+exact factor
+
+\[
+ 1-\left(1-\frac1K\right)^K,
+\]
+
+which is approximately \(0.644\) at \(K=16\). Event relabeling preserves every
+marginal. The integrated declarations have guarded standard Mathlib assumption
+footprints and no proof gaps. This theorem controls the selector relative to a
+benchmark union; it does not assert that the candidate family contains a good
+cover. **`M [orig]`**.
+
+The frozen selector constructed every count-band candidate and every protected
+core before selection, maximized new independent-bulk coverage first and new
+all-event coverage second, and sampled uniformly from each final exact tie
+orbit. A distinct random stream sampled a uniform \(K=16\) control on the same
+fresh realization. All \(45\) analytic, relabeling, finite-optimum, replay,
+count, and coordinate-firewall tests passed before seed `2026071608` was opened.
+
+The stage nevertheless fails. At \(N=4800\), no rung's complete family met the
+all-event and bulk feasibility floors; median complete-union all-event coverage
+was \((0.523,0.381,0.200)\). At \(N=9600\), the corresponding medians rose to
+\((0.631,0.500,0.317)\). The narrowest \(N=9600\) rung passed every absolute
+per-realization gate in all five realizations, with median greedy all-event
+coverage \(0.613\), bulk coverage \(0.848\), and uniform all-event coverage
+\(0.536\). Its median paired improvement was only \(0.0777\), below the frozen
+\(0.10\) density floor, so no rung passed both densities and no adjacent pair
+passed.
+
+The improvement failure is not evidence against the selector. At the only
+absolute-passing cell, complete-union coverage minus uniform coverage was only
+\(0.6309-0.5356=0.0953\). Even an oracle returning the whole complete-family
+union could not satisfy the frozen \(0.10\) improvement gate. Greedy captured
+\(97.2\%\) of that union; across all six density/rung cells the median capture
+ratio was between \(95.6\%\) and \(99.7\%\). All \(30\) selected overlap graphs
+were connected, every atlas had a positive later marginal, and every replay
+and count tripwire passed. The post-run independent review therefore requires
+retaining the greedy theorem and selector while killing the displayed
+two-density gate. The saturation-blind improvement floor was a shared design
+error in both builder and pre-run review. **`M [comp]`**.
+
+R4 later refined the complete-nerve diagnosis: the same central collapse
+survives capacity-constrained greedy selection and five random-priority laws.
+R4-D then resolved the family-level mechanism. Every complete family has a
+global common event at beta `0.80`. At beta `1.00`, two of six retain a
+true apex while the other four have near-universal hubs. At diagnostic-only
+beta `1.25`, all six global intersections are empty but strong hubs remain.
+Thus the original selector-level collapse is now an archived large-chart/apex
+or near-apex family effect, with viability at smaller chart scale still open.
+
+`AtlasCoreBulkContainment.lean` now gives the exact order-theoretic
+decomposition behind the data. A candidate bottom endpoint plus the past open
+interval injects into all predecessors of a core event, and dually on the
+future side. Thus every protected core and every finite protected-core union
+lies in the independently defined two-sided order bulk. All-event union
+coverage factors as the global bulk fraction times complete-family saturation
+of bulk. Median bulk saturation rose from \((0.81,0.75,0.61)\) at \(N=4800\)
+to \((0.87,0.83,0.73)\) at \(N=9600\); that saturation, not the already
+calibrated bulk fraction, is now the stochastic family-convergence target.
+The finite containment and factorization statements are **`M [orig]`**; the
+displayed saturation values are **`M [comp]`**.
+
+There is also an exact asymptotic correction. If each selected core has at
+most \(B_N\) events, a finite union theorem gives
+
+\[
+ |\text{selected union}|\le K_N B_N.
+\]
+
+The balanced schedule has \(B_N=O(N^{3/4})\), so fixed \(K=16\) forces global
+coverage \(O(N^{-1/4})\to0\). Any nonzero continuum coverage target therefore
+requires at least \(K_N=\Omega(N^{1/4})\). The outer proper duration shrinks
+only as \(N^{-1/16}\), explaining why sixteen still-macroscopic charts cover
+an order-one fraction at the tested densities while being asymptotically
+insufficient. The finite union bound is **`M [orig]`**. The asymptotic
+consequence is **`T|H [interp]`**, conditional on the displayed balanced count
+schedule and the deterministic core-size bound inherited from its outer
+carrier band.
+
+The next admissible stage must separately measure complete-family bulk
+saturation on a fresh density ladder and then test a preregistered growing
+\(K_N\), using a saturation-aware headroom score and explicit memory ceilings.
+It may not lower the killed gates, reuse the spent seed, add coordinate
+separation, or evaluate source rows. G2, tetrad/spin reconstruction, curvature
+convergence, physical stress-energy, and Einstein dynamics remain closed.
+
+### 3.74 Stage A3f-R3 confirms fresh complete-family saturation scaling
+
+The preregistered successor isolated complete-family capability from atlas
+selection. It streamed every count-band candidate core into independent union
+masks at fresh interleaved densities (N=(6000,12000)), with five
+realizations and the same three buffer rungs. The effective count threshold
+was (lceil H_eta
+ceil) for both core and order-bulk predicates, matching
+the natural-number threshold in the finite containment theorem. All 60 exact
+and hostile regression tests, both guarded Lean builds, the resource gates,
+and the independent pre-run audit passed before the frozen seed was opened.
+
+All six cells are valid. Median complete-family saturation of the independent
+bulk rises from
+
+[
+ (0.849,0.790,0.701)quadhbox{at }N=6000
+]
+
+to
+
+[
+ (0.894,0.856,0.783)quadhbox{at }N=12000.
+]
+
+The scaled deficits
+
+[
+ D_N(eta)=sqrt N\,[1-S_N(eta)]
+]
+
+are ((11.72,16.24,23.15)) and ((11.58,15.81,23.79)), giving relative
+cross-density drifts (0.012), (0.027), and (0.027) against the frozen
+(0.20) ceiling. All-event complete-union coverage increases strictly at
+every rung. The narrow high-density rung reaches (0.6499), above its
+preregistered (0.60) capability floor. Measured bulk fractions differ from
+the external flat (F_4) calibration by at most (0.011), below the frozen
+(0.05) bound. Independent red-team recomputation matched all six medians,
+all frozen gates, both artifact hashes, and 210 of 210 archived Boolean checks.
+This is a passing finite stochastic scaling result, **`M [orig]`**, not an
+asymptotic convergence theorem.
+
+Provenance incident `INC-2026-07-16-A3F-R3-DUPLICATE-RUN` applies to this
+result until Director review. Two concurrent Codex lanes blindly launched the
+same hard-pinned seed and inputs about 13 seconds apart, and the second writer
+overwrote the first payload. The independent provenance ruling retains the
+second artifact because neither launch could use output-derived information,
+but requires the incident disclosure and run-invariant deterministic-content
+hash `2bddbd2e26a24598a04252d68b776bd8685a8cfeaca1303e9eb45f27348b8085`.
+No rerun is permitted, and an exclusive run sentinel is mandatory before the
+next frozen stage.
+
+The result opens only the separately preregistered growing-atlas measurement.
+The theorem-forced schedule starts from
+(K_N=lceil16(N/4800)^{1/4}
+ceil), while a saturation-aware headroom score
+replaces the killed absolute-improvement floor. Coverage and graph
+connectivity are not enough: spent R2 controls had maximum overlap
+multiplicity equal to all (16) selected cores at the two narrower rungs in
+every realization. The successor must therefore test bounded overlap
+complexity as well as connectivity, repeated coverage, and headroom capture.
+Source rows, transition data, operator locality, G2, tetrads, curvature,
+stress-energy, and Einstein dynamics remain closed.
+
+### 3.75 Stage A3f-R4 exposes an inconclusive complete-nerve regime
+
+R4 tested whether the fresh complete count-band family could support a
+growing protected-core atlas with bounded eventwise multiplicity. The frozen
+cardinality was
+
+\[
+ K_N=\lceil 2N^{1/4}\rceil,
+\]
+
+giving \(K_{6000}=18\) and \(K_{12000}=21\). Capacity caps were fixed at
+\(m\in\{5,8,12\}\). Every cell compared one capacity-constrained greedy
+selector with five independent random-priority feasible controls on the same
+complete candidate family. Literal common intersections defined nerve edges,
+triangles, and the full-simplex flag. The plan, source, tests, and atomic
+multi-output sentinel were independently audited before execution.
+
+The single incident-free frozen run returns **INADMISSIBLE**, not FAIL or
+PASS. All 36 development cells have the sole reason
+"random-feasible control shortfall"; no cap is selected, and held-out seed
+2026071611 is durably retired without being spawned. All resource, replay,
+containment, count, factorization, and sentinel checks pass.
+
+The finite observation is strikingly uniform. Across 36 cells and six
+constrained selection laws per cell, all 216 selectors stop at exactly the
+cap. Every constrained selected family has full common intersection, overlap
+edge density \(1\), triangle participation \(1\), and maximum multiplicity
+equal to \(m\). Every unconstrained descriptive control reaches \(K_N\), but
+also has full common intersection, complete overlap graph, and maximum
+multiplicity \(K_N\). The kernel-checked theorem
+fullCommonOverlap_card_le_bound explains each local stop: once a selected
+family shares an event, a multiplicity cap \(m\) forbids that same family from
+containing more than \(m\) charts.
+
+The frozen taxonomy correctly prevents a false kill. Because every paired
+control also shortfalls, the family- and headroom-capture scores are undefined;
+the cells cannot measure greedy superiority. The archived claim is therefore
+the 216 exactly-at-cap terminations and selected-family full intersections.
+That uniform result motivated the separately preregistered R4-D
+complete-family diagnostic.
+
+This is naturally read as a finite large-chart/common-apex regime. Under the
+frozen normalization,
+
+\[
+ \frac{n_R}{N}
+   =\frac{2048}{4800^{3/4}}N^{-1/4}
+   \approx 3.5514N^{-1/4},
+\]
+
+which is \(0.4035\) at \(N=6000\) and \(0.3393\) at \(N=12000\). Reaching a
+ten-percent outer-count fraction would require approximately \(N=1.59\times
+10^6\), beyond the dense-relation implementation. R4 therefore tests the
+mesoscopic scaling law before charts are small relative to the ambient
+diamond.
+
+R4-D replayed the six consumed development sprinklings once, without selectors,
+comparators, gates, or a new statistical sample. At beta `0.80`, all six
+complete candidate families have nonempty global intersections, of sizes
+`10, 41, 47, 4, 9, 2`. This converts the common-apex reading into an exact finite
+certificate there: every selected subfamily inherits the common event, so no
+capacity-`m` selector can exceed `m` charts.
+
+At beta `1.00`, only two complete families retain global intersections,
+of sizes `8` and `14`. The other four nevertheless have maximum event
+multiplicities `197/198`, `1309/1318`, `1270/1271`, and `1500/1504`.
+The R4 selector phenomenology therefore mixed two family-level mechanisms:
+true apices and near-apex hubs.
+
+At diagnostic-only beta `1.25`, all six global intersections are empty while
+the minimum individual core sizes remain `289, 300, 293, 605, 593, 563`. This
+removes the **common-event** obstruction without making the regime feasible.
+Single-event multiplicities still range from `173/198` to `229/234` and
+from `1218/1271` to `1233/1318`, approximately `87.4%` to `97.9%`
+over all six families. Empty intersection is one-directional evidence: it does
+not imply that any bounded-multiplicity selector reaches `K_N`.
+
+R5 then froze beta `1.25` as the sole result-bearing fresh-seed rung and beta
+`1.00` as a same-sprinkling, decision-inert negative control. The R4 caps,
+cardinality law, primary gates, taxonomy, and resource ceilings were preserved.
+After independent plan and source/hash clearance, the exact command ran once;
+the output and sentinel hashes were independently approved.
+
+The mechanical outcome is again **INADMISSIBLE**, but the geometry changes.
+All 18 primary cells have the sole reason `random-feasible control shortfall`,
+with no resource or tripwire failure, so no cap is selected and held-out seed
+`2026071613` is retired unconsumed. The beta-`1.25` complete-family intersection
+is empty in all six fresh sprinklings, while maximum hub multiplicity remains
+`92.3%` to `99.5%` of family size. Thus R4-D's empty-certificate and near-apex
+predictions both replicate out of sample.
+
+For the first time, the constrained greedy grows past its multiplicity cap.
+At (N=12000), every primary greedy cell exceeds the cap; cap (12) reaches
+`17-19` charts against (K_N=21), with no full selected intersection. One
+(N=6000), cap-(12) cell reaches `13`. The five random-priority controls trap
+harder and never reach the target (maximum `17`), which makes the frozen W2
+letter inadmissible rather than a scored selector failure. Smaller cores have
+therefore turned the exact R4 cap wall into a finite target margin, but have not
+constructed the growing atlas.
+
+R5 rules out this frozen complete-family/greedy/cap/cardinality architecture on
+the tested seeds and refutes the claim that emptying the complete-family common
+intersection is sufficient for the selector to reach (K_N). It does not rule
+out graph-native atlases, redesigned candidate families, fractional-dual
+certificates, or other growth laws. R4, R4-D, and R5 are **`M [comp]`** finite
+evidence, not a growing-atlas theorem. The benchmarks and independent audits are
+AgentTasks/null-edge-growing-atlas-stage-a3f-r4-benchmark-2026-07-16.md and
+AgentTasks/null-edge-growing-atlas-stage-a3f-r4d-benchmark-2026-07-16.md and
+AgentTasks/null-edge-growing-atlas-stage-a3f-r5-benchmark-2026-07-16.md,
+AutonomousLab/reviews/CLAUDE_REVIEW_A3F_R4_RESULT_2026-07-16.md, and
+AutonomousLab/reviews/CLAUDE_REVIEW_A3F_R4D_RESULT_2026-07-16.md, and
+AutonomousLab/reviews/CLAUDE_REVIEW_A3F_R5_RESULT_2026-07-16.md.
+G2 and every downstream geometry and dynamics gate remain closed.
+
+### 3.76 The rank-four target is now a selected subspace, not the whole carrier
+
+A semantic audit found an exact type-level obstruction in the earlier local
+Lorentz interface. CarrierProbeFrame A was a Fin 4 basis of the *entire*
+zero-sum scalar-field space on the closed carrier. That space has dimension
+
+\[
+ \dim \mathcal H_0(A)=|A|-1,
+\]
+
+so the old frame and Lorentz-inertia hypotheses can be inhabited only on a
+five-event carrier. The old Gram-congruence theorems remain correct finite
+algebra, but they cannot describe four physical probe modes on a growing
+refinement carrier. RankFourCarrierProbeSector.lean kernel-checks this
+obstruction and replaces the interface by an explicit rank-four subspace of
+the full zero-sum space. Such subspaces exist algebraically on carriers with
+at least five events, but that existence is an arbitrary finite-dimensional
+choice, not a graph-derived selector. Downstream modules must therefore take
+the sector explicitly and may not choice-extract one from the existence
+theorem.
+
+Two basis-free reconstruction patterns are now exact. An intrinsic constraint
+with four-dimensional kernel, or an intrinsic projector with four-dimensional
+range, yields a sector that transports naturally whenever the defining
+operator intertwines under order isomorphism. On genuine chart overlaps,
+injective restriction maps with the same image determine a unique linear
+transition. If both local forms are pulled back from one overlap form, that
+transition is an isometry; three compatible restrictions give the exact Cech
+cocycle. This derives the transition from overlap observations without
+selecting a preferred tetrad basis.
+
+The overlap interface now matches the active atlas literally rather than only
+intersections of whole closed carriers. On the joint protected-core event
+space, one supplied idempotent projector and two commuting restriction squares
+identify both selected-sector images with the shared projected image, provided
+that shared projected observations lift to each full carrier probe space.
+Equal selected images are therefore derived rather than assumed. Restricted
+injectivity then gives the unique pair transition. It also forces the actual
+protected-core overlap to contain at least four events, a finite nonvacuity
+test that can be archived directly by the atlas lane. Independent semantic
+review confirmed that liftability is genuinely upstream: it refers to the full
+restrictions and contains no local-projector dependence.
+
+The involution route is now exact and equally explicit about what remains
+unproved. For a real-linear involution (J), the polynomial
+(P_J=(I+J)/2) is idempotent, its range is exactly the (+1) eigenspace, and
+intertwining (J)'s transport both (P_J) and its range without choosing
+eigenvectors. Conversely, every idempotent (P) gives (J_P=2P-I), with
+(P_{J_P}=P) and (J_{P_J}=J). Hence an involution is not a free selector in
+different notation; it helps only if the graph constructs (J) independently.
+A four-dimensional positive eigenspace then packages directly into the
+existing carrier projector interface. These identities are kernel-checked in
+`EquivariantInvolutionProbeProjector.lean`; they derive neither the involution
+nor its four-mode gap.
+
+The symmetric controls now give an exact no-canonicity boundary. On the
+five-event antichain, the canonical zero-sum scalar-probe sector has rank four,
+although no nonzero ordered zero-sum probe list can be individually natural.
+For every (n\ge6), however, a fully permutation-equivariant idempotent on the
+natural scalar vertex-probe module cannot have rank four: its range dimension
+is forced into (0,1,n-1,n). This is **`M [orig/comp]`** in
+`BareGraphPermutationProjectorNoGo.lean`. Thus a universal scalar vertex
+selector cannot derive a refinement-stable tetrad on maximally symmetric bare
+graphs. The theorem does not touch asymmetric graph classes, edge/cochain
+probes, spin-frame probes, or equivariant decorations; those are precisely the
+remaining admissible escapes. An independent semantic audit approved the exact
+statement and its graph-facing scope without revision; see
+`AutonomousLab/reviews/CLAUDE_REVIEW_PERMUTATION_PROJECTOR_NOGO_2026-07-16.md`.
+
+Polynomial functional calculus now closes the next naturality link. If two
+carrier endomorphisms intertwine under an order isomorphism, evaluation of one
+common real polynomial at those operators also intertwines, and the whole
+filtered range transports exactly. Source-side idempotence and rank four then
+transport to the target, so a certified polynomial filter packages directly
+as the existing rank-four projector without choosing eigenvectors. This is
+**`M [orig/comp]`** in `EquivariantPolynomialProbeProjector.lean`. It does not
+derive the carrier operator, the polynomial, a spectral gap, source rank four,
+or Lorentzian inertia. Those are now the concentrated G2b theorem debt rather
+than hidden naturality assumptions.
+
+The direct retarded operator now faces a proved obstruction. Every weighted
+strict-past operator on a nonempty finite transitive irreflexive order is
+nilpotent at the event-cardinality power. The project layered operator is
+exactly one scalar diagonal plus that nilpotent part. Combining this with the
+abstract scalar-plus-nilpotent theorem proves that every idempotent polynomial
+filter of both the local source operator and the active project-sign smeared
+operator is exactly zero or the identity. This is **`M [orig/comp]`** in
+`FiniteStrictPastNilpotence.lean`,
+`RetardedPolynomialProjectorNoGo.lean`, and
+`LayeredOperatorPolynomialNoGo.lean`. Thus the direct polynomial route cannot
+select a nonzero proper rank-four sector. G2b must use an operator with
+genuinely richer spectrum, such as the corrected symmetric pairing, a normal
+or Hermitian retarded/advanced construction, or a richer constraint. This
+does not rule out polynomial filters of any of those different operators. An
+independent semantic audit verified both Aristotle statement chains, the
+strict-order hypotheses, the exact production-operator decomposition, both
+active smearing branches, all ten axiom guards, and the combined build; see
+`AutonomousLab/reviews/CLAUDE_REVIEW_LAYERED_OPERATOR_NOGO_2026-07-16.md`.
+
+The relative-count Weyl channel also restricts cleanly to the selected sector:
+the probe Gram matrix has inverse-square weight while the coframe metric has
+square weight. Thus physical scale and local Lorentz frame change remain
+separate even after the five-event whole-space interface is removed.
+
+The transition and connection layers are also separated exactly. Valid Cech
+gluing data remain triangle-flat under chart gauge changes, while independent
+connection transport is endpoint covariant and can have nontrivial closed-loop
+holonomy. Spiral or Bargmann phases therefore belong, if they survive the
+continuum gates, to the connection/holonomy layer rather than to a failure of
+the chart cocycle.
+
+These are **`M [orig/comp]`** finite architecture results. The graph still owes
+an intrinsic gapped kernel or projector, a shared overlap projector,
+rank-four concentration, generic and refinement-stable Lorentzian inertia,
+overlap liftability and injectivity on a nondegenerate atlas, triple
+compatibility, and refinement convergence. No tetrad, spin bundle, or
+curvature gate is opened by the conditional transition algebra alone.
+
+### 3.77 Causal time signing and the two Lorentz component obstructions
+
+The selected-sector correction makes it possible to state the local time
+orientation problem without choosing a coordinate time vector. Every marked
+causal carrier already has a distinguished bottom and top event. They define
+the endpoint contrast
+
+\[
+  \tau_A(f)=f(\operatorname{top}A)-f(\operatorname{bottom}A)
+\]
+
+on the zero-sum probe space. This functional is nonzero on the full carrier
+space, has an explicit endpoint-difference witness with value (2), and is
+natural under order isomorphisms. It is therefore a graph-native local future
+sign rather than a supplied tetrad convention. Its restriction to a selected
+rank-four sector can nevertheless vanish. The selector must pass three
+separate tests: the restriction of (\tau_A) is nonzero, its metric dual is
+timelike for the reconstructed Lorentz form, and neighboring carriers choose
+compatible future components. Failure of any one is a kill condition, not a
+gauge choice.
+
+On a compatible overlap, Lorentz-normalized selected frames now give an exact
+matrix (M) satisfying
+
+\[
+  M^{\mathsf T}\eta M=\eta,
+  \qquad \eta=\operatorname{diag}(1,-1,-1,-1).
+\]
+
+Eta-orthogonality itself supplies the inverse
+
+\[
+  M^{-1}=\eta M^{\mathsf T}\eta,
+\]
+
+so these matrices form a concrete subgroup of (GL(4,\mathbb R)) without an
+extra invertibility assumption. It also implies
+
+\[
+  |M^0{}_0|\geq 1,
+  \qquad \det M\in\{+1,-1\}.
+\]
+
+The signs of (M^0{}_0) and (\det M) are independent group characters into
+the two-element group. The first detects time reversal and the second detects
+orientation reversal. Their simultaneous kernel is exactly
+(SO^+(1,3)). Applying either character to an exact Lorentz-valued Cech atlas
+produces an exact `ZMod 2` Cech cocycle, and its product on a closed nerve path
+is invariant under chart-sign gauge changes. The graph-facing reduction
+problem is therefore precise:
+
+1. derive the rank-four sector and overlap transition;
+2. prove that the determinant component class vanishes;
+3. prove independently that the time component class vanishes;
+4. only then treat the transition atlas as (SO^+(1,3))-valued;
+5. construct local (SL(2,\mathbb C)) lifts and test the separate central
+   `ZMod 2` face obstruction.
+
+The determinant and time classes are first reduction obstructions. The
+central sign cochain of a spin lift is the later second obstruction. Neither
+is connection curvature: valid Cech transition products are exact on occupied
+triple overlaps, while curvature belongs to separately supplied or derived
+connection transport. This also fixes the possible role of chiral spiral or
+Bargmann phases. They may contribute to connection holonomy or matter
+transport, but they cannot consistently be interpreted as a failure of the
+tetrad transition cocycle.
+
+There is also a useful nerve-topology control. Suppose one root chart (r)
+is a cone point: every occupied edge (i-j) extends to an occupied triple
+(i-j-r). The root gauge (h(i)=T(i,r)) then gives
+
+\[
+  h(i)^{-1}T(i,j)h(j)=1
+\]
+
+on every occupied edge, directly from the Cech cocycle. Thus the full Lorentz
+transition field, not only its two component characters, is pure gauge on a
+cone-shaped nerve. Raw nonidentity transition matrices do not change this
+conclusion. A finite nonidentity `ZMod 2` witness verifies that the statement
+is not vacuous. Consequently, an atlas family with a persistent global common
+intersection can test local reconstruction and cocycle algebra, but it is
+topologically incapable of displaying a nontrivial orientation,
+time-orientation, or spin-bundle class. Conditional on building exact
+transitions on the R4 common-intersection atlases, this theorem would place
+them in that topology-trivial regime. Escaping complete-family saturation is
+therefore necessary not only for bounded multiplicity but also for testing
+nontrivial bundle topology.
+
+These are **`M [orig/comp]`** finite results. They close the algebra from
+eta-preserving overlap matrices to the two global reduction classes. They do
+not show that the graph-derived classes vanish, prove surjectivity of the
+concrete (SL(2,\mathbb C)\) Lorentz map, derive a spin bundle, or open curvature
+convergence. G2 and G3 therefore remain open at
+their graph-selection, overlap, component-trivialization, and spin-cover
+gates.
+
+### 3.78 Concrete spin action and the Cech-to-kernel bridge
+
+The local spin action is now concrete in the project's fixed mostly-minus
+convention. The Pauli/Hermitian map identifies a real four-vector (p) with a
+Hermitian two-by-two matrix (X(p)) satisfying
+
+\[
+  \det X(p)=p_0^2-p_1^2-p_2^2-p_3^2.
+\]
+
+For (A\in SL(2,\mathbb C)), Hermitian congruence
+
+\[
+  X\longmapsto AXA^\dagger
+\]
+
+induces a real-linear map (\Lambda(A)) on Minkowski four-vectors. The finite
+Lean development proves exactly that this action preserves the Minkowski
+quadratic and bilinear forms, that
+
+\[
+  \Lambda(AB)=\Lambda(A)\Lambda(B),
+  \qquad \Lambda(1)=1,
+\]
+
+and hence gives a group homomorphism
+
+\[
+  \Lambda:SL(2,\mathbb C)\longrightarrow O(1,3).
+\]
+
+The induced matrix is also proved orthochronous: its time-time entry is
+nonnegative, and eta-orthogonality upgrades this to
+(\Lambda(A)^0{}_0\geq 1). Thus the time-component character vanishes on the
+whole image. The central signs and the full finite image constraints are now
+identified:
+
+\[
+  \Lambda(-A)=\Lambda(A),
+  \qquad \det\Lambda(A)=1,
+  \qquad \ker\Lambda=\{+I,-I\}.
+\]
+
+The direct Pauli-coordinate four-by-four matrix used for the finite
+determinant calculation is kernel-checked to equal the production
+standard-basis matrix. The determinant theorem factors the concrete action
+through the proper-orthochronous subgroup, and the exact-kernel theorem uses
+the four Pauli basis vectors plus determinant one to force every kernel matrix
+to be a central sign. The remaining finite covering statement is:
+
+1. **surjectivity:** prove every element of (SO^+(1,3)) has an
+   (SL(2,\mathbb C)) preimage.
+
+Properness places the image in (SO^+(1,3)), and the exact kernel identifies the
+central double-cover fiber. Surjectivity alone remains needed to prove that
+the map covers the entire restricted Lorentz group. It does not follow merely
+from eta-orthogonality, determinant one, orthochronousness, and the exact
+kernel.
+
+There is now also an exact bridge from Lorentz Cech gluing to the existing
+finite spin-obstruction complex. Let (T_{ij}) be an exact eta-Lorentz Cech
+transition field and let (A_{ij}) be chosen local spin preimages,
+
+\[
+  \Lambda(A_{ij})=T_{ij}.
+\]
+
+On every occupied triple overlap, the Cech identity implies
+
+\[
+  \Lambda(A_{ij}A_{jk}A_{ki})=1.
+\]
+
+This Cech-to-kernel statement is unconditional once the local lifts are
+supplied. The proved exact-kernel theorem makes each triangle product uniquely
+(+I) or (-I) and determines a `ZMod 2` face-defect bit.
+Likewise, a diagonal lift and the product (A_{ij}A_{ji}) on a reverse overlap
+are kernel elements; inverse coherence is not silently assumed, and its
+possible failure is another central sign.
+Changing any edge lift by a central sign leaves its Lorentz transition
+unchanged. The previously landed finite cochain theory then applies: the
+derived face defect changes by an edge coboundary, its quotient obstruction
+class is lift-choice independent, and the class vanishes exactly when one
+global central re-signing trivializes all supplied face products.
+
+This is **`M [orig/comp]`** finite algebra. It does not prove that graph-derived
+restricted Lorentz transitions admit local lifts, that the obstruction class
+vanishes, that the class converges to continuum (w_2), or that a graph-derived
+spin connection and curvature exist. The useful gain is precision: after
+orientation and time orientation, G3 is now blocked by local image/surjectivity,
+graph-derived lift existence, and global obstruction-vanishing gates rather
+than by an unspecified appeal to spin geometry.
+
+### 3.79 Raw retarded no-go and the corrected-pairing escape
+
+The active finite retarded operator and its corrected principal-symbol pairing
+must not be treated as the same spectral object. For every layered causal
+operator,
+
+\[
+  B=aI+N,
+  \qquad N^{|V|}=0,
+\]
+
+where (N) is the weighted strict-past part. Consequently every idempotent real
+polynomial (p(B)) is either (0) or (I). This is an exact finite no-go for using
+the direct retarded operator itself as a nontrivial polynomial selector.
+
+The corrected pairing instead takes the polarization-like combination
+
+\[
+  \Gamma_x(f,h)=\frac12\bigl(B(fh)(x)-f(x)B(h)(x)
+  -h(x)B(f)(x)+f(x)h(x)B(1)(x)\bigr).
+\]
+
+Its scalar diagonal cancels exactly. The remaining form is
+
+\[
+  \Gamma_x(f,h)=\frac12\sum_y w_x(y)
+  \bigl(f(y)-f(x)\bigr)\bigl(h(y)-h(x)\bigr),
+\]
+
+with the explicit branch-dependent interval-layer weights of the active
+project-smeared operator. `CorrectedPairingDifferenceOperator.lean` proves
+that this form is represented by a canonical self-adjoint endomorphism whose
+range lies in the zero-sum probe space. No basis or projection is chosen, and
+a two-event example proves the endomorphism need not vanish.
+
+This positive/negative split is **`M [orig/comp]`** finite algebra. It does not
+prove that the corrected operator has rank four, a four-mode spectral gap,
+Lorentzian inertia, or a stable refinement limit. It does identify the next
+admissible G2b object: analyze the corrected symmetric weighted-difference
+operator, or a related two-sided normal/Hermitian operator, rather than
+reviving a polynomial filter of the one-spectrum retarded map.
+
+### 3.80 Difference coordinates and a finite mostly-minus witness
+
+The corrected form admits a sharper basis-free reading. Fix a marked event
+(x) and restrict to zero-sum probes. The map
+
+\[
+  f\longmapsto \bigl(f(y)-f(x)\bigr)_{y\ne x}
+\]
+
+is injective: if all based differences vanish, (f) is constant, and a constant
+zero-sum probe is zero. In these intrinsic coordinates the corrected form is
+diagonal, with entries exactly the signed causal row weights. Thus its inertia
+is controlled by a concrete graph question: how many nonzero effective past
+weights are positive and how many are negative?
+
+`CorrectedPairingDifferenceCoordinates.lean` supplies two nonvacuity controls.
+First, on five events it constructs four explicit zero-sum difference probes
+forming a basis and a signed star row whose Gram matrix is exactly the project
+matrix (\eta=\operatorname{diag}(1,-1,-1,-1)). Second, it realizes the required
+sign pattern using the actual local causal-set coefficients. The concrete
+order has
+
+\[
+  0\prec a\prec4,
+  \qquad a\in\{1,2,3\},
+\]
+
+At the marked top (4), the four predecessor interval counts are
+((3,0,0,0)). With the project-sign local operator the corresponding weights
+are
+
+\[
+  (8s,-s,-s,-s),
+  \qquad s=\frac{4}{\sqrt6\,\ell^2}>0
+  \quad (\ell\ne0).
+\]
+
+The kernel-checked corrected-pairing Gram entries in the explicit difference
+basis are therefore (4s,-s/2,-s/2,-s/2), with all off-diagonal entries zero.
+This proves that the active local coefficient architecture can realize a
+strict mostly-minus finite form; Lorentzian sign is not excluded by the
+retarded no-go.
+
+`CorrectedPairingCarrierInertiaWitness.lean` closes the finite normalization
+step against the production carrier API. It transports the explicit basis
+through the exact induced-order isomorphism into the actual zero-sum
+`carrierProbeSubspace`, uses equal nonzero operator scales to reduce the active
+project-smeared operator to the project-local one, and rescales the time probe
+by (1/\sqrt{4s}) and each spatial probe by (1/\sqrt{s/2}). The resulting Gram
+matrix is exactly
+
+\[
+  \eta=\operatorname{diag}(1,-1,-1,-1),
+\]
+
+so the concrete marked carrier satisfies the existing production predicate
+`HasLorentzianInertia`, not merely a sign-only surrogate. The theorem is
+kernel-clean, its standard axiom footprint is build-pinned, and an independent
+semantic audit approved the predicate identity, carrier nonvacuity, sign
+bridge, equivariance, and square-root normalization.
+
+The companion `CorrectedPairingSelectedSectorWitness.lean` carries this same
+normalized form into `HasSectorLorentzianInertia`. On the five-event control
+the selected sector is the whole zero-sum space, but the statement now lives
+in the successor API that can remain rank four inside a larger carrier. This
+distinction is forced, not cosmetic: the existing cardinality theorem proves
+that a four-vector basis of the whole zero-sum carrier space can exist only
+when the closed carrier has exactly five events.
+
+This remains **`M [orig/comp]`** finite algebra. The five-event order is an
+explicit normalized witness, not yet a canonically selected carrier family or
+a generic-inertia theorem. The graph still owes an order-native rule selecting
+such cores, a four-mode isolation mechanism, compatible bases or basis-free
+subspaces on overlaps, persistence of inertia under refinement, and
+convergence to a continuum cotangent metric. Those are now the precise G2b/G3
+gates rather than an undifferentiated signature question.
+
+### 3.81 Marked shell-angular selector: conditional inertia, not yet a frame
+
+The first larger-carrier shortcut is now excluded. If one compresses each of
+the four populated interval-count layers to one coherent mode, the project-sign
+coefficient row is
+
+\[
+  L_0\quad L_1\quad L_2\quad L_3
+  \qquad -\quad +\quad -\quad +.
+\]
+
+`CorrectedPairingLayerCoherentNoGo.lean` proves the resulting four-dimensional
+diagonal form has exact inertia split `(2,2)` for every positive layer
+population. No choice of one distinguished coordinate turns that construction
+into `(+---)`. This kills the one-mode-per-layer interpretation without killing
+the corrected form itself.
+
+The current **`C [orig]`** successor uses the layers asymmetrically. At a marked
+evaluation event \(x\), set
+
+\[
+  L_n(x)=\{y:y\prec x,\ |I(y,x)|=n\}.
+\]
+
+The proposed spatial sector lies entirely on the immediate-predecessor shell
+\(L_0(x)\). This shell is an exact order antichain: if
+\(y\prec z\prec x\), then \(z\in I(y,x)\), contradicting
+\(|I(y,x)|=0\). The spatial selector is not three named eigenvectors. It is the
+rank-three projector onto a low nonconstant cluster of a shell-affinity graph,
+with internal `O(3)` basis rotations treated as gauge.
+
+The affinity imports only the raw causal-overlap ratio from Boguna and Krioukov
+[23]. For \(a,b\in L_0(x)\), the marked outer bottom \(b_0\) supplies
+
+\[
+  O_{b_0}(a,b)=
+  \frac{|I(b_0,a)\cap I(b_0,b)|}
+       {\min(|I(b_0,a)|,|I(b_0,b)|)}.
+\]
+
+This is dimensionless order/count data. Converting it to physical distance
+would still require the dimension and scale inputs displayed in that source.
+The graph Laplacian is used only as a candidate angular projector. The local
+coordinate theorem of Jones, Maggioni, and Schul [24] concerns suitably chosen
+heat kernels or eigenfunctions; it does not guarantee that the first three
+nonconstant eigenvectors of this shell graph are coordinates. That stronger
+statement remains an empirical gate, with a heat-kernel landmark construction
+as a comparator.
+
+The candidate time line is separately supported on the positive project-weight
+layers \(L_1(x)\cup L_3(x)\). Its raw field is the endpoint-relative chain-depth
+difference
+
+\[
+  \tau_{\rm raw}(y)=
+  d_{\rm chain}(b_0,y)-d_{\rm chain}(y,t_0),
+\]
+
+centered and projected onto those two layers. Longest-chain time is standard
+causal-set motivation for timelike proper time [12,23]. More importantly, a
+finite Alexandrov interval's endpoints already choose a time axis [26]. Thus
+this is a boundary-relative radial line, not a time direction derived from an
+unmarked homogeneous sprinkling.
+
+The corrected-pairing algebra then has a clean conditional form. On \(L_0\),
+the project-local weight is one negative constant. On \(L_1\cup L_3\), the
+weights are positive. The supports are disjoint. Therefore, if the radial line
+is nonzero and the three shell modes are independent in based-difference
+coordinates, then
+
+\[
+  \Gamma(T,T)>0,
+  \qquad \Gamma(T,S_i)=0,
+  \qquad
+  \Gamma\!\left(\sum_i a_iS_i,\sum_i a_iS_i\right)<0
+  \quad(a\ne0).
+\]
+
+This is the exact one-positive-line plus negative-definite-three-space
+criterion needed before normalization to a Minkowski frame. The two focused
+Aristotle returns preserved all twelve public statements, replayed locally,
+and were integrated in
+`PhysicsSM/Draft/NullEdge/MarkedAlexandrovShellInertia.lean`. The production
+module now proves **`M [orig/comp]`**:
+
+1. \(L_0(x)\) is an exact antichain and is disjoint from
+   \(L_1(x)\cup L_3(x)\);
+2. every interval-count layer is equivariant under finite order isomorphism;
+3. the actual project-local coefficient row is constant negative on \(L_0\)
+   and strictly positive on \(L_1\cup L_3\) whenever \(\ell\ne0\);
+4. the displayed support and nondegeneracy hypotheses imply the conditional
+   split directly for
+   `correctedPairingAt (projectLocal4DOperator C ell)`.
+
+The headline theorems are build-guarded with the standard axiom footprint and
+the targeted module build passes. This still does not construct the shell
+projector or radial line. The same module now also proves the exact conditional
+normalization theorem `hasSectorLorentzianInertia_of_diagonalMostlyMinus`:
+once an orthogonal selected four-frame has diagonal Gram entries
+\(T,-S,-S,-S\) with \(T,S>0\), reciprocal-square-root rescaling produces the
+project's exact Minkowski frame and therefore `HasSectorLorentzianInertia`.
+This closes the finite normalization step, but it does not construct the
+orthogonal frame. The order-native shell projector, radial line, independence,
+and orthogonality proofs remain open.
+
+The algebraic sign gate is not the main scientific uncertainty. The selector
+must still pass all of the following on one frozen mesoscopic schedule:
+
+1. nonvanishing availability on protected-core events;
+2. a gap after a three-dimensional nonconstant shell cluster;
+3. improving oracle spatial-subspace and radial-time alignment;
+4. affine rank four without coordinate data entering selection;
+5. projector and time-line persistence under coupled refinement;
+6. full-rank overlap restriction, decreasing Procrustes residual, and cocycle
+   compatibility;
+7. ensemble isotropy after quotienting the internal `O(3)` gauge.
+
+The Bombelli-Henson-Sorkin no-direction theorem [4] remains a boundary, not an
+obstacle to be renamed away. The construction is explicitly relative to two
+outer endpoints, an evaluation event, and a common-past anchor. Removing those
+marks is a required negative control. If the shell projector fails alignment,
+refinement, or overlap transport, the honest pivot is a supplied decorated
+tetrad/spin frame. The program would retain the corrected-pairing and transport
+algebra while conceding that bare order plus finite boundary data did not
+derive the local frame.
+
 ## 4. Proposed null-edge gravitational data
 
 Under the selected architecture, a minimal finite history contains order,
@@ -3186,6 +4154,338 @@ the null-edge program must convention-lock the finite coefficients, boundary
 prescription, path-sum measure, and renormalized coupling before making a
 physical claim.
 
+The finite variation variable is now convention-locked more sharply. Direct
+continuous variation of an unweighted finite causal configuration is
+impossible in the required sense:
+`DiscreteCausalActionVariationNoGo.everyGraphAction_continuouslyStationary`
+proves that every such action is automatically stationary because every
+continuous path into the discrete graph space is locally constant. This kills
+the bare-order derivative as a route to the tensor equation without killing
+graph-changing finite differences, ensemble variations, or continuously
+weighted operators.
+
+`WeightedIntervalActionVariation.truncatedIntervalAction_directionalDerivative`
+implements the first surviving route. It varies finitely many displayed
+interval-layer weights, derives the response from the actual finite sum,
+proves order-isomorphism covariance of both action and response, and has a
+two-event derivative equal to one. No curvature or Einstein tensor is defined
+from that derivative.
+
+The next gate is exact in
+`RelaxedCausalMetricVariationBridge.parameterStationary_iff_finiteEinsteinEquation`.
+It says that the weighted parameter derivative reaches the full tensor
+equation only if the linearized operator-metric map has symmetric image and is
+surjective onto every symmetric metric variation. Without this hypothesis the
+result is only a projected field equation on reachable directions. In four
+dimensions the local image must therefore span ten symmetric components, and
+the action derivative must be constant on fibers of the operator-to-metric
+map.
+
+`LayerWeightMetricRankNoGo.not_fullSymmetricMetricDerivative_of_layerCount_lt_ten`
+now proves the sharp necessary dimension bound for this architecture. The
+module constructs an explicit linear injection of ten real coordinates into
+the symmetric `4 x 4` tensor submodule, then shows that a full metric derivative
+would force at least ten independently variable layer weights. Thus every
+truncation with fewer than ten weight directions is ruled out as a source of
+the unrestricted four-dimensional tensor equation.
+
+The local-field extension sharpens the obstruction. On a finite carrier with
+`N` sites, surjectivity onto arbitrary sitewise symmetric `4 x 4` variations
+requires at least `10N` independent real parameters. Hence the current
+globally shared `Fin K` list of interval-layer coefficients cannot retain full
+local metric reach on an unbounded refinement sequence when `K` is fixed. The
+next action architecture must use event-local, edge-local, or comparably rich
+operator variables, unless it first derives a smaller constrained variational
+quotient and proves that this quotient still yields the intended local field
+equation. Meeting the dimension lower bound is not sufficient: actual reach
+and fiber independence remain open.
+
+`LocalizedIntervalActionMetric` implements the first event-local successor.
+For a coefficient field (w_x(k)), the same strict-past causal operator is
+used twice: its value on the constant field supplies the bulk interval action,
+while its corrected principal-symbol pairing on four probes supplies the
+metric Jacobian. The finite action has an exact affine derivative and exact
+order-isomorphism covariance. The metric response is linear in (w_x(k)), is
+symmetric, and is definitionally tied to that same operator rather than to a
+second metric ansatz.
+
+The eleven-event chain control makes the construction nonvacuous. Its top has
+one predecessor in each layer (k=0,\ldots,9). Four coordinate moment vectors
+and their six pair sums give ten rank-one symmetric moments. The checked
+inverse reconstructs every symmetric `4 x 4` tensor from the ten layer
+coefficients and also reconstructs every coefficient row from its metric.
+Thus the row metric map is both surjective and injective, and the chain bulk
+action factors exactly through it. A separate theorem shows that full row
+reach at distinct selected centers implies full local metric-field reach.
+
+This is a finite supplied-probe control, not yet the physical action theorem.
+The causal graph must derive the probe frames and a stable row-rank certificate
+on its selected manifoldlike bulk; the action must descend globally after all
+nonmetric coefficient directions and boundaries are included; and the
+resulting metric derivative must still be identified with independently
+reconstructed Ricci/scalar curvature.
+
+There is now a stronger obstruction after those kinematic checks.
+`LocalizedIntervalAffineActionNoGo` proves that the fixed-measure event-local
+action is affine in its coefficient field. Its stationarity is therefore
+equivalent to vanishing of the bulk response in every direction, independently
+of the base point. In the same eleven-event rank-ten witness, the all-ones row
+has response `10`; consequently neither the coefficient action nor its exactly
+descended metric action has any stationary point. Surjectivity, injectivity,
+and fiber descent do not turn a constant nonzero gradient into Einstein
+dynamics.
+
+`LocalEinsteinEquationVariation` closes the algebraic endpoint at the correct
+local-field resolution. Site-supported symmetric variations show that summed
+local metric stationarity is equivalent to pointwise stationarity. For nonzero
+coupling, this is equivalent to
+`G_ab(x) + Lambda g_ab(x) = kappa T_ab(x)` at every selected site. If a
+parameter action has that pulled-back response and its metric Jacobian reaches
+every local symmetric field, ordinary parameter stationarity is equivalent to
+the pointwise finite Einstein equation. The first-variation premise remains an
+obligation, not an inserted conclusion.
+
+`FiniteEinsteinHilbertActionResponse` now states the minimal nonlinear bulk
+interface without pretending to derive it from intervals. For supplied local
+volume and scalar curvature, the action
+`sum_x volume(x) * (R(x) - 2 Lambda)` has separate volume-response and
+curvature-response channels, plus the exact quadratic cross term under
+simultaneous affine perturbations. A successful successor to the affine action
+must derive these metric-dependent channels from the same graph geometry,
+include the boundary response, and prove the curvature integration-by-parts
+identity that yields the Einstein tensor.
+
+The volume channel is no longer merely supplied.
+`CoframeVolumeMetricVariation` proves from polynomial determinant calculus that
+the multiplicative coframe path (e(t)=e(1+tX)) has
+
+\[
+  \delta\det e=(\det e)\operatorname{tr}X.
+\]
+
+For the corresponding inverse-metric variation
+(h=-(Xg^{-1}+g^{-1}X^T)), exact matrix algebra gives
+(\langle g,h\rangle=-2\operatorname{tr}X). Hence
+
+\[
+  \delta\det e=-\frac{\det e}{2}\langle g,h\rangle.
+\]
+
+For symmetric two-sided inverse metrics, the coframe-generator map reaches
+every symmetric inverse-metric variation. This proves both the determinant
+response and the local rank condition for supplied nondegenerate coframes.
+
+`FinitePalatiniEinsteinHilbertVariation` then makes the curvature obligation
+strictly narrower than an assumed Einstein derivative. Its premise is the
+finite integrated Palatini identity
+
+\[
+  \sum_x v_x\,\delta R_x
+   =\sum_x v_x\langle \operatorname{Ric}_x,h_x\rangle+B.
+\]
+
+Combining this with the determinant response yields, by checked algebra,
+
+\[
+  \delta S_{EH}
+   =\sum_x v_x\left\langle
+      \operatorname{Ric}_x-\frac{R_x}{2}g_x+\Lambda g_x,h_x
+    \right\rangle+B.
+\]
+
+The weighted stationarity theorem proves that nonzero local volumes cancel
+from the Euler-Lagrange equations. A general full-Jacobian pullback theorem
+then transfers this result to coframe or null-edge parameters.
+
+`FinitePalatiniBoundaryCancellation` proves the graph-combinatorial boundary
+step on a closed finite carrier. Incoming-minus-outgoing incidence divergence
+sums to zero and obeys exact summation by parts. Therefore a local response
+of the form
+
+\[
+  v_x\delta R_x=v_x\langle\operatorname{Ric}_x,h_x\rangle
+    +\operatorname{div}J(x)
+\]
+
+implies the zero-boundary integrated Palatini identity. The two-vertex,
+one-edge witness has divergence (-1) at its source and (+1) at its target, so
+the cancellation is nonzero locally rather than vacuous.
+
+Finally, `FinitePalatiniCoframeChartAction` constructs an actual nonlinear
+finite control action. It uses (\det(e(1+X))), the fixed-connection Palatini
+contraction (\langle\operatorname{Ric},g^{-1}+\delta g^{-1}(X)\rangle), the
+cosmological term, and the matter pairing. The kernel-checked derivative comes
+from that formula, and stationarity at the chart origin is equivalent to the
+pointwise finite Einstein equation. The control supplies its coframe, Ricci
+tensor, stress tensor, and orientation. The remaining null-edge theorem must
+derive those data and the local Ricci-plus-divergence response from the same
+operator geometry; the chart control does not do so.
+
+`NullEdgeCoframeEinsteinBridge` now removes the independently supplied
+coframe, metric, inverse metric, and volume. At every site, four Weyl-spinor
+null edges are soldered to future-null vectors and used as coframe columns.
+Their Gram metric has exactly zero diagonal, and a nonzero coframe determinant
+constructs both the inverse coframe and inverse metric. A concrete four-spinor
+witness has positive determinant `1/2`. The corresponding nonlinear action is
+stationary exactly when the finite Einstein equation holds for this derived
+null-tetrad base geometry under unrestricted coframe-generator variations.
+The same module proves a sharp limitation: a differentiable variation that
+keeps all four columns null has zero Gram diagonal, so its metric derivative
+cannot reach all ten symmetric `4 x 4` variations. The present action endpoint
+is therefore not yet stationarity with respect to null-edge variables alone.
+The exact completion theorem splits every symmetric variation into a
+zero-diagonal part and a diagonal part: reach of the six-dimensional
+null-Gram sector plus all four diagonal directions implies full metric reach.
+This turns the missing gauge/aggregate contribution into a precise theorem
+target rather than a dimension-count slogan.
+
+`DirectedNullEdgeLeviCivitaEinstein` removes the independently supplied Ricci
+tensor as well. The target of each selected edge defines a forward graph
+difference. Applied to the null-edge Gram metric, these differences produce a
+symmetric metric first jet, torsion-free metric-compatible Christoffel
+coefficients, coordinate Riemann curvature, raw Ricci contraction, and its
+symmetric variational projection. The symmetric projection is proved to have
+the same pairing as raw Ricci against every symmetric metric variation. Thus
+the strongest finite action theorem now takes a directed null-edge chart,
+stress, and couplings, while deriving coframe, metric, inverse, volume,
+connection, curvature, Ricci, and scalar curvature from the chart. A constant
+canonical chart is an exact flat control.
+
+`NullEdgeAggregateCoframeEinstein` gives the exact finite completion of the
+null-column variation space. For primitive null coframe `E` and aggregate
+weights `A`, define `e(A)=EA`. Because `E` is nondegenerate, this is a
+bijection onto all real coframes, with unique inverse weights `A=E^{-1}e`.
+Thus the action path `E(1+tX)` already used by the determinant theorem is an
+honest path of aggregate weights over primitive null edges. The explicit
+metric-active generator `X=-(1/2) h g` produces any requested symmetric
+inverse-metric variation, while `K g` is metric-invisible whenever `K` is
+skew. The absolute aggregate action is stationary at identity weights exactly
+when the finite Einstein equation holds. This resolves finite metric coverage
+without requiring the primitive propagation columns themselves to stop being
+null.
+
+The same module narrows the one-metric contract. If the causal/operator sector
+supplies a coframe factor `e` satisfying `e^T eta e = g_op`, then its unique
+null-frame aggregate weights are `A=E^{-1}e`, reaggregation gives exactly `e`,
+and the resulting Gram metric is exactly `g_op`. What remains is to derive the
+factorization and its overlap/gauge coherence; no independent metric choice is
+needed after that.
+
+`FiniteDirectedPalatiniConnectionVariation` removes the earlier need to hold
+the connection fixed. It defines coordinate curvature for an arbitrary
+directed connection and proves from the finite formula that variation along
+`Gamma+tH` has response `Delta H + Gamma H + H Gamma`. The proof is then
+contracted to raw Ricci and a weighted finite connection action. Stationarity
+is equivalent to vanishing of this explicit response for every connection
+variation. A periodic-carrier theorem proves that the canonical flat
+null-edge Levi-Civita connection is stationary with the volume and inverse
+metric reconstructed from the same canonical null edges.
+
+`FinitePeriodicPalatiniEulerEquation` performs the missing local audit. On an
+arbitrary finite periodic carrier it proves exact summation by parts, expands
+the unrestricted connection response into site-and-component probes, and
+derives the six-term local Euler coefficient. The coefficient consists of two
+backward differences of the densitized inverse metric and four ordered
+connection cross terms. Full stationarity is equivalent to vanishing of all
+ordered coefficients; torsion-free stationarity is equivalent to vanishing of
+their symmetric projection.
+
+The result is a no-go, not a Levi-Civita recovery theorem. A fully reconstructed
+three-site conformal null-edge chart supplies its coframe volume, inverse
+metric, forward metric jet, and forward-difference Christoffel connection from
+the existing null-edge APIs. Its ordered coefficient at `(0,0,0,0)` is exactly
+`-95`, so the Christoffel candidate fails even the torsion-free equation. The
+canonical flat control remains stationary, but the general pointwise
+architecture is false as a finite Palatini bridge.
+
+`NullEdgePalatiniJointAction` places the aggregate generator and independent
+connection in one displayed two-field action. Its metric partial at the
+null-edge Levi-Civita connection is exactly the existing aggregate action and
+hence gives the finite Einstein equation. Its connection partial is exactly
+the newly derived connection Euler-Lagrange functional. The combined theorem
+therefore returns both finite field equations without inserting either as a
+premise.
+
+The corrected connection branch is now explicit at the kinematical level.
+`FinitePeriodicLinkConnection` attaches group-valued transports to the four
+periodic directed links at each site. It proves endpoint covariance of
+two-step transport, conjugation covariance of plaquette holonomy when the
+shifts commute, gauge invariance of class-function observables, and the exact
+equivalence between flatness and elementary path independence. A bridge theorem
+identifies the periodic loop with the conjugated inverse of the trusted
+causal-diamond path-comparison defect, so the two conventions are not competing
+curvature definitions.
+`GraphPlaquetteCurvatureLimit` then gives a nonzero matrix control in which
+identity-subtracted square holonomy divided by shrinking plaquette area
+converges to a commutator curvature.
+
+`FinitePeriodicLinkPalatiniVariation` supplies the additive tangent action
+needed to audit the variational shape. A real connection variation lives on
+directed links, its curvature is the oriented plaquette curl, and an ordered
+face field supplies an abstract bivector/dual-volume weight. Commuting shifts
+make the curl and action invariant under additive vertex-gauge shifts. Exact
+periodic summation by parts rewrites the first response as the pairing of arbitrary
+link variations with local Euler coefficients. When the face field is
+antisymmetric, stationarity is equivalent to vanishing of its backward
+discrete divergence. This is exactly the discrete-adjoint form missing from
+the failed pointwise architecture, and site-constant face fields provide a
+nonvacuous stationary control. At this abstract layer the face field is still
+supplied. The coframe-derived complementary face weight is added by the
+successor below; the Lorentz-group holonomy variation and Levi-Civita selection
+theorem remain open.
+
+`FinitePeriodicCovariantLinkPalatiniVariation` lifts the same argument to an
+arbitrary finite real fiber and arbitrary real transport matrices on links.
+The exact periodic adjoint uses the transpose of the predecessor transport,
+with no orthogonality assumption. Site/direction/component probes identify
+stationarity with vanishing of every local transported Euler component; face
+antisymmetry again reduces this to covariant backward divergence. Identity
+transport and site-constant fiber-valued face data give an explicit stationary
+control. This closes the transported finite algebra, while also isolating the
+next convention debt: a Lorentzian bivector fiber requires the corresponding
+Krein adjoint rather than the Euclidean transpose used here.
+
+`FinitePeriodicKreinLinkAdjoint` closes the abstract indefinite-pairing step.
+A finite fundamental symmetry `J` defines the symmetric pairing
+`[u,v]_J = <J u,v>` and the transported adjoint `U^sharp = J U^T J`. The
+module proves the exact adjoint identity and periodic summation by parts with
+`U^sharp` on the predecessor link, without requiring `U` to preserve `J`.
+The identity fundamental symmetry recovers the Euclidean transpose theorem.
+An explicit diagonal `(3,3)` six-component fundamental symmetry supplies a
+finite control.
+
+`LorentzBivectorKreinBridge` closes those convention and representation
+checks. It orders the six planes as the three spatial rotation bivectors
+followed by the three time-space boost bivectors. The determinant pairing
+induced by the project's mostly-minus spacetime metric is proved to equal the
+split-six matrix exactly. A finite Binet identity then proves that the
+exterior-square action of every eta-Lorentz four-vector matrix preserves this
+pairing. The concrete `SL(2,C)` matrix already soldered to the null edges is a
+corollary, and its Krein adjoint acts as inverse transport.
+
+`FinitePeriodicKreinLinkPalatiniVariation` completes the finite linearized
+action layer. It replaces the Euclidean product in the full ordered face
+response, derives the exact local Krein Euler pairing, and uses `J`-raised
+component probes to prove pointwise separation. Antisymmetric face data reduce
+stationarity to vanishing Krein covariant backward divergence. The physical
+Lorentz-bivector specialization and an identity-transport/site-constant
+stationary control are explicit.
+
+This is not yet the selected continuum dynamics. The four directions and
+their global synchronization are decorations, not outputs of the bare order;
+their Gram metric has not been proved equal to the corrected causal-operator
+metric; forward coordinate curvature has not been matched to plaquette or
+Dirac-square curvature; and the derived pointwise finite connection equation
+is now proved not to select the null-edge Levi-Civita connection on an exact
+conformal chart. Its link/face replacement now exists at the scalar and
+transported finite-fiber and Krein-paired tangent levels. The physical
+Lorentz/Krein adjoint, its preserving six-component transport, and the complete
+linearized face-action Euler theorem are exact, but the action is not yet a
+nonlinear coframe-coupled Lorentz-holonomy action.
+The program must additionally show how the six null-Gram tangent directions
+are completed by aggregate weights selected from the order/operator sector,
+rather than merely allowing an arbitrary matrix field by hand.
+
 A coframe or Dirac spectral action remains a valuable comparison. For example,
 one may study
 
@@ -3319,6 +4619,860 @@ The repository also contains explicit finite actions in which a soldering
 response is sourced by a sum of matter-channel budgets with a channel-blind
 coupling. These are **M [orig]** finite weak-equivalence-principle avatars.
 
+### 7.1 The Higgs is an internal zero-form with edge-supported variation
+
+The Higgs should not be pictured as another constituent moving down one null
+edge. In the current finite architecture the scalar value is vertex-local
+internal data, while its gauge-covariant variation is measured across edges.
+It is therefore special by mathematical degree, not exempt from causal
+propagation. The clean residence/transport split is:
+
+| Object | Finite residence | What propagates or varies | Present status |
+|---|---|---|---|
+| Vacuum section \(H_0\) | Internal scalar data at vertices | Nothing when it is covariantly constant; unbroken holonomies preserve it | Exact finite interpretation of the link-stiffness zero set |
+| Higgs excitation \(h\) in \(H=H_0+h\) | Vertex zero-form | Gauge-covariant edge differences, and only after composition the associated discrete wave propagation | Kinetic route identified; no continuum Higgs pole theorem |
+| Yukawa/Higgs map \(\Phi_H\) | Internal endomorphism on the left-right carrier | Local chirality conversion coupled to the null-edge kinetic operator | Exact finite oddness, covariance, and square identities |
+| Fermion mass | Eigenvalue/singular-value data of \(\Phi_H\) | Massive propagation emerges from repeated null transport plus local left-right conversion | Finite mass block exact; physical Yukawa spectrum supplied |
+| Gauge-boson mass | Orbit stiffness of edge holonomy relative to \(H_0\) | Holonomy directions that fail to preserve \(H_0\) pay quadratic edge cost | Exact stiffness identity; mass reading requires vacuum and small-holonomy expansion |
+| Composite/carrier mass | Spectrum of the full interacting carrier | Null transport, gauge/closure/binding channels, and local Higgs turns can all contribute | Finite channel budgets and toy gaps only; no QCD continuum or physical mass-fraction theorem |
+
+The multiplet value \(H(x)\) is gauge-covariant rather than a directly
+observable local scalar. Its radial norm is gauge invariant:
+`UnitaryHiggsLink.vectorNormSq_unitary` proves this exactly for arbitrary
+finite unitary multiplets. A physical Higgs-boson claim would still require
+selecting the vacuum-subtracted radial invariant as an interpolating
+observable, controlling its fluctuation expansion, and proving a two-point
+pole theorem. The present finite link and potential identities do not supply
+that spectrum result.
+
+The first two parts of that bridge are now finite theorems.
+`HiggsFMSRadialObservable.lean` proves **`M [comp]`** the exact
+gauge-invariant expansion, following the physical-observable principle behind
+the FMS and gauge-invariant-field programs [34],
+
+\[
+  O(H_0+\eta)
+  =\|H_0+\eta\|^2-\|H_0\|^2
+  =2\operatorname{Re}(H_0^\dagger\eta)+\|\eta\|^2,
+\]
+
+and the corresponding four-term connected-form decomposition into
+linear--linear, two mixed, and quadratic--quadratic pieces. Along the supplied
+unnormalized radial coordinate \(\eta=hH_0\), a nonzero vacuum gives a strictly
+positive leading coefficient squared. Multiplying a finite elementary radial
+kernel by that coefficient preserves every zero/nonzero entry and transports
+its resolvent identity exactly. This is a gauge-invariant finite leading-
+response bridge, not a pole theorem; the coefficient depends on the chosen
+radial normalization.
+
+Thus the Higgs is not the unique source of aggregate mass in the null-edge
+program. It controls the local Yukawa/turn channel and the vacuum-relative
+gauge stiffness. Aperture, closure, gauge-field, and binding sectors remain
+distinct. The repository has no defensible numerical breakdown assigning
+fractions of a physical particle's mass to these channels.
+
+The Abelian prototype proves the exact gauge invariance of
+
+\[
+  S_H(H,U)=\sum_e
+  \left|U_e H(t(e))-H(s(e))\right|^2.
+\]
+
+This residence/transport statement is not restricted to one complex
+component. `UnitaryHiggsLink.lean` now proves **`M [comp]`** for an arbitrary
+finite complex multiplet with a `U(n)` edge connection: unitary link transport
+preserves the component norm, the transported endpoint difference transforms
+only at its source, arbitrary real weighted link kinetics are gauge invariant,
+and every parallel or explicitly group-generated vacuum section has zero link
+cost. This closes the generic unitary multiplet algebra. It still does not
+select the physical `SU(2) x U(1)` representation, hypercharge normalization,
+electroweak vacuum, potential, or mass matrix.
+
+Once those Standard Model inputs are supplied, the repository already contains
+the sharper electroweak reconstruction. `NullEdgeElectroweakStabilizer.lean`
+proves that the vacuum-orbit obstruction has the one-dimensional
+electromagnetic stabilizer and rank three. `NullEdgeFMSFiniteComposite.lean`
+then inserts the supplied couplings and proves the exact orbit-stiffness form
+
+\[
+  q(A)=\frac{v^2}{8}\left[
+    g^2\bigl((A^1)^2+(A^2)^2\bigr)
+    +\bigl(gA^3-g'B\bigr)^2\right].
+\]
+
+For \(g^2+g'^2>0\), the same kernel-checked finite algebra rewrites this as
+
+\[
+  q(A)=\frac12m_W^2\bigl((A^1)^2+(A^2)^2\bigr)
+       +\frac12m_Z^2 Z^2,
+  \qquad
+  m_W=\frac{gv}{2},
+  \qquad
+  m_Z=\frac{v}{2}\sqrt{g^2+g'^2},
+\]
+
+with \(Z=(gA^3-g'B)/\sqrt{g^2+g'^2}\); the orthogonal photon direction has
+zero stiffness. These are **`M [comp]`** reconstruction identities from the
+supplied group, representation, vacuum, and couplings. They do not derive
+\(g,g'\), \(v\), or a continuum gauge-boson pole.
+
+The Higgs is also special in degree-of-freedom bookkeeping. For the four real
+components of one complex doublet and three broken electroweak directions,
+`HiggsDofConservation.dof_conserved_general_su2_witness` verifies
+\(2\cdot3+4=3\cdot3+1=10\): three scalar orbit directions become the three
+longitudinal polarizations, leaving one radial scalar, while the unbroken
+photon is a spectator on both sides of the count. This is exact finite counting,
+not a dynamical derivation of the vacuum or vector masses.
+
+The tangent-space statement is now stronger than counting alone.
+`HiggsTangentDecomposition.lean` proves **`M [comp]`** that, at the supplied
+nonzero electroweak reference section, every infinitesimal complex-doublet
+fluctuation decomposes explicitly as
+
+\[
+  \delta H=\delta H_{\mathrm{rad}}+iB_{\mathrm{EW}}(X),
+  \qquad
+  \delta H_{\mathrm{rad}}=\frac{1}{\sqrt2}(0,h).
+\]
+
+The radial line and the physical gauge-orbit tangent intersect only at zero;
+the only residual ambiguity in the gauge coordinate is exactly
+\(\ker B_{\mathrm{EW}}=\operatorname{span}\{Q\}\), the electromagnetic
+stabilizer. Thus the surviving Higgs is a genuine radial direction transverse
+to the three vacuum-orbit directions, not a fourth Goldstone mode. The theorem
+is finite tangent geometry and does not by itself establish Goldstone
+equivalence, a continuum state, or a pole mass.
+
+The same module proves the corresponding observable projection. The leading
+gauge-invariant FMS scalar (2\operatorname{Re}(H_0^\dagger\delta H)) is
+exactly (v h) on the normalized radial tangent and exactly zero on every
+physical gauge-orbit tangent. Thus the local gauge-invariant scalar channel
+selects the surviving radial mode at first order; it does not see the three
+orbit directions that furnish the vector-mass sector.
+
+A covariantly constant vacuum section \(H_0\) therefore does not "travel". It
+supplies an internal reference preserved by the unbroken holonomy directions.
+A Higgs excitation \(h\), in \(H=H_0+h\), is a vertex field whose kinetic
+variation is assembled from these edge differences. Its coarse massive
+propagator may be reconstructed from causal edge histories, but it is not one
+null worldline.
+
+Nor is this the fermionic Weyl "zig-zag" mechanism. The radial scalar has no
+left/right chirality pair whose local conversion supplies a Dirac mass.
+Its finite massive response is instead a scalar retarded path sum with local
+mass insertions between causal steps. Gauge holonomies may supply phases on
+loops, but neither a chiral spiral nor a chirality flip is required for the
+radial Higgs curvature.
+
+The same distinction appears in the super-Dirac algebra. With
+
+\[
+  D=iD_N+\Gamma_s\Phi,
+\]
+
+the null-edge operator \(D_N\) carries spacetime propagation and the
+Higgs/Yukawa zero-form \(\Phi\) couples internal chiral sectors. The checked
+square contains both
+
+\[
+  +\Phi^2
+  \qquad\text{and}\qquad
+  -i\Gamma_s\sum_a C_a[\nabla_a,\Phi].
+\]
+
+The first is the finite mass-gap block; the second is the covariant Higgs
+variation. A constant vacuum can therefore leave a mass gap while its kinetic
+cross term vanishes. Separately, the finite Yukawa bridge proves that the odd
+left-right flip operator squares to the scalar mass block.
+`HiggsVacuumMassSeparation.lean` now packages the distinction as one exact
+**`M [comp]`** theorem: for a nonzero vacuum value and nonzero supplied Yukawa
+coupling, a parallel frozen-modulus section has zero finite Higgs edge cost,
+while the induced local chirality-flip operator is nonzero and its square is
+the displayed scalar mass block. Thus "the vacuum does not move" and "the
+vacuum induces a fermion mass channel" are compatible statements, not rival
+interpretations. These are
+**`M [orig/comp]`** operator identities, not yet a curved-spacetime Higgs action
+or a Standard Model stress tensor.
+
+The exact finite anchors are
+`PhysicsSM/Draft/NullEdgeAbelianHiggsLink.lean` for edge stiffness,
+`PhysicsSM/Draft/NullEdgeFureyPhiH.lean` for the internal chirality-flip map,
+`PhysicsSM/Draft/NullEdgeYukawaCheckerboard.lean` for its squared mass blocks,
+`PhysicsSM/Draft/NullEdgeFiniteLichnerowiczBridge.lean` for the combined
+null-kinetic, curvature-channel, Higgs-square, and Higgs-gradient decomposition,
+and `PhysicsSM/Draft/NullEdge/GeometryWeightedHiggsFunctional.lean` for the
+weighted finite action and its geometry response, together with
+`PhysicsSM/Draft/NullEdge/UnitaryHiggsLink.lean` for the generic finite unitary
+multiplet link algebra and
+`PhysicsSM/Draft/NullEdge/HiggsVacuumMassSeparation.lean` for the exact
+parallel-vacuum/local-mass separation. The local derivative bridge is split
+between `PhysicsSM/Draft/NullEdge/AnchoredHiggsDerivativeExtractor.lean` for
+anchor covariance and signed kinetic invariance, and
+`PhysicsSM/Draft/NullEdge/DualFrameHiggsRecovery.lean` for conditional exact
+recovery from a supplied real left inverse.
+`PhysicsSM/Draft/NullEdge/HiggsCoframeFirstVariation.lean` gives the exact
+signed kinetic expansion under a supplied affine dual-frame perturbation.
+
+The finite gravity interface should therefore be geometry-weighted rather than
+a bare edge sum. With
+
+\[
+  K_e(H,U)=\lVert U_eH(t(e))-H(s(e))\rVert^2,
+  \qquad
+  W_x(H)=\lambda(\lVert H(x)\rVert^2-v^2)^2,
+\]
+
+the controlled finite form is
+
+\[
+  S_H[w,\mu]=\sum_e w_e K_e+\sum_x\mu_xW_x.
+\]
+
+Here \(w_e\) and \(\mu_x\) are still supplied geometry weights.
+`GeometryWeightedHiggsFunctional.lean` now proves **`M [comp]`** that arbitrary
+fixed weights preserve local gauge invariance, nonnegative weights and quartic
+coupling give a nonnegative functional, frozen modulus reduces exactly to the
+weighted link mismatch, and the displayed parallel vacuum has zero cost. Its
+potential is normalized to vanish on that vacuum, so the zero-cost theorem does
+not remove an independently supplied constant vacuum offset.
+
+The sign is part of the later physical interpretation. With the project
+`(+---)` convention, a conventional Lorentzian scalar Lagrangian uses kinetic
+contraction minus (V(H)); this is represented by a negative vertex-potential
+weight relative to a positive volume density. Nonnegative edge and vertex
+weights instead give the proved positive Euclidean/stiffness or energy control.
+The gauge-invariance and weight-response theorems allow either sign and do not
+identify those two functionals.
+
+`PhysicsSM/Draft/NullEdge/FiniteMatterWeightVariation.lean` and the Higgs
+specialization together prove the exact **`M [comp]`** response formula: if a
+held-fixed matter configuration is varied only through a real geometry
+parameter \(q\), then
+
+\[
+  \frac{dS_H}{dq}
+  =\sum_e \frac{dw_e}{dq}K_e
+   +\sum_x\frac{d\mu_x}{dq}W_x.
+\]
+
+It also gives an affine realization of every supplied weight response and a
+nonzero one-edge matter budget whose response is exactly zero when the geometry
+weights are constant. This is the finite middle rung between a gauge-invariant
+matter functional and stress-energy. It is not yet a tensor: the theory still
+owes the map from graph/coframe variations to \(dw_e/dq,d\mu_x/dq\), enough
+independent variation directions, the density normalization, and the index
+conversion. The finite Higgs response is itself exactly gauge invariant for
+arbitrary supplied response weights.
+
+The same module makes the vacuum-energy distinction exact. If the covariantly
+constant vacuum has zero edge density but one constant vertex potential
+\(V_0\), then
+
+\[
+  \frac{dS_{H_0}}{dq}=V_0\sum_x\frac{d\mu_x}{dq}.
+\]
+
+Thus zero Higgs kinetic variation does not make a nonzero vacuum potential
+gravitationally invisible. The response is nonzero whenever both \(V_0\) and
+the total vertex-volume response are nonzero. This identifies the finite
+cosmological-source channel; it does not predict or suppress \(V_0\).
+
+The missing local derivative should be built from a fan of null edges, not
+identified with one edge. For an anchor (x), transported neighbor values give
+
+\[
+  \Delta_{xy}H=U_{x\leftarrow y}H(y)-H(x),
+  \qquad
+  (D_iH)(x)=\sum_y c_i(x,y)\Delta_{xy}H.
+\]
+
+The real coefficients (c_i(x,y)) are the proposed dual-frame or local-fit
+coefficients. Under endpoint gauge transformations every \(\Delta_{xy}H\), and
+hence every (D_iH), transforms only by the anchor phase. This makes the
+normalized mostly-minus contraction
+
+\[
+  K_H(x)=\mu_x\left(
+    |D_0H|^2-|D_1H|^2-|D_2H|^2-|D_3H|^2\right)
+\]
+
+gauge invariant even though it is not positive.
+`AnchoredHiggsDerivativeExtractor.lean` now proves this entire gauge-algebra
+paragraph as **`M [comp]`** for arbitrary supplied real coefficients, including
+zero derivative and zero signed kinetic contraction on a parallel section.
+`DualFrameHiggsRecovery.lean` proves the complementary exact algebra: whenever
+a supplied real sample matrix has a supplied real left inverse, that inverse
+recovers every complex derivative vector, the sample map is injective, and the
+four-component identity frame is an explicit nonvacuous control. These results
+close the covariance and complexification subgates. They do not prove that an
+order-native null fan supplies the required left inverse.
+The focused successor `ShellAngularDualRecovery.lean` now proves the sharper
+finite result as **`M [orig/comp]`**: one nonzero time difference on the radial
+support and three difference-coordinate-independent spatial probes on the
+disjoint shell make the resulting `1+3` real sample map injective. Finite
+linear algebra then supplies a real left inverse, and its separate real/
+imaginary extension exactly recovers every complex four-component derivative.
+Aristotle project `1b345541-a6c3-4ac1-b007-8d1bd9bf37ca` proved all six target
+statements without weakening; the candidate and production port were locally
+replayed, strictly scanned, targeted-built, and guarded. The support sets and
+probes remain supplied. A kernel-checked five-point control nevertheless shows
+the hypotheses are nonvacuous: one anchor, one radial time point, and three
+shell basis points exactly recover every complex `1+3` vector. Thus the
+order-native selector and its conditioning, rather than algebraic existence,
+are the remaining empirical/reconstruction gates.
+`MarkedAlexandrovHiggsFrameBridge.lean` now ties this recovery to the actual
+project-local corrected pairing. Under the same supplied support and
+nondegeneracy hypotheses, the order-derived layers `L_0(x)` and
+`L_1(x) union L_3(x)` simultaneously give the conditional `(+---)` inertia
+split and exact recovery of every complex `1+3` Higgs derivative vector. The
+Higgs kinetic sector therefore does not require a second spacetime frame.
+This **`M [orig/comp]`** bridge still does not derive the radial and angular
+probes or their conditioning from the bare order.
+`HiggsCoframeFirstVariation.lean` also proves **`M [comp]`** the exact response
+of the signed kinetic contraction when that supplied dual matrix follows an
+affine perturbation. The formula retains its full quadratic remainder, and its
+linear coefficient is invariant under the common anchor phase. This closes the
+held-fixed-sample first-response algebra. It does not identify the matrix
+perturbation with a coframe component, vary the samples or holonomies, or
+construct a stress tensor.
+
+`HiggsLocalStressResponse.lean` now combines that frame perturbation with
+independent affine kinetic- and potential-measure perturbations. Writing
+\(K_0\) for the base signed kinetic density, \(L\) for its dual-frame first
+variation, \(K_2\) for the pure frame-variation density, and \(V\) for the
+held-fixed potential density, it proves the exact **`M [orig/comp]`** identity
+
+\[
+  S_H(\epsilon)=S_H(0)
+   +\epsilon\bigl(\delta\mu\,K_0+\mu L+\delta\nu\,V\bigr)
+   +\epsilon^2\bigl(\mu K_2+\delta\mu\,L\bigr)
+   +\epsilon^3\delta\mu\,K_2.
+\]
+
+The displayed three-channel linear coefficient is kernel-checked as the actual
+derivative at \(\epsilon=0\), and it is invariant under a common anchor gauge
+phase. Thus both the edge-gradient sector and the vertex potential sector of
+the Higgs have a controlled local geometry response. In that module the result
+is still a scalar response along supplied perturbation data; the tensorial
+successor is separate.
+
+The algebraic stress-tensor rung is now closed conditionally on supplied metric
+data. `HiggsHilbertStress.lean` proves **`M [comp]`** that the real Hermitian
+derivative bilinear is symmetric and unitary invariant, the local action has
+the displayed inverse-metric first variation, and
+
+\[
+  T_{ab}=2\operatorname{Re}\!\left((D_aH)^\dagger D_bH\right)-g_{ab}L_H
+\]
+
+is symmetric when the supplied covariant metric is symmetric. Under the
+displayed determinant-compatible measure response, the action response is
+exactly $+\tfrac12\mu\,T_{ab}\delta g^{ab}$, and both the tensor and response
+are invariant under one common internal unitary transformation. This does not
+derive the metric, its inverse relation, or the derivative components from the
+order, and it does not prove conservation or Einstein dynamics. The remaining
+physical construction is therefore the **`C [orig/comp]`** gate:
+
+1. derive \(c_i(x,y)\) equivariantly from the selected shell/probe frame and
+   the reconstructed dual coframe;
+2. obtain rank four with controlled condition number on protected-core events;
+3. keep support local and the extracted derivative subspace stable under
+   coupled refinement and chart overlap;
+4. reproduce affine test-field derivatives and the continuum gauge-covariant
+   principal symbol;
+5. derive the metric/coframe perturbations of both \(c_i\) and \(\mu_x\), then
+   prove convergence and conservation of the assembled stress tensor.
+
+**Kill:** persistent rank deficiency, diverging condition number, failure of
+anchor gauge covariance, nonlocal support growth, nonimproving held-out
+derivative error, or an incorrect Lorentzian principal symbol.
+
+This placement is also the conservative literature reading. Discrete exterior
+calculus puts scalar kinetic weights in the Hodge/dual geometry rather than in
+connectivity alone [29]. Causal-set charged-scalar constructions combine
+holonomies with causal relations, volumes, or timelike scales [30]. Our
+inference is that a reciprocal primal-edge-length rule cannot be imported here:
+the primitive edges are null. The required coefficients must instead come from
+diamond, shell, or reconstructed dual-coframe data.
+
+For gravity, the decisive object is not the scalar mass block by itself. The
+completed matter action must be varied with respect to the reconstructed
+metric or coframe:
+
+\[
+  T_{\mu\nu}^{(H)}
+  =+\frac{2}{\sqrt{|g|}}
+    \frac{\delta S_H}{\delta g^{\mu\nu}},
+\]
+
+in the project's mostly-minus matter-action convention. Equivalently,
+\(\delta S_H=-\tfrac12\sqrt{|g|}T^{\mu\nu}\delta g_{\mu\nu}\).
+The complementary curvature-sign convention in the gravitational action is
+the one that yields the displayed positive-sign Einstein equation. This
+variation must
+include Higgs kinetic, potential, gauge, and Yukawa sectors once they share one
+geometric action. The vacuum value \(V(H_0)\) contributes a cosmological-term
+source unless a dynamical mechanism controls it; subtracting it by convention
+does not solve the vacuum-energy problem.
+
+`HiggsVacuumStress.lean` makes this distinction exact as **`M [comp]`** finite
+algebra. For a covariantly constant Higgs configuration, all supplied
+derivative components vanish, but a constant potential density \(V_0\) gives
+
+\[
+  T_{ab}=V_0 g_{ab}.
+\]
+
+In the supplied orthonormal \((+---)\) frame this is
+\(\rho=V_0\) and \(p_1=p_2=p_3=-V_0\), hence \(p=-\rho\). Thus zero Higgs
+link variation does not imply zero gravitational response. The theorem neither
+derives nor suppresses \(V_0\), so it isolates the cosmological-source channel
+without claiming a solution to the vacuum-energy problem.
+
+A curved-space scalar theory also has an improvement/nonminimal-coupling
+choice, schematically \(\xi H^\dagger H R\), which changes the stress tensor
+while preserving the total translation charges in the appropriate flat limit
+[27,28]. The null-edge theory must derive, forbid, or openly supply this
+coupling. It cannot silently identify the finite canonical energy budget with
+the gravitational source.
+
+There is one concrete candidate rather than a blank parameter space:
+Benincasa--Dowker's four-dimensional retarded scalar operator has continuum
+expectation \(\Box-\tfrac12R\) on slowly varying fields in an appropriate
+sprinkling regime [5]. If that operator, or a proved equivalent, supplied the
+Higgs kinetic channel, a built-in curvature contribution would arrive with the
+operator. It would not by itself settle the physical coupling, because an
+explicit curvature counterterm can shift the total coefficient. The present
+strict-past kernel has not been shown equivalent to the Benincasa--Dowker
+operator, so no physical value of \(\xi\) follows from the current finite
+series.
+
+`HiggsCurvatureConventionBridge.lean` makes the convention translation exact
+as **`M [orig/comp]`** finite algebra, conditional on a continuum operator
+reading. If
+
+\[
+  B_\beta\longrightarrow\Box-\beta R
+\]
+
+and the finite equation adds \(-\zeta R\), then the physical coefficient in
+the displayed sign convention is \(\xi=\beta+\zeta\). For the raw
+four-dimensional Benincasa--Dowker value \(\beta=1/2\), no counterterm gives
+\(\xi=1/2\), minimal coupling requires \(\zeta=-1/2\), and conformal coupling
+\(\xi=1/6\) requires \(\zeta=-1/3\). More generally, a nonzero affine trade
+between \(\beta\) and \(\zeta\) preserves every curvature profile, insertion
+matrix, and finite retarded series. Propagation can identify only their sum;
+the operator/counterterm split is a convention or independent calibration,
+even on nonconstant curvature.
+
+At the quantum level, \(\xi\) is not merely an optional classical ornament.
+The one-loop Standard Model effective potential in arbitrary curved spacetime
+contains the direct Higgs-curvature coupling, curvature-dependent loop terms,
+and renormalization-group running [39]. Thus the present choice to keep
+\(\xi\) supplied is conservative: the null-edge program neither predicts its
+renormalized value nor yet reproduces its beta function. Any future quantum
+gravity claim must specify the scale and scheme at which the finite curvature
+coefficient is matched.
+
+`HiggsCurvatureMassIdentifiability.lean` sharpens this caveat as exact
+**`M [orig/comp]`** finite algebra. In the displayed equation convention the
+local insertion depends only on
+
+\[
+  m_{\rm eff}^2(x)=m_0^2+\xi R(x).
+\]
+
+On constant curvature, a nonzero affine trade between \(m_0^2\) and \(\xi\)
+leaves this profile, its measured diagonal matrix, and every finite retarded
+series unchanged. Agreement at two genuinely distinct curvature values instead
+forces both parameters to agree. Constant-curvature propagation therefore
+cannot identify a bare Higgs mass separately from curvature coupling; curvature
+variation or an independent calibration is required.
+
+`HiggsCurvedStrictPastPropagation.lean` supplies the complementary positive
+statement as **`M [comp]`** finite algebra. A position-dependent insertion
+
+\[
+  M_{xx}=\bigl(m_0^2+\xi R_x\bigr)\mu_x
+\]
+
+is still diagonal, so both \(KM\) and \(MK\) remain weighted strict-past
+kernels, are nilpotent at the event-cardinality power, and give an exact
+two-sided finite resolvent. In the three-event control, changing the supplied
+curvature to \((0,2,0)\) changes the endpoint response from the flat
+nonuniform value \(-3\) to \(-9\), while the direct endpoint hop remains zero.
+Curvature can therefore change amplitudes without changing causal support in
+this finite model. The result does not derive \(R_x\) from order or prove the
+continuum curved-space equation.
+
+`HiggsGaugeInvariantCurvedPropagation.lean` lifts this result to the leading
+gauge-invariant FMS radial channel as **`M [comp]`**. The scaled composite
+kernel obeys the same exact two-sided curved resolvent and, at nonzero supplied
+vacuum, has exactly the same entrywise support as the elementary radial
+kernel. In the nonconstant-curvature three-event control the elementary
+endpoint response is \(-9\), while the leading one-component
+\(H^\dagger H\) response is \(-36\); the primitive direct hop remains zero.
+Thus the present finite answer is gauge-invariant at leading FMS order:
+curvature changes the weight of causal chains, while neither curvature nor the
+observable lift creates support outside those chains. This still does not
+control higher FMS terms, derive the continuum scalar pole, or derive the
+curvature profile from causal order.
+
+`HiggsStrictPastCausalSupport.lean` makes the causal claim entrywise as exact
+**`M [orig/comp]`** finite algebra. It defines common strict-past support,
+proves that support is closed under matrix multiplication by transitivity and
+under finite sums, and applies the result to the uniform, measured,
+curvature-dependent, and leading gauge-invariant Higgs series. For every one
+of these kernels,
+
+\[
+  \neg\bigl(y\prec x\bigr)\quad\Longrightarrow\quad G(x,y)=0.
+\]
+
+Thus local mass, measure, curvature, and the leading FMS observable lift can
+change amplitudes but cannot create finite response outside the supplied
+strict past. The theorem does not select the primitive weights or prove that
+the supplied strict-past kernel is the continuum-calibrated null-link kernel;
+that remains part of the operator-convergence gate.
+
+`HiggsCurvatureActionResponse.lean` separates the corresponding geometry
+variation as exact **`M [orig/comp]`** finite algebra. In the explicit sign
+convention
+
+\[
+  S_\xi=-\mu\,\xi R\,\lVert H\rVert^2,
+\]
+
+holding the Higgs field fixed gives
+
+\[
+  \delta S_\xi=-\xi\lVert H\rVert^2
+    \bigl((\delta\mu)R+\mu\,\delta R\bigr).
+\]
+
+The first term is the volume channel; the second records the independent
+curvature response needed before any improved Higgs stress tensor can be
+claimed. The module proves gauge invariance of both channels and an explicit
+parallel-vacuum witness: the frozen-modulus Higgs has exactly zero finite link
+cost while a nonzero supplied curvature response produces a nonzero local
+action response. Thus “the vacuum does not move” is not “the vacuum is
+gravitationally inert.” A graph-derived \(\delta R\), its coframe/metric
+normalization, and the resulting conservation identity remain open.
+
+Finally, coupling the Higgs to reconstructed gravity does not explain the
+Higgs boson's own radial mass. In the present elementary route that curvature
+comes from the supplied scalar potential. In the current one-component
+convention,
+
+\[
+  V(H)=\lambda\bigl(|H|^2-v^2\bigr)^2,
+  \qquad H=v+h,
+\]
+
+`HiggsRadialCurvature.lean` proves the exact **`M [comp]`** expansion
+
+\[
+  V(v+h)=4\lambda v^2h^2+4\lambda vh^3+\lambda h^4
+        =\frac12 m_h^2h^2+4\lambda vh^3+\lambda h^4,
+  \qquad m_h^2=8\lambda v^2.
+\]
+
+Thus positive supplied \(\lambda\) and nonzero supplied \(v\) give positive
+radial curvature while the parallel vacuum still has zero edge kinetic cost.
+The factor eight is convention-specific and is not the Standard Model doublet
+normalization without an explicit field/coupling translation.
+`HiggsDoubletRadialCurvature.lean` now supplies that translation as exact
+**`M [comp]`** algebra. For
+
+\[
+  H(h)=\frac{1}{\sqrt2}\binom{0}{v+h},
+  \qquad
+  V(H)=\lambda\left(H^\dagger H-\frac{v^2}{2}\right)^2,
+\]
+
+it proves
+
+\[
+  V(H(h))
+  =\lambda v^2h^2+\lambda vh^3+\frac{\lambda}{4}h^4
+  =\frac12(2\lambda v^2)h^2+\lambda vh^3+
+    \frac{\lambda}{4}h^4.
+\]
+
+Hence the standard normalized radial coordinate has
+\(m_h^2=2\lambda v^2\). The theorem removes a coordinate mismatch; it still
+supplies rather than derives \(\lambda\) and \(v\), and it is not a
+renormalized pole-mass prediction.
+`HiggsEdgeEulerOperator.lean` and
+`HiggsMeasuredMassRetardedSeries.lean` now close the finite variational-to-
+retarded normalization bridge as **`M [comp]`**. The first module varies an
+edge-weighted Euclidean radial action and derives the operator
+
+\[
+  L_{\rm edge}+M,\qquad
+  M_{xx}=m_h^2\,\mu_x,
+\]
+
+with strict positivity and a trivial kernel under displayed positive weights,
+mass squared, and vertex measure. The second inserts exactly that same
+diagonal matrix between primitive causal propagations and proves finite left
+and right resolvent identities. In its nonuniform three-event control, the
+direct endpoint hop vanishes while the first massive two-hop correction is
+\(-3\), sampling the measure \(\mu_1=3\) at the intermediate event. This
+identifies one finite operator across the action and propagation descriptions;
+it does not yet turn the Euclidean stiffness functional into a Lorentzian
+continuum equation or derive the measure from causal order.
+`HiggsStrictPastMeasuredResolvent.lean` then removes the remaining finite
+algebraic condition as **`M [comp]`**. Multiplication by the diagonal local
+mass matrix merely rescales source weights in \(KM\) and target weights in
+\(MK\); both products remain weighted strict-past kernels and are nilpotent at
+the event-cardinality power. Consequently the nonuniform measured Higgs path
+sum obeys both exact finite resolvent equations with no terminal remainder on
+every nonempty finite strict order. This establishes causal support and finite
+invertibility algebra, not continuum hyperbolicity, pole normalization, or a
+physical spectrum.
+`MassiveRetardedLinkSeries.lean` and
+`HiggsMassiveRetardedPropagation.lean` now make the corresponding propagation
+statement exact as **`M [comp]`** finite algebra. A matrix kernel supported on a
+finite strict causal order is nilpotent, so the radial mass parameter enters a
+terminating retarded series
+
+\[
+  G_h(H)=\sum_{k=0}^{H-1}(-m_h^2)^k K^{k+1},
+  \qquad (I+m_h^2K)G_h=G_h(I+m_h^2K)=K.
+\]
+
+The three-event control has no primitive endpoint entry, a unit two-link
+amplitude, and, at the convention-specific choice \(\lambda=1/8,v=1\), a
+massive endpoint amplitude \(-1\). This is the precise finite sense in which a
+Higgs excitation propagates through sums of causal histories rather than along
+one null edge. It is not yet a continuum Klein-Gordon pole or an observed-mass
+prediction.
+
+`FiniteKernelPathExtraction.lean` and `HiggsRetardedPathSemantics.lean` now
+make the word "histories" exact as **`M [orig/comp]`** finite combinatorics. A
+nonzero entry of (K^n) yields an explicit chain of exactly (n) nonzero
+primitive target-source entries. Consequently every nonzero order-(k)
+summand ((-m_h^2)^kK^{k+1}) above carries an explicit ((k+1))-step path in
+the supplied strict-past relation, and transitivity proves that its source is
+strictly before its target. No positivity assumption is needed, so destructive
+interference may erase a path contribution but cannot manufacture a nonzero
+term without at least one supporting primitive path. This theorem supplies
+finite path semantics; it does not identify those primitive steps with
+continuum null geodesic segments or determine their physical weights.
+
+At finite density, a causal-set link is a covering relation, not by itself an
+exact metric-null displacement. The adjective “null” therefore belongs either
+to supplied decorated frame data or to a proved concentration/calibration
+limit. The current path theorem supplies strict-past chains only; upgrading
+each primitive step to a continuum null segment remains part of H1.
+
+The corresponding continuum intuition is sharper than “the Higgs follows a
+null line.” In (3+1)-dimensional Minkowski spacetime, the massive retarded
+Klein--Gordon Green function contains both a light-cone distribution and a
+mass-dependent Bessel tail inside the cone [38]. Thus an elementary
+null-supported kernel may seed the response, while repeated mass scatterings
+generate aggregate timelike interior support. Our finite powers and path
+extraction have exactly that combinatorial shape, but no theorem yet proves
+their convergence to the continuum light-cone term or massive tail.
+
+Recent work sharpens the kernel-selection caveat. Johnston's original controls
+use the causal matrix in (1+1) dimensions and the link matrix in (3+1).
+Hinrichsen and Kastrati [31] give asymptotic and numerical evidence that the
+averaged (1+1) massless kernel can instead be represented by the normalized
+factorially weighted link-path sum
+
+\[
+  G_0^R=\frac12 e^{\gamma_E}\exp(L),
+\]
+
+followed by the usual massive scattering resolvent
+
+\[
+  G_m^R=G_0^R\left(I+\frac{m^2}{\rho}G_0^R\right)^{-1}.
+\]
+
+This supports the ontology of elementary link propagation plus summed longer
+histories, but it also shows that neither dimension nor retarded support alone
+selects the weights. The identity term in \(\exp(L)\) also carries diagonal
+support, whereas the current finite theorem starts from a strictly
+off-diagonal past kernel. Matching these conventions is part of the continuum
+gate, not a completed result.
+
+`FiniteDiagonalCausalResolvent.lean` now closes the corresponding finite
+algebra as **`M [comp]`**. For
+
+\[
+  G_0=bI+N,\qquad N^H=0,
+\]
+
+and (1+cb\neq0), it constructs the terminating inverse of
+((1+cb)I+cN) and proves both exact resolvent identities for
+(G_0(I+cG_0)^{-1}). Its three-event truncated-exponential control has zero
+primitive endpoint hop, massless endpoint amplitude (1/2), and massive
+endpoint amplitude (-1/54) at (b=1,c=2). The identity contribution should
+be read as a zero-length local contact convention, not as a particle moving
+from an event to itself. The off-diagonal nilpotent remainder is the carrier of
+positive-length causal histories.
+
+`FiniteDiagonalCausalSupport.lean` makes that last sentence entrywise exact as
+**`M [orig/comp]`**. If the nilpotent remainder \(N\) is supported in a supplied
+transitive strict past, then the massive response minus
+
+\[
+  \frac{b}{1+cb}I
+\]
+
+has the same strict-past support. Every diagonal entry is exactly
+\(b/(1+cb)\), and every off-diagonal entry vanishes unless the source is before
+the target. The leading gauge-invariant FMS radial lift obeys the same split,
+with the contact coefficient multiplied by its radial residue. Thus the local
+contact and the causal-history response are now formally distinct even when
+the chosen massless kernel contains an identity term.
+
+The coefficient also needs a units lock.
+`Johnston3Plus1ScalarNormalization.lean` proves **`M [comp]`** the exact finite
+translation of Johnston's (3+1) amplitudes [38]:
+
+\[
+  a=\frac{\sqrt{\rho}}{2\pi\sqrt6},\qquad
+  b=-\frac{m^2}{\rho},\qquad
+  \Phi=aL.
+\]
+
+With these definitions, the Johnston link-path polynomial is exactly the
+project's `massiveRetardedSeries` only after substituting
+`massSq = m^2/rho` and `K = a L`. Thus a coefficient merely named `massSq`
+is not yet a measured mass squared unless the kernel normalization proves where
+the density factor lives. The finite identity locks the convention; the
+continuum gate still owes distributional convergence and concentration.
+`Johnston4DLightconeDelta.lean` now proves the first exact analytic rung as
+**`M [comp]`**. In the normal coordinate (s=\tau^2>0), the expected
+normalized link kernel is the Gaussian
+
+\[
+  k_\rho(s)=\frac{\sqrt\rho}{2\pi\sqrt6}
+    \exp\!\left(-\frac{\rho\pi}{24}s^2\right).
+\]
+
+The kernel-checked theorems establish positivity, exact one-sided mass
+(1/(2\pi)), decay away from (s=0), and convergence against every bounded
+continuous test function. `johnston-4d-lightcone-coarea-successor-2026-07-17.md`
+then fixes the remaining future-cone Jacobian and radial dominated-convergence
+lift. Even both results together remain ensemble-expectation statements; an
+individual-sprinkling concentration theorem is a separate gate.
+`AgentTasks/null-edge-higgs-3plus1-retarded-tail-benchmark-2026-07-17.md`
+pre-registers that next test: the massless light-cone pairing and the
+massive-minus-massless timelike Bessel tail must both improve on fresh density
+rungs under the locked Johnston amplitudes, with no fitted density exponent.
+
+There is also encouraging but narrow curved-background evidence. Kastrati and
+Hinrichsen [33] report numerical agreement between a causal-set path-sum
+propagator and the continuum massive scalar retarded propagator in
+\(\mathrm{AdS}_{1+1}\), using the same jump amplitudes as in flat space. In that
+benchmark, curvature enters through causal order and sprinkling density. For
+this program the result motivates a **no-double-counting gate**: first calibrate
+the complete base kernel \(G_0[C,\rho]\) on curved sprinklings; only then treat
+an explicit diagonal \(\xi R\) insertion as a nonminimal or residual coupling
+after subtracting whatever curvature response the base kernel already contains.
+The cited result is numerical, two-dimensional, constant-curvature, and
+continuum-embedded, so it does not derive our graph geometry or settle the
+four-dimensional Higgs operator.
+
+An earlier analytic treatment by X, Dowker, and Surya [40] gives a more direct
+curved-scalar precedent. For constant scalar curvature, the invariant
+scattering coefficient between a base kernel \((m_0,\xi_0)\) and a target
+kernel \((m,\xi)\) is the effective-mass difference
+
+\[
+  \Delta m_{\rm eff}^2
+  =(m^2+\xi R)-(m_0^2+\xi_0R).
+\]
+
+Thus a minimally coupled massless base gives \(m^2+\xi R\), while the
+four-dimensional conformally coupled massless base gives
+\(m^2+(\xi-1/6)R\). Their four-dimensional result is local or restricted to
+special backgrounds; it does not prove a generic curved Higgs kernel. It
+nevertheless supports our operator ordering: identify the complete curved
+massless response and its coupling convention first, then add only the
+residual local mass/curvature insertion with its density normalization fixed.
+
+`HiggsGaugeInvariantRetardedPropagation.lean` closes the finite observable
+composition as **`M [comp]`**. For the one-component control vacuum, the leading
+gauge-invariant FMS radial kernel obeys the same left and right strict-past
+resolvent identities as the elementary radial kernel and, at nonzero vacuum,
+has exactly the same entrywise support. In the three-event control the direct
+endpoint entry remains zero, the elementary two-link massive response is
+\(-1\), and the leading gauge-invariant response is \(-4\) in the supplied
+unnormalized radial coordinate. This supplies an observable finite path-sum
+witness without upgrading it to a continuum pole.
+`HiggsGaugeInvariantMeasuredPropagation.lean` extends that conclusion to the
+nonuniform measured insertion as **`M [comp]`**. The leading FMS kernel obeys
+the same exact two-sided measured resolvent and, at nonzero vacuum, has exactly
+the elementary kernel's entrywise support. In the three-event control the
+intermediate measure changes the elementary endpoint response to \(-3\), and
+the leading one-component FMS response is \(-12\), while the direct endpoint
+entry remains zero. Thus local measure data changes amplitudes but does not
+create acausal support in this finite control.
+
+This propagation result is deliberately narrower than the full Higgs sector.
+The multiplet-valued edge difference is gauge covariant, but the exact
+retarded matrices above describe the linearized radial scalar and its leading
+FMS observable lift. A path-ordered, interacting nonabelian doublet propagator
+and higher FMS terms remain open.
+
+Retarded-kernel agreement is not by itself a quantum Higgs theory. A
+causal-set-derived nonlocal scalar QFT can contain a continuum of massive
+modes, and a studied four-dimensional realization has a non-positive
+Hamiltonian even though unstable modes are assigned a Wheeler prescription
+[42]. That operator is not the Johnston link kernel used here, so this is a
+guardrail rather than a transferred pathology. The Higgs continuum release
+gate must nevertheless audit the gauge-invariant radial spectral measure for
+positivity, unwanted physical poles or cuts, and a consistent state/Feynman
+prescription in addition to checking retarded support and the classical
+Bessel tail.
+
+`HiggsCompositeGap.lean` gives a one-mode mean-field seed in which radial
+stiffness is derived from a fermion condensate, but neither route yet supplies
+a continuum composite Higgs pole, renormalization group flow, electroweak
+vacuum, or measured 125 GeV mass.
+
+The continuum observable gate must also split by spacetime regime. In flat or
+asymptotically stationary settings, the target is the pole and spectral
+structure of the gauge-invariant composite two-point function; the perturbative
+FMS analysis gives a controlled precedent for pole agreement with the
+elementary description [35]. On a generic globally hyperbolic curved spacetime,
+there need not be a preferred vacuum or a global particle interpretation. The
+primary target should instead be a locally covariant gauge-invariant two-point
+distribution with Hadamard/microlocal short-distance structure [36,37]. A Higgs
+pole, LSZ state, or worldline interpretation should be added only under explicit
+stationary, adiabatic, or asymptotic hypotheses. This is another reason not to
+picture the Higgs as a bead traversing one null edge.
+
+The present Higgs ontology is therefore a controlled fork, not a settled
+origin theorem. The elementary branch supplies a vertex zero-form and its
+potential; `HiggsCriticalitySeed.lean` shows how one supplied distance to a
+Landau critical point jointly controls the vacuum scale, radial stiffness, and
+vacuum depth, while leaving the selection of that critical point conjectural.
+The composite branch instead asks fermion-pair dynamics to generate the order
+parameter and its stiffness. Both branches use null-edge transport for
+variation and propagation. They differ only in what supplies the local scalar
+sector and its radial curvature.
+
+The ultraviolet bridge is not optional in either branch. A
+causal-set-inspired functional-RG study of a quartic scalar theory finds that
+the modified nonlocal propagator can accelerate the Landau-pole onset toward
+the nonlocality scale [41]. That calculation is not our finite kernel and does
+not predict the Standard Model Higgs mass, but it is a concrete warning against
+reading the finite identity (m_h^2=8\lambda v^2) as a scale-independent
+prediction. Before a `125 GeV` claim, the program must derive or match the
+continuum propagator, specify the nonlocality and renormalization scales, run
+the gauge, Yukawa, and quartic couplings, and show that the gauge-invariant
+radial two-point function has the required pole or curved-spacetime local
+spectral behavior.
+
+### 7.2 Conservation is not yet stress-energy
+
 There is also an **M [orig]** finite Noether link in
 `FiniteDynamicsNoetherThermoCapstone.lean`. For a self-adjoint finite operator
 \(A\) and a unitary \(U\) commuting with it, the same commutation hypothesis
@@ -3428,14 +5582,15 @@ than a prediction already won.
 | Counting can represent spacetime volume in a manifoldlike causal set | T|H [import] | Order-number reconstruction principle | Density, manifold approximation, fluctuations |
 | Causal conformal class plus smooth positive volume fixes the metric uniquely | T|H [interp] | Explicit positive conformal factor \(\Omega=(d\mu/d\operatorname{Vol}_{\bar g})^{1/d}\) | Prove the null-edge order/count limit supplies both inputs |
 | A finite strict causal order and supplied scales construct the local/smeared four-dimensional causal operator and its corrected pairing | M [comp] | Open-interval layers, exact local and smeared coefficients, relabeling covariance, project-sign conversion, same-scale local reduction, function-level potential cancellation, and a nonzero two-event layer witness. The natural zero-sum carrier subspace transports up to basis change and has a rank-four five-event control; its corrected pairing is basis-free, four-probe Gram matrices obey exact congruence, and a Lorentz-normalized frame leaves exactly the Lorentz stabilizer. Simultaneous scale change gives the operator and fixed-frame Gram matrix inverse-square weight, reciprocal to the count-derived coframe metric weight, with an exact sixteen-to-one `4` versus `1/4` witness. Count-band two-sided retarded shells and qualitative subspace visibility are intrinsic; visible rank is at most shell cardinality, so a sub-four shell forbids rank four, and a four-leaf control proves sharpness. A3b recovers the adjacent hierarchy; A3c then shows global-shell availability grows strongly with infrared diamond volume at fixed local scales. An exact finite family realizes arbitrary shell cardinality at one fixed minimal count band and nonzero two-sided abundance | Replace the global shell by a compact order-derived Alexandrov carrier or equivariant bracket ensemble; prove carrier refinement/overlap stability, then derive a retarded-visible low-complexity probe subspace with quantitative coverage and product control; derive dimension and positive scales from physical data; prove evaluation convergence, stable rank-four Lorentzian inertia, count-volume agreement, and concentration without embedding-tuned support |
-| Bare-relation invariance does not fix absolute scale | M [orig] | Every positive invariant scale has distinct positive global rescalings; transitive relations force invariant scalar fields to be constant | Derive symmetry-breaking calibration data from the physical ensemble |
+| A scale-blind bare observation cannot exactly reconstruct a positive absolute length across a nontrivial rescaling | M [orig] | Exact observation-level identifiability no-go with a nonvacuous constant-observation witness; automorphism invariance separately leaves a rescaling ray admissible and forces invariant fields constant on transitive relations | Derive a physical realization/observation map and either a graph-sensitive scale observable, a dimensionful dynamical input, or laboratory calibration |
+| One-loop dimensional transmutation preserves the global unit | M [orig/comp] | Simultaneous rescaling of reference and invariant scales leaves the running dimensionless coupling unchanged and rescales the reconstructed dimensionful scale linearly | Derive the physical coupling, beta function, coefficient, reference scale, and its calibration from null-edge dynamics |
 | Calibrated count fixes a positive four-dimensional Weyl factor on a supplied coframe ray | M [orig] | Exact fourth-root reconstruction and positive-factor uniqueness, with nonzero witnesses | Derive density, manifoldlikeness, and the conformal coframe representative |
 | A common unknown count density cancels from relative four-dimensional Weyl and plaquette-area factors | M [orig] | For positive counts and supplied nondegenerate conformal representatives, the density-free profile obeys \(r^4=n\operatorname{Vol}(e_0)/(n_0\operatorname{Vol}(e))\); one positive anchor fixes all relative scales, \(r^2\) fixes the relative area weight, and the positive reconstruction is unique. Fixed-anchor invariance and simultaneous-anchor covariance are distinct checked statements. Overlap transitions compose multiplicatively, reverse transitions multiply to one, and the area weights obey the squared cocycle. Invariant data on a vertex-transitive relation give only a constant profile | Derive regions, counts, the shared-density regime, conformal representatives, dimension four, manifoldlikeness, refinement-compatible overlaps, and the remaining global unit |
 | Noncollinear null sums can be timelike | T [import] | Positive invariant norm from null cross terms | Dynamical selection of histories |
 | Two-direction 1+1 null ticks obey \(\tau^2=4\varepsilon^2N_+N_-\), with a null/timelike dichotomy and balanced maximum | M [comp] | Exact endpoint algebra and nonzero two-tick witness | Curved-spacetime reconstruction and history dynamics |
 | Null-spinor exterior area gives a finite mass operator | M [orig] | Exact finite algebra and gap-closing locus | Absolute scale and interacting renormalization |
 | Finite coframe nondegeneracy and induced-metric invariance | M [orig] | Correct matrix-frame covariance | Continuum tetrad bundle |
-| A metric does not canonically select a coframe; determinant-one \(A\) and \(-A\) have equal Pauli/Hermitian Minkowski action and opposite nonzero spinor action | M [orig] | Explicit nondegenerate rational Lorentz-gauge witness plus `(+---)` Hermitian action and determinant preservation; bundled \(-I\in SL(2,C)\) is nontrivial, central, order two, and acts trivially by Hermitian congruence before and after edge re-signing | Derive a gauge-relative coframe, prove the Hermitian-action kernel is exactly \(\{I,-I\}\), construct covering surjectivity, and establish global/refinement compatibility |
+| A metric does not canonically select a coframe; determinant-one \(A\) and \(-A\) have equal Pauli/Hermitian Minkowski action and opposite nonzero spinor action | M [orig/comp] | Explicit nondegenerate rational Lorentz-gauge witness plus the concrete `(+---)` Hermitian action factored through \(SO^+(1,3)\), with exact kernel \(\{I,-I\}\); bundled \(-I\in SL(2,C)\) is nontrivial, central, order two, and acts trivially before and after edge re-signing | Derive a gauge-relative coframe, prove covering surjectivity and graph-derived local lift existence, and establish global/refinement compatibility |
 | Residual spin-lift signs are gauge-trivial on a path and have one `ZMod 2` cycle invariant on a square | M [orig] | Every three-edge path assignment is removed by vertex signs; square assignments are gauge equivalent iff their cycle parities agree, giving exactly two boundary sectors. A supplied defect on one filled face selects one nonempty gauge class. For two square disks glued along one boundary, a shared correction exists exactly when the two defects agree, equivalently when their sum vanishes; `(0,1)` is an exact obstruction witness. The boundary sectors have identical Hermitian Lorentz action but different nonzero spinor action | Prove local Lorentz lift existence, derive graph coframes and face attachments, identify the obstruction with `w2`, and prove continuum spin-bundle convergence |
 | A finite `ZMod 2` face-edge boundary matrix gives a complete closed-cycle and quotient-class criterion for spin-lift sign correction | M [orig] | A defect is an edge-sign coboundary exactly when every closed formal face cycle pairs with it to zero, equivalently exactly when there is no nonzero closed-cycle certificate. Its class in `C^2 / im delta` vanishes exactly in that case and is unchanged by adding a coboundary; the glued-square mismatch is nonzero in the quotient | Relate the finite class to graph-derived local lifts, a good-cover nerve, `w2`, and refinement/continuum compatibility |
 | Ordered finite face walks and chosen group lifts derive the incidence matrix and central face-defect cochain | M [orig] | For a supplied nontrivial central involution and base face products in `{1,c}`, literal edge re-signing changes the derived cochain by the incidence coboundary and leaves its quotient class invariant. The class vanishes exactly when all face holonomies can be flattened. A four-edge square has a nonzero representative but zero class under an explicit correction | Derive the faces and local `SL(2,C)` lifts from bare graph/coframe/Lorentz data, prove Lorentz-flat products land in the exact central kernel, establish cover/refinement invariance, and identify the class with `w2` |
@@ -4004,11 +6159,13 @@ Relate the resulting metric volume to the soldering Gram volume without
 introducing a second independent scale field.
 
 The finite boundary is now exact. Bare-relation invariance alone leaves a
-positive global rescaling ray, and a nonzero event count determines absolute
-volume only after a positive density calibration is supplied. Given that
-calibration and a nondegenerate four-dimensional conformal coframe
-representative, the unique positive Weyl factor is the fourth root of the
-target/base volume ratio.
+positive global rescaling ray. More sharply, if a positive physical length
+changes under a nonunit rescaling that leaves the bare observation unchanged,
+no bare-observation estimator can reconstruct it exactly on every realization.
+A nonzero event count determines absolute volume only after a positive density
+calibration is supplied. Given that calibration and a nondegenerate
+four-dimensional conformal coframe representative, the unique positive Weyl
+factor is the fourth root of the target/base volume ratio.
 
 There is nevertheless a useful relative result before the density is known.
 For two positive regional counts \(n,n_0\), supplied conformal representatives
@@ -4078,9 +6235,10 @@ That algebra is now bundled directly in Mathlib's `SL(2,C)`. The element
 \(-I\) is machine-proved nonidentity, central, and order two, giving concrete
 `CentralSignData`. Both \(I\) and \(-I\) act trivially on every complex
 \(2\times2\) matrix by \(X\mapsto AXA^\dagger\), and literal edge re-signing
-preserves each supplied Hermitian congruence action. This proves the central
-sign lies in the kernel of the standard Hermitian action. It does not yet prove
-that this kernel contains only \(\{I,-I\}\) or construct the Lorentz cover.
+preserves each supplied Hermitian congruence action. The concrete action is now
+proved proper and orthochronous, factors through the restricted Lorentz group,
+and has exact kernel \(\{I,-I\}\). Surjectivity onto the full restricted group
+remains open, so this does not yet construct the complete Lorentz cover.
 
 The first graph-global sign layer is now exact as well. Vertex signs remove
 every edge-sign assignment on a three-edge path. On an oriented square
@@ -4154,9 +6312,7 @@ finite cochain algebra, not an identification with \(w_2\).
 
 The program still owes surjectivity onto the proper orthochronous Lorentz
 group, derivation of face attachments and local `SL(2,C)` lifts from bare graph,
-coframe, and Lorentz data, proof that Lorentz-flat face products land in the
-central kernel, proof that the concrete Hermitian-action kernel is exactly
-\(\{I,-I\}\), invariance under general cover changes and refinement,
+coframe, and Lorentz data, invariance under general cover changes and refinement,
 identification of the resulting obstruction with the second Stiefel--Whitney
 class on a convergent good-cover nerve, derivation of gauge-relative coframes
 from graph data, and continuum spin-bundle convergence.
@@ -4704,15 +6860,263 @@ and that variation commutes with the limit. Stationarity with
 
 \[
   T_{\mu\nu}
-    =-\frac{2}{\sqrt{|g|}}
+    =+\frac{2}{\sqrt{|g|}}
        \frac{\delta S_{\mathrm m}}{\delta g^{\mu\nu}}
 \]
 
-then gives
+or, equivalently,
+\(\delta S_{\mathrm m}=-\tfrac12\sqrt{|g|}T^{\mu\nu}
+\delta g_{\mu\nu}\), then gives
 
 \[
   G_{\mu\nu}+\Lambda g_{\mu\nu}=8\pi G T_{\mu\nu}.
 \]
+
+The finite coefficient-identification step is now exact in
+`EinsteinEquationVariation.metricStationary_iff_finiteEinsteinEquation`.
+For nonzero \(\kappa\), symmetry of the Ricci, metric, and stress tensors plus
+vanishing of the normalized first-variation pairing against every symmetric
+component probe is equivalent to
+\(G+\Lambda g=\kappa T\). The theorem uses the proved nondegeneracy of the
+full symmetric-probe pairing; it does not assume the tensor equation under a
+renamed stationarity predicate. It still takes the finite tensors and their
+first-variation formula as inputs, so it is not yet a derivation of that
+formula from an interval-count action or a proof that variation commutes with
+the continuum limit.
+
+That distinction is enforced by the companion theorem
+`actionMetricStationary_iff_finiteEinsteinEquation`. It separately assumes an
+actual finite action on metric components and proves that its directional
+derivative along every symmetric affine variation is the displayed pairing.
+Only under that premise does ordinary derivative-zero stationarity become
+equivalent to the tensor equation. The next dynamics theorem must therefore
+construct the interval-count action and discharge this derivative premise;
+defining the residual itself as "stationarity" is no longer enough.
+
+At the decorated finite-chart level, that construction is now explicit.
+`directedNullEdgeChartAction_stationary_iff_einstein` defines a nonlinear
+action from four spinor null edges and their directed targets at each site.
+The same data determine its determinant volume, null-tetrad metric and inverse,
+forward Levi-Civita connection, coordinate curvature, symmetric Ricci response,
+and scalar contraction. Its ordinary parameter stationarity at the chart
+origin under unrestricted coframe-generator variations is equivalent to the
+pointwise finite Einstein equation. The theorem
+does not establish that this chart is canonically selected by order/count
+data, that its curvature equals the other finite curvature routes, that its
+connection dynamics has the required link/face Levi-Civita limit, that the
+aggregate variables are selected by order/operator dynamics, or that the
+result converges to the continuum functional above. The pointwise
+forward-difference connection extension has been ruled out by the exact
+conformal witness and is no longer an open candidate for that role.
+
+The aggregate successor closes the finite variation-lift clause in a precise
+sense. `absoluteAggregateNullEdgeAction_stationary_iff_einstein` treats the
+coframe variables as absolute matrices of weights over a primitive null-edge
+basis and places the stationary point at identity weights. Exact coverage and
+uniqueness show that these weights parameterize every coframe, while the
+metric-active and frame-gauge lemmas separate physical inverse-metric response
+from metric-invisible frame motion. What remains open is no longer finite
+coverage, but deriving the aggregate-weight field and its gauge law from the
+causal/operator dynamics.
+
+The joint successor also closes the finite two-field bookkeeping clause.
+`jointPalatiniStationary_iff_fieldEquations` proves that the two partial
+stationarity equations of one action are the finite Einstein equation and the
+explicit independent-connection Euler-Lagrange equation. The local periodic
+audit closes the next question negatively: this pointwise equation does not
+select the forward null-edge Levi-Civita connection, even after restricting to
+torsion-free variations. The additive successors now derive scalar and
+finite-fiber link/face actions whose variations are genuine backward discrete
+Palatini adjoints; the finite-fiber predecessor transport enters through its
+transpose, and the abstract Krein successor proves the exact `J U^T J`
+replacement. The spacetime-derived bivector successor fixes the physical
+rotation/boost ordering, derives `J`, and proves preservation by the concrete
+null-edge `SL(2,C)` transport. The matrix successor now proves that this same
+six-component fiber is exactly the Lorentz Lie algebra: `hat(B)=F(B) eta`
+satisfies the infinitesimal Lorentz condition, ordered coordinate recovery is
+two-sided, and the Krein pairing is `-1/2 tr(hat(B)hat(C))`. This prevents a
+false direct contraction between a six-vector face field and an unconstrained
+matrix holonomy. The coframe successor now distinguishes the internal
+bivector `star(e_a wedge e_b)` from the coefficient of curvature plaquette
+`(a,b)`. The latter is the complementary contraction
+`(1/2) sum_cd epsilon^(cdab) star(e_c wedge e_d)`, as required by the
+tetradic Palatini four-form and the permutation discretization in Kur and
+Glasser, arXiv:2202.02486. Its alternating symbol, all six complement signs,
+antisymmetry, and insertion into the full Krein-paired link response are exact;
+stationarity is exactly its covariant backward divergence equation. The
+nonlinear successor now proves that the exact formal product/inverse response
+`delta H H^(-1)` is a four-corner adjoint sum, lies in this six-dimensional
+Lorentz image for eta-Lorentz links, and reduces at identity transport to the
+oriented additive plaquette curl. The scalar successor then defines the
+ordered holonomy action `-1/2 tr(hat(B_ab)(H_ab-I))` and its formal
+product/inverse response. It proves `H_ba=H_ab^(-1)`, exposes the required
+holonomy weight on the right-trivialized tangent away from identity, and
+recovers the existing Krein/additive response exactly at identity links. The
+generator intertwiner and trace cyclicity also prove exact vertex-gauge
+invariance for any face field with the exterior-square Lorentz transformation
+law. Proper-Lorentz Hodge commutation now proves that the concrete
+complementary coframe face has this law and therefore that the displayed
+coframe action is exactly gauge invariant. On identity links, formal stationarity is exactly the complementary-face
+Krein divergence equation, with a constant-coframe stationary control. The
+nonlinear Euler successor reorganizes the global formal response into the
+exact four contribution families for every varied directed link, expands each
+local functional into six Lorentz-generator coefficients, proves supported
+component extraction, and identifies formal stationarity with vanishing of
+all those coefficients. Canonical invertible curves
+`U exp(t hat(delta A))` realize every six-component variation, the ordinary
+action derivative is exactly the formal response, and derivative stationarity
+is equivalent to the coefficient equation. They remain in the proper
+eta-Lorentz subgroup whenever the base connection does; the separate
+orthochronous sign is not yet kernel-checked.
+
+The coframe side of this same action is no longer merely formal. Along every
+affine coframe line, the complementary face gives an exact quadratic action
+expansion, whose linear term is the ordinary derivative. The response is
+localized into sixteen tetrad-entry coefficients per site, and coframe
+stationarity is equivalent to their vanishing. Together with the six link
+coefficients, this gives a guarded joint `6 + 16` stationarity theorem for one
+concrete scalar action. No metric action or separately supplied Einstein
+functional is substituted into this statement.
+
+The action-visible curvature has also been isolated exactly. For each group
+plaquette, the linear trace functional on Lorentz bivectors has an explicit
+six-component Krein-dual representative. Antisymmetrizing these representatives
+in the two plaquette directions leaves the complete ordered action unchanged,
+because the complementary coframe face is antisymmetric. Thus the nonlinear
+holonomy action is now exactly a finite tetradic Palatini pairing with an
+antisymmetric extracted curvature field. This does not yet identify that field
+with continuum Riemann curvature.
+
+The normalization-sensitive determinant bridge is now kernel-checked in
+`NonlinearLorentzPalatiniEinsteinBridge`. With the actual project Hodge
+matrix, Krein signs, ordered bivector basis, and a supplied left inverse,
+every ordered curvature field satisfies
+`PalatiniDensity(e,F) = -det(e) ScalarCurvature(e^{-1},F)`. No curvature
+antisymmetry is needed. Consequently the concrete nonlinear plaquette action
+itself is exactly `-sum_x det(e_x) R_x` for a supplied pointwise left inverse;
+this is not a replacement metric action. The previous identity-coframe result
+is now a sign-control corollary of the arbitrary-coframe normalization.
+
+The response bridge is now exact in
+`NonlinearLorentzPalatiniEinsteinResponse`. For every supplied left inverse
+and every curvature field antisymmetric in its two face directions, the
+ordinary first coframe response of the extracted-curvature Palatini density is
+`det(e)` times the mixed Einstein coframe coefficient paired with the arbitrary
+tetrad variation. Consequently each of the sixteen local tetrad Euler
+coefficients of the concrete nonlinear holonomy action is exactly
+`det(e) E^d_c`, where contraction gives
+`2 Ric^d_c - delta^d_c R`. Since a left inverse makes the determinant nonzero,
+coframe stationarity is equivalent to all sixteen finite mixed vacuum Einstein
+equations. Joint stationarity is therefore exactly the six-component link
+Euler system together with those sixteen equations. No metric action or
+separately supplied Einstein functional is substituted into this result.
+
+The next variation/limit composition is also now explicit in
+`NonlinearLorentzPalatiniCurvatureLimit`. The six trace probes are packaged as
+a continuous linear map from arbitrary plaquette matrix increments to the
+ordered curvature fiber, and that map is exactly the identity on generated
+Lorentz-algebra coordinates. Thus an exact first-order expansion
+`H_n = I + A_n (hat(F) + r_n)` with `A_n -> 0` and `r_n -> 0` gives convergence
+of the area-normalized curvature used by the action to `F`; ordered-face
+antisymmetrization preserves the same limit. For a fixed invertible coframe,
+if every member of such a refinement is coframe stationary, continuity and
+homogeneity pass the finite equations to
+`2 Ric^d_c(F) - delta^d_c R(F) = 0`. A flat identity-holonomy family witnesses
+consistency of the first-order interface.
+
+`NonlinearLorentzPalatiniVaryingCoframeLimit` removes the fixed-coframe
+restriction from that endpoint. It proves joint continuity of each mixed
+Einstein entry as a finite polynomial in inverse-coframe and curvature
+components. A refinement may therefore carry varying finite coframes and
+exact left inverses, provided both converge componentwise. The left-inverse
+relation itself survives the limit, and finite coframe stationarity then
+implies all limiting equations
+`2 Ric^d_c(F) - delta^d_c R(F) = 0` at the limiting tetrad.
+
+`PhysicalLorentzPlaquetteRefinement` proves that the physical group sector is
+nonempty and nonflat. For every six-component target `F`, the exact holonomy
+`exp(A_n hat(F))` is proper eta-Lorentz and has action-visible first-order
+limit `F`. A concrete commuting-shift `2 x 2` periodic square realizes this
+without a formal plaquette ansatz: horizontal links are identities, the
+vertical link is an exponential on one column, and the two columns have exact
+opposite plaquettes. All links preserve eta and have determinant `+1`; a
+nonzero input gives a nonzero target face field. The construction is not
+claimed to be dynamically stationary or graph-selected.
+
+`PhysicalLorentzPlaquetteEinsteinAudit` performs the missing dynamics test for
+this concrete ansatz. With the coframe fixed at the identity, the mixed vacuum
+Einstein system forces target components `0`, `1`, `3`, `4`, and `5` to vanish.
+The remaining component `2` is the internal `23` rotation on the spacetime
+`01` face. It is algebraically Ricci-invisible, but it violates metric-lowered curvature pair
+exchange: the square has `F_01^23` without the corresponding `F_23^01` entry.
+The exact link equation removes even that loophole. A displayed local nonlinear
+Euler coefficient, divided by area, converges to twice the component-`2`
+amplitude. Therefore no nonzero target in this square family can be jointly
+stationary at every shrinking refinement level with a static identity
+coframe. This is a useful ansatz no-go rather than a failure of the Palatini
+route: nonflat vacuum dynamics must vary the coframe and distribute curvature
+over enough faces to enter the Riemann sector.
+
+`VacuumWeylCurvatureTarget` now provides a nonzero target already inside that
+algebraic Riemann sector. Its two-parameter diagonal curvature operator has
+ordered bivector coordinates `(-x-y,y,x,x,y,-x-y)`. The local tensor is
+antisymmetric in its face pair, symmetric under exchange with the internally
+lowered pair, and satisfies algebraic first Bianchi. Direct finite contraction
+proves that its identity-coframe mixed Ricci tensor and scalar vanish, hence so
+does every mixed Einstein entry. The unit member `(x,y)=(1,0)` is nonzero. The
+target-side Riemann and vacuum constraints are therefore jointly consistent;
+what remains is their realization by a proper-Lorentz, jointly stationary,
+varying-coframe refinement.
+
+`PeriodicVacuumWeylMeanObstruction` sharply restricts that realization. A
+globally defined additive link potential on any finite periodic carrier has
+zero total curvature in every ordered face and internal component. Therefore
+one fixed nonempty carrier cannot realize, or converge at every site to, the
+same nonzero unit Weyl target. The exact discrete Bianchi identity gives a
+second obstruction: multiplying the diagonal unit Weyl tensor by one
+site-dependent scalar forces that scalar to be invariant under every shift.
+More generally, both parameters of the complete diagonal Weyl family are
+separately shift invariant whenever the bivector eigenplanes remain fixed.
+The minimal `2 x 2` checkerboard has zero mean but flips horizontally, so it
+is kernel-checked impossible as an additive periodic curvature. This removes
+the entire fixed-eigenplane diagonal escape, not only one sign pattern. The
+next ansatz must rotate/mix the local
+curvature components with the coframe, introduce boundary or twisted-bundle
+data, or use a nonlinear scaling with a non-additive leading curvature.
+
+`PeriodicVacuumWeylNullWave` proves that the first escape is already
+constructive at additive order. Its two-site carrier identifies the time and
+longitudinal shifts with the same period-two null-coordinate toggle and leaves
+the transverse shifts trivial. Two transverse link potentials carry distinct
+null-rotation bivectors. Their exact additive curl is a plus-polarized null
+wave whose amplitude is `+1` at one site and `-1` at the other. At each site
+the curvature is nonzero, face-antisymmetric, metric-lowered pair symmetric,
+algebraic-first-Bianchi, and exactly Ricci, scalar, and mixed-Einstein flat at
+the identity coframe. The periodic realization also inherits the exact
+discrete Bianchi identity and zero componentwise site sum. Thus the diagonal
+no-go identifies a real structural requirement rather than an inconsistency:
+periodic vacuum curvature must rotate or mix bivector planes, and the null
+wave does so successfully. This remains a finite linearized witness; it does
+not supply nonlinear proper-Lorentz plaquettes jointly stationary with a
+varying coframe, derive Levi-Civita transport, or prove graph refinement and
+continuum convergence.
+
+This closes a conditional action-visible variation/curvature-limit theorem,
+not the continuum GR derivation. The graph still has to supply the refinement,
+areas, first-order expansion, proof of the supplied coframe convergence, and
+selection of the physical eta-Lorentz family (including the still-open
+orthochronous sign), and the limiting six-component target still has to be identified with
+the Riemann curvature of the selected Levi-Civita connection. The remaining
+work also includes metric dual-cell volumes, projective and boundary freedom,
+global variation-limit interchange, and normalization of constants and matter
+coupling on the common limit geometry.
+
+One overall sign is no longer implicit. In the fixed rotation/boost ordering,
+the project Krein pairing satisfies
+`[star(B),C]_J = -(1/4) epsilon_IJKL B^IJ C^KL`. The vacuum connection equation
+is insensitive to this nonzero global factor, but coupling to the existing
+Einstein-matter endpoint requires the gravitational prefactor or curvature
+orientation to compensate it explicitly.
 
 The thermodynamic route may independently recover the same equation under the
 all-local-null-horizon assumptions displayed in Section 6.2. The teleparallel
@@ -4739,6 +7143,16 @@ At the intervening component level, `divEinstein_eq_zero` now derives the
 contracted identity from explicit Riemann antisymmetries and the uncontracted
 differential Bianchi premise. The remaining continuum theorem must show that
 the reconstructed null-edge curvature supplies exactly those inputs.
+
+The more specific theorem
+`EinsteinEquationVariation.tensorDivergence_eq_zero_of_bianchi_and_fieldEquation`
+now composes that explicit contracted identity with a differentiated
+component field equation. For nonzero coupling it concludes zero stress
+divergence directly. A constant cosmological term is compatible once metric
+compatibility makes its covariant derivative vanish. This is stronger than
+the earlier abstract operator handoff, but it still does not replace the
+matter Noether theorem or the convergence of finite derivatives to the same
+continuum connection.
 
 Universal coupling then supplies the standard equivalence-principle route to
 geodesic motion for suitable test bodies, with the usual qualifications for
@@ -4893,6 +7307,58 @@ not
     [arXiv:2601.03280](https://arxiv.org/abs/2601.03280).
 22. N. Madsen, "On the uniqueness of embeddings of causal sets,"
     [arXiv:2607.05840](https://arxiv.org/abs/2607.05840).
+23. M. Boguna and D. Krioukov, "Measuring spatial distances in causal sets via
+    causal overlaps,"
+    [arXiv:2401.17376](https://arxiv.org/abs/2401.17376).
+24. P. W. Jones, M. Maggioni, and R. Schul, "Manifold parametrizations by
+    eigenfunctions of the Laplacian and heat kernels,"
+    [arXiv:0709.1975](https://arxiv.org/abs/0709.1975).
+25. A. Singer and H.-T. Wu, "Spectral convergence of the connection
+    Laplacian from random samples,"
+    [arXiv:1306.1587](https://arxiv.org/abs/1306.1587).
+26. S. Johnston, "Quantum Fields on Causal Sets,"
+    [arXiv:1010.5514](https://arxiv.org/abs/1010.5514).
+27. C. G. Callan, S. Coleman, and R. Jackiw, "A new improved energy-momentum
+    tensor," *Annals of Physics* **59** (1970) 42-73,
+    [doi:10.1016/0003-4916(70)90394-5](https://doi.org/10.1016/0003-4916(70)90394-5).
+28. F. D. Albareti, A. L. Maroto, and F. Prada, "Gravitational perturbations
+    of the Higgs field,"
+    [arXiv:1602.02776](https://arxiv.org/abs/1602.02776).
+29. M. Desbrun, A. N. Hirani, M. Leok, and J. E. Marsden, "Discrete Exterior
+    Calculus," [arXiv:math/0508341](https://arxiv.org/abs/math/0508341).
+30. R. Sverdlov, "Gauge Fields in Causal Set Theory,"
+    [arXiv:0807.2066](https://arxiv.org/abs/0807.2066).
+31. H. Hinrichsen and A. Kastrati, "Link-based causal set propagators in
+    (1+1) dimensions," [arXiv:2604.24812](https://arxiv.org/abs/2604.24812).
+32. S. Shuman, "Path Sums for Propagators in Causal Sets," *Physical Review D*
+    **109**, 046008 (2024),
+    [arXiv:2307.08864](https://arxiv.org/abs/2307.08864).
+33. A. Kastrati and H. Hinrichsen, "Numerical Evaluation of the Causal Set
+    Propagator in 2D Anti-de Sitter Spacetime,"
+    [arXiv:2504.12919](https://arxiv.org/abs/2504.12919).
+34. A. Quadri, "Gauge-Invariant Quantum Fields,"
+    [arXiv:2402.01016](https://arxiv.org/abs/2402.01016).
+35. A. Maas and R. Sondenheimer, "Gauge-invariant description of the Higgs
+    resonance and its phenomenological implications,"
+    [arXiv:2009.06671](https://arxiv.org/abs/2009.06671).
+36. C. J. Fewster and R. Verch, "Algebraic quantum field theory in curved
+    spacetimes," [arXiv:1504.00586](https://arxiv.org/abs/1504.00586).
+37. H. Sahlmann and R. Verch, "Microlocal spectrum condition and Hadamard form
+    for vector-valued quantum fields in curved spacetime,"
+    [arXiv:math-ph/0008029](https://arxiv.org/abs/math-ph/0008029).
+38. S. Johnston, "Particle propagators on discrete spacetime,"
+    [arXiv:0806.3083](https://arxiv.org/abs/0806.3083).
+39. T. Markkanen, S. Nurmi, A. Rajantie, and S. Stopyra, "The 1-loop effective
+    potential for the Standard Model in curved spacetime,"
+    [arXiv:1804.02020](https://arxiv.org/abs/1804.02020).
+40. N. X, F. Dowker, and S. Surya, "Scalar Field Green Functions on Causal
+    Sets," [arXiv:1701.07212](https://arxiv.org/abs/1701.07212).
+41. G. P. de Brito, A. Eichhorn, and L. Fausten, "Towards a bound on the Higgs
+    mass in causal set quantum gravity,"
+    [arXiv:2305.07595](https://arxiv.org/abs/2305.07595).
+42. A. Belenchia, D. M. T. Benincasa, and S. Liberati, "Nonlocal Scalar
+    Quantum Field Theory from Causal Sets,"
+    [arXiv:1411.6513](https://arxiv.org/abs/1411.6513).
 
 ## Repository anchors
 
@@ -4911,11 +7377,41 @@ not
 - `PhysicsSM/Draft/NullEdge/FiniteSpinCochainObstruction.lean`
 - `PhysicsSM/Draft/NullEdge/SpinLiftDefectFromTransport.lean`
 - `PhysicsSM/Draft/NullEdge/SL2CCentralSign.lean`
+- `PhysicsSM/Draft/NullEdge/SL2CLorentzAction.lean`
+- `PhysicsSM/Draft/NullEdge/LorentzAtlasSpinLiftBoundary.lean`
 - `PhysicsSM/Draft/NullEdge/CausalOperatorMetric.lean`
 - `PhysicsSM/Draft/NullEdge/CausalMetricFirstJet.lean`
 - `PhysicsSM/Draft/NullEdge/CausalLeviCivita.lean`
 - `PhysicsSM/Draft/NullEdge/FiniteCausalOrderOperator.lean`
+- `PhysicsSM/Draft/NullEdge/CorrectedPairingDifferenceOperator.lean`
+- `PhysicsSM/Draft/NullEdge/CorrectedPairingDifferenceCoordinates.lean`
+- `PhysicsSM/Draft/NullEdge/CorrectedPairingCarrierInertiaWitness.lean`
+- `PhysicsSM/Draft/NullEdge/CorrectedPairingSelectedSectorWitness.lean`
+- `PhysicsSM/Draft/NullEdge/CorrectedPairingLayerCoherentNoGo.lean`
+- `AgentTasks/null-edge-marked-alexandrov-1plus3-selector-stage-plan-2026-07-16.md`
+- `PhysicsSM/Draft/NullEdge/ProtectedCoreAtlasNerve.lean`
+- `PhysicsSM/Draft/NullEdge/AtlasMultiplicityCounting.lean`
+- `PhysicsSM/Draft/NullEdge/AtlasFractionalPackingDual.lean`
+- `PhysicsSM/Draft/NullEdge/RankFourCarrierProbeSector.lean`
+- `PhysicsSM/Draft/NullEdge/RankFourSectorWeylScaleBridge.lean`
+- `PhysicsSM/Draft/NullEdge/EquivariantProbeSectorSelector.lean`
+- `PhysicsSM/Draft/NullEdge/CarrierCausalTimeFunctional.lean`
+- `PhysicsSM/Draft/NullEdge/OverlapRestrictionTransition.lean`
+- `PhysicsSM/Draft/NullEdge/CarrierProbeOverlapTransition.lean`
+- `PhysicsSM/Draft/NullEdge/CarrierProbeRestrictedLorentzTransition.lean`
+- `PhysicsSM/Draft/NullEdge/ProtectedCoreProbeProjectorTransition.lean`
+- `PhysicsSM/Draft/NullEdge/AtlasTransitionHolonomy.lean`
+- `PhysicsSM/Draft/NullEdge/AtlasComponentCharacter.lean`
+- `PhysicsSM/Draft/NullEdge/LorentzComponentCharacter.lean`
+- `PhysicsSM/Draft/NullEdge/LorentzAtlasStructureGroup.lean`
+- `PhysicsSM/Draft/NullEdge/AtlasConeGaugeTrivialization.lean`
 - `PhysicsSM/Draft/NullEdge/NullTickProperTime.lean`
+- `PhysicsSM/Draft/NullEdgeAbelianHiggsLink.lean`
+- `PhysicsSM/Draft/NullEdgeYukawaMassOperator.lean`
+- `PhysicsSM/NullStrand/DualSolder/GradedSuperDiracSquare.lean`
+- `PhysicsSM/Draft/NullEdgeSuperconnectionCrossTermHiggsKinetic.lean`
+- `PhysicsSM/Draft/NullEdgeHiggsPotential.lean`
+- `PhysicsSM/Draft/NullEdge/HiggsCompositeGap.lean`
 - `PhysicsSM/Draft/NullEdge/SolderingLocalFrameCovariance.lean`
 - `PhysicsSM/Draft/NullEdge/Carrier/SolderedSquareGram.lean`
 - `PhysicsSM/Draft/NullEdge/Carrier/WeitzenbockMaster.lean`
@@ -4929,6 +7425,37 @@ not
 - `PhysicsSM/Draft/NullEdge/TrigonometricHolonomyCurvatureLimit.lean`
 - `PhysicsSM/Draft/NullEdge/FiniteGravityConservation.lean`
 - `PhysicsSM/Draft/NullEdge/StressEnergyPhysicalControls.lean`
+- `PhysicsSM/Draft/NullEdge/EinsteinEquationVariation.lean`
+- `PhysicsSM/Draft/NullEdge/DiscreteCausalActionVariationNoGo.lean`
+- `PhysicsSM/Draft/NullEdge/RelaxedCausalMetricVariationBridge.lean`
+- `PhysicsSM/Draft/NullEdge/LayerWeightMetricRankNoGo.lean`
+- `PhysicsSM/Draft/NullEdge/WeightedIntervalActionVariation.lean`
+- `PhysicsSM/Draft/NullEdge/LocalizedIntervalActionMetric.lean`
+- `PhysicsSM/Draft/NullEdge/LocalEinsteinEquationVariation.lean`
+- `PhysicsSM/Draft/NullEdge/LocalizedIntervalAffineActionNoGo.lean`
+- `PhysicsSM/Draft/NullEdge/FiniteEinsteinHilbertActionResponse.lean`
+- `PhysicsSM/Draft/NullEdge/CoframeVolumeMetricVariation.lean`
+- `PhysicsSM/Draft/NullEdge/FinitePalatiniEinsteinHilbertVariation.lean`
+- `PhysicsSM/Draft/NullEdge/FinitePalatiniBoundaryCancellation.lean`
+- `PhysicsSM/Draft/NullEdge/FinitePalatiniCoframeChartAction.lean`
+- `PhysicsSM/Draft/NullEdge/NullEdgeCoframeEinsteinBridge.lean`
+- `PhysicsSM/Draft/NullEdge/DirectedNullEdgeLeviCivitaEinstein.lean`
+- `PhysicsSM/Draft/NullEdge/NullEdgeAggregateCoframeEinstein.lean`
+- `PhysicsSM/Draft/NullEdge/FiniteDirectedPalatiniConnectionVariation.lean`
+- `PhysicsSM/Draft/NullEdge/FinitePeriodicPalatiniEulerEquation.lean`
+- `PhysicsSM/Draft/NullEdge/NullEdgePalatiniJointAction.lean`
+- `PhysicsSM/Draft/NullEdge/FinitePeriodicLinkConnection.lean`
+- `PhysicsSM/Draft/NullEdge/FinitePeriodicLinkPalatiniVariation.lean`
+- `PhysicsSM/Draft/NullEdge/FinitePeriodicCovariantLinkPalatiniVariation.lean`
+- `PhysicsSM/Draft/NullEdge/FinitePeriodicKreinLinkAdjoint.lean`
+- `PhysicsSM/Draft/NullEdge/LorentzBivectorKreinBridge.lean`
+- `PhysicsSM/Draft/NullEdge/LorentzBivectorLieAlgebraBridge.lean`
+- `PhysicsSM/Draft/NullEdge/LorentzPlaquetteTangent.lean`
+- `PhysicsSM/Draft/NullEdge/LorentzCoframePalatiniFace.lean`
+- `PhysicsSM/Draft/NullEdge/FinitePeriodicKreinLinkPalatiniVariation.lean`
+- `PhysicsSM/Draft/NullEdge/FinitePeriodicCoframeKreinPalatiniVariation.lean`
+- `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniResponse.lean`
+- `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniAction.lean`
 - `PhysicsSM/Draft/NullEdge/HomogeneousScalarStressVariation.lean`
 - `PhysicsSM/Draft/NullEdge/DiagonalScalarGradientStressVariation.lean`
 - `PhysicsSM/Draft/NullEdge/ADMShiftScalarFluxVariation.lean`

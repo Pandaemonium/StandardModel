@@ -1,39 +1,575 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-07-16T06:19:39-07:00",
+  "updated_at": "2026-07-17T22:25:33-07:00",
   "note": "Registry of Aristotle proof/audit jobs. Statuses: submitted|running|idle|unknown|harvested|integrated|deferred|cancelled|failed. labctl validate enforces the fleet cap on submitted+running; `labctl jobs` lists against the cap; `labctl due` flags idle/unknown/harvested jobs awaiting integration. Seeded 2026-07-12 from the 24h publication-run ledger; pre-lab jobs carry work_item_id null.",
   "jobs": [
+    {
+      "id": "2f3fd545-2200-4a5d-a90a-61ac3bd1fb52",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Item 2: weak beta-ladder CAR relations (Furey eq 31) - the octonionic 'rest' after I built the beta definitions",
+      "status": "integrated",
+      "submitted_at": "2026-07-17T21:28:58-07:00",
+      "notes": "Definitions (omega, tau_j, beta_1, beta_2) built by me in WeakBetaLaddersFromColor.lean; Aristotle proves the Cl(4) CAR {beta_i,beta_j}=0, {beta_i,beta_j-dag}=delta_ij (define beta daggers, heavy octonion coord computation). Kill: report if only operator-level CAR holds. Faithfully grounded in the actual 1806.00612 PDF. [2026-07-17T22:25:33-07:00 claude] Kill-condition NO-GO (kernel-proven, integrated): Aristotle rigorously refuted the CAR - {beta_1,beta_2} left-action = -1/2*Id != 0 (beta12_anticommutator_ne_zero, beta12_left_action_anticommutator, both verified in-repo, 8M heartbeats). Diagnosis: the faithful Cl(4) is the RIGHT/bar-operator action (not left mult) and/or the H-quaternion units differ from octonion e1,e2. Sharpened next step recorded."
+    },
+    {
+      "id": "e9d9ebbf-3083-4308-bcb7-72574cc114a8",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Item 5 forward tower: Cayley-Dickson double of H preserves composition (why O is composition = because H associative)",
+      "status": "integrated",
+      "submitted_at": "2026-07-17T19:37:12-07:00",
+      "notes": "Closes 1 sorry in CDQuat/CDQuat.lean (Mathlib-only focused): cdNormSq(cdMul p q)=cdNormSq p*cdNormSq q for the CD double of Quaternion R. FORWARD complement of landed sedenion_composition_fails. Cross-terms cancel by H-associativity. [2026-07-17T19:53:20-07:00 claude] LANDED (verified): cd_norm_multiplicative kernel-checked (standard-three guard) in PhysicsSM/Draft/CayleyDicksonQuaternion.lean. Aristotle proof (unfold; simp [Quaternion.normSq]; grind) verified verbatim in-repo. Doubling associative H preserves composition."
+    },
+    {
+      "id": "6af39d1c-45ae-44f8-ae70-1ea85cce52e0",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Item 5: sedenions have zero divisors (O is the maximal division algebra in the Cayley-Dickson tower)",
+      "status": "integrated",
+      "submitted_at": "2026-07-17T16:31:26-07:00",
+      "notes": "Closes 1 sorry in PhysicsSM/Draft/SedenionZeroDivisors.lean: exhibit nonzero sedenions a,b with sedenionMul a b = 0. Answers item-5 open 'why stop at O'. Aristotle searches the witness pair for the XOR convention. True for any genuine Cayley-Dickson double. [2026-07-17T17:30:35-07:00 claude] LANDED (verified): sedenions_have_zero_divisors proven from Aristotle's witness a=(e1,e2) b=(e4,e7); I rewrote the closer (ext+simp) more robustly than the snapshot's 'simp +decide' and kernel-verified (standard-three guard). O is the maximal division algebra. In PhysicsSM/Draft/SedenionZeroDivisors.lean."
+    },
+    {
+      "id": "0bb218ae-1765-4fb0-af19-0be22ccf8635",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Item 9: cubic characteristic equation of h3(O) (structural, 3 eigenvalues = 3 generations, no numeric mass)",
+      "status": "integrated",
+      "submitted_at": "2026-07-17T16:26:21-07:00",
+      "notes": "Closes 1 sorry in PhysicsSM/Draft/H3OCharacteristicEquation.lean: prove X^3 = tr(X)X^2 - sigma(X)X + det(X)1 for the Jordan product (Euclidean Jordan generic cubic). detH3O may need triple-product order repair. Pre-registered kill: associator-obstruction analysis if it fails. STRICT: no mass numerics. Grounded in Baez math/0105155, DVT 1808.08110/1806.09450. [2026-07-17T17:42:15-07:00 claude] Still RUNNING at 1hr. Mid-run snapshot did NOT verify (simp+ring/ring_nf leaves unclosed goals; likely octonionInner not fully unfolding on the triple-product terms). Identity is very likely TRUE: diagonal + minimal off-diagonal (x=e1) hand-verified both sides equal. Hard 27-var degree-3 octonionic identity; awaiting Aristotle's completed proof. [2026-07-17T17:55:34-07:00 claude] LANDED (verified): h3o_characteristic_equation kernel-checked (standard-three guard). Aristotle's final proof (destructure+ext+simp[coord+H3O.sub lemmas+sub_eq_add_neg]+ring_nf, maxHeartbeats 6.4M) verified verbatim in-repo. detH3O/sigmaH3O UNCHANGED - my Freudenthal determinant order (Re(x(yz))) was correct."
+    },
+    {
+      "id": "661e5230-4a4b-46cd-95f4-713dadadd576",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Item 2: derive weak isospin W+ from octonionic ladder substrate (WeakIsospinFromLadder, uniqueness-anchored)",
+      "status": "harvested",
+      "submitted_at": "2026-07-17T16:12:06-07:00",
+      "notes": "Flagship item-2 spine target. Closes 2 sorrys in PhysicsSM/Algebra/Furey/WeakIsospinFromLadder.lean: construct TPlusLadder from the C(x)H(x)O substrate (B_j=i e7|beta_j, T+=B1dag B2) and prove =TPlusEnd via TPlusEnd_unique (6 hypotheses). Narrow build (Furey+Octonion subtree). No-go analysis acceptable. Design note: AgentTasks/null-edge-S2b-weak-isospin-from-ladder-design-2026-07-17.md. [2026-07-17T16:53:27-07:00 claude] NO-GO (verified verbatim, NOT integrated): substrate lacks C(x)H factor; item-2 closure blocked on building the Dixon substrate first. Obstruction sub-target + eq-38 grounding recorded in design note. Archive retained in aristotle-downloads."
+    },
+    {
+      "id": "64e5ad32-6161-47be-a394-6e55d9edc3e3",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Weak isospin su(2)_L from two fermionic ladder modes (S2b brick 1, Furey eq 42)",
+      "status": "integrated",
+      "submitted_at": "2026-07-17T10:50:59-07:00",
+      "notes": "12 targets: CAR relations, su(2) algebra [Ta,Tb]=2i Tc, ladders [T3,T+/-]=+-2, [T+,T-]=T3, T3=diag(0,1,-1,0) doublet. Faithful abstract core of Furey 1806.00612 eq 42; all verified numerically; typechecked. The reusable su(2)_L operator algebra; SM realization (B_j=i e_7|beta_j) + uniqueness-handle closure downstream. [2026-07-17T11:54:51-07:00 claude] LANDED proven, 11/11 verbatim, integrated to WeakIsospinTwoModeSU2Aristotle.lean with 11 guards, build green"
+    },
+    {
+      "id": "8800eed1-b87b-464b-b28e-89c21ce9c8a0",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Null-edge Einstein interval-count action first-variation audit",
+      "status": "integrated",
+      "submitted_at": "2026-07-17T09:45:09-07:00",
+      "notes": "Strategy audit; task f23379db-f9f1-41d5-8122-856c19774c44; separate finite derivative, action convergence, and variation-limit interchange; reject spectral 2x2 and imported FLRW substitutes. [2026-07-17T09:48:24-07:00 codex] Task f23379db-f9f1-41d5-8122-856c19774c44 entered IN_PROGRESS. [2026-07-17T10:12:27-07:00 codex] Audit harvested and reviewed. Recommendations integrated as DiscreteCausalActionVariationNoGo, RelaxedCausalMetricVariationBridge, and WeightedIntervalActionVariation; no returned code copied. [2026-07-17T10:40:24-07:00 codex] Follow-on rank audit integrated as LayerWeightMetricRankNoGo: full 4D reach needs at least ten directions at one site and 10N directions for unrestricted local metric variation on N sites; fixed global layer weights are therefore not refinement-complete. [2026-07-17T11:06:15-07:00 codex] Constructive follow-on integrated as LocalizedIntervalActionMetric: event-local interval coefficients give an exact action derivative and same-operator corrected metric Jacobian; an eleven-event supplied-probe chain proves rank-ten surjectivity, injectivity, and exact action descent; distinct full-rank rows compose to selected-site local reach. [2026-07-17T11:35:35-07:00 codex] Follow-up integration added a sitewise Einstein-equation endpoint, proved the fixed-measure localized interval action and its descended metric action are affine and nonstationary in the rank-ten witness (explicit derivative 10), and added the supplied finite volume-curvature response interface. The next gate is a nonlinear graph-derived action with volume, curvature, and boundary responses. [2026-07-17T12:21:29-07:00 codex] Second follow-up integration derived the coframe determinant volume response, proved full symmetric inverse-metric reach from coframe generators, composed a Ricci-plus-boundary Palatini response into the weighted Einstein tensor, proved exact finite incidence boundary cancellation with a nonzero two-vertex witness, and constructed an explicit nonlinear Palatini coframe-chart action whose stationary equation is the pointwise finite Einstein equation. Remaining gate: derive coframe, Ricci/stress data, and local Ricci-plus-divergence curvature response from the same null-edge operator and control refinement."
+    },
+    {
+      "id": "9b778014-06a0-4f9f-9e00-def3ee5ef96c",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Spiral-soldering Bloch bridge: spiral proj = soldered null edge (celestial sphere)",
+      "status": "integrated",
+      "submitted_at": "2026-07-17T09:14:06-07:00",
+      "notes": "2 targets: rankOne(unit psi) = proj(bloch psi), +z witness. Numerically verified; fiddly entrywise Lean proof handed to Aristotle. On landing, ports to a repo bridge tying SpinCornerBargmann (spiral) to the soldering (null directions on the celestial sphere). [2026-07-17T09:36:29-07:00 claude] LANDED proven, 11/11 verbatim; porting proof to repo bridge"
+    },
+    {
+      "id": "260fa93c-3870-41d6-a1c5-fe2fa93ae42a",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Johnston 4D radial coarea lift",
+      "status": "running",
+      "submitted_at": "2026-07-17T07:31:44-07:00",
+      "notes": "Project 4abdba8f-8ff2-4ca4-a9b9-a96742b6e484; ten locked analytic targets; abstract angular average only. [2026-07-17T07:46:26-07:00 codex] Aristotle radial-lift task entered IN_PROGRESS; Gaussian prerequisite independently integrated."
+    },
+    {
+      "id": "77a20238-4b8d-4f83-8f4a-5d28f8bafe61",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Null-edge soldering capstone: 2-spinors are future-null directions (mass-area-Lorentz)",
+      "status": "integrated",
+      "submitted_at": "2026-07-17T07:08:09-07:00",
+      "notes": "11 targets: soldering involution + metric=det; null edge is future-null with energy=|psi|^2/2; scale/phase covariance; SL(2,C) congruence equivariance; two-edge mass^2 = Plucker wedge area; massive iff non-parallel; rest mass a Lorentz scalar; rest-frame witness. Statements typechecked EXIT 0; all 5 physical claims numerically verified. Foundational bridge between PluckerMass and SL2CLorentzAction. Task note AgentTasks/null-edge-spinor-soldering-aristotle-2026-07-17.md. [2026-07-17T07:56:33-07:00 claude] LANDED fully proven, 23/23 verbatim, integrated to NullEdgeSpinorSolderingAristotle.lean, 11 guards, build green"
+    },
+    {
+      "id": "c712b62d-6237-4cf4-bedc-54dd19549f62",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Johnston 4D light-cone Gaussian delta sequence",
+      "status": "integrated",
+      "submitted_at": "2026-07-17T07:03:19-07:00",
+      "notes": "Project 60ff4409-badc-44a5-9b52-78a82eac751c; five locked exact analytic targets; one-variable normal coordinate only. [2026-07-17T07:06:23-07:00 codex] Aristotle task entered IN_PROGRESS. [2026-07-17T07:43:26-07:00 codex] All five locked targets replayed and ported to PhysicsSM/Draft/NullEdge/Johnston4DLightconeDelta.lean with axiom guards."
+    },
+    {
+      "id": "e96fbff2-66b7-4319-943f-07f09f5bd64d",
+      "work_item_id": null,
+      "title": "Finite diagonal causal support decomposition",
+      "status": "integrated",
+      "submitted_at": "2026-07-17T06:10:16-07:00",
+      "notes": "Task b222c27f-8679-4a55-ad6b-82edd8299397; focused package AgentTasks/aristotle-submit/finite-diagonal-causal-support-20260717-project; note AgentTasks/finite-diagonal-causal-support-aristotle-2026-07-17.md [2026-07-17T06:47:49-07:00 codex] All six locked support targets returned; normalized production module and FMS corollaries pass targeted Lean/build."
+    },
+    {
+      "id": "18ad01bc-dd21-4cbe-9424-81ff8451d03f",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Finite diagonal causal massive resolvent",
+      "status": "integrated",
+      "submitted_at": "2026-07-17T05:47:29-07:00",
+      "notes": "Focused Mathlib package. Task ca59452b-df79-423b-8a40-e8a673568d57. Proves diagonal-plus-nilpotent inverse, two-sided massive scattering, and truncated link-exponential witness. [2026-07-17T06:19:31-07:00 codex] All five targets completed; reviewed and ported to PhysicsSM/Draft/NullEdge/FiniteDiagonalCausalResolvent.lean. Focused Lean check and targeted build passed."
+    },
+    {
+      "id": "16309cb8-603b-4074-a0c7-1d1cc9b30468",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Finite matrix-power primitive path extraction",
+      "status": "integrated",
+      "submitted_at": "2026-07-17T05:19:03-07:00",
+      "notes": "Task d509a9da-f3af-47e4-842c-30e90bf623c0; focused package AgentTasks/aristotle-submit/finite-kernel-path-extraction-20260717-project; note AgentTasks/finite-kernel-path-extraction-aristotle-2026-07-17.md [2026-07-17T05:55:24-07:00 codex] Aristotle returned all five proofs; reviewed and ported with proposition-level inequality to PhysicsSM/Draft/NullEdge/FiniteKernelPathExtraction.lean. Focused Lean check and targeted build passed."
+    },
+    {
+      "id": "313f3487-2592-43c4-838d-f4e7defc5ccb",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Corrected Higgs bare-mass versus curvature-coupling identifiability",
+      "status": "integrated",
+      "submitted_at": "2026-07-17T03:21:00-07:00",
+      "notes": "Task d32bbee3-bcd2-4155-8937-8225b5d4602d; corrected proposition-level Ne statements; six proof holes; pinned preflight passed; supersedes cancelled e6f1b425 [2026-07-17T03:47:37-07:00 codex] Integrated corrected propositional HiggsCurvatureMassIdentifiability; direct Lean and 8026-job targeted build passed; LSP errors empty; headline verify standard three/no warnings."
+    },
+    {
+      "id": "e6f1b425-69a7-4b47-9fba-1a6a91c543f1",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Higgs bare-mass versus curvature-coupling identifiability",
+      "status": "cancelled",
+      "submitted_at": "2026-07-17T03:17:00-07:00",
+      "notes": "Task 16f9ad09-b2b4-4072-9749-4af0379722ce; focused package; six proof holes; root pinned preflight passed; constant-curvature degeneracy and two-curvature uniqueness [2026-07-17T03:20:58-07:00 codex] Cancelled before proof search after semantic audit found ASCII != elaborated as Boolean inequality; corrected proposition-level Ne statements will be resubmitted."
+    },
+    {
+      "id": "fb185246-4e64-4a5c-a7c7-147c7301d55e",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Measured local Higgs mass insertion in finite retarded series",
+      "status": "integrated",
+      "submitted_at": "2026-07-17T03:01:00-07:00",
+      "notes": "Task b836f213-ca4f-4492-aec1-981e385c4af4; focused package; seven proof holes; exact package preflight passed; target HiggsMeasuredMassRetardedSeries/Core.lean [2026-07-17T03:43:16-07:00 codex] Integrated HiggsMeasuredMassRetardedSeries plus exact equality with Euler radialMassMatrix; direct Lean and 8027-job targeted build passed; LSP errors empty; headline verify standard three/no warnings."
+    },
+    {
+      "id": "ea4709f8-fbd1-48e9-9f2d-34956ebfe5f6",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Finite radial Higgs edge Euler operator and positive mass lifting",
+      "status": "integrated",
+      "submitted_at": "2026-07-17T02:44:45-07:00",
+      "notes": "Focused Mathlib package; 12 exact targets; task c498c167-fc21-4341-8c17-a654a75131f5; production target PhysicsSM/Draft/NullEdge/HiggsEdgeEulerOperator.lean. [2026-07-17T03:43:16-07:00 codex] Integrated HiggsEdgeEulerOperator; direct Lean and 8027-job targeted build passed; LSP error diagnostics empty; headline verify standard three/no warnings."
+    },
+    {
+      "id": "15b4e8fd-452d-4609-b90e-2b03c9f44b07",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Gauge-invariant radial Higgs FMS observable and finite response-kernel transfer",
+      "status": "integrated",
+      "submitted_at": "2026-07-17T02:37:43-07:00",
+      "notes": "Focused cached Mathlib package; 11 exact targets; task a5cdc344-451e-4683-b3eb-1b06d4abe39a; production target PhysicsSM/Draft/NullEdge/HiggsFMSRadialObservable.lean. [2026-07-17T03:29:04-07:00 codex] Integrated corrected production module. Aristotle solved 11 proofs; Boolean != vacuum hypotheses strengthened to proposition-level Ne; unused DecidableEq removed; direct Lean, 8026-job build, LSP, axiom/source audits passed."
+    },
+    {
+      "id": "f428c1cb-e952-4f09-89a3-c64699827c36",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Finite massive retarded link geometric series and multi-edge witness",
+      "status": "integrated",
+      "submitted_at": "2026-07-17T01:24:00-07:00",
+      "notes": "Focused Mathlib package; 6 statement-locked targets; task a5d949fc-a102-48bb-ac34-824874df32f7 [2026-07-17T02:21:40-07:00 codex] Finite massive retarded series proofs reviewed, ported, guarded, targeted-built, and composed with strict-past Higgs radial curvature."
+    },
+    {
+      "id": "b6945a0d-3d9c-41af-b693-e724761a3204",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Complex Higgs Hilbert stress and unitary metric-response algebra",
+      "status": "integrated",
+      "submitted_at": "2026-07-17T01:08:00-07:00",
+      "notes": "Focused Mathlib package; 9 statement-locked targets; task 455ef650-659d-4955-80b4-6a7011cfed74 [2026-07-17T02:21:40-07:00 codex] All nine Higgs Hilbert-stress proofs reviewed, ported, guarded, and targeted-built."
+    },
+    {
+      "id": "1b345541-a6c3-4ac1-b007-8d1bd9bf37ca",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Shell-angular rank-four complex dual recovery",
+      "status": "integrated",
+      "submitted_at": "2026-07-17T00:13:05-07:00",
+      "notes": "Focused Mathlib package; task dc627235-56c5-4b45-acd6-1275ace3c829; six exact targets; integration target PhysicsSM/Draft/NullEdge/ShellAngularDualRecovery.lean. [2026-07-17T00:51:03-07:00 codex] Six statements preserved; candidate and production replayed; guards added; targeted build passed"
+    },
+    {
+      "id": "49e42dc1-40d2-44e2-8183-760dc7d62b61",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Generic finite unitary Higgs link gauge algebra",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T23:53:10-07:00",
+      "notes": "Focused Mathlib package; five exact U(n) multiplet gauge-algebra targets; task d6ee9042-235b-43ca-be43-b501e077e5e4. [2026-07-17T00:29:37-07:00 codex] Five exact U(n) Higgs-link targets statement-preserved, candidate replayed, production direct Lean and targeted build passed, MCP clean and standard-three."
+    },
+    {
+      "id": "15c10e3f-3352-4f2a-8879-489298a33e6c",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Exact signed Higgs kinetic coframe response",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T23:03:00-07:00",
+      "notes": "Focused five-theorem package: affine dual perturbation, exact signed kinetic linear/quadratic expansion, gauge-invariant first response; samples and frame variation supplied. [2026-07-16T23:30:54-07:00 codex] Coframe first-variation candidate reviewed; statements preserved; production module builds with clean MCP guard audit."
+    },
+    {
+      "id": "3eb2c62e-1dc3-4836-8065-153a8a7b7663",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Exact real-dual complex Higgs derivative recovery",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T22:59:08-07:00",
+      "notes": "Focused four-theorem package: real left inverse recovers complex components, injectivity, zero-sample control, Fin4 identity witness; no rank/conditioning/frame derivation claim. [2026-07-16T23:26:25-07:00 codex] Dual-frame recovery candidate reviewed; statements preserved; production module builds with clean MCP guard audit."
+    },
+    {
+      "id": "fbb0725d-3bb1-4fca-ab8e-fa0ede498087",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Anchored multi-edge Higgs derivative extractor",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T22:54:34-07:00",
+      "notes": "Focused six-theorem package: anchor gauge covariance, signed/minkowski kinetic invariance, and parallel-section zero; coefficients supplied, no frame or stress claim. [2026-07-16T23:26:24-07:00 codex] Anchored derivative candidate reviewed; statements preserved; production module builds with clean MCP guard audit."
+    },
+    {
+      "id": "f0ffff98-a4f2-4a0f-b970-a73c0fd4c1f7",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Geometry-weighted finite Abelian Higgs functional",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T22:20:01-07:00",
+      "notes": "Focused five-theorem package: gauge covariance/invariance, positivity, frozen modulus, and parallel-vacuum zero; no metric/stress claim. [2026-07-16T22:47:08-07:00 codex] All five statements preserved and replayed; production module integrated with weight-variation and gauge-invariant response bridge; targeted build and standard-three guards pass."
+    },
+    {
+      "id": "b4aedfd5-f347-44cb-bd79-7f642abcc218",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Diagonal mostly-minus basis normalization",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T21:43:27-07:00",
+      "notes": "Task 509c4735-0775-476c-9e2e-ce81db6e5278; focused Mathlib package; exact eta normalization from positive diagonal scales [2026-07-16T22:12:10-07:00 codex] Aristotle return replayed; exact diagonal selected-sector normalization integrated; targeted Lean check/build and standard-three axiom audit pass."
+    },
+    {
+      "id": "868e1d04-83f0-4ffc-8f54-e68dad67d13a",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Conditional marked-shell positive-line plus negative-spatial inertia",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T21:23:29-07:00",
+      "notes": "Focused Mathlib package; task ff19ea86-b91c-40b9-b828-6e7a5c41ecef; five unchanged exact targets; task note AgentTasks/marked-shell-conditional-inertia-aristotle-2026-07-16.md [2026-07-16T22:02:38-07:00 codex] Returned 5/5 proofs replayed; production project-local corrected-pairing capstone integrated and guarded"
+    },
+    {
+      "id": "4da526c9-e7dd-4607-8c1a-6f8365723d77",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Marked Alexandrov layer-zero antichain, disjointness, and equivariance",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T21:23:29-07:00",
+      "notes": "Focused Mathlib package; task 1599e45b-a4a8-48b3-ad92-01c2d74a7863; seven unchanged exact targets; task note AgentTasks/marked-alexandrov-layer-shell-aristotle-2026-07-16.md [2026-07-16T22:02:38-07:00 codex] Returned 7/7 proofs replayed; nonduplicate content integrated in MarkedAlexandrovShellInertia with guarded targeted build"
+    },
+    {
+      "id": "fdac9d31-c500-4a97-b283-81c606f70a8c",
+      "work_item_id": null,
+      "title": "eg-smv spectator dilation",
+      "status": "deferred",
+      "submitted_at": "2026-07-16T18:23:55-07:00",
+      "notes": "Retroactive registration by the 2026-07-16 evening harvest triage. eg side-lane; owner triage needed. Registered without re-download; artifact remains on the Aristotle service. [2026-07-16T21:03:49-07:00 codex] Manager triage: pre-existing external experimental project has no AFPL work item, task note, integration target, or claim route. Excluded from the useful AFPL fleet; retained in registry for provenance."
+    },
+    {
+      "id": "bbcdad10-1c6d-47a0-bd8d-1132edddc93c",
+      "work_item_id": null,
+      "title": "eg-sbv k-switched bilinear",
+      "status": "deferred",
+      "submitted_at": "2026-07-16T18:23:54-07:00",
+      "notes": "Retroactive registration by the 2026-07-16 evening harvest triage. eg side-lane; owner triage needed. Registered without re-download; artifact remains on the Aristotle service. [2026-07-16T21:03:49-07:00 codex] Manager triage: pre-existing external experimental project has no AFPL work item, task note, integration target, or claim route. Excluded from the useful AFPL fleet; retained in registry for provenance."
+    },
+    {
+      "id": "ca72905f-814d-4a7b-975d-c3848f76dc83",
+      "work_item_id": null,
+      "title": "eg-s6ms sextic fourth index",
+      "status": "deferred",
+      "submitted_at": "2026-07-16T18:23:54-07:00",
+      "notes": "Retroactive registration by the 2026-07-16 evening harvest triage. eg side-lane; owner triage needed. Registered without re-download; artifact remains on the Aristotle service. [2026-07-16T21:03:50-07:00 codex] Manager triage: pre-existing external experimental project has no AFPL work item, task note, integration target, or claim route. Excluded from the useful AFPL fleet; retained in registry for provenance."
+    },
+    {
+      "id": "88c21d4a-90b2-479c-842d-facd77c08886",
+      "work_item_id": null,
+      "title": "eg-hpls k-hybrid product",
+      "status": "deferred",
+      "submitted_at": "2026-07-16T18:23:54-07:00",
+      "notes": "Retroactive registration by the 2026-07-16 evening harvest triage. eg side-lane; owner triage needed. Registered without re-download; artifact remains on the Aristotle service. [2026-07-16T21:03:50-07:00 codex] Manager triage: pre-existing external experimental project has no AFPL work item, task note, integration target, or claim route. Excluded from the useful AFPL fleet; retained in registry for provenance."
+    },
+    {
+      "id": "d43c8723-d673-401c-8eb0-fd55ce24c64d",
+      "work_item_id": null,
+      "title": "eg-tmc avg closing chain",
+      "status": "deferred",
+      "submitted_at": "2026-07-16T18:23:53-07:00",
+      "notes": "Retroactive registration by the 2026-07-16 evening harvest triage. eg side-lane; owner triage needed. Registered without re-download; artifact remains on the Aristotle service. [2026-07-16T21:03:51-07:00 codex] Manager triage: pre-existing external experimental project has no AFPL work item, task note, integration target, or claim route. Excluded from the useful AFPL fleet; retained in registry for provenance."
+    },
+    {
+      "id": "86b837cd-e375-44e6-b306-d721f7a1982d",
+      "work_item_id": null,
+      "title": "eg-trsw k-twisted ray siegel",
+      "status": "deferred",
+      "submitted_at": "2026-07-16T18:23:53-07:00",
+      "notes": "Retroactive registration by the 2026-07-16 evening harvest triage. eg side-lane; owner triage needed. Registered without re-download; artifact remains on the Aristotle service. [2026-07-16T21:03:51-07:00 codex] Manager triage: pre-existing external experimental project has no AFPL work item, task note, integration target, or claim route. Excluded from the useful AFPL fleet; retained in registry for provenance."
+    },
+    {
+      "id": "34eb4070-9317-48ef-90f7-ecd9f2afd4c7",
+      "work_item_id": null,
+      "title": "eg cover siegel dichotomy",
+      "status": "deferred",
+      "submitted_at": "2026-07-16T18:23:52-07:00",
+      "notes": "Retroactive registration by the 2026-07-16 evening harvest triage. eg side-lane; owner triage needed. Registered without re-download; artifact remains on the Aristotle service. [2026-07-16T21:03:51-07:00 codex] Manager triage: pre-existing external experimental project has no AFPL work item, task note, integration target, or claim route. Excluded from the useful AFPL fleet; retained in registry for provenance."
+    },
+    {
+      "id": "48806d74-31f1-4a02-a51b-bca91ffe7399",
+      "work_item_id": null,
+      "title": "eg-smv joint fourth moment",
+      "status": "deferred",
+      "submitted_at": "2026-07-16T18:23:52-07:00",
+      "notes": "Retroactive registration by the 2026-07-16 evening harvest triage. eg side-lane; owner triage needed. Registered without re-download; artifact remains on the Aristotle service. [2026-07-16T21:03:52-07:00 codex] Manager triage: pre-existing external experimental project has no AFPL work item, task note, integration target, or claim route. Excluded from the useful AFPL fleet; retained in registry for provenance."
+    },
+    {
+      "id": "924d3215-9930-4658-8903-ac4a24e9bba4",
+      "work_item_id": null,
+      "title": "eg-smv positive reduction",
+      "status": "deferred",
+      "submitted_at": "2026-07-16T18:23:52-07:00",
+      "notes": "Retroactive registration by the 2026-07-16 evening harvest triage. eg side-lane; owner triage needed. Registered without re-download; artifact remains on the Aristotle service. [2026-07-16T21:03:52-07:00 codex] Manager triage: pre-existing external experimental project has no AFPL work item, task note, integration target, or claim route. Excluded from the useful AFPL fleet; retained in registry for provenance."
+    },
+    {
+      "id": "8d39e609-03bf-4295-bc00-eb92810a39c5",
+      "work_item_id": null,
+      "title": "Causal operator metric",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T18:23:51-07:00",
+      "notes": "Retroactive registration by the 2026-07-16 evening harvest triage. causal_operator_metric.py production oracle. Registered without re-download; artifact remains on the Aristotle service."
+    },
+    {
+      "id": "ff45b96a-3412-44f2-b0b1-c8b8f179ce80",
+      "work_item_id": null,
+      "title": "Finite causal order operator",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T18:23:50-07:00",
+      "notes": "Retroactive registration by the 2026-07-16 evening harvest triage. FiniteCausalOrderOperator.lean is the production module. Registered without re-download; artifact remains on the Aristotle service."
+    },
+    {
+      "id": "e54f17ec-8b85-4f88-af96-d797cb553f3c",
+      "work_item_id": null,
+      "title": "Intrinsic probe next select",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T18:23:49-07:00",
+      "notes": "Retroactive registration by the 2026-07-16 evening harvest triage. IntrinsicProbeSubspace lane present. Registered without re-download; artifact remains on the Aristotle service."
+    },
+    {
+      "id": "0d655055-f1d0-41f9-9d43-9da8406b3fe4",
+      "work_item_id": null,
+      "title": "Synchronized tetrad bundle",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T18:23:49-07:00",
+      "notes": "Retroactive registration by the 2026-07-16 evening harvest triage. SynchronizedTetradBundle + AxiomGuard present. Registered without re-download; artifact remains on the Aristotle service."
+    },
+    {
+      "id": "ffa543b4-ffa1-4dac-bb12-da77ac2bc68d",
+      "work_item_id": null,
+      "title": "Retarded moment metric covariance",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T18:23:49-07:00",
+      "notes": "Retroactive registration by the 2026-07-16 evening harvest triage. RetardedMomentMetricDebias + AxiomGuard present. Registered without re-download; artifact remains on the Aristotle service."
+    },
+    {
+      "id": "c83d9b6b-b7be-4ba0-9b4e-e9e007e6ed08",
+      "work_item_id": null,
+      "title": "Causal operator local germ",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T18:23:48-07:00",
+      "notes": "Retroactive registration by the 2026-07-16 evening harvest triage. AlexandrovGermInternalOperator lane present. Registered without re-download; artifact remains on the Aristotle service."
+    },
+    {
+      "id": "bcefd810-9c50-479d-a8b3-d5c1eef964c7",
+      "work_item_id": null,
+      "title": "Causal operator concentration",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T18:23:47-07:00",
+      "notes": "Retroactive registration by the 2026-07-16 evening harvest triage. operator-moment modules present (CausalOperatorKernelMoments/LocalCausalOperatorMoments). Registered without re-download; artifact remains on the Aristotle service."
+    },
+    {
+      "id": "24bb1a3f-a6b2-4f6e-9e9a-2e24a2b1f92c",
+      "work_item_id": null,
+      "title": "Causal regional covariance",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T18:23:47-07:00",
+      "notes": "Retroactive registration by the 2026-07-16 evening harvest triage. RegionalCovariance.lean present. Registered without re-download; artifact remains on the Aristotle service."
+    },
+    {
+      "id": "476b4880-407d-4661-9dec-48b2b3797ec3",
+      "work_item_id": null,
+      "title": "Causal regional kappa decay",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T18:23:47-07:00",
+      "notes": "Retroactive registration by the 2026-07-16 evening harvest triage. regional lane modules present (RegionalCovariance + experiments). Registered without re-download; artifact remains on the Aristotle service."
+    },
+    {
+      "id": "f3a64d3b-b82b-42c9-8bce-715a9a5f4447",
+      "work_item_id": null,
+      "title": "Lorentz component character",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T18:23:47-07:00",
+      "notes": "Retroactive registration by the 2026-07-16 evening harvest triage. LorentzComponentCharacter.lean present. Registered without re-download; artifact remains on the Aristotle service."
+    },
+    {
+      "id": "9a705eeb-56af-4c05-a156-b2702b654206",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "five-event carrier HasLorentzianInertia normalization",
+      "status": "cancelled",
+      "submitted_at": "2026-07-16T16:51:35-07:00",
+      "notes": "Task 046ae0dc-ac5c-4ad3-adac-fde66d582f3c; exact production predicate at equal nonzero scales; preserve theorem verbatim. [2026-07-17T01:13:36-07:00 codex] After 8h and three nonresponsive status queries, in-progress snapshot still contained all three original proof holes; production theorem already locally proved/built/reviewed"
+    },
+    {
+      "id": "24faf055-0650-423c-bc67-332a60420480",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Five-event three-prong causal-diamond exact Lorentz witness",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T16:35:00-07:00",
+      "notes": "Task 01dd6003-9d76-4bab-9b25-908158f2fb03; focused Mathlib-only source sha256 306255718e7341eee9f0c72933f91d528baeb9dbd993de79f9ba955ec2bb118e; seven exact targets; compute production coefficients through openIntervalCount, exact eta Gram, same-probe basis; no selector/refinement claim. [2026-07-16T20:58:12-07:00 codex] Harvested Aristotle return. All seven exact standalone targets proved unchanged; local lake env lean replay passed cleanly. Retained as independent comparison; no duplicate live module added because production HasLorentzianInertia theorem already subsumes it."
+    },
+    {
+      "id": "cdb53c37-a5ad-4c72-9714-27136ce91f62",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Finite weighted strict-past operator nilpotence",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T14:56:32-07:00",
+      "notes": "Focused Mathlib-only task fc83b976-a463-422a-8c9e-5d97ea35f9a1; exact card-power nilpotence and nonzero square-zero two-chain witness; context/task pins recorded. [2026-07-16T15:56:26-07:00 codex] Aristotle task fc83b976-a463-422a-8c9e-5d97ea35f9a1 returned COMPLETE with both statements verbatim, no holes, and standard-three footprint. Extracted source passes pinned direct Lean. Integrated provisionally as FiniteStrictPastNilpotence.lean; composed into LayeredOperatorPolynomialNoGo.lean; targeted build and independent review pending. [2026-07-16T16:05:16-07:00 codex] Claude independently APPROVED the verbatim strict-past nilpotence pair and exact production layered/smeared composition; review AutonomousLab/reviews/CLAUDE_REVIEW_LAYERED_OPERATOR_NOGO_2026-07-16.md; combined 8037-job build and ten standard-three guards passed."
+    },
+    {
+      "id": "1c4479b1-3215-4d68-a5f1-6bfd9fb13aae",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Retarded scalar-plus-nilpotent polynomial projector no-go",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T14:49:09-07:00",
+      "notes": "Focused Mathlib-only task 4c91507a-68ae-4387-b52b-05925c300907; two verbatim theorem targets; standalone source and context pack pinned in AgentTasks/retarded-polynomial-projector-no-go-aristotle-2026-07-16.md. [2026-07-16T15:45:06-07:00 codex] Task 4c91507a-68ae-4387-b52b-05925c300907 reported COMPLETE_WITH_ERRORS but returned both public theorems unchanged and complete. Extracted source passes pinned direct Lean. Integrated provisionally as RetardedPolynomialProjectorNoGo.lean at b02e3de4; targeted build and independent semantic review pending. [2026-07-16T15:58:32-07:00 codex] Claude independently APPROVED the two verbatim public theorems and helper at b02e3de4; review AutonomousLab/reviews/CLAUDE_REVIEW_RETARDED_POLYNOMIAL_NOGO_2026-07-16.md. Abstract algebra integrated. Composite finite causal-order no-go remains separately under review."
+    },
+    {
+      "id": "e21233fd-7d64-4c33-acf7-a2783f7b9e9b",
+      "work_item_id": "GRAV-GROWING-ATLAS-001",
+      "title": "SL2C Lorentz exact central kernel",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T14:17:50-07:00",
+      "notes": "Focused Mathlib package: AgentTasks/aristotle-submit/null-edge-sl2c-lorentz-exact-kernel-20260716-project; target hermitianCongruence_kernel [2026-07-16T14:21:54-07:00 codex] Aristotle task b73651ae-20a4-4c16-a4da-1da4fc594334 is IN_PROGRESS [2026-07-16T15:07:15-07:00 codex] Aristotle task b73651ae-20a4-4c16-a4da-1da4fc594334 returned COMPLETE; unchanged exact-kernel theorem extracted and passes under the pinned repository toolchain; production integration under audit at SL2CLorentzAction hash 041a827d. [2026-07-16T15:11:57-07:00 codex] Aristotle exact-kernel proof semantically reviewed and integrated as sl2ToEtaLorentz_eq_one_iff plus the restricted-group kernel theorem; production direct check and axiom guards pass."
+    },
+    {
+      "id": "ca8eab68-063f-4ba5-b5c5-88b5c0fa3428",
+      "work_item_id": "GRAV-GROWING-ATLAS-001",
+      "title": "SL2C Lorentz determinant-one properness",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T13:53:57-07:00",
+      "notes": "Focused Mathlib package: AgentTasks/aristotle-submit/null-edge-sl2c-lorentz-properness-20260716-project; target SL2CLorentzProperness/Core.lean: lorentzMatrix_det_one [2026-07-16T13:57:49-07:00 codex] Aristotle task 0cf06c7c-a34d-49be-8b15-dd1e4a8632ef is IN_PROGRESS [2026-07-16T15:07:14-07:00 codex] Aristotle task 0cf06c7c-a34d-49be-8b15-dd1e4a8632ef returned COMPLETE_WITH_ERRORS, but the unchanged determinant-one theorem proof was extracted and passes under the pinned repository toolchain; production integration under audit at SL2CLorentzAction hash 041a827d. [2026-07-16T15:11:58-07:00 codex] API reported COMPLETE_WITH_ERRORS, but the returned source contained a complete determinant identity. It passed locally under the pinned toolchain and is integrated as sl2LorentzMatrix_det_one with factorization through RestrictedLorentzGroup."
+    },
+    {
+      "id": "f523fa23-14ad-4bdb-b5f7-f35a6cb6b47c",
+      "work_item_id": "GRAV-GROWING-ATLAS-001",
+      "title": "Bare-graph permutation-equivariant rank-four projector no-go",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T13:02:47-07:00",
+      "notes": "Focused Mathlib-only no-canonicity theorem; task 8ab43627-8e0c-4a2b-b512-5b7ff62e77ff. Full symmetric vertex-probe projector, exact idempotency, no range finrank four for n>=6. [2026-07-16T13:41:29-07:00 codex] Integrated unchanged full-permutation equivariant idempotent rank-four no-go into PhysicsSM/Draft/NullEdge/BareGraphPermutationProjectorNoGo.lean; direct Lean, 8034-job targeted build, source/axiom scan, and guard pass."
+    },
+    {
+      "id": "4c731131-ea72-4590-b7e3-1f2aa63eef4d",
+      "work_item_id": "GRAV-GROWING-ATLAS-001",
+      "title": "Lorentz atlas structure group",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T13:02:04-07:00",
+      "notes": "Task 3d2a1142-bbdb-4f40-bc31-2e50049ef8a0; focused proof package for eta-Lorentz subgroup and two component characters. [2026-07-16T13:59:40-07:00 codex] Completed task 3d2a1142-bbdb-4f40-bc31-2e50049ef8a0 downloaded and kernel-checked; production implementation had already landed independently [2026-07-16T15:11:58-07:00 codex] Returned structure-group proof independently audited the production component-character and restricted-Lorentz definitions; production module is integrated and checked."
+    },
+    {
+      "id": "e7204f14-dcb9-4f2d-b116-f46a250b67d3",
+      "work_item_id": "GRAV-GROWING-ATLAS-001",
+      "title": "Equivariant involution positive projector",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T12:50:40-07:00",
+      "notes": "Focused Mathlib-only package; task 47040e53-ccbe-4e18-ad7d-abb94e85481c. Four exact polynomial/projector/range proofs; integration target PhysicsSM/Draft/NullEdge/EquivariantInvolutionProbeProjector.lean. [2026-07-16T13:21:02-07:00 codex] Integrated unchanged forward proofs into PhysicsSM/Draft/NullEdge/EquivariantInvolutionProbeProjector.lean, added reverse projector/involution identities and carrier constructor; direct Lean, 8038-job targeted build, source scan, and axiom guards pass."
+    },
+    {
+      "id": "32ac6170-b264-46ca-9165-717d3757a5c9",
+      "work_item_id": "GRAV-GROWING-ATLAS-001",
+      "title": "Fractional atlas packing dual certificate",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T10:48:25-07:00",
+      "notes": "Focused Mathlib package; task d2308748-c467-4ec1-89bc-6f28a52fd974. Prove weighted incidence identity, fractional capacity bound, and common-event boundary without statement changes. [2026-07-16T11:06:43-07:00 codex] Aristotle task d2308748-c467-4ec1-89bc-6f28a52fd974 is IN_PROGRESS on the focused three-theorem package. [2026-07-16T11:19:10-07:00 codex] Harvested Aristotle project; all three public statements unchanged. Integrated proof bodies plus standard-three axiom guards into PhysicsSM/Draft/NullEdge/AtlasFractionalPackingDual.lean. lake env lean and targeted lake build pass; no proof holes or compiled evaluator."
+    },
+    {
+      "id": "8eb64e1f-b986-451e-b7b3-fa1d228f4a80",
+      "work_item_id": "SPIRAL-LAYER-001",
+      "title": "Spiral wave 7: cap-square Berry factor (C3 target T1)",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T10:26:20-07:00",
+      "notes": "5 targets: cap_square_invariant = cornerAmp^4 (u^2+t^2=1), normSq = ((1+t^2)/2)^4, equator -1/4 (hemisphere Berry sign), pole 1, kink insertion -1/8 (magnitude-only cost). Typechecked EXIT=0; all closed forms numerically verified. Task note AgentTasks/cap-square-berry-aristotle-2026-07-16.md. [2026-07-16T11:40:46-07:00 claude] 0-sorry, VERBATIM (17/17), CapSquareBerryAristotle.lean, 5 guards, build green"
+    },
+    {
+      "id": "958c6429-bbbc-4bc6-b289-954222616673",
+      "work_item_id": "SPIRAL-LAYER-001",
+      "title": "Spiral wave 6: two-family Jarlskog toy (C2 gate second half)",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T10:15:55-07:00",
+      "notes": "7 targets: jarlskog_decomposition [triple_A(1+dots_B)-triple_B(1+dots_A)]/16, antisymm, cp_odd, rotation invariance (proper R), both-planar protection, self-interference zero, witness 3/20 (octant vs planar). Typechecked EXIT=0; witness + decomposition numerically verified. Task note AgentTasks/bargmann-jarlskog-toy-aristotle-2026-07-16.md. [2026-07-16T11:40:41-07:00 claude] 0-sorry, VERBATIM (22/22), BargmannJarlskogToyAristotle.lean, 7 guards, build green"
+    },
+    {
+      "id": "6a413e71-997c-43ad-abe2-214dd37faa58",
+      "work_item_id": "SPIRAL-LAYER-001",
+      "title": "Spiral wave 5: Bargmann fan induction (C1-polygon packaging)",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T10:09:50-07:00",
+      "notes": "6 targets: pair_trace, proj_collapse rank-one sandwich, MATRIX-slot cocycle, fan_factorization list induction, fan_arg phase corollary, pentagon witness (9+i)/25. Statements typechecked EXIT=0; witness + fan identity numerically verified (<1e-12). Task note AgentTasks/bargmann-fan-induction-aristotle-2026-07-16.md. [2026-07-16T11:40:38-07:00 claude] 0-sorry, statements VERBATIM (20/20 sigs), integrated as BargmannFanInductionAristotle.lean, 6 guards, build green"
+    },
+    {
+      "id": "373f6045-f479-454c-9ba8-4ae8a85e8789",
+      "work_item_id": "GRAV-GROWING-ATLAS-001",
+      "title": "Atlas bounded-multiplicity double counting",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T09:49:16-07:00",
+      "notes": "Focused Mathlib-only four-theorem package; exact types preflighted; source AgentTasks/aristotle-standalone/atlas-multiplicity-counting-20260716. [2026-07-16T10:17:40-07:00 codex] Four unchanged finite set-system theorems integrated into AtlasMultiplicityCounting.lean; extracted and live targeted checks pass; four standard-three guards; no proof holes."
+    },
+    {
+      "id": "58922023-5727-41fb-af75-684e8944efe6",
+      "work_item_id": "GRAV-GROWING-ATLAS-001",
+      "title": "Atlas transition cocycle versus connection holonomy",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T09:33:26-07:00",
+      "notes": "Focused Mathlib-only package; six exact finite-algebra targets; package AgentTasks/aristotle-submit/atlas-transition-holonomy-20260716-project. [2026-07-16T10:25:32-07:00 codex] Harvested Aristotle task 44cc2a3e-9553-4471-8632-5d6423b0e2e2; integrated six unchanged theorem statements with axiom guards."
+    },
+    {
+      "id": "74a06ae4-2d52-4ab2-a400-a865083da653",
+      "work_item_id": null,
+      "title": "Spiral wave 4A: Bargmann cocycle law - diagonal-cut factorization closes the C1-polygon gate",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T08:30:52-07:00",
+      "notes": "Focused Mathlib-only package AgentTasks/aristotle-submit/bargmann-cocycle-20260716-project; task note AgentTasks/bargmann-cocycle-aristotle-2026-07-16.md; 4 targets: tr(PaPbPc)tr(PaPcPd) = tr(PaPbPcPd)tr(PaPc) under unit hypotheses + arg form + degenerate control + rational quadrilateral witness. With wave-3's triangle law, polygon corner phases become sums of triangle half-solid-angles by fan induction. [2026-07-16T09:22:01-07:00 claude] INTEGRATED as PhysicsSM/Draft/NullEdge/BargmannCocycleAristotle.lean: verified locally (EXIT=0), statements verbatim, namespace renamed, 4 standard-three guards added, build green. Headline: bargmann_cocycle - tr(PaPbPc)tr(PaPcPd) = tr(PaPbPcPd)tr(PaPc); with the positive-real diagonal pair trace the four-corner phase equals the product of the two diagonal-triangle phases (arg form kernel-checked), degenerate control + rational quadrilateral witness included. BONUS: the returned proof never uses the b/d unit hypotheses (linter-confirmed), so the law holds with only the diagonal endpoints unit - a strengthening candidate for a future cleanup, statements kept verbatim per pre-registration."
+    },
+    {
+      "id": "393284aa-586d-4bcd-ad15-f03d63a1131f",
+      "work_item_id": "GRAV-ATLAS-COVERAGE-001",
+      "title": "Finite greedy maximum-coverage average marginal and residual contraction",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T07:51:05-07:00",
+      "notes": "Focused Mathlib-only package. Three unchanged targets: benchmark average marginal witness, greedy maximizer corollary, rational 1-1/k residual contraction. Supports only a possible diversified atlas selector; no causal coverage existence or G2 claim. [2026-07-16T08:28:33-07:00 codex] Remote task f7f2d466 was still queued; canceled after all three exact targets were proved locally unchanged, kernel-checked, and axiom-audited. [2026-07-16T08:35:04-07:00 codex] External task label CANCELED but IDLE archive contained all three unchanged complete proofs. Returned and independent local proofs both compile with standard-three footprints. Integrated cleaner local bodies plus finite-horizon headline as guarded PhysicsSM/Draft/NullEdge/GreedyAtlasCoverage.lean; direct Lean and targeted 8026-job build pass."
+    },
+    {
+      "id": "9ba69cff-0383-4052-81fb-4927fd0b3a12",
+      "work_item_id": null,
+      "title": "Spiral wave 3A: VOS-arctan law - Bargmann three-cycle phase = arctan(triple/(1+dots)) on the principal domain",
+      "status": "integrated",
+      "submitted_at": "2026-07-16T07:22:27-07:00",
+      "notes": "Focused Mathlib-only package AgentTasks/aristotle-submit/bargmann-solid-angle-20260716-project; task note AgentTasks/bargmann-solid-angle-aristotle-2026-07-16.md; 4 targets; solid-angle identification stays an [import] (Van Oosterom-Strackee 1983); C1-triangle gate of the spiral conjecture ledger. [2026-07-16T08:21:01-07:00 claude] INTEGRATED as PhysicsSM/Draft/NullEdge/BargmannSolidAngleAristotle.lean: returned file verified locally (EXIT=0), statements verbatim, namespace renamed, 4 build-enforced standard-three guards added; targeted build green (29s). Headline: bargmann_arg_eq_arctan - on Re>0, arg tr(P(a)P(b)P(c)) = arctan(triple/(1+dots)); with the cited Van Oosterom-Strackee formula this closes the C1-triangle gate: corner phase = signed half solid angle, as M + one [import]. Octant pi/4 witness, planar-zero control, reversal-negation all kernel-checked."
+    },
     {
       "id": "058a9901-a302-4726-8962-588fa33eb1cc",
       "work_item_id": null,
       "title": "Spiral wave 2C: all-orders planar CP-inertness (RealForm subalgebra + list induction)",
-      "status": "running",
+      "status": "integrated",
       "submitted_at": "2026-07-16T06:19:39-07:00",
-      "notes": "Focused Mathlib-only package AgentTasks/aristotle-submit/planar-corner-reality-20260716-project; task note AgentTasks/planar-corner-reality-aristotle-2026-07-16.md; 7 targets incl planar_history_trace_real + nonplanar escape witness."
+      "notes": "Focused Mathlib-only package AgentTasks/aristotle-submit/planar-corner-reality-20260716-project; task note AgentTasks/planar-corner-reality-aristotle-2026-07-16.md; 7 targets incl planar_history_trace_real + nonplanar escape witness. [2026-07-16T07:23:07-07:00 claude] Run 15313c61 returned all 7 targets solved, statements verbatim (only sorry-placeholder lines differ), zero holes, standard-three per theorem; RealForm closure + list induction as designed; escape witness 1/4. Local kernel verification + guarded integration build in progress. [2026-07-16T07:25:54-07:00 claude] INTEGRATED as PhysicsSM/Draft/NullEdge/PlanarCornerRealityAristotle.lean: returned file verified locally (EXIT=0), statements verbatim, namespace renamed, 7 build-enforced standard-three guards added; targeted build green. Headline: planar_history_trace_real - zigzag (planar) corner content is CP-inert at EVERY order; nonplanar escape witness 1/4."
     },
     {
       "id": "469070a8-55af-45b0-bf07-40372330c22b",
       "work_item_id": null,
       "title": "Spiral wave 2B: massive chiral spiral, on-shell Clifford square, 2E zitter rate",
-      "status": "running",
+      "status": "integrated",
       "submitted_at": "2026-07-16T06:19:38-07:00",
-      "notes": "Focused Mathlib-only package AgentTasks/aristotle-submit/chiral-spiral-massive-20260716-project; task note AgentTasks/chiral-spiral-massive-aristotle-2026-07-16.md; 9 targets incl Dtot_sq = (1+m^2) and massive double-commutator 4(1+m^2)."
+      "notes": "Focused Mathlib-only package AgentTasks/aristotle-submit/chiral-spiral-massive-20260716-project; task note AgentTasks/chiral-spiral-massive-aristotle-2026-07-16.md; 9 targets incl Dtot_sq = (1+m^2) and massive double-commutator 4(1+m^2). [2026-07-16T07:37:11-07:00 claude] INTEGRATED as PhysicsSM/Draft/NullEdge/ChiralSpiralMassiveAristotle.lean: returned file verified locally (EXIT=0), statements verbatim (diff-checked), namespace renamed, 9 build-enforced standard-three guards added; targeted build green (247s). Headline: (Dtot m)^2 = (1+m^2) on-shell Clifford square; transverse ladders anticommute with the full massive operator; massive zitter double commutator exactly 4(1+m^2) (rate 2E); massless reduction recovers wave-1."
     },
     {
       "id": "3b35a00c-6139-4105-9ac9-7742c7810bb2",
       "work_item_id": null,
       "title": "Spiral wave 2A: four-cycle Bargmann + exact hairpin lune-phase law",
-      "status": "running",
+      "status": "integrated",
       "submitted_at": "2026-07-16T06:19:38-07:00",
-      "notes": "Focused Mathlib-only package AgentTasks/aristotle-submit/spin-corner-four-cycle-20260716-project; task note AgentTasks/spin-corner-four-cycle-aristotle-2026-07-16.md; 9 targets incl hairpin_lune_phase (meridian U(1) = literal complex phase; checkerboard corner i = quarter-turn lune as a theorem)."
+      "notes": "Focused Mathlib-only package AgentTasks/aristotle-submit/spin-corner-four-cycle-20260716-project; task note AgentTasks/spin-corner-four-cycle-aristotle-2026-07-16.md; 9 targets incl hairpin_lune_phase (meridian U(1) = literal complex phase; checkerboard corner i = quarter-turn lune as a theorem). [2026-07-16T07:23:07-07:00 claude] Run 6caae25f returned all 9 targets solved, statements verbatim (diff-checked), zero holes, standard-three per theorem incl the exact lune-phase law and quarter_turn_corner = I/4. Local kernel verification + guarded integration build in progress. [2026-07-16T07:25:54-07:00 claude] INTEGRATED as PhysicsSM/Draft/NullEdge/SpinCornerFourCycleAristotle.lean: returned file verified locally (EXIT=0), statements verbatim, namespace renamed, 9 build-enforced standard-three guards added; targeted build green. Headline: hairpin_lune_phase = conj(u+iv)(u'+iv')/4 exact; quarter_turn_corner = I/4 - the 1+1 checkerboard corner factor i is now a THEOREM (quarter-turn lune)."
     },
     {
       "id": "e9a3645d-b658-46fe-b761-5b260df7ddad",
       "work_item_id": "QCA-3PLUS1-001",
       "title": "Adversarial compact-auxiliary null-dilation strategy",
-      "status": "running",
+      "status": "integrated",
       "submitted_at": "2026-07-13T16:49:17-07:00",
-      "notes": "Task bd9fefde-e932-49fe-93f4-57aac3ead3c1; audit full spectrum, winding, soldering, and decoder. [2026-07-13T17:39:46-07:00 codex] Adversarial assessment completed and replayed; exact factorization relocates rather than resolves the 3+1 obstruction. [2026-07-13T17:44:45-07:00 codex] Successor strategy task 44c3c958-01c0-4087-948e-77c4c86e1304 queued: full HNU antiperiodic twist parity/noncommutation/spectrum/ledger audit. [2026-07-13T18:26:13-07:00 codex] Antiperiodic full-HNU audit complete; exact scoped relocation no-go with finite witness harvested, cross-review pending msg-20260713-182552-3e0d2a5b. [2026-07-13T18:30:07-07:00 codex] Successor c538c705 targets transported-projector telescoping and central-holonomy classification after antiperiodic relocation no-go. [2026-07-13T19:09:12-07:00 codex] TransportedProjectorHolonomy downloaded; semantic scope concern sent for independent review. [2026-07-13T19:11:00-07:00 codex] Successor 7076b7f1 targets a genuinely schedule-indexed transported frame and varying-G telescoping law, correcting the constant-G scope. [2026-07-13T19:24:00-07:00 codex] Global-frame holonomy classification integrated after independent review; successor 7076b7f1 remains active for genuine varying-frame telescoping. [2026-07-13T19:46:08-07:00 codex] Task 7076 completed but repeated constant-G result; rejected for missing indexed frames, endpoint telescope, and link cocycle. [2026-07-13T19:46:25-07:00 codex] Task 11c39c15 submitted with exact typechecked varying-frame telescope handoff. [2026-07-13T20:09:37-07:00 codex] Correct schedule-indexed telescope integrated after direct replay and independent Claude APPROVE. Cyclic passive frames preserve central holonomy; no active transport escape claimed. [2026-07-13T20:10:18-07:00 codex] HNU-specific cyclic varying-frame holonomy no-escape composition and active-link boundary successor launched."
+      "notes": "Task bd9fefde-e932-49fe-93f4-57aac3ead3c1; audit full spectrum, winding, soldering, and decoder. [2026-07-13T17:39:46-07:00 codex] Adversarial assessment completed and replayed; exact factorization relocates rather than resolves the 3+1 obstruction. [2026-07-13T17:44:45-07:00 codex] Successor strategy task 44c3c958-01c0-4087-948e-77c4c86e1304 queued: full HNU antiperiodic twist parity/noncommutation/spectrum/ledger audit. [2026-07-13T18:26:13-07:00 codex] Antiperiodic full-HNU audit complete; exact scoped relocation no-go with finite witness harvested, cross-review pending msg-20260713-182552-3e0d2a5b. [2026-07-13T18:30:07-07:00 codex] Successor c538c705 targets transported-projector telescoping and central-holonomy classification after antiperiodic relocation no-go. [2026-07-13T19:09:12-07:00 codex] TransportedProjectorHolonomy downloaded; semantic scope concern sent for independent review. [2026-07-13T19:11:00-07:00 codex] Successor 7076b7f1 targets a genuinely schedule-indexed transported frame and varying-G telescoping law, correcting the constant-G scope. [2026-07-13T19:24:00-07:00 codex] Global-frame holonomy classification integrated after independent review; successor 7076b7f1 remains active for genuine varying-frame telescoping. [2026-07-13T19:46:08-07:00 codex] Task 7076 completed but repeated constant-G result; rejected for missing indexed frames, endpoint telescope, and link cocycle. [2026-07-13T19:46:25-07:00 codex] Task 11c39c15 submitted with exact typechecked varying-frame telescope handoff. [2026-07-13T20:09:37-07:00 codex] Correct schedule-indexed telescope integrated after direct replay and independent Claude APPROVE. Cyclic passive frames preserve central holonomy; no active transport escape claimed. [2026-07-13T20:10:18-07:00 codex] HNU-specific cyclic varying-frame holonomy no-escape composition and active-link boundary successor launched. [2026-07-16T06:40:46-07:00 claude] Run 32bffbc4 HNUVaryingFrameHolonomy ported live (import surgery only), built green with 7 guards, claude semantic review APPROVE: cyclic varying-frame no-escape (-1 central), open pseudo-escape + active-link boundary with nondegenerate controls. Triage note AutonomousLab/work/NE-3PLUS1/CLAUDE_QCA_HARVEST_TRIAGE_2026-07-16.md"
     },
     {
       "id": "6f1114f3-e46c-4282-8c51-a81803ec62e1",
@@ -103,17 +639,17 @@
       "id": "f0d38cd0-cdec-46ef-800b-b588e3e07740",
       "work_item_id": "QCA-3PLUS1-001",
       "title": "codex-3plus1-multiplet-first-grand-strategy",
-      "status": "running",
+      "status": "integrated",
       "submitted_at": "2026-07-13T14:43:26-07:00",
-      "notes": "Lateral pivot from isolated anomalous Weyl to anomaly-free Standard Model multiplet; request exact finite target/mirror Fock gap witness or sharp missing axiom, with symmetry and semantic audits. [2026-07-13T15:17:45-07:00 codex] Integrated semantically narrowed four-state bilinear no-go/vacuity control as TargetMirrorBilinearNoGo.lean; targeted replay passed; does not establish SM anomaly cancellation or thermodynamic mirror gap. [2026-07-13T19:13:12-07:00 codex] Successor 99019b27 is a whole-program continuum/3+1 grand-strategy audit with theorem chains, kill conditions, manuscript claim ladder, and six dependency-ordered jobs. [2026-07-13T19:26:51-07:00 codex] Grand strategy 99019b27 harvested; ranked inflow > SMG > transported-frame and identified Pluecker-HNU intertwiner as the missing ontology-to-regulator bridge. [2026-07-13T19:27:40-07:00 codex] Successor c9f31d7f targets the nonvacuous Pluecker-HNU intertwiner or a sharp missing-data theorem, closing the ontology-to-regulator gap identified by grand synthesis. [2026-07-13T20:26:34-07:00 codex] Harvested c9f31d7f HNU-Pluecker candidate; direct replay passed. Integrating only reviewed subset through live imports; fake phase-covariance and forced/canonical prose rejected. [2026-07-13T20:26:53-07:00 codex] Task 82733834 queued: classify complete HNU-Pluecker intertwiner moduli, normalized locus, and prove/no-go canonical selection from Clifford equations alone."
+      "notes": "Lateral pivot from isolated anomalous Weyl to anomaly-free Standard Model multiplet; request exact finite target/mirror Fock gap witness or sharp missing axiom, with symmetry and semantic audits. [2026-07-13T15:17:45-07:00 codex] Integrated semantically narrowed four-state bilinear no-go/vacuity control as TargetMirrorBilinearNoGo.lean; targeted replay passed; does not establish SM anomaly cancellation or thermodynamic mirror gap. [2026-07-13T19:13:12-07:00 codex] Successor 99019b27 is a whole-program continuum/3+1 grand-strategy audit with theorem chains, kill conditions, manuscript claim ladder, and six dependency-ordered jobs. [2026-07-13T19:26:51-07:00 codex] Grand strategy 99019b27 harvested; ranked inflow > SMG > transported-frame and identified Pluecker-HNU intertwiner as the missing ontology-to-regulator bridge. [2026-07-13T19:27:40-07:00 codex] Successor c9f31d7f targets the nonvacuous Pluecker-HNU intertwiner or a sharp missing-data theorem, closing the ontology-to-regulator gap identified by grand synthesis. [2026-07-13T20:26:34-07:00 codex] Harvested c9f31d7f HNU-Pluecker candidate; direct replay passed. Integrating only reviewed subset through live imports; fake phase-covariance and forced/canonical prose rejected. [2026-07-13T20:26:53-07:00 codex] Task 82733834 queued: classify complete HNU-Pluecker intertwiner moduli, normalized locus, and prove/no-go canonical selection from Clifford equations alone. [2026-07-16T06:38:44-07:00 claude] Final run 82733834 (PlueckerHNUIntertwinerClassification: full 2-dim classification \u2102W \u2295 \u2102Wodd, Gram law, normalized iff |a|^2+|b|^2=1, clifford_not_selective NO-CANONICITY) was already ported live 07-13 (msg-20260713-210801 LIVE APPROVE; PhysicsSM/Draft/NullEdge/PlueckerHNUIntertwinerClassification.lean present). Snapshot re-downloaded 07-16 and content confirmed identical in scope. Chain closed."
     },
     {
       "id": "c626cb61-f1db-49ff-aa41-a9d96e9152ad",
       "work_item_id": "QCA-3PLUS1-001",
       "title": "Adversarial anomalous-Floquet 3+1 audit",
-      "status": "running",
+      "status": "integrated",
       "submitted_at": "2026-07-13T14:18:24-07:00",
-      "notes": "Red-team determinant doubling, gap tags, topology category, null semantics, and boundary limit. [2026-07-13T16:05:13-07:00 codex] Adversarial HNU audit harvested. Its corrected SU(2) endpoint, zero/pi census, and scalar-winding obstruction agree with already integrated HNUExactCore; W=1 and half-space spectrum remain open. [2026-07-13T17:45:44-07:00 codex] Successor task 29712ef5-7778-455e-b9b8-416d9ec25ac7 queued: SU(2) nonzero fixed-vector rigidity plus exact HNU zero-quasienergy census. [2026-07-13T18:12:17-07:00 codex] Task 29712ef5 completed; local module replay passes and independent Claude mailbox review msg-20260713-181005-82c58238 is pending before aggregate integration. [2026-07-13T18:30:07-07:00 codex] Successor 5a562c93 targets exact HNU infrared directional and combined Weyl tangent with sign/normalization controls. [2026-07-13T19:09:11-07:00 codex] HNUInfraredTangent downloaded and sent for independent semantic review. [2026-07-13T19:11:35-07:00 codex] Successor 10a6436c composes exact HNU infrared derivative with Jacobian orientation and the Weyl sphere-charge adapter. [2026-07-13T19:18:56-07:00 codex] Task 5a562c93 independently approved and integrated as HNUInfraredTangent; successor 10a6436c remains active on exact Weyl charge composition. [2026-07-13T19:30:36-07:00 codex] Task 10a6436c completed and candidate downloaded; independent semantic review requested before integration. [2026-07-13T19:32:27-07:00 codex] Task 9bf9df60 submitted: adversarial HNU local/global charge consistency and missing-adapter theorem. [2026-07-13T19:57:24-07:00 codex] HNU exact tangent/local charge module integrated and independently reviewed; latest local/global successor returned no new candidate. Conditional local-to-global partner composition landed separately in HNULocalChargeBalance pending Claude semantic review. [2026-07-13T19:57:54-07:00 codex] Successor launched: exact HNU global zero/pi charge ledger or sharp endpoint-data insufficiency theorem, with nonvacuity control. [2026-07-13T20:52:28-07:00 codex] Integrated and independently approved global zero/pi endpoint ledger; successor launched for exact pi-face tangent-kernel/rank obstruction and nodal-surface classification."
+      "notes": "Red-team determinant doubling, gap tags, topology category, null semantics, and boundary limit. [2026-07-13T16:05:13-07:00 codex] Adversarial HNU audit harvested. Its corrected SU(2) endpoint, zero/pi census, and scalar-winding obstruction agree with already integrated HNUExactCore; W=1 and half-space spectrum remain open. [2026-07-13T17:45:44-07:00 codex] Successor task 29712ef5-7778-455e-b9b8-416d9ec25ac7 queued: SU(2) nonzero fixed-vector rigidity plus exact HNU zero-quasienergy census. [2026-07-13T18:12:17-07:00 codex] Task 29712ef5 completed; local module replay passes and independent Claude mailbox review msg-20260713-181005-82c58238 is pending before aggregate integration. [2026-07-13T18:30:07-07:00 codex] Successor 5a562c93 targets exact HNU infrared directional and combined Weyl tangent with sign/normalization controls. [2026-07-13T19:09:11-07:00 codex] HNUInfraredTangent downloaded and sent for independent semantic review. [2026-07-13T19:11:35-07:00 codex] Successor 10a6436c composes exact HNU infrared derivative with Jacobian orientation and the Weyl sphere-charge adapter. [2026-07-13T19:18:56-07:00 codex] Task 5a562c93 independently approved and integrated as HNUInfraredTangent; successor 10a6436c remains active on exact Weyl charge composition. [2026-07-13T19:30:36-07:00 codex] Task 10a6436c completed and candidate downloaded; independent semantic review requested before integration. [2026-07-13T19:32:27-07:00 codex] Task 9bf9df60 submitted: adversarial HNU local/global charge consistency and missing-adapter theorem. [2026-07-13T19:57:24-07:00 codex] HNU exact tangent/local charge module integrated and independently reviewed; latest local/global successor returned no new candidate. Conditional local-to-global partner composition landed separately in HNULocalChargeBalance pending Claude semantic review. [2026-07-13T19:57:54-07:00 codex] Successor launched: exact HNU global zero/pi charge ledger or sharp endpoint-data insufficiency theorem, with nonvacuity control. [2026-07-13T20:52:28-07:00 codex] Integrated and independently approved global zero/pi endpoint ledger; successor launched for exact pi-face tangent-kernel/rank obstruction and nodal-surface classification. [2026-07-16T06:40:46-07:00 claude] Run 79dabb72 HNUPiFaceRankObstruction ported live, built green with 6 guards, APPROVE: pi faces are extended nodal surfaces (kernel >= 2 for any derivative representative; nonzero unsigned normal derivative) - census-methodology control. Triage note as above."
     },
     {
       "id": "a8178bce-aebf-40b1-98a1-b85869538183",
@@ -127,9 +663,9 @@
       "id": "73a1d386-9910-493b-84b2-1867bdf6ef2e",
       "work_item_id": "QCA-3PLUS1-001",
       "title": "Exact HNU endpoint degree-one attack",
-      "status": "running",
+      "status": "integrated",
       "submitted_at": "2026-07-13T14:18:24-07:00",
-      "notes": "Exact degree of T3 to SU2 or a precise topology API handoff; no finite surrogate. [2026-07-13T16:50:44-07:00 codex] Returned local-orientation and conditional-degree pillars; exact global degree remains unproved. [2026-07-13T17:46:25-07:00 codex] Successor task ba73ed6f-e5dd-4c2b-b117-277bd9aeec99 queued: SU(2) nonzero -1 eigenvector rigidity and exact HNU pi census. [2026-07-13T18:26:13-07:00 codex] SU2 -1 rigidity and HNU pi eigenspace census completed and downloaded; cross-review pending msg-20260713-182552-3e0d2a5b. [2026-07-13T18:30:55-07:00 codex] Successor 5780bc23 targets actual HNU compact-momentum one-step O(eps^2) and unitary-telescoped many-step O(1/n) continuum bound. [2026-07-13T20:56:36-07:00 codex] Task 5780bc23 completed fixed-momentum HNU O(eps^2) one-step and O(1/n) many-step theorem on equivalent standalone core. Harvested; independent semantic review requested. Successor launched to port exact theorem to live HNUExactCore endpoint with explicit factorization/equality bridge."
+      "notes": "Exact degree of T3 to SU2 or a precise topology API handoff; no finite surrogate. [2026-07-13T16:50:44-07:00 codex] Returned local-orientation and conditional-degree pillars; exact global degree remains unproved. [2026-07-13T17:46:25-07:00 codex] Successor task ba73ed6f-e5dd-4c2b-b117-277bd9aeec99 queued: SU(2) nonzero -1 eigenvector rigidity and exact HNU pi census. [2026-07-13T18:26:13-07:00 codex] SU2 -1 rigidity and HNU pi eigenspace census completed and downloaded; cross-review pending msg-20260713-182552-3e0d2a5b. [2026-07-13T18:30:55-07:00 codex] Successor 5780bc23 targets actual HNU compact-momentum one-step O(eps^2) and unitary-telescoped many-step O(1/n) continuum bound. [2026-07-13T20:56:36-07:00 codex] Task 5780bc23 completed fixed-momentum HNU O(eps^2) one-step and O(1/n) many-step theorem on equivalent standalone core. Harvested; independent semantic review requested. Successor launched to port exact theorem to live HNUExactCore endpoint with explicit factorization/equality bridge. [2026-07-16T06:40:46-07:00 claude] Run c7a35679 HNUManyStepContinuumLive ported live, built green with 13 guards, APPROVE: live-endpoint O(eps^2)/O(t^2/n) Weyl-flow convergence with exact rotation factorization; discharges the 07-13 APPROVE-SUBSET bridge condition. Triage note as above."
     },
     {
       "id": "e61eeec5-b470-4d01-a3fd-3f79d8b489ee",
@@ -375,9 +911,9 @@
       "id": "d5df5530-4b14-4891-b358-bfa88f57bdce",
       "work_item_id": "CONT-FOURIER-001",
       "title": "Compact-support L2 generator and strong derivative",
-      "status": "running",
+      "status": "deferred",
       "submitted_at": "2026-07-13T06:34:25-07:00",
-      "notes": "Focused successor to stalled full graph-domain job 864c1c0d. Task: AgentTasks/afpl-compact-support-l2-generator-aristotle-2026-07-13.md; package: AgentTasks/aristotle-submit/afpl-compact-support-l2-generator-20260713-project. [2026-07-13T09:58:32-07:00 codex] Two-hour stall rule: in-progress snapshot retained all target proof holes; no new compact-support generator theorem harvested. Split into a smaller focused successor. [2026-07-13T09:59:03-07:00 codex] Resubmitted inside existing project as a focused four-lemma finite-dimensional norm/continuity rung; full L2 derivative explicitly deferred. [2026-07-13T11:11:22-07:00 codex] Downloaded completed focused successor. Four finite-dimensional norm/continuity theorems proved and standard-three guarded; seven later MemLp/derivative/witness holes remain. Cross-family review msg-20260713-110830-976eb9a6 pending before any live integration. [2026-07-13T11:11:52-07:00 codex] Focused analytic successor launched: Duhamel multiplier bound, uniform slope domination, and bounded-support genMult MemLp only. Strong derivative and witness remain excluded. [2026-07-13T13:24:15-07:00 codex] Six-hour stall canceled after partial snapshot harvest. Finite-dimensional prefix landed previously; four analytic proof holes remain in draft CompactSupportL2Generator. [2026-07-13T14:43:48-07:00 codex] Continued as focused compact-support witness closure: ballWitness_boundedSupport and ballWitness_ne_zero only, with explicit a.e.-quotient/nonvacuity audit. [2026-07-13T15:40:37-07:00 codex] Closed and guard-pinned both compact ball witness lemmas locally. Canceled obsolete witness task 44c861cb and continued project on Duhamel bound momMult_sub_id_norm_le plus slope_norm_le with updated file. [2026-07-13T18:12:17-07:00 codex] Two-hour task 477b8bff cancelled after snapshot showed both final holes unchanged. Successor task 01d71970 uploaded current live file and targets only orbit_slope_tendsto."
+      "notes": "Focused successor to stalled full graph-domain job 864c1c0d. Task: AgentTasks/afpl-compact-support-l2-generator-aristotle-2026-07-13.md; package: AgentTasks/aristotle-submit/afpl-compact-support-l2-generator-20260713-project. [2026-07-13T09:58:32-07:00 codex] Two-hour stall rule: in-progress snapshot retained all target proof holes; no new compact-support generator theorem harvested. Split into a smaller focused successor. [2026-07-13T09:59:03-07:00 codex] Resubmitted inside existing project as a focused four-lemma finite-dimensional norm/continuity rung; full L2 derivative explicitly deferred. [2026-07-13T11:11:22-07:00 codex] Downloaded completed focused successor. Four finite-dimensional norm/continuity theorems proved and standard-three guarded; seven later MemLp/derivative/witness holes remain. Cross-family review msg-20260713-110830-976eb9a6 pending before any live integration. [2026-07-13T11:11:52-07:00 codex] Focused analytic successor launched: Duhamel multiplier bound, uniform slope domination, and bounded-support genMult MemLp only. Strong derivative and witness remain excluded. [2026-07-13T13:24:15-07:00 codex] Six-hour stall canceled after partial snapshot harvest. Finite-dimensional prefix landed previously; four analytic proof holes remain in draft CompactSupportL2Generator. [2026-07-13T14:43:48-07:00 codex] Continued as focused compact-support witness closure: ballWitness_boundedSupport and ballWitness_ne_zero only, with explicit a.e.-quotient/nonvacuity audit. [2026-07-13T15:40:37-07:00 codex] Closed and guard-pinned both compact ball witness lemmas locally. Canceled obsolete witness task 44c861cb and continued project on Duhamel bound momMult_sub_id_norm_le plus slope_norm_le with updated file. [2026-07-13T18:12:17-07:00 codex] Two-hour task 477b8bff cancelled after snapshot showed both final holes unchanged. Successor task 01d71970 uploaded current live file and targets only orbit_slope_tendsto. [2026-07-16T06:38:44-07:00 claude] Final task 01d71970 reported COMPLETE but the artifact RETAINS exactly one hole: orbit_slope_tendsto (sequential L2 difference-quotient convergence) at CompactSupportL2Generator.lean:229; the capstone momMultL2Isometry_hasDerivAt_zero depends on it; all packaging (genRepr, genMult memLp, coeFn) is proved. Feasibility sketch for resubmission: pointwise quotient convergence from |exp(-itH)-1+itH| <= t^2 opNorm(H)^2/2 + dominated convergence with dominating g(k) = 2 opNorm(H(k,m)) ||f k|| in L2 on bounded support R. CONT-FOURIER-001 owner (codex) decides resubmit-vs-park; fleet at cap now. [2026-07-16T15:16:32-07:00 codex] Final snapshot retains orbit_slope_tendsto; the finite norm/continuity and witness prefix is already banked, but the advertised strong-derivative capstone is not complete. Parked pending a focused dominated-convergence proof after the active GR window."
     },
     {
       "id": "bafdd210-8a19-4030-af30-184c97865756",

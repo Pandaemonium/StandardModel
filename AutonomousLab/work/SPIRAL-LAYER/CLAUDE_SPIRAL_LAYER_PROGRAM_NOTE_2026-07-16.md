@@ -85,26 +85,139 @@ and matter/antimatter orientation spiral."
 | antiparticle | sign flip only | orientation reversal = conjugation [landed] |
 | channel budget share | turn channel (Higgs/Yukawa-facing) | closure channel (gauge/QCD-facing; conjecture C3 below) |
 
-## 4. Running pre-registered wave 2 (submitted + registered 2026-07-16)
+## 4. Wave 2 status (updated 2026-07-16 morning)
 
-- **2A `3b35a00c`** four-cycle Bargmann + exact lune law:
-  tr(P(z)P(u,v,0)P(-z)P(u',v',0)) = conj(u+iv)(u'+iv')/4. KILL: any
-  rational witness violating the formula kills the solid-angle reading of
-  the corner factor (the -1/4 and +1/4 landed witnesses are its endpoints).
-- **2B `469070a8`** massive helix: (Dtot m)^2 = (1+m^2),
-  ladders Clifford-odd, double commutator = 4(1+m^2) (zitter rate 2E
-  exactly). KILL: a different constant in the double commutator kills the
-  "one closed helix at 2E" reading.
-- **2C `058a9901`** all-orders planar CP-inertness: the real subalgebra
-  argument makes EVERY planar history's invariant real, with the handed
-  escape witness. KILL: any planar history with nonreal trace.
+- **2A `3b35a00c` LANDED + INTEGRATED**
+  (`PhysicsSM/Draft/NullEdge/SpinCornerFourCycleAristotle.lean`, 9
+  standard-three guards): the general four-cycle Bargmann identity and the
+  EXACT lune-phase law tr(P(z)P(u,v,0)P(-z)P(u',v',0))
+  = conj(u+iv)(u'+iv')/4; `quarter_turn_corner` = I/4. The 1+1
+  checkerboard corner factor i is now a kernel-checked THEOREM (quarter-
+  turn lune), no longer an input convention; the wave-1 -1/4 and +1/4
+  witnesses are recovered as the half-turn and zero-turn endpoints.
+- **2B `469070a8` LANDED + INTEGRATED**
+  (`PhysicsSM/Draft/NullEdge/ChiralSpiralMassiveAristotle.lean`, 9
+  standard-three guards): the massive helix algebra is exact -
+  (Dtot m)^2 = (1+m^2)*1 (on-shell Clifford square), the transverse
+  ladders anticommute with the FULL massive operator, the massive
+  rotation decomposes as wave-1 free rotation + m*(counter-rotator
+  coupling), the zitter oscillator runs at exactly 2E
+  ([Dtot,[Dtot,A_pm]] = 4(1+m^2) A_pm), and m = 0 recovers wave 1.
+- **2C `058a9901` LANDED + INTEGRATED**
+  (`PhysicsSM/Draft/NullEdge/PlanarCornerRealityAristotle.lean`, 7
+  standard-three guards): all-orders planar CP-inertness
+  (`planar_history_trace_real` by the RealForm real-subalgebra closure +
+  list induction) with the nonplanar escape witness 1/4. Zigzag content is
+  CP-inert at EVERY order; spiraling is necessary for CP-odd phases in
+  this calculus.
+- **4A `74a06ae4` LANDED + INTEGRATED**
+  (`PhysicsSM/Draft/NullEdge/BargmannCocycleAristotle.lean`, 4
+  standard-three guards): the Bargmann cocycle law
+  tr(P(a)P(b)P(c)) tr(P(a)P(c)P(d)) = tr(P(a)P(b)P(c)P(d)) tr(P(a)P(c))
+  with the arg form (positive-real diagonal), degenerate control, and a
+  rational quadrilateral witness. With 3A this closes C1-POLYGON at the
+  ingredient level: diagonal-fan polygon phases are sums of
+  kernel-checked triangle half-solid-angles (fan-induction packaging is
+  a one-lemma cleanup). Bonus (linter-verified): the proof uses only the
+  DIAGONAL unit hypotheses - b, d need not be unit; strengthening pass
+  queued.
+- **3A `9ba69cff` LANDED + INTEGRATED**
+  (`PhysicsSM/Draft/NullEdge/BargmannSolidAngleAristotle.lean`, 4
+  standard-three guards): on Re > 0,
+  arg tr(P(a)P(b)P(c)) = arctan(triple/(1+dots)) - kernel-checked, with
+  octant pi/4 witness, planar-zero control, and reversal-negation. Via
+  the cited Van Oosterom-Strackee formula this CLOSES the C1-triangle
+  gate: the corner phase IS the signed half solid angle (M + one
+  documented [import]). C1 for general polygons remains open (gate:
+  a nonplanar 5-cycle witness or a polygon-decomposition argument).
+
+## 4b. Waves 5-7 (submitted 2026-07-16 morning; ALL LANDED + INTEGRATED
+by 11:15 same day, 0 sorries, statements verbatim 59/59 signatures,
+18 new standard-three guards, builds green)
+
+- **Wave 5 `6a413e71` LANDED + INTEGRATED**
+  (`PhysicsSM/Draft/NullEdge/BargmannFanInductionAristotle.lean`, 6
+  guards) (fan induction, C1-POLYGON packaging):
+  matrix-slot cocycle (the generality the strengthening pass identified),
+  `fan_factorization` (equation form, list induction, no nondegeneracy),
+  `fan_arg` (polygon phase = product of fan-triangle phases), exact
+  nonplanar pentagon witness (9+i)/25 (numerically verified). On landing,
+  C1-polygon closes at the packaged level: polygon phases are sums of
+  kernel-checked triangle half-solid-angles at every n.
+- **Wave 6 `958c6429` LANDED + INTEGRATED**
+  (`BargmannJarlskogToyAristotle.lean`, 7 guards) (two-family Jarlskog
+  toy, C2 second half): jarlskogObs = Im(z_A conj z_B) decomposes exactly as
+  [triple_A(1+dots_B) - triple_B(1+dots_A)]/16 - CP-odd interference is
+  a function of oriented volumes and CP-even dots only, CKM-shaped;
+  CP/swap odd; proper-rotation invariant; both-planar protected;
+  one-planar witness 3/20 (the relative phase is what counts). With the
+  landed 2C planar inertness this completes C2's displayed gate.
+- **Wave 7 `8eb64e1f` LANDED + INTEGRATED**
+  (`CapSquareBerryAristotle.lean`, 5 guards) (cap-square Berry factor,
+  C3 target T1): closed latitude-square invariant = cornerAmp^4 exactly;
+  magnitude ((1+t^2)/2)^4 (equator = the C3-T2 four-corner constant
+  1/16); hemisphere Berry sign -1/4 as kernel fact (cross-checks the
+  wave-1 hairpin -1/4 - same enclosed hemisphere); kink insertion costs
+  exactly one corner factor with phase untouched. The
+  smooth-costs-phase / kinks-cost-magnitude split becomes a finite
+  theorem; C3-T2 (YM1 transfer lemma) unblocks on landing.
+- **C3-T2 transfer module LANDED locally (claude-proved, no Aristotle):**
+  `PhysicsSM/Draft/NullEdge/GateYM/FramedAreaLawTransfer.lean`, 6
+  standard-three guards, build green. Composes the landed
+  strong-coupling area law with a deterministic framing scalar:
+  `framed_wilson_area_law` (framing with norm <= 1 cannot degrade the
+  bound), `framed_wilson_area_law_sharp`/`_strict` (the framing is a
+  pure area-independent prefactor at the SAME string tension), and the
+  perimeter-collapse layer `proj_idem`/`proj_pow_collapse`/
+  `rectangle_sequence_collapse` (constant direction runs contribute no
+  corner factors, so an a x b axis-aligned rectangle's spin factor
+  equals the four-corner square factor for all side lengths - the
+  corner cost depends on the corner set, not the perimeter). Honest
+  composition layer: the character-expansion factorization stays the
+  displayed hypothesis it always was; the exact square value plugs in
+  from wave 7 at its integration.
 
 ## 5. Conjecture ledger (grade C; gates and kill conditions displayed)
+
+STATUS UPDATE (2026-07-16 midday, after waves 5-7 + the T2 transfer
+module): **C1 gate CLOSED at the packaged level** - triangles by 3A
+(arctan law + VOS import), polygons by wave 5 (fan_factorization +
+fan_arg; nonplanar pentagon witness (9+i)/25). **C2 gate COMPLETE** -
+all-orders planar inertness (2C) + the wave-6 two-family toy
+(Jarlskog decomposition, CP/swap/rotation laws, both-planar
+protection, one-planar witness 3/20). **C3 upgraded from C to
+M-anchored**: T1 landed (wave 7: exact z^4 family, hemisphere sign,
+kink penalty) and the T2 transfer layer landed
+(GateYM/FramedAreaLawTransfer: framing preserves the area law at the
+same string tension; rectangle spin factor is side-length-independent).
+C3's remaining displayed content: NONE as of 13:15 - the T2 connector
+landed (framed_rectangle_area_law, exact 1/4 at unchanged tension) and
+T3 landed (`GateYM/KinkAreaCrossover.lean`: the two-projector semigroup
+is one-dimensional, so the k-kink penalty is exactly (1/2)^k with the
+hemisphere sign untouched; the perimeter-vs-area crossover is exactly
+k* = sigma A / log 2; composed k-kinked framed bound
+(1/2)^k (1/4) exp(-sigma A)). **ALL THREE GATES (C1, C2, C3) ARE
+KERNEL-COMPLETE.** The original C-grade rows below are retained for
+provenance; successors (three-family rephasing toy, fan packaging
+lemma) are new preregistrations, not open gates.
 
 - **C1 (solid-angle law, general).** For any spherical corner polygon the
   Bargmann phase is exp(-i Omega/2). GATE: wave 2A plus one nonplanar
   5-cycle witness. KILL: any corner polygon whose kernel-checked phase
   differs from -Omega/2 (mod orientation convention).
+  SHARPENED 2026-07-16: for TRIANGLES the law is already within reach of
+  the landed three-cycle identity via the Van Oosterom-Strackee formula
+  tan(Omega/2) = a.(b x c) / (1 + a.b + b.c + c.a) [import: standard
+  spherical trigonometry, IEEE TBME 1983]: the RHS is EXACTLY Im/Re of the
+  landed tr(P(a)P(b)P(c)), so arg(trace) = signed Omega/2. Two
+  confirmations already kernel-checked: the octant triangle x->y->z has
+  arg((1+i)/4) = pi/4 = half of Omega(octant) = pi/2 (wave-1
+  witness_handed), and the tetrahedral triple's ir/3 matches its frame's
+  solid angle sign. Wave-3 target shape: kernel-check
+  "arg = arctan(triple/(1+dots))" on the Re > 0 domain (M), with the VOS
+  identification documented as the imported bridge to solid angle;
+  obtuse-domain branch care stays displayed. This upgrades C1-triangle
+  from conjecture to an M-target plus one cited import.
 - **C2 (CP-odd = handedness).** Every CP-odd observable of the finite
   corner calculus is a function of oriented-volume invariants
   (Jarlskog-shaped Im-traces); planar content is CP-inert at every order.
@@ -128,7 +241,10 @@ identities; each carries its registry/anchor or its C-grade gate above.
 
 Wave-1 modules: `PhysicsSM/Draft/NullEdge/ChiralSpiralCommutatorAristotle.lean`,
 `SpinCornerBargmannAristotle.lean`, `HairpinLunePhaseAristotle.lean` (all
-integrated; task notes `AgentTasks/*-aristotle-2026-07-14.md`). Wave-2 task
+integrated; task notes `AgentTasks/*-aristotle-2026-07-14.md`; standard-three
+axiom guards backfilled 2026-07-16 - 10 + 10 + 8 = 28 in-file guards, build
+and pre-commit green, so every spiral-layer module now carries build-enforced
+assumption pins). Wave-2 task
 notes: `AgentTasks/spin-corner-four-cycle-aristotle-2026-07-16.md`,
 `chiral-spiral-massive-aristotle-2026-07-16.md`,
 `planar-corner-reality-aristotle-2026-07-16.md`. Program context: the

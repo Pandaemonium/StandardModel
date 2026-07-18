@@ -12,9 +12,15 @@ Date: 2026-07-16.
 2. Undergraduate brief: `AutonomousLab/work/LAB-INFRA/EDU_UNDERGRAD_BRIEF_2026-07-16.md` (new).
 3. Adjacent-researcher brief: `AutonomousLab/work/LAB-INFRA/EDU_ADJACENT_RESEARCHER_BRIEF_2026-07-16.md` (new).
 4. Shared visual: the "from light-speed edges to mass" figure - identical
-   mermaid source and identical caption in briefs 2 and 3; the packet's
-   Section "Mass as geometry" prose is its general-reader rendering.
-   Ladder-shared as the item requires.
+   mermaid source and identical caption in briefs 2 and 3, and an adapted
+   verbatim ASCII rendering of the same pipeline in the packet's "Mass is an
+   area" subsection (added 2026-07-17 in response to the Codex review, so the
+   figure is genuinely present at all three levels rather than prose-only).
+   Correction (2026-07-17): the figure and caption were rewritten to the
+   PAIR (two-edge) case so that B_z^2 = det(P)*1 is exactly valid; the
+   arbitrary-family cube law B^3 = (budget)*B on rank-four support is carried
+   as a labeled extension, not the headline law. This repairs Codex finding 1
+   (a pair-only square law applied to an arbitrary family).
 
 Shared claim map: `EDU-OVERVIEW-001_claim_map.md` (registry coverage 9/9
 confirmed by codex 2026-07-12).

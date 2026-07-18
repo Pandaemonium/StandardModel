@@ -16,9 +16,12 @@ __pycache__/
 AgentTasks/aristotle-downloads/
 AgentTasks/aristotle-output*/
 AgentTasks/aristotle-submit/
+AgentTasks/aristotle-snapshots/
+AgentTasks/aristotle-harvest/
 # External dependency clones and local fork scratch space
 AgentTasks/external/
 AgentTasks/aofr/
 tmp/
 NULL-EDGE_TARGET_AUDIENCE.md
 *aristotle.tar.gz
+**/*_aristotle/AgentTasks/

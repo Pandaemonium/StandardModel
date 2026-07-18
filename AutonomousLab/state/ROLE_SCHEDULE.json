@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "created_at": "2026-07-12T17:45:00-07:00",
-  "updated_at": "2026-07-16T06:21:56-07:00",
+  "updated_at": "2026-07-17T07:14:47-07:00",
   "note": "Durable role-duty schedule. Periodic duties must produce a bounded activation packet and a hashed completion artifact. Event-driven roles are enforced by their corresponding work/review gates.",
   "policies": {
     "research_scientist": {
@@ -78,6 +78,327 @@
     }
   },
   "activations": [
+    {
+      "id": "role-20260717-071328-0e612bd3",
+      "role": "educator",
+      "model": "claude",
+      "model_family": "claude",
+      "status": "completed",
+      "started_at": "2026-07-17T07:13:28-07:00",
+      "due_at": "2026-07-17T09:13:28-07:00",
+      "project_id": null,
+      "work_item_id": null,
+      "packet_path": "AutonomousLab/work/role-activations/role-20260717-071328-0e612bd3_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/role-20260717-071328-0e612bd3_deliverable.md",
+      "note": "",
+      "completed_at": "2026-07-17T07:14:47-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/role-20260717-071328-0e612bd3_deliverable.md",
+        "sha256": "9736740ce0ee968ac547b726f8c32e31a83b941295d0f7bc083006a289ee4436"
+      },
+      "summary": "Educator explainer 'Why four mass-layers cannot make spacetime' - two-level (general + adjacent) misconception-tested account of the landed layer-coherent (2,2) no-go; defuses the 'more layers = more structure = a frame' misconception; grades preserved (M orig KERNEL), registry/module anchored, replay command included. Distinct from EDU-OVERVIEW-001."
+    },
+    {
+      "id": "role-20260717-024533-91c6fdbe",
+      "role": "phenomenologist",
+      "model": "claude",
+      "model_family": "claude",
+      "status": "completed",
+      "started_at": "2026-07-17T02:45:33-07:00",
+      "due_at": "2026-07-17T03:45:33-07:00",
+      "project_id": "NE-GRAVITY-SCALE",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "packet_path": "AutonomousLab/work/role-activations/role-20260717-024533-91c6fdbe_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/role-20260717-024533-91c6fdbe_deliverable.md",
+      "note": "Audit new Hilbert-stress, retarded-series, FMS, and edge-Euler bridges against physical Higgs observability.",
+      "contracted_deliverable_note": "Higgs phenomenology interpretation, observable hierarchy, and falsification gates for the null-edge GR program",
+      "completed_at": "2026-07-17T07:13:14-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/role-20260717-024533-91c6fdbe_deliverable.md",
+        "sha256": "be22393d8505a79616cb361965a03e95e567d1a43775482558297ad2048c7ece"
+      },
+      "summary": "Higgs observable/benchmark card: four-rung ladder (vertex multiplet / gauge-invariant radial composite / finite retarded kernel / continuum pole); O1 mass=8*lam*v^2 (DERIVED form, SUPPLIED lam,v; convention-map gate vs SM 2*lam*v^2 before any numeric); O2 physical Higgs is a composite over causal chains matching FMS (structural asset, three-event witness); O3 stress tensor sources gravity only relative to a frame; O4 mass vs xi degenerate on constant curvature (measurability prediction). No numeric prediction; sector predicts mechanism + measurability structure. Four falsification gates set."
+    },
+    {
+      "id": "role-20260716-210235-588810dd",
+      "role": "lab_manager",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-16T21:02:35-07:00",
+      "due_at": "2026-07-16T22:02:35-07:00",
+      "project_id": "LAB-INFRA",
+      "work_item_id": null,
+      "packet_path": "AutonomousLab/work/role-activations/role-20260716-210235-588810dd_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/role-20260716-210235-588810dd_deliverable.md",
+      "note": "Scheduled manager pass: reconcile GR selector decision, Aristotle harvest, spiral registry pointers, role rotation, and handoff state.",
+      "completed_at": "2026-07-16T21:10:01-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/role-20260716-210235-588810dd_deliverable.md",
+        "sha256": "6623ce0a49641f454e5ee2e32b531b4e5d18c9b887faaef82a411ec618c12af3"
+      },
+      "summary": "Validated the overnight cycle, audited WIP/reviews/roles/incidents/forecasts, triaged proof-fleet noise, preserved the S1 hold, and set exact shell-gate and handoff actions."
+    },
+    {
+      "id": "role-20260716-201927-f0636405",
+      "role": "archivist",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-16T20:19:27-07:00",
+      "due_at": "2026-07-16T21:19:27-07:00",
+      "project_id": "NE-GRAVITY-SCALE",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "packet_path": "AutonomousLab/work/role-activations/role-20260716-201927-f0636405_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/role-20260716-201927-f0636405_deliverable.md",
+      "note": "Build a source and provenance packet for the local 1+3 selector, causal scalar/Higgs propagation, overlap connection, and curvature controls.",
+      "completed_at": "2026-07-16T20:32:33-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/role-20260716-201927-f0636405_deliverable.md",
+        "sha256": "fa14957ecf7d38d67ef1698f46220299d360fc9c198da662c6d1d3889dafde53"
+      },
+      "summary": "Added and full-text indexed causal-overlap distance and scalar-propagator sources, verified the local d'Alembertian and finite-Dirac precedents, identified the BHS no-finite-frame theorem as a load-bearing boundary, and re-scoped the successor to a marked-Alexandrov 1+3 selector."
+    },
+    {
+      "id": "role-20260716-201744-7bde6d09",
+      "role": "superstar",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-16T20:17:44-07:00",
+      "due_at": "2026-07-16T21:17:44-07:00",
+      "project_id": "NE-GRAVITY-SCALE",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "packet_path": "AutonomousLab/work/role-activations/role-20260716-201744-7bde6d09_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/role-20260716-201744-7bde6d09_deliverable.md",
+      "note": "Rank near-term work by scientific impact and information gain after the five-event Lorentz witness and failed top-four spectroscopy.",
+      "completed_at": "2026-07-16T20:19:09-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/role-20260716-201744-7bde6d09_deliverable.md",
+        "sha256": "5daf991152d65d43aeb6a219e7de4e609cf5e0a6a6c9e57b484226e6a4f9c106"
+      },
+      "summary": "Set the honest lede at finite exact Lorentzian inertia plus selector no-gos, graded current impact as reusable toolkit, identified order-only 1+3 convergence as the excitement gate, and recommended one integrated preprint after the frozen selector comparison."
+    },
+    {
+      "id": "role-20260716-200926-1559b0d3",
+      "role": "visionary",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-16T20:09:26-07:00",
+      "due_at": "2026-07-16T21:09:26-07:00",
+      "project_id": "NE-GRAVITY-SCALE",
+      "work_item_id": null,
+      "packet_path": "AutonomousLab/work/role-activations/role-20260716-200926-1559b0d3_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/role-20260716-200926-1559b0d3_deliverable.md",
+      "note": "",
+      "completed_at": "2026-07-16T20:17:15-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/role-20260716-200926-1559b0d3_deliverable.md",
+        "sha256": "47804d0bdb45f74f78f0aa5909e271db0bf39e03d27f391c264f696e3c765490"
+      },
+      "summary": "Ranked a derived local 1+3 selector, overlap connection/curvature convergence, and variational matter closure as the three decisive GR gates; recommended holding top-four confirmation for an exact layer-sign falsifier and 1+3 selector comparison."
+    },
+    {
+      "id": "role-20260716-175950-1feed676",
+      "role": "lab_manager",
+      "model": "claude",
+      "model_family": "claude",
+      "status": "completed",
+      "started_at": "2026-07-16T17:59:50-07:00",
+      "due_at": "2026-07-16T18:59:50-07:00",
+      "project_id": null,
+      "work_item_id": null,
+      "packet_path": "AutonomousLab/work/role-activations/role-20260716-175950-1feed676_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/role-20260716-175950-1feed676_deliverable.md",
+      "note": "",
+      "completed_at": "2026-07-16T18:02:15-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/role-20260716-175950-1feed676_deliverable.md",
+        "sha256": "3caa402289e9198831a65100281f3fb08eaa0c8f7367d192f54b0124100ce8c1"
+      },
+      "summary": "Post-cycle manager pass: claim rows verified live (codex pasted+anchor-confirmed); 159 stale 07-12/13 messages bulk-cancelled with backup + 3 handled 07-16 notices formally completed; validate passes; due queue fully clean (nothing overdue) for the first time."
+    },
+    {
+      "id": "role-20260716-152852-053787fa",
+      "role": "lab_manager",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-16T15:28:52-07:00",
+      "due_at": "2026-07-16T15:43:52-07:00",
+      "project_id": "NE-GRAVITY-SCALE",
+      "work_item_id": "GRAV-GROWING-ATLAS-001",
+      "packet_path": "AutonomousLab/work/role-activations/role-20260716-152852-053787fa_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/role-20260716-152852-053787fa_deliverable.md",
+      "note": "Bounded incident repair: create atomic successor, reassign two live jobs, validate, record incident, regenerate handoff.",
+      "completed_at": "2026-07-16T15:31:05-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/role-20260716-152852-053787fa_deliverable.md",
+        "sha256": "6bd60ea2ea7a67c373e9fcf3a3b922f977f8edffddabd7271202a6cb7483fabb"
+      },
+      "summary": "Contained the GR work-item identity race without rewriting forecast history: recorded incident, superseded the reused R5 identifier, opened atomic GRAV-ORDER-OPERATOR-001, reassigned both live jobs, validated state, and mandated distinct IDs plus transition preconditions."
+    },
+    {
+      "id": "role-20260716-150712-b8de52f5",
+      "role": "visionary",
+      "model": "claude",
+      "model_family": "claude",
+      "status": "completed",
+      "started_at": "2026-07-16T15:07:12-07:00",
+      "due_at": "2026-07-16T16:07:12-07:00",
+      "project_id": null,
+      "work_item_id": null,
+      "packet_path": "AutonomousLab/work/role-activations/role-20260716-150712-b8de52f5_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/role-20260716-150712-b8de52f5_deliverable.md",
+      "note": "",
+      "completed_at": "2026-07-16T15:08:37-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/role-20260716-150712-b8de52f5_deliverable.md",
+        "sha256": "e69342a73df4dfeb5283d2926aef38f7a8277ff289ba1c43bce032eb847da8dd"
+      },
+      "summary": "Vision update on the day's evidence: INVERT the hub reading (hubs = order-intrinsic chart centers; R6 fork = hub-exclusion selector vs annular family, with the branch kill condition displayed); the boundary sweep isolates ONE missing object (order-native operator with graph-derived polynomial certificate) and the bet is the corrected carrier operator's spectral four-cluster on asymmetric sprinklings at beta>=1.25, testable by a preregistered numerical stage before any Lean commitment; spiral lane shifts to export (manuscript + spin-transport layer for the atlas pipeline); process rules renewed."
+    },
+    {
+      "id": "role-20260716-150359-c29f6e45",
+      "role": "lab_manager",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-16T15:03:59-07:00",
+      "due_at": "2026-07-16T15:33:59-07:00",
+      "project_id": "NE-GRAVITY-SCALE",
+      "work_item_id": "GRAV-GROWING-ATLAS-001",
+      "packet_path": "AutonomousLab/work/role-activations/role-20260716-150359-c29f6e45_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/role-20260716-150359-c29f6e45_deliverable.md",
+      "note": "Mandatory manager cycle due 2026-07-16; update only through generated role packet and contract.",
+      "completed_at": "2026-07-16T15:23:47-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/role-20260716-150359-c29f6e45_deliverable.md",
+        "sha256": "27fd1cf4aa0f997f4b7db767f004a933dabd3c26674ae80920fe0d353d84388c"
+      },
+      "summary": "Lab Manager pass reconciled R5 closure into the order-native rank-four operator target, integrated the three SL2C Aristotle returns, deferred the incomplete compact-support derivative job, added and anchor-checked five spiral claims, regenerated the stale handoff, and validated state. Fleet is 2/8 active; surjectivity remains the sole finite spin-cover theorem."
+    },
+    {
+      "id": "role-20260716-122805-36c72602",
+      "role": "archivist",
+      "model": "claude",
+      "model_family": "claude",
+      "status": "completed",
+      "started_at": "2026-07-16T12:28:05-07:00",
+      "due_at": "2026-07-16T13:58:05-07:00",
+      "project_id": null,
+      "work_item_id": null,
+      "packet_path": "AutonomousLab/work/role-activations/role-20260716-122805-36c72602_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/role-20260716-122805-36c72602_deliverable.md",
+      "note": "",
+      "completed_at": "2026-07-16T12:40:40-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/role-20260716-122805-36c72602_deliverable.md",
+        "sha256": "7eedc811a4fcc992a17aa8b8bbb5a17f4d68146f967a1dc2e2420c36d275c670"
+      },
+      "summary": "Archivist pass: DOCUMENT_MAP entry for the spiral-layer program note (14 module anchors); neo4j_doc_search.py API-rename fix + headless Neo4j start + background re-ingest; provenance spot-audit of all new modules/artifacts PASS; seed and job identifier health verified; four debt items flagged."
+    },
+    {
+      "id": "role-20260716-122430-35ac2d07",
+      "role": "superstar",
+      "model": "claude",
+      "model_family": "claude",
+      "status": "completed",
+      "started_at": "2026-07-16T12:24:30-07:00",
+      "due_at": "2026-07-16T13:54:30-07:00",
+      "project_id": null,
+      "work_item_id": null,
+      "packet_path": "AutonomousLab/work/role-activations/role-20260716-122430-35ac2d07_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/role-20260716-122430-35ac2d07_deliverable.md",
+      "note": "",
+      "completed_at": "2026-07-16T12:28:18-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/role-20260716-122430-35ac2d07_deliverable.md",
+        "sha256": "614a2a25783c8350f8a48166bf3a474fd36221419137f500f7b86437734536bf"
+      },
+      "summary": "Portfolio impact assessment: spiral answer + R4/R4-D/R5 methods arc ranked as top external assets; P1 R5 execution, P2 spiral manuscript skeleton, P3 registry rows, P4 EDU refresh; standing rule proposed - gate-free consumed-seed certificate diagnostic before any fresh-seed successor after mechanism-ambiguous outcomes."
+    },
+    {
+      "id": "role-20260716-121337-22cd8068",
+      "role": "visionary",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-16T12:13:37-07:00",
+      "due_at": "2026-07-16T13:13:37-07:00",
+      "project_id": "NE-GRAVITY-SCALE",
+      "work_item_id": "GRAV-GROWING-ATLAS-001",
+      "packet_path": "AutonomousLab/work/role-activations/role-20260716-121337-22cd8068_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/role-20260716-121337-22cd8068_deliverable.md",
+      "note": "",
+      "completed_at": "2026-07-16T12:15:48-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/role-20260716-121337-22cd8068_deliverable.md",
+        "sha256": "ff27ba07f5afe4d462155923810b0fe6831debe853d07e97ccac04ca3d9fb124"
+      },
+      "summary": "Ranked three decisive gates: graph-native spectral projector/no-canonicity; protected-overlap cocycle and spin lift; one common refinement family for curvature, matter, and Einstein dynamics. Recommended ending R5 at its frozen decision and opening a separate projector child only on viability."
+    },
+    {
+      "id": "role-20260716-120248-2a8650e3",
+      "role": "lab_manager",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-16T12:02:48-07:00",
+      "due_at": "2026-07-16T13:02:48-07:00",
+      "project_id": "NE-GRAVITY-SCALE",
+      "work_item_id": "GRAV-GROWING-ATLAS-001",
+      "packet_path": "AutonomousLab/work/role-activations/role-20260716-120248-2a8650e3_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/role-20260716-120248-2a8650e3_deliverable.md",
+      "note": "",
+      "completed_at": "2026-07-16T12:08:40-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/role-20260716-120248-2a8650e3_deliverable.md",
+        "sha256": "f8fbd7719e241eac85af3c2146a64f8be4f640985f49835088e65637bbf908bd"
+      },
+      "summary": "Validated state and WIP limits; hardened immutable AgentTasks JSON against mutating hooks while retaining check-json; recorded R3/R4-D incidents, review debt, fleet idleness, forecasts, and next controls."
+    },
+    {
+      "id": "role-20260716-091223-1221cf43",
+      "role": "visionary",
+      "model": "claude",
+      "model_family": "claude",
+      "status": "completed",
+      "started_at": "2026-07-16T09:12:23-07:00",
+      "due_at": "2026-07-16T10:12:23-07:00",
+      "project_id": null,
+      "work_item_id": null,
+      "packet_path": "AutonomousLab/work/role-activations/role-20260716-091223-1221cf43_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/role-20260716-091223-1221cf43_deliverable.md",
+      "note": "",
+      "completed_at": "2026-07-16T09:13:25-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/role-20260716-091223-1221cf43_deliverable.md",
+        "sha256": "2e2189d62822359af1f5b767e22f22dc98c9581b564db50a59f85279877bcba4"
+      },
+      "summary": "Visionary rotation: post-six-stage frontier synthesis. Recommended ladder: R3 saturation law -> growing atlas gated on NERVE structure (connectivity/bounded multiplicity as charts shrink) -> transition functions BEFORE tetrads (classify overlap differences, never postulate frames - honors the decorations guardrail, has a clean unboundedness kill) -> spin transport on the nerve via the banked spiral corner calculus (Bargmann holonomies + solid-angle law as the exact finite curvature dictionary; wave-4A cocycle as the composition rule) - the first formal meeting point of the GR lane and the spiral layer. G2/dynamics stay closed at every rung; five kills stand as scoped."
+    },
+    {
+      "id": "role-20260716-085313-77cbc60d",
+      "role": "lab_manager",
+      "model": "claude",
+      "model_family": "claude",
+      "status": "completed",
+      "started_at": "2026-07-16T08:53:13-07:00",
+      "due_at": "2026-07-16T09:53:13-07:00",
+      "project_id": null,
+      "work_item_id": null,
+      "packet_path": "AutonomousLab/work/role-activations/role-20260716-085313-77cbc60d_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/role-20260716-085313-77cbc60d_deliverable.md",
+      "note": "",
+      "completed_at": "2026-07-16T09:02:29-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/role-20260716-085313-77cbc60d_deliverable.md",
+        "sha256": "8a95ba97c5796998b4077e59ce05c2f97719e101f8325976fa95f8a4002e9191"
+      },
+      "summary": "Lab Manager rotation pass: GR successor chain landed (GRAV-GROWING-ATLAS-001 SPECIFIED behind codex's PREREGISTERED scaling item; my duplicate removed pre-validation), five SPIRAL claim rows added to CLAIMS.json (codex confirmation pending), R3 pre-run audit APPROVE with mandatory MP1 notation pin, ops report with WIP/review/fleet/incident/forecast state and next actions in dependency order. Validation PASS after every mutation."
+    },
     {
       "id": "role-20260716-062012-b30a2d0f",
       "role": "educator",

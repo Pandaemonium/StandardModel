@@ -539,3 +539,48 @@ the trusted namespace yet.
   memo (`Sources/Ontology_extensions.md`, integrated), and five
   Letter-caliber publication outlines
   (`Sources/Null_Edge_Publication_Outlines_2026-07-07.md`).
+
+## 11. The spiral layer (2026-07-16 update)
+
+The founding question - does mass zig-zag or spiral? - is now answered
+exactly at the finite level, with every statement kernel-checked and
+build-guard-pinned (fifteen modules under `PhysicsSM/Draft/NullEdge/`,
+~100 standard-three axiom guards; program note
+`AutonomousLab/work/SPIRAL-LAYER/CLAUDE_SPIRAL_LAYER_PROGRAM_NOTE_2026-07-16.md`;
+manuscript skeleton
+`Sources/Null_Edge_Spiral_Layer_Manuscript_Skeleton_2026-07-16.md`).
+
+- **The split (M, [orig]):** the mass MAGNITUDE is orientation-blind
+  and per-corner maximal on hairpins - the zigzag reading is correct
+  for magnitude; the PHASE, spin transport, and matter/antimatter
+  conjugation live entirely in oriented content - the spiral reading is
+  correct for everything oriented.
+- **The checkerboard corner factor `i` is a THEOREM** (quarter-turn
+  lune; exact lune-phase law), no longer an input convention
+  (`SpinCornerFourCycleAristotle`).
+- **Corner phases are half solid angles** at every polygon order:
+  triangle law (arctan form + one documented Van Oosterom-Strackee
+  import) plus matrix-slot cocycle plus fan induction
+  (`BargmannSolidAngle/BargmannCocycle/BargmannFanInduction`); exact
+  nonplanar pentagon witness `(9+i)/25`.
+- **CP-odd = oriented volume** (two-family Jarlskog decomposition,
+  CP/swap/rotation laws, both-planar protection, one-planar witness
+  3/20); zigzag content is CP-inert at ALL orders
+  (`PlanarCornerRealityAristotle`, `BargmannJarlskogToyAristotle`).
+- **Closure costs:** smooth loops cost only phase (cap-square family
+  exactly `cornerAmp^4`; hemisphere Berry sign `-1/4` as kernel fact),
+  kinks cost magnitude (exact single-corner insertion penalty); the
+  framed Wilson rectangle inherits the landed strong-coupling area law
+  at UNCHANGED string tension with the exact side-length-independent
+  corner constant 1/4
+  (`CapSquareBerryAristotle`, `GateYM/FramedAreaLawTransfer`).
+- **The crossover, exactly (T3, landed same day):** the two-projector
+  semigroup is one-dimensional, so the k-kink penalty is exactly
+  `(1/2)^k` with the hemisphere sign untouched; the perimeter-vs-area
+  crossover is `k* = sigma A / log 2` as an iff; composed k-kinked
+  framed bound `(1/2)^k (1/4) exp(-sigma_R A)` at unchanged tension
+  (`GateYM/KinkAreaCrossover.lean`). ALL THREE GATES (C1, C2, C3)
+  KERNEL-COMPLETE as of 2026-07-16.
+- **Not claimed:** continuum limits, Lorentz recovery, physical
+  Yukawa/CKM/QCD values. Open successors: three-family rephasing toy
+  (C-grade, gate to be preregistered); fan packaging lemma (cosmetic).

@@ -21,6 +21,8 @@ formalization from Pauli projector algebra.  Aristotle project
 `0e4a3f50-4bad-4d01-ae49-32c6cef117b5` supplied the proof bodies; they were
 reviewed against the unchanged standalone statements and checked locally
 with the pinned Lean toolchain on 2026-07-14.
+Standard-three axiom guards backfilled 2026-07-16 to match the wave-2
+integration pattern.
 -/
 
 namespace PhysicsSM.Draft.NullEdge.HairpinLunePhase
@@ -84,3 +86,37 @@ theorem hairpin_magnitude :
   norm_num
 
 end PhysicsSM.Draft.NullEdge.HairpinLunePhase
+
+/-! ## Build-enforced assumption-footprint guards (backfilled 2026-07-16) -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.HairpinLunePhase.Pz_idem' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.HairpinLunePhase.Pz_idem
+
+/-- info: 'PhysicsSM.Draft.NullEdge.HairpinLunePhase.Px_idem' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.HairpinLunePhase.Px_idem
+
+/-- info: 'PhysicsSM.Draft.NullEdge.HairpinLunePhase.hairpin_annihilation' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.HairpinLunePhase.hairpin_annihilation
+
+/-- info: 'PhysicsSM.Draft.NullEdge.HairpinLunePhase.bend_trace' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.HairpinLunePhase.bend_trace
+
+/-- info: 'PhysicsSM.Draft.NullEdge.HairpinLunePhase.bend_trace_return' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.HairpinLunePhase.bend_trace_return
+
+/-- info: 'PhysicsSM.Draft.NullEdge.HairpinLunePhase.hairpin_pair_trace' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.HairpinLunePhase.hairpin_pair_trace
+
+/-- info: 'PhysicsSM.Draft.NullEdge.HairpinLunePhase.backtrack_pair_trace' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.HairpinLunePhase.backtrack_pair_trace
+
+/-- info: 'PhysicsSM.Draft.NullEdge.HairpinLunePhase.hairpin_magnitude' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.HairpinLunePhase.hairpin_magnitude

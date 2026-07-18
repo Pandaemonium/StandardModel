@@ -483,13 +483,34 @@ guard-pinned as described in Section~\ref{sec:method}.
 
 \subsection{Mass is an area (\Kernel)}
 
-The determinant identity $\det P=\sum_{i<j}|\psi_i\wedge\psi_j|^2$ and the
-rest-operator law $B_z^2=\det(P)\,\mathbf 1$: the program's conceptual
-anchor.  The squared rest mass of a bundle of light-speed constituents is
-exactly the summed squared areas between their spinor pairs, and the mass
-term of the resulting Dirac walk is built from that area, not inserted by
-hand.  A companion theorem generalizes the governing \emph{cube law}
-$B^3=\mu^2 B$ to any number of constituents.
+The determinant identity $\det P=\sum_{i<j}|\psi_i\wedge\psi_j|^2$ holds for
+any finite family of light-speed constituents.  For a \emph{pair} of edges
+the rest operator obeys the scalar law $B_z^2=\det(P)\,\mathbf 1$, so the
+squared rest mass of the pair is exactly the squared area between their two
+spinors, and the mass term of the resulting Dirac walk is built from that
+area, not inserted by hand.  For an arbitrary family the governing statement
+is instead the \emph{cube law} $B^3=\mu^2 B$ on a rank-four support block;
+the scalar square is the two-edge ($n=2$) specialization, not the general
+law.
+
+The same pipeline appears as the shared figure in the undergraduate and
+adjacent-researcher briefs:
+
+\begin{verbatim}
+  psi_1, psi_2         two spinors, one per light-speed edge (a PAIR)
+      |
+      v
+  P = psi_1 psi_1* + psi_2 psi_2*    (2x2 momentum matrix of the edge pair)
+      |
+      v
+  det P = |psi_1 wedge psi_2|^2      [KERNEL]
+      |
+      v
+  B_z^2 = det(P) * 1                 [KERNEL, pair case]
+      |
+      v
+  mass term of the finite Dirac walk, built FROM the area
+\end{verbatim}
 
 \subsection{Null edges do not age (\Kernel)}
 
@@ -567,7 +588,7 @@ to a full group isomorphism, and the target proved equal to the standard
 special-unitary group of the mathematical library.  Around it, the
 one-generation package, the $\mathbb{Z}_6$ kernel computation, and the
 two-sided stabilizer characterization on the exceptional Jordan algebra
-give the octonion--Standard-Model literature its first machine-verified
+give the octonion--Standard-Model literature a machine-verified
 common core.
 
 \subsection{Chiral fermions on the regulator (\Kernel, draft lane)}

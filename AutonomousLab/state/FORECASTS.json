@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-07-16T06:06:45-07:00",
+  "updated_at": "2026-07-16T15:27:18-07:00",
   "note": "Auto-appended by labctl transition on first entry to INTEGRATED/RELEASED (success) or KILLED/RETRACTED (failure). Scored at the monthly metascience review; entries are never edited retroactively.",
   "entries": [
     {
@@ -98,6 +98,54 @@
       "resolved_status": "KILLED",
       "resolved_at": "2026-07-16T06:06:45-07:00",
       "recorded_by": "codex/research_scientist"
+    },
+    {
+      "item_id": "GRAV-LOCAL-CARRIER-001",
+      "forecast_success": 0.35,
+      "outcome": "failure",
+      "resolved_status": "KILLED",
+      "resolved_at": "2026-07-16T06:32:35-07:00",
+      "recorded_by": "codex/lab_manager"
+    },
+    {
+      "item_id": "GRAV-NESTED-GERM-001",
+      "forecast_success": 0.42,
+      "outcome": "failure",
+      "resolved_status": "KILLED",
+      "resolved_at": "2026-07-16T07:05:20-07:00",
+      "recorded_by": "codex/lab_manager"
+    },
+    {
+      "item_id": "GRAV-ATLAS-COVERAGE-001",
+      "forecast_success": 0.38,
+      "outcome": "failure",
+      "resolved_status": "KILLED",
+      "resolved_at": "2026-07-16T07:49:33-07:00",
+      "recorded_by": "codex/research_scientist"
+    },
+    {
+      "item_id": "GRAV-ATLAS-PACKING-001",
+      "forecast_success": 0.62,
+      "outcome": "failure",
+      "resolved_status": "KILLED",
+      "resolved_at": "2026-07-16T08:46:39-07:00",
+      "recorded_by": "codex/research_scientist"
+    },
+    {
+      "item_id": "GRAV-ATLAS-SCALING-001",
+      "forecast_success": 0.68,
+      "outcome": "success",
+      "resolved_status": "INTEGRATED",
+      "resolved_at": "2026-07-16T09:40:07-07:00",
+      "recorded_by": "codex/research_scientist"
+    },
+    {
+      "item_id": "GRAV-GROWING-ATLAS-001",
+      "forecast_success": 0.35,
+      "outcome": "failure",
+      "resolved_status": "KILLED",
+      "resolved_at": "2026-07-16T15:27:18-07:00",
+      "recorded_by": "codex/lab_manager"
     }
   ]
 }

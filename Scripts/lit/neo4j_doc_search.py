@@ -445,7 +445,7 @@ def ingest(
                     dev = _device()
                     print(f"loading {MODEL_NAME} on {dev} ...", flush=True)
                     model = SentenceTransformer(MODEL_NAME, device=dev)
-                    if int(model.get_embedding_dimension()) != EMB_DIM:
+                    if int(model.get_sentence_embedding_dimension()) != EMB_DIM:
                         raise SystemExit("embedding dim mismatch; update EMB_DIM")
 
                 vecs = model.encode(

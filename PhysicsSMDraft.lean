@@ -110,6 +110,7 @@ import PhysicsSM.Draft.NullEdge.IntrinsicProbeSubspace
 import PhysicsSM.Draft.NullEdge.ProbeFrameLorentzGauge
 import PhysicsSM.Draft.NullEdge.RetardedProbeSupportGate
 import PhysicsSM.Draft.NullEdge.RetardedShellInfraredNoGo
+import PhysicsSM.Draft.NullEdge.MarkedAlexandrovShellInertia
 import PhysicsSM.Draft.NullEdge.U1HistoryClosureHolonomy
 import PhysicsSM.Draft.NullEdge.EqualMagnitudePhaseInterferometer
 import PhysicsSM.Draft.NullEdge.NonabelianHistoryClosureHolonomy
@@ -517,6 +518,34 @@ import PhysicsSM.Draft.NullEdge.GraphPlaquetteCurvatureLimit
 import PhysicsSM.Draft.NullEdge.TrigonometricHolonomyCurvatureLimit
 import PhysicsSM.Draft.NullEdge.FiniteGravityConservation
 import PhysicsSM.Draft.NullEdge.StressEnergyPhysicalControls
+import PhysicsSM.Draft.NullEdge.FiniteMatterWeightVariation
+import PhysicsSM.Draft.NullEdge.GeometryWeightedHiggsFunctional
+import PhysicsSM.Draft.NullEdge.UnitaryHiggsLink
+import PhysicsSM.Draft.NullEdge.HiggsVacuumMassSeparation
+import PhysicsSM.Draft.NullEdge.HiggsRadialCurvature
+import PhysicsSM.Draft.NullEdge.HiggsHilbertStress
+import PhysicsSM.Draft.NullEdge.HiggsFMSRadialObservable
+import PhysicsSM.Draft.NullEdge.HiggsGaugeInvariantRetardedPropagation
+import PhysicsSM.Draft.NullEdge.HiggsVacuumStress
+import PhysicsSM.Draft.NullEdge.HiggsMassiveRetardedPropagation
+import PhysicsSM.Draft.NullEdge.HiggsEdgeEulerOperator
+import PhysicsSM.Draft.NullEdge.HiggsMeasuredMassRetardedSeries
+import PhysicsSM.Draft.NullEdge.HiggsCurvatureMassIdentifiability
+import PhysicsSM.Draft.NullEdge.HiggsCurvatureConventionBridge
+import PhysicsSM.Draft.NullEdge.HiggsCurvedStrictPastPropagation
+import PhysicsSM.Draft.NullEdge.HiggsStrictPastMeasuredResolvent
+import PhysicsSM.Draft.NullEdge.HiggsGaugeInvariantMeasuredPropagation
+import PhysicsSM.Draft.NullEdge.HiggsGaugeInvariantCurvedPropagation
+import PhysicsSM.Draft.NullEdge.HiggsCurvatureActionResponse
+import PhysicsSM.Draft.NullEdge.HiggsStrictPastCausalSupport
+import PhysicsSM.Draft.NullEdge.HiggsTangentDecomposition
+import PhysicsSM.Draft.NullEdge.HiggsDoubletRadialCurvature
+import PhysicsSM.Draft.NullEdge.AnchoredHiggsDerivativeExtractor
+import PhysicsSM.Draft.NullEdge.DualFrameHiggsRecovery
+import PhysicsSM.Draft.NullEdge.HiggsCoframeFirstVariation
+import PhysicsSM.Draft.NullEdge.HiggsLocalStressResponse
+import PhysicsSM.Draft.NullEdge.ShellAngularDualRecovery
+import PhysicsSM.Draft.NullEdge.MarkedAlexandrovHiggsFrameBridge
 import PhysicsSM.Draft.NullEdge.HomogeneousScalarStressVariation
 import PhysicsSM.Draft.NullEdge.DiagonalScalarGradientStressVariation
 import PhysicsSM.Draft.NullEdge.ADMShiftScalarFluxVariation
@@ -599,6 +628,8 @@ import PhysicsSM.Draft.NullEdgeP9CausalSupportBound
 import PhysicsSM.Draft.NullEdgeP9RetardedNilpotentReach
 import PhysicsSM.Draft.NullEdgeP9EdgeNeighborReach
 import PhysicsSM.Draft.NullEdgeP9RetardedGreenSeries
+import PhysicsSM.Draft.NullEdge.FiniteStrictPastKernelMatrix
+import PhysicsSM.Draft.NullEdge.MassiveRetardedLinkSeries
 import PhysicsSM.Draft.NullEdgeP9SelectedSectorTraceDensity
 import PhysicsSM.Draft.NullEdgeP9BlockAliasingGuardrail
 import PhysicsSM.Draft.NullEdgeP9OffsetWindowGuardrail
@@ -969,9 +1000,9 @@ import PhysicsSM.Draft.NullEdge.FiniteKernelPathExtraction
 import PhysicsSM.Draft.NullEdge.HiggsRetardedPathSemantics
 import PhysicsSM.Draft.NullEdge.FiniteDiagonalCausalResolvent
 import PhysicsSM.Draft.NullEdge.FiniteDiagonalCausalSupport
-import PhysicsSM.Draft.NullEdge.HiggsDoubletRadialCurvature
-import PhysicsSM.Draft.NullEdge.Johnston4DLightconeDelta
 import PhysicsSM.Draft.NullEdge.Johnston3Plus1ScalarNormalization
+import PhysicsSM.Draft.NullEdge.Johnston4DLightconeDelta
+import PhysicsSM.Draft.NullEdge.GRFoundations
 
 /-!
 # PhysicsSM draft root

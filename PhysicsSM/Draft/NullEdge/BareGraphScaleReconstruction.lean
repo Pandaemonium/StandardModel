@@ -8,9 +8,16 @@ the null-edge GR program.
 
 The bare finite relation supplies relabeling orbits. A positive scalar field
 that is invariant under relation automorphisms remains invariant after every
-positive global rescaling, so relabeling invariance alone cannot select an
-absolute normalization. On a vertex-transitive relation it cannot even select
+positive global rescaling, so relabeling invariance alone leaves a complete
+rescaling ray admissible. On a vertex-transitive relation it cannot even select
 an inhomogeneous invariant scalar field.
+
+The sharper identifiability statement is observation-theoretic. If a
+nontrivial positive rescaling changes a physical target by Weyl weight one but
+leaves the bare observation unchanged, no function of that observation can
+reconstruct the target exactly on both realizations. This is the precise
+absolute-scale no-go: it uses indistinguishability under the forgetful
+bare-graph observation, not relabeling invariance by itself.
 
 Event number supplies volume only after a density calibration `density` is
 specified: `countingVolume density n = n / density`. Distinct positive
@@ -76,9 +83,10 @@ theorem graphInvariant_constant_of_vertexTransitive
     s x = s (T x) := (hs T hT x).symm
     _ = s y := congrArg s hxy
 
-/-- **Bare-graph scale no-go.** Any positive graph-invariant scale belongs to
-a nontrivial positive rescaling family. Relation invariance therefore cannot
-select its absolute normalization. -/
+/-- Any positive graph-invariant scale belongs to a nontrivial positive
+rescaling family. This records closure of the admissible invariant data under
+global rescaling; the observation-level no-go below supplies the stronger
+nonidentifiability conclusion. -/
 theorem bareGraphScale_rescaling_ray
     [Nonempty V] (R : V -> V -> Prop) (s : V -> Real)
     (hs : GraphInvariant R s) (hpos : ∀ x, 0 < s x)
@@ -95,6 +103,55 @@ theorem bareGraphScale_rescaling_ray
   apply hne
   apply mul_right_cancel₀ hsne
   simpa using hx
+
+/-! ## Absolute-scale identifiability boundary -/
+
+/-- An estimator reconstructs a scalar target exactly when applying it to the
+observable data of every realization returns that realization's target. -/
+def ExactScalarReconstruction
+    {X O : Type*} (observe : X -> O) (target : X -> Real)
+    (estimate : O -> Real) : Prop :=
+  forall x, estimate (observe x) = target x
+
+/-- **Hidden-rescaling no-go.** Suppose a nontrivial positive global
+rescaling leaves the observable data unchanged while a positive physical
+target has Weyl weight one. No estimator using only that observable can
+reconstruct the target exactly on all realizations.
+
+For the GR program, `X` may be a class of continuum or decorated realizations,
+`O` their bare finite-relation observations, and `target` a physical length.
+The theorem does not assume that such a realization map has already been
+derived; rather, it states the exact gate that any claimed bare-graph absolute
+scale reconstruction must defeat. -/
+theorem no_exact_scalar_reconstruction_of_hidden_rescaling
+    {X O : Type*}
+    (observe : X -> O) (target : X -> Real)
+    (rescale : Real -> X -> X) (x : X) (lambda : Real)
+    (hlambdaPos : 0 < lambda) (hlambdaNe : lambda ≠ 1)
+    (hhidden : observe (rescale lambda x) = observe x)
+    (hweight : target (rescale lambda x) = lambda * target x)
+    (htarget : 0 < target x) :
+    Not (Exists fun estimate : O -> Real =>
+      ExactScalarReconstruction observe target estimate) := by
+  intro hexists
+  obtain ⟨estimate, hexact⟩ := hexists
+  have hsame : target (rescale lambda x) = target x := by
+    calc
+      target (rescale lambda x) = estimate (observe (rescale lambda x)) :=
+        (hexact (rescale lambda x)).symm
+      _ = estimate (observe x) := congrArg estimate hhidden
+      _ = target x := hexact x
+  have hrescaledPos : 0 < target (rescale lambda x) := by
+    rw [hweight]
+    exact mul_pos hlambdaPos htarget
+  have htargetNe : target x ≠ 0 := by
+    rw [← hsame]
+    exact hrescaledPos.ne'
+  have hmul : lambda * target x = 1 * target x := by
+    rw [← hweight, hsame]
+    simp
+  apply hlambdaNe
+  exact mul_right_cancel₀ htargetNe hmul
 
 /-! ## Count-volume calibration -/
 
@@ -240,6 +297,24 @@ theorem calibrated_count_fixes_positive_conformal_scale
 
 /-! ## Nonvacuity controls -/
 
+/-- A constant observation of real-valued realizations cannot recover the
+identity target when multiplication by two is observationally invisible. This
+is an explicit witness for every hypothesis of the hidden-rescaling no-go. -/
+theorem hidden_rescaling_no_go_nonvacuous_witness :
+    Not (Exists fun estimate : Unit -> Real =>
+      ExactScalarReconstruction (fun _ : Real => Unit.unit)
+        (fun y : Real => y) estimate) := by
+  apply no_exact_scalar_reconstruction_of_hidden_rescaling
+    (observe := fun _ : Real => Unit.unit)
+    (target := fun y : Real => y)
+    (rescale := fun r y : Real => r * y)
+    (x := 1) (lambda := 2)
+  · norm_num
+  · norm_num
+  · rfl
+  · norm_num
+  · norm_num
+
 /-- A two-vertex bare relation has a genuine positive rescaling family. -/
 theorem bareGraphScale_nonvacuous_witness :
     ∃ s' : Fin 2 -> Real,
@@ -261,6 +336,10 @@ theorem countingVolume_calibration_witness :
   norm_num [countingVolume]
 
 /-! ## Build-enforced assumption-footprint guards -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.BareGraphScaleReconstruction.no_exact_scalar_reconstruction_of_hidden_rescaling' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.BareGraphScaleReconstruction.no_exact_scalar_reconstruction_of_hidden_rescaling
 
 /-- info: 'PhysicsSM.Draft.NullEdge.BareGraphScaleReconstruction.bareGraphScale_rescaling_ray' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in

@@ -1,0 +1,65 @@
+{
+  "acquired_at": "2026-07-16T18:11:01.329682+00:00",
+  "completed_at": "2026-07-16T18:11:46.962277+00:00",
+  "guard_sha256": "d6364ee0443513254e16d0d0077f8d8b4bae360e78614049e8fa9aacd8680f16",
+  "implementation_sha256": "b73b367073e4dbf38eac16f216e946fb6d3f67a8c1765760779ba9b2983ef553",
+  "imported_r4_source_sha256": "e88f7b1bd946ffd78632283203ce4923245a274da1728bc101b232c77ff7be59",
+  "output_paths": [
+    "..\\..\\AgentTasks\\causal-growing-atlas-stage-a3f-r4d-diagnostic-2026-07-16.json"
+  ],
+  "output_raw_sha256": {
+    "..\\..\\AgentTasks\\causal-growing-atlas-stage-a3f-r4d-diagnostic-2026-07-16.json": "e39c7886908555317db8c5fddca4eb15f402c6731a331517be20523ea690a13c"
+  },
+  "output_size_bytes": {
+    "..\\..\\AgentTasks\\causal-growing-atlas-stage-a3f-r4d-diagnostic-2026-07-16.json": 26517
+  },
+  "pid": 6160,
+  "plan_sha256": "a6ec0873d838b5140e356b34f3d4a99b522555292ff12e417585fcc34a517ed6",
+  "protocol": {
+    "candidate_ceiling": 4000,
+    "comparators_called": false,
+    "consumed_betas": [
+      0.8,
+      1.0
+    ],
+    "consumed_development_seed": 2026071610,
+    "densities": [
+      6000,
+      12000
+    ],
+    "diagnostic_betas": [
+      0.8,
+      1.0,
+      1.25
+    ],
+    "diagnostic_name": "A3f-R4-D",
+    "duration": 1.0,
+    "gates_evaluated": false,
+    "heldout_seed": 2026071611,
+    "heldout_seed_status": "retired_unconsumed",
+    "independent_trial": false,
+    "maximum_dense_relation_entries": 144024001,
+    "maximum_peak_working_set_bytes": 6442450944,
+    "maximum_realization_seconds": 600.0,
+    "outer_band": [
+      0.9,
+      1.1
+    ],
+    "realizations_per_density": 3,
+    "selectors_called": false
+  },
+  "protocol_sha256": "a6ec0873d838b5140e356b34f3d4a99b522555292ff12e417585fcc34a517ed6",
+  "reviewed_r4_artifact_sha256": "82206d616d9a3c289bc6a173f9f5792086f9a848d110d3b8fee6d6e771740335",
+  "run_nonce": "cc279a95feb0d4e2881717cce2b27c67",
+  "schema_version": 1,
+  "seed": {
+    "development": 2026071610,
+    "heldout": 2026071611,
+    "heldout_status": "retired_unconsumed",
+    "status": "consumed_deterministic_replay"
+  },
+  "sentinel_path": "..\\..\\AgentTasks\\causal-growing-atlas-stage-a3f-r4d-run-sentinel-2026-07-16.json",
+  "status": "completed",
+  "tests_sha256": "2b55afe7151578dd1cca960c2a4ee99a5c5de4f94a891fc2083584bedf5e3505",
+  "work_item": "GRAV-GROWING-ATLAS-001"
+}

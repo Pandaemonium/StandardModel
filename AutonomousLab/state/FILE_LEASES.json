@@ -1,71 +1,191 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-07-16T06:26:12-07:00",
+  "updated_at": "2026-07-17T03:29:40-07:00",
   "note": "Bounded repository-path leases prevent concurrent agents from silently overwriting one another. Paths are normalized repository-relative prefixes. Expired leases are ignored and removed on the next lease acquisition.",
   "leases": [
     {
-      "path": "Scripts/experiments/causal_compact_bracket_carrier.py",
+      "path": "PhysicsSM/Draft/NullEdge/MarkedAlexandrovHiggsFrameBridge.lean",
       "owner_model": "codex",
-      "work_item_id": "GRAV-LOCAL-CARRIER-001",
-      "acquired_at": "2026-07-16T06:13:20-07:00",
-      "expires_at": "2026-07-16T10:13:20-07:00",
-      "note": ""
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "acquired_at": "2026-07-17T01:29:45-07:00",
+      "expires_at": "2026-07-17T03:29:45-07:00",
+      "note": "Bridge marked shell inertia to complex Higgs derivative recovery"
     },
     {
-      "path": "Scripts/experiments/test_causal_compact_bracket_carrier.py",
+      "path": "PhysicsSMDraft.lean",
       "owner_model": "codex",
-      "work_item_id": "GRAV-LOCAL-CARRIER-001",
-      "acquired_at": "2026-07-16T06:13:21-07:00",
-      "expires_at": "2026-07-16T10:13:21-07:00",
-      "note": ""
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "acquired_at": "2026-07-17T01:29:45-07:00",
+      "expires_at": "2026-07-17T03:29:45-07:00",
+      "note": "Add marked Alexandrov Higgs frame bridge import"
     },
     {
-      "path": "AgentTasks/null-edge-causal-compact-bracket-carrier-stage-a3d-plan-2026-07-16.md",
+      "path": "AgentTasks/null-edge-marked-alexandrov-higgs-frame-bridge-2026-07-17.md",
       "owner_model": "codex",
-      "work_item_id": "GRAV-LOCAL-CARRIER-001",
-      "acquired_at": "2026-07-16T06:13:21-07:00",
-      "expires_at": "2026-07-16T10:13:21-07:00",
-      "note": ""
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "acquired_at": "2026-07-17T01:34:44-07:00",
+      "expires_at": "2026-07-17T03:34:44-07:00",
+      "note": "Record shared marked shell Higgs/inertia bridge"
     },
     {
-      "path": "AgentTasks/causal-compact-bracket-carrier-stage-a3d-2026-07-16.json",
+      "path": "AgentTasks/null-edge-finite-strict-past-kernel-matrix-2026-07-17.md",
       "owner_model": "codex",
-      "work_item_id": "GRAV-LOCAL-CARRIER-001",
-      "acquired_at": "2026-07-16T06:13:21-07:00",
-      "expires_at": "2026-07-16T10:13:21-07:00",
-      "note": ""
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "acquired_at": "2026-07-17T01:50:41-07:00",
+      "expires_at": "2026-07-17T03:50:41-07:00",
+      "note": "Record strict-past matrix nilpotence bridge"
     },
     {
-      "path": "AgentTasks/null-edge-causal-compact-bracket-carrier-stage-a3d-benchmark-2026-07-16.md",
+      "path": "PhysicsSM/Draft/NullEdge/FiniteStrictPastKernelMatrix.lean",
       "owner_model": "codex",
-      "work_item_id": "GRAV-LOCAL-CARRIER-001",
-      "acquired_at": "2026-07-16T06:13:21-07:00",
-      "expires_at": "2026-07-16T10:13:21-07:00",
-      "note": ""
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "acquired_at": "2026-07-17T01:50:41-07:00",
+      "expires_at": "2026-07-17T03:50:41-07:00",
+      "note": "Bridge finite strict-past linear operator nilpotence to matrix kernel"
     },
     {
-      "path": "AutonomousLab/work/NE-GRAVITY-SCALE",
+      "path": "PhysicsSM/Draft/NullEdge/HiggsMassiveRetardedPropagation.lean",
       "owner_model": "codex",
-      "work_item_id": "GRAV-LOCAL-CARRIER-001",
-      "acquired_at": "2026-07-16T06:13:21-07:00",
-      "expires_at": "2026-07-16T10:13:21-07:00",
-      "note": ""
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "acquired_at": "2026-07-17T02:14:06-07:00",
+      "expires_at": "2026-07-17T04:14:06-07:00",
+      "note": "Finite Higgs radial-mass retarded propagation capstone"
     },
     {
-      "path": "Sources/Null_Edge_General_Relativity_Framework_Note_2026-07-14.md",
+      "path": "AgentTasks/null-edge-higgs-massive-retarded-propagation-2026-07-17.md",
       "owner_model": "codex",
-      "work_item_id": "GRAV-LOCAL-CARRIER-001",
-      "acquired_at": "2026-07-16T06:13:21-07:00",
-      "expires_at": "2026-07-16T10:13:21-07:00",
-      "note": ""
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "acquired_at": "2026-07-17T02:14:06-07:00",
+      "expires_at": "2026-07-17T04:14:06-07:00",
+      "note": "Task note for finite Higgs radial propagation capstone"
     },
     {
-      "path": "docs/NULLSTRAND.md",
+      "path": "AgentTasks/aristotle-standalone/higgs-fms-radial-observable-20260717",
       "owner_model": "codex",
-      "work_item_id": "GRAV-LOCAL-CARRIER-001",
-      "acquired_at": "2026-07-16T06:19:47-07:00",
-      "expires_at": "2026-07-16T10:19:47-07:00",
-      "note": ""
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "acquired_at": "2026-07-17T02:24:44-07:00",
+      "expires_at": "2026-07-17T04:24:44-07:00",
+      "note": "Gauge-invariant radial FMS observable and correlator algebra"
+    },
+    {
+      "path": "AgentTasks/higgs-fms-radial-observable-aristotle-2026-07-17.md",
+      "owner_model": "codex",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "acquired_at": "2026-07-17T02:24:44-07:00",
+      "expires_at": "2026-07-17T04:24:44-07:00",
+      "note": "Gauge-invariant radial FMS observable and correlator algebra"
+    },
+    {
+      "path": "PhysicsSM/Draft/NullEdge/HiggsFMSRadialObservable.lean",
+      "owner_model": "codex",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "acquired_at": "2026-07-17T02:24:45-07:00",
+      "expires_at": "2026-07-17T04:24:45-07:00",
+      "note": "Gauge-invariant radial FMS observable and correlator algebra"
+    },
+    {
+      "path": "PhysicsSM/Draft/NullEdge/HiggsEdgeEulerOperator.lean",
+      "owner_model": "codex",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "acquired_at": "2026-07-17T02:40:31-07:00",
+      "expires_at": "2026-07-17T04:40:31-07:00",
+      "note": "Finite radial Higgs edge Euler operator and mass lifting"
+    },
+    {
+      "path": "AgentTasks/higgs-edge-euler-operator-aristotle-2026-07-17.md",
+      "owner_model": "codex",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "acquired_at": "2026-07-17T02:40:31-07:00",
+      "expires_at": "2026-07-17T04:40:31-07:00",
+      "note": "Finite radial Higgs edge Euler operator and mass lifting"
+    },
+    {
+      "path": "AgentTasks/aristotle-standalone/higgs-edge-euler-operator-20260717",
+      "owner_model": "codex",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "acquired_at": "2026-07-17T02:40:31-07:00",
+      "expires_at": "2026-07-17T04:40:31-07:00",
+      "note": "Finite radial Higgs edge Euler operator and mass lifting"
+    },
+    {
+      "path": "AgentTasks/null-edge-higgs-vacuum-stress-2026-07-17.md",
+      "owner_model": "codex",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "acquired_at": "2026-07-17T02:46:37-07:00",
+      "expires_at": "2026-07-17T04:46:37-07:00",
+      "note": "Higgs vacuum stress and p=-rho control"
+    },
+    {
+      "path": "PhysicsSM/Draft/NullEdge/HiggsVacuumStress.lean",
+      "owner_model": "codex",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "acquired_at": "2026-07-17T02:46:37-07:00",
+      "expires_at": "2026-07-17T04:46:37-07:00",
+      "note": "Higgs vacuum stress and p=-rho control"
+    },
+    {
+      "path": "AgentTasks/aristotle-standalone/higgs-measured-mass-retarded-series-20260717",
+      "owner_model": "codex",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "acquired_at": "2026-07-17T02:54:35-07:00",
+      "expires_at": "2026-07-17T08:54:35-07:00",
+      "note": "Measured local Higgs mass insertion in finite retarded series"
+    },
+    {
+      "path": "AgentTasks/higgs-measured-mass-retarded-series-aristotle-2026-07-17.md",
+      "owner_model": "codex",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "acquired_at": "2026-07-17T02:54:35-07:00",
+      "expires_at": "2026-07-17T08:54:35-07:00",
+      "note": "Measured local Higgs mass insertion in finite retarded series"
+    },
+    {
+      "path": "PhysicsSM/Draft/NullEdge/HiggsMeasuredMassRetardedSeries.lean",
+      "owner_model": "codex",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "acquired_at": "2026-07-17T02:54:36-07:00",
+      "expires_at": "2026-07-17T08:54:36-07:00",
+      "note": "Measured local Higgs mass insertion in finite retarded series"
+    },
+    {
+      "path": "AgentTasks/aristotle-standalone/higgs-curvature-mass-identifiability-20260717",
+      "owner_model": "codex",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "acquired_at": "2026-07-17T03:15:26-07:00",
+      "expires_at": "2026-07-17T09:15:26-07:00",
+      "note": "Higgs mass versus curvature-coupling identifiability gate"
+    },
+    {
+      "path": "AgentTasks/higgs-curvature-mass-identifiability-aristotle-2026-07-17.md",
+      "owner_model": "codex",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "acquired_at": "2026-07-17T03:15:27-07:00",
+      "expires_at": "2026-07-17T09:15:27-07:00",
+      "note": "Higgs mass versus curvature-coupling identifiability gate"
+    },
+    {
+      "path": "PhysicsSM/Draft/NullEdge/HiggsCurvatureMassIdentifiability.lean",
+      "owner_model": "codex",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "acquired_at": "2026-07-17T03:15:27-07:00",
+      "expires_at": "2026-07-17T09:15:27-07:00",
+      "note": "Higgs mass versus curvature-coupling identifiability gate"
+    },
+    {
+      "path": "PhysicsSM/Draft/NullEdge/HiggsGaugeInvariantRetardedPropagation.lean",
+      "owner_model": "codex",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "acquired_at": "2026-07-17T03:29:40-07:00",
+      "expires_at": "2026-07-17T09:29:40-07:00",
+      "note": "Gauge-invariant FMS radial response composed with finite Higgs retarded propagation"
+    },
+    {
+      "path": "AgentTasks/null-edge-higgs-gauge-invariant-retarded-propagation-2026-07-17.md",
+      "owner_model": "codex",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "acquired_at": "2026-07-17T03:29:40-07:00",
+      "expires_at": "2026-07-17T09:29:40-07:00",
+      "note": "Gauge-invariant FMS radial response composed with finite Higgs retarded propagation"
     }
   ]
 }

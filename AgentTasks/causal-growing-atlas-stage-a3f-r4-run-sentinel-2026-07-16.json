@@ -1,0 +1,72 @@
+{
+  "acquired_at": "2026-07-16T17:27:29.540007+00:00",
+  "completed_at": "2026-07-16T17:29:24.375105+00:00",
+  "implementation_sha256": "e88f7b1bd946ffd78632283203ce4923245a274da1728bc101b232c77ff7be59",
+  "output_paths": [
+    "..\\..\\AgentTasks\\causal-growing-atlas-stage-a3f-r4-development-2026-07-16.json",
+    "..\\..\\AgentTasks\\causal-growing-atlas-stage-a3f-r4-heldout-2026-07-16.json"
+  ],
+  "output_raw_sha256": {
+    "..\\..\\AgentTasks\\causal-growing-atlas-stage-a3f-r4-development-2026-07-16.json": "82206d616d9a3c289bc6a173f9f5792086f9a848d110d3b8fee6d6e771740335",
+    "..\\..\\AgentTasks\\causal-growing-atlas-stage-a3f-r4-heldout-2026-07-16.json": "39b5617a2dd75e50ec2d8cb623a92b6fbc4becd7f273a716cbbbee62b225c0e7"
+  },
+  "output_size_bytes": {
+    "..\\..\\AgentTasks\\causal-growing-atlas-stage-a3f-r4-development-2026-07-16.json": 5428262,
+    "..\\..\\AgentTasks\\causal-growing-atlas-stage-a3f-r4-heldout-2026-07-16.json": 210
+  },
+  "pid": 35196,
+  "plan_sha256": "b69b038de7fdb0072036365dd2758ca4d2deeaf86901c6a5a0853d0760e4f084",
+  "protocol": {
+    "atlas_size_rule": "ceil(2*N^(1/4))",
+    "atlas_sizes": {
+      "12000": 21,
+      "6000": 18
+    },
+    "buffer_radius_multipliers": [
+      0.8,
+      1.0
+    ],
+    "capacity_candidates": [
+      5,
+      8,
+      12
+    ],
+    "densities": [
+      6000,
+      12000
+    ],
+    "development_realizations": 3,
+    "development_seed": 2026071610,
+    "duration": 1.0,
+    "heldout_realizations": 5,
+    "heldout_seed": 2026071611,
+    "maximum_complete_candidates": 4000,
+    "maximum_dense_relation_entries": 144024001,
+    "maximum_edge_density": 0.9,
+    "maximum_peak_working_set_bytes": 6442450944,
+    "maximum_realization_seconds": 600.0,
+    "maximum_refinement_drift": 0.15,
+    "minimum_bulk_coverage": 0.7,
+    "minimum_family_capture": 0.8,
+    "minimum_headroom": 0.02,
+    "minimum_headroom_capture": 0.5,
+    "minimum_repeated_coverage": 0.35,
+    "minimum_triangle_participation": 0.8,
+    "outer_band": [
+      0.9,
+      1.1
+    ],
+    "random_control_draws": 5
+  },
+  "protocol_sha256": "b69b038de7fdb0072036365dd2758ca4d2deeaf86901c6a5a0853d0760e4f084",
+  "run_nonce": "602a0359be67e6cbd517a2991e22c504",
+  "schema_version": 1,
+  "seed": {
+    "development": 2026071610,
+    "heldout": 2026071611
+  },
+  "sentinel_path": "..\\..\\AgentTasks\\causal-growing-atlas-stage-a3f-r4-run-sentinel-2026-07-16.json",
+  "status": "completed",
+  "tests_sha256": "dbaf4099b558b4ded03bb7708eae9a1dbfac2a8a5367a0074c944f64b6a9e22a",
+  "work_item": "GRAV-GROWING-ATLAS-001"
+}

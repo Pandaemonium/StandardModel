@@ -77,6 +77,117 @@ fail. Do not retune its caps. The next mechanism must separate an outer compact
 regulator from a buffered inner evaluation region. See
 `AgentTasks/null-edge-causal-compact-bracket-carrier-stage-a3d-benchmark-2026-07-16.md`.
 
+Stage A3e then separates the outer regulator from the inner germ and freezes
+two analytically admissible count-buffer ratios, `B=24` and `B=32`, before a
+five-realization `N=9600` run. The finite nesting calculus itself is exact:
+`AlexandrovNestedGerm.lean` proves carrier inclusion, induced-count and
+zero-extended layered-operator compatibility, and additive transport of
+protected-core depth across the endpoint buffer. The frozen selector is not
+available in the random orders: only one of 40 sampled marks has any `B=32`
+bracket, none has a nested `B=24` bracket, and Phase 2 is not reached. Kill the
+fixed symmetric buffer bands and exact-minimum orbit selector. Do not rescue
+them with a larger diamond, capable-mark selection, or retuning. A successor
+must select an order-only outer atlas, then distinguish its probe-data region,
+protected evaluation core, and row-source support. Row sources need not also
+be evaluation centers. Preregister the analytic typical-event core coverage
+before fixing the finite diamond or gate; the A3e two-sided depth target alone
+has ideal flat protected fractions `7.545%` at `B=24` and `3.580%` at
+`B=32`, before selector and finite-count losses. See
+`AgentTasks/null-edge-causal-nested-regulator-germ-stage-a3e-benchmark-2026-07-16.md`.
+
+Stages A3f-R1 and A3f-R2 test the resulting outer-first atlas. Uniform
+`K=16` sampling is killed by correlated placement: 29 of 30 atlases have all
+120 core pairs overlapping, and measured union coverage is about half the
+independent-placement diagnostic. The order-equivariant greedy successor is
+positively retained. `GreedyAtlasCoverage.lean` kernel-checks its average-
+marginal and exact finite-factor guarantees, and the held-out selector captures
+`95.6%` to `99.7%` of the complete-family union with connected overlaps. The
+two-density stage still fails because the complete family misses its low-
+density feasibility floor. At the only absolute-passing cell, even complete
+union minus uniform is `0.0953`, so the frozen `0.10` improvement floor was
+arithmetically unsatisfiable. Do not cite that floor as a selector failure.
+
+Two exact corrections now govern successors. First,
+`AtlasCoreBulkContainment.lean` proves every protected-core union lies in the
+independent two-sided order bulk, so all-event union coverage factors into bulk
+fraction times family saturation of bulk. Second, if core size is
+`B_N=O(N^(3/4))`, fixed atlas size forces global coverage to zero; nonzero
+continuum coverage needs at least `K_N=Omega(N^(1/4))`.
+
+Stage A3f-R3 passes the fresh complete-family scaling gate. At
+`N=(6000,12000)`, all six density/rung cells are valid, bulk saturation rises
+strictly on every rung, and `sqrt(N) * (1-S_N)` drifts by only `1.2%` to
+`2.7%` against the frozen `20%` ceiling. The narrow high-density complete
+union covers `0.6499` of all events, above its `0.60` floor, and order-bulk
+fractions track the flat `F_4` calibration within `0.011`. Treat this only as a
+finite stochastic confirmation of the displayed scaling form.
+
+Every citation must disclose provenance incident
+`INC-2026-07-16-A3F-R3-DUPLICATE-RUN` until Director review: two blind
+concurrent launches used the same hard-pinned seed and inputs, and the retained
+second-writer artifact passed independent science and provenance review. Its
+run-invariant deterministic-content hash is
+`2bddbd2e26a24598a04252d68b776bd8685a8cfeaca1303e9eb45f27348b8085`.
+No rerun is permitted, and every future frozen run must acquire an exclusive
+sentinel and output reservation before computation.
+
+R4 then tests the growing `K_N=ceil(2 N^(1/4))` atlas under eventwise caps
+`5,8,12`. Every selector and paired control stops at the cap in a selected-
+family full-intersection regime, so the frozen outcome is correctly
+`INADMISSIBLE`. The gate-free R4-D audit shows the complete-family obstruction
+is scale-dependent: beta `0.80` has a common event in all six families; beta
+`1.00` mixes true apices and near-apex hubs; beta `1.25` has empty intersections
+but still has hubs covering `87.4%` to `97.9%` of each family.
+
+Fresh-seed R5 makes beta `1.25` the sole result rung and beta `1.00` a
+decision-inert negative control. All 18 result cells remain inadmissible solely
+because every random-feasible control shortfalls. The useful change is that the
+greedy selector grows past the cap for the first time: at `N=12000`, cap `12`
+reaches `17-19` of `21` required charts without a full selected intersection.
+This turns the R4 wall into a margin, but does not construct an atlas. The
+frozen R5 family/selector/cap/cardinality architecture and the claim that an
+empty complete-family intersection suffices are now ruled out. Do not continue
+beta tuning. A successor needs its own preregistration and must use the
+fractional-dual certificate interface or a genuinely redesigned candidate
+family/growth law. Keep source rows, operators, G2, and all downstream GR gates
+closed.
+
+The rank-four selector has a separate symmetry guardrail. The five-event
+antichain's zero-sum scalar sector has rank four only because its dimension is
+`5-1`. For every `n>=6`, a fully permutation-equivariant idempotent on the
+natural scalar vertex-probe module cannot have rank four. A universal bare-
+graph selector must therefore use restricted symmetry, derived equivariant
+decorations, or a richer edge/cochain/spin probe representation; it cannot be
+another pointwise canonical scalar frame. See
+`BareGraphPermutationProjectorNoGo.lean` and
+`EquivariantInvolutionProbeProjector.lean`. Polynomial filters do not evade
+this guardrail: `EquivariantPolynomialProbeProjector.lean` proves exact
+naturality and certificate transport once an operator, polynomial,
+idempotence, and source rank four are supplied, but derives none of them.
+Moreover, `RetardedPolynomialProjectorNoGo.lean` proves that a scalar-plus-
+nilpotent operator has no nonzero proper idempotent polynomial filter at all.
+`FiniteStrictPastNilpotence.lean` proves the required nilpotence for every
+weighted strict-past operator on a nonempty finite transitive irreflexive
+relation, and `LayeredOperatorPolynomialNoGo.lean` kernel-checks the exact
+decomposition for both the production layered operator and the active smeared
+project-sign operator. The resulting no-go excludes direct polynomial
+selection from one-sided retarded transport; it does not exclude the corrected
+symmetric pairing, normal or Hermitian retarded/advanced constructions,
+constraint kernels, or richer probe representations.
+
+Absolute scale has an independent identifiability guardrail. Automorphism
+invariance alone leaves a positive rescaling ray admissible; it does not forbid
+a conventional constant selector. The actual no-go requires a physical
+realization map: if a nonunit positive rescaling is invisible to the bare
+observation while a positive length has Weyl weight one, no estimator using
+only that observation can be exact on all realizations. Count ratios can still
+fix relative four-dimensional Weyl factors under a common-density hypothesis.
+Dimensional transmutation can select a scale relative to a supplied reference,
+but the generated scale inherits any global change of that reference unit.
+See `BareGraphScaleReconstruction.lean`,
+`RelativeGraphScaleReconstruction.lean`, and
+`OneLoopDimensionalTransmutation.lean`.
+
 ### All-mass program: strategic guidance (2026-07-08)
 
 The all-mass manuscript
@@ -204,6 +315,101 @@ The Higgs or internal mass block should be internally odd under `chi_E`, not
 spacetime-chirality odd under the same `Gamma_s`. If `Phi` anticommutes with
 `Gamma_s`, the square flips the sign of `Phi^2`.
 
+Higgs ontology and curvature conventions:
+
+- Treat the Higgs multiplet as vertex-local internal zero-form data. Its
+  gauge-covariant variation and kinetic transport are link-supported; a
+  physical radial excitation is represented by a gauge-invariant local
+  composite whose response propagates through sums of causal histories, not by
+  a pointlike Higgs trajectory on one null edge.
+- Distinguish support preservation from kernel selection. The finite Higgs
+  path sums are proved to vanish outside any supplied transitive strict past,
+  but this does not by itself derive the primitive weights or identify that
+  supplied kernel with a continuum-calibrated null-link Green function.
+- Use path language only when backed by explicit primitive support. The finite
+  extraction theorem shows that a nonzero `K ^ n` entry has an actual
+  length-`n` chain of nonzero primitive entries; for a strict-past-supported
+  kernel this becomes a strict-past history. It does not prove that the
+  primitive relation is continuum-null.
+- Do not identify a finite causal-set covering relation with an exact null
+  vector by terminology alone. Nullity must come from supplied decorated
+  frame data or from a proved continuum concentration/calibration theorem.
+- Lock the complete massless kernel and normalization by dimension. Johnston's
+  original scalar controls use causal-matrix chains in `1+1` and link-matrix
+  paths in `3+1`, while Hinrichsen--Kastrati (arXiv:2604.24812) give evidence
+  for a normalized factorially weighted link-path kernel `exp(L)` in `1+1`.
+  Thus dimension does not select `C` versus `L` by slogan: the continuum gate
+  must certify the full function of the primitive adjacency and its weights.
+- If the selected massless kernel contains an identity term, classify it as a
+  zero-length contact convention. For `G0 = b * I + N`, the checked finite
+  response has contact coefficient `b / (1 + c * b)`; after subtracting it,
+  the remainder and its leading FMS radial lift retain strict-past support.
+  Do not count that diagonal term as edge motion.
+- Lock the density units in the massive scattering coefficient. Literature
+  formulas commonly use `m^2 / rho`; a finite parameter named `massSq` is not a
+  physical mass squared until the supplied kernel normalization proves where
+  the density factor lives.
+- The normalized expected four-dimensional Johnston link kernel is now proved
+  to be a one-sided Gaussian delta sequence in `s = tau^2`, with exact mass
+  `1/(2*pi)` and bounded-continuous test convergence. Do not promote this to a
+  full spacetime theorem until the future-cone coarea lift is proved, or to an
+  individual-causal-set theorem until random-sprinkling concentration is
+  proved.
+- Keep fermionic chirality flips separate from scalar propagation. A Higgs
+  radial mode has no left/right Weyl zig-zag of its own. Primitive null support
+  may nevertheless sum to an aggregate timelike massive scalar tail; this is a
+  path-sum statement, not a literal scalar zig-zag.
+- Do not assign the radial Higgs mass to a chiral spiral. Internal holonomy may
+  rotate gauge-orbit directions, but the leading gauge-invariant radial
+  observable annihilates those tangents; the current elementary radial mass
+  comes from potential curvature.
+- Keep the radial coordinate normalization explicit. The one-component control
+  `H = v + h` with `lambda (|H|^2-v^2)^2` gives `m_h^2 = 8 lambda v^2`.
+  The standard electroweak doublet
+  `H = (0,(v+h)/sqrt(2))` with
+  `lambda (H^dagger H-v^2/2)^2` gives `m_h^2 = 2 lambda v^2`.
+  These are a coordinate/convention translation, not two mass predictions.
+- In generic curved spacetime, formulate the Higgs target first as a local
+  gauge-invariant two-point observable with a stated Hadamard/microlocal state
+  condition. Reserve particle, pole, and LSZ language for stationary,
+  adiabatic, or asymptotic regimes where those notions are available.
+- Keep the present propagation claim scoped to the linearized radial channel
+  and its leading FMS observable lift. The multiplet edge kinetic term is gauge
+  covariant, but no full interacting nonabelian Higgs-doublet propagator has
+  been constructed.
+- For a nonzero Standard Model Higgs reference section, keep the exact tangent
+  split explicit: one real radial direction is transverse to the rank-three
+  physical electroweak orbit; gauge coordinates remain ambiguous only modulo
+  the electromagnetic stabilizer. Do not describe the radial mode as a fourth
+  Goldstone direction.
+- If a supplied scalar operator has continuum convention
+  `B_beta -> Box - beta * R` and the finite equation adds
+  `-countertermXi * R`, record the physical coefficient as
+  `xi = beta + countertermXi`. For the four-dimensional
+  Benincasa--Dowker value `beta = 1/2`, the raw operator is not minimally
+  coupled in this convention; minimal coupling requires counterterm `-1/2`.
+  Do not present the built-in/operator split as observable: finite scalar
+  propagation depends only on the sum.
+- Audit curvature insertions against the complete calibrated base propagator,
+  not only against a formal wave-operator symbol. Curved sprinklings may encode
+  curvature through order and density while retaining flat jump amplitudes, so
+  an explicit diagonal `xi * R` term must not double-count that response.
+- In a constant-curvature scalar control, the local scattering insertion is
+  the effective-mass difference between target and calibrated base kernels:
+  `(m^2 + xi * R) - (m0^2 + xi0 * R)` (X--Dowker--Surya,
+  arXiv:1701.07212). It reduces to `m^2 + xi * R` for a minimally coupled
+  massless base, but to `m^2 + (xi - 1/6) * R` for the four-dimensional
+  conformal base. Treat this as a curved-scalar precedent, not as a derivation
+  of the interacting four-dimensional Higgs kernel.
+- For quantum claims, treat the Higgs curvature coupling as a renormalized,
+  scale- and scheme-dependent parameter until the program derives the relevant
+  running. A finite bare coefficient is not by itself a prediction of physical
+  `xi`.
+- Do not infer a nonminimally coupled Higgs stress tensor from the local
+  `xi * R` propagation insertion alone. Geometry variation of
+  `measure * xi * R * ||H||^2` has separate volume and curvature-response
+  channels; a stress claim needs the graph/coframe realization of the latter.
+
 Use `Box_null` as the kinetic mass-shell operator. In mostly-minus signature,
 the analytic d'Alembertian has plane-wave symbol `-p^2`; the mass-shell
 normalization for `-Box_null + Phi^2 = 0` should give `p^2 = m^2`.
@@ -239,6 +445,75 @@ classify the defect rather than hiding it:
 - Torsion-like defect if edge parallelograms fail to close or antisymmetric
   displacement defects appear.
 - Smooth-limit contamination if `C_b` jumps by order one across `h`-edges.
+
+## Gravity connection guardrails
+
+- Do not use the pointwise forward-difference affine connection as the active
+  finite Palatini dynamics. Its exact periodic Euler coefficient has a
+  three-site conformal null-edge witness with coefficient `-95`, and the
+  reconstructed Christoffel candidate fails even torsion-free stationarity.
+  The canonical flat chart remains a valid control only.
+- Put finite gravitational transport on directed links and curvature on
+  oriented faces. The current group-valued substrate has conjugation-covariant
+  plaquette holonomy; its real additive tangent action is vertex-gauge
+  invariant and has an exact periodic discrete adjoint.
+- For an antisymmetric ordered face weight, the additive link equation is
+  exactly vanishing backward face divergence. This is a linearized consistency
+  theorem, not yet a Levi-Civita recovery theorem.
+- The transported finite-fiber control uses ordinary transpose because its
+  component pairing is Euclidean. Do not identify this with Lorentz transport
+  by notation alone. The abstract Krein bridge proves the corresponding
+  predecessor identity for `A^sharp = J A^T J`. The physical bivector bridge
+  orders spatial rotation planes first and time-space boost planes second,
+  derives `J = diag(+,+,+,-,-,-)` from the mostly-minus spacetime metric, and
+  proves preservation by every eta-Lorentz transport, including the concrete
+  null-edge `SL(2,C)` action. The complete linearized face-action Euler chain
+  has now also been rebuilt with this Krein pairing, including separating
+  component probes and the antisymmetric-face divergence equation.
+- The same six-component bivector fiber is exactly equivalent to the matrix
+  Lorentz Lie algebra through `hat(B)=F(B) eta`, and its Krein pairing is
+  `-1/2 tr(hat(B)hat(C))`. Do not pair a six-component face field directly with
+  an unconstrained matrix holonomy. The exact right-trivialized plaquette
+  tangent is now proved to lie in the Lorentz Lie algebra for eta-Lorentz
+  links; recover its six coordinates through this equivalence before pairing.
+  Its four-corner adjoint formula is an exact response one-form, not by itself
+  a scalar action. The scalar successor uses
+  `-1/2 tr(hat(B_ab)(H_ab-I))`, whose formal variation carries the required
+  extra holonomy factor away from identity and recovers the additive Krein
+  response exactly at identity links. The complete scalar action is already
+  vertex-gauge invariant for any face field obeying the exterior-square
+  Lorentz transformation law. Proper eta-Lorentz coframe transformations with
+  determinant `+1` commute with the concrete Hodge star, so the complementary
+  coframe face obeys that law and the concrete action is exactly gauge
+  invariant. On identity links, formal stationarity is exactly the
+  complementary-face Krein divergence equation, with a constant-coframe flat
+  control. At arbitrary group-valued links, the exact global formal response
+  is now reorganized into four local contribution families, each local
+  functional has six ordinary Lorentz-generator coefficients, and formal
+  stationarity is equivalent to vanishing of every coefficient. Canonical
+  curves `U exp(t hat(delta A))` realize every link variation, and ordinary
+  derivative stationarity along these curves is equivalent to that formal
+  stationarity condition. Their invertibility and preservation of the proper
+  eta-Lorentz subgroup are exact. Do not call them proper-orthochronous curves
+  until the separate time-orientation sign is proved.
+- Keep coframe-pair and curvature-face labels distinct. The internal building
+  block is `star(e_a wedge e_b)`, but the coefficient of curvature plaquette
+  `(a,b)` is `(1/2) sum_cd epsilon^(cdab) star(e_c wedge e_d)`. The exact
+  module checks all six complements, including `F_01` paired with the `23`
+  coframe plane. Reusing the same `(a,b)` for both factors is not the tetradic
+  Palatini four-form.
+- The complementary unweighted face field, orientation `0123`, `star^2=-1`,
+  ordered antisymmetry, and the resulting Krein-divergence equation are exact.
+  Proper local Lorentz covariance of both face fields is also exact. The
+  metric dual-cell volume factor is still owed.
+- In the fixed six-vector convention,
+  `[star(B),C]_J = -(1/4) epsilon_IJKL B^IJ C^KL`. The minus sign is harmless
+  for the vacuum connection stationarity equation, but a joint matter action
+  must absorb it explicitly in the gravitational prefactor or curvature
+  orientation before comparing `kappa` signs.
+- A physical Palatini claim still owes the metric dual-cell volume factor,
+  projective and boundary analysis, and uniqueness of the compatible
+  Levi-Civita link transport.
 
 ## Krein double guardrails
 
