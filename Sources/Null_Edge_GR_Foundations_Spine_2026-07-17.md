@@ -126,7 +126,7 @@ infrared phase.
 | Gate | Required result | Present in the repo | Exact open debt |
 |---|---|---|---|
 | F0: finite kinematics | Strict causal order, count measure, relabeling covariance | Exact open intervals, layers, equivariant causal operators, null-spinor soldering controls, and a kernel-checked centered-plaquette proper-time bridge | A single agreed primitive data type linking order/count data to optional decorations |
-| F1: manifold-conditioned limit | Faithful embeddings or an equivalent intrinsic convergence interface | Extensive sprinkled-manifold controls and a two-scale reconstruction protocol | One theorem family with explicit probability space, regulator schedule, topology, and uniform error bounds |
+| F1: manifold-conditioned limit | Faithful embeddings or an equivalent intrinsic convergence interface | Extensive sprinkled-manifold controls, a two-scale reconstruction protocol, and a kernel-checked backward-simplex six-length admissibility predicate | Derive or dynamically enforce the admissibility predicate, prove backward-frame reconstruction, and supply one theorem family with explicit probability space, regulator schedule, topology, and uniform error bounds |
 | F2: dynamical manifold selection | The theory suppresses nonmanifoldlike orders and selects a four-dimensional Lorentzian phase | Candidate actions and finite experiments only | A covariant ensemble/quantum measure and concentration on the F1 domain |
 | F3: dimension, topology, conformal class | Recover dimension, topology, and causal conformal geometry | Continuum Malament/HKM result is imported; finite topology and dimension literature is catalogued | Intrinsic dimension/topology convergence for the selected ensemble |
 | F4: metric and scale | `Gamma_B` converges to rank-four `(+---)` inverse metric and count volume fixes scale | Potential cancellation, relabeling covariance, scale laws, rank-four interfaces, no-go results, and finite witnesses are exact | Canonical selector, four-mode gap, product closure, overlap/refinement persistence, concentration, and absolute calibration |
@@ -154,7 +154,15 @@ increment `||psi wedge chi||`; it is positive exactly for nonzero Pluecker
 area and is invariant under the determinant-one spinor action. Its square is
 the same scalar as the landed two-edge Pluecker mass, but this is explicitly a
 finite dictionary identity, not a dynamical mass-generation theorem. The next
-Schaden-derived gates are backward-simplex admissibility at F1 and a positive
+module, `SchadenNullFrameAdmissibility`, proves the four-spinor Pfaffian and
+triangle chain, the equivalence between triangle inequalities and a
+nonpositive hollow squared-length determinant, and the normalization
+`det(lengthSq) = -16 det(coframe)^2`. It then assembles the six backward
+lengths from commuting two-step predecessor sites and exposes their
+admissibility as a genuinely extra F1 gluing predicate, with a constant
+nondegenerate witness. Dynamical enforcement, reconstruction of arbitrary
+backward spinors from admissible lengths, and concentration on this sector
+remain open. The next Schaden-derived algebraic target is the positive
 boost-gauge Hessian for local nonlinear connection selection at F8.
 
 The theorem `DiscreteCausalActionVariationNoGo.everyGraphAction_continuouslyStationary`

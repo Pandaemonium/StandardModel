@@ -32,6 +32,7 @@ import PhysicsSM.Draft.NullEdge.FinitePalatiniEinsteinHilbertVariation
 import PhysicsSM.Draft.NullEdge.FinitePalatiniBoundaryCancellation
 import PhysicsSM.Draft.NullEdge.FinitePalatiniCoframeChartAction
 import PhysicsSM.Draft.NullEdge.NullEdgeCoframeEinsteinBridge
+import PhysicsSM.Draft.NullEdge.SchadenNullFrameAdmissibility
 import PhysicsSM.Draft.NullEdge.DirectedNullEdgeLeviCivitaEinstein
 import PhysicsSM.Draft.NullEdge.NullEdgeAggregateCoframeEinstein
 import PhysicsSM.Draft.NullEdge.FiniteDirectedPalatiniConnectionVariation
@@ -73,7 +74,8 @@ This module is the canonical Lean entry point for the load-bearing finite
 identities in the null-edge general-relativity program. It deliberately
 imports one representative route through each established layer:
 
-1. spinor-to-null soldering and null-to-timelike aggregation;
+1. spinor-to-null soldering, null-to-timelike aggregation, and the six-length
+   forward/backward null-simplex admissibility boundary;
 2. finite causal order, the scalar causal operator, and its corrected
    principal-symbol pairing;
 3. scale identifiability, relative Weyl scaling, rank-four probe sectors,

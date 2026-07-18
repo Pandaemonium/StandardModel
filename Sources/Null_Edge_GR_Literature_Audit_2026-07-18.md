@@ -234,16 +234,22 @@ the null-edge GR derivation.
 The productive response is neither to ignore Schaden nor to replace the
 current action with his. Five narrow imports are worth pursuing:
 
-1. **Null-frame admissibility:** kernel-check the Pfaffian, six-length,
-   four-volume, and backward-ray reconstruction identities in the repo's
-   conventions.
+1. **Null-frame admissibility (partially landed):**
+   `SchadenNullFrameAdmissibility` kernel-checks the four-spinor Pfaffian,
+   all three opposite-length triangle inequalities, the hollow
+   squared-length determinant criterion, and
+   `det(lengthSq) = -16 det(coframe)^2` in project conventions. Constructive
+   backward-spinor reconstruction from arbitrary admissible six-length data
+   remains open.
 2. **Proper-time bridge (landed):**
    `SchadenProperTimeBridge.centeredPlaquetteProperTime_eq_norm_wedge`
    kernel-checks `Delta s = |f_mu_nu|`; its companion dictionary theorem
    identifies the square with the existing Pluecker mass scalar without
    claiming that elapsed time dynamically generates mass.
-3. **Manifold projector:** expose the backward-volume inequalities as an F1
-   admissibility interface, while keeping dynamical manifold selection open.
+3. **Manifold projector (interface landed):** the same module assembles six
+   backward lengths from commuting two-step predecessor sites and exposes the
+   exact positivity-plus-determinant predicate. Deriving or dynamically
+   enforcing that predicate, and manifold selection itself, remain open.
 4. **Boost gauge slice:** adapt the positive-Hessian `SL(2,C)/SU(2)` Morse
    slice to the repo's nondegenerate null frames and use it in the local
    connection-selection and nonlinear-continuation Jacobians.
@@ -252,13 +258,13 @@ current action with his. Five narrow imports are worth pursuing:
    then prove where they agree and where the reversal convention changes the
    finite theory.
 
-The implementation order is now: complete the null-frame and backward-simplex
-admissibility gate, formalize the boost slice, and then perform the action
-comparison. The last item is the remaining source-audit debt. Until that
-comparison is done, the defensible statement is that Schaden establishes the
-broad null-lattice Palatini architecture and several valuable kinematic
-interfaces, not that it already contains our finite action or our derived
-Einstein-response chain.
+The implementation order is now: prove constructive backward-frame
+reconstruction and connect the admissibility predicate to carrier dynamics,
+formalize the boost slice, and then perform the action comparison. The last
+item is the remaining source-audit debt. Until that comparison is done, the
+defensible statement is that Schaden establishes the broad null-lattice
+Palatini architecture and several valuable kinematic interfaces, not that it
+already contains our finite action or our derived Einstein-response chain.
 
 ## Detailed program corrections
 
