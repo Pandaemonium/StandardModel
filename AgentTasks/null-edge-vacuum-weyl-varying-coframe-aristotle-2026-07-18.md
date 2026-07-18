@@ -103,9 +103,17 @@ coframe satisfies all finite mixed vacuum Einstein equations and is exactly
 coframe-stationary. A separate exact coefficient calculation gives
 `-2 * area` in the direction-`1`, component-`1` connection equation at site
 `1`; hence the identity coframe is not connection- or jointly stationary at
-nonzero area. Harvest review must now require a genuinely varying-coframe
-joint-stationary construction, a Levi-Civita theorem, or a stronger no-go than
-this static-coframe obstruction.
+nonzero area.
+
+Local work completed before harvest now proves the stronger full-coframe
+result. `PeriodicVacuumWeylNullWaveFullNoGo.lean` computes the exact rank-six
+coframe response and its complete ten-parameter kernel, and factors its
+determinant. `PeriodicVacuumWeylNullWaveJointNoGo.lean` proves two exact link
+coefficients and shows that no invertible coframe in the complete kernel can
+be jointly stationary with the fixed links at nonzero area. Harvest review
+therefore retains Aristotle's general conformal-homogeneity and one-face
+support theorems, while superseding its proposed fixed-link escape with a
+simultaneous link/coframe backreaction requirement.
 
 ## Requested output
 
@@ -148,7 +156,7 @@ aristotle:
   expected_module: PhysicsSM.Draft.NullEdge.VacuumWeylPeriodicRefinementAristotle
   submission_project: AgentTasks/aristotle-submit/null-edge-vacuum-weyl-varying-coframe-20260718-project
   output_dir: AgentTasks/aristotle-output/a8d83497-34e4-4151-a122-59b821b3e587
-  status: in_progress
+  status: integrated
 ```
 
 Live check on 2026-07-18 after the local null-wave result: project status
@@ -158,3 +166,13 @@ returned no new event before timing out, so the job was left undisturbed.
 Second live check after the exact proper-Lorentz lift and static connection
 obstruction were proved locally: the project remained `RUNNING` about two
 hours after submission. It was again left undisturbed.
+
+Harvested on 2026-07-18 after project status became `IDLE` and task status
+became `COMPLETE`. The conservative integration helper found one expected
+candidate, no executable proof placeholders, and no pre-existing live file.
+`VacuumWeylPeriodicRefinementAristotle.lean` was reviewed and copied into the
+live tree. Its global conformal response homogeneity, stationarity
+equivalences, conformal-square no-go, and one-face support obstruction remain
+useful alongside the stronger local full-coframe null-wave no-go. Direct Lean
+checking of the integrated file and the `GRFoundations` facade build both
+passed, followed by the full 8,319-job repository build.

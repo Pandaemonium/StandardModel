@@ -150,6 +150,10 @@ Scripts/
     carrier_dynamics_harness.py - validated dynamics-simulation seed: Plucker
       kinematics, budget normalization, variational mass-shell checks, unitary
       sector evolution, RG Schur flow, and finite canonical ensemble checks
+    null_wave_conformal_euler.py - exact SymPy conformal-coframe link audit
+    null_wave_diagonal_euler.py - exact diagonal/axial Einstein and link audit
+    null_wave_general_coframe.py - rank and kernel of the full coframe response
+    null_wave_joint_stationary_search.py - full-kernel link and determinant audit
     validate_flux2d_wilson_dirac.py - numerical Wilson-Dirac flux-index oracle
   index/
     build_index.py      — extract declaration metadata from Lean sources into JSON

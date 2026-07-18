@@ -53,7 +53,8 @@ import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniCurveDerivative
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEuler
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniCoframeVariation
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniCurvatureExtraction
-import PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylNullWaveProperLift
+import PhysicsSM.Draft.NullEdge.VacuumWeylPeriodicRefinementAristotle
+import PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylNullWaveJointNoGo
 import PhysicsSM.Draft.NullEdge.CurvatureConvergenceInterface
 import PhysicsSM.Draft.NullEdge.GraphPlaquetteCurvatureLimit
 import PhysicsSM.Draft.NullEdge.FiniteGravityConservation
@@ -116,9 +117,10 @@ imports one representative route through each established layer:
     realizing it as a site-independent or scalar-checkerboard additive curl,
     and a two-site periodically exact null-wave curvature that mixes bivector
     planes, lifts to exact proper eta-Lorentz links, satisfies all
-    identity-coframe vacuum-Riemann and coframe-stationarity tests, and has an
-    exact nonzero-area connection/joint-stationarity obstruction at the static
-    identity coframe,
+    identity-coframe vacuum-Riemann and coframe-stationarity tests, has a
+    complete rank-six coframe response with a ten-parameter Einstein kernel,
+    and admits no invertible jointly stationary coframe at nonzero area while
+    those exact links are held fixed,
     and a conditional passage from finite coframe
     stationarity with convergent varying tetrads to the limiting mixed vacuum
     Einstein equation, and
@@ -288,12 +290,17 @@ exponentiating the links gives exact proper eta-Lorentz plaquettes with no BCH
 correction, and the action extractor returns exactly area times this curvature.
 The identity coframe is therefore exactly stationary in the finite Einstein
 sector. One link Euler coefficient is exactly `-2 * area`, so the static
-coframe fails connection and joint stationarity whenever area is nonzero. This
-proves that genuine bivector-plane mixing is sufficient for a periodically
-exact finite vacuum-Riemann field and isolates the varying-coframe problem in
-the independent-connection equation. It does not yet construct that jointly
-stationary varying coframe, prove Levi-Civita compatibility, or graph
-refinement.
+coframe fails connection and joint stationarity whenever area is nonzero. The
+full-coframe successor strengthens this decisively: the sixteen coframe Euler
+equations have rank six, their complete kernel is an explicit ten-parameter
+matrix family, its determinant factors exactly, and two connection equations
+force one of those determinant factors to vanish. Thus no invertible coframe,
+including arbitrary off-diagonal shear, is jointly stationary with these
+fixed links at nonzero area. Genuine bivector-plane mixing is sufficient for
+a periodically exact finite vacuum-Riemann field, but the next constructive
+step must deform links and coframe together, enlarge the carrier, or alter the
+finite dual-cell weighting. Levi-Civita compatibility and graph refinement
+remain open.
 The combined result does not
 derive the refinement or convergence data from a bare graph, prove the
 orthochronous sign, identify the link equation with Levi-Civita selection, or
