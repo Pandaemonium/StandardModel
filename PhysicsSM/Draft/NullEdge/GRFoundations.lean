@@ -56,6 +56,7 @@ import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEuler
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniCoframeVariation
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniCurvatureExtraction
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniWeakEinsteinLimit
+import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniLinearizedTorsionSelection
 import PhysicsSM.Draft.NullEdge.VacuumWeylPeriodicRefinementAristotle
 import PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylNullWaveJointNoGo
 import PhysicsSM.Draft.NullEdge.CurvatureConvergenceInterface
@@ -128,7 +129,9 @@ imports one representative route through each established layer:
     and a conditional passage from finite coframe
     stationarity with convergent varying tetrads to the limiting mixed vacuum
     Einstein equation, exact finite weak-test equivalents of those pointwise
-    equations, and a conditional changing-carrier weak endpoint, and
+    equations, a conditional changing-carrier weak endpoint, and exact
+    identity-tetrad linearized torsion selection with its finite quadratic
+    spacing defect, and
     the full Krein-paired link/face Euler chain with a coframe-derived
     Lorentz-Hodge face field,
    causal-diamond path-comparison holonomy, and an exact shrinking-plaquette
@@ -260,7 +263,15 @@ explicit nonzero site-volume weights, and composes this with coframe
 stationarity. It then permits the finite carrier to change with the refinement
 level: convergence of the weighted pairings on a supplied test space forces
 the limiting functional to vanish. This does not construct the test sampler,
-volume weights, weak topology, or convergence proof. The physical-link
+volume weights, weak topology, or convergence proof. The linearized
+torsion-selection successor addresses the other Palatini Euler sector. In the
+project's exact 24-component conventions, the identity-tetrad connection
+equation is equivalent to vanishing Cartan torsion. The finite face increment
+is the spacing times this linear equation plus an explicit quadratic defect,
+so identity-link stationarity along shrinking nonzero spacings with a fixed
+first coframe jet forces that jet to be torsion-free, even when the finite
+carrier changes. General-background nonlinear Levi-Civita uniqueness and
+graph-derived first-jet convergence remain open. The physical-link
 successor proves that
 `exp(A_n hat(F))` has exactly this first-order limit and constructs a nonzero
 `2 x 2` periodic-square refinement with commuting shifts and proper

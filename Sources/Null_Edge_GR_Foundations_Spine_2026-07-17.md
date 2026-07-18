@@ -142,6 +142,11 @@ Lorentz-component debt is specifically the separate orthochronous sign.
 The F6/F8 backreaction debt now means a **nonlinear** continuation: the finite
 identity-background linearized system has a two-polarization curved jointly
 stationary sector, as recorded below.
+The F8 connection row now also has an exact identity-tetrad theorem:
+linearized Palatini connection stationarity is equivalent to zero Cartan
+torsion, and the finite departure from that equation is an explicit quadratic
+spacing defect. The remaining Levi-Civita debt is the general-background
+nonlinear selection, metric-compatibility, and uniqueness theorem.
 
 The program is strongest at F0 and in the exact algebraic interfaces inside
 F4-F7. Its decisive bottleneck remains F4, but F1 and F2 are logically prior
@@ -494,6 +499,20 @@ limiting functional to vanish. This is a conditional distributional endpoint,
 not a weak-convergence proof: the graph still owes the test sampler, volume
 weights, limiting test space, convergence norm, compactness or stability
 argument, and identification of the limit with the continuum Einstein tensor.
+
+`NonlinearLorentzPalatiniLinearizedTorsionSelection` now gives the connection
+equation its first exact selection theorem. At the identity tetrad, the
+twenty-four linearized coefficients of `D(e wedge e)=0` are equivalent to all
+twenty-four independent Cartan torsion components in the convention-locked
+`(12,13,23,01,02,03)` ordering. For a finite predecessor coframe increment,
+the exact residual is `h` times that linear equation plus an explicit
+quadratic `h^2` lattice product-rule defect. Hence exact identity-link
+stationarity along nonzero spacings tending to zero, with a fixed first
+coframe jet, forces that jet to be torsion-free; the carrier may change with
+the refinement level. This advances P8(a), but it is not yet nonlinear
+Levi-Civita selection: arbitrary background tetrads and links, varying-jet
+compactness, metric compatibility, uniqueness modulo Lorentz gauge, and a
+graph-derived refinement remain open.
 
 `PhysicalLorentzPlaquetteRefinement` closes the eta-Lorentz existence side of
 that interface. For arbitrary six-component `F`, it proves that the exact
@@ -873,11 +892,15 @@ metric, curvature, or action.
    supplied first-order holonomy expansion. The finite equations are now also
    exactly equivalent to unweighted or nonzero-volume-weighted weak testing,
    and a changing-carrier sequence has a conditional weak vacuum endpoint.
+   In the connection sector, the identity-tetrad linearized equation is now
+   exactly equivalent to zero Cartan torsion, with the finite `h^2` defect and
+   a fixed-first-jet changing-carrier limit made explicit. Generalize that
+   selection theorem to nonidentity tetrads and Lorentz links, prove metric
+   compatibility and uniqueness modulo gauge, and control varying first jets.
    Derive the holonomy expansion, test sampler, dual-volume weights, and
    coframe convergence from the graph; prove actual weak convergence and the
-   separate orthochronous sign; rerun the conformal witness; and test
-   Levi-Civita selection. The
-   nonlinear replacement must avoid the proved
+   separate orthochronous sign; and rerun the conformal witness. The nonlinear
+   replacement must avoid the proved
    `-95` pointwise obstruction and select Levi-Civita transport before any
    continuum claim.
 5. **Localize one matter action.** Generalize the existing scalar/Higgs

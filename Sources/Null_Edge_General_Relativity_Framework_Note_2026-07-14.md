@@ -60,6 +60,10 @@ shown to converge from order and number.
 At G7, the canonical exponential variation curves are now proved to remain in
 the proper eta-Lorentz subgroup when based there. The unresolved component
 condition is the separate orthochronous sign, not determinant properness.
+The independent-connection equation now selects zero Cartan torsion exactly
+at the identity tetrad to first order, with its finite quadratic spacing
+defect isolated. General-background nonlinear Levi-Civita selection remains
+open.
 
 The dependency is strongly upstream. Progress on G3-G8 cannot compensate for
 an open G2: until scale, a rank-four Lorentzian sector, and compatible overlap
@@ -7047,6 +7051,20 @@ sampler, dual-cell volume, continuum test space, weak norm, compactness or
 stability estimate, convergence proof, or Levi-Civita/Riemann identification
 is supplied.
 
+`NonlinearLorentzPalatiniLinearizedTorsionSelection` closes the first local
+part of the independent-connection problem. It writes the identity-tetrad
+linearized Palatini equation as an explicit `4 x 6` matrix in the twenty-four
+Cartan torsion coordinates and proves that this map has trivial kernel in both
+directions: all link coefficients vanish exactly when all torsion components
+vanish. The exact finite predecessor-face residual has the expansion
+`h L + h^2 Q`, where `L` is this torsion-selecting linear equation and `Q` is
+the displayed lattice product-rule defect. Thus a sequence of exact
+identity-link stationary equations at nonzero `h -> 0`, with one fixed first
+coframe jet, forces zero torsion even when the carrier changes with `h`. This
+does not yet select a nonlinear connection at a general tetrad, prove metric
+compatibility or uniqueness modulo Lorentz gauge, control varying jets, or
+derive the refinement from the causal graph.
+
 `PhysicalLorentzPlaquetteRefinement` proves that the physical group sector is
 nonempty and nonflat. For every six-component target `F`, the exact holonomy
 `exp(A_n hat(F))` is proper eta-Lorentz and has action-visible first-order
@@ -7491,6 +7509,7 @@ not
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniResponse.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniAction.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniWeakEinsteinLimit.lean`
+- `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniLinearizedTorsionSelection.lean`
 - `PhysicsSM/Draft/NullEdge/HomogeneousScalarStressVariation.lean`
 - `PhysicsSM/Draft/NullEdge/DiagonalScalarGradientStressVariation.lean`
 - `PhysicsSM/Draft/NullEdge/ADMShiftScalarFluxVariation.lean`
