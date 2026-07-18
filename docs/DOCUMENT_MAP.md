@@ -55,6 +55,8 @@ as current state.
 
 ## The null-edge program: core documents
 
+- `Sources/Null_Edge_GR_Literature_Audit_2026-07-18.md` - primary-source audit of null-lattice and first-order discrete gravity. It identifies Schaden and Kur-Glasser as the closest architectural prior art, applies Neiman's null-cell focusing obstruction, separates the current rank-two curvature image from a physical graviton count using Dittrich-Hoehn, and revises the theorem order to gauge quotient, propagation/no-doubling, nonlinear continuation, local Levi-Civita selection, and refinement convergence. [LIVE]
+
 - `AutonomousLab/work/SPIRAL-LAYER/CLAUDE_SPIRAL_LAYER_PROGRAM_NOTE_2026-07-16.md` -
   the spiral-layer program note: the kernel-checked answer to "does mass
   zig-zag or spiral?" - the three-layer breakdown (mass magnitude

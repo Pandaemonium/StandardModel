@@ -737,6 +737,37 @@ adjoint. A pointwise forward Christoffel formula supplies none of those by
 itself. The exact `-95` conformal witness now turns that structural warning
 into a finite no-go for the current pointwise action.
 
+### The null-lattice prior art sharpens the remaining theorem
+
+The dedicated audit in
+`Sources/Null_Edge_GR_Literature_Audit_2026-07-18.md` changes the claim boundary
+in five ways.
+
+1. Schaden already combines a causal null lattice, local `SL(2,C)`, null-frame
+   data, link transport, and a smooth Hilbert-Palatini limit. The architecture
+   is imported; the exact finite theorem chain is the local contribution.
+2. Neiman shows that rigid flat null-faced polyhedra cannot capture generic
+   Ricci focusing. Curved reconstruction must vary decorated ray directions,
+   affine spacings, coframes, and transport rather than identify the carrier
+   with a fixed null-faced tessellation.
+3. Wieland has exact lightlike curvature defects and impulsive Einstein waves
+   in a topological model. The repo's wave witness is specific to its finite
+   action, but it is not the first discrete null gravitational-wave idea. The
+   decisive extra obligation is non-topological propagating degrees of freedom.
+4. Dittrich and Hoehn make the gauge quotient load-bearing. The current
+   exact-rational coupled Hessian has curvature-image rank two, but this is not
+   a two-polarization theorem until local Lorentz/vertex gauge directions,
+   discrete Bianchi identities, quotient rank, propagation, and full-zone
+   doubling are proved.
+5. Gionti suggests a realistic Levi-Civita theorem: local uniqueness near a
+   nondegenerate small-curvature background after gauge fixing. Global exact
+   connection identification should not be the first target.
+
+The revised F8 order is therefore: kernelize the coupled Hessian, classify and
+quotient gauge, prove propagation/no-doubling, test nonlinear continuation,
+prove local connection selection, and only then attempt the joint refinement
+theorem.
+
 ## 5. Repository simplification
 
 The documents now have distinct jobs:
@@ -861,6 +892,31 @@ metric, curvature, or action.
     calculus," [arXiv:math/0508341](https://arxiv.org/abs/math/0508341).
 18. E. Kur and A. S. Glasser, "Discrete gravity with local Lorentz
     invariance," [arXiv:2202.02486](https://arxiv.org/abs/2202.02486).
+19. M. Schaden, "Causal Space-Times on a Null Lattice,"
+    [arXiv:1509.03095](https://arxiv.org/abs/1509.03095).
+20. Y. Neiman, "Causal cells: spacetime polytopes with null hyperfaces,"
+    [arXiv:1212.2916](https://arxiv.org/abs/1212.2916).
+21. W. Wieland, "Discrete gravity as a topological gauge theory with
+    light-like curvature defects,"
+    [arXiv:1611.02784](https://arxiv.org/abs/1611.02784).
+22. B. Dittrich and P. A. Hoehn, "From covariant to canonical formulations of
+    discrete gravity,"
+    [arXiv:0912.1817](https://arxiv.org/abs/0912.1817).
+23. P. A. Hoehn, "Canonical linearized Regge Calculus: counting lattice
+    gravitons with Pachner moves,"
+    [arXiv:1411.5672](https://arxiv.org/abs/1411.5672).
+24. S. H. Christiansen, "Exact formulas for the approximation of connections
+    and curvature,"
+    [arXiv:1307.3376](https://arxiv.org/abs/1307.3376).
+25. B. Z. Foster and T. Jacobson, "Propagating spinors on a tetrahedral
+    spacetime lattice,"
+    [arXiv:hep-th/0310166](https://arxiv.org/abs/hep-th/0310166).
+26. P. Menotti and A. Pelissetto, "Poincare, de Sitter, and conformal gravity
+    on the lattice,"
+    [doi:10.1103/PhysRevD.35.1194](https://doi.org/10.1103/PhysRevD.35.1194).
+27. M. Dupuis, F. Girelli, O. Hrytseniak, and W. Wieland, "Topological field
+    theory plus local Lorentz symmetry is gravity,"
+    [arXiv:2603.12100](https://arxiv.org/abs/2603.12100).
 
 ## Bottom line
 
