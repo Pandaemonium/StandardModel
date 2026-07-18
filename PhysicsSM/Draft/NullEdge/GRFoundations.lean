@@ -55,6 +55,7 @@ import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniCurveDerivative
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEuler
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniCoframeVariation
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniCurvatureExtraction
+import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniWeakEinsteinLimit
 import PhysicsSM.Draft.NullEdge.VacuumWeylPeriodicRefinementAristotle
 import PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylNullWaveJointNoGo
 import PhysicsSM.Draft.NullEdge.CurvatureConvergenceInterface
@@ -126,7 +127,8 @@ imports one representative route through each established layer:
     those exact links are held fixed,
     and a conditional passage from finite coframe
     stationarity with convergent varying tetrads to the limiting mixed vacuum
-    Einstein equation, and
+    Einstein equation, exact finite weak-test equivalents of those pointwise
+    equations, and a conditional changing-carrier weak endpoint, and
     the full Krein-paired link/face Euler chain with a coframe-derived
     Lorentz-Hodge face field,
    causal-diamond path-comparison holonomy, and an exact shrinking-plaquette
@@ -252,7 +254,14 @@ stationary, the limiting target satisfies all mixed vacuum Einstein
 equations. The varying-coframe successor proves joint continuity of the mixed
 Einstein polynomial, shows that exact finite inverse coframes remain inverse
 at the limit, and reaches the same endpoint when both tetrads and curvature
-vary componentwise with refinement. The physical-link successor proves that
+vary componentwise with refinement. The weak-limit successor proves that
+finite delta tests recover every pointwise mixed equation, including with
+explicit nonzero site-volume weights, and composes this with coframe
+stationarity. It then permits the finite carrier to change with the refinement
+level: convergence of the weighted pairings on a supplied test space forces
+the limiting functional to vanish. This does not construct the test sampler,
+volume weights, weak topology, or convergence proof. The physical-link
+successor proves that
 `exp(A_n hat(F))` has exactly this first-order limit and constructs a nonzero
 `2 x 2` periodic-square refinement with commuting shifts and proper
 eta-Lorentz links. Its two columns carry exact opposite exponential

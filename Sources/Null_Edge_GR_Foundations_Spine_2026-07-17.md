@@ -133,7 +133,7 @@ infrared phase.
 | F5: coframe and spin | Gauge-relative coframe and a compatible spin lift of the metric atlas | Exact coframe covariance, Lorentz transitions, central sign, and finite obstruction interfaces | Derive the atlas and identify the stable finite class with the continuum spin obstruction |
 | F6: one curvature | Levi-Civita, holonomy, operator, and Dirac-square curvature agree | Exact finite connection/Bianchi algebra, a gauge-covariant periodic link/plaquette substrate, a continuous action-visible curvature extractor, conditional shrinking-loop and antisymmetrized-curvature limits, a nonzero proper eta-Lorentz periodic-square refinement with exact exponential plaquettes, an exact audit showing its lone identity-coframe Ricci-flat mode violates metric-lowered pair exchange, a separate nonzero algebraic vacuum-Weyl target satisfying pair exchange and first Bianchi, and an exact proper-Lorentz two-site null-wave lift whose finite extracted curvature is vacuum Einstein and coframe-stationary; its full coframe response has rank six and a complete ten-parameter kernel, but no invertible coframe in that kernel is jointly stationary with the fixed links at nonzero area | A simultaneously link-and-coframe-deformed jointly stationary lift and convergence of all routes to the same Riemann/Ricci/scalar curvature with the correct `R/4` coefficient |
 | F7: one matter source | Localized variation of one matter action gives symmetric conserved `T` | Higgs/scalar controls, full symmetric-probe uniqueness, and the explicit Bianchi-to-source-conservation composition are exact | Derive the arbitrary local variation and matter Noether identity on the common reconstructed geometry |
-| F8: one gravity action | One graph action converges to Einstein-Hilbert plus boundary and controlled corrections | Exact affine-action no-go, coframe determinant variation, Palatini-to-Einstein composition, incidence cancellation, nonlinear and joint two-field chart actions, spinor-null coframe and directed Levi-Civita/Ricci reconstruction, aggregate-weight coframe coverage, an exact independent pointwise-connection variation, its local periodic Euler coefficient and torsion-free Levi-Civita no-go, a group-valued link-curvature substrate, scalar, Euclidean finite-fiber, and full Krein-paired link/face Euler chains, plus a spacetime-derived six-component Lorentz-bivector representation preserved by the concrete null-edge `SL(2,C)` action and exactly equivalent to the matrix Lorentz Lie algebra with normalized trace pairing, the exact right-trivialized nonlinear Lorentz-plaquette tangent with its four-corner adjoint formula and additive identity-link limit, a displayed scalar ordered holonomy action with matching product/inverse derivative along canonical exponential link curves, its exact four-family nonidentity local link Euler coefficients, ordinary coframe derivative, joint `6 + 16` stationarity, exact antisymmetric-curvature Palatini rewrite, arbitrary-coframe identity `PalatiniDensity(e,F) = -det(e) R(e^{-1},F)`, exact coframe-response identity and stationarity-to-mixed-Einstein equivalence, conditional passage of stationary refinements with jointly convergent varying coframes and curvature to a limiting mixed vacuum Einstein equation, the static square and full fixed-null-wave-connection joint-stationarity no-go theorems, determinant-weighted nonlinear action, and the complementary coframe-derived curvature-face coefficient `(1/2) epsilon^(cdab) star(e_c wedge e_d)` with exact divergence, proper-Lorentz covariance, and concrete action gauge invariance | Derive the aggregate weights and synchronized frame from the operator sector, identify the Gram and operator metrics, derive a graph refinement and prove the supplied coframe convergence hypotheses, construct a nonflat jointly stationary refinement with simultaneous link/coframe backreaction, supply metric dual-cell weighting of the Hodge face field, then test and prove Levi-Civita selection, identify the action-visible target with common Riemann curvature, establish physical boundaries, `G_N`/`Lambda`, global descent, and global variation-limit interchange |
+| F8: one gravity action | One graph action converges to Einstein-Hilbert plus boundary and controlled corrections | Exact affine-action no-go, coframe determinant variation, Palatini-to-Einstein composition, incidence cancellation, nonlinear and joint two-field chart actions, spinor-null coframe and directed Levi-Civita/Ricci reconstruction, aggregate-weight coframe coverage, an exact independent pointwise-connection variation, its local periodic Euler coefficient and torsion-free Levi-Civita no-go, a group-valued link-curvature substrate, scalar, Euclidean finite-fiber, and full Krein-paired link/face Euler chains, plus a spacetime-derived six-component Lorentz-bivector representation preserved by the concrete null-edge `SL(2,C)` action and exactly equivalent to the matrix Lorentz Lie algebra with normalized trace pairing, the exact right-trivialized nonlinear Lorentz-plaquette tangent with its four-corner adjoint formula and additive identity-link limit, a displayed scalar ordered holonomy action with matching product/inverse derivative along canonical exponential link curves, its exact four-family nonidentity local link Euler coefficients, ordinary coframe derivative, joint `6 + 16` stationarity, exact antisymmetric-curvature Palatini rewrite, arbitrary-coframe identity `PalatiniDensity(e,F) = -det(e) R(e^{-1},F)`, exact coframe-response identity and stationarity-to-mixed-Einstein equivalence, conditional passage of stationary refinements with jointly convergent varying coframes and curvature to a limiting mixed vacuum Einstein equation, exact equivalence between the finite pointwise equations and all weak test-tensor pairings, the corresponding volume-weighted equivalence for nonzero site weights, a conditional changing-carrier weak-limit endpoint, the static square and full fixed-null-wave-connection joint-stationarity no-go theorems, determinant-weighted nonlinear action, and the complementary coframe-derived curvature-face coefficient `(1/2) epsilon^(cdab) star(e_c wedge e_d)` with exact divergence, proper-Lorentz covariance, and concrete action gauge invariance | Derive the aggregate weights and synchronized frame from the operator sector, identify the Gram and operator metrics, derive a graph refinement, continuum test sampler, and metric dual-cell weights, prove weak convergence of its Einstein residual and the supplied coframe convergence hypotheses, construct a nonflat jointly stationary refinement with simultaneous link/coframe backreaction, then test and prove Levi-Civita selection, identify the action-visible target with common Riemann curvature, establish physical boundaries, `G_N`/`Lambda`, global descent, and global variation-limit interchange |
 | F9: physical recovery | Newtonian, redshift, geodesic, wave, horizon, black-hole, and cosmological controls | Poisson normalization and FLRW equations under imported actions | Full independent controls, including tensor modes and curved local observables |
 
 In F8, the canonical exponential variation curves are now proved to remain in
@@ -482,6 +482,18 @@ convergence, and stationary varying coframes therefore obey the limiting
 mixed vacuum equations. This does not derive a refinement or convergence,
 require eta-Lorentz links, or identify the target with Levi-Civita Riemann
 curvature.
+
+`NonlinearLorentzPalatiniWeakEinsteinLimit` removes a second artificial
+restriction: the finite site type may now change at every refinement level.
+On each carrier, delta test tensors prove that vanishing against every finite
+test is equivalent to all pointwise mixed Einstein equations. The same holds
+for explicit nonzero site-volume weights, and both forms are exactly
+equivalent to nonlinear coframe stationarity. If the resulting weighted
+pairings converge on a supplied abstract test space, stationarity forces the
+limiting functional to vanish. This is a conditional distributional endpoint,
+not a weak-convergence proof: the graph still owes the test sampler, volume
+weights, limiting test space, convergence norm, compactness or stability
+argument, and identification of the limit with the continuum Einstein tensor.
 
 `PhysicalLorentzPlaquetteRefinement` closes the eta-Lorentz existence side of
 that interface. For arbitrary six-component `F`, it proves that the exact
@@ -858,9 +870,12 @@ metric, curvature, or action.
    and stationarity-to-mixed-Einstein identity are now closed. The continuous
    action-visible extractor and fixed-coframe refinement theorem also pass
    stationary finite equations to the limiting mixed vacuum equation under a
-   supplied first-order holonomy expansion. Derive that expansion and coframe
-   convergence from the graph, prove the separate orthochronous sign, derive
-   the remaining dual-volume weight, rerun the conformal witness, and test
+   supplied first-order holonomy expansion. The finite equations are now also
+   exactly equivalent to unweighted or nonzero-volume-weighted weak testing,
+   and a changing-carrier sequence has a conditional weak vacuum endpoint.
+   Derive the holonomy expansion, test sampler, dual-volume weights, and
+   coframe convergence from the graph; prove actual weak convergence and the
+   separate orthochronous sign; rerun the conformal witness; and test
    Levi-Civita selection. The
    nonlinear replacement must avoid the proved
    `-95` pointwise obstruction and select Levi-Civita transport before any
@@ -957,6 +972,14 @@ metric, curvature, or action.
 27. M. Dupuis, F. Girelli, O. Hrytseniak, and W. Wieland, "Topological field
     theory plus local Lorentz symmetry is gravity,"
     [arXiv:2603.12100](https://arxiv.org/abs/2603.12100).
+28. E. S. Gawlik and M. Neunteufel, "Finite element approximation of the
+    Einstein tensor,"
+    [arXiv:2310.18802](https://arxiv.org/abs/2310.18802).
+29. E. S. Gawlik and M. Neunteufel, "Finite element approximation of scalar
+    curvature in arbitrary dimension,"
+    [arXiv:2301.02159](https://arxiv.org/abs/2301.02159).
+30. E. S. Gawlik and J. McKee, "On the curvature of Regge metrics,"
+    [arXiv:2510.25027](https://arxiv.org/abs/2510.25027).
 
 ## Bottom line
 
