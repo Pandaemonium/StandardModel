@@ -57,6 +57,7 @@ import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniCoframeVariation
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniCurvatureExtraction
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniWeakEinsteinLimit
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniLinearizedTorsionSelection
+import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniGeneralTorsionSelection
 import PhysicsSM.Draft.NullEdge.VacuumWeylPeriodicRefinementAristotle
 import PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylNullWaveJointNoGo
 import PhysicsSM.Draft.NullEdge.CurvatureConvergenceInterface
@@ -130,8 +131,8 @@ imports one representative route through each established layer:
     stationarity with convergent varying tetrads to the limiting mixed vacuum
     Einstein equation, exact finite weak-test equivalents of those pointwise
     equations, a conditional changing-carrier weak endpoint, and exact
-    identity-tetrad linearized torsion selection with its finite quadratic
-    spacing defect, and
+    arbitrary-invertible-tetrad linearized torsion selection at identity link
+    transport with its finite quadratic spacing defect, and
     the full Krein-paired link/face Euler chain with a coframe-derived
     Lorentz-Hodge face field,
    causal-diamond path-comparison holonomy, and an exact shrinking-plaquette
@@ -266,12 +267,15 @@ the limiting functional to vanish. This does not construct the test sampler,
 volume weights, weak topology, or convergence proof. The linearized
 torsion-selection successor addresses the other Palatini Euler sector. In the
 project's exact 24-component conventions, the identity-tetrad connection
-equation is equivalent to vanishing Cartan torsion. The finite face increment
-is the spacing times this linear equation plus an explicit quadratic defect,
-so identity-link stationarity along shrinking nonzero spacings with a fixed
-first coframe jet forces that jet to be torsion-free, even when the finite
-carrier changes. General-background nonlinear Levi-Civita uniqueness and
-graph-derived first-jet convergence remain open. The physical-link
+equation is equivalent to vanishing Cartan torsion. Its general-tetrad
+successor conjugates the exterior-square action by the Lorentz Hodge matrix
+and reduces every coframe with a supplied inverse to that identity theorem.
+The finite face increment is the spacing times this linear equation plus an
+explicit quadratic defect, so identity-link stationarity along shrinking
+nonzero spacings with a fixed invertible center coframe and fixed first jet
+forces that jet to be torsion-free, even when the finite carrier changes.
+Nonidentity-link and nonlinear Levi-Civita selection, and graph-derived
+first-jet convergence, remain open. The physical-link
 successor proves that
 `exp(A_n hat(F))` has exactly this first-order limit and constructs a nonzero
 `2 x 2` periodic-square refinement with commuting shifts and proper

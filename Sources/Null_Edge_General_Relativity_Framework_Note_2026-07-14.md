@@ -60,10 +60,10 @@ shown to converge from order and number.
 At G7, the canonical exponential variation curves are now proved to remain in
 the proper eta-Lorentz subgroup when based there. The unresolved component
 condition is the separate orthochronous sign, not determinant properness.
-The independent-connection equation now selects zero Cartan torsion exactly
-at the identity tetrad to first order, with its finite quadratic spacing
-defect isolated. General-background nonlinear Levi-Civita selection remains
-open.
+At identity link transport, the independent-connection equation now selects
+zero Cartan torsion exactly at every supplied invertible tetrad to first order,
+with its finite quadratic spacing defect isolated. Nonidentity-link nonlinear
+Levi-Civita selection remains open.
 
 The dependency is strongly upstream. Progress on G3-G8 cannot compensate for
 an open G2: until scale, a rank-four Lorentzian sector, and compatible overlap
@@ -7061,9 +7061,23 @@ vanish. The exact finite predecessor-face residual has the expansion
 the displayed lattice product-rule defect. Thus a sequence of exact
 identity-link stationary equations at nonzero `h -> 0`, with one fixed first
 coframe jet, forces zero torsion even when the carrier changes with `h`. This
-does not yet select a nonlinear connection at a general tetrad, prove metric
-compatibility or uniqueness modulo Lorentz gauge, control varying jets, or
-derive the refinement from the causal graph.
+identity-background module alone does not select a nonlinear connection; its
+successor below removes the tetrad restriction but still does not treat
+nonidentity links, prove nonlinear metric compatibility or uniqueness modulo
+Lorentz gauge, control varying jets, or derive the refinement from the causal
+graph.
+
+`NonlinearLorentzPalatiniGeneralTorsionSelection` removes the identity-tetrad
+restriction from this local theorem. The conjugated transport `-H C(L) H`
+carries Hodge-dual Palatini faces under an arbitrary internal basis change and
+is proved to equal the ordinary exterior-square transport on proper Lorentz
+matrices. A supplied inverse coframe therefore reduces the full parameterized
+twenty-four-equation system to the identity result, proving zero residual if
+and only if zero Cartan torsion at every fixed invertible tetrad. The finite
+`h L + h^2 Q` and changing-carrier fixed-jet endpoints extend verbatim, and an
+explicit anisotropic coframe witnesses a genuinely nonidentity background.
+This remains an identity-link linearization, not a theorem selecting a
+nonlinear Levi-Civita connection from nontrivial Lorentz links.
 
 `PhysicalLorentzPlaquetteRefinement` proves that the physical group sector is
 nonempty and nonflat. For every six-component target `F`, the exact holonomy
@@ -7510,6 +7524,7 @@ not
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniAction.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniWeakEinsteinLimit.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniLinearizedTorsionSelection.lean`
+- `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniGeneralTorsionSelection.lean`
 - `PhysicsSM/Draft/NullEdge/HomogeneousScalarStressVariation.lean`
 - `PhysicsSM/Draft/NullEdge/DiagonalScalarGradientStressVariation.lean`
 - `PhysicsSM/Draft/NullEdge/ADMShiftScalarFluxVariation.lean`

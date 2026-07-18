@@ -142,11 +142,12 @@ Lorentz-component debt is specifically the separate orthochronous sign.
 The F6/F8 backreaction debt now means a **nonlinear** continuation: the finite
 identity-background linearized system has a two-polarization curved jointly
 stationary sector, as recorded below.
-The F8 connection row now also has an exact identity-tetrad theorem:
-linearized Palatini connection stationarity is equivalent to zero Cartan
-torsion, and the finite departure from that equation is an explicit quadratic
-spacing defect. The remaining Levi-Civita debt is the general-background
-nonlinear selection, metric-compatibility, and uniqueness theorem.
+The F8 connection row now has an exact arbitrary-invertible-tetrad theorem at
+identity link transport: linearized Palatini connection stationarity is
+equivalent to zero Cartan torsion, and the finite departure from that equation
+is an explicit quadratic spacing defect. The remaining Levi-Civita debt is
+the nonidentity-link nonlinear selection, metric-compatibility, and uniqueness
+theorem.
 
 The program is strongest at F0 and in the exact algebraic interfaces inside
 F4-F7. Its decisive bottleneck remains F4, but F1 and F2 are logically prior
@@ -509,10 +510,23 @@ the exact residual is `h` times that linear equation plus an explicit
 quadratic `h^2` lattice product-rule defect. Hence exact identity-link
 stationarity along nonzero spacings tending to zero, with a fixed first
 coframe jet, forces that jet to be torsion-free; the carrier may change with
-the refinement level. This advances P8(a), but it is not yet nonlinear
-Levi-Civita selection: arbitrary background tetrads and links, varying-jet
-compactness, metric compatibility, uniqueness modulo Lorentz gauge, and a
-graph-derived refinement remain open.
+the refinement level. This advances P8(a) at the identity tetrad; the successor
+below removes that tetrad restriction. Nonidentity links, varying-jet
+compactness, nonlinear metric compatibility, uniqueness modulo Lorentz gauge,
+and a graph-derived refinement remain open.
+
+`NonlinearLorentzPalatiniGeneralTorsionSelection` removes the identity-tetrad
+restriction from that algebraic result. It defines the arbitrary internal
+basis action on Hodge-dual Palatini faces as `-H C(L) H`, proves that it reduces
+to the ordinary exterior-square transport for proper Lorentz `L`, and uses a
+supplied inverse coframe to reduce every invertible background exactly to the
+identity theorem. Consequently, all twenty-four connection coefficients
+vanish exactly when torsion vanishes at any fixed invertible tetrad. The same
+`h L + h^2 Q` argument gives a changing-carrier fixed-jet endpoint centered on
+that tetrad, and an explicit anisotropic coframe supplies a nonidentity
+witness. The links are still fixed to identity: full connection-dependent
+torsion, nonlinear Levi-Civita selection, and uniqueness modulo Lorentz gauge
+remain open.
 
 `PhysicalLorentzPlaquetteRefinement` closes the eta-Lorentz existence side of
 that interface. For arbitrary six-component `F`, it proves that the exact
@@ -892,11 +906,12 @@ metric, curvature, or action.
    supplied first-order holonomy expansion. The finite equations are now also
    exactly equivalent to unweighted or nonzero-volume-weighted weak testing,
    and a changing-carrier sequence has a conditional weak vacuum endpoint.
-   In the connection sector, the identity-tetrad linearized equation is now
-   exactly equivalent to zero Cartan torsion, with the finite `h^2` defect and
-   a fixed-first-jet changing-carrier limit made explicit. Generalize that
-   selection theorem to nonidentity tetrads and Lorentz links, prove metric
-   compatibility and uniqueness modulo gauge, and control varying first jets.
+   In the connection sector, the linearized equation at every supplied
+   invertible tetrad is now exactly equivalent to zero Cartan torsion, with the
+   finite `h^2` defect and a fixed-first-jet changing-carrier limit made
+   explicit. Generalize that selection theorem to nonidentity Lorentz links
+   and full connection-dependent torsion, prove metric compatibility and
+   uniqueness modulo gauge, and control varying first jets.
    Derive the holonomy expansion, test sampler, dual-volume weights, and
    coframe convergence from the graph; prove actual weak convergence and the
    separate orthochronous sign; and rerun the conformal witness. The nonlinear
