@@ -55,7 +55,7 @@ as current state.
 
 ## The null-edge program: core documents
 
-- `Sources/Null_Edge_GR_Literature_Audit_2026-07-18.md` - primary-source audit of null-lattice and first-order discrete gravity. It identifies Schaden and Kur-Glasser as the closest architectural prior art, applies Neiman's null-cell focusing obstruction, separates the current rank-two curvature image from a physical graviton count using Dittrich-Hoehn, and revises the theorem order to gauge quotient, propagation/no-doubling, nonlinear continuation, local Levi-Civita selection, and refinement convergence. [LIVE]
+- `Sources/Null_Edge_GR_Literature_Audit_2026-07-18.md` - primary-source audit of null-lattice and first-order discrete gravity. Its full Schaden deep read extracts the spinor/Pfaffian null-frame geometry, centered-plaquette proper time, manifold-admissibility projector, gauge slice, and measure, while flagging the arXiv-v2 Hermitian-conjugate link reversal as different from the repo's inverse-holonomy action. The audit also identifies Kur-Glasser as the nearest Euler-equation precedent, applies Neiman's null-cell focusing obstruction, separates the current rank-two curvature image from a physical graviton count using Dittrich-Hoehn, and revises the theorem order to gauge quotient, propagation/no-doubling, nonlinear continuation, local Levi-Civita selection, and refinement convergence. [LIVE]
 
 - `AutonomousLab/work/SPIRAL-LAYER/CLAUDE_SPIRAL_LAYER_PROGRAM_NOTE_2026-07-16.md` -
   the spiral-layer program note: the kernel-checked answer to "does mass
