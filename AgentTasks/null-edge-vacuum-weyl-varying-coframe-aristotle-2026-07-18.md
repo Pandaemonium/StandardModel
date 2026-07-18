@@ -137,3 +137,7 @@ aristotle:
   output_dir: AgentTasks/aristotle-output/a8d83497-34e4-4151-a122-59b821b3e587
   status: in_progress
 ```
+
+Live check on 2026-07-18 after the local null-wave result: project status
+`RUNNING`; task status `IN_PROGRESS`. A 30-second progress-stream check
+returned no new event before timing out, so the job was left undisturbed.

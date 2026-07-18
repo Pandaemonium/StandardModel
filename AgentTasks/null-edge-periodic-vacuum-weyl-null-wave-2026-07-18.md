@@ -1,7 +1,7 @@
 # Null-edge periodic vacuum-Weyl null wave
 
 Date: 2026-07-18
-Status: implemented; verification in progress
+Status: implemented and verified
 
 ## Objective
 
@@ -39,5 +39,11 @@ convergence.
 
 - Direct Lean check passed cleanly after factoring the Ricci contraction into
   an explicit two-polarization cancellation lemma.
-- Targeted module build, GR facade build, strict token scan, pre-commit, and
-  full build remain to be run.
+- Targeted module build passed (8084 jobs).
+- GR foundations facade build passed (8139 jobs).
+- Strict executable-token scan passed with no forbidden proof mechanisms.
+- `pre-commit run --all-files` and `git diff --check` passed.
+- Full `lake build` passed (8319 jobs); replayed warnings were pre-existing and
+  outside this task's files.
+- The semantic document index contains 28 declaration chunks for the new
+  module.
