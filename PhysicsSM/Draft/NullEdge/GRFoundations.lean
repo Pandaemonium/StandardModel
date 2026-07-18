@@ -58,6 +58,7 @@ import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniCurvatureExtraction
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniWeakEinsteinLimit
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniLinearizedTorsionSelection
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniGeneralTorsionSelection
+import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniAffineConnectionTorsionSelection
 import PhysicsSM.Draft.NullEdge.VacuumWeylPeriodicRefinementAristotle
 import PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylNullWaveJointNoGo
 import PhysicsSM.Draft.NullEdge.CurvatureConvergenceInterface
@@ -132,7 +133,9 @@ imports one representative route through each established layer:
     Einstein equation, exact finite weak-test equivalents of those pointwise
     equations, a conditional changing-carrier weak endpoint, and exact
     arbitrary-invertible-tetrad linearized torsion selection at identity link
-    transport with its finite quadratic spacing defect, and
+    transport with its finite quadratic spacing defect, followed by affine
+    connection-dependent Cartan torsion selection, its exact cubic finite
+    spacing defect, shrinking endpoint, and explicit nonvacuity family, and
     the full Krein-paired link/face Euler chain with a coframe-derived
     Lorentz-Hodge face field,
    causal-diamond path-comparison holonomy, and an exact shrinking-plaquette

@@ -1,6 +1,6 @@
 # General Relativity and the Null-Edge Framework
 
-**Status:** research note and reconstruction roadmap, updated 2026-07-17
+**Status:** research note and reconstruction roadmap, updated 2026-07-18
 **Scope:** standard general relativity, causal reconstruction, finite null-edge
 geometry, and the precise gap between the current formalization and a continuum
 gravitational theory
@@ -62,8 +62,10 @@ the proper eta-Lorentz subgroup when based there. The unresolved component
 condition is the separate orthochronous sign, not determinant properness.
 At identity link transport, the independent-connection equation now selects
 zero Cartan torsion exactly at every supplied invertible tetrad to first order,
-with its finite quadratic spacing defect isolated. Nonidentity-link nonlinear
-Levi-Civita selection remains open.
+with its finite quadratic spacing defect isolated. Its affine Lorentz-link
+tangent successor includes a supplied connection and selects
+`de + omega wedge e = 0`, with an exact cubic finite-spacing defect.
+Exact exponential-link nonlinear Levi-Civita selection remains open.
 
 The dependency is strongly upstream. Progress on G3-G8 cannot compensate for
 an open G2: until scale, a rank-four Lorentzian sector, and compatible overlap
@@ -7079,6 +7081,34 @@ explicit anisotropic coframe witnesses a genuinely nonidentity background.
 This remains an identity-link linearization, not a theorem selecting a
 nonlinear Levi-Civita connection from nontrivial Lorentz links.
 
+`NonlinearLorentzPalatiniAffineConnectionTorsionSelection` takes the next local
+step. It differentiates the four-vector and six-bivector Lorentz transports,
+proves the tangent commutes with the Lorentz Hodge star and is Krein-skew, and
+therefore derives the required minus sign in backward predecessor transport.
+The general-tetrad linear map is now evaluated on the covariant velocity
+`V_b - omega_b e`; under the predecessor convention `V_b = -partial_b e`, the
+twenty-four equations vanish exactly when all components of
+`de + omega wedge e` vanish. The finite affine residual is proved exactly to be
+`h L + h^2 Q - h^3 C`, so exact residuals along nonzero shrinking spacings
+force the connection-dependent torsion equation for a fixed jet. An explicit
+connection-generated jet satisfies all equations, ruling out vacuity. This is
+an affine transport-tangent theorem. It neither identifies those equations
+with the full nonidentity exponential-link Euler coefficients nor proves local
+uniqueness, metric compatibility at finite spacing, varying-jet compactness,
+or graph-derived refinement.
+
+The closest imported Euler-equation precedent is Kur and Glasser's tetradic
+Palatini lattice: their discrete connection equations are analogues of zero
+torsion and recover the continuum equation at leading small-cell order. The
+repo's local contribution is the exact convention-locked equivalence, finite
+cubic defect, shrinking theorem, explicit witness, and Lean assumption audit,
+not the broad claim that varying a discrete Lorentz connection selects
+torsion-free transport. The older null-strut calculus of Kheyfets, LaFave, and
+Miller also makes 3+1 null-link evolution imported prior art. Miller and
+Brewin-Gentle further show why the eventual Einstein endpoint should use weak
+or averaged residuals and prove stationary-field stability separately rather
+than demand pointwise residual convergence.
+
 `PhysicalLorentzPlaquetteRefinement` proves that the physical group sector is
 nonempty and nonflat. For every six-component target `F`, the exact holonomy
 `exp(A_n hat(F))` is proper eta-Lorentz and has action-visible first-order
@@ -7525,6 +7555,7 @@ not
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniWeakEinsteinLimit.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniLinearizedTorsionSelection.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniGeneralTorsionSelection.lean`
+- `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniAffineConnectionTorsionSelection.lean`
 - `PhysicsSM/Draft/NullEdge/HomogeneousScalarStressVariation.lean`
 - `PhysicsSM/Draft/NullEdge/DiagonalScalarGradientStressVariation.lean`
 - `PhysicsSM/Draft/NullEdge/ADMShiftScalarFluxVariation.lean`

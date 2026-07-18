@@ -528,6 +528,20 @@ witness. The links are still fixed to identity: full connection-dependent
 torsion, nonlinear Levi-Civita selection, and uniqueness modulo Lorentz gauge
 remain open.
 
+`NonlinearLorentzPalatiniAffineConnectionTorsionSelection` supplies the first
+connection-dependent successor. A six-component Lorentz connection velocity
+induces the exact four-vector and bivector tangents, the tangent commutes with
+the Lorentz Hodge star, and its Krein adjoint reverses sign. The linear
+predecessor-face equation is therefore the previous general-tetrad Palatini
+map applied to `V_b - omega_b e`; with `V_b = -partial_b e`, its vanishing is
+equivalent, up to one global sign, to all components of
+`de + omega wedge e = 0`. The exact affine finite residual is
+`h L + h^2 Q - h^3 C`. Exact equations along nonzero `h -> 0` force zero
+connection-dependent torsion for the fixed jet, and connection-generated
+coframe velocities give an explicit nonvacuity family. This is an affine
+tangent theorem, not yet the full exponential-link Euler equation or a
+nonlinear Levi-Civita uniqueness theorem.
+
 `PhysicalLorentzPlaquetteRefinement` closes the eta-Lorentz existence side of
 that interface. For arbitrary six-component `F`, it proves that the exact
 proper eta-Lorentz holonomy `exp(A_n hat(F))` has action-visible first-order
@@ -826,27 +840,36 @@ into a finite no-go for the current pointwise action.
 
 The dedicated audit in
 `Sources/Null_Edge_GR_Literature_Audit_2026-07-18.md` changes the claim boundary
-in five ways.
+in seven ways.
 
-1. Schaden already combines a causal null lattice, local `SL(2,C)`, null-frame
+1. Kheyfets, LaFave, and Miller already use null struts as the complete
+   evolution layer between spacelike three-geometries in 3+1 Regge calculus.
+   Null-edge evolution is imported prior art; the spinorial soldering and
+   Palatini link/face chain remain distinct.
+2. Schaden already combines a causal null lattice, local `SL(2,C)`, null-frame
    data, link transport, and a smooth Hilbert-Palatini limit. The architecture
    is imported; the exact finite theorem chain is the local contribution.
-2. Neiman shows that rigid flat null-faced polyhedra cannot capture generic
+3. Neiman shows that rigid flat null-faced polyhedra cannot capture generic
    Ricci focusing. Curved reconstruction must vary decorated ray directions,
    affine spacings, coframes, and transport rather than identify the carrier
    with a fixed null-faced tessellation.
-3. Wieland has exact lightlike curvature defects and impulsive Einstein waves
+4. Wieland has exact lightlike curvature defects and impulsive Einstein waves
    in a topological model. The repo's wave witness is specific to its finite
    action, but it is not the first discrete null gravitational-wave idea. The
    decisive extra obligation is non-topological propagating degrees of freedom.
-4. Dittrich and Hoehn make the gauge quotient load-bearing. The current
+5. Dittrich and Hoehn make the gauge quotient load-bearing. The current
    exact-rational coupled Hessian has curvature-image rank two, but this is not
    a two-polarization theorem until local Lorentz/vertex gauge directions,
    discrete Bianchi identities, quotient rank, propagation, and full-zone
    doubling are proved.
-5. Gionti suggests a realistic Levi-Civita theorem: local uniqueness near a
+6. Gionti suggests a realistic Levi-Civita theorem: local uniqueness near a
    nondegenerate small-curvature background after gauge fixing. Global exact
    connection identification should not be the first target.
+7. Miller and Brewin-Gentle show that pointwise discrete residuals can have a
+   lower convergence order, or even fail to converge on continuum-sampled
+   data, while averaged residuals or actual discrete solutions converge. The
+   first Einstein endpoint should therefore be weak and volume-weighted, with
+   stationary-solution compactness or stability proved separately.
 
 The revised F8 order is therefore: kernelize the coupled Hessian, classify and
 quotient gauge, prove propagation/no-doubling, test nonlinear continuation,
@@ -909,9 +932,12 @@ metric, curvature, or action.
    In the connection sector, the linearized equation at every supplied
    invertible tetrad is now exactly equivalent to zero Cartan torsion, with the
    finite `h^2` defect and a fixed-first-jet changing-carrier limit made
-   explicit. Generalize that selection theorem to nonidentity Lorentz links
-   and full connection-dependent torsion, prove metric compatibility and
-   uniqueness modulo gauge, and control varying first jets.
+   explicit. Its affine-link tangent successor now includes a supplied Lorentz
+   connection, identifies the full linear equation with
+   `de + omega wedge e = 0`, and exposes the exact cubic finite defect. Replace
+   the affine tangent by exact exponential Lorentz links, compare it to the
+   full nonlinear link Euler equation, then prove metric compatibility,
+   local uniqueness modulo gauge, and control varying first jets.
    Derive the holonomy expansion, test sampler, dual-volume weights, and
    coframe convergence from the graph; prove actual weak convergence and the
    separate orthochronous sign; and rerun the conformal witness. The nonlinear
@@ -1018,6 +1044,23 @@ metric, curvature, or action.
     [arXiv:2301.02159](https://arxiv.org/abs/2301.02159).
 30. E. S. Gawlik and J. McKee, "On the curvature of Regge metrics,"
     [arXiv:2510.25027](https://arxiv.org/abs/2510.25027).
+31. A. Kheyfets, N. J. LaFave, and W. A. Miller, "Null-strut calculus I:
+    kinematics,"
+    [doi:10.1103/PhysRevD.41.3628](https://doi.org/10.1103/PhysRevD.41.3628).
+32. A. Kheyfets, N. J. LaFave, and W. A. Miller, "Null-strut calculus II:
+    dynamics,"
+    [doi:10.1103/PhysRevD.41.3637](https://doi.org/10.1103/PhysRevD.41.3637).
+33. M. A. Miller, "Regge calculus as a fourth order method in numerical
+    relativity,"
+    [arXiv:gr-qc/9502044](https://arxiv.org/abs/gr-qc/9502044).
+34. L. C. Brewin, "Is the Regge calculus a consistent approximation to
+    general relativity?"
+    [arXiv:gr-qc/9502043](https://arxiv.org/abs/gr-qc/9502043).
+35. L. C. Brewin and A. P. Gentle, "On the convergence of Regge calculus to
+    general relativity,"
+    [arXiv:gr-qc/0006017](https://arxiv.org/abs/gr-qc/0006017).
+36. L. Brewin, "Exterior differentiation in the Regge calculus,"
+    [doi:10.1063/1.527332](https://doi.org/10.1063/1.527332).
 
 ## Bottom line
 

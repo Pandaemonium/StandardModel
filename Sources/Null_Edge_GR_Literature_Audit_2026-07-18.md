@@ -12,8 +12,10 @@ The literature supports the basic architecture but narrows its originality.
 A causal null lattice with local `SL(2,C)` data and a smooth Hilbert-Palatini
 limit already exists in Schaden. A locally Lorentz-invariant discretization of
 the tetradic Palatini action with independent coframe and connection equations
-already exists in Kur and Glasser. First-order Regge and Poincare formulations
-already provide small-curvature Levi-Civita selection results.
+already exists in Kur and Glasser. A 3+1 Regge evolution architecture whose
+successive spacelike three-geometries are joined entirely by null struts
+predates both in Kheyfets, LaFave, and Miller. First-order Regge and Poincare
+formulations already provide small-curvature Levi-Civita selection results.
 
 The repo's defensible distinctive contribution is therefore not the broad idea
 "GR from null links." It is the exact, convention-locked, kernel-checked finite
@@ -24,10 +26,13 @@ chain and its unusually sharp positive and negative results:
 2. the complete rank-six, ten-parameter fixed-link coframe-response kernel;
 3. the no-go for every invertible jointly stationary coframe when those wave
    links are held fixed at nonzero area;
-4. a coupled link/coframe linearization whose current exact-rational oracle has
+4. an exact affine connection-dependent Palatini theorem whose twenty-four
+   equations select `de + omega wedge e = 0`, with a cubic finite-spacing
+   defect and shrinking endpoint;
+5. a coupled link/coframe linearization whose current exact-rational oracle has
    a two-dimensional curvature image.
 
-The fourth item is not yet a two-polarization graviton theorem. Linearized
+The fifth item is not yet a two-polarization graviton theorem. Linearized
 Regge theory makes clear that a physical mode count requires an identified
 gauge kernel, discrete Bianchi identities, a quotient by gauge, and a
 propagation statement. Those are now the immediate gate.
@@ -60,6 +65,14 @@ searched specifically for distributional Einstein convergence, weak Cartan
 curvature, DEC/FEEC operator convergence, simplicial Holst actions, practical
 manifoldlikeness tests, and noncompact Lorentz gauge fixing.
 
+A third pass searched the older Regge evolution and consistency literature.
+It added six papers to Zotero collection `9W59V3K9`: both null-strut papers,
+Miller's local-versus-averaged residual study, Brewin's pointwise-residual
+critique, Brewin and Gentle's oscillatory-error reconciliation, and Brewin's
+discrete exterior derivative. This pass
+corrects the evolution-priority claim and sharpens the first convergence norm
+to test.
+
 ## Closest prior art
 
 | Source | What it establishes | What it does not establish | Consequence for this repo |
@@ -75,6 +88,57 @@ manifoldlikeness tests, and noncompact Lorentz gauge fixing.
 | Foster and Jacobson, [Propagating Spinors on a Tetrahedral Spacetime Lattice](https://arxiv.org/abs/hep-th/0310166) | A tetrahedral hyperdiamond Weyl propagator, bend amplitudes, a continuum limit, and a no-doubling result for its retarded scheme | A gravity theory; its links are not null in the convergent construction, while its faces are null | "Null edges" and "null faces" cannot be conflated; Courant stability and determinant-level doubling remain mandatory audits |
 | Menotti and Pelissetto, [Poincare, de Sitter, and Conformal Gravity on the Lattice](https://doi.org/10.1103/PhysRevD.35.1194) | An early gauge-theoretic lattice gravity with link variables, vierbeins, reflection positivity, and a reported graviton-doubling phenomenon | A Lorentzian null lattice or the present action | Graviton doubling is old and must be tested explicitly in any translationally invariant wave sector |
 | Dupuis, Girelli, Hrytseniak, and Wieland, [Topological Field Theory Plus Local Lorentz Symmetry Is Gravity](https://arxiv.org/abs/2603.12100) | A 2026 continuum formulation using Weyl-spinor-valued one-forms encoding frame data, with gravity arising when `SL(2,C)` is localized | A discrete implementation or continuum limit from a graph | A modern spinorial frame/connection comparator; it does not replace the finite Palatini program |
+
+### Null-strut evolution precedent
+
+Kheyfets, LaFave, and Miller's two-part 1990 construction is the clearest
+pre-Schaden precedent for null-link **evolution**. Part I develops a 3+1 Regge
+kinematics in which spacelike three-geometries are connected by momentumlike
+layers made entirely of null struts. Part II derives the corresponding Regge
+geometrodynamic evolution algorithm. The construction does not use the repo's
+spinorial null-frame soldering, local `SL(2,C)` face action, independent
+Palatini coframe/connection variables, or operator-first metric. Therefore:
+
+- the broad claim that null edges can carry discrete time evolution is
+  `[import]`, not a new result of this program;
+- null-strut initial-value and boundary bookkeeping should be mined for the
+  eventual graph-refinement construction;
+- the repo's defensible contribution remains the exact finite
+  spinor/coframe/holonomy/Palatini chain and its kernel-checked gates.
+
+Primary sources: Kheyfets, LaFave, and Miller,
+[Null-Strut Calculus I: Kinematics](https://doi.org/10.1103/PhysRevD.41.3628)
+and
+[Null-Strut Calculus II: Dynamics](https://doi.org/10.1103/PhysRevD.41.3637).
+
+### Residual convergence is a weak or averaged question
+
+The older Regge consistency literature gives a direct warning for the current
+weak-Einstein endpoint. Miller found that individual Regge equations evaluated
+on continuum metrics vanish at second order, while suitable local averages
+vanish at least at third order and numerically at fourth order on tested exact
+solutions. Brewin showed that generic pointwise residuals may fail to
+distinguish Einstein from non-Einstein metrics. Brewin and Gentle then exhibited
+second-order convergent simplicial Kasner solutions despite nonconvergent
+continuum-sampled residuals, explained by oscillatory error. Thus the first
+continuum gate should not be pointwise residual decay. It should be a
+volume-weighted weak pairing or an equivalent averaged residual, followed
+separately by stability or compactness of stationary fields.
+
+Brewin's earlier exterior differentiation supplies a compatible discrete-form
+template: Stokes' theorem and `d^2 = 0` hold on the piecewise-continuous Regge
+complex, and its Stokes formula tends to the smooth one under refinement. This
+supports keeping the connection equation in a cochain/exterior-calculus form
+through the convergence proof.
+
+Primary sources: Miller,
+[Regge Calculus as a Fourth Order Method in Numerical Relativity](https://arxiv.org/abs/gr-qc/9502044);
+Brewin,
+[Is the Regge Calculus a Consistent Approximation to General Relativity?](https://arxiv.org/abs/gr-qc/9502043);
+Brewin and Gentle,
+[On the Convergence of Regge Calculus to General Relativity](https://arxiv.org/abs/gr-qc/0006017);
+and Brewin,
+[Exterior Differentiation in the Regge Calculus](https://doi.org/10.1063/1.527332).
 
 ## Gap-driven second pass
 
