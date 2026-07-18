@@ -125,7 +125,7 @@ infrared phase.
 
 | Gate | Required result | Present in the repo | Exact open debt |
 |---|---|---|---|
-| F0: finite kinematics | Strict causal order, count measure, relabeling covariance | Exact open intervals, layers, equivariant causal operators, null-spinor soldering controls | A single agreed primitive data type linking order/count data to optional decorations |
+| F0: finite kinematics | Strict causal order, count measure, relabeling covariance | Exact open intervals, layers, equivariant causal operators, null-spinor soldering controls, and a kernel-checked centered-plaquette proper-time bridge | A single agreed primitive data type linking order/count data to optional decorations |
 | F1: manifold-conditioned limit | Faithful embeddings or an equivalent intrinsic convergence interface | Extensive sprinkled-manifold controls and a two-scale reconstruction protocol | One theorem family with explicit probability space, regulator schedule, topology, and uniform error bounds |
 | F2: dynamical manifold selection | The theory suppresses nonmanifoldlike orders and selects a four-dimensional Lorentzian phase | Candidate actions and finite experiments only | A covariant ensemble/quantum measure and concentration on the F1 domain |
 | F3: dimension, topology, conformal class | Recover dimension, topology, and causal conformal geometry | Continuum Malament/HKM result is imported; finite topology and dimension literature is catalogued | Intrinsic dimension/topology convergence for the selected ensemble |
@@ -146,6 +146,16 @@ stationary sector, as recorded below.
 The program is strongest at F0 and in the exact algebraic interfaces inside
 F4-F7. Its decisive bottleneck remains F4, but F1 and F2 are logically prior
 to any claim that the continuum theory is selected rather than supplied.
+
+`SchadenProperTimeBridge` now makes one imported F0 statement exact in the
+project's conventions. A single spinor-soldered null edge has zero proper-time
+increment, while a centered plaquette made from two null directions has
+increment `||psi wedge chi||`; it is positive exactly for nonzero Pluecker
+area and is invariant under the determinant-one spinor action. Its square is
+the same scalar as the landed two-edge Pluecker mass, but this is explicitly a
+finite dictionary identity, not a dynamical mass-generation theorem. The next
+Schaden-derived gates are backward-simplex admissibility at F1 and a positive
+boost-gauge Hessian for local nonlinear connection selection at F8.
 
 The theorem `DiscreteCausalActionVariationNoGo.everyGraphAction_continuouslyStationary`
 shows that direct continuous variation of an unweighted finite graph is

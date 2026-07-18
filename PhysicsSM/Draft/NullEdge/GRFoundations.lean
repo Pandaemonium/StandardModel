@@ -1,5 +1,6 @@
 import PhysicsSM.Draft.NullEdge.NullEdgeSpinorSolderingAristotle
 import PhysicsSM.Draft.NullEdge.NullEdgeSolderingPluckerBridge
+import PhysicsSM.Draft.NullEdge.SchadenProperTimeBridge
 import PhysicsSM.Draft.NullEdge.FiniteCausalOrderOperator
 import PhysicsSM.Draft.NullEdge.CausalOperatorWeakGeometry
 import PhysicsSM.Draft.NullEdge.BareGraphScaleReconstruction
