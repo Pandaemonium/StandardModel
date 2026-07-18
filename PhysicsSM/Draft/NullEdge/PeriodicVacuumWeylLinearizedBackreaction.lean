@@ -5,16 +5,17 @@ noncomputable section
 /-!
 # Linearized link/coframe backreaction of the periodic vacuum null wave
 
-The fixed proper-Lorentz null-wave links admit no invertible jointly stationary
+The fixed proper-Lorentz null-wave links have no invertible jointly stationary
 coframe at nonzero area.  This module therefore linearizes both independent
 Euler sectors simultaneously at the identity connection and identity coframe.
 The link perturbation is a six-component Lorentz-algebra field and the coframe
 perturbation is an arbitrary tetrad matrix field.
 
-An explicit coupled perturbation solves all forty-eight link equations and all
-thirty-two coframe equations while carrying nonzero additive curvature.  It is
-a finite two-site analogue of the plus null-wave polarization.  This is a
-kernel-checked linearized existence theorem, not yet
+Two explicit coupled perturbations solve all forty-eight link equations and
+all thirty-two coframe equations while carrying independent nonzero additive
+curvatures modulo the injective twelve-parameter infinitesimal local Lorentz
+orbit.  They are finite two-site analogues of the plus and cross null-wave
+polarizations.  This is a kernel-checked linearized existence theorem, not yet
 a nonlinear jointly stationary branch, Levi-Civita selection, gauge-reduced
 degree-of-freedom count, or continuum-limit theorem.
 
@@ -202,6 +203,16 @@ theorem additivePlaquetteCurl_infinitesimalGaugeLinkVariation
   rw [hCommute site a b]
   ring
 
+/-- Reversing an ordered face negates every additive plaquette curl. -/
+theorem additivePlaquetteCurl_antisymmetric_local
+    {Site : Type*} (shift : Fin 4 -> Equiv Site Site)
+    (variation : LinkVariation Site) (site : Site)
+    (a b : Fin 4) (component : Fin 6) :
+    additivePlaquetteCurl shift variation site a b component =
+      -additivePlaquetteCurl shift variation site b a component := by
+  unfold additivePlaquetteCurl
+  ring
+
 /-- Plus-like link perturbation selected by the exact joint Hessian. -/
 def plusBackreactionLinkVariation : LinkVariation NullWaveSite :=
   fun site direction =>
@@ -243,6 +254,27 @@ def crossBackreactionCoframeVariation : CoframeField NullWaveSite :=
          0, 0, 0, 0;
          0, 0, 0, 0]
     else 0
+
+/-- Explicit cross-polarized curvature carried by the integer-scaled cross
+backreaction mode. -/
+def crossBackreactionCurvature :
+    NullWaveSite -> Fin 4 -> Fin 4 -> Fiber 6 :=
+  fun site a b component =>
+    2 * nullWaveAmplitude site *
+      (nullWaveFaceOne a b * nullWavePolarizationTwo component -
+        nullWaveFaceTwo a b * nullWavePolarizationOne component)
+
+/-- Linear combination of the two curved link modes. -/
+def plusCrossLinkCombination (plusScale crossScale : Real) :
+    LinkVariation NullWaveSite :=
+  plusScale • plusBackreactionLinkVariation +
+    crossScale • crossBackreactionLinkVariation
+
+/-- Linear combination of the matching coframe modes. -/
+def plusCrossCoframeCombination (plusScale crossScale : Real) :
+    CoframeField NullWaveSite :=
+  plusScale • plusBackreactionCoframeVariation +
+    crossScale • crossBackreactionCoframeVariation
 
 /-- At identity links, the linearized coframe equation is exactly the first
 Palatini coframe response paired with the additive plaquette curl. -/
@@ -296,6 +328,101 @@ theorem additivePlaquetteCurl_plusBackreactionLinkVariation
       nullWaveFaceTwo, nullWavePolarizationOne,
       nullWavePolarizationTwo] <;>
     ring
+
+set_option maxHeartbeats 1000000 in
+/-- The cross-like link perturbation realizes the displayed cross-polarized
+curvature exactly. -/
+theorem additivePlaquetteCurl_crossBackreactionLinkVariation
+    (site : NullWaveSite) (a b : Fin 4) :
+    additivePlaquetteCurl nullWaveShift crossBackreactionLinkVariation
+        site a b =
+      crossBackreactionCurvature site a b := by
+  funext component
+  fin_cases site <;> fin_cases a <;> fin_cases b <;>
+    simp [additivePlaquetteCurl, crossBackreactionLinkVariation,
+      crossBackreactionCurvature, nullWaveShift, toggleFinTwo,
+      nullWaveAmplitude, nullWavePotential, nullWaveFaceOne,
+      nullWaveFaceTwo, nullWavePolarizationOne,
+      nullWavePolarizationTwo] <;>
+    ring
+
+/-- Face reversal negates the cross-polarized curvature. -/
+theorem crossBackreactionCurvature_antisymmetric (site : NullWaveSite) :
+    forall a b component,
+      crossBackreactionCurvature site a b component =
+        -crossBackreactionCurvature site b a component := by
+  intro a b component
+  fin_cases a <;> fin_cases b <;>
+    simp [crossBackreactionCurvature, nullWaveFaceOne,
+      nullWaveFaceTwo]
+
+/-- Matrix conversion of the cross-polarized curvature. -/
+theorem bivectorMatrix_crossBackreactionCurvature
+    (site : NullWaveSite) (a b i j : Fin 4) :
+    bivectorMatrix (crossBackreactionCurvature site a b) i j =
+      2 * nullWaveAmplitude site *
+        (nullWaveFaceOne a b *
+            bivectorMatrix nullWavePolarizationTwo i j -
+          nullWaveFaceTwo a b *
+            bivectorMatrix nullWavePolarizationOne i j) := by
+  fin_cases i <;> fin_cases j <;>
+    simp +decide [crossBackreactionCurvature, bivectorMatrix,
+      nullWavePolarizationOne, nullWavePolarizationTwo]
+
+/-- The quarter-turned null polarizations cancel under Ricci contraction. -/
+theorem crossBackreactionRicciContraction_cancel
+    (coframeDirection raisedDirection : Fin 4) :
+    Finset.sum Finset.univ (fun b =>
+      nullWaveFaceOne coframeDirection b *
+          bivectorMatrix nullWavePolarizationTwo raisedDirection b -
+        nullWaveFaceTwo coframeDirection b *
+          bivectorMatrix nullWavePolarizationOne raisedDirection b) = 0 := by
+  fin_cases coframeDirection <;> fin_cases raisedDirection <;>
+    simp +decide [nullWaveFaceOne, nullWaveFaceTwo,
+      nullWavePolarizationOne, nullWavePolarizationTwo, bivectorMatrix,
+      Fin.sum_univ_four]
+
+/-- Every mixed Ricci entry of the cross-polarized curvature vanishes at the
+identity inverse coframe. -/
+theorem crossBackreactionCurvature_mixedRicci_zero
+    (site : NullWaveSite) (coframeDirection raisedDirection : Fin 4) :
+    mixedRicciCurvature (1 : Matrix (Fin 4) (Fin 4) Real)
+        (crossBackreactionCurvature site)
+        coframeDirection raisedDirection = 0 := by
+  rw [mixedRicciCurvature_identity]
+  simp_rw [bivectorMatrix_crossBackreactionCurvature]
+  rw [<- Finset.mul_sum,
+    crossBackreactionRicciContraction_cancel]
+  ring
+
+/-- The cross-polarized scalar curvature vanishes at the identity inverse
+coframe. -/
+theorem crossBackreactionCurvature_scalar_zero (site : NullWaveSite) :
+    inverseCoframeScalarCurvature
+        (1 : Matrix (Fin 4) (Fin 4) Real)
+        (crossBackreactionCurvature site) = 0 := by
+  rw [show inverseCoframeScalarCurvature
+        (1 : Matrix (Fin 4) (Fin 4) Real)
+        (crossBackreactionCurvature site) =
+      Finset.sum Finset.univ (fun direction =>
+        mixedRicciCurvature (1 : Matrix (Fin 4) (Fin 4) Real)
+          (crossBackreactionCurvature site) direction direction) by
+    simp [inverseCoframeScalarCurvature, mixedRicciCurvature,
+      Matrix.one_apply, Fin.sum_univ_four]]
+  simp [crossBackreactionCurvature_mixedRicci_zero]
+
+/-- All mixed vacuum Einstein entries of the cross-polarized curvature vanish
+pointwise. -/
+theorem crossBackreactionCurvature_mixedVacuum
+    (site : NullWaveSite) (coframeDirection raisedDirection : Fin 4) :
+    mixedVacuumEinsteinEntry
+        (1 : Matrix (Fin 4) (Fin 4) Real)
+        (crossBackreactionCurvature site)
+        coframeDirection raisedDirection = 0 := by
+  rw [mixedVacuumEinsteinEntry,
+    crossBackreactionCurvature_mixedRicci_zero,
+    crossBackreactionCurvature_scalar_zero]
+  ring
 
 /-- The plus-like link perturbation satisfies all thirty-two linearized
 coframe/Einstein equations. -/
@@ -355,6 +482,51 @@ theorem plusBackreaction_coframeStationary :
     simp only [Pi.smul_apply, smul_eq_mul]
     rw [nullWaveCurvature_antisymmetric site a b component]
     ring
+
+/-- The cross-like link perturbation satisfies all thirty-two linearized
+coframe/Einstein equations. -/
+theorem crossBackreaction_coframeStationary :
+    LinearizedCoframeStationary nullWaveShift
+      crossBackreactionLinkVariation := by
+  intro site internal direction
+  unfold linearizedCoframeEulerCoefficient
+  rw [linearizedCoframeEulerFunctional_eq_palatiniDensityFirstVariation]
+  have hCurl :
+      additivePlaquetteCurl nullWaveShift crossBackreactionLinkVariation site =
+        crossBackreactionCurvature site := by
+    funext a b
+    exact additivePlaquetteCurl_crossBackreactionLinkVariation site a b
+  rw [hCurl]
+  rw [palatiniDensityFirstVariation_eq_det_mul_mixedEinstein
+    (inverseCoframe := (1 : Matrix (Fin 4) (Fin 4) Real))]
+  · have hMixed : forall coframeDirection raisedDirection,
+        2 * mixedRicciCurvature (1 : Matrix (Fin 4) (Fin 4) Real)
+              (crossBackreactionCurvature site)
+              coframeDirection raisedDirection -
+            (1 : Matrix (Fin 4) (Fin 4) Real)
+                raisedDirection coframeDirection *
+              inverseCoframeScalarCurvature
+                (1 : Matrix (Fin 4) (Fin 4) Real)
+                (crossBackreactionCurvature site) = 0 := by
+      intro coframeDirection raisedDirection
+      simpa [mixedVacuumEinsteinEntry] using
+        crossBackreactionCurvature_mixedVacuum
+          site coframeDirection raisedDirection
+    have hCoefficient :=
+      (mixedEinsteinCoframeCoefficient_vanish_iff
+        (1 : Matrix (Fin 4) (Fin 4) Real)
+        (1 : Matrix (Fin 4) (Fin 4) Real)
+        (crossBackreactionCurvature site)
+        (by simp) (by simp)).2 hMixed
+    simp only [Matrix.det_one, one_mul]
+    apply Finset.sum_eq_zero
+    intro coefficientInternal _
+    apply Finset.sum_eq_zero
+    intro coefficientDirection _
+    rw [hCoefficient coefficientInternal coefficientDirection]
+    ring
+  · simp
+  · exact crossBackreactionCurvature_antisymmetric site
 
 /-- The Lorentz-generator coordinate map is additive. -/
 theorem lorentzGenerator_add_local (left right : Fiber 6) :
@@ -568,6 +740,20 @@ def plusBackreactionFaceVariationCoordinates :
       ]
     else 0
 
+/-- Sparse six-vector table of the cross shear's complementary face first
+variation at its supported site. -/
+def crossBackreactionFaceVariationCoordinates :
+    NullWaveSite -> Fin 4 -> Fin 4 -> Fiber 6 :=
+  fun site =>
+    if site = 0 then
+      ![
+        ![0, ![0, 0, 0, 0, -2, 0], 0, 0],
+        ![![0, 0, 0, 0, 2, 0], 0, 0, ![0, 0, 2, 0, 0, 0]],
+        ![0, 0, 0, 0],
+        ![0, ![0, 0, -2, 0, 0, 0], 0, 0]
+      ]
+    else 0
+
 set_option maxHeartbeats 1000000 in
 /-- The displayed identity-face table is exact. -/
 theorem coframeFaceWeight_identity_eq_coordinates
@@ -632,6 +818,52 @@ theorem coframeFaceWeightFirstVariation_plus_eq_coordinates
       Matrix.one_apply, Fin.sum_univ_four, Fin.sum_univ_six] <;>
     ring
 
+set_option maxHeartbeats 2000000 in
+/-- The displayed cross-shear face-variation table is exact. -/
+theorem coframeFaceWeightFirstVariation_cross_eq_coordinates
+    (site : NullWaveSite) (a b : Fin 4) :
+    coframeFaceWeightFirstVariation
+        (identityCoframeField NullWaveSite)
+        crossBackreactionCoframeVariation site a b =
+      crossBackreactionFaceVariationCoordinates site a b := by
+  funext component
+  fin_cases site <;> fin_cases a <;> fin_cases b <;> fin_cases component <;>
+    simp +decide [coframeFaceWeightFirstVariation, identityCoframeField,
+      crossBackreactionCoframeVariation,
+      crossBackreactionFaceVariationCoordinates,
+      complementaryPalatiniFaceWeightFirstVariation,
+      palatiniFaceWeightFirstVariation, coframeWedgeFirstVariation,
+      LorentzBivectorKreinBridge.bivectorFirst,
+      LorentzBivectorKreinBridge.bivectorSecond,
+      spacetimeAlternatingSymbol, lorentzHodgeStar, transportApply,
+      Matrix.one_apply, Fin.sum_univ_four, Fin.sum_univ_six] <;>
+    ring
+
+/-- The combined plus/cross coframe mode has the corresponding linear
+combination of the two sparse face-variation tables. -/
+theorem coframeFaceWeightFirstVariation_plusCross_eq_coordinates
+    (plusScale crossScale : Real) (site : NullWaveSite) (a b : Fin 4) :
+    coframeFaceWeightFirstVariation
+        (identityCoframeField NullWaveSite)
+        (plusCrossCoframeCombination plusScale crossScale) site a b =
+      plusScale • plusBackreactionFaceVariationCoordinates site a b +
+        crossScale • crossBackreactionFaceVariationCoordinates site a b := by
+  unfold plusCrossCoframeCombination coframeFaceWeightFirstVariation
+  simp only [Pi.add_apply, Pi.smul_apply]
+  rw [complementaryPalatiniFaceWeightFirstVariation_add,
+    complementaryPalatiniFaceWeightFirstVariation_smul,
+    complementaryPalatiniFaceWeightFirstVariation_smul]
+  change plusScale •
+        coframeFaceWeightFirstVariation
+          (identityCoframeField NullWaveSite)
+          plusBackreactionCoframeVariation site a b +
+      crossScale •
+        coframeFaceWeightFirstVariation
+          (identityCoframeField NullWaveSite)
+          crossBackreactionCoframeVariation site a b = _
+  rw [coframeFaceWeightFirstVariation_plus_eq_coordinates,
+    coframeFaceWeightFirstVariation_cross_eq_coordinates]
+
 set_option maxHeartbeats 5000000 in
 /-- The plus-like link/coframe pair satisfies all forty-eight linearized
 connection equations. -/
@@ -649,6 +881,58 @@ theorem plusBackreaction_linkStationary :
     simp +decide [lorentzTriplePair, plusBackreactionLinkVariation,
       identityPalatiniFaceCoordinates,
       plusBackreactionFaceVariationCoordinates,
+      additivePlaquetteCurl, nullWaveShift, toggleFinTwo, nullWaveAmplitude,
+      nullWavePotential, nullWavePolarizationOne,
+      nullWavePolarizationTwo,
+      kreinPair_lorentzBivector_eq_explicit,
+      Fin.sum_univ_four] <;>
+    ring
+
+set_option maxHeartbeats 5000000 in
+/-- The cross-like link/coframe pair satisfies all forty-eight linearized
+connection equations. -/
+theorem crossBackreaction_linkStationary :
+    LinearizedLinkStationary nullWaveShift crossBackreactionLinkVariation
+      crossBackreactionCoframeVariation := by
+  intro site direction component
+  unfold linearizedLinkEulerCoefficient
+  rw [linearizedLinkEulerFunctional_eq_coordinates]
+  unfold linearizedLinkEulerFunctionalCoordinates
+  simp_rw [linearizedGeneratorFaceResponse_eq_pairs]
+  simp_rw [coframeFaceWeight_identity_eq_coordinates,
+    coframeFaceWeightFirstVariation_cross_eq_coordinates]
+  fin_cases site <;> fin_cases direction <;> fin_cases component <;>
+    simp +decide [lorentzTriplePair, crossBackreactionLinkVariation,
+      identityPalatiniFaceCoordinates,
+      crossBackreactionFaceVariationCoordinates,
+      additivePlaquetteCurl, nullWaveShift, toggleFinTwo, nullWaveAmplitude,
+      nullWavePotential, nullWavePolarizationOne,
+      nullWavePolarizationTwo,
+      kreinPair_lorentzBivector_eq_explicit,
+      Fin.sum_univ_four] <;>
+    ring
+
+set_option maxHeartbeats 5000000 in
+/-- Every real plus/cross combination satisfies all forty-eight linearized
+connection equations. -/
+theorem plusCrossCombination_linkStationary
+    (plusScale crossScale : Real) :
+    LinearizedLinkStationary nullWaveShift
+      (plusCrossLinkCombination plusScale crossScale)
+      (plusCrossCoframeCombination plusScale crossScale) := by
+  intro site direction component
+  unfold linearizedLinkEulerCoefficient
+  rw [linearizedLinkEulerFunctional_eq_coordinates]
+  unfold linearizedLinkEulerFunctionalCoordinates
+  simp_rw [linearizedGeneratorFaceResponse_eq_pairs]
+  simp_rw [coframeFaceWeight_identity_eq_coordinates,
+    coframeFaceWeightFirstVariation_plusCross_eq_coordinates]
+  fin_cases site <;> fin_cases direction <;> fin_cases component <;>
+    simp +decide [lorentzTriplePair, plusCrossLinkCombination,
+      plusBackreactionLinkVariation, crossBackreactionLinkVariation,
+      identityPalatiniFaceCoordinates,
+      plusBackreactionFaceVariationCoordinates,
+      crossBackreactionFaceVariationCoordinates,
       additivePlaquetteCurl, nullWaveShift, toggleFinTwo, nullWaveAmplitude,
       nullWavePotential, nullWavePolarizationOne,
       nullWavePolarizationTwo,
@@ -724,6 +1008,26 @@ theorem plusBackreaction_curvature_ne_zero (site : NullWaveSite) :
   rw [hCurl]
   exact smul_ne_zero (by norm_num) (nullWaveCurvature_ne_zero site)
 
+/-- The cross-like link perturbation has nonzero additive curvature at both
+sites. -/
+theorem crossBackreaction_curvature_ne_zero (site : NullWaveSite) :
+    additivePlaquetteCurl nullWaveShift crossBackreactionLinkVariation site ≠
+      0 := by
+  have hCurl :
+      additivePlaquetteCurl nullWaveShift crossBackreactionLinkVariation site =
+        crossBackreactionCurvature site := by
+    funext a b
+    exact additivePlaquetteCurl_crossBackreactionLinkVariation site a b
+  rw [hCurl]
+  intro hZero
+  have hEntry := congrFun (congrFun (congrFun hZero 0) 1) 2
+  fin_cases site <;>
+    norm_num [crossBackreactionCurvature, nullWaveAmplitude,
+      nullWavePotential, toggleFinTwo, nullWaveFaceOne,
+      nullWaveFaceTwo, nullWavePolarizationOne,
+      nullWavePolarizationTwo] at hEntry
+  all_goals simp at hEntry
+
 /-- The explicit plus-like pair is a jointly stationary, curved solution of
 the identity-background linearized Palatini equations. -/
 theorem plusBackreaction_jointStationary :
@@ -731,6 +1035,192 @@ theorem plusBackreaction_jointStationary :
       plusBackreactionCoframeVariation :=
   ⟨plusBackreaction_linkStationary,
     plusBackreaction_coframeStationary⟩
+
+/-- The explicit cross-like pair is a jointly stationary, curved solution of
+the identity-background linearized Palatini equations. -/
+theorem crossBackreaction_jointStationary :
+    LinearizedJointStationary nullWaveShift crossBackreactionLinkVariation
+      crossBackreactionCoframeVariation :=
+  ⟨crossBackreaction_linkStationary,
+    crossBackreaction_coframeStationary⟩
+
+/-- The additive curvature map takes the combined link mode to the matching
+combination of plus and cross curvatures. -/
+theorem additivePlaquetteCurl_plusCrossLinkCombination
+    (plusScale crossScale : Real) (site : NullWaveSite) :
+    additivePlaquetteCurl nullWaveShift
+        (plusCrossLinkCombination plusScale crossScale) site =
+      plusScale •
+          additivePlaquetteCurl nullWaveShift
+            plusBackreactionLinkVariation site +
+        crossScale •
+          additivePlaquetteCurl nullWaveShift
+            crossBackreactionLinkVariation site := by
+  funext a b component
+  simp [plusCrossLinkCombination, additivePlaquetteCurl]
+  ring
+
+/-- Every plus/cross curvature combination satisfies the mixed vacuum Einstein
+equation at the identity inverse coframe. -/
+theorem plusCrossCombinationCurvature_mixedVacuum
+    (plusScale crossScale : Real) (site : NullWaveSite)
+    (coframeDirection raisedDirection : Fin 4) :
+    mixedVacuumEinsteinEntry
+        (1 : Matrix (Fin 4) (Fin 4) Real)
+        (additivePlaquetteCurl nullWaveShift
+          (plusCrossLinkCombination plusScale crossScale) site)
+        coframeDirection raisedDirection = 0 := by
+  rw [additivePlaquetteCurl_plusCrossLinkCombination]
+  change mixedVacuumEinsteinEntryLinear
+      (1 : Matrix (Fin 4) (Fin 4) Real)
+      coframeDirection raisedDirection
+      (plusScale •
+          additivePlaquetteCurl nullWaveShift
+            plusBackreactionLinkVariation site +
+        crossScale •
+          additivePlaquetteCurl nullWaveShift
+            crossBackreactionLinkVariation site) = 0
+  rw [map_add, map_smul, map_smul]
+  have hPlusCurl :
+      additivePlaquetteCurl nullWaveShift plusBackreactionLinkVariation site =
+        (2 : Real) • nullWaveCurvature site := by
+    funext a b
+    exact additivePlaquetteCurl_plusBackreactionLinkVariation site a b
+  have hCrossCurl :
+      additivePlaquetteCurl nullWaveShift crossBackreactionLinkVariation site =
+        crossBackreactionCurvature site := by
+    funext a b
+    exact additivePlaquetteCurl_crossBackreactionLinkVariation site a b
+  rw [hPlusCurl, hCrossCurl]
+  change plusScale *
+        (mixedVacuumEinsteinEntryLinear
+          (1 : Matrix (Fin 4) (Fin 4) Real)
+          coframeDirection raisedDirection
+          ((2 : Real) • nullWaveCurvature site)) +
+      crossScale * mixedVacuumEinsteinEntry
+        (1 : Matrix (Fin 4) (Fin 4) Real)
+        (crossBackreactionCurvature site)
+        coframeDirection raisedDirection = 0
+  rw [map_smul]
+  change plusScale *
+        ((2 : Real) * mixedVacuumEinsteinEntry
+          (1 : Matrix (Fin 4) (Fin 4) Real)
+          (nullWaveCurvature site)
+          coframeDirection raisedDirection) +
+      crossScale * mixedVacuumEinsteinEntry
+        (1 : Matrix (Fin 4) (Fin 4) Real)
+        (crossBackreactionCurvature site)
+        coframeDirection raisedDirection = 0
+  rw [nullWaveCurvature_mixedVacuum,
+    crossBackreactionCurvature_mixedVacuum]
+  ring
+
+/-- Every real plus/cross combination satisfies all thirty-two linearized
+coframe/Einstein equations. -/
+theorem plusCrossCombination_coframeStationary
+    (plusScale crossScale : Real) :
+    LinearizedCoframeStationary nullWaveShift
+      (plusCrossLinkCombination plusScale crossScale) := by
+  intro site internal direction
+  unfold linearizedCoframeEulerCoefficient
+  rw [linearizedCoframeEulerFunctional_eq_palatiniDensityFirstVariation]
+  rw [palatiniDensityFirstVariation_eq_det_mul_mixedEinstein
+    (inverseCoframe := (1 : Matrix (Fin 4) (Fin 4) Real))]
+  · have hMixed : forall coframeDirection raisedDirection,
+        2 * mixedRicciCurvature (1 : Matrix (Fin 4) (Fin 4) Real)
+              (additivePlaquetteCurl nullWaveShift
+                (plusCrossLinkCombination plusScale crossScale) site)
+              coframeDirection raisedDirection -
+            (1 : Matrix (Fin 4) (Fin 4) Real)
+                raisedDirection coframeDirection *
+              inverseCoframeScalarCurvature
+                (1 : Matrix (Fin 4) (Fin 4) Real)
+                (additivePlaquetteCurl nullWaveShift
+                  (plusCrossLinkCombination plusScale crossScale) site) = 0 := by
+      intro coframeDirection raisedDirection
+      simpa [mixedVacuumEinsteinEntry] using
+        plusCrossCombinationCurvature_mixedVacuum
+          plusScale crossScale site coframeDirection raisedDirection
+    have hCoefficient :=
+      (mixedEinsteinCoframeCoefficient_vanish_iff
+        (1 : Matrix (Fin 4) (Fin 4) Real)
+        (1 : Matrix (Fin 4) (Fin 4) Real)
+        (additivePlaquetteCurl nullWaveShift
+          (plusCrossLinkCombination plusScale crossScale) site)
+        (by simp) (by simp)).2 hMixed
+    simp only [Matrix.det_one, one_mul]
+    apply Finset.sum_eq_zero
+    intro coefficientInternal _
+    apply Finset.sum_eq_zero
+    intro coefficientDirection _
+    rw [hCoefficient coefficientInternal coefficientDirection]
+    ring
+  · simp
+  · exact additivePlaquetteCurl_antisymmetric_local
+      nullWaveShift (plusCrossLinkCombination plusScale crossScale) site
+
+/-- The plus/cross span is a two-parameter family in the full joint
+linearized Palatini kernel. -/
+theorem plusCrossCombination_jointStationary
+    (plusScale crossScale : Real) :
+    LinearizedJointStationary nullWaveShift
+      (plusCrossLinkCombination plusScale crossScale)
+      (plusCrossCoframeCombination plusScale crossScale) :=
+  ⟨plusCrossCombination_linkStationary plusScale crossScale,
+    plusCrossCombination_coframeStationary plusScale crossScale⟩
+
+/-- At site zero, the plus and cross curvatures have independent coordinate
+projections, so a zero combination has zero coefficients. -/
+theorem plusCrossCurvature_coefficients_zero
+    (plusScale crossScale : Real)
+    (hZero :
+      plusScale •
+          additivePlaquetteCurl nullWaveShift
+            plusBackreactionLinkVariation 0 +
+        crossScale •
+          additivePlaquetteCurl nullWaveShift
+            crossBackreactionLinkVariation 0 = 0) :
+    plusScale = 0 ∧ crossScale = 0 := by
+  have hPlus := congrFun (congrFun (congrFun hZero 0) 1) 1
+  have hCross := congrFun (congrFun (congrFun hZero 0) 1) 2
+  simp +decide [additivePlaquetteCurl, plusBackreactionLinkVariation,
+    crossBackreactionLinkVariation, nullWaveShift, toggleFinTwo,
+    nullWaveAmplitude, nullWavePotential, nullWavePolarizationOne,
+    nullWavePolarizationTwo] at hPlus hCross
+  norm_num at hPlus
+  exact ⟨hPlus, hCross⟩
+
+/-- No nonzero plus/cross curvature combination belongs to the flat
+infinitesimal local Lorentz orbit. This is the exact gauge-quotient
+independence statement for the two displayed polarizations. -/
+theorem plusCrossCombination_not_infinitesimalGauge
+    (plusScale crossScale : Real)
+    (hNonzero : plusScale ≠ 0 ∨ crossScale ≠ 0)
+    (parameter : NullWaveSite -> Fiber 6) :
+    nullWaveInfinitesimalGaugePair parameter ≠
+      (plusCrossLinkCombination plusScale crossScale,
+        plusCrossCoframeCombination plusScale crossScale) := by
+  intro hPair
+  have hLink :
+      infinitesimalGaugeLinkVariation nullWaveShift parameter =
+        plusCrossLinkCombination plusScale crossScale :=
+    congrArg Prod.fst hPair
+  have hGaugeCurl :
+      additivePlaquetteCurl nullWaveShift
+          (infinitesimalGaugeLinkVariation nullWaveShift parameter) 0 = 0 := by
+    funext a b
+    exact additivePlaquetteCurl_infinitesimalGaugeLinkVariation
+      nullWaveShift nullWaveShift_commute parameter 0 a b
+  have hCombinationCurl :
+      additivePlaquetteCurl nullWaveShift
+          (plusCrossLinkCombination plusScale crossScale) 0 = 0 := by
+    rw [<- hLink]
+    exact hGaugeCurl
+  rw [additivePlaquetteCurl_plusCrossLinkCombination] at hCombinationCurl
+  have hCoefficients := plusCrossCurvature_coefficients_zero
+    plusScale crossScale hCombinationCurl
+  exact hNonzero.elim (fun h => h hCoefficients.1)
+    (fun h => h hCoefficients.2)
 
 /-- The curved plus-like stationary mode survives quotienting by the
 infinitesimal local Lorentz orbit. -/
@@ -778,5 +1268,21 @@ theorem plusBackreaction_not_infinitesimalGauge
 /-- info: 'PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylLinearizedBackreaction.plusBackreaction_not_infinitesimalGauge' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms plusBackreaction_not_infinitesimalGauge
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylLinearizedBackreaction.crossBackreactionCurvature_mixedVacuum' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms crossBackreactionCurvature_mixedVacuum
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylLinearizedBackreaction.crossBackreaction_jointStationary' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms crossBackreaction_jointStationary
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylLinearizedBackreaction.plusCrossCombination_not_infinitesimalGauge' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms plusCrossCombination_not_infinitesimalGauge
+
+/-- info: 'PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylLinearizedBackreaction.plusCrossCombination_jointStationary' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms plusCrossCombination_jointStationary
 
 end PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylLinearizedBackreaction
