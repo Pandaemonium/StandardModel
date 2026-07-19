@@ -7190,6 +7190,28 @@ identification of finite plaquette holonomy with differential curvature. That
 step still requires a graph-derived compatible second jet and a convergence
 theorem for the action-visible extractor.
 
+The contraction successor
+`PhysicsSM/Draft/NullEdge/LorentzCoordinateEinsteinContraction.lean` removes a
+further convention gap. For the induced coordinate curvature it defines the
+standard mixed tensors
+
+`Ric^d_c = g^{da} R^b_acb`,
+`R = Ric^c_c`, and
+`G^d_c = Ric^d_c - (1/2) delta^d_c R`.
+
+Using the exact inverse-coframe and Lorentz-skew identities, Lean proves that
+`2 G^d_c` is the action's convention-normalized combination
+`2 mixedRicci^d_c - delta^d_c scalarCurvature`. Hence local coframe
+stationarity is equivalent to the ordinary coordinate vacuum equation
+`G^d_c = 0`. The guarded capstone composes both Palatini sectors: affine
+connection stationarity selects the Christoffel connection of the induced
+metric first jet, while coframe stationarity makes the Einstein tensor of its
+induced differential curvature vanish. This is a complete exact derivation at
+the level of supplied compatible first and second jets. It is not yet a finite
+null-edge-lattice derivation, because graph reconstruction of those jets,
+finite-plaquette-to-differential-curvature identification, and refinement
+convergence remain separate obligations.
+
 `NonlinearLorentzPalatiniEulerNeighborDefect` now removes exact site
 uniformity from the first-jet formula. At any selected center site, the
 connection variation splits into the constant extension of its center value
@@ -7720,6 +7742,7 @@ not
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniAffineConnectionTorsionSelection.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniCoordinateLeviCivita.lean`
 - `PhysicsSM/Draft/NullEdge/LorentzCoordinateCurvatureBridge.lean`
+- `PhysicsSM/Draft/NullEdge/LorentzCoordinateEinsteinContraction.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniExponentialConnectionTorsionSelection.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniEulerTorsionSelection.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniEulerTorsionCancellation.lean`

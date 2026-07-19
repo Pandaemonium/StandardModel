@@ -603,6 +603,21 @@ dictionary with arbitrary-coframe affine Palatini-to-Christoffel selection.
 It remains a differential second-jet theorem rather than a finite holonomy or
 refinement-convergence theorem.
 
+`LorentzCoordinateEinsteinContraction` completes the exact local contraction
+layer. It defines the ordinary coordinate contractions
+`Ric^d_c = g^{da} R^b_acb`, `R = Ric^c_c`, and
+`G^d_c = Ric^d_c - (1/2) delta^d_c R`, and proves that for the curvature
+transported from the six Lorentz bivector coordinates, `2 G^d_c` is exactly the
+action convention's mixed coframe-Euler combination. Consequently, stationarity
+of the local Palatini density under every coframe variation is equivalent to
+`G^d_c = 0`. Its guarded capstone combines this with affine connection
+stationarity: the induced coordinate connection is the Christoffel connection
+of the induced metric first jet, and its induced differential curvature obeys
+the coordinate mixed vacuum Einstein equation. This is an exact supplied-jet
+Palatini derivation. It does not yet derive those jets from the causal graph,
+identify a finite plaquette holonomy with differential curvature, or prove a
+refinement limit.
+
 `PhysicalLorentzPlaquetteRefinement` closes the eta-Lorentz existence side of
 that interface. For arbitrary six-component `F`, it proves that the exact
 proper eta-Lorentz holonomy `exp(A_n hat(F))` has action-visible first-order

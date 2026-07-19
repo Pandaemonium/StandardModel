@@ -61,6 +61,7 @@ import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniGeneralTorsionSelection
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniAffineConnectionTorsionSelection
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniCoordinateLeviCivita
 import PhysicsSM.Draft.NullEdge.LorentzCoordinateCurvatureBridge
+import PhysicsSM.Draft.NullEdge.LorentzCoordinateEinsteinContraction
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEulerChangingCarrierTorsion
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEulerSampledCoframeTorsion
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniLinearizedEinsteinCartanLimit
@@ -162,7 +163,10 @@ imports one representative route through each established layer:
     Palatini-to-Christoffel selection, and identity-background actual-action
     first-jet selection, plus the exact second-jet identity equating induced
     coordinate curvature with the coframe conjugate of the full six-component
-    Lorentz curvature, followed by a common
+    Lorentz curvature, the exact Ricci/scalar/Einstein contraction dictionary,
+    and a guarded local Palatini capstone in which connection and coframe
+    stationarity imply Christoffel selection and the ordinary coordinate mixed
+    vacuum Einstein equation, followed by a common
     two-sided sampled refinement whose two actual-action Euler-map derivatives
     pass simultaneously to vacuum Einstein for `dA` and covariant Cartan torsion,
     and
