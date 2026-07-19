@@ -60,6 +60,7 @@ import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniLinearizedTorsionSelecti
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniGeneralTorsionSelection
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniAffineConnectionTorsionSelection
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEulerChangingCarrierTorsion
+import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEulerSampledCoframeTorsion
 import PhysicsSM.Draft.NullEdge.VacuumWeylPeriodicRefinementAristotle
 import PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylNullWaveJointNoGo
 import PhysicsSM.Draft.NullEdge.CurvatureConvergenceInterface
@@ -142,8 +143,9 @@ imports one representative route through each established layer:
     Cartan-plus-neighbor-defect decomposition, its constant-mode invariance,
     exact homogeneity, nonzero period-two witness, and conditional
     shrinking-neighbor torsion-selection endpoint, followed by local-stencil
-    defect convergence on changing carriers and a sampled continuous-
-    connection Cartan endpoint in a supplied pointed chart, and
+    defect convergence on changing carriers, a sampled continuous-connection
+    Cartan endpoint, and a differentiable sampled-tetrad endpoint on affine
+    predecessor rays in a supplied pointed chart, and
     the full Krein-paired link/face Euler chain with a coframe-derived
     Lorentz-Hodge face field,
    causal-diamond path-comparison holonomy, and an exact shrinking-plaquette
@@ -295,16 +297,18 @@ invariant under adding a site-independent connection mode, vanishes for
 uniform jets, scales exactly with the nonuniform amplitude, and equals `2` in
 a sparse period-two null-wave-carrier witness. Consequently, stationarity
 along any displayed family whose centered neighbor mode is scaled to zero
-forces the fixed center data to be torsion-free. The changing-carrier
-successor controls only the forward, predecessor, and translated-predecessor
-stencil sites actually read by the Euler coefficient. When those sites
-approach one supplied chart point, continuity of a sampled Lorentz connection
-proves defect convergence rather than assuming it; even asymptotic
-stationarity of the actual derivatives then forces the point connection and
-fixed backward coframe jet to obey the Cartan equation. The graph still does
-not construct the pointed chart embedding; the coframe jet is not yet derived
-from a sampled tetrad, no quantitative spacing rate is proved, and the
-background remains the identity. Nonidentity-
+forces the fixed center data to be torsion-free. The changing-carrier successor
+controls only the forward, predecessor, and translated-predecessor stencil
+sites actually read by the Euler coefficient. When those sites approach one
+supplied chart point, continuity of a sampled Lorentz connection proves defect
+convergence rather than assuming it. A successor now also samples a
+differentiable tetrad on displayed affine predecessor rays and derives
+convergence of the scaled backward differences to its Frechet derivative.
+Asymptotic vanishing of the identity-background first variations then forces
+the point connection and sampled tetrad derivative to obey the linearized
+Cartan equation. The graph still does not construct the pointed chart embedding,
+inverse-spacing sequence, predecessor rays, or tangent frame; no quantitative
+spacing rate is proved, and the background remains the identity. Nonidentity-
 background Levi-Civita selection and graph-derived chart convergence remain
 open. The physical-link
 successor proves that
