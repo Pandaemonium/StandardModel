@@ -77,6 +77,16 @@ when a continuous Lorentz connection is sampled on stencil sites converging
 to one supplied chart point. Constructing that pointed chart from the graph,
 sampling the coframe jet, and obtaining quantitative rates remain open.
 
+The local analytic capstone now goes further than the first-jet connection
+result. Primitive second-order expansions of one actual group-valued link
+curve, together with one affine coframe line and eventual joint stationarity,
+derive both affine Palatini equations from that same nonlinear family. Under
+the displayed local-affine, site-constant first-jet, and symmetric predecessor
+second-jet hypotheses, the induced connection is Christoffel, the actual
+plaquette coefficient is its coordinate curvature, and the standard mixed
+vacuum Einstein tensor vanishes. The stationary family and its sampling data
+are still supplied rather than reconstructed from the graph.
+
 The dependency is strongly upstream. Progress on G3-G8 cannot compensate for
 an open G2: until scale, a rank-four Lorentzian sector, and compatible overlap
 transport are reconstructed, the later results remain conditional finite
@@ -7209,8 +7219,8 @@ metric first jet, while coframe stationarity makes the Einstein tensor of its
 induced differential curvature vanish. This is a complete exact derivation at
 the level of supplied compatible first and second jets. It is not yet a finite
 null-edge-lattice derivation, because graph reconstruction of those jets,
-analytic control identifying actual finite plaquettes with their formal
-second-jet coefficient, and refinement convergence remain separate
+derivation of the primitive actual-link expansions and affine sampling law
+from the carrier, and common-refinement convergence remain separate
 obligations.
 
 `PhysicsSM/Draft/NullEdge/LorentzPlaquetteSecondJetCurvature.lean` closes the
@@ -7232,6 +7242,37 @@ those same plaquette coordinates: the induced connection is Christoffel, its
 curvature equals the tetrad-conjugated plaquette coefficient, and its standard
 mixed Einstein tensor vanishes. This is an exact formal Taylor-coefficient
 theorem, not an actual holonomy remainder bound or graph-refinement theorem.
+
+`PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniPlaquetteEinsteinCurve.lean`
+adds the actual-curve bridge. A local affine encoding gives every first link
+coefficient around one selected site the corresponding connection value and
+gives the shifted link's second Lie-algebra coefficient twice
+`partial_a omega_b`. Primitive quadratic expansions of the actual forward and
+inverse `GL(4)` links then imply
+
+`U_ab(t) = 1 + t^2 F_ab + t^2 r_ab(t)`, with `r_ab(t) -> 0`,
+
+for the full nonlinear curvature
+`F_ab = partial_a omega_b - partial_b omega_a + [omega_a,omega_b]`.
+This is derived by four applications of the analytic noncommutative matrix
+product rule, rather than assumed at the scalar action level.
+
+The module next evaluates the concrete nonlinear link and coframe Euler
+coefficients along one group-valued link curve and one affine coframe line.
+Under the site-constant first-link-jet hypothesis, finite neighbor terms cancel
+and the link Euler derivative is exactly the affine Palatini residual. The
+coframe coefficient has zero constant and linear coefficients, while its
+quadratic coefficient is exactly the Palatini first variation evaluated on the
+six action coordinates of `F`. Eventual joint vanishing of both concrete Euler
+sectors therefore derives both affine Palatini equations from the same actual
+family. The guarded capstone
+`actualJointStationary_localAffine_imply_vacuumEinstein` returns the Christoffel
+connection, equality of induced and plaquette curvature, and the standard
+coordinate mixed vacuum Einstein equation. The primitive expansions,
+site-constant first link jet, local affine encoding, symmetric predecessor
+coframe second jet, and stationary family remain hypotheses. The theorem does
+not yet construct these data from one graph-derived refinement or prove their
+continuum convergence.
 
 The changing-carrier linearized successor
 `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniSampledCoordinateEinsteinLimit.lean`
@@ -7787,6 +7828,7 @@ not
 - `PhysicsSM/Draft/NullEdge/LorentzCoordinateEinsteinContraction.lean`
 - `PhysicsSM/Draft/NullEdge/LorentzMatrixSecondJet.lean`
 - `PhysicsSM/Draft/NullEdge/LorentzPlaquetteSecondJetCurvature.lean`
+- `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniPlaquetteEinsteinCurve.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniSampledCoordinateEinsteinLimit.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniExponentialConnectionTorsionSelection.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniEulerTorsionSelection.lean`

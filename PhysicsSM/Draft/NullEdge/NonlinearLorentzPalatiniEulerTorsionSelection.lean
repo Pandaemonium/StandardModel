@@ -294,6 +294,190 @@ theorem hasDerivAt_nonlinearLinkEulerFunctional_identity
   simpa [linkCurve, coframeCurve, nonlinearLinkEulerFunctional,
     linearizedLinkEulerFunctional] using hTotal
 
+/-- The local nonlinear link Euler functional has the same first derivative
+along any identity-based link curve carrying the displayed link derivatives.
+The coframe follows the ordinary affine line through the identity field. -/
+theorem hasDerivAt_nonlinearLinkEulerFunctional_identity_of_linkCurve
+    {Site : Type*} [Fintype Site]
+    (shift : Fin 4 -> Equiv Site Site)
+    {linkCurve : Real -> LinkConnection Site GL4}
+    (linkVariation : LinkVariation Site)
+    (coframeVariation : CoframeField Site)
+    (hCurveZero : linkCurve 0 = identityConnection Site)
+    (hLink : forall x a,
+      HasDerivAt (fun t => unitMatrix (linkCurve t x a))
+        (linkMatrixVariation (identityConnection Site) linkVariation x a) 0)
+    (site : Site) (direction : Fin 4) (probe : Fiber 6) :
+    HasDerivAt
+      (fun t => nonlinearLinkEulerFunctional shift (linkCurve t)
+        (coframeLine (identityCoframeField Site) coframeVariation t)
+        site direction probe)
+      (linearizedLinkEulerFunctional shift linkVariation coframeVariation
+        site direction probe) 0 := by
+  let coframeCurve := coframeLine
+    (identityCoframeField Site) coframeVariation
+  have hCoframeZero :
+      coframeCurve 0 = identityCoframeField Site := by
+    funext x
+    simp [coframeCurve, coframeLine]
+  have hLinkZero (x : Site) (a : Fin 4) :
+      linkCurve 0 x a = 1 := by
+    rw [hCurveZero]
+    rfl
+  have hTwoStepZero (x : Site) (a b : Fin 4) :
+      twoStepUnit shift (linkCurve 0) x a b = 1 := by
+    rw [hCurveZero]
+    simp [twoStepUnit, twoStepTransport, identityConnection]
+  have hPlaquetteZero (x : Site) (a b : Fin 4) :
+      plaquetteUnit shift (linkCurve 0) x a b = 1 := by
+    rw [hCurveZero]
+    simp [plaquetteUnit, plaquetteHolonomy, twoStepTransport,
+      identityConnection]
+  have hTwoStep (x : Site) (a b : Fin 4) :
+      HasDerivAt (fun t => unitMatrix
+        (twoStepUnit shift (linkCurve t) x a b))
+        (twoStepMatrixVariation shift (identityConnection Site)
+          linkVariation x a b) 0 :=
+    hasDerivAt_twoStepUnit_curve shift linkCurve (identityConnection Site)
+      linkVariation hCurveZero hLink x a b
+  have hPlaquette (x : Site) (a b : Fin 4) :
+      HasDerivAt (fun t => unitMatrix
+        (plaquetteUnit shift (linkCurve t) x a b))
+        (plaquetteMatrixVariation shift (identityConnection Site)
+          linkVariation x a b) 0 :=
+    hasDerivAt_plaquetteUnit_curve shift linkCurve (identityConnection Site)
+      linkVariation hCurveZero hLink x a b
+  have hFace (x : Site) (a b : Fin 4) :
+      HasDerivAt
+        (fun t => coframeFaceWeight (coframeCurve t) x a b)
+        (coframeFaceWeightFirstVariation
+          (identityCoframeField Site) coframeVariation x a b) 0 := by
+    simpa [coframeCurve, coframeLine, coframeFaceWeight,
+      coframeFaceWeightFirstVariation] using
+      hasDerivAt_complementaryPalatiniFaceWeight_line
+        ((identityCoframeField Site) x) (coframeVariation x) a b
+  have hFirst (b : Fin 4) :=
+    hasDerivAt_nonlinearWeightedAdjointFaceResponse_identity
+      (fun t => coframeFaceWeight (coframeCurve t) site direction b)
+      (coframeFaceWeight (identityCoframeField Site) site direction b)
+      (coframeFaceWeightFirstVariation
+        (identityCoframeField Site) coframeVariation site direction b)
+      (fun t => linkCurve t site direction)
+      (fun t => plaquetteUnit shift (linkCurve t) site direction b)
+      (linkMatrixVariation (identityConnection Site) linkVariation
+        site direction)
+      (plaquetteMatrixVariation shift (identityConnection Site) linkVariation
+        site direction b) probe
+      (by
+        change coframeFaceWeight (coframeCurve 0) site direction b = _
+        rw [hCoframeZero])
+      (hLinkZero site direction)
+      (hPlaquetteZero site direction b)
+      (hFace site direction b) (hLink site direction)
+      (hPlaquette site direction b)
+  have hSecond (a : Fin 4) :=
+    let predecessor := (shift a).symm site
+    hasDerivAt_nonlinearWeightedAdjointFaceResponse_identity
+      (fun t => coframeFaceWeight (coframeCurve t) predecessor a direction)
+      (coframeFaceWeight (identityCoframeField Site) predecessor a direction)
+      (coframeFaceWeightFirstVariation
+        (identityCoframeField Site) coframeVariation predecessor a direction)
+      (fun t => twoStepUnit shift (linkCurve t) predecessor a direction)
+      (fun t => plaquetteUnit shift (linkCurve t) predecessor a direction)
+      (twoStepMatrixVariation shift (identityConnection Site) linkVariation
+        predecessor a direction)
+      (plaquetteMatrixVariation shift (identityConnection Site) linkVariation
+        predecessor a direction) probe
+      (by
+        change coframeFaceWeight (coframeCurve 0) predecessor a direction = _
+        rw [hCoframeZero])
+      (hTwoStepZero predecessor a direction)
+      (hPlaquetteZero predecessor a direction)
+      (hFace predecessor a direction) (hTwoStep predecessor a direction)
+      (hPlaquette predecessor a direction)
+  have hThird (a : Fin 4) :=
+    let holonomyCurve := fun t =>
+      plaquetteUnit shift (linkCurve t) site a direction
+    have hTransport : HasDerivAt
+        (fun t => unitMatrix
+          (holonomyCurve t * linkCurve t site direction))
+        (plaquetteMatrixVariation shift (identityConnection Site)
+            linkVariation site a direction +
+          linkMatrixVariation (identityConnection Site) linkVariation
+            site direction) 0 := by
+      have hMul := (hPlaquette site a direction).mul (hLink site direction)
+      simpa [holonomyCurve, hPlaquetteZero, hLinkZero] using hMul
+    hasDerivAt_nonlinearWeightedAdjointFaceResponse_identity
+      (fun t => coframeFaceWeight (coframeCurve t) site a direction)
+      (coframeFaceWeight (identityCoframeField Site) site a direction)
+      (coframeFaceWeightFirstVariation
+        (identityCoframeField Site) coframeVariation site a direction)
+      (fun t => holonomyCurve t * linkCurve t site direction)
+      holonomyCurve
+      (plaquetteMatrixVariation shift (identityConnection Site) linkVariation
+          site a direction +
+        linkMatrixVariation (identityConnection Site) linkVariation
+          site direction)
+      (plaquetteMatrixVariation shift (identityConnection Site) linkVariation
+        site a direction) probe
+      (by
+        change coframeFaceWeight (coframeCurve 0) site a direction = _
+        rw [hCoframeZero])
+      (by simp [holonomyCurve, hPlaquetteZero, hLinkZero])
+      (by simp [holonomyCurve, hPlaquetteZero])
+      (hFace site a direction)
+      hTransport
+      (hPlaquette site a direction)
+  have hFourth (b : Fin 4) :=
+    let predecessor := (shift b).symm site
+    hasDerivAt_nonlinearWeightedAdjointFaceResponse_identity
+      (fun t => coframeFaceWeight (coframeCurve t) predecessor direction b)
+      (coframeFaceWeight (identityCoframeField Site) predecessor direction b)
+      (coframeFaceWeightFirstVariation
+        (identityCoframeField Site) coframeVariation predecessor direction b)
+      (fun t => twoStepUnit shift (linkCurve t) predecessor direction b)
+      (fun t => plaquetteUnit shift (linkCurve t) predecessor direction b)
+      (twoStepMatrixVariation shift (identityConnection Site) linkVariation
+        predecessor direction b)
+      (plaquetteMatrixVariation shift (identityConnection Site) linkVariation
+        predecessor direction b) probe
+      (by
+        change coframeFaceWeight (coframeCurve 0) predecessor direction b = _
+        rw [hCoframeZero])
+      (hTwoStepZero predecessor direction b)
+      (hPlaquetteZero predecessor direction b)
+      (hFace predecessor direction b) (hTwoStep predecessor direction b)
+      (hPlaquette predecessor direction b)
+  have hFirstSum := HasDerivAt.sum (u := Finset.univ) fun b _ => hFirst b
+  have hSecondSum := HasDerivAt.sum (u := Finset.univ) fun a _ => hSecond a
+  have hThirdSum := HasDerivAt.sum (u := Finset.univ) fun a _ => hThird a
+  have hFourthSum := HasDerivAt.sum (u := Finset.univ) fun b _ => hFourth b
+  have hTotal := ((hFirstSum.add hSecondSum).sub hThirdSum).sub hFourthSum
+  simpa [coframeCurve, nonlinearLinkEulerFunctional,
+    linearizedLinkEulerFunctional] using hTotal
+
+/-- Coordinate form of the curve-generic local link Euler derivative. -/
+theorem hasDerivAt_nonlinearLinkEulerCoefficient_identity_of_linkCurve
+    {Site : Type*} [Fintype Site]
+    (shift : Fin 4 -> Equiv Site Site)
+    {linkCurve : Real -> LinkConnection Site GL4}
+    (linkVariation : LinkVariation Site)
+    (coframeVariation : CoframeField Site)
+    (hCurveZero : linkCurve 0 = identityConnection Site)
+    (hLink : forall x a,
+      HasDerivAt (fun t => unitMatrix (linkCurve t x a))
+        (linkMatrixVariation (identityConnection Site) linkVariation x a) 0)
+    (site : Site) (direction : Fin 4) (component : Fin 6) :
+    HasDerivAt
+      (fun t => nonlinearLinkEulerCoefficient shift (linkCurve t)
+        (coframeLine (identityCoframeField Site) coframeVariation t)
+        site direction component)
+      (linearizedLinkEulerCoefficient shift linkVariation coframeVariation
+        site direction component) 0 :=
+  hasDerivAt_nonlinearLinkEulerFunctional_identity_of_linkCurve shift
+    linkVariation coframeVariation hCurveZero hLink site direction
+      (Pi.single component (1 : Real))
+
 /-- Every coordinate of the formal linearized link equation is therefore the
 actual derivative of the corresponding nonlinear Euler coefficient. -/
 theorem hasDerivAt_nonlinearLinkEulerCoefficient_identity
@@ -313,6 +497,10 @@ theorem hasDerivAt_nonlinearLinkEulerCoefficient_identity
     coframeVariation site direction (Pi.single component (1 : Real))
 
 /-! ## Build-enforced assumption-footprint guard -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEulerTorsionSelection.hasDerivAt_nonlinearLinkEulerCoefficient_identity_of_linkCurve' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms hasDerivAt_nonlinearLinkEulerCoefficient_identity_of_linkCurve
 
 /-- info: 'PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEulerTorsionSelection.hasDerivAt_nonlinearLinkEulerCoefficient_identity' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in

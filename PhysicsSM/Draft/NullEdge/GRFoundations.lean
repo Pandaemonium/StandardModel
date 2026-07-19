@@ -63,6 +63,7 @@ import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniCoordinateLeviCivita
 import PhysicsSM.Draft.NullEdge.LorentzCoordinateCurvatureBridge
 import PhysicsSM.Draft.NullEdge.LorentzCoordinateEinsteinContraction
 import PhysicsSM.Draft.NullEdge.LorentzPlaquetteSecondJetCurvature
+import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniPlaquetteEinsteinCurve
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEulerChangingCarrierTorsion
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEulerSampledCoframeTorsion
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniLinearizedEinsteinCartanLimit
@@ -347,6 +348,18 @@ capstone composes affine connection stationarity and plaquette-coordinate
 coframe stationarity to the Christoffel connection and standard mixed vacuum
 Einstein equation. This is a formal Taylor-coefficient theorem, not yet an
 actual graph-refinement convergence result for finite plaquette holonomies.
+The analytic curve successor starts instead from primitive quadratic
+expansions of actual group-valued forward and inverse links. A local affine
+sampling law derives the same full nonlinear plaquette coefficient with an
+explicit `o(t^2)` remainder. The link and coframe Euler coefficients are then
+evaluated along one group-valued link curve and one affine coframe line. Their
+joint eventual vanishing derives the affine Palatini connection residual and
+the Palatini coframe response from that same nonlinear family. The guarded
+capstone gives Christoffel selection, equality of induced and plaquette
+curvature, and the standard mixed vacuum Einstein equation. The primitive
+expansions, site-constant first link jet, local affine sampling law, symmetric
+predecessor coframe second jet, and stationary family remain hypotheses; no
+stationary graph refinement or continuum convergence theorem is yet derived.
 The changing-carrier successor
 controls only the forward, predecessor, and translated-predecessor stencil
 sites actually read by the Euler coefficient. When those sites approach one
@@ -460,10 +473,11 @@ problem through a larger or open carrier, boundary flux, background evolution,
 matter, or modified dual-cell weights.
 The combined result does not
 derive the refinement or convergence data from a bare graph, prove the
-orthochronous sign, extend first-jet link selection to exact finite-spacing
-Levi-Civita transport, or upgrade the formal plaquette second-jet identity to
-compatible graph-derived jets and convergent action-visible holonomies on one
-common refinement. The program also owes metric
+orthochronous sign, extend identity-background first-jet link selection to
+exact nonidentity finite-spacing Levi-Civita transport, or derive the analytic
+plaquette curve's primitive expansions, site-constant first jet, local affine
+encoding, symmetric predecessor coframe second jet, and stationary family from
+compatible graph data on one common refinement. The program owes metric
 dual-cell volume factors and a nonlinear finite-spacing uniqueness theorem. It
 also still owes
 derivation of the weights

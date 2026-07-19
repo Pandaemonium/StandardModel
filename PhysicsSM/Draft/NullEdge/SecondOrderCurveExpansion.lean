@@ -65,6 +65,43 @@ theorem value_zero
     curve 0 = base := by
   simpa using h.expansion 0
 
+/-- A normalized quadratic expansion supplies the ordinary first derivative
+at zero.  This is the first-order projection of the stored second-order data. -/
+theorem hasDerivAt
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace Real E]
+    {curve : Real -> E} {base linear quadratic : E}
+    (h : QuadraticExpansionAtZero curve base linear quadratic) :
+    HasDerivAt curve linear 0 := by
+  rw [hasDerivAt_iff_tendsto]
+  have hQuadraticRemainder :
+      Tendsto (fun t => quadratic + h.remainder t) (nhds 0)
+        (nhds quadratic) := by
+    simpa using tendsto_const_nhds.add h.remainder_tendsto
+  have hNormRemainder :
+      Tendsto (fun t => ‖quadratic + h.remainder t‖) (nhds 0)
+        (nhds ‖quadratic‖) :=
+    continuous_norm.continuousAt.tendsto.comp hQuadraticRemainder
+  have hNormParameter :
+      Tendsto (fun t : Real => ‖t‖) (nhds 0) (nhds 0) := by
+    exact tendsto_norm_zero
+  have hProduct :
+      Tendsto (fun t : Real => ‖t‖ * ‖quadratic + h.remainder t‖)
+        (nhds 0) (nhds 0) := by
+    simpa using hNormParameter.mul hNormRemainder
+  apply hProduct.congr'
+  filter_upwards [] with t
+  rw [h.expansion t, h.value_zero]
+  simp only [sub_zero]
+  rw [show
+    base + t • linear + t ^ 2 • quadratic + t ^ 2 • h.remainder t -
+          base - t • linear =
+        t ^ 2 • (quadratic + h.remainder t) by module]
+  by_cases ht : t = 0
+  · subst t
+    simp
+  · rw [norm_smul, norm_pow]
+    field_simp [ht]
+
 /-- The identically zero curve has the zero quadratic expansion. -/
 def zero
     {E : Type*} [AddCommGroup E] [TopologicalSpace E]
@@ -293,6 +330,10 @@ theorem quadratic_eq_zero_of_eq_zero
 end QuadraticExpansionAtZero
 
 /-! ## Build-enforced assumption-footprint guards -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.SecondOrderCurveExpansion.QuadraticExpansionAtZero.hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms QuadraticExpansionAtZero.hasDerivAt
 
 /-- info: 'PhysicsSM.Draft.NullEdge.SecondOrderCurveExpansion.QuadraticExpansionAtZero.matrixMul' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in

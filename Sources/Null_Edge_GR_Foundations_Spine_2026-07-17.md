@@ -162,10 +162,15 @@ also proves that four affine-sampled exponential link factors have zero linear
 coefficient and quadratic coefficient exactly `d omega + omega wedge omega`.
 It transports that coefficient through the coframe to the induced coordinate
 curvature and composes its six action coordinates with Palatini stationarity to
-the standard mixed vacuum Einstein equation. The remaining curvature
-identification debt is therefore graph-analytic: construct compatible jets
-from the carrier and prove that actual finite action-visible holonomies converge
-to this exact formal coefficient on the selected connection.
+the standard mixed vacuum Einstein equation. The analytic curve successor now
+derives the same coefficient and an `o(t^2)` remainder from primitive forward
+and inverse expansions of actual group-valued links. Eventual joint vanishing
+of the concrete nonlinear link and coframe Euler equations along one link and
+coframe family derives both affine Palatini sectors, and hence forces the
+standard Einstein tensor to vanish. The remaining curvature-identification
+debt is graph-analytic: derive the primitive expansions, site-constant first
+link jet, local affine sampling law, symmetric predecessor coframe second jet,
+and stationary family from compatible carrier data.
 
 The changing-carrier successor now proves that both formal identity-background
 linearized Euler sectors are derivatives of the same concrete nonlinear finite
@@ -658,6 +663,32 @@ Einstein tensor vanishes. This is an exact formal Taylor-coefficient theorem.
 It does not prove an actual holonomy remainder bound, construct the sampled
 jets from causal order, or supply the common graph refinement.
 
+`NonlinearLorentzPalatiniPlaquetteEinsteinCurve` supplies the analytic
+successor. Its local affine encoding assigns the connection value to every
+first link coefficient around a selected site and assigns twice
+`partial_a omega_b` to the corresponding second Lie-algebra coefficient. From
+primitive quadratic expansions of each actual `GL(4)` forward and inverse
+link, the matrix product expansion proves
+
+`U_ab(t) = 1 + t^2 F_ab + t^2 r_ab(t)`, with `r_ab(t) -> 0`,
+
+where `F_ab = partial_a omega_b - partial_b omega_a + [omega_a,omega_b]`.
+The proof evaluates the concrete nonlinear link and coframe Euler coefficients
+along one group-valued link curve and one affine coframe line. The link Euler
+derivative is the affine Palatini residual because the finite neighbor terms
+cancel under the site-constant first-jet hypothesis. The coframe coefficient
+has zero constant and linear terms, while its quadratic coefficient is exactly
+the local Palatini first variation against the six coordinates of `F`.
+Eventual joint vanishing therefore derives both Palatini equations from the
+same actual family. The guarded capstone
+`actualJointStationary_localAffine_imply_vacuumEinstein` returns Christoffel
+selection, equality of induced and plaquette curvature, and the standard mixed
+vacuum Einstein equation. The primitive expansions, site-constant first link
+jet, local affine encoding, symmetric predecessor coframe second jet, and
+stationary family are still supplied. In particular, the theorem does not yet
+construct these data from one graph-derived refinement or prove their
+continuum convergence.
+
 `PhysicalLorentzPlaquetteRefinement` closes the eta-Lorentz existence side of
 that interface. For arbitrary six-component `F`, it proves that the exact
 proper eta-Lorentz holonomy `exp(A_n hat(F))` has action-visible first-order
@@ -1092,12 +1123,15 @@ metric, curvature, or action.
    `de + omega wedge e = 0`, and exposes the exact cubic finite defect. Finite
    Levi-Civita uniqueness now turns this arbitrary-coframe affine equation into
    exact Christoffel selection, and ordinary actual-action Euler derivatives
-   give the same first-jet endpoint at the identity coframe. Extend that bridge
-   to nonidentity exact exponential Lorentz links at finite spacing and control
-   varying first jets.
-   Derive the holonomy expansion, test sampler, dual-volume weights, and
-   coframe convergence from the graph; prove actual weak convergence and the
-   separate orthochronous sign; and rerun the conformal witness. The nonlinear
+   give the same first-jet endpoint at the identity coframe. The actual
+   curve-generic link derivative and coframe quadratic coefficient now derive
+   both affine Palatini equations from one locally stationary link/coframe
+   family. Extend that bridge to nonidentity exact exponential Lorentz links at
+   finite spacing and control varying first jets.
+   Derive the primitive link expansions, local affine encoding, stationary
+   family, test sampler, dual-volume weights, and coframe convergence from the
+   graph; prove actual weak convergence and the separate orthochronous sign;
+   and rerun the conformal witness. The nonlinear
    replacement must avoid the proved
    `-95` pointwise obstruction and select Levi-Civita transport before any
    continuum claim.

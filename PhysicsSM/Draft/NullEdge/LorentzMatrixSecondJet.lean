@@ -27,6 +27,16 @@ structure MatrixSecondJet where
 
 namespace MatrixSecondJet
 
+/-- Extensionality for normalized matrix second jets. -/
+@[ext]
+theorem ext (left right : MatrixSecondJet)
+    (hLinear : left.linear = right.linear)
+    (hQuadratic : left.quadratic = right.quadratic) :
+    left = right := by
+  cases left
+  cases right
+  simp_all
+
 /-- Product rule through quadratic order. -/
 def mul (left right : MatrixSecondJet) : MatrixSecondJet where
   linear := left.linear + right.linear
