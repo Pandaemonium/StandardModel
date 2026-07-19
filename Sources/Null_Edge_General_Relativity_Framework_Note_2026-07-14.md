@@ -7159,6 +7159,37 @@ theorems have build-enforced standard-three axiom guards. This closes local
 first-jet Levi-Civita selection, not exact nonidentity-link finite-spacing
 selection, graph-derived coframes, or refinement convergence.
 
+`LorentzCoordinateCurvatureBridge` supplies the next required derivative and
+closes the finite tetrad curvature dictionary. Let `omegaFirstJet_ab` be the
+first jet of the matrix Lorentz connection and `velocityFirstJet_ab` the first
+jet of the predecessor coframe increment. The product-rule derivative of
+
+\[
+  \Gamma_b=e^{-1}(\omega_b e-V_b)
+\]
+
+uses `partial_a e^{-1}=e^{-1}V_a e^{-1}`. If
+`velocityFirstJet_ab = velocityFirstJet_ba`, direct noncommutative matrix
+algebra gives
+
+\[
+  R(\Gamma)_{ab}
+   =e^{-1}\left(\partial_a\omega_b-\partial_b\omega_a
+      +\omega_a\omega_b-\omega_b\omega_a\right)e.
+\]
+
+The module separately proves that the matrix in parentheses remains in the
+mostly-minus Lorentz Lie algebra, recovers its six ordered bivector coordinates,
+and reconstructs the matrix exactly from those coordinates. Thus the curvature
+on the right is represented in precisely the six-component type used by the
+Palatini action. A guarded capstone combines this identity with arbitrary-
+coframe affine stationarity: the same induced connection is selected as
+Christoffel at first-jet order and has the displayed Lorentz/coordinate
+curvature dictionary at compatible second-jet order. This is not yet an
+identification of finite plaquette holonomy with differential curvature. That
+step still requires a graph-derived compatible second jet and a convergence
+theorem for the action-visible extractor.
+
 `NonlinearLorentzPalatiniEulerNeighborDefect` now removes exact site
 uniformity from the first-jet formula. At any selected center site, the
 connection variation splits into the constant extension of its center value
@@ -7688,6 +7719,7 @@ not
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniGeneralTorsionSelection.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniAffineConnectionTorsionSelection.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniCoordinateLeviCivita.lean`
+- `PhysicsSM/Draft/NullEdge/LorentzCoordinateCurvatureBridge.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniExponentialConnectionTorsionSelection.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniEulerTorsionSelection.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniEulerTorsionCancellation.lean`

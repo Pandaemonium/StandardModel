@@ -60,6 +60,7 @@ import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniLinearizedTorsionSelecti
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniGeneralTorsionSelection
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniAffineConnectionTorsionSelection
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniCoordinateLeviCivita
+import PhysicsSM.Draft.NullEdge.LorentzCoordinateCurvatureBridge
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEulerChangingCarrierTorsion
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEulerSampledCoframeTorsion
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniLinearizedEinsteinCartanLimit
@@ -159,7 +160,9 @@ imports one representative route through each established layer:
     predecessor rays in a supplied pointed chart, together with the finite
     Levi-Civita uniqueness theorem, arbitrary-invertible-coframe affine
     Palatini-to-Christoffel selection, and identity-background actual-action
-    first-jet selection, followed by a common
+    first-jet selection, plus the exact second-jet identity equating induced
+    coordinate curvature with the coframe conjugate of the full six-component
+    Lorentz curvature, followed by a common
     two-sided sampled refinement whose two actual-action Euler-map derivatives
     pass simultaneously to vacuum Einstein for `dA` and covariant Cartan torsion,
     and
@@ -320,7 +323,13 @@ coframe, the affine Palatini residual therefore selects the Christoffel
 connection of the coframe-induced metric first jet; at the identity coframe,
 the site-uniform actual nonlinear link-Euler derivative theorem composes to the
 same endpoint. This closes local first-jet selection, not exact nonlinear
-fixed-spacing selection. The changing-carrier successor
+fixed-spacing selection. A second-jet successor then proves the exact
+noncommutative tetrad curvature dictionary: when mixed predecessor coframe
+second jets commute, the induced coordinate curvature is
+`eInv F(omega) e`, including `omega wedge omega`. The Lorentz curvature remains
+in the matrix Lorentz Lie algebra and is reconstructed exactly from the same
+six action coordinates. This does not yet identify finite plaquette holonomy
+with that differential curvature. The changing-carrier successor
 controls only the forward, predecessor, and translated-predecessor stencil
 sites actually read by the Euler coefficient. When those sites approach one
 supplied chart point, continuity of a sampled Lorentz connection proves defect
@@ -434,9 +443,11 @@ matter, or modified dual-cell weights.
 The combined result does not
 derive the refinement or convergence data from a bare graph, prove the
 orthochronous sign, extend first-jet link selection to exact finite-spacing
-Levi-Civita transport, or identify the limiting target with continuum Riemann
-curvature. The program also owes metric dual-cell volume factors and a nonlinear
-finite-spacing uniqueness theorem. It also still owes
+Levi-Civita transport, prove compatible graph second-jet convergence, or
+identify finite action-visible plaquette curvature with the differential
+Lorentz/coordinate curvature in the common limit. The program also owes metric
+dual-cell volume factors and a nonlinear finite-spacing uniqueness theorem. It
+also still owes
 derivation of the weights
 and frame synchronization from order/operator data, local Lorentz covariance
 of the difference curvature, equivalence to graph holonomy curvature,

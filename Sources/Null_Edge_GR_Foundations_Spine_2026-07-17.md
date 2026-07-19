@@ -151,6 +151,17 @@ nonlinear link Euler coefficients under the displayed site-uniform variation.
 The remaining Levi-Civita debt is exact nonidentity-link finite-spacing
 selection and its graph-derived refinement limit.
 
+The F6/F8 differential curvature dictionary is now exact at finite second-jet
+level. With `V_a = -partial_a e`, the induced connection
+`Gamma_a = eInv (hat(omega_a)e - V_a)` has curvature
+`R(Gamma)_{ab} = eInv F(omega)_{ab} e` whenever the mixed predecessor coframe
+second jets commute. Both sides include their nonlinear commutator terms, and
+the Lorentz side is reconstructed exactly from the same six curvature
+coordinates used by the action. The remaining curvature-identification debt is
+therefore graph-analytic: construct compatible second jets and prove that the
+finite action-visible plaquette extractor converges to this differential
+curvature on the selected connection.
+
 The changing-carrier successor now proves that both formal identity-background
 linearized Euler sectors are derivatives of the same concrete nonlinear finite
 action's Euler maps along one simultaneous link/coframe curve, then puts their
@@ -578,6 +589,20 @@ variations. These are guarded finite first-jet identities; they do not prove
 exact finite-spacing, nonidentity-link actual-action selection or refinement
 convergence.
 
+`LorentzCoordinateCurvatureBridge` advances the same chain by one derivative.
+It differentiates the predecessor tetrad-postulate connection with the exact
+inverse-coframe product rule and proves the noncommutative identity
+
+`R(Gamma)_{ab} = eInv F(omega)_{ab} e`.
+
+The only integrability hypothesis is displayed symmetry of the predecessor
+coframe second jet. The proof retains `omega_a omega_b - omega_b omega_a`,
+proves closure of the result in the Lorentz Lie algebra, and recovers its six
+ordered action coordinates exactly. A guarded capstone bundles this curvature
+dictionary with arbitrary-coframe affine Palatini-to-Christoffel selection.
+It remains a differential second-jet theorem rather than a finite holonomy or
+refinement-convergence theorem.
+
 `PhysicalLorentzPlaquetteRefinement` closes the eta-Lorentz existence side of
 that interface. For arbitrary six-component `F`, it proves that the exact
 proper eta-Lorentz holonomy `exp(A_n hat(F))` has action-visible first-order
@@ -979,7 +1004,10 @@ metric, curvature, or action.
 3. **Close the curvature triangle before adding dynamics avatars.** Compare
    Levi-Civita, holonomy, and operator curvature on the same reconstructed
    metric and refinement schedule. Use the periodic link/plaquette substrate
-   for the holonomy corner, and only then test the Dirac `R/4` term.
+   for the holonomy corner. The Lorentz-to-coordinate differential second-jet
+   identity is now exact; prove that the action-visible plaquette extractor and
+   the operator curvature converge to that common target, and only then test
+   the Dirac `R/4` term.
 4. **Complete the nonlinear Palatini-to-Einstein bridge.** The additive
    link tangent, oriented plaquette curl, scalar and transported finite-fiber
    face pairings, exact transpose adjoint, and flat/site-constant controls are
