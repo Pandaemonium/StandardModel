@@ -47,6 +47,7 @@ open PhysicsSM.Draft.NullEdge.FinitePeriodicCovariantLinkPalatiniVariation
 open PhysicsSM.Draft.NullEdge.FinitePeriodicLinkConnection
 open PhysicsSM.Draft.NullEdge.LorentzBivectorLieAlgebraBridge
 open PhysicsSM.Draft.NullEdge.LorentzCoframePalatiniFace
+open PhysicsSM.Draft.NullEdge.LorentzMatrixSecondJet
 open PhysicsSM.Draft.NullEdge.LorentzPlaquetteTangent
 open PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniAction
 open PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniCoframeVariation

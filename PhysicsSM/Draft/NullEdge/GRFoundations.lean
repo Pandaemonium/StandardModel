@@ -62,6 +62,7 @@ import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniAffineConnectionTorsionS
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniCoordinateLeviCivita
 import PhysicsSM.Draft.NullEdge.LorentzCoordinateCurvatureBridge
 import PhysicsSM.Draft.NullEdge.LorentzCoordinateEinsteinContraction
+import PhysicsSM.Draft.NullEdge.LorentzPlaquetteSecondJetCurvature
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEulerChangingCarrierTorsion
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEulerSampledCoframeTorsion
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniLinearizedEinsteinCartanLimit
@@ -336,8 +337,17 @@ noncommutative tetrad curvature dictionary: when mixed predecessor coframe
 second jets commute, the induced coordinate curvature is
 `eInv F(omega) e`, including `omega wedge omega`. The Lorentz curvature remains
 in the matrix Lorentz Lie algebra and is reconstructed exactly from the same
-six action coordinates. This does not yet identify finite plaquette holonomy
-with that differential curvature. The changing-carrier successor
+six action coordinates. The ordered-plaquette second-jet successor closes the
+remaining local algebraic identification. For affine-sampled connection jets,
+the four exponential link factors have zero total linear coefficient and a
+quadratic coefficient exactly equal to
+`partial_a omega_b - partial_b omega_a + [omega_a, omega_b]`. The same
+coefficient reconstructs the induced coordinate curvature, and a guarded
+capstone composes affine connection stationarity and plaquette-coordinate
+coframe stationarity to the Christoffel connection and standard mixed vacuum
+Einstein equation. This is a formal Taylor-coefficient theorem, not yet an
+actual graph-refinement convergence result for finite plaquette holonomies.
+The changing-carrier successor
 controls only the forward, predecessor, and translated-predecessor stencil
 sites actually read by the Euler coefficient. When those sites approach one
 supplied chart point, continuity of a sampled Lorentz connection proves defect
@@ -451,9 +461,9 @@ matter, or modified dual-cell weights.
 The combined result does not
 derive the refinement or convergence data from a bare graph, prove the
 orthochronous sign, extend first-jet link selection to exact finite-spacing
-Levi-Civita transport, prove compatible graph second-jet convergence, or
-identify finite action-visible plaquette curvature with the differential
-Lorentz/coordinate curvature in the common limit. The program also owes metric
+Levi-Civita transport, or upgrade the formal plaquette second-jet identity to
+compatible graph-derived jets and convergent action-visible holonomies on one
+common refinement. The program also owes metric
 dual-cell volume factors and a nonlinear finite-spacing uniqueness theorem. It
 also still owes
 derivation of the weights

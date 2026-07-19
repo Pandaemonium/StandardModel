@@ -1,4 +1,5 @@
 import PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylCurvatureRankTwo
+import PhysicsSM.Draft.NullEdge.LorentzMatrixSecondJet
 
 noncomputable section
 
@@ -43,6 +44,7 @@ open PhysicsSM.Draft.NullEdge.FinitePeriodicCovariantLinkPalatiniVariation
 open PhysicsSM.Draft.NullEdge.FinitePeriodicLinkConnection
 open PhysicsSM.Draft.NullEdge.LorentzBivectorLieAlgebraBridge
 open PhysicsSM.Draft.NullEdge.LorentzCoframePalatiniFace
+open PhysicsSM.Draft.NullEdge.LorentzMatrixSecondJet
 open PhysicsSM.Draft.NullEdge.LorentzPlaquetteTangent
 open PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniCoframeVariation
 open PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniCurvatureLimit
@@ -52,32 +54,6 @@ open PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylCurvatureCompletenessData
 open PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylLinearizedBackreaction
 open PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylNullWave
 open PhysicsSM.Draft.NullEdge.PhysicalLorentzPlaquetteRefinement
-
-/-- First and second coefficients of a matrix curve normalized as
-`1 + t linear + t^2 quadratic + O(t^3)`. -/
-structure MatrixSecondJet where
-  linear : Matrix (Fin 4) (Fin 4) Real
-  quadratic : Matrix (Fin 4) (Fin 4) Real
-
-namespace MatrixSecondJet
-
-/-- Product rule through quadratic order. -/
-def mul (left right : MatrixSecondJet) : MatrixSecondJet where
-  linear := left.linear + right.linear
-  quadratic := left.quadratic + right.quadratic + left.linear * right.linear
-
-/-- Second jet of `exp(t generator)`. -/
-def exponential (generator : Matrix (Fin 4) (Fin 4) Real) : MatrixSecondJet where
-  linear := generator
-  quadratic := (1 / 2 : Real) • (generator * generator)
-
-/-- Second jet of `exp(-t generator)`. -/
-def inverseExponential
-    (generator : Matrix (Fin 4) (Fin 4) Real) : MatrixSecondJet where
-  linear := -generator
-  quadratic := (1 / 2 : Real) • (generator * generator)
-
-end MatrixSecondJet
 
 /-- Lorentz-generator matrix carried by one six-component link tangent. -/
 def linkTangentGenerator

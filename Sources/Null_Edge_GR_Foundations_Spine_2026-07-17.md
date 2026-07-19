@@ -157,10 +157,15 @@ level. With `V_a = -partial_a e`, the induced connection
 `R(Gamma)_{ab} = eInv F(omega)_{ab} e` whenever the mixed predecessor coframe
 second jets commute. Both sides include their nonlinear commutator terms, and
 the Lorentz side is reconstructed exactly from the same six curvature
-coordinates used by the action. The remaining curvature-identification debt is
-therefore graph-analytic: construct compatible second jets and prove that the
-finite action-visible plaquette extractor converges to this differential
-curvature on the selected connection.
+coordinates used by the action. The ordered-plaquette second-jet theorem now
+also proves that four affine-sampled exponential link factors have zero linear
+coefficient and quadratic coefficient exactly `d omega + omega wedge omega`.
+It transports that coefficient through the coframe to the induced coordinate
+curvature and composes its six action coordinates with Palatini stationarity to
+the standard mixed vacuum Einstein equation. The remaining curvature
+identification debt is therefore graph-analytic: construct compatible jets
+from the carrier and prove that actual finite action-visible holonomies converge
+to this exact formal coefficient on the selected connection.
 
 The changing-carrier successor now proves that both formal identity-background
 linearized Euler sectors are derivatives of the same concrete nonlinear finite
@@ -187,9 +192,11 @@ ordinary coordinate tensor `G^d_c` reconstructed from the same six-component
 stationarity with finite Levi-Civita uniqueness: the induced first-jet
 coordinate connection is Christoffel, while the reconstructed coordinate
 linearized curvature obeys `G^d_c = 0`. It does not identify this `dA` tensor
-with the full curvature of the selected Christoffel connection. That remaining
-bridge needs a compatible second tetrad jet and the nonlinear `A wedge A`
-term, in addition to a graph-derived refinement.
+with the full curvature of the selected Christoffel connection. The local
+formal coefficient including `A wedge A` is now exact, but upgrading this
+changing-carrier theorem still needs compatible sampled second tetrad jets and
+convergence of the actual ordered plaquettes to that coefficient, in addition
+to a graph-derived refinement.
 
 The program is strongest at F0 and in the exact algebraic interfaces inside
 F4-F7. Its decisive bottleneck remains F4, but F1 and F2 are logically prior
@@ -627,8 +634,29 @@ stationarity: the induced coordinate connection is the Christoffel connection
 of the induced metric first jet, and its induced differential curvature obeys
 the coordinate mixed vacuum Einstein equation. This is an exact supplied-jet
 Palatini derivation. It does not yet derive those jets from the causal graph,
-identify a finite plaquette holonomy with differential curvature, or prove a
-refinement limit.
+control the remainder from an actual finite plaquette holonomy to its formal
+coefficient, or prove a refinement limit.
+
+`LorentzPlaquetteSecondJetCurvature` closes the local algebraic holonomy gap.
+It represents the four oriented link factors by the formal second jets of
+
+`exp(t omega_a)`, `exp(t omega_b + t^2 partial_a omega_b)`,
+`exp(-t omega_a - t^2 partial_b omega_a)`, and `exp(-t omega_b)`.
+
+Their ordered product has zero linear coefficient and quadratic coefficient
+
+`partial_a omega_b - partial_b omega_a + [omega_a, omega_b]`.
+
+The coefficient's six Lorentz coordinates are exactly the curvature
+coordinates used by the action, and compatible coframe second jets identify
+its tetrad conjugate with the curvature of the induced coordinate connection.
+The guarded capstone assumes affine connection stationarity and coframe
+stationarity evaluated on these plaquette coordinates and returns three
+conclusions together: the induced connection is Christoffel, its curvature is
+the tetrad-conjugated plaquette coefficient, and the standard coordinate mixed
+Einstein tensor vanishes. This is an exact formal Taylor-coefficient theorem.
+It does not prove an actual holonomy remainder bound, construct the sampled
+jets from causal order, or supply the common graph refinement.
 
 `PhysicalLorentzPlaquetteRefinement` closes the eta-Lorentz existence side of
 that interface. For arbitrary six-component `F`, it proves that the exact

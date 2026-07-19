@@ -7185,10 +7185,10 @@ on the right is represented in precisely the six-component type used by the
 Palatini action. A guarded capstone combines this identity with arbitrary-
 coframe affine stationarity: the same induced connection is selected as
 Christoffel at first-jet order and has the displayed Lorentz/coordinate
-curvature dictionary at compatible second-jet order. This is not yet an
-identification of finite plaquette holonomy with differential curvature. That
-step still requires a graph-derived compatible second jet and a convergence
-theorem for the action-visible extractor.
+curvature dictionary at compatible second-jet order. The successor below now
+identifies the exact formal ordered-plaquette coefficient with this
+differential curvature. An actual graph-derived holonomy convergence theorem
+still requires compatible sampled jets and a controlled remainder estimate.
 
 The contraction successor
 `PhysicsSM/Draft/NullEdge/LorentzCoordinateEinsteinContraction.lean` removes a
@@ -7209,8 +7209,29 @@ metric first jet, while coframe stationarity makes the Einstein tensor of its
 induced differential curvature vanish. This is a complete exact derivation at
 the level of supplied compatible first and second jets. It is not yet a finite
 null-edge-lattice derivation, because graph reconstruction of those jets,
-finite-plaquette-to-differential-curvature identification, and refinement
-convergence remain separate obligations.
+analytic control identifying actual finite plaquettes with their formal
+second-jet coefficient, and refinement convergence remain separate
+obligations.
+
+`PhysicsSM/Draft/NullEdge/LorentzPlaquetteSecondJetCurvature.lean` closes the
+local algebraic part of the finite-plaquette obligation. It represents the
+four oriented link factors by the formal second jets of
+
+`exp(t omega_a)`, `exp(t omega_b + t^2 partial_a omega_b)`,
+`exp(-t omega_a - t^2 partial_b omega_a)`, and `exp(-t omega_b)`.
+
+Their ordered product has zero linear coefficient and quadratic coefficient
+
+`partial_a omega_b - partial_b omega_a + [omega_a, omega_b]`.
+
+Lean then proves that the six coordinates extracted from this coefficient are
+exactly the action's differential-curvature coordinates and that its tetrad
+conjugate is the curvature of the induced coordinate connection. The guarded
+capstone composes affine connection stationarity and coframe stationarity on
+those same plaquette coordinates: the induced connection is Christoffel, its
+curvature equals the tetrad-conjugated plaquette coefficient, and its standard
+mixed Einstein tensor vanishes. This is an exact formal Taylor-coefficient
+theorem, not an actual holonomy remainder bound or graph-refinement theorem.
 
 The changing-carrier linearized successor
 `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniSampledCoordinateEinsteinLimit.lean`
@@ -7226,10 +7247,12 @@ actual-action-to-coordinate endpoint presently proved.
 
 Its linearized scope is essential. The coordinate Einstein tensor is built
 from the tetrad reconstruction of `dA`; it is not yet proved equal to the full
-curvature of the selected Christoffel connection. That equality requires a
-compatible second tetrad jet and restoration of `A wedge A`. The theorem also
-assumes, rather than constructs, the pointed chart, affine stencil,
-differentiable fields, and finite stationary refinement.
+curvature of the selected Christoffel connection. The local formal coefficient
+including `A wedge A` is now exact, but this changing-carrier result still
+requires compatible sampled second tetrad jets and convergence of the actual
+ordered plaquettes to that coefficient. The theorem also assumes, rather than
+constructs, the pointed chart, affine stencil, differentiable fields, and
+finite stationary refinement.
 
 `NonlinearLorentzPalatiniEulerNeighborDefect` now removes exact site
 uniformity from the first-jet formula. At any selected center site, the
@@ -7762,6 +7785,8 @@ not
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniCoordinateLeviCivita.lean`
 - `PhysicsSM/Draft/NullEdge/LorentzCoordinateCurvatureBridge.lean`
 - `PhysicsSM/Draft/NullEdge/LorentzCoordinateEinsteinContraction.lean`
+- `PhysicsSM/Draft/NullEdge/LorentzMatrixSecondJet.lean`
+- `PhysicsSM/Draft/NullEdge/LorentzPlaquetteSecondJetCurvature.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniSampledCoordinateEinsteinLimit.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniExponentialConnectionTorsionSelection.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniEulerTorsionSelection.lean`
