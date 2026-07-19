@@ -66,6 +66,7 @@ import PhysicsSM.Draft.NullEdge.VacuumWeylPeriodicRefinementAristotle
 import PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylNullWaveJointNoGo
 import PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylCurvatureRankTwo
 import PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylSecondOrderObstruction
+import PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylAnalyticNoBranch
 import PhysicsSM.Draft.NullEdge.CurvatureConvergenceInterface
 import PhysicsSM.Draft.NullEdge.GraphPlaquetteCurvatureLimit
 import PhysicsSM.Draft.NullEdge.FiniteGravityConservation
@@ -137,7 +138,8 @@ imports one representative route through each established layer:
     injectively parametrized two-real-dimensional plus/cross range, and a
     second-order successor whose integrated time-time charge is
     `-8 * (plusScale^2 + crossScale^2)` independently of every formal
-    second-order link correction,
+    second-order link correction, followed by a Taylor-admissible analytic
+    local no-branch theorem for primitive identity-based link/coframe curves,
     and a conditional passage from finite coframe
     stationarity with convergent varying tetrads to the limiting mixed vacuum
     Einstein equation, exact finite weak-test equivalents of those pointwise
@@ -399,19 +401,25 @@ count: the full gauge kernel, propagation, nonlinear continuation,
 Levi-Civita selection, and refinement convergence remain open. The independent
 exact-rational oracle still reports Hessian rank 52 and nullity 28; those two
 matrix-rank figures are not kernel-checked here.
-The second-order successor then tests whether this complete curved linearized
-sector can continue on the same two-site periodic carrier. It builds the
-formal exponential-link plaquette jet from the concrete action conventions.
+The second-order successors then test whether this complete curved linearized
+sector can continue on the same two-site periodic carrier. The formal module
+builds the exponential-link plaquette jet from the concrete action conventions.
 The sum of the time-time coframe Euler equations over both sites annihilates
 every second-order Hessian correction, while its quadratic coefficient on the
-plus/cross sector is exactly `-8 * (p^2 + c^2)`. Thus no nonzero curved mode
-passes this formal second-order continuation condition. This is an exact
-finite Taylor-jet obstruction, analogous in shape to a compact-background
-Taub constraint, not yet an analytic no-branch theorem for arbitrary
-twice-differentiable curves or an identification with the continuum Taub
-integral. A positive nonlinear wave must change the global problem through a
-larger or open carrier, boundary flux, background evolution, matter, or
-modified dual-cell weights.
+plus/cross sector is exactly `-8 * (p^2 + c^2)`. The analytic successor
+propagates explicit `o(t^2)` remainder witnesses through the noncommutative
+plaquette and the actual nonlinear coframe Euler equations. It proves that any
+identity-based Taylor-admissible link/coframe branch with a plus/cross tangent
+and coframe stationarity near the identity background has `p = c = 0`;
+arbitrary second-order link and coframe corrections cannot evade the
+obstruction. This is an exact finite
+analytic no-branch theorem under displayed expansion hypotheses, analogous in
+shape to a compact-background Taub constraint. It is not yet a theorem for
+arbitrary twice-differentiable invertible-matrix link curves or an
+identification with the continuum Taub integral. A positive nonlinear wave
+must change the global
+problem through a larger or open carrier, boundary flux, background evolution,
+matter, or modified dual-cell weights.
 The combined result does not
 derive the refinement or convergence data from a bare graph, prove the
 orthochronous sign, identify the link equation with Levi-Civita selection, or

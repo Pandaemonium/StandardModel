@@ -681,11 +681,22 @@ triggers the preregistered two-site nonlinear-continuation kill condition.
 The result is a finite analogue of the Taub-charge mechanism behind
 linearization instability on compact symmetric GR backgrounds, as studied by
 Brill-Deser, Fischer-Marsden, and Moncrief. No theorem here identifies the
-finite functional with the continuum Taub integral or yet promotes the formal
-jet obstruction to arbitrary twice-differentiable stationary curves. The
-positive route must change the global problem: enlarge or open the carrier,
-allow boundary flux or a changing background, introduce sourced backreaction,
-or modify the dual-cell weights.
+finite functional with the continuum Taub integral.
+`PeriodicVacuumWeylAnalyticNoBranch` does, however, close the formal-to-curve
+gap under explicit primitive Taylor hypotheses. Its reusable expansion layer
+propagates `o(t^2)` remainders through noncommutative matrix multiplication,
+continuous linear maps, and finite sums. Forward and inverse link expansions
+then induce the corrected plaquette jet, and the actual nonlinear coframe Euler
+curve inherits the formal integrated charge. Consequently every identity-based
+Taylor-admissible link/coframe curve with plus/cross first tangent and vanishing
+nonlinear coframe Euler coefficients near the identity background has `p=c=0`,
+independently of arbitrary second-order link and coframe corrections. Packaging
+arbitrary
+twice-differentiable group-valued curves into these expansion witnesses remains
+open, as does any continuum Taub identification. The positive route must change
+the global problem: enlarge or open the carrier, allow boundary flux or a
+changing background, introduce sourced backreaction, or modify the dual-cell
+weights.
 
 `LorentzCoframePalatiniFace` now separates two face notions that the four-form
 must not conflate. With orientation `0123`, it defines the Lorentz Hodge star,

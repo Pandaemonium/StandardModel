@@ -536,7 +536,7 @@ The safe claim is therefore **finite second-order linearization obstruction**.
 | Fixed wave links admit no invertible jointly stationary coframe | `M [orig]`, subject to external priority audit | Exact complete finite no-go; no close prior theorem located |
 | Curvature-image rank two proves two graviton polarizations | Rejected | Gauge quotient, propagation, and doubling are unproved |
 | Coupled backreaction has exactly a two-dimensional nonflat stationary curvature image | `M [orig]`, subject to external priority audit | Lean checks all 80 concrete-action Hessian rows and exact curvature-residual certificates, then proves equality with an injective plus/cross range; it is not yet physically quotiented or propagated |
-| The two-site curved linearized sector continues to a nearby nonlinear stationary branch | Rejected on the formal second-order exponential jet | The integrated time-time Hessian functional kills every second-order correction but leaves the exact charge `-8(p^2+c^2)` |
+| The two-site curved linearized sector continues to a nearby nonlinear coframe-stationary branch | Rejected for Taylor-admissible identity-based link/coframe curves | Local stationarity near the background forces the integrated time-time functional to vanish, while its quadratic charge is `-8(p^2+c^2)` independently of arbitrary second-order link/coframe corrections; packaging every generic `C^2` group-valued curve into the displayed witnesses remains open |
 | The finite integrated charge is the continuum Taub charge | Open comparison | Its left-kernel and quadratic-obstruction shape matches classical linearization instability, but no refinement or analytic identification theorem is proved |
 
 ## Revised theorem order
@@ -559,11 +559,14 @@ The safe claim is therefore **finite second-order linearization obstruction**.
 5. **Prove local connection selection.** Use a gauge-fixed Jacobian theorem in
    the Gionti small-curvature style.
 6. **Test nonlinear continuation.** Completed negatively on the two-site
-   periodic carrier: the full curved image has formal second-order charge
-   `-8(p^2+c^2)`, independent of every second-order link correction. Do not
-   apply an implicit-function argument there. Repeat only after changing the
-   global problem through a larger/open carrier, boundary flux, background
-   evolution, matter, or modified weights.
+   periodic carrier for identity-based curves carrying the displayed primitive
+   `o(t^2)` link/coframe expansions: the full curved image has second-order
+   charge `-8(p^2+c^2)`, independent of arbitrary second-order link and coframe
+   corrections. Do not apply an implicit-function argument there. The standard
+   finite-dimensional bridge from generic `C^2` group-valued curves to these
+   witnesses remains to be packaged. Repeat the physical continuation test only
+   after changing the global problem through a larger/open carrier, boundary
+   flux, background evolution, matter, or modified weights.
 7. **Build a weak-curvature commuting square.** On one uniformly controlled
    refinement family, prove gauge-covariant weak Cartan curvature, convergence
    of the densitized Einstein response against test tensors, and agreement
@@ -583,8 +586,10 @@ The safe claim is therefore **finite second-order linearization obstruction**.
   Levi-Civita-selection route is killed for this action.
 - The second-order consistency kill condition is triggered on the two-site
   periodic carrier: every nonzero plus/cross combination projects onto the
-  integrated time-time Hessian cokernel functional. The formal linear wave
-  does not continue there without changing the global problem.
+  integrated time-time Hessian cokernel functional. No Taylor-admissible
+  identity-based curve satisfying all nonlinear coframe Euler equations near
+  the background
+  continues that linear wave without changing the global problem.
 - If refinement requires rigid flat null-faced cells, Neiman's focusing
   obstruction kills generic Ricci recovery; the carrier must be generalized.
 
