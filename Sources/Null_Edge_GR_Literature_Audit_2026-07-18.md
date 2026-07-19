@@ -29,8 +29,9 @@ chain and its unusually sharp positive and negative results:
 4. an exact affine connection-dependent Palatini theorem whose twenty-four
    equations select `de + omega wedge e = 0`, with a cubic finite-spacing
    defect and shrinking endpoint;
-5. a coupled link/coframe linearization whose current exact-rational oracle has
-   a two-dimensional curvature image.
+5. a coupled link/coframe linearization whose complete stationary curvature
+   image is kernel-checked as an injective two-real-dimensional plus/cross
+   range; the oracle still supplies the full Hessian rank and nullity.
 
 The fifth item is not yet a two-polarization graviton theorem. Linearized
 Regge theory makes clear that a physical mode count requires an identified
@@ -509,17 +510,22 @@ from sampled smooth fields to convergent discrete stationary solutions.
 | The proper-Lorentz two-site wave is an exact finite witness for this specific action and convention set | `M [orig]`, subject to external priority audit | Narrow statement supported by the current repo search |
 | Fixed wave links admit no invertible jointly stationary coframe | `M [orig]`, subject to external priority audit | Exact complete finite no-go; no close prior theorem located |
 | Curvature-image rank two proves two graviton polarizations | Rejected | Gauge quotient, propagation, and doubling are unproved |
-| Coupled backreaction contains a two-dimensional nonflat curvature image | Oracle evidence | Exact rational computation, not yet kernel-checked or physically quotiented |
+| Coupled backreaction has exactly a two-dimensional nonflat stationary curvature image | `M [orig]`, subject to external priority audit | Lean checks all 80 concrete-action Hessian rows and exact curvature-residual certificates, then proves equality with an injective plus/cross range; it is not yet physically quotiented or propagated |
 
 ## Revised theorem order
 
-1. **Kernelize the coupled Hessian.** Prove the linearized link and coframe
-   equations and the explicit plus-like and cross-like solutions in Lean.
-2. **Classify gauge.** Define infinitesimal local Lorentz and carrier-vertex
-   transformations, prove Hessian nullity, and identify the discrete Noether
-   identities.
-3. **Compute the quotient.** Prove the curvature map has rank two on the
-   gauge-reduced stationary space, or revise the claim if it does not.
+1. **Kernelize the coupled curvature image.** Completed: all linearized link
+   and coframe rows, explicit plus/cross solutions, and the exact image upper
+   bound are checked in Lean. The total Hessian rank/nullity remains oracle
+   evidence.
+2. **Complete the gauge classification.** The injective 12-parameter local
+   Lorentz family is flat and no plus/cross combination is gauge; carrier-vertex
+   transformations, Hessian nullity, and the full discrete Noether identities
+   remain to be identified.
+3. **Establish physical propagation.** The finite stationary curvature image is
+   exactly rank two, but a physical polarization claim still requires a
+   gauge-complete quotient, a larger/refining carrier, and a propagation and
+   no-doubling theorem.
 4. **Audit propagation and doubling.** Introduce a momentum family large
    enough to distinguish propagation from a two-site standing pattern and scan
    the full Brillouin zone.

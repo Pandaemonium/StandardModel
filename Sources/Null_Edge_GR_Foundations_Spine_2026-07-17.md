@@ -653,14 +653,20 @@ independent nonzero vacuum-Riemann curvature directions. The same module proves
 that every two-site infinitesimal local Lorentz gauge parameter gives a flat
 jointly stationary mode, that this 12-real-parameter family is injectively
 represented in the combined link/coframe tangent space, and that no nonzero
-plus/cross combination belongs to it. Thus a two-dimensional gauge-reduced
-linearized curvature sector is kernel-checked. The independent exact SymPy
-audit reports joint Hessian rank 52, nullity 28, and curvature rank exactly two
-on the complete kernel. Lean therefore proves the rank-two lower bound through
-displayed generators; the global upper bound excluding any third curvature
-direction elsewhere in the 28-dimensional kernel remains oracle evidence. No
-nonlinear branch, gauge-reduced propagation theorem, Levi-Civita selection, or
-refinement-limit theorem follows from this finite linearized result.
+plus/cross combination belongs to it. Thus a two-dimensional curved sector
+separated from the displayed local Lorentz family is kernel-checked. The
+`PeriodicVacuumWeylCurvatureCompleteness` successor checks every one of the 80
+sparse generated Hessian rows against the actual action derivatives and checks
+exact row-space certificates for every additive-curvature residual. Its
+`PeriodicVacuumWeylCurvatureRankTwo` packaging proves that every jointly
+stationary curvature has a unique plus/cross coefficient pair and that the
+complete stationary curvature image is exactly the range of this injective
+two-real-parameter map. Thus Lean now supplies both the lower and upper bounds:
+there is no third curvature direction anywhere in the full joint kernel. The
+independent exact SymPy audit still supplies the unformalized joint Hessian rank
+52 and nullity 28. No physical two-polarization claim follows yet: completeness
+of the gauge quotient, propagation, nonlinear continuation, Levi-Civita
+selection, and refinement convergence remain open.
 
 `LorentzCoframePalatiniFace` now separates two face notions that the four-form
 must not conflate. With orientation `0123`, it defines the Lorentz Hodge star,

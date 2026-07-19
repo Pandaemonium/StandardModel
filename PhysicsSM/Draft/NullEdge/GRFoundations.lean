@@ -64,6 +64,7 @@ import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEulerSampledCoframeTorsi
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniLinearizedEinsteinCartanLimit
 import PhysicsSM.Draft.NullEdge.VacuumWeylPeriodicRefinementAristotle
 import PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylNullWaveJointNoGo
+import PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylCurvatureRankTwo
 import PhysicsSM.Draft.NullEdge.CurvatureConvergenceInterface
 import PhysicsSM.Draft.NullEdge.GraphPlaquetteCurvatureLimit
 import PhysicsSM.Draft.NullEdge.FiniteGravityConservation
@@ -130,7 +131,9 @@ imports one representative route through each established layer:
     identity-coframe vacuum-Riemann and coframe-stationarity tests, has a
     complete rank-six coframe response with a ten-parameter Einstein kernel,
     and admits no invertible jointly stationary coframe at nonzero area while
-    those exact links are held fixed,
+    those exact links are held fixed, followed by a coupled link/coframe
+    linearization whose complete stationary curvature image is exactly an
+    injectively parametrized two-real-dimensional plus/cross range,
     and a conditional passage from finite coframe
     stationarity with convergent varying tetrads to the limiting mixed vacuum
     Einstein equation, exact finite weak-test equivalents of those pointwise
@@ -380,7 +383,18 @@ fixed links at nonzero area. Genuine bivector-plane mixing is sufficient for
 a periodically exact finite vacuum-Riemann field, but the next constructive
 step must deform links and coframe together, enlarge the carrier, or alter the
 finite dual-cell weighting. Levi-Civita compatibility and graph refinement
-remain open.
+remain open. The coupled linearized-backreaction successor carries out the
+first option at the identity background for the same concrete Palatini action.
+It checks all 80 generated joint Hessian rows against the actual action
+derivatives and validates exact row-space certificates for every curvature
+residual. Consequently every jointly stationary additive curvature is exactly
+a plus/cross combination, the coefficients are unique, and the full stationary
+curvature image equals the range of an injective map from `Real x Real`. This
+is an exact finite linearized curvature-image theorem, not a physical graviton
+count: the full gauge kernel, propagation, nonlinear continuation,
+Levi-Civita selection, and refinement convergence remain open. The independent
+exact-rational oracle still reports Hessian rank 52 and nullity 28; those two
+matrix-rank figures are not kernel-checked here.
 The combined result does not
 derive the refinement or convergence data from a bare graph, prove the
 orthochronous sign, identify the link equation with Levi-Civita selection, or
