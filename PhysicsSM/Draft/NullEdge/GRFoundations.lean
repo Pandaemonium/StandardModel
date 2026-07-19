@@ -59,6 +59,7 @@ import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniWeakEinsteinLimit
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniLinearizedTorsionSelection
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniGeneralTorsionSelection
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniAffineConnectionTorsionSelection
+import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniCoordinateLeviCivita
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEulerChangingCarrierTorsion
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEulerSampledCoframeTorsion
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniLinearizedEinsteinCartanLimit
@@ -155,7 +156,10 @@ imports one representative route through each established layer:
     shrinking-neighbor torsion-selection endpoint, followed by local-stencil
     defect convergence on changing carriers, a sampled continuous-connection
     Cartan endpoint, and a differentiable sampled-tetrad endpoint on affine
-    predecessor rays in a supplied pointed chart, followed by a common
+    predecessor rays in a supplied pointed chart, together with the finite
+    Levi-Civita uniqueness theorem, arbitrary-invertible-coframe affine
+    Palatini-to-Christoffel selection, and identity-background actual-action
+    first-jet selection, followed by a common
     two-sided sampled refinement whose two actual-action Euler-map derivatives
     pass simultaneously to vacuum Einstein for `dA` and covariant Cartan torsion,
     and
@@ -310,7 +314,13 @@ invariant under adding a site-independent connection mode, vanishes for
 uniform jets, scales exactly with the nonuniform amplitude, and equals `2` in
 a sparse period-two null-wave-carrier witness. Consequently, stationarity
 along any displayed family whose centered neighbor mode is scaled to zero
-forces the fixed center data to be torsion-free. The changing-carrier successor
+forces the fixed center data to be torsion-free. A coordinate successor proves
+the finite Levi-Civita uniqueness theorem directly. For every invertible
+coframe, the affine Palatini residual therefore selects the Christoffel
+connection of the coframe-induced metric first jet; at the identity coframe,
+the site-uniform actual nonlinear link-Euler derivative theorem composes to the
+same endpoint. This closes local first-jet selection, not exact nonlinear
+fixed-spacing selection. The changing-carrier successor
 controls only the forward, predecessor, and translated-predecessor stencil
 sites actually read by the Euler coefficient. When those sites approach one
 supplied chart point, continuity of a sampled Lorentz connection proves defect
@@ -335,9 +345,9 @@ stationary refinement and does not include the nonlinear `A wedge A` curvature
 term. The graph still does
 not construct the pointed chart embedding, inverse-spacing sequence,
 predecessor/forward rays, or tangent frame; no quantitative spacing rate is
-proved, and the background remains the identity. Nonidentity-
-background Levi-Civita selection and graph-derived chart convergence remain
-open. The physical-link
+proved, and the background remains the identity. Nonidentity-background
+actual-action selection, nonlinear finite-spacing uniqueness, and graph-derived
+chart convergence remain open. The physical-link
 successor proves that
 `exp(A_n hat(F))` has exactly this first-order limit and constructs a nonzero
 `2 x 2` periodic-square refinement with commuting shifts and proper
@@ -388,8 +398,9 @@ including arbitrary off-diagonal shear, is jointly stationary with these
 fixed links at nonzero area. Genuine bivector-plane mixing is sufficient for
 a periodically exact finite vacuum-Riemann field, but the next constructive
 step must deform links and coframe together, enlarge the carrier, or alter the
-finite dual-cell weighting. Levi-Civita compatibility and graph refinement
-remain open. The coupled linearized-backreaction successor carries out the
+finite dual-cell weighting. Nonlinear finite-spacing Levi-Civita compatibility
+and graph refinement remain open. The coupled linearized-backreaction successor
+carries out the
 first option at the identity background for the same concrete Palatini action.
 It checks all 80 generated joint Hessian rows against the actual action
 derivatives and validates exact row-space certificates for every curvature
@@ -422,10 +433,10 @@ problem through a larger or open carrier, boundary flux, background evolution,
 matter, or modified dual-cell weights.
 The combined result does not
 derive the refinement or convergence data from a bare graph, prove the
-orthochronous sign, identify the link equation with Levi-Civita selection, or
-identify the limiting target with continuum Riemann curvature. The program also
-owes metric dual-cell volume factors and a uniqueness
-theorem selecting Levi-Civita transport. It also still owes
+orthochronous sign, extend first-jet link selection to exact finite-spacing
+Levi-Civita transport, or identify the limiting target with continuum Riemann
+curvature. The program also owes metric dual-cell volume factors and a nonlinear
+finite-spacing uniqueness theorem. It also still owes
 derivation of the weights
 and frame synchronization from order/operator data, local Lorentz covariance
 of the difference curvature, equivalence to graph holonomy curvature,

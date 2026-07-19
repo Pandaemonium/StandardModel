@@ -169,6 +169,94 @@ theorem covariantMetricDerivative_christoffel_eq_zero
     hSymmetric left right derivative]
   ring
 
+omit [DecidableEq ι] in
+/-- Lowering the upper index preserves symmetry in the two derivative
+directions of a supplied coordinate connection. -/
+theorem loweredConnection_swap_of_connection_swap
+    (gCov : Matrix ι ι K) (connection : ι -> ι -> ι -> K)
+    (hTorsionFree : forall upper derivativeLeft derivativeRight,
+      connection upper derivativeLeft derivativeRight =
+        connection upper derivativeRight derivativeLeft)
+    (lower derivativeLeft derivativeRight : ι) :
+    loweredConnection gCov connection lower derivativeLeft derivativeRight =
+      loweredConnection gCov connection lower derivativeRight derivativeLeft := by
+  unfold loweredConnection
+  apply Finset.sum_congr rfl
+  intro upper _
+  rw [hTorsionFree upper derivativeLeft derivativeRight]
+
+/-- **Finite Levi-Civita uniqueness.** Any coordinate connection with zero
+torsion and vanishing covariant derivative of the supplied metric first jet is
+the Christoffel connection.  This is the uniqueness half of the fundamental
+theorem, proved directly by cyclically permuting the metric-compatibility
+equations and then raising the recovered first-kind coefficient. -/
+theorem connection_eq_christoffelSecondKind_of_torsionFree_metricCompatible
+    [CharZero K]
+    (gCov gInv : Matrix ι ι K) (dg : ι -> Matrix ι ι K)
+    (connection : ι -> ι -> ι -> K)
+    (hInverse : gCov * gInv = 1)
+    (hTorsionFree : forall upper derivativeLeft derivativeRight,
+      connection upper derivativeLeft derivativeRight =
+        connection upper derivativeRight derivativeLeft)
+    (hMetricCompatible : forall derivative left right,
+      covariantMetricDerivative gCov dg connection derivative left right = 0) :
+    connection = christoffelSecondKind gInv dg := by
+  have hLowered (lower derivativeLeft derivativeRight : ι) :
+      loweredConnection gCov connection lower derivativeLeft derivativeRight =
+        christoffelFirstKind dg lower derivativeLeft derivativeRight := by
+    have hFirst := hMetricCompatible derivativeLeft lower derivativeRight
+    have hSecond := hMetricCompatible derivativeRight lower derivativeLeft
+    have hThird := hMetricCompatible lower derivativeLeft derivativeRight
+    unfold covariantMetricDerivative at hFirst hSecond hThird
+    rw [loweredConnection_swap_of_connection_swap gCov connection
+      hTorsionFree lower derivativeRight derivativeLeft] at hSecond
+    rw [loweredConnection_swap_of_connection_swap gCov connection
+      hTorsionFree derivativeLeft derivativeRight lower] at hSecond
+    rw [loweredConnection_swap_of_connection_swap gCov connection
+      hTorsionFree derivativeRight lower derivativeLeft] at hThird
+    unfold christoffelFirstKind
+    linear_combination
+      (-(1 / 2 : K)) * hFirst + (-(1 / 2 : K)) * hSecond +
+        (1 / 2 : K) * hThird
+  have hRight : gInv * gCov = 1 := mul_eq_one_comm.2 hInverse
+  funext upper derivativeLeft derivativeRight
+  have hRaise :
+      Matrix.mulVec gInv
+          (fun lower => loweredConnection gCov connection lower
+            derivativeLeft derivativeRight) =
+        fun source => connection source derivativeLeft derivativeRight := by
+    change Matrix.mulVec gInv
+        (Matrix.mulVec gCov
+          (fun source => connection source derivativeLeft derivativeRight)) = _
+    rw [Matrix.mulVec_mulVec, hRight, Matrix.one_mulVec]
+  rw [<- congrFun hRaise upper]
+  unfold christoffelSecondKind Matrix.mulVec dotProduct
+  simp_rw [hLowered]
+
+/-- **Finite fundamental theorem of Levi-Civita geometry.** A symmetric metric
+first jet with a supplied inverse admits exactly one torsion-free,
+metric-compatible coordinate connection, namely the displayed Christoffel
+connection. -/
+theorem finiteLeviCivita_existsUnique
+    [CharZero K]
+    (gCov gInv : Matrix ι ι K) (dg : ι -> Matrix ι ι K)
+    (hInverse : gCov * gInv = 1)
+    (hSymmetric : MetricFirstJetSymmetric dg) :
+    ∃! connection : ι -> ι -> ι -> K,
+      (forall upper derivativeLeft derivativeRight,
+        connection upper derivativeLeft derivativeRight =
+          connection upper derivativeRight derivativeLeft) ∧
+      (forall derivative left right,
+        covariantMetricDerivative gCov dg connection derivative left right = 0) := by
+  refine ⟨christoffelSecondKind gInv dg, ?_, ?_⟩
+  · constructor
+    · exact christoffelSecondKind_swap gInv dg hSymmetric
+    · exact covariantMetricDerivative_christoffel_eq_zero
+        gCov gInv dg hInverse hSymmetric
+  · intro connection hConnection
+    exact connection_eq_christoffelSecondKind_of_torsionFree_metricCompatible
+      gCov gInv dg connection hInverse hConnection.1 hConnection.2
+
 /-- Guarded finite Levi-Civita package: coordinate torsion vanishes and the
 covariant metric derivative is zero under the exact reconstruction premises. -/
 theorem finiteLeviCivitaPackage
@@ -197,5 +285,9 @@ end FiniteCoordinates
 /-- info: 'PhysicsSM.Draft.NullEdge.CausalLeviCivita.finiteLeviCivitaPackage' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms finiteLeviCivitaPackage
+
+/-- info: 'PhysicsSM.Draft.NullEdge.CausalLeviCivita.finiteLeviCivita_existsUnique' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms finiteLeviCivita_existsUnique
 
 end PhysicsSM.Draft.NullEdge.CausalLeviCivita

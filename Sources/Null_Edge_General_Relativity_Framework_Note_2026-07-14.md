@@ -7129,6 +7129,36 @@ connection variation and backward coframe jets have zero linearized Cartan
 torsion. This is the first actual-action torsion-selection theorem in the
 chain.
 
+`CausalLeviCivita` and
+`NonlinearLorentzPalatiniCoordinateLeviCivita` close the corresponding finite
+coordinate first-jet bridge. The first module proves the uniqueness half of the
+finite fundamental theorem: a supplied inverse metric and symmetric metric jet
+have exactly one torsion-free, metric-compatible coordinate connection, namely
+the displayed Christoffel connection. For an invertible coframe `e`, inverse
+`eInv`, Lorentz connection jet `omega_a`, and predecessor coframe increment
+`V_a`, the second module defines
+
+\[
+  \Gamma_a=eInv\bigl(\widehat\omega_a e-V_a\bigr),\qquad
+  g=e^T\eta e,
+\]
+
+and uses the predecessor sign convention
+
+\[
+  \partial_a g=-\bigl(V_a^T\eta e+e^T\eta V_a\bigr).
+\]
+
+Cartan torsion makes the two lower indices of `Gamma` symmetric, while
+Lorentz-Lie-algebra skewness makes `Gamma` metric-compatible. Consequently,
+vanishing of all affine Palatini residuals forces the induced connection to be
+the Christoffel connection of the coframe metric jet. At the identity coframe,
+the actual nonlinear link-Euler derivative capstone composes to the same
+endpoint for site-uniform exponential-link variations. All three headline
+theorems have build-enforced standard-three axiom guards. This closes local
+first-jet Levi-Civita selection, not exact nonidentity-link finite-spacing
+selection, graph-derived coframes, or refinement convergence.
+
 `NonlinearLorentzPalatiniEulerNeighborDefect` now removes exact site
 uniformity from the first-jet formula. At any selected center site, the
 connection variation splits into the constant extension of its center value
@@ -7657,6 +7687,7 @@ not
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniLinearizedTorsionSelection.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniGeneralTorsionSelection.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniAffineConnectionTorsionSelection.lean`
+- `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniCoordinateLeviCivita.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniExponentialConnectionTorsionSelection.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniEulerTorsionSelection.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniEulerTorsionCancellation.lean`

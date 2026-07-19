@@ -133,7 +133,7 @@ infrared phase.
 | F5: coframe and spin | Gauge-relative coframe and a compatible spin lift of the metric atlas | Exact coframe covariance, Lorentz transitions, central sign, and finite obstruction interfaces | Derive the atlas and identify the stable finite class with the continuum spin obstruction |
 | F6: one curvature | Levi-Civita, holonomy, operator, and Dirac-square curvature agree | Exact finite connection/Bianchi algebra, a gauge-covariant periodic link/plaquette substrate, a continuous action-visible curvature extractor, conditional shrinking-loop and antisymmetrized-curvature limits, a nonzero proper eta-Lorentz periodic-square refinement with exact exponential plaquettes, an exact audit showing its lone identity-coframe Ricci-flat mode violates metric-lowered pair exchange, a separate nonzero algebraic vacuum-Weyl target satisfying pair exchange and first Bianchi, and an exact proper-Lorentz two-site null-wave lift whose finite extracted curvature is vacuum Einstein and coframe-stationary; its full coframe response has rank six and a complete ten-parameter kernel, but no invertible coframe in that kernel is jointly stationary with the fixed links at nonzero area | A simultaneously link-and-coframe-deformed jointly stationary lift and convergence of all routes to the same Riemann/Ricci/scalar curvature with the correct `R/4` coefficient |
 | F7: one matter source | Localized variation of one matter action gives symmetric conserved `T` | Higgs/scalar controls, full symmetric-probe uniqueness, and the explicit Bianchi-to-source-conservation composition are exact | Derive the arbitrary local variation and matter Noether identity on the common reconstructed geometry |
-| F8: one gravity action | One graph action converges to Einstein-Hilbert plus boundary and controlled corrections | Exact affine-action no-go, coframe determinant variation, Palatini-to-Einstein composition, incidence cancellation, nonlinear and joint two-field chart actions, spinor-null coframe and directed Levi-Civita/Ricci reconstruction, aggregate-weight coframe coverage, an exact independent pointwise-connection variation, its local periodic Euler coefficient and torsion-free Levi-Civita no-go, a group-valued link-curvature substrate, scalar, Euclidean finite-fiber, and full Krein-paired link/face Euler chains, plus a spacetime-derived six-component Lorentz-bivector representation preserved by the concrete null-edge `SL(2,C)` action and exactly equivalent to the matrix Lorentz Lie algebra with normalized trace pairing, the exact right-trivialized nonlinear Lorentz-plaquette tangent with its four-corner adjoint formula and additive identity-link limit, a displayed scalar ordered holonomy action with matching product/inverse derivative along canonical exponential link curves, its exact four-family nonidentity local link Euler coefficients, ordinary coframe derivative, joint `6 + 16` stationarity, exact antisymmetric-curvature Palatini rewrite, arbitrary-coframe identity `PalatiniDensity(e,F) = -det(e) R(e^{-1},F)`, exact coframe-response identity and stationarity-to-mixed-Einstein equivalence, conditional passage of stationary refinements with jointly convergent varying coframes and curvature to a limiting mixed vacuum Einstein equation, exact equivalence between the finite pointwise equations and all weak test-tensor pairings, the corresponding volume-weighted equivalence for nonzero site weights, a conditional changing-carrier weak-limit endpoint, the static square and full fixed-null-wave-connection joint-stationarity no-go theorems, determinant-weighted nonlinear action, and the complementary coframe-derived curvature-face coefficient `(1/2) epsilon^(cdab) star(e_c wedge e_d)` with exact divergence, proper-Lorentz covariance, and concrete action gauge invariance | Derive the aggregate weights and synchronized frame from the operator sector, identify the Gram and operator metrics, derive a graph refinement, continuum test sampler, and metric dual-cell weights, prove weak convergence of its Einstein residual and the supplied coframe convergence hypotheses, construct a nonflat jointly stationary refinement with simultaneous link/coframe backreaction, then test and prove Levi-Civita selection, identify the action-visible target with common Riemann curvature, establish physical boundaries, `G_N`/`Lambda`, global descent, and global variation-limit interchange |
+| F8: one gravity action | One graph action converges to Einstein-Hilbert plus boundary and controlled corrections | Exact affine-action no-go, coframe determinant variation, Palatini-to-Einstein composition, incidence cancellation, nonlinear and joint two-field chart actions, spinor-null coframe and directed Levi-Civita/Ricci reconstruction, aggregate-weight coframe coverage, an exact independent pointwise-connection variation, its local periodic Euler coefficient and torsion-free Levi-Civita no-go, a group-valued link-curvature substrate, scalar, Euclidean finite-fiber, and full Krein-paired link/face Euler chains, plus a spacetime-derived six-component Lorentz-bivector representation preserved by the concrete null-edge `SL(2,C)` action and exactly equivalent to the matrix Lorentz Lie algebra with normalized trace pairing, the exact right-trivialized nonlinear Lorentz-plaquette tangent with its four-corner adjoint formula and additive identity-link limit, a displayed scalar ordered holonomy action with matching product/inverse derivative along canonical exponential link curves, its exact four-family nonidentity local link Euler coefficients, ordinary coframe derivative, joint `6 + 16` stationarity, exact antisymmetric-curvature Palatini rewrite, arbitrary-coframe identity `PalatiniDensity(e,F) = -det(e) R(e^{-1},F)`, exact coframe-response identity and stationarity-to-mixed-Einstein equivalence, finite Levi-Civita uniqueness and arbitrary-invertible-coframe affine first-jet selection with an identity-background actual-action corollary, conditional passage of stationary refinements with jointly convergent varying coframes and curvature to a limiting mixed vacuum Einstein equation, exact equivalence between the finite pointwise equations and all weak test-tensor pairings, the corresponding volume-weighted equivalence for nonzero site weights, a conditional changing-carrier weak-limit endpoint, the static square and full fixed-null-wave-connection joint-stationarity no-go theorems, determinant-weighted nonlinear action, and the complementary coframe-derived curvature-face coefficient `(1/2) epsilon^(cdab) star(e_c wedge e_d)` with exact divergence, proper-Lorentz covariance, and concrete action gauge invariance | Derive the aggregate weights and synchronized frame from the operator sector, identify the Gram and operator metrics, derive a graph refinement, continuum test sampler, and metric dual-cell weights, prove weak convergence of its Einstein residual and the supplied coframe convergence hypotheses, construct a nonflat jointly stationary refinement with simultaneous link/coframe backreaction, extend first-jet Levi-Civita selection to exact nonidentity-link finite spacing, identify the action-visible target with common Riemann curvature, establish physical boundaries, `G_N`/`Lambda`, global descent, and global variation-limit interchange |
 | F9: physical recovery | Newtonian, redshift, geodesic, wave, horizon, black-hole, and cosmological controls | Poisson normalization and FLRW equations under imported actions | Full independent controls, including tensor modes and curved local observables |
 
 In F8, the canonical exponential variation curves are now proved to remain in
@@ -142,12 +142,14 @@ Lorentz-component debt is specifically the separate orthochronous sign.
 The F6/F8 backreaction debt now means a **nonlinear** continuation: the finite
 identity-background linearized system has a two-polarization curved jointly
 stationary sector, as recorded below.
-The F8 connection row now has an exact arbitrary-invertible-tetrad theorem at
-identity link transport: linearized Palatini connection stationarity is
-equivalent to zero Cartan torsion, and the finite departure from that equation
-is an explicit quadratic spacing defect. The remaining Levi-Civita debt is
-the nonidentity-link nonlinear selection, metric-compatibility, and uniqueness
-theorem.
+The F8 connection row now has an exact arbitrary-invertible-tetrad first-jet
+theorem: affine Palatini stationarity is equivalent to zero Cartan torsion,
+the induced coordinate connection is metric-compatible, and finite
+Levi-Civita uniqueness identifies it with the Christoffel connection. At the
+identity coframe this also follows from ordinary derivatives of the actual
+nonlinear link Euler coefficients under the displayed site-uniform variation.
+The remaining Levi-Civita debt is exact nonidentity-link finite-spacing
+selection and its graph-derived refinement limit.
 
 The changing-carrier successor now proves that both formal identity-background
 linearized Euler sectors are derivatives of the same concrete nonlinear finite
@@ -529,8 +531,8 @@ stationarity along nonzero spacings tending to zero, with a fixed first
 coframe jet, forces that jet to be torsion-free; the carrier may change with
 the refinement level. This advances P8(a) at the identity tetrad; the successor
 below removes that tetrad restriction. Nonidentity links, varying-jet
-compactness, nonlinear metric compatibility, uniqueness modulo Lorentz gauge,
-and a graph-derived refinement remain open.
+compactness, exact finite-spacing selection, and a graph-derived refinement
+remain open.
 
 `NonlinearLorentzPalatiniGeneralTorsionSelection` removes the identity-tetrad
 restriction from that algebraic result. It defines the arbitrary internal
@@ -542,8 +544,8 @@ vanish exactly when torsion vanishes at any fixed invertible tetrad. The same
 `h L + h^2 Q` argument gives a changing-carrier fixed-jet endpoint centered on
 that tetrad, and an explicit anisotropic coframe supplies a nonidentity
 witness. The links are still fixed to identity: full connection-dependent
-torsion, nonlinear Levi-Civita selection, and uniqueness modulo Lorentz gauge
-remain open.
+torsion and exact finite-spacing Levi-Civita selection remain open at this
+stage.
 
 `NonlinearLorentzPalatiniAffineConnectionTorsionSelection` supplies the first
 connection-dependent successor. A six-component Lorentz connection velocity
@@ -557,7 +559,24 @@ equivalent, up to one global sign, to all components of
 connection-dependent torsion for the fixed jet, and connection-generated
 coframe velocities give an explicit nonvacuity family. This is an affine
 tangent theorem, not yet the full exponential-link Euler equation or a
-nonlinear Levi-Civita uniqueness theorem.
+nonlinear finite-spacing theorem.
+
+`CausalLeviCivita` and
+`NonlinearLorentzPalatiniCoordinateLeviCivita` now close the local coordinate
+first-jet bridge. The former proves directly that a supplied inverse metric and
+symmetric metric jet admit a unique torsion-free, metric-compatible coordinate
+connection. The latter defines
+`Gamma_a = eInv (hat(omega_a) e - V_a)` and proves, for every invertible
+coframe, that Cartan torsion makes its lower indices symmetric while Lorentz
+skewness gives compatibility with
+`g = e^T eta e` and
+`partial_a g = -(V_a^T eta e + e^T eta V_a)`. Hence vanishing affine Palatini
+residuals forces `Gamma` to equal the Christoffel connection of that metric
+jet. At the identity coframe, the existing actual nonlinear link-Euler
+derivative capstone composes to the same conclusion for site-uniform link
+variations. These are guarded finite first-jet identities; they do not prove
+exact finite-spacing, nonidentity-link actual-action selection or refinement
+convergence.
 
 `PhysicalLorentzPlaquetteRefinement` closes the eta-Lorentz existence side of
 that interface. For arbitrary six-component `F`, it proves that the exact
@@ -987,10 +1006,12 @@ metric, curvature, or action.
    finite `h^2` defect and a fixed-first-jet changing-carrier limit made
    explicit. Its affine-link tangent successor now includes a supplied Lorentz
    connection, identifies the full linear equation with
-   `de + omega wedge e = 0`, and exposes the exact cubic finite defect. Replace
-   the affine tangent by exact exponential Lorentz links, compare it to the
-   full nonlinear link Euler equation, then prove metric compatibility,
-   local uniqueness modulo gauge, and control varying first jets.
+   `de + omega wedge e = 0`, and exposes the exact cubic finite defect. Finite
+   Levi-Civita uniqueness now turns this arbitrary-coframe affine equation into
+   exact Christoffel selection, and ordinary actual-action Euler derivatives
+   give the same first-jet endpoint at the identity coframe. Extend that bridge
+   to nonidentity exact exponential Lorentz links at finite spacing and control
+   varying first jets.
    Derive the holonomy expansion, test sampler, dual-volume weights, and
    coframe convergence from the graph; prove actual weak convergence and the
    separate orthochronous sign; and rerun the conformal witness. The nonlinear
