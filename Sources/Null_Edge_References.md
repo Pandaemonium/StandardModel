@@ -241,6 +241,14 @@ conservative until local chunks are quoted.
 | `TBD-Kull2002` | `quant-ph/0212053` | Kull, checkerboard on dense-rational 2D Minkowski | Non-continuous-spacetime checkerboard precedent (§2a). | ID-ONLY |
 | `TBD-PhysLean-Weyl` | `2405.08863` | Tooby-Smith, PhysLean (`Physlib/Relativity/.../Weyl/Metric.lean`) | Convention cross-check for §3: `spinorWedge` = PhysLean left-handed Weyl metric `!![0,1;-1,0]` (clean-room match, verified 2026-07-08); see `docs/PHYSLEAN.md`. | KEYED-LOCAL (source clone) |
 
+## GR linearization stability / second-order constraints
+
+| Key | Identifier | Source | Role | Status |
+|---|---|---|---|---|
+| `TBD-BrillDeser1973` | DOI `10.1007/BF01645610` | D. R. Brill and S. Deser, "Instability of Closed Spaces in General Relativity," Commun. Math. Phys. 32 (1973) 291-304 | Primary compact-background precedent for nonintegrable linearized gravitational modes and a quadratic second-order constraint; comparison source for the finite two-site obstruction, not an identification theorem. | DOI/title/journal/pages VERIFIED 2026-07-19 |
+| `TBD-FischerMarsden1973` | DOI `10.1090/S0002-9904-1973-13299-9` | A. E. Fischer and J. E. Marsden, "Linearization Stability of the Einstein Equations," Bull. Amer. Math. Soc. 79 (1973) 997-1003 | Primary definition and theorem-shape source for asking whether a linearized solution is tangent to a curve of exact Einstein solutions. | DOI/title/full PDF VERIFIED 2026-07-19 |
+| `TBD-Moncrief1976-II` | DOI `10.1063/1.522814` | V. Moncrief, "Space-Time Symmetries and Linearization Stability of the Einstein Equations. II," J. Math. Phys. 17 (1976) 1893-1902 | Primary source relating nonlinear constraints on compact Cauchy backgrounds with Killing symmetries to conserved hypersurface-independent integrals; comparison source for a possible finite Taub-charge interpretation. | DOI/title/abstract VERIFIED 2026-07-19 |
+
 ## Finite exchange topology / graph braid groups
 
 | Key | Identifier | Source | Role | Status |

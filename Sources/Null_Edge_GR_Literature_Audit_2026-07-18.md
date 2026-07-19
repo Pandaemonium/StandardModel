@@ -31,9 +31,14 @@ chain and its unusually sharp positive and negative results:
    defect and shrinking endpoint;
 5. a coupled link/coframe linearization whose complete stationary curvature
    image is kernel-checked as an injective two-real-dimensional plus/cross
-   range; the oracle still supplies the full Hessian rank and nullity.
+   range; the oracle still supplies the full Hessian rank and nullity;
+6. a formal second-order exponential-jet obstruction whose integrated
+   time-time charge is exactly `-8(p^2+c^2)` and is unchanged by arbitrary
+   second-order link corrections.
 
-The fifth item is not yet a two-polarization graviton theorem. Linearized
+The fifth item is not yet a two-polarization graviton theorem, and the sixth
+shows that its nonzero modes do not pass the same-carrier formal continuation
+condition. Linearized
 Regge theory makes clear that a physical mode count requires an identified
 gauge kernel, discrete Bianchi identities, a quotient by gauge, and a
 propagation statement. Those are now the immediate gate.
@@ -498,6 +503,26 @@ Together these results support a weak-curvature commuting-square strategy.
 They still do not justify interchanging variation and refinement or passing
 from sampled smooth fields to convergent discrete stationary solutions.
 
+## Linearization-instability comparison
+
+The two-site nonlinear-continuation audit lands in a classical GR problem
+class. Brill and Deser showed that closed backgrounds can admit solutions of
+the linearized Einstein equations that fail a quadratic second-order
+constraint. Fischer and Marsden defined linearization stability precisely by
+whether linearized solutions are tangent to curves of exact solutions.
+Moncrief related the nonlinear constraints on compact Cauchy backgrounds with
+Killing symmetries to conserved, hypersurface-independent integrals.
+
+The finite null-edge result has the same algebraic shape. The summed
+time-time coframe Euler row annihilates the linear Hessian image, while its
+quadratic value on the complete curved sector is
+`-8 * (p^2 + c^2)`. This is strong evidence for a discrete Taub-charge
+analogue and explains why adding arbitrary local second-order link corrections
+cannot repair the two-site wave. It is not yet an identification theorem: the
+repo has not derived a compact Cauchy hypersurface, a Killing field, the ADM
+constraint map, or convergence of the finite charge to Moncrief's integral.
+The safe claim is therefore **finite second-order linearization obstruction**.
+
 ## Revised originality matrix
 
 | Candidate claim | Revised grade | Reason |
@@ -511,6 +536,8 @@ from sampled smooth fields to convergent discrete stationary solutions.
 | Fixed wave links admit no invertible jointly stationary coframe | `M [orig]`, subject to external priority audit | Exact complete finite no-go; no close prior theorem located |
 | Curvature-image rank two proves two graviton polarizations | Rejected | Gauge quotient, propagation, and doubling are unproved |
 | Coupled backreaction has exactly a two-dimensional nonflat stationary curvature image | `M [orig]`, subject to external priority audit | Lean checks all 80 concrete-action Hessian rows and exact curvature-residual certificates, then proves equality with an injective plus/cross range; it is not yet physically quotiented or propagated |
+| The two-site curved linearized sector continues to a nearby nonlinear stationary branch | Rejected on the formal second-order exponential jet | The integrated time-time Hessian functional kills every second-order correction but leaves the exact charge `-8(p^2+c^2)` |
+| The finite integrated charge is the continuum Taub charge | Open comparison | Its left-kernel and quadratic-obstruction shape matches classical linearization instability, but no refinement or analytic identification theorem is proved |
 
 ## Revised theorem order
 
@@ -531,8 +558,12 @@ from sampled smooth fields to convergent discrete stationary solutions.
    the full Brillouin zone.
 5. **Prove local connection selection.** Use a gauge-fixed Jacobian theorem in
    the Gionti small-curvature style.
-6. **Test nonlinear continuation.** Compute the second-order obstruction and
-   apply an implicit-function or Lyapunov-Schmidt reduction where possible.
+6. **Test nonlinear continuation.** Completed negatively on the two-site
+   periodic carrier: the full curved image has formal second-order charge
+   `-8(p^2+c^2)`, independent of every second-order link correction. Do not
+   apply an implicit-function argument there. Repeat only after changing the
+   global problem through a larger/open carrier, boundary flux, background
+   evolution, matter, or modified weights.
 7. **Build a weak-curvature commuting square.** On one uniformly controlled
    refinement family, prove gauge-covariant weak Cartan curvature, convergence
    of the densitized Einstein response against test tensors, and agreement
@@ -550,9 +581,10 @@ from sampled smooth fields to convergent discrete stationary solutions.
 - If the gauge-fixed connection Jacobian is singular beyond expected gauge
   directions on every nondegenerate background tested, the local
   Levi-Civita-selection route is killed for this action.
-- If second-order consistency projects nontrivially onto the Hessian cokernel
-  for both candidate curvature modes, the linear wave does not continue to a
-  nearby nonlinear branch.
+- The second-order consistency kill condition is triggered on the two-site
+  periodic carrier: every nonzero plus/cross combination projects onto the
+  integrated time-time Hessian cokernel functional. The formal linear wave
+  does not continue there without changing the global problem.
 - If refinement requires rigid flat null-faced cells, Neiman's focusing
   obstruction kills generic Ricci recovery; the carrier must be generalized.
 
@@ -566,7 +598,8 @@ positioned to test exactly:
 
 ```text
 physical gauge-reduced wave modes
-  -> nonlinear jointly stationary branch
+  -> larger/open-carrier propagation and second-order charge cancellation
+  -> nonlinear jointly stationary branch on the repaired global problem
   -> local Levi-Civita selection
   -> controlled null-carrier refinement
   -> continuum Einstein dynamics

@@ -668,6 +668,25 @@ independent exact SymPy audit still supplies the unformalized joint Hessian rank
 of the gauge quotient, propagation, nonlinear continuation, Levi-Civita
 selection, and refinement convergence remain open.
 
+`PeriodicVacuumWeylSecondOrderObstruction` now resolves the first nonlinear
+continuation test negatively on this same two-site periodic carrier. It forms
+the formal second Taylor jet of the concrete exponential-link plaquette and
+the corresponding coframe Euler coefficient. The sum of the time-time
+coframe equations over both sites is a left-kernel Hessian functional: every
+arbitrary second-order link correction cancels from it. On the complete
+plus/cross curved sector its remaining quadratic charge is exactly
+`-8 * (p^2 + c^2)`. Therefore the formal second-order stationarity condition
+forces `p=c=0`; every nonzero curved linearized mode is obstructed. This
+triggers the preregistered two-site nonlinear-continuation kill condition.
+The result is a finite analogue of the Taub-charge mechanism behind
+linearization instability on compact symmetric GR backgrounds, as studied by
+Brill-Deser, Fischer-Marsden, and Moncrief. No theorem here identifies the
+finite functional with the continuum Taub integral or yet promotes the formal
+jet obstruction to arbitrary twice-differentiable stationary curves. The
+positive route must change the global problem: enlarge or open the carrier,
+allow boundary flux or a changing background, introduce sourced backreaction,
+or modify the dual-cell weights.
+
 `LorentzCoframePalatiniFace` now separates two face notions that the four-form
 must not conflate. With orientation `0123`, it defines the Lorentz Hodge star,
 proves `star^2=-1`, and constructs the internal bivector building block
