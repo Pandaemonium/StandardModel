@@ -65,6 +65,7 @@ import PhysicsSM.Draft.NullEdge.LorentzCoordinateEinsteinContraction
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEulerChangingCarrierTorsion
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEulerSampledCoframeTorsion
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniLinearizedEinsteinCartanLimit
+import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniSampledCoordinateEinsteinLimit
 import PhysicsSM.Draft.NullEdge.VacuumWeylPeriodicRefinementAristotle
 import PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylNullWaveJointNoGo
 import PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylCurvatureRankTwo
@@ -169,6 +170,9 @@ imports one representative route through each established layer:
     vacuum Einstein equation, followed by a common
     two-sided sampled refinement whose two actual-action Euler-map derivatives
     pass simultaneously to vacuum Einstein for `dA` and covariant Cartan torsion,
+    with a guarded coordinate endpoint giving first-jet Christoffel selection
+    and the standard mixed Einstein tensor of the reconstructed linearized
+    curvature,
     and
     the full Krein-paired link/face Euler chain with a coframe-derived
     Lorentz-Hodge face field,

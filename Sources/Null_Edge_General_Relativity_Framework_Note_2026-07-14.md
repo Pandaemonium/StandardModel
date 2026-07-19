@@ -7212,6 +7212,25 @@ null-edge-lattice derivation, because graph reconstruction of those jets,
 finite-plaquette-to-differential-curvature identification, and refinement
 convergence remain separate obligations.
 
+The changing-carrier linearized successor
+`PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniSampledCoordinateEinsteinLimit.lean`
+connects this coordinate normalization to derivatives of the actual nonlinear
+null-edge Palatini action. On a supplied common two-sided affine stencil, a
+differentiable Lorentz connection and tetrad are sampled on the same changing
+finite carriers. If both actual Euler-map derivatives vanish at every level,
+the existing joint limit gives the mixed vacuum equation for `dA` and covariant
+Cartan torsion. The new guarded capstone rewrites the first equation as the
+standard coordinate `G^d_c = 0` and uses the second to select the Christoffel
+connection of the induced metric first jet. This is the strongest common
+actual-action-to-coordinate endpoint presently proved.
+
+Its linearized scope is essential. The coordinate Einstein tensor is built
+from the tetrad reconstruction of `dA`; it is not yet proved equal to the full
+curvature of the selected Christoffel connection. That equality requires a
+compatible second tetrad jet and restoration of `A wedge A`. The theorem also
+assumes, rather than constructs, the pointed chart, affine stencil,
+differentiable fields, and finite stationary refinement.
+
 `NonlinearLorentzPalatiniEulerNeighborDefect` now removes exact site
 uniformity from the first-jet formula. At any selected center site, the
 connection variation splits into the constant extension of its center value
@@ -7743,6 +7762,7 @@ not
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniCoordinateLeviCivita.lean`
 - `PhysicsSM/Draft/NullEdge/LorentzCoordinateCurvatureBridge.lean`
 - `PhysicsSM/Draft/NullEdge/LorentzCoordinateEinsteinContraction.lean`
+- `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniSampledCoordinateEinsteinLimit.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniExponentialConnectionTorsionSelection.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniEulerTorsionSelection.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniEulerTorsionCancellation.lean`

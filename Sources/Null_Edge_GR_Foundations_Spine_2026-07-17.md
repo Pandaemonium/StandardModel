@@ -179,6 +179,18 @@ target: it assumes exact finite actual-action linearized stationarity, does not
 construct a nontrivial stationary sampled family, omits `A wedge A`, and still
 supplies the chart, scale, tangent frame, and refinement.
 
+`NonlinearLorentzPalatiniSampledCoordinateEinsteinLimit` now closes the
+standard coordinate endpoint of that conditional theorem. At the identity
+coframe it proves exactly that the action's mixed vacuum entry is twice the
+ordinary coordinate tensor `G^d_c` reconstructed from the same six-component
+`dA`. The guarded capstone composes common sampled actual-action derivative
+stationarity with finite Levi-Civita uniqueness: the induced first-jet
+coordinate connection is Christoffel, while the reconstructed coordinate
+linearized curvature obeys `G^d_c = 0`. It does not identify this `dA` tensor
+with the full curvature of the selected Christoffel connection. That remaining
+bridge needs a compatible second tetrad jet and the nonlinear `A wedge A`
+term, in addition to a graph-derived refinement.
+
 The program is strongest at F0 and in the exact algebraic interfaces inside
 F4-F7. Its decisive bottleneck remains F4, but F1 and F2 are logically prior
 to any claim that the continuum theory is selected rather than supplied.
