@@ -59,6 +59,7 @@ import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniWeakEinsteinLimit
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniLinearizedTorsionSelection
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniGeneralTorsionSelection
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniAffineConnectionTorsionSelection
+import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEulerNeighborDefect
 import PhysicsSM.Draft.NullEdge.VacuumWeylPeriodicRefinementAristotle
 import PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylNullWaveJointNoGo
 import PhysicsSM.Draft.NullEdge.CurvatureConvergenceInterface
@@ -135,7 +136,12 @@ imports one representative route through each established layer:
     arbitrary-invertible-tetrad linearized torsion selection at identity link
     transport with its finite quadratic spacing defect, followed by affine
     connection-dependent Cartan torsion selection, its exact cubic finite
-    spacing defect, shrinking endpoint, and explicit nonvacuity family, and
+    spacing defect, shrinking endpoint, and explicit nonvacuity family,
+    followed by the actual exponential-link Euler first-jet equivalence to
+    Cartan torsion for site-uniform connection jets, the exact general
+    Cartan-plus-neighbor-defect decomposition, its constant-mode invariance,
+    exact homogeneity, nonzero period-two witness, and conditional
+    shrinking-neighbor torsion-selection endpoint, and
     the full Krein-paired link/face Euler chain with a coframe-derived
     Lorentz-Hodge face field,
    causal-diamond path-comparison holonomy, and an exact shrinking-plaquette
@@ -277,8 +283,21 @@ The finite face increment is the spacing times this linear equation plus an
 explicit quadratic defect, so identity-link stationarity along shrinking
 nonzero spacings with a fixed invertible center coframe and fixed first jet
 forces that jet to be torsion-free, even when the finite carrier changes.
-Nonidentity-link and nonlinear Levi-Civita selection, and graph-derived
-first-jet convergence, remain open. The physical-link
+The exact exponential-transport successor realizes the affine transport
+tangent by a proper eta-Lorentz matrix curve. The actual-action successor then
+differentiates every corner of the concrete nonlinear link Euler coefficient.
+At the identity coframe and connection, a general site-dependent connection
+jet gives the center Cartan residual plus an explicitly expanded term made
+only from neighboring-minus-center connection values. That defect is
+invariant under adding a site-independent connection mode, vanishes for
+uniform jets, scales exactly with the nonuniform amplitude, and equals `2` in
+a sparse period-two null-wave-carrier witness. Consequently, stationarity
+along any displayed family whose centered neighbor mode is scaled to zero
+forces the fixed center data to be torsion-free. This does not derive that
+shrinking law from graph-sampled smooth geometry, change the finite carrier,
+or extend torsion selection away from the identity background. Nonidentity-
+background Levi-Civita selection and graph-derived first-jet convergence
+remain open. The physical-link
 successor proves that
 `exp(A_n hat(F))` has exactly this first-order limit and constructs a nonzero
 `2 x 2` periodic-square refinement with commuting shifts and proper
