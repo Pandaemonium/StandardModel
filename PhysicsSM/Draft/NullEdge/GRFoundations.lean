@@ -59,7 +59,7 @@ import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniWeakEinsteinLimit
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniLinearizedTorsionSelection
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniGeneralTorsionSelection
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniAffineConnectionTorsionSelection
-import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEulerNeighborDefect
+import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEulerChangingCarrierTorsion
 import PhysicsSM.Draft.NullEdge.VacuumWeylPeriodicRefinementAristotle
 import PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylNullWaveJointNoGo
 import PhysicsSM.Draft.NullEdge.CurvatureConvergenceInterface
@@ -141,7 +141,9 @@ imports one representative route through each established layer:
     Cartan torsion for site-uniform connection jets, the exact general
     Cartan-plus-neighbor-defect decomposition, its constant-mode invariance,
     exact homogeneity, nonzero period-two witness, and conditional
-    shrinking-neighbor torsion-selection endpoint, and
+    shrinking-neighbor torsion-selection endpoint, followed by local-stencil
+    defect convergence on changing carriers and a sampled continuous-
+    connection Cartan endpoint in a supplied pointed chart, and
     the full Krein-paired link/face Euler chain with a coframe-derived
     Lorentz-Hodge face field,
    causal-diamond path-comparison holonomy, and an exact shrinking-plaquette
@@ -293,11 +295,18 @@ invariant under adding a site-independent connection mode, vanishes for
 uniform jets, scales exactly with the nonuniform amplitude, and equals `2` in
 a sparse period-two null-wave-carrier witness. Consequently, stationarity
 along any displayed family whose centered neighbor mode is scaled to zero
-forces the fixed center data to be torsion-free. This does not derive that
-shrinking law from graph-sampled smooth geometry, change the finite carrier,
-or extend torsion selection away from the identity background. Nonidentity-
-background Levi-Civita selection and graph-derived first-jet convergence
-remain open. The physical-link
+forces the fixed center data to be torsion-free. The changing-carrier
+successor controls only the forward, predecessor, and translated-predecessor
+stencil sites actually read by the Euler coefficient. When those sites
+approach one supplied chart point, continuity of a sampled Lorentz connection
+proves defect convergence rather than assuming it; even asymptotic
+stationarity of the actual derivatives then forces the point connection and
+fixed backward coframe jet to obey the Cartan equation. The graph still does
+not construct the pointed chart embedding; the coframe jet is not yet derived
+from a sampled tetrad, no quantitative spacing rate is proved, and the
+background remains the identity. Nonidentity-
+background Levi-Civita selection and graph-derived chart convergence remain
+open. The physical-link
 successor proves that
 `exp(A_n hat(F))` has exactly this first-order limit and constructs a nonzero
 `2 x 2` periodic-square refinement with commuting shifts and proper

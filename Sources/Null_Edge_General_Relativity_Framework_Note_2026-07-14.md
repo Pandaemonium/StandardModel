@@ -54,7 +54,7 @@ shown to converge from order and number.
 | G4: curvature | Nontrivial holonomy regulators, finite Bianchi identities, and a directed-null-edge Levi-Civita/Ricci construction are available | Direction synchronization, local Lorentz covariance, equivalence of coordinate/holonomy/operator curvature, common refinement, and convergence remain open |
 | G5: Dirac/Lichnerowicz bridge | The finite super-Dirac square and separation of spacetime/internal gradings are exact | Principal-symbol convergence and the continuum scalar-curvature coefficient are unproved |
 | G6: stress-energy | Genuine coframe variations recover density, anisotropic pressure, and one flux component in controlled finite matter models | No arbitrary local coframe variation, full tensor identification, discrete Noether theorem, or conserved continuum source |
-| G7: Einstein dynamics and constants | Exact affine-action no-go, determinant and Palatini bridges, incidence cancellation, nonlinear and joint two-field chart actions, null-edge coframe and directed Levi-Civita/Ricci reconstruction, bijective aggregate-weight coverage, exact independent pointwise-connection variation, its local periodic Euler coefficient and torsion-free Levi-Civita no-go, a gauge-covariant periodic link/plaquette substrate, scalar, Euclidean finite-fiber, and full Krein-paired link/face Euler chains, plus a spacetime-derived Lorentz-bivector representation preserved by the concrete null-edge `SL(2,C)` action and exactly equivalent to the matrix Lorentz Lie algebra with normalized trace pairing, the exact nonlinear right-logarithmic plaquette tangent, the scalar ordered holonomy action with exact derivative along canonical exponential link curves and four-family nonidentity local Euler coefficients, actual-action first-jet Cartan-torsion selection for site-uniform connection jets, an exact general Cartan-plus-neighbor-defect decomposition with constant-mode invariance, homogeneity, a nonzero period-two witness, and a conditional shrinking-neighbor torsion endpoint, the exact coframe-response and stationarity-to-mixed-Einstein identity, a continuous action-visible curvature extractor with a conditional jointly convergent varying-coframe stationarity-to-limit theorem, exact finite weak-test and nonzero-volume-weighted equivalents of the pointwise equations, a conditional changing-carrier weak-limit endpoint, a nonzero proper eta-Lorentz periodic-square refinement with exact exponential plaquettes, its exact static identity-coframe joint-stationarity no-go, a nonzero algebraic vacuum-Weyl target with metric-lowered pair exchange and first Bianchi, an exact proper eta-Lorentz two-site null-wave lift whose finite extractor is vacuum Einstein and coframe-stationary, the complete rank-six/ten-parameter classification of its coframe Euler kernel, and a no-go theorem for every invertible jointly stationary coframe with those links fixed at nonzero area, plus the complementary coframe-derived curvature-face coefficient `(1/2) epsilon^(cdab) star(e_c wedge e_d)` with exact divergence, proper-Lorentz covariance, and concrete action gauge invariance | Aggregate weights and frame synchronization are not yet derived from the operator sector, and the Gram metric is not identified with the operator metric; the corrected link/face action must supply a graph-derived nonflat jointly stationary refinement with simultaneous link/coframe backreaction realizing the vacuum-Weyl target, derive the proved shrinking-neighbor hypothesis from smooth graph-sampled connection fields, extend actual-action torsion selection beyond the identity background and to changing carriers, derive a continuum test sampler and metric dual-cell weights, prove actual weak convergence and the supplied curvature/coframe convergence hypotheses, select Levi-Civita transport, and identify the limiting functional with the continuum Riemann/Einstein curvature, while the orthochronous sign, Newton constant, physical boundaries, global variation-limit interchange, and backreaction remain open |
+| G7: Einstein dynamics and constants | Exact affine-action no-go, determinant and Palatini bridges, incidence cancellation, nonlinear and joint two-field chart actions, null-edge coframe and directed Levi-Civita/Ricci reconstruction, bijective aggregate-weight coverage, exact independent pointwise-connection variation, its local periodic Euler coefficient and torsion-free Levi-Civita no-go, a gauge-covariant periodic link/plaquette substrate, scalar, Euclidean finite-fiber, and full Krein-paired link/face Euler chains, plus a spacetime-derived Lorentz-bivector representation preserved by the concrete null-edge `SL(2,C)` action and exactly equivalent to the matrix Lorentz Lie algebra with normalized trace pairing, the exact nonlinear right-logarithmic plaquette tangent, the scalar ordered holonomy action with exact derivative along canonical exponential link curves and four-family nonidentity local Euler coefficients, actual-action first-jet Cartan-torsion selection for site-uniform connection jets, an exact general Cartan-plus-neighbor-defect decomposition with constant-mode invariance, homogeneity, a nonzero period-two witness, a conditional shrinking-neighbor torsion endpoint, changing-carrier defect convergence from local stencil consistency, and a sampled continuous-connection Cartan endpoint in a supplied pointed chart, the exact coframe-response and stationarity-to-mixed-Einstein identity, a continuous action-visible curvature extractor with a conditional jointly convergent varying-coframe stationarity-to-limit theorem, exact finite weak-test and nonzero-volume-weighted equivalents of the pointwise equations, a conditional changing-carrier weak-limit endpoint, a nonzero proper eta-Lorentz periodic-square refinement with exact exponential plaquettes, its exact static identity-coframe joint-stationarity no-go, a nonzero algebraic vacuum-Weyl target with metric-lowered pair exchange and first Bianchi, an exact proper eta-Lorentz two-site null-wave lift whose finite extractor is vacuum Einstein and coframe-stationary, the complete rank-six/ten-parameter classification of its coframe Euler kernel, and a no-go theorem for every invertible jointly stationary coframe with those links fixed at nonzero area, plus the complementary coframe-derived curvature-face coefficient `(1/2) epsilon^(cdab) star(e_c wedge e_d)` with exact divergence, proper-Lorentz covariance, and concrete action gauge invariance | Aggregate weights and frame synchronization are not yet derived from the operator sector, and the Gram metric is not identified with the operator metric; the corrected link/face action must supply a graph-derived nonflat jointly stationary refinement with simultaneous link/coframe backreaction realizing the vacuum-Weyl target, construct or validate the pointed chart stencil from graph geometry, derive the fixed backward coframe jet from a sampled tetrad, prove a quantitative spacing rate, extend actual-action torsion selection beyond the identity background, derive a continuum test sampler and metric dual-cell weights, prove actual weak convergence and the supplied curvature/coframe convergence hypotheses, select Levi-Civita transport, and identify the limiting functional with the continuum Riemann/Einstein curvature, while the orthochronous sign, Newton constant, physical boundaries, global variation-limit interchange, and backreaction remain open |
 | G8: continuum controls | Weak-field and cosmological reductions provide consistency and normalization targets | They validate a future limit; they do not derive that limit from the graph |
 
 At G7, the canonical exponential variation curves are now proved to remain in
@@ -71,7 +71,11 @@ jets, it is exactly the center Cartan residual plus a displayed
 neighboring-link defect. The defect has a nonzero period-two witness, is
 invariant under constant modes, and scales exactly with nonuniform amplitude;
 stationarity along a prescribed shrinking-neighbor family forces center
-torsion freedom. Deriving that family from smooth graph sampling remains open.
+torsion freedom. A changing-carrier successor now proves the defect vanishes
+from local consistency on only the Euler stencil and derives that consistency
+when a continuous Lorentz connection is sampled on stencil sites converging
+to one supplied chart point. Constructing that pointed chart from the graph,
+sampling the coframe jet, and obtaining quantitative rates remain open.
 
 The dependency is strongly upstream. Progress on G3-G8 cannot compensate for
 an open G2: until scale, a rank-four Lorentzian sector, and compatible overlap
@@ -7154,6 +7158,26 @@ by an explicit refinement hypothesis. It does not derive that hypothesis
 from a sampled smooth connection, allow the carrier to vary, or treat a
 nonidentity background.
 
+`NonlinearLorentzPalatiniEulerChangingCarrierTorsion` removes the first two of
+those three restrictions at the level of a supplied local chart. It isolates
+exactly the forward, predecessor, and translated-predecessor sites read by one
+Euler coefficient and defines componentwise local consistency only on that
+finite stencil. If those neighboring connection values approach the center
+value, the complete explicit defect tends to zero even when the finite site
+type changes at every refinement level. If the actual nonlinear link-Euler
+derivatives merely tend to zero, with fixed center connection and backward
+coframe jet, the covariant Cartan equation follows.
+
+The sampled-chart capstone derives the consistency hypothesis rather than
+postulating it. A supplied position map sends the center to one chart point at
+every level and sends all relevant stencil sites toward that point. Sampling
+any Lorentz-connection field continuous there makes every required
+neighbor-minus-center value tend to zero, so asymptotic stationarity selects
+the field's point value as a torsion-free connection for the fixed coframe
+jet. The theorem does not derive the position map from causal order, sample
+the coframe jet from a smooth tetrad, provide a convergence rate, or leave the
+identity background.
+
 This scope matches the literature more closely than an exact fixed-spacing
 continuum claim: Kur and Glasser recover the tetradic Palatini connection
 equation at leading small-cell order, Gionti's first-order Poincare lattice
@@ -7164,8 +7188,9 @@ area/dihedral-angle comparison, but not the link-holonomy variables used here.
 
 Relative to these precedents, the repo's local contribution is the exact
 convention-locked equivalence, finite cubic affine defect, actual-action
-neighbor-defect decomposition, two distinct shrinking theorems, explicit
-witnesses, and Lean assumption audit, not the broad claim that varying a
+neighbor-defect decomposition, fixed-mode and changing-carrier shrinking
+theorems, a continuous sampled-chart endpoint, explicit witnesses, and Lean
+assumption audit, not the broad claim that varying a
 discrete Lorentz connection selects torsion-free transport. The older
 null-strut calculus of Kheyfets, LaFave, and Miller also makes 3+1 null-link
 evolution imported prior art. Miller and Brewin-Gentle further show why the
@@ -7637,6 +7662,7 @@ not
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniEulerTorsionCancellation.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniEulerTorsionSelectionCapstone.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniEulerNeighborDefect.lean`
+- `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniEulerChangingCarrierTorsion.lean`
 - `PhysicsSM/Draft/NullEdge/HomogeneousScalarStressVariation.lean`
 - `PhysicsSM/Draft/NullEdge/DiagonalScalarGradientStressVariation.lean`
 - `PhysicsSM/Draft/NullEdge/ADMShiftScalarFluxVariation.lean`
