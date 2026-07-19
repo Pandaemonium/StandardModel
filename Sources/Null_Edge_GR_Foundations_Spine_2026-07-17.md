@@ -149,6 +149,23 @@ is an explicit quadratic spacing defect. The remaining Levi-Civita debt is
 the nonidentity-link nonlinear selection, metric-compatibility, and uniqueness
 theorem.
 
+The changing-carrier successor now proves that both formal identity-background
+linearized Euler sectors are derivatives of the same concrete nonlinear finite
+action's Euler maps along one simultaneous link/coframe curve, then puts their
+vanishing on one supplied two-sided affine refinement. Composing the exact
+actual/formal equivalence with the existing plus/cross theorem gives a
+two-parameter fixed-carrier family satisfying this actual-action linearized
+Euler system, which proves finite nonvacuity but is not yet a changing-carrier
+witness. A differentiable sampled connection gives an inverse-spacing-normalized
+additive curl converging to
+`dA`; the coframe Euler-map derivative passes this limit to the mixed vacuum
+Einstein equation, while a differentiable sampled tetrad and the link Euler-map
+derivative give covariant Cartan torsion freedom. This is a joint
+Einstein-Cartan **consistency** theorem, not yet the nonlinear joint refinement
+target: it assumes exact finite actual-action linearized stationarity, does not
+construct a nontrivial stationary sampled family, omits `A wedge A`, and still
+supplies the chart, scale, tangent frame, and refinement.
+
 The program is strongest at F0 and in the exact algebraic interfaces inside
 F4-F7. Its decisive bottleneck remains F4, but F1 and F2 are logically prior
 to any claim that the continuum theory is selected rather than supplied.

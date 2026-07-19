@@ -61,6 +61,7 @@ import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniGeneralTorsionSelection
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniAffineConnectionTorsionSelection
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEulerChangingCarrierTorsion
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEulerSampledCoframeTorsion
+import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniLinearizedEinsteinCartanLimit
 import PhysicsSM.Draft.NullEdge.VacuumWeylPeriodicRefinementAristotle
 import PhysicsSM.Draft.NullEdge.PeriodicVacuumWeylNullWaveJointNoGo
 import PhysicsSM.Draft.NullEdge.CurvatureConvergenceInterface
@@ -145,7 +146,10 @@ imports one representative route through each established layer:
     shrinking-neighbor torsion-selection endpoint, followed by local-stencil
     defect convergence on changing carriers, a sampled continuous-connection
     Cartan endpoint, and a differentiable sampled-tetrad endpoint on affine
-    predecessor rays in a supplied pointed chart, and
+    predecessor rays in a supplied pointed chart, followed by a common
+    two-sided sampled refinement whose two actual-action Euler-map derivatives
+    pass simultaneously to vacuum Einstein for `dA` and covariant Cartan torsion,
+    and
     the full Krein-paired link/face Euler chain with a coframe-derived
     Lorentz-Hodge face field,
    causal-diamond path-comparison holonomy, and an exact shrinking-plaquette
@@ -306,9 +310,23 @@ differentiable tetrad on displayed affine predecessor rays and derives
 convergence of the scaled backward differences to its Frechet derivative.
 Asymptotic vanishing of the identity-background first variations then forces
 the point connection and sampled tetrad derivative to obey the linearized
-Cartan equation. The graph still does not construct the pointed chart embedding,
-inverse-spacing sequence, predecessor rays, or tangent frame; no quantitative
-spacing rate is proved, and the background remains the identity. Nonidentity-
+Cartan equation. A joint successor proves that both formal linearized Euler
+sectors are derivatives of the same concrete nonlinear finite action's Euler
+maps along one simultaneous link/coframe curve, then places their vanishing on
+one two-sided affine refinement. Composing the exact actual/formal equivalence
+with the explicit fixed-carrier plus/cross theorem shows that this finite
+stationarity predicate is nonvacuous. Differentiability of the sampled
+connection makes the inverse-spacing-normalized forward plaquette curl converge to its
+exterior derivative `dA`; the coframe Euler-map derivative passes to the
+corresponding identity-background vacuum Einstein equation, while the sampled
+predecessor tetrad jet and link Euler-map derivative give Cartan torsion freedom.
+This is the first common-refinement Einstein-Cartan consistency endpoint in the
+finite action lane. It remains conditional on a supplied actual-action linearly
+stationary refinement and does not include the nonlinear `A wedge A` curvature
+term. The graph still does
+not construct the pointed chart embedding, inverse-spacing sequence,
+predecessor/forward rays, or tangent frame; no quantitative spacing rate is
+proved, and the background remains the identity. Nonidentity-
 background Levi-Civita selection and graph-derived chart convergence remain
 open. The physical-link
 successor proves that
