@@ -30,6 +30,7 @@ import PhysicsSM.Draft.NullEdge.FiniteEinsteinHilbertActionResponse
 import PhysicsSM.Draft.NullEdge.CoframeVolumeMetricVariation
 import PhysicsSM.Draft.NullEdge.FinitePalatiniEinsteinHilbertVariation
 import PhysicsSM.Draft.NullEdge.FinitePalatiniBoundaryCancellation
+import PhysicsSM.Draft.NullEdge.FinitePalatiniBoundaryFlux
 import PhysicsSM.Draft.NullEdge.FinitePalatiniCoframeChartAction
 import PhysicsSM.Draft.NullEdge.NullEdgeCoframeEinsteinBridge
 import PhysicsSM.Draft.NullEdge.SchadenNullFrameAdmissibility
@@ -107,8 +108,10 @@ imports one representative route through each established layer:
    an event-local action/operator-metric construction with a rank-ten and
    fiber-descent witness, the exact affine-action nonstationarity obstruction,
    the determinant coframe-volume derivative, a finite Palatini-to-Einstein
-   composition with incidence boundary cancellation, an explicit nonlinear
-   coframe-chart action control, a spinor-null-edge coframe reconstruction,
+   composition with closed-carrier incidence cancellation and an exact
+   regional cut-flux/fixed-boundary interior Einstein theorem, an explicit
+   nonlinear coframe-chart action control, a spinor-null-edge coframe
+   reconstruction,
    a directed-carrier Levi-Civita/Ricci reconstruction, and an exact
    aggregate-null-edge weight parameterization of arbitrary coframes,
    an independently varied directed connection with an exact curvature and
@@ -481,6 +484,13 @@ It is not an identification with the continuum Taub integral. A positive
 nonlinear wave must change the global
 problem through a larger or open carrier, boundary flux, background evolution,
 matter, or modified dual-cell weights.
+The boundary successor now makes that first escape exact at the incidence and
+variation levels: summing a local Palatini divergence over a chosen interior
+leaves precisely the oriented cut-edge flux, and a displayed boundary response
+that cancels this flux makes fixed-boundary action stationarity equivalent to
+the finite Einstein equation at every interior site. The required boundary
+counterterm is still supplied; it is not yet constructed from the nonlinear
+Lorentz-plaquette action or identified with a continuum boundary functional.
 The combined result does not
 derive the refinement or convergence data from a bare graph, prove the
 orthochronous sign, extend identity-background first-jet link selection to

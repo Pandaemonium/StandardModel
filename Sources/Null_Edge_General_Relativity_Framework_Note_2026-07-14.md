@@ -4339,6 +4339,26 @@ implies the zero-boundary integrated Palatini identity. The two-vertex,
 one-edge witness has divergence (-1) at its source and (+1) at its target, so
 the cancellation is nonzero locally rather than vacuous.
 
+`FinitePalatiniBoundaryFlux` gives the corresponding open-region theorem.
+For any selected interior, summing the same incidence divergence leaves
+exactly the oriented flux through the cut: incoming crossing edges contribute
+positively and outgoing crossing edges negatively. The target-only interior
+of the two-vertex witness has cut flux `+1`. The module then carries this term
+through the determinant and Palatini response channels. If the variation of a
+boundary counterterm cancels the cut flux for every symmetric variation
+supported in the interior, ordinary stationarity of that same action is
+equivalent to
+
+\[
+  G_x+\Lambda g_x=\kappa T_x
+  \qquad (x\text{ in the interior}).
+\]
+
+This is the exact finite fixed-boundary variational structure that the closed
+carrier lacked. The counterterm is still supplied rather than derived from
+the nonlinear null-edge action, and no Gibbons--Hawking--York or continuum
+identification is claimed.
+
 Finally, `FinitePalatiniCoframeChartAction` constructs an actual nonlinear
 finite control action. It uses (\det(e(1+X))), the fixed-connection Palatini
 contraction (\langle\operatorname{Ric},g^{-1}+\delta g^{-1}(X)\rangle), the
@@ -7503,6 +7523,14 @@ displayed plus/cross tangent and nonlinear coframe stationarity near zero has
 `p=c=0`. This is a fixed-carrier linearization-instability theorem, not yet a
 continuum Taub-charge identification or a physical polarization count.
 
+The boundary-flux successor now sharpens the first positive escape from this
+no-branch theorem. On an open region, the integrated Palatini residual is not
+forced to vanish: it is the exact cut flux. A boundary response can therefore
+balance an integrated quadratic charge without changing the interior Einstein
+equations. The repo has proved this variational mechanism abstractly, but it
+has not yet computed the quadratic wave charge as a cut flux or constructed a
+nonzero jointly stationary open-carrier branch.
+
 This closes a conditional action-visible variation/curvature-limit theorem,
 not the continuum GR derivation. The graph still has to supply the refinement,
 areas, first-order expansion, proof of the supplied coframe convergence, and
@@ -7851,6 +7879,7 @@ not
 - `PhysicsSM/Draft/NullEdge/CoframeVolumeMetricVariation.lean`
 - `PhysicsSM/Draft/NullEdge/FinitePalatiniEinsteinHilbertVariation.lean`
 - `PhysicsSM/Draft/NullEdge/FinitePalatiniBoundaryCancellation.lean`
+- `PhysicsSM/Draft/NullEdge/FinitePalatiniBoundaryFlux.lean`
 - `PhysicsSM/Draft/NullEdge/FinitePalatiniCoframeChartAction.lean`
 - `PhysicsSM/Draft/NullEdge/NullEdgeCoframeEinsteinBridge.lean`
 - `PhysicsSM/Draft/NullEdge/DirectedNullEdgeLeviCivitaEinstein.lean`
