@@ -28,10 +28,10 @@ The coframe has the analogous expansion
 Every curve satisfying these primitive expansions and all nonlinear coframe
 Euler equations near the identity background has zero plus and cross tangent
 amplitudes.  Thus the formal charge is promoted to a local no-branch theorem
-for Taylor-admissible curves.  A separate standard finite-dimensional Taylor
-lemma is still needed to package an arbitrary `C^2` invertible-matrix link
-curve automatically into these witnesses; no continuum Taub-charge
-identification is claimed.
+for Taylor-admissible curves.  The successor module
+`PeriodicVacuumWeylC2NoBranch` supplies the standard finite-dimensional Taylor
+bridge and derives inverse-link expansions from exact invertibility.  No
+continuum Taub-charge identification is claimed.
 
 Claim label: finite analytic no-branch theorem under displayed Taylor
 hypotheses.  Originality tag: `[orig/comp]`.

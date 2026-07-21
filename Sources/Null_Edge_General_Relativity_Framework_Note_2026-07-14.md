@@ -7489,6 +7489,20 @@ shear. The next construction must deform links and coframe together, enlarge
 the carrier, or alter finite dual-cell weighting; Levi-Civita selection,
 graph refinement, and continuum convergence remain separate gates.
 
+The coupled linearized audit then finds the complete curved image of the joint
+two-site Palatini kernel: it is an injective two-parameter plus/cross
+vacuum-Weyl sector. Its nonlinear continuation fails at the next order. The
+sum of the two time-time coframe equations has exact quadratic charge
+`-8 * (p^2 + c^2)`, independent of arbitrary second-order link and coframe
+corrections. `SecondOrderCurveTaylor` and
+`PeriodicVacuumWeylC2NoBranch` promote this from a formal jet obstruction to an
+ordinary `C^2` no-branch theorem. Mathlib's Taylor theorem supplies the forward
+matrix and coframe expansions, while exact invertibility determines the
+inverse-link expansion. Therefore every identity-based `C^2` branch with the
+displayed plus/cross tangent and nonlinear coframe stationarity near zero has
+`p=c=0`. This is a fixed-carrier linearization-instability theorem, not yet a
+continuum Taub-charge identification or a physical polarization count.
+
 This closes a conditional action-visible variation/curvature-limit theorem,
 not the continuum GR derivation. The graph still has to supply the refinement,
 areas, first-order expansion, proof of the supplied coframe convergence, and

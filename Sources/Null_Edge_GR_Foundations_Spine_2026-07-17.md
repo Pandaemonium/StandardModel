@@ -851,12 +851,16 @@ curve inherits the formal integrated charge. Consequently every identity-based
 Taylor-admissible link/coframe curve with plus/cross first tangent and vanishing
 nonlinear coframe Euler coefficients near the identity background has `p=c=0`,
 independently of arbitrary second-order link and coframe corrections. Packaging
-arbitrary
-twice-differentiable group-valued curves into these expansion witnesses remains
-open, as does any continuum Taub identification. The positive route must change
-the global problem: enlarge or open the carrier, allow boundary flux or a
-changing background, introduce sourced backreaction, or modify the dual-cell
-weights.
+arbitrary twice-differentiable curves is now closed by
+`SecondOrderCurveTaylor` and `PeriodicVacuumWeylC2NoBranch`: Mathlib's Taylor
+theorem supplies the normalized quadratic expansion of each `C^2` forward
+link-matrix and coframe curve, coefficient uniqueness is exact, and the unit
+identity forces the inverse-link jet. Thus the same no-branch conclusion holds
+for ordinary `C^2` identity-based curves with the displayed first and second
+derivatives. A continuum Taub identification remains open. The positive route
+must change the global problem: enlarge or open the carrier, allow boundary
+flux or a changing background, introduce sourced backreaction, or modify the
+dual-cell weights.
 
 `LorentzCoframePalatiniFace` now separates two face notions that the four-form
 must not conflate. With orientation `0123`, it defines the Lorentz Hodge star,
