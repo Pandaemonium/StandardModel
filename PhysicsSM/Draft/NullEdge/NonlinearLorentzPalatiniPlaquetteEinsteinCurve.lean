@@ -494,9 +494,9 @@ theorem identityLinkSecondExpansion_hasDerivAt
   simpa [linkMatrixVariation, identityConnection, linkTangentGenerator] using
     hDerivative
 
-/-- Eventual stationarity of the actual nonlinear link Euler coefficients
-along the same link/coframe family forces the affine Palatini connection
-residual to vanish at every site. -/
+/-- Eventual stationarity of the actual nonlinear link Euler coefficients at
+the selected site, along the same link/coframe family, forces the local affine
+Palatini connection residual to vanish there. -/
 theorem actualLinkStationarity_implies_affinePalatiniResidual
     {Site : Type*} [Fintype Site]
     (shift : Fin 4 -> Equiv Site Site)
@@ -505,11 +505,11 @@ theorem actualLinkStationarity_implies_affinePalatiniResidual
     (hLink : IdentityLinkSecondExpansion linkCurve first correction)
     (coframeFirst : CoframeField Site)
     (hFirstConstant : forall x y, first x = first y)
-    (hStationary : Filter.Eventually (fun t => forall site direction component,
+    (site : Site)
+    (hStationary : Filter.Eventually (fun t => forall direction component,
       nonlinearLinkEulerCoefficient shift (linkCurve t)
         (coframeLine (identityCoframeField Site) coframeFirst t)
-        site direction component = 0) (nhds 0))
-    (site : Site) :
+        site direction component = 0) (nhds 0)) :
     forall direction component,
       linearizedAffineCovariantPalatiniResidual 1
         (fun connectionDirection => first site connectionDirection)
@@ -534,7 +534,7 @@ theorem actualLinkStationarity_implies_affinePalatiniResidual
           site direction index)
         (fun _ => 0) := by
       filter_upwards [hStationary] with t ht
-      exact ht site direction index
+      exact ht direction index
     have hLinearizedZero :
         linearizedLinkEulerCoefficient shift first coframeFirst
           site direction index = 0 := by
@@ -612,13 +612,13 @@ theorem actualCoframeStationary_affinePalatini_imply_vacuumEinstein
     1 1 connection velocity connectionFirstJet velocityFirstJet
       (by simp) (by simp) hPalatini hMixed hPlaquetteStationary
 
-/-- **Joint actual-action plaquette-to-Einstein capstone.**  The same
-identity-based group-valued link curve and affine coframe line satisfy both
-nonlinear Euler sectors near zero.  Link stationarity supplies the affine
-Palatini residual and therefore selects the Christoffel connection.  Coframe
-stationarity supplies the Palatini curvature response.  The plaquette second
-jet is the full Lorentz curvature, its tetrad conjugate is the coordinate
-curvature, and the standard mixed vacuum Einstein tensor vanishes. -/
+/-- **Joint actual-action plaquette-to-Einstein capstone.**  At the selected
+site, the same identity-based group-valued link curve and affine coframe line
+satisfy both nonlinear Euler sectors near zero.  Link stationarity supplies
+the affine Palatini residual and therefore selects the Christoffel connection.
+Coframe stationarity supplies the Palatini curvature response.  The plaquette
+second jet is the full Lorentz curvature, its tetrad conjugate is the
+coordinate curvature, and the standard mixed vacuum Einstein tensor vanishes. -/
 theorem actualJointStationary_localAffine_imply_vacuumEinstein
     {Site : Type*} [Fintype Site]
     (shift : Fin 4 -> Equiv Site Site)
@@ -635,14 +635,14 @@ theorem actualJointStationary_localAffine_imply_vacuumEinstein
     (hMixed : forall left right,
       velocityFirstJet left right = velocityFirstJet right left)
     (hStationary : Filter.Eventually (fun t =>
-      (forall x direction component,
+      (forall direction component,
         nonlinearLinkEulerCoefficient shift (linkCurve t)
           (coframeLine (identityCoframeField Site) coframeFirst t)
-          x direction component = 0) /\
-      (forall x internal direction,
+          site direction component = 0) /\
+      (forall internal direction,
         nonlinearCoframeEulerCoefficient shift (linkCurve t)
           (coframeLine (identityCoframeField Site) coframeFirst t)
-          x internal direction = 0)) (nhds 0)) :
+          site internal direction = 0)) (nhds 0)) :
     inducedCoordinateConnection 1 1 connection
           (backwardCoframeVelocity shift coframeFirst site) =
         christoffelSecondKind (inverseCoframeMetric 1)
@@ -660,10 +660,10 @@ theorem actualJointStationary_localAffine_imply_vacuumEinstein
             connectionFirstJet)
           coframeDirection raisedDirection = 0 := by
   have hLinkStationary : Filter.Eventually (fun t =>
-      forall x direction component,
+      forall direction component,
         nonlinearLinkEulerCoefficient shift (linkCurve t)
           (coframeLine (identityCoframeField Site) coframeFirst t)
-          x direction component = 0) (nhds 0) := by
+          site direction component = 0) (nhds 0) := by
     filter_upwards [hStationary] with t ht
     exact ht.1
   have hCoframeStationary : Filter.Eventually (fun t =>
@@ -672,9 +672,9 @@ theorem actualJointStationary_localAffine_imply_vacuumEinstein
           (coframeLine (identityCoframeField Site) coframeFirst t)
           site internal direction = 0) (nhds 0) := by
     filter_upwards [hStationary] with t ht
-    exact fun internal direction => ht.2 site internal direction
+    exact ht.2
   have hPalatiniRaw := actualLinkStationarity_implies_affinePalatiniResidual
-    shift hLink coframeFirst hFirstConstant hLinkStationary site
+    shift hLink coframeFirst hFirstConstant site hLinkStationary
   have hConnection :
       (fun direction => first site direction) = connection := by
     funext direction

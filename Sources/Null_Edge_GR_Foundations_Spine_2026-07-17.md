@@ -167,10 +167,13 @@ derives the same coefficient and an `o(t^2)` remainder from primitive forward
 and inverse expansions of actual group-valued links. Eventual joint vanishing
 of the concrete nonlinear link and coframe Euler equations along one link and
 coframe family derives both affine Palatini sectors, and hence forces the
-standard Einstein tensor to vanish. The remaining curvature-identification
-debt is graph-analytic: derive the primitive expansions, site-constant first
-link jet, local affine sampling law, symmetric predecessor coframe second jet,
-and stationary family from compatible carrier data.
+standard Einstein tensor to vanish. The concrete affine-exponential successor
+now derives the primitive forward and inverse expansions, realizes the
+site-constant first jet and local affine sampling law on a free forward star,
+and supplies a commuting `3^4` periodic carrier with four distinct forward
+neighbors. The remaining curvature-identification debt is graph-analytic:
+derive the connection and coframe jets, symmetric predecessor coframe second
+jet, and stationary family from compatible carrier data.
 
 The changing-carrier successor now proves that both formal identity-background
 linearized Euler sectors are derivatives of the same concrete nonlinear finite
@@ -683,11 +686,23 @@ Eventual joint vanishing therefore derives both Palatini equations from the
 same actual family. The guarded capstone
 `actualJointStationary_localAffine_imply_vacuumEinstein` returns Christoffel
 selection, equality of induced and plaquette curvature, and the standard mixed
-vacuum Einstein equation. The primitive expansions, site-constant first link
-jet, local affine encoding, symmetric predecessor coframe second jet, and
-stationary family are still supplied. In particular, the theorem does not yet
-construct these data from one graph-derived refinement or prove their
-continuum convergence.
+vacuum Einstein equation.
+
+`NonlinearLorentzPalatiniConcreteAffineCurve` removes the abstract analytic
+carrier hypotheses from that endpoint. The actual link family is
+
+`exp(hat(t omega + (t^2/2) correction))`.
+
+A power-series remainder theorem supplies its forward and inverse primitive
+expansions. On a free forward star, a constant first variation and sparse
+second correction exactly encode `omega_b` and `2 partial_a omega_b`. The
+module also exhibits a commuting `3^4` periodic carrier whose origin has such
+a star. Its guarded capstone therefore assumes no abstract link curve,
+primitive expansion, site-constant first jet, local affine encoding, or
+carrier-existence premise. It still supplies the connection and coframe jets,
+the symmetric predecessor coframe second jet, and eventual local joint
+stationarity. It does not construct those data from causal order or prove a
+stationary refinement or continuum limit.
 
 `PhysicalLorentzPlaquetteRefinement` closes the eta-Lorentz existence side of
 that interface. For arbitrary six-component `F`, it proves that the exact
@@ -1128,9 +1143,9 @@ metric, curvature, or action.
    both affine Palatini equations from one locally stationary link/coframe
    family. Extend that bridge to nonidentity exact exponential Lorentz links at
    finite spacing and control varying first jets.
-   Derive the primitive link expansions, local affine encoding, stationary
-   family, test sampler, dual-volume weights, and coframe convergence from the
-   graph; prove actual weak convergence and the separate orthochronous sign;
+   Derive the connection and coframe jets, stationary family, test sampler,
+   dual-volume weights, and coframe convergence from the graph; prove actual
+   weak convergence and the separate orthochronous sign;
    and rerun the conformal witness. The nonlinear
    replacement must avoid the proved
    `-95` pointwise obstruction and select Levi-Civita transport before any

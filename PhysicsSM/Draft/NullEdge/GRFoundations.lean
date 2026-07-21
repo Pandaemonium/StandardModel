@@ -63,7 +63,7 @@ import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniCoordinateLeviCivita
 import PhysicsSM.Draft.NullEdge.LorentzCoordinateCurvatureBridge
 import PhysicsSM.Draft.NullEdge.LorentzCoordinateEinsteinContraction
 import PhysicsSM.Draft.NullEdge.LorentzPlaquetteSecondJetCurvature
-import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniPlaquetteEinsteinCurve
+import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniConcreteAffineCurve
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEulerChangingCarrierTorsion
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEulerSampledCoframeTorsion
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniLinearizedEinsteinCartanLimit
@@ -356,10 +356,14 @@ evaluated along one group-valued link curve and one affine coframe line. Their
 joint eventual vanishing derives the affine Palatini connection residual and
 the Palatini coframe response from that same nonlinear family. The guarded
 capstone gives Christoffel selection, equality of induced and plaquette
-curvature, and the standard mixed vacuum Einstein equation. The primitive
-expansions, site-constant first link jet, local affine sampling law, symmetric
-predecessor coframe second jet, and stationary family remain hypotheses; no
-stationary graph refinement or continuum convergence theorem is yet derived.
+curvature, and the standard mixed vacuum Einstein equation. A concrete
+successor now supplies the primitive expansions with an actual proper-Lorentz
+affine-exponential curve, realizes the site-constant first jet and local
+affine sampling law on a free forward star, and exhibits a commuting `3^4`
+periodic carrier with four distinct forward neighbors. The connection and
+coframe jets, symmetric predecessor coframe second jet, and local jointly
+stationary family remain supplied; no stationary graph refinement or
+continuum convergence theorem is yet derived.
 The changing-carrier successor
 controls only the forward, predecessor, and translated-predecessor stencil
 sites actually read by the Euler coefficient. When those sites approach one
@@ -475,9 +479,9 @@ The combined result does not
 derive the refinement or convergence data from a bare graph, prove the
 orthochronous sign, extend identity-background first-jet link selection to
 exact nonidentity finite-spacing Levi-Civita transport, or derive the analytic
-plaquette curve's primitive expansions, site-constant first jet, local affine
-encoding, symmetric predecessor coframe second jet, and stationary family from
-compatible graph data on one common refinement. The program owes metric
+plaquette curve's connection and coframe jets, symmetric predecessor coframe
+second jet, and stationary family from compatible graph data on one common
+refinement. The program owes metric
 dual-cell volume factors and a nonlinear finite-spacing uniqueness theorem. It
 also still owes
 derivation of the weights

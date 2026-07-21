@@ -2,6 +2,8 @@ import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniCurveDerivative
 
 noncomputable section
 
+open scoped Matrix.Norms.Frobenius
+
 /-!
 # Quadratic curve expansions at the identity
 
@@ -27,7 +29,7 @@ Claim label: finite-dimensional analytic infrastructure.  Originality tag:
 
 namespace PhysicsSM.Draft.NullEdge.SecondOrderCurveExpansion
 
-open Filter Topology
+open Filter Topology Asymptotics
 
 /-- A normalized quadratic expansion at zero with an explicit `o(t^2)`
 remainder.  This is data in `Type`, because the remainder is part of the
@@ -41,6 +43,181 @@ structure QuadraticExpansionAtZero
     base + t • linear + t ^ 2 • quadratic + t ^ 2 • remainder t
 
 namespace QuadraticExpansionAtZero
+
+/-- Package a little-o quadratic Taylor residual as an explicit normalized
+remainder.  This is the standard bridge from asymptotic notation to the data
+structure used by the finite plaquette product rules. -/
+def ofIsLittleO
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace Real E]
+    {curve : Real -> E} {base linear quadratic : E}
+    (hZero : curve 0 = base)
+    (hRemainder :
+      (fun t => curve t -
+        (base + t • linear + t ^ 2 • quadratic)) =o[nhds 0]
+          (fun t : Real => t ^ 2)) :
+    QuadraticExpansionAtZero curve base linear quadratic where
+  remainder := fun t => (t ^ 2)⁻¹ •
+    (curve t - (base + t • linear + t ^ 2 • quadratic))
+  remainder_tendsto := hRemainder.tendsto_inv_smul_nhds_zero
+  expansion := by
+    intro t
+    by_cases ht : t = 0
+    · subst t
+      simpa using hZero
+    · have htSq : t ^ 2 ≠ 0 := pow_ne_zero 2 ht
+      rw [smul_smul, mul_inv_cancel₀ htSq, one_smul]
+      module
+
+/-- The first three terms of Mathlib's matrix exponential power series. -/
+theorem matrixExpSeriesPartialSum_three
+    (matrix : Matrix (Fin 4) (Fin 4) Real) :
+    (NormedSpace.expSeries Real (Matrix (Fin 4) (Fin 4) Real)).partialSum
+        3 matrix =
+      1 + matrix + (1 / 2 : Real) • (matrix * matrix) := by
+  simp [FormalMultilinearSeries.partialSum, NormedSpace.expSeries_apply_eq,
+    Finset.sum_range_succ, pow_two]
+
+/-- The affine exponent `t A + (t^2 / 2) B` is order `t` at zero. -/
+theorem affineMatrixExponent_isBigO
+    (A B : Matrix (Fin 4) (Fin 4) Real) :
+    (fun t : Real => t • A + ((t ^ 2) / 2) • B) =O[nhds 0]
+      (fun t : Real => t) := by
+  have hLinearScalar :
+      (fun t : Real => t) =O[nhds 0] (fun t : Real => t) :=
+    isBigO_refl _ _
+  have hLinearConst :
+      (fun _ : Real => A) =O[nhds 0] (fun _ : Real => (1 : Real)) :=
+    isBigO_const_one Real A _
+  have hLinear := hLinearScalar.smul hLinearConst
+  have hQuadraticScalar :
+      (fun t : Real => t ^ 2 / 2) =O[nhds 0] (fun t : Real => t) := by
+    have hPow : (fun t : Real => t ^ 2) =O[nhds 0]
+        (fun t : Real => t) := by
+      simpa using (isLittleO_pow_pow
+        (by norm_num : 1 < 2) : (fun t : Real => t ^ 2) =o[nhds 0]
+          (fun t : Real => t ^ 1)).isBigO
+    simpa [div_eq_inv_mul] using hPow.const_mul_left (2 : Real)⁻¹
+  have hQuadraticConst :
+      (fun _ : Real => B) =O[nhds 0] (fun _ : Real => (1 : Real)) :=
+    isBigO_const_one Real B _
+  have hQuadratic := hQuadraticScalar.smul hQuadraticConst
+  simpa using hLinear.add hQuadratic
+
+/-- The cross terms between the linear and quadratic pieces of the affine
+exponent are little-o of `t^2`. -/
+theorem affineMatrixExpPolynomialResidual_isLittleO
+    (A B : Matrix (Fin 4) (Fin 4) Real) :
+    (fun t : Real =>
+      (1 + (t • A + ((t ^ 2) / 2) • B) +
+        (1 / 2 : Real) •
+          ((t • A + ((t ^ 2) / 2) • B) *
+           (t • A + ((t ^ 2) / 2) • B))) -
+      (1 + t • A + t ^ 2 • ((1 / 2 : Real) • (A * A + B)))) =o[nhds 0]
+      (fun t : Real => t ^ 2) := by
+  have h3 : (fun t : Real => t ^ 3) =o[nhds 0]
+      (fun t : Real => t ^ 2) :=
+    isLittleO_pow_pow (by norm_num)
+  have h3Const :
+      (fun _ : Real => (1 / 4 : Real) • (A * B + B * A)) =O[nhds 0]
+        (fun _ : Real => (1 : Real)) :=
+    isBigO_const_one Real ((1 / 4 : Real) • (A * B + B * A)) _
+  have hTerm3 := h3.smul_isBigO h3Const
+  have h4 : (fun t : Real => t ^ 4) =o[nhds 0]
+      (fun t : Real => t ^ 2) :=
+    isLittleO_pow_pow (by norm_num)
+  have h4Const :
+      (fun _ : Real => (1 / 8 : Real) • (B * B)) =O[nhds 0]
+        (fun _ : Real => (1 : Real)) :=
+    isBigO_const_one Real ((1 / 8 : Real) • (B * B)) _
+  have hTerm4 := h4.smul_isBigO h4Const
+  apply (hTerm3.add hTerm4).congr
+  · intro t
+    ext row column
+    simp [Matrix.mul_apply, Fin.sum_univ_four]
+    ring
+  · intro t
+    simp
+
+/-- The exponential of an affine matrix exponent has the expected quadratic
+Taylor polynomial, with a little-o `t^2` residual. -/
+theorem affineMatrixExpResidual_isLittleO
+    (A B : Matrix (Fin 4) (Fin 4) Real) :
+    (fun t : Real =>
+      NormedSpace.exp (t • A + ((t ^ 2) / 2) • B) -
+        (1 + t • A + t ^ 2 • ((1 / 2 : Real) • (A * A + B)))) =o[nhds 0]
+      (fun t : Real => t ^ 2) := by
+  let exponent : Real -> Matrix (Fin 4) (Fin 4) Real :=
+    fun t => t • A + ((t ^ 2) / 2) • B
+  have hExp :
+      (fun matrix : Matrix (Fin 4) (Fin 4) Real =>
+        NormedSpace.exp matrix -
+          (1 + matrix + (1 / 2 : Real) • (matrix * matrix))) =O[nhds 0]
+        (fun matrix : Matrix (Fin 4) (Fin 4) Real => ‖matrix‖ ^ 3) := by
+    have hPower := NormedSpace.exp_hasFPowerSeriesAt_zero
+      (𝕂 := Real) (𝔸 := Matrix (Fin 4) (Fin 4) Real)
+    have h := hPower.isBigO_sub_partialSum_pow 3
+    simpa only [zero_add, matrixExpSeriesPartialSum_three] using h
+  have hExponentZero : Tendsto exponent (nhds 0) (nhds 0) := by
+    have h : ContinuousAt (fun t : Real =>
+        t • A + ((t ^ 2) / 2) • B) 0 := by
+      fun_prop
+    simpa [exponent, ContinuousAt] using h
+  have hTailComp := hExp.comp_tendsto hExponentZero
+  have hExponentPow : (fun t : Real => ‖exponent t‖ ^ 3) =O[nhds 0]
+      (fun t : Real => t ^ 3) := by
+    simpa [exponent] using (affineMatrixExponent_isBigO A B).norm_left.pow 3
+  have hTailBigO :
+      (fun t : Real => NormedSpace.exp (exponent t) -
+        (1 + exponent t +
+          (1 / 2 : Real) • (exponent t * exponent t))) =O[nhds 0]
+        (fun t : Real => t ^ 3) := by
+    simpa [Function.comp_def] using hTailComp.trans hExponentPow
+  have hTail :
+      (fun t : Real => NormedSpace.exp (exponent t) -
+        (1 + exponent t +
+          (1 / 2 : Real) • (exponent t * exponent t))) =o[nhds 0]
+        (fun t : Real => t ^ 2) :=
+    hTailBigO.trans_isLittleO (isLittleO_pow_pow (by norm_num))
+  have hPolynomial := affineMatrixExpPolynomialResidual_isLittleO A B
+  apply (hTail.add hPolynomial).congr_left
+  intro t
+  simp only [exponent]
+  abel
+
+/-- Explicit quadratic expansion of
+`exp(t A + (t^2 / 2) B)` in a real `4 x 4` matrix algebra. -/
+def affineMatrixExpExpansion
+    (A B : Matrix (Fin 4) (Fin 4) Real) :
+    QuadraticExpansionAtZero
+      (fun t : Real => NormedSpace.exp
+        (t • A + ((t ^ 2) / 2) • B))
+      1 A ((1 / 2 : Real) • (A * A + B)) :=
+  ofIsLittleO (by simp) (affineMatrixExpResidual_isLittleO A B)
+
+/-- The inverse affine exponential has first coefficient `-A` and affine
+second correction `-B`. -/
+def affineMatrixExpInverseExpansion
+    (A B : Matrix (Fin 4) (Fin 4) Real) :
+    QuadraticExpansionAtZero
+      (fun t : Real => (NormedSpace.exp
+        (t • A + ((t ^ 2) / 2) • B))⁻¹)
+      1 (-A) ((1 / 2 : Real) • (A * A - B)) := by
+  let expansion := affineMatrixExpExpansion (-A) (-B)
+  refine {
+    remainder := expansion.remainder
+    remainder_tendsto := expansion.remainder_tendsto
+    expansion := ?_ }
+  intro t
+  rw [← Matrix.exp_neg]
+  have hArgument : -(t • A + ((t ^ 2) / 2) • B) =
+      t • (-A) + ((t ^ 2) / 2) • (-B) := by
+    module
+  rw [hArgument]
+  have hExpansion := expansion.expansion t
+  dsimp [expansion] at hExpansion ⊢
+  rw [hExpansion]
+  congr 1
+  noncomm_ring
 
 /-- Transport an expansion across extensional equalities of its curve and
 three coefficients. -/
@@ -330,6 +507,18 @@ theorem quadratic_eq_zero_of_eq_zero
 end QuadraticExpansionAtZero
 
 /-! ## Build-enforced assumption-footprint guards -/
+
+/-- info: 'PhysicsSM.Draft.NullEdge.SecondOrderCurveExpansion.QuadraticExpansionAtZero.affineMatrixExpExpansion' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms QuadraticExpansionAtZero.affineMatrixExpExpansion
+
+/-- info: 'PhysicsSM.Draft.NullEdge.SecondOrderCurveExpansion.QuadraticExpansionAtZero.affineMatrixExpInverseExpansion' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms QuadraticExpansionAtZero.affineMatrixExpInverseExpansion
+
+/-- info: 'PhysicsSM.Draft.NullEdge.SecondOrderCurveExpansion.QuadraticExpansionAtZero.ofIsLittleO' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms QuadraticExpansionAtZero.ofIsLittleO
 
 /-- info: 'PhysicsSM.Draft.NullEdge.SecondOrderCurveExpansion.QuadraticExpansionAtZero.hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in

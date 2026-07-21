@@ -78,14 +78,16 @@ to one supplied chart point. Constructing that pointed chart from the graph,
 sampling the coframe jet, and obtaining quantitative rates remain open.
 
 The local analytic capstone now goes further than the first-jet connection
-result. Primitive second-order expansions of one actual group-valued link
-curve, together with one affine coframe line and eventual joint stationarity,
-derive both affine Palatini equations from that same nonlinear family. Under
-the displayed local-affine, site-constant first-jet, and symmetric predecessor
-second-jet hypotheses, the induced connection is Christoffel, the actual
-plaquette coefficient is its coordinate curvature, and the standard mixed
-vacuum Einstein tensor vanishes. The stationary family and its sampling data
-are still supplied rather than reconstructed from the graph.
+result. One actual proper-Lorentz affine-exponential link curve, together with
+one affine coframe line and eventual local joint stationarity, derives both
+affine Palatini equations from that same nonlinear family. A concrete
+free-forward-star construction supplies the primitive forward and inverse
+expansions, site-constant first jet, local affine encoding, and a commuting
+`3^4` finite carrier. Under the displayed symmetric predecessor second-jet
+hypothesis, the induced connection is Christoffel, the actual plaquette
+coefficient is its coordinate curvature, and the standard mixed vacuum
+Einstein tensor vanishes. The geometric jets and stationary family are still
+supplied rather than reconstructed from the graph.
 
 The dependency is strongly upstream. Progress on G3-G8 cannot compensate for
 an open G2: until scale, a rank-four Lorentzian sector, and compatible overlap
@@ -7268,11 +7270,23 @@ sectors therefore derives both affine Palatini equations from the same actual
 family. The guarded capstone
 `actualJointStationary_localAffine_imply_vacuumEinstein` returns the Christoffel
 connection, equality of induced and plaquette curvature, and the standard
-coordinate mixed vacuum Einstein equation. The primitive expansions,
-site-constant first link jet, local affine encoding, symmetric predecessor
-coframe second jet, and stationary family remain hypotheses. The theorem does
-not yet construct these data from one graph-derived refinement or prove their
-continuum convergence.
+coordinate mixed vacuum Einstein equation.
+
+`PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniConcreteAffineCurve.lean`
+then instantiates the abstract analytic data. It proves a power-series
+quadratic remainder for `exp(t A + (t^2/2) B)` and its inverse, exponentiates
+the supplied Lorentz connection and sparse connection-jet correction, and
+keeps every link proper eta-Lorentz. A free forward star makes the first link
+jet site-constant and assigns the second correction exactly
+`2 partial_a omega_b` at the corresponding forward neighbor. The explicit
+carrier is the commuting `3^4` periodic four-torus, whose origin has four
+distinct forward endpoints. The guarded capstone
+`actualJointStationary_fourTorusAffineExponential_imply_vacuumEinstein`
+therefore has no abstract link curve, primitive expansion, local affine
+encoding, or carrier-existence hypothesis. It still assumes the connection
+and coframe jets, symmetric predecessor coframe second jet, and eventual local
+joint stationarity. It does not derive those data from causal order or prove
+refinement convergence.
 
 The changing-carrier linearized successor
 `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniSampledCoordinateEinsteinLimit.lean`
@@ -7829,6 +7843,7 @@ not
 - `PhysicsSM/Draft/NullEdge/LorentzMatrixSecondJet.lean`
 - `PhysicsSM/Draft/NullEdge/LorentzPlaquetteSecondJetCurvature.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniPlaquetteEinsteinCurve.lean`
+- `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniConcreteAffineCurve.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniSampledCoordinateEinsteinLimit.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniExponentialConnectionTorsionSelection.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniEulerTorsionSelection.lean`
