@@ -26,12 +26,15 @@ Consequently `fmsRadialResidue` is the squared coefficient for that supplied
 coordinate, not an LSZ residue or a convention-independent physical coupling.
 
 Provenance: clean-room finite formalization oriented by Axel Maas,
-"Observables in Higgsed Theories," arXiv:1410.2740, and Axel Maas and Rene
+"Observables in Higgsed Theories," arXiv:1410.2740; Axel Maas and Rene
 Sondenheimer, "Gauge-invariant description of the Higgs resonance and its
-phenomenological implications," arXiv:2009.06671. The proof bodies were
-completed by Aristotle task `a5cdc344-451e-4683-b3eb-1b06d4abe39a`. During
-integration, two Boolean nonzero hypotheses were strengthened to the intended
-proposition-level hypotheses and the returned proofs replayed unchanged.
+phenomenological implications," arXiv:2009.06671; and Axel Maas, "The
+Froehlich-Morchio-Strocchi mechanism: A underestimated legacy,"
+arXiv:2305.01960v2, especially its exact scalar-correlator expansion before
+the leading-term approximation. The proof bodies were completed by Aristotle
+task `a5cdc344-451e-4683-b3eb-1b06d4abe39a`. During integration, two Boolean
+nonzero hypotheses were strengthened to the intended proposition-level
+hypotheses and the returned proofs replayed unchanged.
 
 No continuum limit, spectral measure, pole existence, perturbative hierarchy,
 or observed Higgs mass is claimed. Claim grade: `M [comp]`.

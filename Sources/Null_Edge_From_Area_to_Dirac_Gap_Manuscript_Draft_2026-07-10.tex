@@ -7,6 +7,8 @@
 \usepackage{microtype}
 \usepackage{enumitem}
 \usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,positioning}
 \usepackage{xurl}
 \usepackage[hidelinks]{hyperref}
 
@@ -31,6 +33,13 @@
 \newcommand{\id}{\mathbf{1}}
 \newcommand{\norm}[1]{\left\lVert #1\right\rVert}
 
+% The default article view keeps the central proof story concise.  Set either
+% switch true when producing the separate artifact or research supplement.
+\newif\ifartifactledger
+\artifactledgerfalse
+\newif\ifextendedfrontiers
+\extendedfrontiersfalse
+
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
@@ -40,63 +49,62 @@
 
 \graphicspath{{Sources/figures/}{figures/}}
 
-\title{Null-Spinor Area as the Rest Gap of an Exactly Unitary Dirac Walk\\
-\large A Machine-Verified Finite Construction}
-% RELEASE GATE: replace the project author line with named authors,
-% affiliations, ORCIDs, and a contribution statement before circulation.
+\title{A Pl\"ucker-Derived Mass Operator for Exactly Unitary Dirac Quantum Walks\\
+\large Phase Transport, Free Spectra, and a Verified Regulator Boundary}
+% RELEASE GATE: add affiliation and ORCID.
 \author{Mark Schwab}
-\date{July 10, 2026}
+\date{July 19, 2026}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-The rest gap is normally an independent input to a Dirac quantum walk.  We
-derive its operator from supplied null-spinor geometry and prove, with a
-machine-checked finite development, exactly what that derivation adds.  For
-$P=\sum_i\psi_i\psi_i^\dagger$ built from massless rank-one momenta,
+Standard Dirac quantum walks take their mass coin as an independent parameter.
+Let $\psi,\phi\in\C^2$ represent two future-null rank-one momenta, set
+$P_{\rm tot}=\psi\psi^\dagger+\phi\phi^\dagger$, and let
+$z=\psi\wedge\phi$.  Cauchy--Binet gives
 \[
-  \det P=\sum_{i<j}|\psi_i\wedge\psi_j|^2,
+  \det P_{\rm tot}=|z|^2.
 \]
-and the invariant vanishes exactly when the occupied spinors span at most one
-complex direction.  For two spinors, the complex area
-$z=\psi_1\wedge\psi_2$ uniquely determines the odd Hermitian rest operator
+Relative to a fixed chiral grading $\Gamma$, the oriented area determines the
+normalized odd Hermitian mass operator
 \[
   B_z=\begin{pmatrix}0&z\\ \overline z&0\end{pmatrix},\qquad
-  B_z^2=\det(P)\id,\qquad
-  (k\sigma_z+B_z)^2=(k^2+\det P)\id.
+  B_z^2=\det(P_{\rm tot})\id,\qquad
+  (k\Gamma+B_z)^2=(k^2+\det P_{\rm tot})\id.
 \]
-Thus the scalar mass input is replaced by null-spinor data, not eliminated:
-the construction derives the form and geometric zero locus of the gap but does
-not predict an absolute mass scale.
+We prove that this assignment is the unique positively homogeneous,
+phase-equivariant map with the displayed grading and normalization.  The total
+momentum determines the orbit radius $|z|=\sqrt{\det P_{\rm tot}}$; an oriented
+null factorization selects a representative $B_z$ of that orbit.  The positive
+rest energy is $|z|$, the spectral band gap at rest is $2|z|$, and both vanish
+exactly when the spinors are collinear.  The construction derives the operator
+and its zero locus, but does not select an absolute mass scale.
 
 Exponentiating $B_z$ gives an exactly unitary null-step walk.  Opposite turns
 carry $z$ and $\bar z$, fixed-momentum symbols converge to Dirac flow uniformly
-on compact momentum sets at rate $O(1/n)$, and a position-dependent field
-$z(x)$ yields an exactly reversible finite-torus update with a strict causal
-cone and explicit endpoint links under local chiral rotation.  Most
-importantly, the oriented datum is already visible in the \emph{free}
-one-particle spectrum.  For equal-modulus site fields coupled by an edge phase
-$w$, the exact two-site Hamiltonian satisfies
+on bounded momentum and mass sets at rate $O(1/n)$, and local chiral changes of
+basis induce exact endpoint links.  A common phase is removable, but transported
+relative phase is not.  For two equal-modulus sites coupled by an edge phase
+$w$, the exact free Hamiltonian has squared energies
 \[
- (H^2-(|z_L|^2+t^2)\id)^2
- =t^2|z_R-(\overline w)^2z_L|^2\id.
+  E_\pm^2=|z_L|^2+t^2
+  \pm t\left|z_R-(\overline w)^2z_L\right|.
 \]
-Hence transported relative phase, unlike a common phase, cannot be reproduced
-by assigning only the scalar $|z|$.  The same chiral covariance uniquely
-selects a phase-reading quartic pair coupling at block level; its local Fock
-placement, exact pulse law, and finite causal support are also verified.
+The mismatch modulus is invariant under independent local chiral-frame changes,
+and the lower level vanishes exactly at
+$t=|z_L|$ and $z_R=-(\overline w)^2z_L$.  Thus null-spinor orientation supplies
+a free one-particle observable after transport.  An independently assigned
+complex mass field can reproduce the same local phase physics; the Pl\"ucker
+contribution is its finite equivariant derivation, its determinant relation,
+and its collinearity zero locus from one primitive spinor input.
 
-The formal audit exposes a sharp regulator boundary rather than hiding it.  In
-the ordered $3+1$ successor, all zero- and $\pi$-quasienergy crossings are
-classified and their charges cancel at each gap, while exact no-go theorems
-show that the live minimal architecture retains high-frequency aliases and
-cannot open a global Floquet gap with a momentum-independent onsite coin.
-Accordingly, the result is a derived finite rest operator with a
-phase-sensitive free observable and a verified dynamical chain, not a completed
-continuum field theory.  Position-space PDE convergence, an alias-free local
-$3+1$ successor, a fully interleaved interacting Fock dynamics, and absolute
-mass selection remain open.
+The finite statements and their negative controls are formalized in Lean~4.
+We also prove that the tested successive-axis $3+1$ extension retains a
+classified family of zero- and $\pi$-quasienergy aliases that no
+momentum-independent onsite coin removes.  An alias-free exactly local $3+1$
+regulator, a complete interacting field dynamics, and absolute scale selection
+remain open.
 \end{abstract}
 
 \paragraph{How to read the status marks.}
@@ -117,14 +125,22 @@ exactly while its spinors occupy one complex direction.  Once two directions
 open, their exterior area is nonzero and the sum moves into the timelike
 interior.
 
-This familiar geometry contains a sharper operator statement.  The complex
-area $z=\psi\wedge\phi$ is not merely a number whose squared modulus happens
-to equal mass squared.  It is the off-diagonal entry of a canonical odd
-Hermitian operator.  That operator squares to the invariant momentum
-determinant, anticommutes with the velocity grading, and therefore supplies the
-rest term of a finite Dirac Hamiltonian.  Its exponential is an exact unitary
-turn gate.  The same object thus controls quadratic cost, first-order rest
-energy, finite-time rotation, and corner amplitudes.
+This familiar geometry contains a sharper operator statement.  The total
+momentum determines the radius $|z|=\sqrt{\det P_{\rm tot}}$ of an odd-Hermitian
+mass orbit.  An oriented null factorization retains the phase of
+$z=\psi\wedge\phi$ and therefore selects a representative $B_z$ of that orbit.
+After a chiral grading and one normalization are fixed, equivariance makes the
+assignment unique.  The operator squares to the invariant momentum determinant,
+anticommutes with the velocity grading, and exponentiates to an exact unitary
+turn gate.  Transport between local chiral frames then converts relative
+orientation into a gauge-invariant spectral mismatch.
+
+The null spinors in this statement are factors of a momentum representation,
+not additional asymptotic particles.  The construction does not predict an
+absolute mass scale; a common mass phase is a basis choice; and covariance of
+the input map under $\mathrm{SL}(2,\C)$ does not make the finite lattice dynamics
+exactly Lorentz invariant.  These boundaries are part of the claim, not
+qualifications added after it.
 
 \begin{figure}[t]
 \centering
@@ -140,10 +156,10 @@ exact gap-closing boundary.}
 \fbox{\begin{minipage}{0.92\linewidth}
 \textbf{Synthesis theorem.}
 Let $\psi,\phi\in\C^2$, set
-$P=\psi\psi^\dagger+\phi\phi^\dagger$,
+$P_{\rm tot}=\psi\psi^\dagger+\phi\phi^\dagger$,
 $z=\psi\wedge\phi$, and $\mu=|z|$.  Then
 \[
- \det P=\mu^2,
+ \det P_{\rm tot}=\mu^2,
  \qquad
  B_z=\begin{pmatrix}0&z\\ \overline z&0\end{pmatrix},
  \qquad
@@ -153,125 +169,57 @@ Writing $\Gamma=\diag(1,-1)$ and $H_z(k)=k\Gamma+B_z$, one has
 \[
  \Gamma B_z+B_z\Gamma=0,
  \qquad
- \boxed{H_z(k)^2=(k^2+\det P)\id}.
+ \boxed{H_z(k)^2=(k^2+\det P_{\rm tot})\id}.
 \]
-Thus the positive rest energy is $\mu=\sqrt{\det P}$, and the gap closes
+Thus the positive rest energy is $\mu=\sqrt{\det P_{\rm tot}}$, and the gap closes
 exactly on the collinear null boundary.  Multiplying $z$ by a unit phase
-changes $B_z$ by unitary conjugation, so the spectrum depends only on $P$ while
-the oriented decomposition retains a path phase.  \NewResult{} \Kernel{}
+changes $B_z$ by unitary conjugation, so $P_{\rm tot}$ determines the spectral
+orbit rather than an oriented representative.  The factorization retains the
+phase needed by directed amplitudes and transported comparisons.
+\NewResult{} \Kernel{}
 \end{minipage}}
 \end{center}
 
 \begin{center}
 \fbox{\begin{minipage}{0.92\linewidth}
-\textbf{What changes physically, and what does not.}
-The Pluecker origin fixes more than a dispersion parameter: it fixes the
-complex directed turn amplitudes, their local chiral connection under a
-spatially varying field, and the exact gap-closing locus.  Transport makes the
-phase observable without adding an interaction: two equal-modulus rest fields
-can have different free spectra, with the splitting controlled exactly by
-$\Delta=z_R-(\overline w)^2z_L$.  A covariance-selected quartic pair transfer
-provides a second, many-body phase reader.  The construction does not by itself
-cure lattice aliases or predict an absolute mass.  Within the four-channel
-separable degree-one architecture, every even-parity zone corner is provably
-locked to the origin after any onsite Pluecker coin; under the natural positive
-homogeneous action, every positive configuration has only the collapsed
-stationary scale.  These are falsifiable structural consequences, not
-interpretive qualifications.  \NewResult{} \Kernel{}
+\textbf{The precise novelty claim.}
+Complex Dirac masses, mass textures, and gauge-covariant quantum walks are not
+new individually \cite{GoldstoneWilczek,ArnaultDebbaschGauge}.  The contribution
+here is the finite equivariant map from an
+oriented null-spinor factorization to the complex mass operator, together with
+its exact determinant relation, unitary-history dictionary, transported free
+spectrum, convergence bound, and formal verification.  An assigned complex
+mass field can reproduce the same one-particle phase phenomena; the new content
+is that modulus, phase, and the collinearity zero locus arise coherently from
+the same null-spinor input.  The construction neither predicts the absolute
+scale nor removes the tested $3+1$ aliases.
 \end{minipage}}
 \end{center}
 
-Three claims organize the paper.  First, null-spinor area uniquely generates
-the rest operator and its finite dynamical chain.  Second, transported relative
-phase is a free-spectrum observable rather than merely a supplied interaction
-phase.  Third, the minimal ordered $3+1$ architecture has a completely audited
-high-frequency boundary, turning the search for a clean strict regulator into
-a precise algebra problem.  Seven technical contributions support those
-headlines.
+Three claims organize the paper.
 \begin{enumerate}[leftmargin=2em]
-  \item \textbf{The invariant.}  We isolate the exterior-area invariant, its
-  exact massless boundary, and the grading between the first-order gap $\mu$
-  and the quadratic invariant $\mu^2$.  The Cauchy--Binet identity is
-  classical; its complete finite formalization and controls are part of the
-  contribution.
-  \item \textbf{The canonical operator.}  We construct $B_z$ directly from the
-  complex Pluecker coordinate, prove the synthesis theorem for arbitrary
-  spinor pairs, and classify every odd Hermitian rest operator as $B_w$ for a
-  unique $w$.  No rational example or separately chosen Dirac mass parameter
-  carries the general statement.
-  \item \textbf{Exact histories.}  We derive the exact unitary turn gate and
-  its corner expansion, with finite-spacing corner parameter $\tan(a\mu)$
-  rather than $a\mu$.  A directed-edge path theorem places $z$ and $\bar z$ in
-  the same finite history sum and proves equality with the actual complex
-  Pluecker transfer power.
-  \item \textbf{Uniform continuum control.}  We prove kernel-checked, uniform
-  bounded-momentum $O(1/n)$ many-step estimates for the $1+1$ and ordered
-  $3+1$ split-step symbols.  For the explicit schedule $n=K^4$, the $3+1$
-  estimate remains convergent on arbitrary parameter sequences satisfying
-  $B_4\leq K$, with an $O(K^{-2})\exp(|t|/K^3)$ envelope.  The full complex phase is covered by unitary
-  conjugacy and by the direct complex-coin composition, not discarded after
-  taking its modulus.
-  \item \textbf{A finite local $3+1$ walk with exact Fourier control.}  We
-  construct an exactly norm-preserving finite-torus walk with an explicit
-  two-sided inverse and a strict one-shift-per-axis causal cone, whose ordered
-  symbol is the product controlled by the $3+1$ estimate.  The
-  finite-to-analytic momentum-sign bridge is exact, an iterated three-torus
-  Plancherel theorem gives the exact $N^{-3}$ wave-packet normalization, and a
-  compact-support multiplier theorem yields momentum-space $L^2$ convergence
-  at every fixed time.  Arbitrary position-dependent Pluecker fields evolve
-  unitarily, and site-dependent chiral rotation induces exact endpoint links.
-  \item \textbf{The obstruction audit.}  The same framework proves where it
-  stops, and now does so with an exact all-zone criterion: the determinant
-  factorizations $\det(U^{(4)}\mp\id)=4P_{0,\pi}$ hold at every real momentum
-  and mass angle, so zero and $\pi$ modes are exactly the zeros of two
-  explicit polynomials --- completely classified for $0<|\cos\theta|<1$ as
-  the simultaneous vanishing of all three momentum cosines.  The massless
-  cubic regulator has three nonzero
-  zero-quasienergy
-  corner aliases; the massive body-center step retains exact $+1$ and $-1$
-  modes for every mass angle, so the regulator is globally ungapped; a
-  degree-one nearest-neighbor factor admits no stationary amplitude compatible
-  with origin normalization, exact unitarity, and the full Dirac tangent; and
-  every momentum-independent onsite coin leaves all three even-parity aliases
-  intact.  Exact temporal blocking closes the mass subgroup but generates new
-  ordered words in the full split family, and a homogeneous-action no-go
-  proves that selecting a nonzero $|z|$ requires an additional scale-bearing
-  input.
-  \item \textbf{The many-body seed.}  A generic occupation-basis construction
-  satisfies all canonical anticommutation relations, and a four-mode quartic
-  pair transfer has oriented two-particle amplitudes $z$ and $\bar z$, exactly
-  distinguished at the fixture $z=3+4\ii$.  The associated normalized pair
-  kick is an explicit complex-linear automorphism, involutive and
-  Fock-inner-product preserving; the Hermitian quartic operator equals the
-  kick on the pair sector and the identity off it, and the kick fixes every
-  one-particle basis state while acting nontrivially on the displayed
-  two-particle state.  An interference corollary shows that the supplied
-  interaction sector retains the phase:
-  equal-modulus fields with exactly conjugate one-particle rest operators
-  are separated at the displayed fixtures $z=3+4\ii$ and $z=5$, inside the
-  supplied pair-kick sector, by a double-kick
-  return probability of $4/5$ versus $1$.  This is not yet a second quantization of the spatial
-  walk: the determinant-minor lift now has exact vacuum, one-particle, number,
-  parity, creation-covariance, identity, and composition theorems, including
-  $\Gamma(UV)=\Gamma(U)\Gamma(V)$, and its ordered-minor coefficients obey
-  exact conjugate-transpose compatibility.  A one-particle unitary's lifted
-  conjugate transpose is an exact two-sided inverse, and the lift preserves
-  the finite occupation-basis Hermitian inner product.  Creation and
-  annihilation covariance are exact.  Separately, the pair kick can be placed
-  on arbitrary four-mode sets; disjoint gates commute, and every finite
-  declared schedule has exact support propagation in the even CAR algebra,
-  with a nonzero phase-transfer witness inside the acted set.  Under an explicit
-  graph neighborhood and finite-range condition on every block, a sequential
-  schedule obeys an exact iterated-neighborhood cone.  Pairwise-disjoint local
-  gates have now been grouped into layers, with one neighborhood expansion per
-  layer and an exact radius bound by circuit depth.  The free/interacting
-  support composition is now exact in general form: determinant-minor second
-  quantization of any coefficient-local finite-range unitary expands genuine
-  CAR support by one graph neighborhood, and one disjoint local pair layer
-  adds exactly one more.  Instantiating this theorem with the complete live
-  $3+1$ walk, deriving an operator-exponential law, and computing scattering or
-  binding remain open.
+  \item \textbf{Geometry and naturality.}  $P_{\rm tot}$ determines the radius
+  of the odd-Hermitian mass orbit; an oriented factorization selects its
+  representative.  Positive homogeneity, phase covariance, the chiral grading,
+  and one normalization uniquely select $z\mapsto B_z$.
+  \item \textbf{Dynamics and observability.}  $B_z$ generates an exactly
+  unitary walk, directed histories, and a uniform $O(1/n)$ continuum-symbol
+  bound.  Local phase transport produces the gauge-invariant mismatch
+  $|z_R-(\overline w)^2z_L|$, which splits an exact free spectrum.
+  \item \textbf{Regulator boundary.}  The tested successive-axis $3+1$
+  extension has completely classified zero- and $\pi$-quasienergy aliases;
+  no momentum-independent onsite coin removes them.  This is a theorem about
+  that architecture, not a universal no-go for local $3+1$ walks.
 \end{enumerate}
+
+The main logical chain is therefore
+\[
+ \text{null geometry}\longrightarrow B_z\longrightarrow
+ \text{unitary histories}\longrightarrow\text{transport}\longrightarrow
+ \text{relative-phase spectrum}.
+\]
+The extended regulator and Fock calculations are retained as boundary and
+companion results, but they do not carry the central novelty claim.
 
 The result sits between spinor-helicity kinematics and discrete relativistic
 quantum dynamics \cite{ElvangHuang,ArkaniHamedMassive}.  Cauchy--Binet and the
@@ -288,7 +236,7 @@ machine-checked dependency boundary.
 For constant $z$, the update in this paper is unitarily equivalent to the
 standard $1+1$ split-step Dirac walk.  We do not claim otherwise.  What is new
 is the input map and its naturality: the coin is generated by the complex
-Pluecker coordinate of null momentum factors, its modulus gives the rest
+Pl\"ucker coordinate of null momentum factors, its modulus gives the rest
 energy, its phase acts by internal conjugacy and survives in oriented turn
 amplitudes, and the resulting dependency chain is machine checked.  Table
 \ref{tab:comparison} positions that claim against the closest constructions.
@@ -377,7 +325,7 @@ claim.
   formalized here, following \cite{MlodinowBrun} --- the three
   even-parity origin aliases are exact, and the all-coins alias theorem
   \eqref{eq:genericcorneralias} proves that \emph{no} momentum-independent
-  onsite coin, the complex Pluecker mass coin included, removes any of
+  onsite coin, the complex Pl\"ucker mass coin included, removes any of
   them.  Extra range, coupled substeps, or enlarged cells are
   structurally required, not optional.  Exact two-step temporal
   blocking closes only the mass subgroup, so composition-order effects
@@ -393,49 +341,49 @@ claim.
   logically independent directions.
 \end{itemize}
 
+A complementary July 2026 analysis of the $1+1$ chiral Dirac QCA treats
+doubling through Green functions and a modified discretization
+\cite{BakirciogluArnault2026}.  Its scope differs from the exact discrete-time
+$3+1$ alias classification here, but it sharpens the current comparison set
+for any successor regulator.
+
 \subsection*{The reparametrization test}
 
 At constant nonzero $z$, the one-particle spectrum alone cannot distinguish
-this construction from a Dirac walk whose mass was assigned as $m=|z|$.  The
-claim of added content must therefore survive after that spectrum is held
-fixed.  Table~\ref{tab:reparametrization} states the test explicitly.
+this construction from a Dirac walk whose mass was assigned as $m=|z|$.
+Moreover, an independently assigned complex mass field can reproduce the same
+one-particle phase and transport phenomena.  The claim of added content must
+therefore survive both baselines.  Table~\ref{tab:reparametrization} states the
+test explicitly.
 
 \begin{table}[h]
 \centering
 \small
-\begin{tabularx}{\linewidth}{@{}p{0.22\linewidth}XX@{}}
+\begin{tabularx}{\linewidth}{@{}p{0.18\linewidth}p{0.32\linewidth}X@{}}
 \toprule
-Question & Assigned scalar mass & Pluecker-derived input in this paper\\
+Model & What it can reproduce & What remains external or newly derived\\
 \midrule
-Constant dispersion
- & Same after setting $m=|z|$
- & No claimed distinction\\
-Gap-closing locus
- & External condition $m=0$
- & Exact collinearity condition $\psi\wedge\phi=0$\\
-Directed histories
- & A real or independently chosen turn coefficient
- & Opposite orientations carry $z$ and $\bar z$ in the same transfer sum\\
-Spatially varying phase
- & Additional complex-mass field supplied independently
- & Primitive-spinor phase induces an exact endpoint connection under local chiral conjugacy\\
-Finite two-particle probe
- & Requires an independent interaction coefficient
- & The exhibited quartic transfer reuses the same wedge as amplitudes $z$ and
- $\bar z$; equal-modulus fields with conjugate one-particle operators are
- separated by an exact interference probability ($4/5$ versus $1$) in the
- supplied pair-kick sector\\
-Absolute scale
- & Not predicted
- & Not predicted; the homogeneous-action no-go proves an added scale is required\\
-Ultraviolet lattice spectrum
- & Regulator dependent
- & Still regulator dependent; the present walk retains exact aliases\\
+Assigned real $m(x)$
+ & Constant dispersion after $m=|z|$; one real turn weight
+ & No local phase, endpoint link, or transported-phase splitting\\
+Assigned complex $M(x)$
+ & The same local phase, directed $M/\bar M$ histories, endpoint links, and
+ free spectral split
+ & The complex field, its zero locus, and its relation to momentum are supplied
+ independently\\
+Derived $z(x)=\psi(x)\wedge\phi(x)$
+ & Every complex point value, with the same one-particle phase phenomena as
+ $M(x)$
+ & The complex field now inherits $|z|^2=\det P_{\rm tot}$, the exact
+ collinearity zero locus, and its orientation from one spinor factorization\\
 \bottomrule
 \end{tabularx}
-\caption{What is and is not gained by deriving the mass parameter.  The
-quartic row is an explicit finite extension, not yet a theorem that the free
-action uniquely forces that interaction.}
+\caption{What is and is not gained by deriving the complex mass field.  An
+assigned complex mass is the correct one-particle baseline: the new content is
+the field's geometric provenance, determinant relation, and exact collinearity
+zero locus, not the existence of phase physics by itself.  None of the three
+models predicts the absolute mass scale, and all retain regulator-dependent
+ultraviolet structure.}
 \label{tab:reparametrization}
 \end{table}
 
@@ -538,25 +486,44 @@ $g(P)=c\sqrt{\det P}$ for some $c\geq0$.
 \noindent\Classical{} \Human{}
 
 This is the logical bridge from a canonical mass-squared invariant to a
-canonical rest gap.  The normalization $c=1$ fixes units.
+canonical positive rest energy.  The normalization $c=1$ fixes units.
 
-\section{The Pluecker mass operator}
+\section{The Pl\"ucker mass operator}
+
+Two copies of $\C^2$ play different roles.  Let
+$S\simeq\C^2$ be the null-spinor space and let
+$C_{\rm ch}=C_+\oplus C_-$ be the two-channel chiral space of the walk.
+The area lies in the one-dimensional line $\bigwedge^2S$, whereas the rest
+operator acts on $C_{\rm ch}$.  Choosing an oriented volume form on $S$, the
+grading $C_+\oplus C_-$, and a unit normalization identifies
+$\bigwedge^2S$ with the weight-one off-diagonal line
+$\operatorname{Hom}(C_-,C_+)$.  All uses of ``canonical'' below are relative
+to exactly these choices.
 
 For two spinors, retain the complex orientation data rather than immediately
 discarding it into an absolute square:
 \begin{equation}
  z:=\psi\wedge\phi=\psi_0\phi_1-\psi_1\phi_0,
  \qquad
- P:=\psi\psi^\dagger+\phi\phi^\dagger.
+ P_{\rm tot}:=\psi\psi^\dagger+\phi\phi^\dagger.
 \end{equation}
-Theorem~\ref{thm:area} gives $|z|^2=\det P$.  Define
+Theorem~\ref{thm:area} gives $|z|^2=\det P_{\rm tot}$.  Define
 \begin{equation}\label{eq:Bz}
  B_z:=\begin{pmatrix}0&z\\ \overline z&0\end{pmatrix},
  \qquad
  \Gamma:=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.
 \end{equation}
+Equivalently,
+\begin{equation}\label{eq:BzPauli}
+ B_z=(\operatorname{Re}z)\sigma_x-(\operatorname{Im}z)\sigma_y.
+\end{equation}
+The map does not restrict the pointwise complex mass parameter: with the
+standard basis $e_1,e_2$ of $S$, $\psi=e_1$ and $\phi=z e_2$ give
+$\psi\wedge\phi=z$ for every $z\in\C$.  Its content is geometric provenance,
+the determinant relation, and the exact zero locus, not a smaller set of
+allowed complex masses.
 
-\begin{theorem}[Pluecker-derived rest operator]\label{thm:Bz}
+\begin{theorem}[Pl\"ucker-derived rest operator]\label{thm:Bz}
 The matrix $B_z$ is Hermitian and odd for the grading $\Gamma$.  More
 precisely,
 \begin{equation}\label{eq:Bzidentities}
@@ -564,7 +531,7 @@ precisely,
  \qquad
  \Gamma B_z+B_z\Gamma=0,
  \qquad
- B_z^2=|z|^2\id=\det(P)\id.
+ B_z^2=|z|^2\id=\det(P_{\rm tot})\id.
 \end{equation}
 For
 \begin{equation}\label{eq:Hz}
@@ -572,7 +539,7 @@ For
 \end{equation}
 one has
 \begin{equation}\label{eq:hero}
- \boxed{H_z(k)^2=\left(k^2+\det P\right)\id}.
+ \boxed{H_z(k)^2=\left(k^2+\det P_{\rm tot}\right)\id}.
 \end{equation}
 The rest eigenvalues are $\pm|z|$, and $B_z=0$ exactly when the two nonzero
 spinor directions are collinear.
@@ -590,9 +557,9 @@ Every step of this proof is represented by a general Lean declaration, not by
 evaluation of a fixed example.
 \end{proof}
 
-Theorem~\ref{thm:Bz} is stronger than assigning the scalar $\det P$ to an
+Theorem~\ref{thm:Bz} is stronger than assigning the scalar $\det P_{\rm tot}$ to an
 otherwise independent Dirac mass slot.  The odd operator is constructed from
-the oriented Pluecker coordinate itself; its square derives the quadratic
+the oriented Pl\"ucker coordinate itself; its square derives the quadratic
 invariant.  The distinction between powers is now fixed:
 
 \begin{center}
@@ -600,7 +567,7 @@ invariant.  The distinction between powers is now fixed:
 \toprule
 Layer & Natural quantity\\
 \midrule
-Null-spinor kinematics & $\mu^2=\det P=|z|^2$\\
+Null-spinor kinematics & $\mu^2=\det P_{\rm tot}=|z|^2$\\
 Odd mass operator & $B_z$, with $B_z^2=\mu^2\id$\\
 Quadratic costs and Hessians & $\mu^2$\\
 Dirac rest energy & $\mu=|z|$\\
@@ -610,7 +577,7 @@ Exact corner/stay ratio & $\tan(a\mu)$\\
 \end{tabularx}
 \end{center}
 
-\subsection{Phase covariance and decomposition independence}
+\subsection{Phase covariance, naturality, and the mass orbit}
 
 If $u\in\C$ has $|u|=1$, let $W_u=\diag(u,1)$.  Then
 \begin{equation}\label{eq:phasecov}
@@ -621,15 +588,21 @@ If $u\in\C$ has $|u|=1$, let $W_u=\diag(u,1)$.  Then
 Both identities are kernel-checked.  Thus the phase of $z$ rotates the internal
 basis but cannot change the rest spectrum.
 
-The construction is also covariant under the spacetime spin group.  If
+Section~\ref{sec:phasespectrum} uses the determinant-one chiral frame
+$\widehat W_b=\diag(b,\overline b)$ instead.  It sends $z\mapsto b^2z$.
+For $u=b^2$, $\widehat W_b$ differs from $W_u$ only by a central phase, so the
+two conventions induce the same conjugation of $B_z$.
+
+The input map is also covariant under the spacetime spin-group action.  If
 $A\in\mathrm{SL}(2,\C)$ acts on both spinors by left multiplication, then
 \begin{equation}\label{eq:sl2cov}
  (A\psi)\wedge(A\phi)=\det(A)(\psi\wedge\phi)=z,
  \qquad
  B_{(A\psi)\wedge(A\phi)}=B_z.
 \end{equation}
-This is the algebraic $\mathrm{SL}(2,\C)$ statement covering
-proper-orthochronous Lorentz covariance; it is \Kernel{}.  General
+This is an algebraic covariance statement for the input map under the spin
+cover of the proper-orthochronous Lorentz group; it is \Kernel{}.  It does not
+assert exact Lorentz symmetry of the finite lattice update.  General
 $A\in\mathrm{GL}(2,\C)$ acts with the expected determinant weight; that
 weighted extension is an algebraic \Human{} corollary, not a separate Lean
 declaration in the present development.
@@ -645,7 +618,7 @@ $\Gamma B+B\Gamma=0$.  Then there is a unique $w\in\C$ such that
 \end{equation}
 Consequently the odd Hermitian square roots of $\mu^2\id$ form one phase
 circle $w=\mu u$, $|u|=1$, and for $\mu>0$ they are all related by the
-conjugacies in \eqref{eq:phasecov}.  Specifying the oriented Pluecker
+conjugacies in \eqref{eq:phasecov}.  Specifying the oriented Pl\"ucker
 coordinate $z$ selects one member of that orbit.
 \end{theorem}
 \noindent\NewResult{} \Kernel{} for the normal form and square;
@@ -659,20 +632,163 @@ $|w|=\mu$; for $\mu>0$, write $w=\mu u$ with $|u|=1$ and apply
 \eqref{eq:phasecov}.
 \end{proof}
 
+The classification theorem describes the target space.  The following
+naturality statement is what makes the assignment itself unique.
+
+\begin{theorem}[Equivariant uniqueness of the normalized rest map]
+\label{thm:equivariantuniqueness}
+Fix $\Gamma=\diag(1,-1)$ and $W_u=\diag(u,1)$.  Suppose
+$F:\C\to M_2(\C)$ satisfies:
+\begin{enumerate}[label=(\roman*),leftmargin=2em]
+  \item $F(z)$ is Hermitian and $\Gamma F(z)+F(z)\Gamma=0$;
+  \item $F(0)=0$ and $F(rz)=rF(z)$ for every $r\geq0$;
+  \item $F(uz)=W_uF(z)W_u^\dagger$ whenever $|u|=1$;
+  \item $F(1)=\sigma_x$.
+\end{enumerate}
+Then $F(z)=B_z$ for every $z\in\C$.
+\end{theorem}
+\noindent\Human{}  The theorem records the precise covariance class and
+normalization in which the words \emph{natural} and \emph{uniquely selected}
+are used; a dedicated Lean declaration is not claimed.
+
+\begin{proof}
+The case $z=0$ is an assumption.  Otherwise write $z=ru$ with
+$r=|z|>0$ and $|u|=1$.  Positive homogeneity, equivariance, and normalization
+give
+\[
+ F(z)=rF(u)=rW_uF(1)W_u^\dagger=rW_u\sigma_xW_u^\dagger=B_{ru}=B_z.
+\]
+\end{proof}
+
 This also controls the nonuniqueness of the null decomposition.  If
 $M=[\psi\ \phi]$ has full rank and $M'=MR$ with $R\in U(2)$, then
 $M'M'^\dagger=MM^\dagger$ and
 $\det M'=(\det R)\det M$.  Since $|\det R|=1$, the two mass operators are
 related by \eqref{eq:phasecov}.  The unitary-equivalence class of $B_z$ depends
-only on $P$; an oriented factorization retains the phase needed by individual
-turn amplitudes.  \Classical{} \Kernel{}
+only on $P_{\rm tot}$; an oriented factorization retains the phase needed by
+individual turn amplitudes.  \Classical{} \Kernel{}
 
 The distinction matters physically.  The spectrum is decomposition
 independent, while an amplitude can remain sensitive to orientation.  The
 construction preserves exactly the information needed by a path sum and
 forgets exactly the information a rest energy cannot observe.
 
-\subsection{One cubic closure: many constituents, and the interaction}
+\section{Gauge-covariant phase transport and a free spectral observable}
+\label{sec:phasespectrum}
+
+At one point, every $B_z$ with the same $|z|$ belongs to the same chiral
+conjugacy orbit.  Relative orientation becomes observable only after local
+representatives are compared through transport.  Consider two chiral spaces
+$C_L\oplus C_R\simeq\C^4$.  For $|w|=1$ and $t\geq0$, define
+\begin{equation}\label{eq:H2blocks}
+ D(w)=\diag(w,\overline w),\qquad
+ T(t,w)=t\,\Gamma D(w),\qquad
+ H_2(z_L,z_R,w,t)=
+ \begin{pmatrix}B_{z_L}&T(t,w)\\T(t,w)^\dagger&B_{z_R}\end{pmatrix}.
+\end{equation}
+In the ordered basis $(L_+,L_-,R_+,R_-)$ this is
+\begin{equation}\label{eq:H2matrix}
+H_2=
+\begin{pmatrix}
+0&z_L&tw&0\\
+\overline z_L&0&0&-t\overline w\\
+t\overline w&0&0&z_R\\
+0&-tw&\overline z_R&0
+\end{pmatrix}.
+\end{equation}
+
+Independent local chiral-frame changes $b_L,b_R\in U(1)$ act by
+\begin{equation}\label{eq:localphaseaction}
+ z_L\mapsto b_L^2z_L,\qquad
+ z_R\mapsto b_R^2z_R,\qquad
+ w\mapsto b_Lw\overline b_R.
+\end{equation}
+Direct conjugation by
+$V_{b_L,b_R}=\diag(b_L,\overline b_L,b_R,\overline b_R)$ gives the transformed
+Hamiltonian.  The transported mismatch
+\begin{equation}\label{eq:Delta}
+ \Delta:=z_R-(\overline w)^2z_L
+\end{equation}
+therefore transforms as $\Delta\mapsto b_R^2\Delta$, so $|\Delta|$ is gauge
+invariant.  The square on $w$ reflects the half-phase carried by each chiral
+component.
+
+\begin{theorem}[Transported-phase spectral polynomial]
+\label{thm:phasespectrum}
+Assume $t\geq0$, $|z_L|=|z_R|=\mu$, and $|w|=1$.  Then $H_2$ is Hermitian and
+\begin{equation}\label{eq:phasepolynomial}
+ \boxed{\left(H_2^2-(\mu^2+t^2)\id\right)^2
+ =t^2|\Delta|^2\id.}
+\end{equation}
+Consequently the squared energies are
+\begin{equation}\label{eq:phaseenergies}
+ E_\pm^2=\mu^2+t^2\pm t|\Delta|.
+\end{equation}
+When $t|\Delta|>0$, each level has total multiplicity two.  The lower level
+vanishes exactly when
+\begin{equation}\label{eq:phasezeromode}
+ t=\mu,\qquad z_R=-(\overline w)^2z_L.
+\end{equation}
+\end{theorem}
+\noindent\textit{Formal verification.}  Hermiticity, the polynomial identity,
+the eigenvalue polynomial, trace balance, and the zero-mode equivalence are
+kernel checked in \texttt{PlueckerPhaseDefectSpectrum}; the displayed
+multiplicity formulation is the corresponding finite-dimensional spectral
+consequence.
+
+The common-phase case is a necessary control.  For $|b|=1$,
+\begin{equation}\label{eq:commonphaseconjugacy}
+ V_bH_2(z_L,z_R,w,t)V_b^\dagger
+ =H_2(b^2z_L,b^2z_R,w,t),
+ \quad
+ V_b=\diag(b,\overline b,b,\overline b),
+\end{equation}
+so a common phase cannot change the spectrum.  The equal-modulus hypothesis in
+Theorem~\ref{thm:phasespectrum} is also load-bearing: the exact fixture
+$z_L=1$, $z_R=2$, $t=w=1$ violates Eq.~\eqref{eq:phasepolynomial}.  The theorem
+does not hide amplitude variation inside a claimed phase effect.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[>=Latex,font=\small]
+  \node[draw,minimum width=2.4cm,minimum height=1.35cm,align=center] (L)
+    {$L$\\$B_{z_L}$};
+  \node[draw,minimum width=2.4cm,minimum height=1.35cm,align=center,
+    right=3.0cm of L] (R) {$R$\\$B_{z_R}$};
+  \draw[<->,thick] (L) -- node[above] {$T(t,w)$} (R);
+  \node[below=0.55cm of $(L)!0.5!(R)$,align=center]
+    {$\Delta=z_R-(\overline w)^2z_L$\\$|\Delta|$ is frame independent};
+  \begin{scope}[xshift=8.5cm,x=0.016cm,y=0.72cm]
+    \draw[->] (0,0) -- (380,0) node[right] {$\varphi$};
+    \draw[->] (0,0) -- (0,4.6) node[above] {$E^2$};
+    \draw[gray,dashed] (0,2) -- (360,2);
+    \draw[kernelcolor,very thick,samples=90,domain=0:360]
+      plot (\x,{2+2*abs(sin(\x/2))});
+    \draw[opencolor,very thick,samples=90,domain=0:360]
+      plot (\x,{2-2*abs(sin(\x/2))});
+    \node[left] at (0,2) {$2$};
+    \node[below] at (180,0) {$\pi$};
+    \node[below] at (360,0) {$2\pi$};
+    \node[kernelcolor,anchor=west] at (220,3.55) {$E_+^2$};
+    \node[opencolor,anchor=west] at (220,0.45) {$E_-^2$};
+  \end{scope}
+\end{tikzpicture}
+\caption{Left: local mass representatives are compared through an edge
+transport.  Right: for $w=1$, $z_L=1$, $z_R=e^{\ii\varphi}$, and $t=1$,
+$E_\pm^2=2\pm2|\sin(\varphi/2)|$.  A common phase leaves both curves
+unchanged; transported relative phase splits the free spectrum and reaches a
+zero mode at $\varphi=\pi$.}
+\label{fig:phasespectrum}
+\end{figure}
+
+This spectral effect is not unique to a Pl\"ucker parametrization.  An assigned
+complex mass field $M(x)$ with the same local covariance law can reproduce it.
+An assigned real scalar mass cannot.  What the construction adds is that the
+complex field, its modulus relation to $P_{\rm tot}$, its collinearity zero
+locus, and its transport law arise from one oriented null-spinor input.  This
+is the reparametrization test in its strongest baseline form.
+
+\subsection{Supplementary generalized closure and interaction seed}
 \label{sec:cubiclosure}
 
 The two-spinor operator above is the visible corner of a single finite
@@ -719,7 +835,7 @@ realized once by the odd one-particle rest operator of arbitrarily many
 null constituents and once by the even many-body coupling that reads the
 same complex datum.  We state this as a coincidence of the shapes of two
 independently landed theorems, not as a unification: no lemma relates
-$B_w$ to $K(z)$.  The pre-registered selection question --- which
+$B_w$ to $K(z)$.  The selection question --- which
 coupling reads the phase --- is resolved (the covariance-forced kick);
 what remains open is the distinct \emph{dynamical} question, whether the
 free walk itself forces that interaction, which we list separately in
@@ -830,7 +946,7 @@ direction-resolved history sum equals the corresponding transfer-matrix power.
 The direct Gaussian-rational path-sum declaration uses a real mass and corner
 weight $+\ii\varepsilon m$ in its stated convention.  Independently, the
 directed-edge theorem assigns every history edge the corresponding entry of
-the actual complex Pluecker mass coin and proves that the complete oriented
+the actual complex Pl\"ucker mass coin and proves that the complete oriented
 history sum equals its transfer-matrix power.  Thus $\Xi_z$ in
 \eqref{eq:pathweight} is now packaged directly: opposite turns carry $z$ and
 $\bar z$, with the exact $3+4\ii$ control proving that the two normalized
@@ -840,7 +956,7 @@ The tangent appearance is not asserted as novel by itself.  Exponential and
 Euler-angle parametrizations of unitary Dirac-walk coins were related earlier,
 including explicit tangent formulas in quantum lattice-Boltzmann work
 \cite{SucciQW}.  The contribution here is the exact recursive-kernel scaling
-law composed with a coin whose generator is derived from the complex Pluecker
+law composed with a coin whose generator is derived from the complex Pl\"ucker
 coordinate, together with its machine verification.
 
 \section{Full lattice spectrum, symmetry, and doubling audit}
@@ -914,7 +1030,7 @@ which proves the speed bound and its strict massive form.
 \includegraphics[width=0.92\linewidth]{null_spinor_dirac_bands.pdf}
 \caption{Exact quasienergy bands from
 $\cos\Omega=\cos q\cos\theta$.  The left panel shows the massless cone at the
-origin and its Floquet partner at quasienergy $\pi$.  A nonzero Pluecker area
+origin and its Floquet partner at quasienergy $\pi$.  A nonzero Pl\"ucker area
 opens both gaps (right).  The curves evaluate the exact formula; they are not a
 fit or numerical simulation.  Generated by
 \texttt{Scripts/sim/plot\_null\_spinor\_dirac\_bands.py}.}
@@ -1027,7 +1143,7 @@ theory provides context for that distinction \cite{ChildsTrotter}.
 
 For $z=\mu u$ with $|u|=1$, the diagonal unitary $W_u$ commutes with $\Gamma$
 and conjugates $B_\mu$ to $B_z$.  Unitary invariance of the operator norm
-therefore transfers \eqref{eq:rate} to the oriented Pluecker walk.  This
+therefore transfers \eqref{eq:rate} to the oriented Pl\"ucker walk.  This
 one-line conjugacy corollary is \Human{} pending a combined declaration.
 
 The theorem proves uniform convergence of the finite momentum symbol in
@@ -1115,7 +1231,7 @@ $\norm{A(k)-B(k)}\leq\varepsilon$ implies
     \norm{e_n}_{L^2}\longrightarrow0.
   \end{equation}
   The proof is a kernel-checked `eLpNorm` monotonicity-and-squeeze argument.
-  The walk-specific compact-support application is now closed as well.  For any
+  The walk-specific compact-support application is also proved.  For any
   fixed $t\in\mathbb R$, suppose $f\in L^2$ and, almost everywhere on the support of $f$,
   $|k_x|,|k_y|,|k_z|\leq K$ and $|z|\leq M$, with $K,M\geq0$.  Applying the
   complex split symbol for $n+1$ steps gives an error multiplier $E_n$ satisfying
@@ -1154,7 +1270,7 @@ $\norm{A(k)-B(k)}\leq\varepsilon$ implies
   physical momentum is exactly $N+1$; the result is therefore not a disguised
   fixed-compact-momentum limit.
 
-  The concrete cell-sampling dense core is now closed as well.  Let $f$ be a
+  A concrete cell-sampling dense core is also available.  Let $f$ be a
   complex Lipschitz momentum field with constant $L$, and let a finite family
   of the half-open cells of side $h_N$ cover its support.  Sampling $f$ at each
   cell center gives the exact global estimate
@@ -1178,26 +1294,60 @@ $\norm{A(k)-B(k)}\leq\varepsilon$ implies
   and zero elsewhere is zero almost everywhere, but center sampling reads the
   value one; sampling the AE-equal zero function reads zero.  Thus the center
   sampler is not AE-invariant and cannot define a bounded operation on $L^2$
-  equivalence classes.  This no-go is NewResult{} Kernel{}, not merely an
+  equivalence classes.  This no-go is \NoGo{} \Kernel{}, not merely an
   analytic warning.  Normalized cell averaging supplies the correct first
   repair: it is AE-invariant, sends the one-point spike to zero, and returns
   exactly one on the constant-one function for every positive cell size.
 
-  The representative-safe repair has now advanced substantially.  The finite
-  cell-average projection is an exact $L^2$ contraction; compact support is
-  eventually covered by the explicit expanding schedule; only the active
-  cells, not the full growing box, have a uniform volume bound; and the exact
-  three-term transfer estimate has constants $6$ and $3$.  The final epsilon
-  composition to arbitrary $L^2$ data is a separate capstone now under kernel
-  verification.  Beyond it remain the identification of cell averages with
-  coefficients evolved by the live walk, composition with
-  \eqref{eq:scaledlivebound}, and inverse continuum Fourier identification of
-  the position-space Dirac flow.  We do not yet claim that final PDE theorem.
+  The representative-safe repair now closes the changing-lattice flow theorem
+  for arbitrary square-integrable data.  The finite cell-average projection is
+  an exact $L^2$ contraction; compact support is eventually covered by the
+  expanding schedule; only the active cells, not the full growing box, require
+  a volume bound.  The capstone then separates the total error into three
+  terms: live evolution versus the exact flow at each cell center, exact flow
+  at the center versus exact flow at the running momentum, and exact evolution
+  of the cell-projection tail.  Each term tends strongly to zero.  Thus, for
+  every fixed $z\neq0$, fixed bound $M\geq|z|$, fixed time $t$, and fixed
+  componentwise-$L^2$ four-spinor $F$,
+  \begin{equation}\label{eq:changinglatticepositionl2}
+    \left\|\mathcal F^{-1}\!\left(
+      \text{live}_{N,z,t}P_NF-e^{-\ii tH_z}F\right)\right\|_{L^2}
+      \longrightarrow0.
+  \end{equation}
+  Here the displayed live term abbreviates the cellwise reconstruction used in
+  the formal statement, and $\mathcal F^{-1}$ is Mathlib's vector-valued
+  inverse Fourier isometry.  The representative identity, all three norm
+  limits, their triangle composition, and the position-space norm transfer are
+  \NewResult{} \Kernel{}.  This is a changing-lattice, full-$L^2$ convergence
+  theorem for fixed mass, data, and time; it is not uniform over all masses or
+  data, and it says nothing about interactions or the extra high-frequency
+  sectors audited below.
+
+  The exact comparison flow also has its expected generator on compact
+  momentum support: the strong derivative at $t=0$ is pointwise
+  $-\ii H_z(q)F(q)$.  Independently, the affine Hermitian symbol $H_z(q)$ now
+  defines a densely defined maximal multiplication operator on momentum-space
+  $L^2$.  Explicit bounded inverses for $H_z\pm\ii$ have operator norm at most
+  one, map into the maximal graph domain, and make both imaginary shifts
+  surjective.  The resulting unbounded Hamiltonian is therefore self-adjoint,
+  equal to its adjoint, and closed; these statements are \NewResult{}
+  \Kernel{}.
+
+  The exact Fourier-conjugated maximal operator is now defined on the pulled-back
+  graph domain.  Unitary conjugation proves it self-adjoint and closed, identifies
+  its graph exactly, and preserves both graph-norm terms.  On Schwartz functions,
+  the derivative/momentum bridge is also kernel checked with Mathlib's actual
+  $2\pi$, sign, and $\ii$ convention.  What remains open is stronger: prove that
+  this abstract maximal conjugate agrees with the classical differential Dirac
+  expression on a graph core, and identify its full domain with a vector-valued
+  Sobolev $H^1$ space.  Mathlib currently lacks the required vector-valued
+  weak-derivative/weighted-Fourier characterization.  Convergence of derivatives
+  and interacting dynamics remain later gates as well.
 
 The same architecture extends to four internal components.  The
 successive-axis factorization itself is the standard construction used by
 Mlodinow and Brun \cite{MlodinowBrun}; what is new here is the
-Pluecker-derived complex coin, the exact finite-torus implementation with a
+Pl\"ucker-derived complex coin, the exact finite-torus implementation with a
 two-sided inverse and strict causal cone, and the kernel-checked all-zone
 audit that follows.  Let Hermitian
 matrices $\alpha_1,\alpha_2,\alpha_3,\beta\in M_4(\C)$ satisfy
@@ -1462,7 +1612,7 @@ programs.
 The obstruction is stronger for a separable three-axis product.  Once
 $B_x=B_y=B_z=0$, origin normalization forces each factor to obey
 $F_j(\pi)=-\id$.  Therefore, for any momentum-independent onsite coin $Q$,
-including the complex Pluecker mass coin,
+including the complex Pl\"ucker mass coin,
 \begin{equation}\label{eq:genericcorneralias}
  U_Q(0,0,0)=U_Q(\pi,\pi,0)=U_Q(\pi,0,\pi)=U_Q(0,\pi,\pi).
 \end{equation}
@@ -1571,7 +1721,7 @@ sine product $-1$.  Likewise, $U=-\id$ holds exactly on the odd-parity cosine
 corners or the body centers with sine product $+1$.  These two global
 trigonometric loci are disjoint, and the actual Fr\'echet-Jacobian determinant
 is nonzero at every point of either locus.  The rank-deficient quarter-axis
-control lies on neither branch.  This is NewResult{} Kernel{} and upgrades
+control lies on neither branch.  This is \NewResult{} \Kernel{} and upgrades
 the displayed charge census from a selected list to an exhaustive positive-Weyl
 branch classification.  It is still a Jacobian-sign doubling theorem, not a
 formal Chern-number computation.  At a full $4\times4$ body center both
@@ -1619,7 +1769,7 @@ loops is exactly invisible there.  A single phase step supplies the negative
 control and does see the sign flip.  Thus the obstruction belongs to the
 doubled commutator architecture, not to phase gates individually.
 
-The first exact primitive to survive that obstruction uses a genuinely
+A construction that survives that obstruction uses a genuinely
 noncentral conditional shift.  With
 $D(z)=\operatorname{diag}(z,1)$, an exact rational coin $C$, and
 $K(z)=D(z)CD(z^{-1})C^{-1}$, define the reciprocal word
@@ -1635,7 +1785,7 @@ $\det(S-\id)=2304/625$ and $\det(S+\id)=196/625$, so it removes both
 zero- and $\pi$-crossings of the identity baseline at that corner.  This is
 \NewResult{} \Kernel{} as a two-band finite-Laurent construction primitive,
 not yet an alias-free $3+1$ walk.  A naive four-component embedding creates
-additional generic roots in the external oracle; any successful embedding now
+additional generic roots in exact-arithmetic tests; any successful embedding
 owes an exact all-torus root certificate.
 
 The two-band primitive itself is now classified across the full rational
@@ -1660,9 +1810,8 @@ have paired determinant.  Conversely, real endpoint values alone do not make
 $\det(U(q)-\id)$ real along a path.  The family-level reciprocal sign oracle
 therefore remains conditional until the live $U_\pm(q)$ blocks, one consistent
 register convention, paired determinant along an explicit origin-avoiding
-path, and the endpoint formulas are composed in one theorem.  This condition
-was exposed by hostile audit and is now NewResult{} Kernel{} as a reusable
-reality gate, not as a root-existence theorem.
+path, and the endpoint formulas are composed in one theorem.  This condition is
+a kernel-checked reusable reality gate, not a root-existence theorem.
 
 At the two-band level there is a complementary exact locking theorem.  If
 $U$ is unitary and $\det U=1$, then
@@ -1692,7 +1841,7 @@ reconstructed with $\arccos$, with $q_z\ne0$ in both cases.  This is
 reciprocal no-go.  The negative result is diagnostic: corner visibility and
 higher-order chirality mixing can move the alias locus without reducing it.
 An enlarged determinant-paired register or an explicitly minimally doubled
-construction is the next honest test.
+construction is the next construction class to test.
 
 A second exact primitive shows that a stationary onsite amplitude need not
 conflict with strict locality or unitarity.  For arbitrary orthogonal
@@ -1706,18 +1855,18 @@ and is exactly unitary.  A rational noncommuting two-band witness has
 $\Gamma_0=\left(\begin{smallmatrix}16/25&-12/25\\12/25&16/25\end{smallmatrix}\right)
 \ne0$.  The necessary $z\ne0$ hypothesis and the correct same-family adjoint
 laws were enforced during formalization after the originally proposed formulas
-failed.  This is NewResult{} Kernel{} as a one-variable construction
+failed.  This is \NewResult{} \Kernel{} as a one-variable construction
 mechanism inspired by the stationary-amplitude route of Gupta and Short.  It
 does not yet supply a three-dimensional isotropic symbol, a Dirac tangent, or
 an all-zone proof that only the intended Weyl cones remain.
 
-The first of those gaps is now closed constructively.  Three explicit rational
+One of those gaps has a constructive answer.  Three explicit rational
 noncommuting projector pairs have first Laurent moments exactly
 $(3/5)\sigma_x$, $(3/5)\sigma_y$, and $(3/5)\sigma_z$.  Every axis retains a
 nonzero onsite amplitude, while their ordered three-axis product is exactly
 unitary for every torus momentum and equals the identity at the origin.  Thus
 strict locality, stationary amplitude, all-zone unitarity, and an isotropic
-set of per-axis Weyl first moments are compatible in one NewResult{} Kernel{}
+set of per-axis Weyl first moments are compatible in one \NewResult{} \Kernel{}
 construction.  At the origin, the other two factors are identities, so the
 product-level isotropic first jet follows by the ordinary product rule; that
 combined derivative has not yet been packaged as a separate kernel theorem.
@@ -1725,15 +1874,14 @@ The claim stops there: the full zero- and $\pi$-crossing census of this new
 symbol must determine whether it is minimally doubled or still more highly
 aliased.
 
-The first global test is already negative.  At the distinct torus phase
+A global test is negative.  At the distinct torus phase
 $(z_x,z_y,z_z)=(-1,1,-1)$, the complete ordered symbol is exactly the identity.
-Both the matrix equality and distinctness from $(1,1,1)$ are NoGo{}
-Kernel{}.  Thus the explicit stationary-amplitude construction is not
+Both the matrix equality and distinctness from $(1,1,1)$ are \NoGo{}
+\Kernel{}.  Thus the explicit stationary-amplitude construction is not
 unique-cone.  This is not the hollow case of a constant identity symbol: at
 $(z_x,z_y,z_z)=(i,1,1)$ its $(0,0)$ entry is exactly $16/25$, so the symbol is
-kernel-proved nonconstant.  An exact-coefficient oracle consistently finds two
-additional off-corner identity roots.  The first is now an exact kernel
-theorem:
+kernel-proved nonconstant.  Exact-coefficient computation identifies two
+additional off-corner identity roots.  One is the following kernel theorem:
 \[
  (z_x,z_y,z_z)=
  \left(\frac{-9-40i}{41},\frac{-9+40i}{41},1\right),
@@ -1742,8 +1890,8 @@ theorem:
 Both nontrivial phases lie exactly on the unit circle and differ from $1$.
 Conjugate pairing is load-bearing: replacing $z_y$ by $z_x$ makes the
 $(0,1)$ matrix entry exactly $-1104/1681$, so the resulting symbol is not the
-identity.  This off-corner crossing is NoGo{} Kernel{}.  A second, fully
-off-axis crossing is now exact as well.  In tangent coordinates its third
+identity.  This off-corner crossing is \NoGo{} \Kernel{}.  A second, fully
+off-axis crossing is exact as well.  In tangent coordinates its third
 coordinate is the unique real root of
 \[
   480t^5-575t^4-1026t^2+1440t-575=0,
@@ -1784,12 +1932,12 @@ A finite $\mathbb Z_2^3$ cover can fold the eight $\{0,\pi\}^3$ corner labels
 to one reduced representative while retaining a unique three-bit flavour
 label.  The cover is bijective, its deck action is free and transitive, and a
 single diagonal $\mathbb Z_2$ bit is provably too small to label all corners.
-This is NewResult{} Kernel{} as an exact census, but not a cure: it relabels
+This is \NewResult{} \Kernel{} as an exact census, but not a cure: it relabels
 eight crossings and removes none.  For the present successive-axis symbol the
 exact translation intertwiner reduces to a scalar parity sign.  Four flavour
 labels preserve zero quasienergy and four exchange zero with pi; a one-axis
 translation is explicitly nonidentity, while a pi/2 shift fails to be any
-scalar deck action.  These statements are NewResult{} Kernel{}.  This route
+scalar deck action.  These statements are \NewResult{} \Kernel{}.  This route
 must therefore not be advertised as a unique-cone theorem or as a derivation
 of observed particle generations: it is a faithful eightfold census.
 
@@ -1823,7 +1971,7 @@ one-step update.
 
 \paragraph{Exact temporal blocking and nonclosure.}
 Define the two-step blocking map by $\mathcal B(U)=U^2$.  The mass-only
-Pluecker subgroup closes exactly,
+Pl\"ucker subgroup closes exactly,
 \[
  \mathcal B\bigl(C_z(\varepsilon)\bigr)=C_z(2\varepsilon),
 \]
@@ -1840,7 +1988,7 @@ renormalized copy of the original scalar parameters.  Spatial decimation is a
 separate, stronger RG problem.
 
 \paragraph{A proved boundary on scale selection.}
-For the finite positive Pluecker action developed here, simultaneous scaling
+For the finite positive Pl\"ucker action developed here, simultaneous scaling
 of both primitive spinors by $t$ gives the exact law
 \begin{equation}\label{eq:quarticscalenogo}
  S(t\psi,t\phi;x)=t^4S(\psi,\phi;x).
@@ -1861,9 +2009,9 @@ at $t=0$ or $t^2=c$; for supplied $c=1$, the nonzero points $t=\pm1$ are global
 minima.  Selection is therefore possible, but its magnitude is exactly the
 new input.  This control is also \Realization{} \Kernel{}.
 
-\paragraph{Pre-registered high-momentum benchmark.}
-Before evaluation we fixed $z=3+4\ii$, $\varepsilon=0.2$, Wilson $r=1$, and a
-$10^{-10}$ kill threshold.  The oracle then found exactly three non-origin
+\paragraph{Exact high-momentum benchmark.}
+The benchmark fixes $z=3+4\ii$, $\varepsilon=0.2$, Wilson $r=1$, and a
+$10^{-10}$ kill threshold.  The exact-matrix implementation returns three non-origin
 even-corner aliases (maximum residual $2.30\times10^{-16}$), both body-center
 $\pm1$ modes (residuals below $2.24\times10^{-16}$), no non-origin Wilson zero,
 and minimum Wilson corner gap $2$.  With $r=0$, all eight corners became
@@ -1889,7 +2037,7 @@ facets, compose facet/strict/weakly local shifts with directional coins, and
 insert the assigned coin $e^{-\ii\varepsilon m\gamma^0}$; their expansion
 recovers the $3+1$ Dirac equation to first order.  Our register and finite
 update are different: the present construction is a cubic successive-axis
-product with a Pluecker-derived complex mass coin and an explicit many-step
+product with a Pl\"ucker-derived complex mass coin and an explicit many-step
 rate.  A constant onsite basis change cannot decide away this difference:
 unitary conjugacy preserves equality of symbols at distinct momenta, so every
  constant onsite conjugate of our walk inherits the three aliases above and
@@ -1912,15 +2060,17 @@ it does not replace this factor by $\exp(B_4)$.  The resulting growing-window
 theorem takes $n=K^4$ and permits arbitrary momentum and mass sequences with
 $B_4\leq K$; their modewise split-versus-exact error is bounded by
 $2t^2K^{-2}\exp(|t|K^{-3})$ and tends to zero.  A sharp pure-momentum boundary
-fixture saturates $B_4=K$, so this is not a fixed-mode restatement.  Shannon
-sampling/interpolation into physical space and the position-space $L^2$ Dirac
-PDE limit remain Paper~D.
+  fixture saturates $B_4=K$, so this is not a fixed-mode restatement.  The later
+representative-safe cell projection and inverse-Fourier isometry close the
+changing-lattice full-$L^2$ position-space convergence theorem for fixed mass,
+data, and time.  Differential-domain and interacting limits remain open.
 
 \section{Formal verification and negative controls}
 
 The formal development uses Lean~4.28.0 and Mathlib \cite{Lean4,Mathlib}.  Its
 spinor and physics conventions were also cross-checked against the public
-PhysLean corpus \cite{PhysLean}.  Formalized mathematical physics at
+Physlib corpus (formerly PhysLean and Lean-QuantumInfo) \cite{PhysLean}.
+Formalized mathematical physics at
 substantial scale is becoming practical: the free bosonic quantum field
 theory in four-dimensional Euclidean spacetime, satisfying the Glimm--Jaffe
 axioms, was recently constructed end to end in Lean~4
@@ -1933,6 +2083,45 @@ results remain in the draft namespace while their publication interfaces are
 reviewed.  Each headline declaration below has a build-enforced assumption
 footprint contained in
 $\{\mathtt{propext},\mathtt{Classical.choice},\mathtt{Quot.sound}\}$.
+
+\begin{center}
+\small
+\begin{tabularx}{\linewidth}{@{}p{0.40\linewidth}X@{}}
+\toprule
+Lean declaration & Mathematical payload\\
+\midrule
+\path{two_edge_plucker_mass_identity}
+ & $\det P_{\rm tot}=|\psi\wedge\phi|^2$\\
+\path{pair_diracSymbol_sq}
+ & exact Dirac square from the derived mass operator\\
+\path{massOperator_eq_zero_iff_collinear}
+ & exact collinearity/gap-closing equivalence\\
+\path{phase_covariance}
+ & common mass phase acts by chiral unitary conjugacy\\
+\path{complexPlueckerPathSum_eq_transfer_pow}
+ & directed history sum with $z$ and $\bar z$\\
+\path{pluecker_positive_mode_chain}
+ & the same area fixes the positive rest energy, Euclidean decay, and transfer-pole weight\\
+\path{plueckerDecayKernel_posSemidef}
+ & the selected Pluecker decay produces an exact finite positive reflected Hankel kernel\\
+\path{reflectionPositive_induces_quotient_innerProduct}
+ & finite reflection positivity yields a positive physical quotient under explicit compatibility\\
+\path{fixed_time_many_step_bound_on_box}
+ & uniform bounded-parameter $O(1/n)$ symbol estimate\\
+\path{phaseDefect_polynomial}, \path{gap_zero_iff}
+ & transported-phase spectral polynomial and exact zero-mode locus\\
+\path{factorized_degree_one_forced_corner_aliases}
+ & no momentum-independent onsite coin removes the tested aliases\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+The generated artifact supplement retains the complete declaration ledger,
+negative-control table, and per-module verification commands.  They are omitted
+from the default article view because the scientific evidence is carried by
+the statements above and the mechanization corrections below.
+
+\ifartifactledger
 
 \begin{center}
 \small
@@ -1958,6 +2147,18 @@ Declaration & Status & Mathematical payload\\
  & \NewResult{} \Kernel{} & complete normal form for odd Hermitian rest operators\\
 \texttt{massCoin\_unitary\_group}
  & \NewResult{} \Kernel{} & exact unitary rest evolution and group law\\
+\texttt{pluecker\_positive\_mode\_chain}
+ & \NewResult{} \Kernel{} & one primitive-spinor wedge determines the positive rest eigenmode, exact Euclidean decay, reconstructed energy $|z|$, positive visible transfer weight, and denominator-pole location, with no independent mass parameter\\
+\texttt{negativeRestFactor\_gt\_one}
+ & \NoGo{} \Kernel{} & the negative rest branch grows under the same Euclidean transfer; positive-energy selection is load-bearing and the full $B_z$ is not a positive Hamiltonian\\
+\texttt{plueckerDecayKernel\_posSemidef},
+\texttt{twoTimeNullVector\_quadratic\_zero}
+ & \NewResult{} \Kernel{} & the selected Pluecker exponential gives a finite positive reflected Hankel kernel, while an explicit nonzero null vector exposes its rank-one boundary\\
+\texttt{reflectionPositive\_induces\_quotient\_innerProduct}
+ & \NewResult{} \Kernel{} & finite OS reflection positivity plus explicit reflection compatibility makes the null-space quotient of the reflected block a real inner-product space\\
+\texttt{positiveDefinite\_not\_reflectionPositive\_witness},
+\texttt{reflectionPositive\_not\_positiveDefinite\_witness}
+ & \NoGo{} \Kernel{} & ordinary matrix positive-definiteness and finite OS reflection positivity imply neither one another; both directions have exact symmetric $2\times2$ controls\\
 \texttt{sameMomentum\_covariant\_iff},
 \texttt{parity\_covariant\_iff}
  & \NewResult{} \Kernel{} & complete covariance classification of the momentum-dependent two-channel generator: diagonal phases at fixed momentum and antidiagonal flips only with parity\\
@@ -2055,7 +2256,20 @@ Declaration & Status & Mathematical payload\\
 \texttt{uv\_tail\_tendsto\_zero}
  & \Classical{} \Kernel{} & for arbitrary $L^2$ data, mass outside measurable monotone bands vanishes as the bands exhaust frequency space\\
 \texttt{band\_approx\_tendsto\_zero}
- & \Classical{} \Kernel{} & abstract vanishing in-band error plus measurable band exhaustion implies global $L^2$ convergence; concrete sampling remains open\\
+ & \Classical{} \Kernel{} & abstract vanishing in-band error plus measurable band exhaustion implies global $L^2$ convergence\\
+\texttt{projectionErrorLp\_norm\_tendsto\_zero},
+\texttt{embeddedErrorLp\_norm\_tendsto\_zero}
+ & \NewResult{} \Kernel{} & representative-safe cell projection and live-versus-cell-center errors converge strongly in momentum-space $L^2$\\
+\texttt{positionTotalErrorLp\_norm\_tendsto\_zero}
+ & \NewResult{} \Kernel{} & for fixed $z\neq0$, mass bound, time, and componentwise-$L^2$ data, the changing-lattice live HNU approximation converges strongly after inverse Fourier transport to the exact massive Dirac flow\\
+\texttt{massiveMomMultL2Isometry\_hasDerivAt\_zero}
+ & \NewResult{} \Kernel{} & on compact momentum support the exact complex-mass $L^2$ flow has strong derivative $-\ii H_zF$ at time zero\\
+\texttt{massiveHamiltonian\_isSelfAdjoint},
+\texttt{massiveHamiltonian\_isClosed}
+ & \NewResult{} \Kernel{} & the affine Hermitian HNU symbol defines a self-adjoint closed maximal multiplication operator on momentum-space $L^2$ via explicit bounded imaginary resolvents; position-space differential-domain identification remains open\\
+\texttt{positionDirac\_isSelfAdjoint},
+\texttt{positionDirac\_graph\_norm\_exact}
+ & \NewResult{} \Kernel{} & inverse-Fourier unitary conjugation gives an exact self-adjoint closed position operator with pulled-back graph domain and invariant graph norm; equality with the classical differential operator on vector-valued $H^1$ remains open\\
 \texttt{massless\_corner\_parity\_classification}
  & \Realization{} \Kernel{} & exact $\{0,\pi\}^3$ matrix parity classification\\
 \texttt{massless\_corner\_quasienergy\_classification}
@@ -2212,6 +2426,11 @@ Declaration & Status & Mathematical payload\\
 \texttt{freeHeisenberg\_geometric\_cone},
 \texttt{free\_then\_pairLayer\_geometric\_cone}
  & \NewResult{} \Kernel{} & coefficient-local finite-range one-particle evolution inherits a one-step CAR cone under determinant-minor second quantization; one disjoint Pluecker pair layer adds exactly a second graph-neighborhood step\\
+\texttt{quarticHamiltonian\_eq\_H},
+\texttt{U\_unitary},
+\texttt{conjugate\_maps\_cell\_CAR},
+\texttt{pair01\_sector\_mixed}
+ & \NewResult{} \Kernel{} & an explicit even pair interaction is supported on a four-mode cell, has a unit-phase reversible update, fixes both outside CAR generators under conjugation, preserves the full two-particle sector, and nontrivially mixes an overly narrow one-pair sector\\
 \bottomrule
 \end{tabularx}
 \end{center}
@@ -2241,6 +2460,8 @@ The principal verification commands are
 \begin{verbatim}
 lake env lean PhysicsSM/Draft/NullEdge/PluckerMassOperator.lean
 lake env lean PhysicsSM/Draft/NullEdge/PluckerMassDynamics.lean
+lake env lean PhysicsSM/Draft/NullEdge/PlueckerPositiveEnergyTransfer.lean
+lake env lean PhysicsSM/Draft/NullEdge/FiniteOSReflectionPositivity.lean
 lake env lean PhysicsSM/Draft/NullEdge/CornerWalkEquivalence.lean
 lake env lean PhysicsSM/Draft/NullEdge/FermionDoublingAudit.lean
 lake env lean PhysicsSM/Draft/NullEdge/ExactCheckerboardPathSum.lean
@@ -2308,6 +2529,7 @@ python Scripts/publication/verify_null_edge_paper_a.py
 The cited modules contain no proof handoff markers or compiled-evaluator proofs.
 The working tree is not yet an archival release.  A clean commit, source
 archive, theorem ledger, and DOI remain submission requirements.
+\fi
 
 \subsection*{What mechanization changed}
 
@@ -2335,7 +2557,7 @@ the noncommuting x/y/z/mass factor order instead of identifying reversed local
  carry nonzero winding.  Ninth, exact temporal blocking showed that the
  mass-only group law closes while the noncommuting spatial split generates a
  larger ordered-word family.  Tenth, the radial derivative of the positive
- Pluecker action proved that its homogeneity collapses rather than selects a
+ Pl\"ucker action proved that its homogeneity collapses rather than selects a
  nonzero scale.
  These are the formalization contributions; the number of declarations is not.
 
@@ -2358,13 +2580,14 @@ a site field $z(x)$ gives its own patched link data with an exact
 $2\pi$-integer winding.\\
 Realized & The split-step null walk exhibits the construction exactly and
 converges uniformly on bounded $1+1$ momentum boxes; a finite local $3+1$
- successive-axis walk has an ordered complex-Pluecker symbol with the same
+ successive-axis walk has an ordered complex-Pl\"ucker symbol with the same
  explicit rate, a proved quartically growing-window consistency theorem,
  exact three-torus Plancherel control, and a classified
  high-symmetry failure set.\\
- Open & A walk-specific changing-lattice Fourier/PDE limit, a replacement
- $3+1$ regulator that removes the corner aliases and body-center modes,
- beyond the excluded degree-one stationary-amplitude ansatz, reduction of
+ Open & Exact identification of the Fourier-conjugate maximal multiplier with
+ the position-space differential Dirac operator and its Sobolev domain, a
+ replacement $3+1$ regulator that removes the corner aliases and body-center
+ modes beyond the excluded degree-one stationary-amplitude ansatz, reduction of
  the derived link data to a corrected non-winding-only defect index and stable
  localized mode, instantiation of the proved general free-plus-pair CAR cone
  with the full live $3+1$ walk, an operator-exponential/action law, and a continuum interaction
@@ -2415,6 +2638,68 @@ mass scale: rescaling the input spinors rescales $z$ and hence $\mu$.  The
 quartic-action no-go sharpens this from an omission to a proved boundary for
 the natural positive homogeneous action.
 
+There is nevertheless a rigorous finite bridge from a chosen positive
+Hamiltonian to the usual spectral signatures of mass.  For a finite Hermitian
+$H\geq0$ and Euclidean spacing $a\geq0$, the genuine matrix exponential
+$T=e^{-aH}$ is Hermitian, strictly positive, and contractive.  If a nonzero
+observable vector is an eigenmode with energy $E>0$, then its transfer orbit is
+exactly $e^{-aEn}v$, the energy is reconstructed as
+$-a^{-1}\log(e^{-aE})$, and its scalar transfer resolvent has a unique simple
+denominator zero with positive coefficient $\lVert v\rVert^2$.  Every finite
+orbit kernel is Gram positive.  These statements are \NewResult{} \Kernel{}.
+They show that decay, reconstructed energy, and positive visible pole weight
+are not independent postulates once the finite Hamiltonian and observable mode
+are fixed.  The Pl\"ucker construction now closes the corresponding selected
+rest-mode chain without an independently assigned mass parameter.  For
+$z=\psi\wedge\phi\neq0$, the same $z$ that fixes
+$\det P_{\rm tot}=|z|^2$ gives an explicit positive-energy eigenvector of
+$B_z$ with eigenvalue $|z|$.  Its Euclidean transfer factor is exactly
+$e^{-a|z|}$, lies strictly between zero and one for $a>0$, reconstructs the
+energy $|z|$, and carries positive visible weight in the scalar transfer
+denominator.  These statements are \NewResult{} \Kernel{}.
+
+The selection is essential rather than cosmetic.  The other rest eigenvector
+has energy $-|z|$ and grows by $e^{a|z|}$ under the same Euclidean step.  Thus
+the full $B_z$ is Hermitian but indefinite; the theorem derives the decaying
+positive-energy branch, not positivity of the unprojected rest operator.  It
+does not derive an interacting action, an infinite-volume Hamiltonian, or an
+LSZ particle pole.  The ``positive coefficient'' is the weight recovered after
+multiplying by the transfer denominator; the complex-analytic residue in a
+local pole coordinate differs by sign and scale.
+
+For the selected factor $\lambda=e^{-a|z|}$, the finite reflected two-time
+kernel now has the exact Hankel form $K_{ij}=\lambda^{i+j}$.  Its quadratic
+form is one square and is therefore positive semidefinite.  The same theorem
+retains an explicit nonzero null vector at two time samples: this one-mode
+kernel is rank one, not a hidden strictly positive interacting theory.  An
+exact $3$--$4$--$5$ wedge gives $|z|=5$ and $\lambda=e^{-5}$ at unit spacing.
+These statements are \NewResult{} \Kernel{} and remain finite two-point
+consequences.
+
+The finite many-fermion layer also now contains a genuine locality-and-sector
+control beyond free second quantization. On five ordered occupation modes, an
+exact even quartic word transfers the occupied pair $01$ to $23$ with coefficient
+$z$ and the reverse pair with $\bar z$. A closed unit-phase pair update has an
+explicit adjoint inverse, fixes vacuum and every one-particle state, preserves
+the full two-particle sector, and is localized algebraically to the declared
+four-mode cell: conjugation fixes the outside creation and annihilation
+generators and maps the cell CAR algebra to itself. The update nevertheless
+mixes the one-dimensional sector containing only pair $01$, so the sector test
+is not a disguised identity. These statements are \NewResult{} \Kernel{}.
+They do not yet identify the update as the exponential of the displayed
+Hamiltonian, compose it with the live HNU regulator, select the lower HNU bands,
+or provide an interacting cone or continuum limit.
+
+The formal development also separates ordinary matrix positivity from finite
+Osterwalder--Schrader reflection positivity.  Under an explicit compatibility
+condition, reflection positivity makes the reflected positive-time block
+positive semidefinite and its null-space quotient a genuine real inner-product
+space.  Neither notion implies the other: exact symmetric $2\times2$ witnesses
+show both failures of implication.  This is \NewResult{} \Kernel{}, but it is
+the algebraic finite OS step only.  Reflection positivity of an interacting
+lattice gauge-field algebra and reconstruction of its transfer Hamiltonian
+remain open.
+
 The result does support a precise statement: a timelike rest gap can be encoded
 entirely by massless rank-one momentum primitives, and the gap is exactly the
 area opened between their spinor directions.  In the derived walk, microscopic
@@ -2446,7 +2731,28 @@ pinned; where companion analyses use exact computer-algebra computations
 that are not yet formalized, they are tagged as such there and are never
 cited here as theorems.
 
-The next problems are sharply ordered.
+Three frontiers determine whether the construction grows into a physical
+theory.
+\begin{enumerate}[leftmargin=2em]
+  \item \textbf{Changing-lattice position-space convergence.}  Compose the
+  proved symbol estimates, representative-safe cell averaging, ultraviolet
+  tail control, and Fourier identifications into a strong $L^2$ convergence
+  theorem for the Dirac PDE propagator.
+  \item \textbf{An alias-free exactly local $3+1$ unitary regulator.}  Escape
+  the proved successive-axis and degree-one onsite obstructions while retaining
+  exact unitarity, finite propagation, the Dirac tangent, and the
+  Pl\"ucker-derived complex mass operator.
+  \item \textbf{A derived interacting many-fermion dynamics.}  Integrate the
+  exact CAR lift and local pair gates into one field-valued action or update,
+  then obtain a scattering phase, bound state, or selection rule not freely
+  fitted as an input.
+\end{enumerate}
+
+The optional research supplement records the finer theorem and construction
+tasks behind these three gates.
+
+\ifextendedfrontiers
+The detailed problems are ordered as follows.
 \begin{enumerate}[leftmargin=2em]
   \item \textbf{Complete the lattice-to-PDE identification.}
   The finite product DFT, its exact $N^{-3}$ normalization, and the
@@ -2454,7 +2760,7 @@ The next problems are sharply ordered.
   the changing lattice/continuum Fourier spaces and identify the limiting
   multiplier with the position-space Dirac PDE propagator.  The abstract
   bulk/tail split and vanishing of the ultraviolet tail under measurable
-  monotone band exhaustion are now closed for arbitrary $L^2$ data, and the
+  monotone band exhaustion are proved for arbitrary $L^2$ data, and the
   per-step symbol estimate now carries the refined form
   $2B_4^2t^2/n\cdot\exp(|t|B_4/n)$, which retains the small-step factor
   that the earlier bound discarded; the remaining frontier is the
@@ -2542,7 +2848,7 @@ The next problems are sharply ordered.
   exact disjoint-block commutation, finite scheduled CAR-support propagation,
   a sequential finite-range graph-neighborhood cone, and one neighborhood
   expansion per pairwise-disjoint circuit layer.  The abstract free/interacting
-  composition is now closed: a coefficient-local unitary one-particle update,
+  composition theorem states that a coefficient-local unitary one-particle update,
   lifted by determinant minors, contributes one neighborhood step and one
   disjoint pair layer contributes a second.  Instantiate this theorem with the
   full live spatial walk, then derive an
@@ -2565,7 +2871,7 @@ The next problems are sharply ordered.
   forced by the complete covariance group of the static family $\{B_z\}$,
   which is the chiral phase circle plus an orientation-flip coset
   (\texttt{MassCovarianceForcing}, \texttt{CovarianceGroupFull}).  The remaining
-  generator-level gate is now closed: covariance of
+  generator-level result gives the covariance of
   $H(k,z)=k\Gamma+B_z$ is exactly the diagonal chiral-phase circle at fixed
   momentum, while the antidiagonal coset survives only together with parity
   $k\mapsto-k$.  These same two branches now act exactly on the ordered
@@ -2584,6 +2890,7 @@ The next problems are sharply ordered.
   other dimensionful input and quantify which observed scale remains supplied.
   Interaction strengths and gauge representations remain open.
 \end{enumerate}
+\fi
 
 The finite construction encodes spacetime information algebraically through a
 fixed Pauli map and null direction grading.  Emergence of a dynamical continuum
@@ -2593,57 +2900,32 @@ primitive mass term inside the finite model.
 
 \section{Conclusion}
 
-The result readers should retain is compact.  Null spinors open an exterior
-area.  That area is the positive rest gap, its square is the momentum
-determinant, and its complex orientation is the off-diagonal part of an odd
-Hermitian mass operator.  The collinear null boundary is exactly the
-gap-closing locus.
+The central operator theorem is simple.  The total momentum
+$P_{\rm tot}$ determines the radius
+$|z|=\sqrt{\det P_{\rm tot}}$ of an odd-Hermitian mass orbit, while an oriented
+null factorization selects the representative
+$B_z=(\operatorname{Re}z)\sigma_x-(\operatorname{Im}z)\sigma_y$.  This
+assignment is uniquely fixed within the stated homogeneous and chiral-covariant
+class.  Its positive rest energy is $|z|$, its rest-frame band gap is $2|z|$,
+and both close exactly when the primitive spinors become collinear.
 
-The operator does more than rename a scalar.  It produces the relativistic
-Dirac square, exponentiates to the exact unitary turn, and fixes the finite
-corner ratio, including the directed $z$/$\bar z$ factors in the exact history
-sum.  The associated split-step walk converges uniformly on bounded
-$1+1$ momentum boxes at an explicit $O(1/n)$ rate, and its transfer-matrix
-history representation has a two-weight recursion that scales to the
-checkerboard corner ratio $-\ii\tan(a\mu)$.  The
-   finite local $3+1$ extension accepts arbitrary position-dependent
-   Pluecker profiles, preserves norm exactly, has an explicit inverse and
-   causal cone, and turns local phase variation into endpoint links.  Its
-   ordered symbol carries the complex phase at the same uniform compact-box
-   rate, the three-torus Plancherel identity fixes the exact $N^{-3}$
-   wave-packet normalization, and compactly supported momentum-space data
-   converge in $L^2$ at every fixed time.  The site field supplies its own
-   patched link data with an exact integer winding, generated by primitive
-   spinors.  A common phase is invisible to the one-particle rest spectrum, but
-   transported relative phase changes the exact two-site free spectrum through
-   $\Delta=z_R-(\overline w)^2z_L$; the supplied pair-kick sector provides a
-   second, two-particle interference readout.  These statements form
-   one finite
-   chain from null geometry to rest energy and propagation.  The same audit proves where that chain
-   presently stops: the cubic regulator has three exact zero-quasienergy corner
-   aliases, its massive body-center step retains exact $0$ and $\pi$
-   quasienergies for every mass angle, and for every intermediate mass angle
-   those body-center-type points are provably the only zero- or
-   $\pi$-quasienergy crossings.  The degree-one stationary-amplitude
-   no-go excludes the simplest attempted repair, and its factorized form proves
-   that every onsite mass coin leaves all three even-parity aliases intact.
-   A Wilson term removes the
-   non-origin corners and opens a uniform massive gap at the local-Hamiltonian
-   level; converting that success into a strictly finite-range discrete-time
-   regulator remains open.  Exact temporal blocking further shows that the
-   mass subgroup closes while the full split family generates a larger ordered
-   monoid, and the homogeneous-action no-go proves that a nonzero absolute
-   mass needs an additional scale-bearing input.
+The orientation survives dynamics in a precise way.  $B_z$ exponentiates to an
+exact unitary turn, opposite histories carry $z$ and $\bar z$, and the walk has
+a uniform $O(1/n)$ continuum-symbol estimate.  A common phase is removable,
+but transport between local chiral frames leaves the invariant mismatch
+$|z_R-(\overline w)^2z_L|$, which splits the exact two-site free spectrum.
+An assigned complex mass can reproduce that phase physics; the contribution of
+the Pl\"ucker construction is to derive the complex field, its transport law,
+its determinant relation, and its zero locus from one null-spinor input.
 
-What remains is equally definite: a changing-lattice position-space PDE limit, a local
- strictly finite-range unitary regulator outside the degree-one
- stationary-amplitude no-go that matches the Wilson Hamiltonian's spectral
- success without sacrificing the derived coin, a blocked
- comparison with the tetrahedral construction, a patched defect/index theorem,
- and a second-quantized interacting extension.  Success would extend a machine-verified finite
-rest-gap construction into a broader discrete relativistic dynamics.  Failure
-at any named step would locate the boundary of the idea rather than dissolve
-it into analogy.
+The same exact treatment identifies the regulator boundary.  The tested
+successive-axis $3+1$ extension retains classified zero- and
+$\pi$-quasienergy aliases, and no momentum-independent onsite coin removes
+them.  The decisive frontiers are therefore an explicit changing-lattice
+position-space Dirac limit, an alias-free exactly local $3+1$ unitary
+regulator, and a derived interacting many-fermion dynamics.  These are
+separate mathematical tests of whether the finite mass-orbit construction can
+become a physical theory.
 
 \begin{thebibliography}{99}
 
@@ -2726,8 +3008,25 @@ arXiv:2006.04204.
 \bibitem{GuptaShortDoubling}
 C.~Gupta and A.~J.~Short,
 \emph{Fermion doubling in Dirac quantum walks},
-Phys. Rev. A, accepted (2026), arXiv:2601.15885,
+Phys. Rev. A 114 (2026) 012208, arXiv:2601.15885,
 doi:10.1103/kkz3-fthm.
+
+\bibitem{BakirciogluArnault2026}
+K.~Bakircioglu and P.~Arnault,
+\emph{Fermion-doubling problem in chiral discretizations of quantum field
+theory: Definitive proof, fixing, and computation of two-point correlation
+function}, arXiv:2607.14874 (2026).
+
+\bibitem{ArnaultDebbaschGauge}
+P.~Arnault and F.~Debbasch,
+\emph{Quantum walks and discrete gauge theories},
+Phys. Rev. A 93 (2016) 052301, arXiv:1508.00038.
+
+\bibitem{GoldstoneWilczek}
+J.~Goldstone and F.~Wilczek,
+\emph{Fractional quantum numbers on solitons},
+Phys. Rev. Lett. 47 (1981) 986--989,
+doi:10.1103/PhysRevLett.47.986.
 
 \bibitem{NielsenNinomiya}
 H.~B.~Nielsen and M.~Ninomiya,
@@ -2756,7 +3055,9 @@ The Mathlib Community,
 \emph{The Lean mathematical library}, Proceedings of CPP 2020, 367--381.
 
 \bibitem{PhysLean}
-J.~Tooby-Smith,
+The Physlib Community,
+\emph{Physlib: Digitalizing physics in Lean~4}, formerly PhysLean and
+Lean-QuantumInfo, \url{https://physlib.io/}; see also J.~Tooby-Smith,
 \emph{HepLean: Digitalising high energy physics}, arXiv:2405.08863.
 
 \bibitem{DouglasQFTLean}

@@ -584,3 +584,121 @@ manuscript skeleton
 - **Not claimed:** continuum limits, Lorentz recovery, physical
   Yukawa/CKM/QCD values. Open successors: three-family rephasing toy
   (C-grade, gate to be preregistered); fan packaging lemma (cosmetic).
+
+## 12. Aristotle saturation run (2026-07-19 overnight; landings through 03:15)
+
+Campaign record with per-job provenance:
+`AgentTasks/overnight-aristotle-saturation-2026-07-18.md`. All items below
+are kernel-checked at the pinned toolchain unless labeled otherwise;
+"M" = machine-verified program-internal statement per the claim calculus.
+
+- **Paper A - ring-holonomy spectral witness (M, [orig]):** at every odd
+  ring length `n > 2` with unit links: trace-power holonomy formula
+  `trace (H^n) = n (w + conj w)`, Re-holonomy unitary-conjugacy
+  discriminator, winding-one non-conjugacy, and the composed half-link
+  witness (total turning `2π` => holonomy `-1`, parity-free) - end-to-end
+  from derived Pluecker data (`RingHolonomySpectrumN`,
+  `RingHolonomyHalfLinkN`, `DerivedWindingRingN`). In flight: all-`n`
+  extension dropping the parity hypothesis (even-`n` constant
+  `n * C(n, n/2)`; job `d0c6d946`).
+- **Audit lane - eq-36 isospin grading FAMILY NO-GO (M, [orig]):** no
+  member of the operator family `a G_PL + b G_R + e id` grades the Furey
+  eq-36 pair `(X1, X2)` as `(+1, -1)`; both grades are provably `a + 2b`
+  (`IsospinGradingFamilyNoGo`, after the triple grading kill in
+  `IsospinGradingSearch`). The eq-36 grading question is CLOSED at the
+  family level; the S2b task note records the omega_8 dictionary
+  resolution.
+- **Audit lane - signature and census bricks (M, [comp]):**
+  `DixonSignatureClassification` (existence at every admissible signature;
+  uniqueness deliberately NOT claimed) and `CompositionTransitionCensus`
+  landed hole-free.
+- **Ten-goals item 3 CLOSED at Lie + abelian-group level (M, [comp]):**
+  `SU5RepresentationAction` + `SU5GroupAction` (diagonal-phase group
+  actions on the 5-bar and 10 via `Matrix.exp`, dual and wedge phase
+  laws).
+- **Spin(10) Selector S1: refutation + repair (M, [orig]):** original
+  diagonal-stratum transitivity REFUTED by kernel counterexample (`d = 5`
+  defect); repair condition `ProjectivelyDistinct` introduced and the
+  conditional reduction PROVEN (`Spin10StabilizerTransitivity`,
+  `Spin10StandardizablePairs`; 2 documented holes remain = step-2 normal
+  form, in flight as `371b7803`, and the main exit). A hollow S2 return
+  (constant-identity homomorphism) was REJECTED at semantic audit -
+  discipline record in the campaign note (lesson 9d).
+- **Cl(8) generation structure (M, [comp]):** 64-case multiplication
+  table, six sparse colour generators, corrected left-action dictionary
+  (`CompositionCl8Generation`); S3/triality signed-permutation invariance
+  of the colour sector as kernel-fact (`Cl8TrialityAction`; sigma mirror
+  in flight `c41f0c06`).
+- **Hurwitz theorem, internal doubling route (T|H, [comp]):**
+  `hurwitz_finrank_mem` - a finite-dimensional unital composition algebra
+  over a char-0 field with anisotropic form has `finrank in {1,2,4,8}` -
+  PROVEN at stage 5 conditional on exactly the TWO documented Moufang
+  holes in Stage 2 (closure job `1b045f4b` in flight after a live course
+  correction: `associator_mul_right` was FALSE AS STATED, sign error,
+  octonion counterexample `e1,e2,e4`). One merge from hole-free M.
+- **Papers D and E gates (M, [orig]):** `PairExponentialCanonicalBridge`
+  + `CompactSupportL2FlowDerivative` (D); `PairTransitionObservables`
+  (E).
+- **Lane B - torus-genuine doubling (M, [orig]):** the live
+  successive-axis walk has a pi-crossing at the all-`π` corner with
+  charges `+1`/`-1`, NOT lattice-congruent to the origin
+  (`Strict3Plus1TorusDoubling`); the universal gate over `AdmissibleWalk`
+  remains OPEN with a designed Cayley-Wilson candidate counterexample in
+  flight (`bf12a698`) - the interface is expected to need a locality
+  axiom, which would be a first-class negative result.
+- **Run-discipline records:** one semantic-audit rejection (hollow S2);
+  honest sub-floor gap 02:44-03:28 closed by API-mining backfills;
+  service-side concurrency cap ~14 discovered and recorded.
+
+### 12b. Post-budget-kill harvest (04:15-05:30; service died OUT_OF_BUDGET)
+
+The Aristotle key exhausted its budget ~04:10; all 13 in-flight jobs were
+killed. Every artifact was harvested; verdicts (all verified at the pin):
+
+- **Paper A at EVERY `n` (M, [orig]) - the parity hypothesis is GONE:**
+  `RingHolonomyAllN` is HOLE-FREE: even-`n` trace formula
+  `trace (H^n) = n C(n, n/2) + n (w + conj w)` (Aristotle, pre-kill),
+  even/all-`n` spectral discriminators and the all-`n` half-link witness
+  (hand-closed at harvest, mirroring the landed odd proofs). Axiom audit:
+  all six standard-three. The Paper A ring-holonomy chain now holds at
+  every ring length `n > 2`.
+- **Audit lane, eq-39/40 census (M, [orig], REFUTATION):**
+  `CompositionTransitionCensusExt` hole-free: the three colour
+  single-excitation slots are EXACTLY ZERO as defined (the requested
+  nonvanishing statements were false) - a convention-level finding: the
+  Dbar slots sit on the wrong side of the idempotent; the census must be
+  rebuilt on the correct sector. The `Mix11 slotEL` zero-expectation is
+  also refuted (explicit `1/4` residuals); sector-rotation laws proven.
+- **S2b vacuum premise REFUTED (M, [orig]) - final correction:** the
+  `5a6bb408` OUT_OF_BUDGET artifact was an UNVERIFIED mid-flight draft
+  (no summary file), and the interactive repair session refuted its
+  foundational premise at the kernel: `B1a (ofColour vIdem) ≠ 0`
+  (nonzero `x2.re.c0` coordinate) while `B2a (ofColour vIdem) = 0` IS
+  proven (`ColourIsospinVacuumStatus`, hole-free, standard-three,
+  root-registered). The asymmetry localizes the defect to the mode-1
+  (`betaHat1`/R-slot) chart. The seven doublet targets
+  (`ColourIsospinFromB`) remain OPEN as stated - the earlier
+  "all seven proven" reading of the draft is WITHDRAWN. Unifies with the
+  eq-39/40 idempotent-sidedness finding: the eq-37/39/40 operator
+  dictionary needs the corrected chart before any doublet or census
+  claim.
+- **YM polymer-KP closed (M, [orig]):** `PolymerKPConclusion` hole-free:
+  corrected conditional convergence/tail shapes + kernel refutation
+  `pairSum_inequality_false` (explicit two-polymer counterexample).
+- **C-lane kernel certificates (M, [orig]):** `HalfWindingKernelCertificates`
+  full success at the true clearing scale 5 (integer-twin kernel route;
+  final verification of the sector controls in flight at write time).
+- **Partials integrated with documented holes:** J1 Peirce
+  (sum/reconstruct/eigen proven; power-4 + idempotence open), B4
+  Wilson-Cayley (Hermiticity + full Cayley unitarity proven; dictionary
+  open), Cl8 sigma (all six image signs proven; multiplicativity open),
+  S2 ext-action (nonvacuity payloads proven; Cauchy-Binet open), AU4
+  normal form (`creationRootEnd_mem` proven - creation-root operators lie
+  in the even Clifford group; chart lemmas open).
+- **Negative verdicts recorded:** Moufang decomposition found CIRCULAR
+  (the sub-lemma is right-Moufang restated) - the Hurwitz hole-free merge
+  stays gated; C2 full-walk docstring over-claim corrected at harvest
+  (census still open; witness-11 integral determinants draft-proven).
+- **Operational:** service budget exhaustion is the run-terminating event;
+  no submissions possible until the Director restores budget. All staged
+  packages and this registry make restart one command per job.

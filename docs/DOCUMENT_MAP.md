@@ -35,9 +35,47 @@ as current state.
 - `AutonomousLab/FIVE_YEAR_PLAN.md` - 2026-2031 hard-exam roadmap from finite
   foundations through QFT, gravity, Standard Model/cosmology, prediction, and
   external judgment. [LIVE]
+- `AutonomousLab/prompts/OVERNIGHT_MISSION_2026-07-18_ARISTOTLE_SATURATION.md` -
+  Director-set overnight mission overlay: >= 12 active Aristotle jobs across
+  all publication lanes, lane map, operating loop, morning deliverables. [LIVE]
+- `AgentTasks/overnight-aristotle-saturation-2026-07-18.md` - the saturation
+  night's fleet record: per-job metadata, harvest instructions, axiom-audit
+  record, service-cap note, replenishment backlog, the 04:15 OUT_OF_BUDGET
+  run-terminating event, and the total post-kill harvest verdicts (all 13
+  artifacts). [LIVE]
+- Post-kill harvest module additions (2026-07-19, all draft-tree, verified
+  at the pin; per-module state in the fleet record above):
+  `PhysicsSM/Draft/NullEdge/RingHolonomyAllN.lean` (HOLE-FREE - Paper A
+  all-`n` spectral witness, parity hypothesis eliminated),
+  `PhysicsSM/Draft/NullEdge/ColourIsospinFromB.lean` (S2b su(2) doublet,
+  all seven targets),
+  `PhysicsSM/Draft/NullEdge/CompositionTransitionCensusExt.lean`
+  (HOLE-FREE - colour-slot zero refutation + corrected census),
+  `PhysicsSM/Draft/NullEdge/HalfWindingKernelCertificates.lean` (HOLE-FREE
+  - Paper C kernel certificates at clearing scale 5),
+  `PhysicsSM/Draft/NullEdge/GateYM/PolymerKPConclusion.lean` (HOLE-FREE -
+  corrected KP shapes + pair-sum refutation),
+  `PhysicsSM/Draft/Spin10AnnihilatorIncidence.lean` (basis Chevalley
+  incidence + equivariance, 1 hole),
+  `PhysicsSM/Draft/Spin10FockExteriorAction.lean` (nonvacuity payloads
+  proven, Cauchy-Binet open),
+  `PhysicsSM/Draft/Spin10StandardizablePairs.lean` (+ `creationRootEnd_mem`
+  membership jewel),
+  `PhysicsSM/Draft/Spin10VacuumFiberTransitivity.lean` (statement scaffold,
+  stillborn job - resubmit first),
+  `PhysicsSM/Draft/H3OPeirceDecomposition.lean` (sum/reconstruct/eigen
+  proven, 2 holes),
+  `PhysicsSM/Draft/NullEdge/WilsonCayleyWalk.lean` (Cayley unitarity
+  proven, dictionary open),
+  `PhysicsSM/Draft/NullEdge/Cl8SigmaAction.lean` (six sigma signs proven),
+  `PhysicsSM/Draft/NullEdge/HalfWindingFullWalkStatus.lean` (integral-twin
+  layer draft-proven with 6 documented `n a t i v e _ d e c i d e`; census
+  open; docstring corrected at harvest). [LIVE]
 - `docs/BUILD.md` - build, toolchain pin, Windows fixes, verification commands. [STABLE]
 - `docs/ARISTOTLE.md` - Aristotle submission/integration mechanics and loop. [STABLE]
 - `docs/CONVENTIONS.md` - project conventions and convention-lock status. [STABLE]
+- `docs/GLOSSARY.md` - JSONL glossary architecture, agent read/write protocol,
+  link model, generated indexes, and static human browser. [LIVE]
 - `docs/NULLSTRAND.md` - null-edge orientation, guardrails, architecture; incl. the Malament conformal-vs-scale split. [LIVE]
 - `docs/NERD_ROADMAP.md` - the NERD program master roadmap (v2.1). [LIVE]
 - `docs/DOCUMENT_MAP.md` - this file. [LIVE]
@@ -46,6 +84,9 @@ as current state.
 
 ## Program state and results
 
+- `IMPACT_STATEMENT.md` - brief, claim-graded account of the null-edge
+  reconstruction program's most consequential results and present scientific
+  boundary. [LIVE]
 - `NULL_EDGE_RESULTS.md` - key results of the null-edge program, graded by trust; carrier-layer update appended 2026-07-07. [LIVE]
 - `PROGRESS.md` - the whole repository's highest-value achievements, small by design. [LIVE]
 - `NORTH_STAR.md` - the mission statement (2026-04); mission stands, flagship execution is the null-edge program. [HISTORICAL]
@@ -55,8 +96,46 @@ as current state.
 
 ## The null-edge program: core documents
 
+- `Sources/Null_Edge_Reconstruction_Priorities_2026-07-19.md` - focused
+  ontology-to-theorem agenda distilled from the 2026-07-19 assessments:
+  order/count-to-metric and null-support reconstruction first, followed by
+  graph-first `3+1`, common-data realizability, proper time and massive
+  histories, fixed-spacing RG, curvature coherence, universal stress energy,
+  interacting QFT, scale selection, and the gravitational effective action.
+  [LIVE]
+
 - `Sources/Null_Edge_GR_Literature_Audit_2026-07-18.md` - primary-source audit of null-lattice and first-order discrete gravity. Its full Schaden deep read extracts the spinor/Pfaffian null-frame geometry, centered-plaquette proper time, manifold-admissibility projector, gauge slice, and measure, while flagging the arXiv-v2 Hermitian-conjugate link reversal as different from the repo's inverse-holonomy action. `PhysicsSM/Draft/NullEdge/SchadenProperTimeBridge.lean` kernel-checks the centered-plaquette identity and its exact dictionary to the squared Pluecker mass scalar. `PhysicsSM/Draft/NullEdge/SchadenNullFrameAdmissibility.lean` kernel-checks the Pfaffian/triangle/determinant chain, identifies strict negative length determinant with coframe nondegeneracy, and exposes the six-predecessor backward-simplex gate without claiming it is dynamically enforced. The audit identifies Kur-Glasser as the nearest Euler-equation precedent, Kheyfets-LaFave-Miller null-strut calculus as the earlier null-link evolution precedent, applies Neiman's null-cell focusing obstruction, separates the current rank-two curvature image from a physical graviton count using Dittrich-Hoehn, and records both modern weak-curvature convergence templates and the older Miller/Brewin warning that pointwise residual decay is not the same as weak or solution convergence. [LIVE]
 
+- `Sources/Null_Edge_Ten_Priorities_Research_Plan_2026-07-18.md` - the governing
+  P1-P10 research plan (electroweak closure, Dirac gammas, proton-decay
+  blocking, Cl(10) ideal, three generations, Hurwitz, h3(O) spectra, GR,
+  Malament, causal forcing) with staged bricks, Aristotle waves, and
+  kill-conditions; `Sources/Null_Edge_Ten_Ambitious_Goals_Status_2026-07-17.md`
+  is the claim-graded status governor for the same ten items. [LIVE]
+- Composition-operator electroweak/Cl(10) program (2026-07-18 layer; design
+  ledger `AgentTasks/null-edge-S2b-weak-isospin-from-ladder-design-2026-07-17.md`,
+  CORRECTIONs 1-10): `PhysicsSM/Draft/NullEdge/CompositionSuSdBridge.lean`
+  (rank-one structure theorems - the omega-nest towers collapse to ONE
+  ladder pair; TPlusEnd unrealizable via nests), `CompositionCl10ProbeExt.lean`
+  (j=2 CAR block + the i-twisted eq-40 partner MixT11 witness),
+  `CompositionSU2NonMixing.lean` (eq-42 non-mixing su(2) closure, all three
+  brackets, structural proofs), `CompositionRe7Commutant.lean` (the
+  R_{e7}/grade-involution selection: validated for the eq-41 u(3) bilinears,
+  refuted as an exclusion characterization - the mixing generator passes),
+  `CompositionIdealRepContent.lean` + `RankOneCore.lean` (eq-36 adT3
+  gradings, all four kernel-proven via the rank-one bridge; the pattern is
+  the number-operator grading `(0,+1,+1,+2)`, NOT the isospin doublet -
+  corrections prominent), and `OctonionTrialitySeed.lean` (index doubling is
+  an automorphism of the XOR/Fano octonions; phased 3-cycle on the colour
+  ladders - the S3/triality seed). All standard-three guarded. [DRAFT-LEAN]
+- P7 flagship chain (h3(O) spectra): `PhysicsSM/Draft/H3ORealSpectrumUnconditional.lean`
+  - the UNCONDITIONAL real-spectrum theorem (every Hermitian 3x3 octonionic
+  matrix has a real eigenvalue triple realizing its Freudenthal invariants)
+  plus characteristic-discriminant nonnegativity; composed from
+  `H3OReductionLemmas.lean` (Aristotle: complex-witness matching + Mathlib
+  Hermitian reduction), `CubicDiscrForward.lean` (discr = Vandermonde
+  squared), `H3OSigmaClosedForm.lean`, and the landed
+  `CubicRealSpectrum.lean`/`H3OSpectralInvariants.lean` chain. [DRAFT-LEAN]
 - `AutonomousLab/work/SPIRAL-LAYER/CLAUDE_SPIRAL_LAYER_PROGRAM_NOTE_2026-07-16.md` -
   the spiral-layer program note: the kernel-checked answer to "does mass
   zig-zag or spiral?" - the three-layer breakdown (mass magnitude

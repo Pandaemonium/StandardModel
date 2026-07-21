@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Plain-language physics and mathematics glossary">
+  <title>Physics and Math Glossary</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-block">
+      <p class="brand">Physics and Math Glossary</p>
+      <p class="audience" id="audience-label">High school senior level</p>
+    </div>
+    <div class="search-block">
+      <label class="sr-only" for="search">Search terms and definitions</label>
+      <input id="search" type="search" autocomplete="off" placeholder="Search terms, aliases, or ideas">
+      <button id="clear-search" class="clear-button" type="button">Clear</button>
+    </div>
+  </header>
+
+  <div class="toolbar" aria-label="Glossary filters">
+    <label for="domain-filter">Domain</label>
+    <select id="domain-filter">
+      <option value="all">All domains</option>
+    </select>
+    <label for="status-filter">Status</label>
+    <select id="status-filter">
+      <option value="all">All statuses</option>
+      <option value="draft">Draft</option>
+      <option value="reviewed">Reviewed</option>
+      <option value="stable">Stable</option>
+    </select>
+    <p id="result-count" class="result-count" aria-live="polite"></p>
+  </div>
+
+  <main class="workspace">
+    <aside class="term-panel" aria-label="Glossary terms">
+      <div id="term-list" class="term-list"></div>
+    </aside>
+    <article id="term-detail" class="term-detail" aria-live="polite">
+      <p class="loading">Loading glossary...</p>
+    </article>
+  </main>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

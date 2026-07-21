@@ -38,6 +38,64 @@ and `G` need consolidation rather than more theorem accumulation. Paper `H` is
 earned by the preceding series; it should not be used to introduce claims that
 the theorem papers have not established.
 
+### Overnight gate movements (2026-07-19, saturation run; kernel-verified)
+
+- **Paper D**: the strong `Lp` derivative at zero for the exact
+  momentum-multiplier orbit on bounded-support elements is PROVEN
+  (`CompactSupportL2Generator.orbit_slope_tendsto`, zero holes, guarded).
+  The whole-orbit flow-derivative successor is in flight (`ce693fe2`).
+- **Paper E**: the canonical-bridge gap is CLOSED - the canonical pair
+  evolution is kernel-certified as the exact matrix exponential of the
+  canonical generator (`PairExponentialCanonicalBridge`, three theorems, no
+  mismatch factors, guarded). The operational two-particle transition law
+  (Rabi probability + Pluecker-phase pairing) is staged for submission.
+- **Hurwitz** (feeds the audit-paper lane): stage-4a ladder ALL PROVEN
+  (5/7 hole-independent); the stage-5 saturation endgame
+  (`finrank ∈ {1,2,4,8}`) is in flight (`d315d977`), with the Moufang
+  intermediate course-corrected (sign error found by the prover, honest
+  rename in progress).
+- **Spin(10) selector lane**: S1 transitivity REFUTED as stated (diagonal
+  stratum defect; kernel counterexample active); repaired scaffolding
+  (`ProjectivelyDistinct`, `StandardizablePair`, conditional reduction)
+  integrated; corrected S1 in flight (`215bd4d5`). S2/S4 defect analysis
+  archived with the proof plan.
+- **A / B / C / audit lanes**: odd-`n` ring-holonomy witness, zero-or-pi
+  combined doubling gate, kernel-only four-site certificates, and the
+  three division-algebra audit jobs (colour isospin, census table, grading
+  family no-go) all in flight; first-wave returns pending.
+- Fleet record and per-job metadata:
+  `AgentTasks/overnight-aristotle-saturation-2026-07-18.md`.
+
+### Final overnight movements (2026-07-19 ~05:00; post-budget-kill harvest)
+
+The Aristotle key ran OUT_OF_BUDGET ~04:10 and all 13 in-flight jobs were
+killed; every artifact was harvested and dispositioned (same fleet record).
+Net paper-facing movements, all kernel-verified at the pin:
+
+- **Paper A**: the ring-holonomy spectral chain now holds at EVERY ring
+  length `n > 2` - `RingHolonomyAllN` hole-free (even-`n` trace formula
+  with the `n C(n, n/2)` constant; all-`n` discriminator; all-`n`
+  half-link witness; standard-three axiom audit). The paper's abstract
+  chain no longer needs the parity hypothesis.
+- **Audit paper**: (1) S2b weak-isospin doublet - all seven B-ladder su(2)
+  targets returned proven with exact +-1/2 eigenvalues and coefficient-1
+  ladder maps; (2) eq-39/40 colour census REFUTED-as-defined (colour
+  single-excitation slots exactly zero; wrong side of the idempotent -
+  convention finding + rebuild queued); (3) Chevalley incidence basis
+  case + equivariance landed with the normal-form transport bridge;
+  (4) `creationRootEnd_mem` - creation-root operators proven inside the
+  even Clifford group (the exp(B) membership gate).
+- **Paper C**: kernel-only certificates full success at the true clearing
+  scale 5; the full-walk census remains open (returned docstring
+  over-claim corrected at harvest - discipline case study for the paper).
+- **YM lane**: polymer-KP module closed hole-free with corrected
+  conditional shapes + a new two-polymer kernel refutation.
+- **Hurwitz**: Moufang closure attempt found CIRCULAR at audit; the
+  hole-free merge stays gated (Artin-linearization route pre-scoped for
+  the next budget window).
+- **Service state**: no further submissions possible until budget is
+  restored; staged packages + registry make restart one command per job.
+
 ## Paper A: the flagship now
 
 ### Working title

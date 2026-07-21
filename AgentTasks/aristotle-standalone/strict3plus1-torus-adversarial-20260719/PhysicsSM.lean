@@ -1,0 +1,1 @@
+import PhysicsSM.Draft.NullEdge.Strict3Plus1TorusDoubling

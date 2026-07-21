@@ -1,12 +1,41 @@
 # Aristotle standing target queue
 
-Purpose: keep the fleet full (target 8 active). On every harvest, pull the next
+Purpose: keep the fleet full (server-enforced cap 15 active). On every harvest, pull the next
 ready target and fire it. Both interactive families draw from and add to this
 queue. A target is "ready" when a standalone Lean file typechecks with the hole
 and a route note. Record project IDs in `ARISTOTLE_JOBS.json` immediately.
 
 Status legend: FIRED (project id) | READY (typechecks, not yet fired) |
 PREP (needs a standalone package) | BLOCKED (depends on another).
+
+## Current 3+1 stay/null wave (2026-07-19)
+
+- FIRED `c8f5634c` - **exact Laurent stay/shift unitarity classification**:
+  classify all range-one onsite/forward/backward matrix amplitudes, including
+  the converse coefficient extraction or an explicit counterexample.
+- FIRED `09a028fc` - **HNU stay-sector coverage and no-global-stasis**: prove
+  that each conditioned substep has a stationary complement while the common
+  stationary intersection vanishes and the eight moving projectors sum to
+  `4 I`.
+- INTEGRATED `ff1b8e25` - **massive doubled HNU with Pluecker onsite turning**:
+  establish exact unitarity, rest reduction, and the simultaneous
+  kinetic-plus-mass infrared derivative.
+- INTEGRATED `8ac5c53d` - **local decoded HNU plus explicit pi complement**:
+  construct the exact real-space selected HNU sector, local pi-gapped
+  complement, Fourier intertwiner, injective decoder, and one-edge causal
+  support, or return a minimal incompatibility theorem.
+- FIRED `081bd1d6` - **massive HNU global zero/pi gap**: prove the full-cube
+  determinant gap and the momentum-reversal parity census, or return an exact
+  counterexample and sharp corrected theorem.
+- FIRED `daac1f2a` - **Gupta-Short stay tangent resource theorem**: build on the
+  landed ten-identity certificate bridge to classify the exact infrared
+  tangent and when its square can remain the identity.
+- FIRED `70183b62` - **canonical HNU decoder uniqueness**: prove uniqueness
+  among explicitly fiberwise-local complex-linear left inverses that annihilate
+  the selector complement.
+- FIRED `0fec57cf` - **exact HNU Floquet micromotion invariant strategy**:
+  construct the zero/pi micromotion invariant scaffold or isolate the precise
+  additional datum needed without assigning compensating charge by definition.
 
 ## In flight (as of 2026-07-13 ~09:25)
 

@@ -1,0 +1,1822 @@
+[
+ {
+  "id": "born-rule",
+  "term": "Born rule",
+  "domains": [
+   "physics"
+  ],
+  "context": "Probability = |amplitude|^2; explicitly on the program's event horizon: the finite quantum layer uses it, never derives it.",
+  "seen_in": [
+   "Sources/Null_Edge_Future_Directions.md"
+  ]
+ },
+ {
+  "id": "brillouin-zone",
+  "term": "Brillouin zone",
+  "domains": [
+   "physics"
+  ],
+  "context": "Periodic momentum domain q in [-pi,pi] (cubed in 3+1) over which bands, corners, and aliases are audited exactly.",
+  "seen_in": [
+   "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+  ]
+ },
+ {
+  "id": "causal-diamond",
+  "term": "causal diamond",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Alexandrov interval between two events; the unit of finite regions, curvature holonomy, and the infrared cutoff of shells.",
+  "seen_in": [
+   "docs/NULLSTRAND.md",
+   "docs/CONVENTIONS.md"
+  ]
+ },
+ {
+  "id": "causal-order",
+  "term": "causal order",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Partial order of causal relations; supplies the conformal class for free (Malament split); its links define null edges.",
+  "seen_in": [
+   "AGENTS.md",
+   "docs/NERD_ROADMAP.md"
+  ]
+ },
+ {
+  "id": "celestial-sphere",
+  "term": "celestial sphere",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "The sky of light rays through a point; bundles painted on it give m^2 = (E^2 - |C|^2)/4, energy monopole minus momentum dipole.",
+  "seen_in": [
+   "Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md"
+  ]
+ },
+ {
+  "id": "chirality-projector",
+  "term": "chirality projector",
+  "domains": [
+   "physics"
+  ],
+  "context": "P_L = (1 - gamma5)/2 selecting left-handed states; in Dixon form the projector must carry the complex i to be idempotent.",
+  "seen_in": [
+   "Sources/Dixon_CxHxO_Convention_Reference.md",
+   "Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md"
+  ]
+ },
+ {
+  "id": "covariant-derivative",
+  "term": "covariant derivative",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Transport nabla_a along a null edge respecting gauge/frame data; the building block of the finite Dirac operator.",
+  "seen_in": [
+   "docs/NULLSTRAND.md",
+   "docs/CONVENTIONS.md"
+  ]
+ },
+ {
+  "id": "cpt-theorem",
+  "term": "CPT theorem",
+  "domains": [
+   "physics"
+  ],
+  "context": "Antiunitary Theta with Theta D Theta^-1 = D# and conjugate-paired spectrum; landed on an explicit C^4 Clifford-color witness.",
+  "seen_in": [
+   "Sources/Null_Edge_Future_Directions.md"
+  ]
+ },
+ {
+  "id": "critical-point",
+  "term": "critical point",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "The |kappa| = lambda locus where mass vanishes; criticality organizes masslessness, naturalness, and emergent relativity.",
+  "seen_in": [
+   "Sources/Null_Edge_Future_Directions.md"
+  ]
+ },
+ {
+  "id": "curvature",
+  "term": "Curvature",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Commutator of edge transports; finite curvature obeys Jacobi/Bianchi identities and feeds the gravity-conservation chain.",
+  "seen_in": [
+   "NULL_EDGE_RESULTS.md"
+  ]
+ },
+ {
+  "id": "dalembertian",
+  "term": "d'Alembertian",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Wave operator Box; Box_null is the kinetic mass-shell operator with plane-wave symbol -p^2 in mostly-minus signature.",
+  "seen_in": [
+   "docs/NULLSTRAND.md"
+  ]
+ },
+ {
+  "id": "de-broglie-clock",
+  "term": "de Broglie clock",
+  "domains": [
+   "physics"
+  ],
+  "context": "Internal frequency attached to a massive particle; provably NOT the modular flow of the momentum state (clock revision I3).",
+  "seen_in": [
+   "docs/NERD_ROADMAP.md"
+  ]
+ },
+ {
+  "id": "decoherence",
+  "term": "decoherence",
+  "domains": [
+   "physics"
+  ],
+  "context": "Loss of phase coherence between histories (Omega = delta); decohering hidden coherence can only increase mass squared.",
+  "seen_in": [
+   "Sources/Null_Edge_Future_Directions.md"
+  ]
+ },
+ {
+  "id": "defect-mode",
+  "term": "Defect mode",
+  "domains": [
+   "physics"
+  ],
+  "context": "A state pinned at a wall between mismatched mass regions; exact +1/-1 modes displayed for two-wall sign fields.",
+  "seen_in": [
+   "Sources/Null_Edge_Publication_Portfolio_2026-07-10.md"
+  ]
+ },
+ {
+  "id": "dimensional-transmutation",
+  "term": "dimensional transmutation",
+  "domains": [
+   "physics"
+  ],
+  "context": "Generating a scale from a running dimensionless coupling; here it only fixes scale relative to a supplied reference unit.",
+  "seen_in": [
+   "docs/NULLSTRAND.md"
+  ]
+ },
+ {
+  "id": "dirac-cone",
+  "term": "Dirac cone",
+  "domains": [
+   "physics"
+  ],
+  "context": "Linear band-touching point; the massless walk has cones at momenta 0 and pi plus unwanted partners at cubic lattice corners.",
+  "seen_in": [
+   "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+  ]
+ },
+ {
+  "id": "doublet",
+  "term": "Doublet",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Two states rotated into each other by su(2)_L (singlets are left alone); the 1(+)2(+)1 Fock decomposition is item 1's core.",
+  "seen_in": [
+   "Sources/Null_Edge_Publication_Portfolio_2026-07-10.md",
+   "Sources/Null_Edge_Ten_Ambitious_Goals_Status_2026-07-17.md"
+  ]
+ },
+ {
+  "id": "effective-field-theory",
+  "term": "effective field theory",
+  "domains": [
+   "physics"
+  ],
+  "context": "Low-energy description with free parameters; prediction means F : M_finite -> M_EFT loses rank or satisfies a relation R = 0.",
+  "seen_in": [
+   "docs/CONVENTIONS.md"
+  ]
+ },
+ {
+  "id": "electroweak-interaction",
+  "term": "Electroweak interaction",
+  "domains": [
+   "physics"
+  ],
+  "context": "Unified weak+electromagnetic sector; its W/Z/photon mass pattern is reconstructed as an orbit-stiffness theorem.",
+  "seen_in": [
+   "NULL_EDGE_RESULTS.md"
+  ]
+ },
+ {
+  "id": "electroweak-theory",
+  "term": "electroweak theory",
+  "domains": [
+   "physics"
+  ],
+  "context": "Unified weak-plus-electromagnetic sector of the SM; targeted via Furey's Cl(4) ladder construction inside C(x)H(x)O.",
+  "seen_in": [
+   "Sources/Dixon_CxHxO_Convention_Reference.md"
+  ]
+ },
+ {
+  "id": "electroweak-unification",
+  "term": "Electroweak unification",
+  "domains": [
+   "physics"
+  ],
+  "context": "Merging weak and electromagnetic forces into a U(2) symmetry; landed from ladder operators with exact SM charges.",
+  "seen_in": [
+   "Sources/Null_Edge_Ten_Ambitious_Goals_Status_2026-07-17.md"
+  ]
+ },
+ {
+  "id": "entanglement-first-law",
+  "term": "first law of entanglement",
+  "domains": [
+   "physics"
+  ],
+  "context": "Exact identity Delta S = Delta<K> - S_rel; D-note thesis: the first law is an identity, the content is universality.",
+  "seen_in": [
+   "docs/NERD_ROADMAP.md"
+  ]
+ },
+ {
+  "id": "equivalence-principle",
+  "term": "equivalence principle",
+  "domains": [
+   "physics"
+  ],
+  "context": "Gravity couples channel-blind; finite WEP trace and action identities are landed, the full Ward-identity version stays open.",
+  "seen_in": [
+   "Sources/Null_Edge_Future_Directions.md"
+  ]
+ },
+ {
+  "id": "floquet-theory",
+  "term": "Floquet theory",
+  "domains": [
+   "physics"
+  ],
+  "context": "Framework for periodically driven dynamics; the (pi,pi) cone is a Floquet zone-edge partner and node charges pair across gaps.",
+  "seen_in": [
+   "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+  ]
+ },
+ {
+  "id": "fms-composite",
+  "term": "FMS composite",
+  "domains": [
+   "physics"
+  ],
+  "context": "Frohlich-Morchio-Strocchi gauge-invariant composite; physical W/Z and Higgs-radial observables are FMS-style composites.",
+  "seen_in": [
+   "docs/CONVENTIONS.md",
+   "docs/NULLSTRAND.md"
+  ]
+ },
+ {
+  "id": "four-momentum",
+  "term": "four-momentum",
+  "domains": [
+   "physics"
+  ],
+  "context": "Energy and momentum packaged as one spacetime vector p; soldered to the 2x2 matrix p_0 I + p.sigma.",
+  "seen_in": [
+   "Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md"
+  ]
+ },
+ {
+  "id": "gauge-boson",
+  "term": "gauge boson",
+  "domains": [
+   "physics"
+  ],
+  "context": "Force carrier such as W/Z; its mass lives in |nabla^A H|^2 or link stiffness, never in the fermion Yukawa block.",
+  "seen_in": [
+   "docs/CONVENTIONS.md",
+   "docs/NULLSTRAND.md"
+  ]
+ },
+ {
+  "id": "gauss-constraint",
+  "term": "Gauss constraint",
+  "domains": [
+   "physics"
+  ],
+  "context": "Gauge theory's divergence law selecting physical states; the open wiring target for the positive-sector witness.",
+  "seen_in": [
+   "Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md"
+  ]
+ },
+ {
+  "id": "grand-unification",
+  "term": "Grand unification",
+  "domains": [
+   "physics"
+  ],
+  "context": "Embedding all SM forces in one group, here SU(5); representations 5* and 10 reproduce charges with vanishing anomaly trace.",
+  "seen_in": [
+   "Sources/Null_Edge_Ten_Ambitious_Goals_Status_2026-07-17.md"
+  ]
+ },
+ {
+  "id": "hamiltonian",
+  "term": "Hamiltonian",
+  "domains": [
+   "physics"
+  ],
+  "context": "Hermitian generator of time evolution, e.g. H_z(k) = k Gamma + B_z whose square is (k^2 + det P_tot) times the identity.",
+  "seen_in": [
+   "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+  ]
+ },
+ {
+  "id": "koide-formula",
+  "term": "Koide formula",
+  "domains": [
+   "physics"
+  ],
+  "context": "Empirical 2/3 lepton mass relation; rederived as 45-degree equipartition x 3 modes, exact under a named soldering hypothesis.",
+  "seen_in": [
+   "NULL_EDGE_RESULTS.md"
+  ]
+ },
+ {
+  "id": "koide-relation",
+  "term": "Koide relation",
+  "domains": [
+   "physics"
+  ],
+  "context": "Empirical charged-lepton mass formula Q = 2/3; the program's gates on it (F2.0, M-KOIDE Route A) were killed by proof/probe.",
+  "seen_in": [
+   "Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md"
+  ]
+ },
+ {
+  "id": "kugo-ojima-criterion",
+  "term": "Kugo-Ojima construction",
+  "domains": [
+   "physics"
+  ],
+  "context": "Gauge-theory positivity scheme; a finite (2,1) witness carries a positive quotient while (1,2) is a proved no-go.",
+  "seen_in": [
+   "Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md"
+  ]
+ },
+ {
+  "id": "lattice",
+  "term": "lattice",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Finite discretization of spacetime; the program's substrate for exact chiral symmetry and index theorems.",
+  "seen_in": [
+   "Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md"
+  ]
+ },
+ {
+  "id": "leptonic-ideal",
+  "term": "Leptonic ideal",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Furey's minimal ideal of lepton states (V_R, V_L, E-_L, E-_R); matched exactly onto the landed Fock doublet and singlets.",
+  "seen_in": [
+   "Sources/Null_Edge_Ten_Ambitious_Goals_Status_2026-07-17.md"
+  ]
+ },
+ {
+  "id": "leptoquark",
+  "term": "Leptoquark",
+  "domains": [
+   "physics"
+  ],
+  "context": "Hypothetical lepton-quark boson; target theorem: legal internal operators exclude leptoquark/diquark/proton-decay blocks.",
+  "seen_in": [
+   "NULL_EDGE_RESULTS.md"
+  ]
+ },
+ {
+  "id": "light-cone",
+  "term": "light cone",
+  "domains": [
+   "physics"
+  ],
+  "context": "The set of lightlike directions from an event; mass explains what leaves the light cone, the index what must stay on it.",
+  "seen_in": [
+   "Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md"
+  ]
+ },
+ {
+  "id": "locality",
+  "term": "Locality",
+  "domains": [
+   "physics"
+  ],
+  "context": "Influence propagates only finitely far per step; exact support and cone theorems make it precise for gates and walks.",
+  "seen_in": [
+   "Sources/Null_Edge_Publication_Portfolio_2026-07-10.md"
+  ]
+ },
+ {
+  "id": "lorentz-covariance",
+  "term": "Lorentz covariance",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Boost symmetry; emergent for the massless walk on the critical line (rational boost witness), broken off criticality.",
+  "seen_in": [
+   "Sources/Null_Edge_Future_Directions.md"
+  ]
+ },
+ {
+  "id": "lorentzian-signature",
+  "term": "Lorentzian signature",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "The (-,+,+,+) metric pattern of spacetime; computed to emerge from the quaternionic gamma operators rather than assumed.",
+  "seen_in": [
+   "Sources/Null_Edge_Ten_Ambitious_Goals_Status_2026-07-17.md"
+  ]
+ },
+ {
+  "id": "majorana-fermion",
+  "term": "Majorana fermion",
+  "domains": [
+   "physics"
+  ],
+  "context": "Fermion equal to its antiparticle; Dirac-vs-Majorana/seesaw neutrino options kept as a map-choice stress test, not solved.",
+  "seen_in": [
+   "NULL_EDGE_RESULTS.md"
+  ]
+ },
+ {
+  "id": "malament-theorem",
+  "term": "Malament theorem",
+  "domains": [
+   "physics"
+  ],
+  "context": "Theorem that causal order determines conformal geometry; item 6 seeks a finite analogue for discrete null structures.",
+  "seen_in": [
+   "Sources/Null_Edge_Ten_Ambitious_Goals_Status_2026-07-17.md"
+  ]
+ },
+ {
+  "id": "mass-without-mass",
+  "term": "mass without mass",
+  "domains": [
+   "physics"
+  ],
+  "context": "Wilczek's phrase for hadron mass from massless constituents; the Pluecker theorem is its exact kinematic skeleton.",
+  "seen_in": [
+   "Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md"
+  ]
+ },
+ {
+  "id": "maximum-entropy-principle",
+  "term": "maximum-entropy principle",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Choosing the least-biased state given constraints; the max-ent equilibrium route is one of Gate D's dynamics proposals.",
+  "seen_in": [
+   "docs/NERD_ROADMAP.md"
+  ]
+ },
+ {
+  "id": "metric-tensor",
+  "term": "metric tensor",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Geometry encoder g; program rule: the metric is the principal symbol of the invariant transport kernel, not a raw direction covariance.",
+  "seen_in": [
+   "docs/CONVENTIONS.md",
+   "docs/NULLSTRAND.md"
+  ]
+ },
+ {
+  "id": "minimal-coupling",
+  "term": "minimal coupling",
+  "domains": [
+   "physics"
+  ],
+  "context": "Zero scalar-curvature coupling; the beta = 1/2 causal-set operator is not minimally coupled and needs counterterm -1/2.",
+  "seen_in": [
+   "docs/NULLSTRAND.md"
+  ]
+ },
+ {
+  "id": "minkowski-metric",
+  "term": "Minkowski metric",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Flat spacetime inner product; the A2 dictionary reads Minkowski norms as 2x2 determinants (minkowskiSq, det P = m^2).",
+  "seen_in": [
+   "docs/NERD_ROADMAP.md"
+  ]
+ },
+ {
+  "id": "minkowski-spacetime",
+  "term": "Minkowski spacetime",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Flat 3+1 spacetime of special relativity; realized as 2x2 Hermitian complex matrices with SL(2,C) acting as Lorentz.",
+  "seen_in": [
+   "Sources/Null_Edge_Ten_Ambitious_Goals_Status_2026-07-17.md"
+  ]
+ },
+ {
+  "id": "mixedness",
+  "term": "Mixedness",
+  "domains": [
+   "physics"
+  ],
+  "context": "Impurity of the normalized state rho = P/Tr P; massless iff rho is pure (rank one); det rho gives the (m/2E)^2 reading.",
+  "seen_in": [
+   "NULL_EDGE_RESULTS.md"
+  ]
+ },
+ {
+  "id": "modular-hamiltonian",
+  "term": "modular Hamiltonian",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Generator K of modular flow; the first-law identity Delta S = Delta<K> - S_rel and the I2 finiteness statement use it.",
+  "seen_in": [
+   "docs/NERD_ROADMAP.md"
+  ]
+ },
+ {
+  "id": "naturalness",
+  "term": "naturalness",
+  "domains": [
+   "physics"
+  ],
+  "context": "A small mass is stable only if protected: projective (near-collinear), index (chiral), or critical (aperture = closure).",
+  "seen_in": [
+   "Sources/Null_Edge_Future_Directions.md"
+  ]
+ },
+ {
+  "id": "nielsen-ninomiya-theorem",
+  "term": "Nielsen-Ninomiya theorem",
+  "domains": [
+   "physics"
+  ],
+  "context": "Classic no-go for chiral lattice actions; the paper proves logically independent strictly-unitary discrete-time analogues.",
+  "seen_in": [
+   "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+  ]
+ },
+ {
+  "id": "noether-theorem",
+  "term": "Noether's theorem",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Symmetry implies conservation; a finite version links one unitary-commutation hypothesis to conserved expectations on orbits.",
+  "seen_in": [
+   "NULL_EDGE_RESULTS.md"
+  ]
+ },
+ {
+  "id": "null-cone",
+  "term": "null cone",
+  "domains": [
+   "physics"
+  ],
+  "context": "Boundary of future momenta with det P = 0; sums of null momenta leave it for the timelike interior once two directions open.",
+  "seen_in": [
+   "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+  ]
+ },
+ {
+  "id": "null-direction",
+  "term": "null direction",
+  "domains": [
+   "physics"
+  ],
+  "context": "A lightlike ray; every constituent in the mass theorem is one, encoded by a Weyl spinor up to complex scale.",
+  "seen_in": [
+   "Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md"
+  ]
+ },
+ {
+  "id": "null-vector",
+  "term": "null vector",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Lightlike direction with zero self-product; the primitive edge directions ell_a are all null by construction.",
+  "seen_in": [
+   "docs/NULLSTRAND.md",
+   "docs/CONVENTIONS.md"
+  ]
+ },
+ {
+  "id": "palatini-action",
+  "term": "Palatini action",
+  "domains": [
+   "physics"
+  ],
+  "context": "First-order gravity action varying frame and connection independently; the finite face-holonomy action targets its recovery.",
+  "seen_in": [
+   "docs/NULLSTRAND.md"
+  ]
+ },
+ {
+  "id": "path-sum",
+  "term": "path sum",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Finite sum over histories with local phase weights; the exact 1+1 checkerboard sum equals the Dirac corner kernel.",
+  "seen_in": [
+   "Sources/Null_Edge_Future_Directions.md"
+  ]
+ },
+ {
+  "id": "poisson-sprinkling",
+  "term": "Poisson sprinkling",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Random point process seeding a causal order, Lorentz-invariant in distribution; the v2.1 ontology replaces fixed lattices with it.",
+  "seen_in": [
+   "docs/NERD_ROADMAP.md"
+  ]
+ },
+ {
+  "id": "pseudo-doubler",
+  "term": "pseudo-doubler",
+  "domains": [
+   "physics",
+   "null-edge"
+  ],
+  "context": "A high-quasienergy band touching with Dirac-like local dispersion; the walk's (pi,pi) cone is classified as one.",
+  "seen_in": [
+   "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+  ]
+ },
+ {
+  "id": "qnec",
+  "term": "quantum null energy condition (QNEC)",
+  "domains": [
+   "physics"
+  ],
+  "context": "Bound on energy by entropy second differences along null cuts; Q2 tests a discrete QNEC on checkerboard null cuts.",
+  "seen_in": [
+   "docs/NERD_ROADMAP.md"
+  ]
+ },
+ {
+  "id": "quasienergy",
+  "term": "quasienergy",
+  "domains": [
+   "physics"
+  ],
+  "context": "Energy defined only modulo 2pi/a for a stroboscopic step; the audited aliases sit at quasienergy 0 and pi.",
+  "seen_in": [
+   "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+  ]
+ },
+ {
+  "id": "relative-entropy",
+  "term": "relative entropy",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Distinguishability measure between states; Q1 tracks positivity/monotonicity of vacuum-subtracted relative entropy on nested cuts.",
+  "seen_in": [
+   "docs/NERD_ROADMAP.md"
+  ]
+ },
+ {
+  "id": "renormalization",
+  "term": "renormalization",
+  "domains": [
+   "physics"
+  ],
+  "context": "Scale-dependent redefinition of couplings; absolute masses wait behind an unbuilt renormalization dictionary, and xi runs.",
+  "seen_in": [
+   "docs/NULLSTRAND.md"
+  ]
+ },
+ {
+  "id": "resource-theory",
+  "term": "resource theory",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Free states are coherent null rank-one beams, free operations are rotations; mass is the resource created by direction mixing.",
+  "seen_in": [
+   "Sources/Null_Edge_Future_Directions.md"
+  ]
+ },
+ {
+  "id": "retarded-operator",
+  "term": "retarded operator",
+  "domains": [
+   "physics"
+  ],
+  "context": "Transport supported only toward the future; deletes Hermiticity (not chirality) and cannot by itself remove doublers.",
+  "seen_in": [
+   "docs/NULLSTRAND.md",
+   "docs/CONVENTIONS.md"
+  ]
+ },
+ {
+  "id": "scalar-curvature",
+  "term": "scalar curvature",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Curvature scalar R; the Higgs couples through xi*R, and finite propagation sees only the sum of built-in and counterterm parts.",
+  "seen_in": [
+   "docs/NULLSTRAND.md"
+  ]
+ },
+ {
+  "id": "seesaw-mechanism",
+  "term": "seesaw mechanism",
+  "domains": [
+   "physics"
+  ],
+  "context": "Small mass via leakage into a heavy hidden block, m_eff <= |B^H v|^2 / lambda_min(M); also shapes the dark-matter prediction.",
+  "seen_in": [
+   "Sources/Null_Edge_Future_Directions.md"
+  ]
+ },
+ {
+  "id": "sequential-growth",
+  "term": "sequential growth",
+  "domains": [
+   "physics"
+  ],
+  "context": "Causal-set dynamics adding elements step by step; coin-decorated growth is the Gate D route to realizing modular translation.",
+  "seen_in": [
+   "docs/NERD_ROADMAP.md"
+  ]
+ },
+ {
+  "id": "spectral-action",
+  "term": "spectral action",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "One functional Tr f(D/Lambda) yielding gravity plus matter; finite cutoff avatar S(D) = a0 tr1 + a2 tr D^2 + a4 tr D^4.",
+  "seen_in": [
+   "Sources/Null_Edge_Future_Directions.md"
+  ]
+ },
+ {
+  "id": "spin-10",
+  "term": "Spin(10)",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Spin cover of SO(10); grand-unification group whose pure-spinor structure the project formalizes.",
+  "seen_in": [
+   "AGENTS.md"
+  ]
+ },
+ {
+  "id": "sprinkling",
+  "term": "sprinkling",
+  "domains": [
+   "physics"
+  ],
+  "context": "Random Poisson placement of events in spacetime, Lorentz-invariant in distribution; only ensemble statements are covariant.",
+  "seen_in": [
+   "docs/CONVENTIONS.md",
+   "docs/NULLSTRAND.md"
+  ]
+ },
+ {
+  "id": "standard-model",
+  "term": "Standard Model",
+  "domains": [
+   "physics"
+  ],
+  "context": "The established particle-physics theory; the repo formalizes its algebraic structures (hypercharge, anomalies, representations).",
+  "seen_in": [
+   "AGENTS.md"
+  ]
+ },
+ {
+  "id": "stay-put-amplitude",
+  "term": "stay-put amplitude",
+  "domains": [
+   "physics",
+   "null-edge"
+  ],
+  "context": "A stationary hop weight added to remove doublers; proved to force B = 0 when the full involutory Dirac tangent is kept.",
+  "seen_in": [
+   "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+  ]
+ },
+ {
+  "id": "stress-energy-tensor",
+  "term": "Stress-energy tensor",
+  "domains": [
+   "physics"
+  ],
+  "context": "Source T of gravity; adjoint conservation of T is derived from G = kappa T, but no covariant conserved stress tensor is claimed.",
+  "seen_in": [
+   "NULL_EDGE_RESULTS.md"
+  ]
+ },
+ {
+  "id": "successive-axis-walk",
+  "term": "successive-axis walk",
+  "domains": [
+   "physics",
+   "null-edge"
+  ],
+  "context": "The tested 3+1 architecture: one conditional shift per axis then a mass coin; it retains the classified corner aliases.",
+  "seen_in": [
+   "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+  ]
+ },
+ {
+  "id": "supersymmetry",
+  "term": "supersymmetry",
+  "domains": [
+   "physics"
+  ],
+  "context": "Boson-fermion symmetry; one of the repo's formalization areas and source of the super-Dirac grading conventions.",
+  "seen_in": [
+   "AGENTS.md"
+  ]
+ },
+ {
+  "id": "symmetric-mass-generation",
+  "term": "symmetric mass generation (SMG)",
+  "domains": [
+   "physics"
+  ],
+  "context": "Gapping mirror fermions without symmetry breaking; SMG erasure is not guaranteed by anomaly freedom alone (standing non-claim).",
+  "seen_in": [
+   "docs/NERD_ROADMAP.md"
+  ]
+ },
+ {
+  "id": "tetrad-postulate",
+  "term": "tetrad postulate",
+  "domains": [
+   "physics"
+  ],
+  "context": "Finite compatibility [nabla_a, C_b] = 0; failures are classified as nonmetricity, curvature/holonomy, or torsion-like defects.",
+  "seen_in": [
+   "docs/NULLSTRAND.md",
+   "docs/CONVENTIONS.md"
+  ]
+ },
+ {
+  "id": "topological-index",
+  "term": "topological index",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Integer invariant of a walk family (GNVW-style Laurent exponent here); its charge-sum logic underlies the doubling audit.",
+  "seen_in": [
+   "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+  ]
+ },
+ {
+  "id": "topological-protection",
+  "term": "topological protection",
+  "domains": [
+   "physics"
+  ],
+  "context": "Immunity to continuous deformation; masslessness of a chiral surplus is protected this way - 'masslessness is topological'.",
+  "seen_in": [
+   "Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md"
+  ]
+ },
+ {
+  "id": "transfer-matrix",
+  "term": "transfer matrix",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Powers of one Euclidean step exp(-aH) or of the directed hop matrix; oriented history sums equal transfer-matrix powers exactly.",
+  "seen_in": [
+   "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+  ]
+ },
+ {
+  "id": "trotter-product-formula",
+  "term": "Trotter product formula",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Splitting exp(-itH) into many small unitary factors; the paper proves explicit uniform O(1/n) operator-norm error bounds.",
+  "seen_in": [
+   "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+  ]
+ },
+ {
+  "id": "unitarity",
+  "term": "Unitarity",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Probability-preserving evolution; every walk, gate, and Fock lift is exactly unitary rather than approximately.",
+  "seen_in": [
+   "Sources/Null_Edge_Publication_Portfolio_2026-07-10.md",
+   "Sources/Null_Edge_Ten_Ambitious_Goals_Status_2026-07-17.md"
+  ]
+ },
+ {
+  "id": "universality-class",
+  "term": "universality class",
+  "domains": [
+   "physics"
+  ],
+  "context": "Basin of models sharing critical behavior; Suite B claims membership in the Dirac/Weyl class as a theorem, not an analogy.",
+  "seen_in": [
+   "Sources/Null_Edge_Future_Directions.md"
+  ]
+ },
+ {
+  "id": "vacuum-expectation-value",
+  "term": "vacuum expectation value",
+  "domains": [
+   "physics"
+  ],
+  "context": "Background value v in H_0 = (0, v/sqrt(2)); sets W/Z and fermion mass scales and defines the covariant reference section.",
+  "seen_in": [
+   "docs/CONVENTIONS.md",
+   "docs/NULLSTRAND.md"
+  ]
+ },
+ {
+  "id": "von-neumann-entropy",
+  "term": "von Neumann entropy",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Entropy of a density matrix; headline theorem: entropy = 0 iff null iff pure ('null edges do not age'), positive when timelike.",
+  "seen_in": [
+   "docs/NERD_ROADMAP.md"
+  ]
+ },
+ {
+  "id": "wave-packet",
+  "term": "wave packet",
+  "domains": [
+   "physics"
+  ],
+  "context": "Normalized L2 superposition of momentum modes; Plancherel converts modewise symbol errors to packet errors with no cardinality loss.",
+  "seen_in": [
+   "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+  ]
+ },
+ {
+  "id": "weyl-rescaling",
+  "term": "Weyl rescaling",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Local rescaling of lengths; a rescaling invisible to bare observation blocks any exact absolute-scale reconstruction.",
+  "seen_in": [
+   "docs/NULLSTRAND.md"
+  ]
+ },
+ {
+  "id": "wilson-dirac-operator",
+  "term": "Wilson-Dirac operator",
+  "domains": [
+   "physics"
+  ],
+  "context": "Lattice Dirac operator with a Wilson term removing doublers; the 2D-torus Wilson-Dirac flux model is the C2 successor target.",
+  "seen_in": [
+   "docs/NERD_ROADMAP.md"
+  ]
+ },
+ {
+  "id": "wilson-loop",
+  "term": "Wilson loop",
+  "domains": [
+   "physics"
+  ],
+  "context": "Closed-loop holonomy trace probing confinement; a strong-coupling area law is kernel-checked and transfers to framed rectangles.",
+  "seen_in": [
+   "NULL_EDGE_RESULTS.md",
+   "PROGRESS.md"
+  ]
+ },
+ {
+  "id": "winding-charge",
+  "term": "winding charge",
+  "domains": [
+   "physics",
+   "mathematics"
+  ],
+  "context": "Topological charge Q of a configuration; a block-stacked involution family realizes overlap index exactly Q (C2a bridge).",
+  "seen_in": [
+   "docs/NERD_ROADMAP.md"
+  ]
+ },
+ {
+  "id": "zitterbewegung",
+  "term": "zitterbewegung",
+  "domains": [
+   "physics"
+  ],
+  "context": "Rapid 2m-frequency oscillation of free Dirac evolution; realized as the rotation of the determinant line (the I3 clock).",
+  "seen_in": [
+   "docs/NERD_ROADMAP.md"
+  ]
+ },
+ {
+  "id": "automorphism",
+  "term": "Automorphism",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "A structure-preserving self-map; Aut(O) fixing an imaginary unit yields SU(3), and carrier automorphisms set equivalence.",
+  "seen_in": [
+   "Sources/Null_Edge_Publication_Portfolio_2026-07-10.md",
+   "Sources/Null_Edge_Ten_Ambitious_Goals_Status_2026-07-17.md"
+  ]
+ },
+ {
+  "id": "bianchi-identity",
+  "term": "Bianchi identity",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "Cyclic curvature identity; finite first/second versions, a torsionful Cartan form, and a contracted bridge to div G are proven.",
+  "seen_in": [
+   "NULL_EDGE_RESULTS.md"
+  ]
+ },
+ {
+  "id": "branching-rule",
+  "term": "branching rule",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "How a representation decomposes under a subgroup; E8 branching rules require source or oracle confirmation.",
+  "seen_in": [
+   "AGENTS.md"
+  ]
+ },
+ {
+  "id": "cayley-dickson-construction",
+  "term": "Cayley-Dickson construction",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "The doubling R -> C -> H -> O -> sedenions; the project brackets exactly where the composition norm survives.",
+  "seen_in": [
+   "Sources/Null_Edge_Ten_Ambitious_Goals_Status_2026-07-17.md"
+  ]
+ },
+ {
+  "id": "chain-homotopy",
+  "term": "chain homotopy",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "D' = D + QR + RQ acts identically on cohomology; turns decoder non-uniqueness into controlled channel gauge freedom.",
+  "seen_in": [
+   "Sources/Null_Edge_Future_Directions.md"
+  ]
+ },
+ {
+  "id": "cohomology",
+  "term": "cohomology",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "H_Q = ker Q / range Q for the nilpotent constraint charge Q; physical observables live on cohomology classes.",
+  "seen_in": [
+   "Sources/Null_Edge_Future_Directions.md"
+  ]
+ },
+ {
+  "id": "complexification",
+  "term": "complexification",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "Extending a real algebra by the imaginary unit i; the C factor, whose i to -i map is charge conjugation.",
+  "seen_in": [
+   "Sources/Dixon_CxHxO_Convention_Reference.md"
+  ]
+ },
+ {
+  "id": "composition-algebra",
+  "term": "Composition algebra",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "Algebra with multiplicative norm |xy| = |x||y|; the mass-area mechanism makes the internal algebra a composition algebra.",
+  "seen_in": [
+   "Sources/Null_Edge_Ten_Ambitious_Goals_Status_2026-07-17.md"
+  ]
+ },
+ {
+  "id": "covector",
+  "term": "covector",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "Dual object alpha^a that eats vectors; carries the Clifford soldering while the null vectors ell_a carry the support.",
+  "seen_in": [
+   "docs/NULLSTRAND.md",
+   "docs/CONVENTIONS.md"
+  ]
+ },
+ {
+  "id": "data-processing-inequality",
+  "term": "data processing inequality",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "Information cannot increase under channels; the exact finite content of the 'gravity is DPI' slogan (Q1 gate).",
+  "seen_in": [
+   "docs/NERD_ROADMAP.md"
+  ]
+ },
+ {
+  "id": "discrete-fourier-transform",
+  "term": "discrete Fourier transform",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "Finite Fourier transform on Z/N and its cube diagonalizing translation; the walk's plane-wave blocks are exact.",
+  "seen_in": [
+   "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+  ]
+ },
+ {
+  "id": "e8",
+  "term": "E8",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "Largest exceptional Lie group; its roots, Cartan data, and branching rules are core formalization targets.",
+  "seen_in": [
+   "AGENTS.md"
+  ]
+ },
+ {
+  "id": "equivariance",
+  "term": "equivariance",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "Compatibility with the phase action W_u; positive homogeneity plus equivariance uniquely force the map z to B_z.",
+  "seen_in": [
+   "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+  ]
+ },
+ {
+  "id": "exceptional-jordan-algebra",
+  "term": "exceptional Jordan algebra",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "J3(O), the 3x3 octonionic Hermitian matrices; flagged as where a family index might live, and as a failed rank-fixer for n=2.",
+  "seen_in": [
+   "Sources/Null_Edge_Future_Directions.md"
+  ]
+ },
+ {
+  "id": "exceptional-lie-group",
+  "term": "Exceptional Lie group",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "The five outlier simple groups (G2 through E8); target structures for the division-algebraic Standard Model constructions.",
+  "seen_in": [
+   "PROGRESS.md"
+  ]
+ },
+ {
+  "id": "faithful-state",
+  "term": "faithful state",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "State with no zero eigenvalues; I2: timelike iff faithful iff finite modular Hamiltonian, while null edges are pure.",
+  "seen_in": [
+   "docs/NERD_ROADMAP.md"
+  ]
+ },
+ {
+  "id": "fundamental-symmetry",
+  "term": "fundamental symmetry (J_K)",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "Linear J with J^2 = 1 defining the Krein pairing; equals gamma_5 in the lattice realization; never conflate with J_C or J_mod.",
+  "seen_in": [
+   "docs/CONVENTIONS.md",
+   "docs/NULLSTRAND.md"
+  ]
+ },
+ {
+  "id": "generator",
+  "term": "Generator",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "Operator whose exponential gives a dynamics or symmetry; hypercharge, mixing, and limiting generators all appear.",
+  "seen_in": [
+   "Sources/Null_Edge_Publication_Portfolio_2026-07-10.md",
+   "Sources/Null_Edge_Ten_Ambitious_Goals_Status_2026-07-17.md"
+  ]
+ },
+ {
+  "id": "hessian",
+  "term": "Hessian",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "Second-derivative matrix; the radial Hessian of the Higgs potential and orbit-stiffness Hessians are mass-like obstructions.",
+  "seen_in": [
+   "NULL_EDGE_RESULTS.md"
+  ]
+ },
+ {
+  "id": "hodge-decomposition",
+  "term": "Hodge decomposition",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "Splitting forms into exact, coexact, and harmonic parts; the relative version underlies the Lambda1' cosmological-constant gate.",
+  "seen_in": [
+   "docs/NERD_ROADMAP.md"
+  ]
+ },
+ {
+  "id": "hodge-theory",
+  "term": "Hodge theory",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "Choosing harmonic representatives via the Laplacian Q*Q+QQ*; the slogan is physics as positive Hodge theory of null information.",
+  "seen_in": [
+   "Sources/Null_Edge_Future_Directions.md"
+  ]
+ },
+ {
+  "id": "index-theorem",
+  "term": "index theorem",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "Counting zero modes by topology; finite avatars here are the family index, chiral index protection, and index = anomaly.",
+  "seen_in": [
+   "Sources/Null_Edge_Future_Directions.md"
+  ]
+ },
+ {
+  "id": "jacobian",
+  "term": "Jacobian",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "Derivative matrix at a band crossing; its determinant sign is the local charge counted in the doubling census.",
+  "seen_in": [
+   "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+  ]
+ },
+ {
+  "id": "jet",
+  "term": "jet",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "Constant and low-order derivative data of a symbol; viable regulators must mix chirality only beyond the Dirac first jet.",
+  "seen_in": [
+   "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+  ]
+ },
+ {
+  "id": "jordan-algebra",
+  "term": "Jordan algebra",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "Commutative algebra of observables; 3x3 octonionic Hermitian matrices h3(O) carry the real-spectrum flagship theorem.",
+  "seen_in": [
+   "Sources/Null_Edge_Ten_Ambitious_Goals_Status_2026-07-17.md"
+  ]
+ },
+ {
+  "id": "kernel",
+  "term": "kernel (of a map)",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "Null space ker B; the massless/symmetric locus of an obstruction map, and where doublers hide as Clifford kernels.",
+  "seen_in": [
+   "docs/CONVENTIONS.md",
+   "docs/NULLSTRAND.md"
+  ]
+ },
+ {
+  "id": "krein-self-adjointness",
+  "term": "Krein self-adjointness",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "Self-adjointness w.r.t. an indefinite (Krein) inner product; an algebraic Lorentzian audit, not a positivity or stability proof.",
+  "seen_in": [
+   "AGENTS.md"
+  ]
+ },
+ {
+  "id": "l2-space",
+  "term": "L2 space",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "Square-integrable functions; the changing-lattice theorem proves strong L2 convergence to the exact Dirac flow for all data.",
+  "seen_in": [
+   "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+  ]
+ },
+ {
+  "id": "laurent-polynomial",
+  "term": "Laurent polynomial",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "Finite polynomials in z and 1/z model strictly local walk steps; range and degree constraints drive the alias no-gos.",
+  "seen_in": [
+   "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+  ]
+ },
+ {
+  "id": "left-multiplication-operator",
+  "term": "left-multiplication operator",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "The map z to xz; composing these maps (not multiplying elements) is the faithful semantics of octonion ladder products.",
+  "seen_in": [
+   "Sources/Dixon_CxHxO_Convention_Reference.md"
+  ]
+ },
+ {
+  "id": "matrix-exponential",
+  "term": "matrix exponential",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "exp(-iaB_z) = cos(a mu) id - i sin(a mu) B_z/mu turns the rest operator into an exact unitary turn gate with a group law.",
+  "seen_in": [
+   "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+  ]
+ },
+ {
+  "id": "matrix-signature",
+  "term": "signature (of a Hermitian matrix)",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "Positive minus negative eigenvalue count; overlap index = (1/2)(sig gamma5 - sig eps), preserved under congruence (Sylvester).",
+  "seen_in": [
+   "docs/NERD_ROADMAP.md"
+  ]
+ },
+ {
+  "id": "modular-conjugation",
+  "term": "modular conjugation (J_mod)",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "Tomita's antiunitary, state-dependent conjugation; allowed only in thermal-time/node-clock statements, never kinematic theorems.",
+  "seen_in": [
+   "docs/CONVENTIONS.md"
+  ]
+ },
+ {
+  "id": "modular-flow",
+  "term": "modular flow",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "Tomita-Takesaki intrinsic time evolution of a state; the de Broglie clock is provably NOT the modular flow (trivial at rest).",
+  "seen_in": [
+   "docs/NERD_ROADMAP.md"
+  ]
+ },
+ {
+  "id": "monodromy",
+  "term": "monodromy",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "How eigendata permutes or rotates around a parameter loop; tested and constrained as a generations-as-sheets mechanism.",
+  "seen_in": [
+   "Sources/Null_Edge_Future_Directions.md"
+  ]
+ },
+ {
+  "id": "moufang-identity",
+  "term": "Moufang identity",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "Weak associativity laws satisfied by octonions; all three kernel-checked, and the remaining Hurwitz gaps are Moufang steps.",
+  "seen_in": [
+   "PROGRESS.md",
+   "NULL_EDGE_RESULTS.md"
+  ]
+ },
+ {
+  "id": "nilpotent",
+  "term": "nilpotent",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "Element with some power equal to zero; the triple ladder omega = a1 a2 a3 squares to zero.",
+  "seen_in": [
+   "Sources/Dixon_CxHxO_Convention_Reference.md"
+  ]
+ },
+ {
+  "id": "nonassociative-algebra",
+  "term": "nonassociative algebra",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "Algebra where (ab)c can differ from a(bc); octonion nonassociativity forces the composition-operator reading of ladders.",
+  "seen_in": [
+   "Sources/Dixon_CxHxO_Convention_Reference.md"
+  ]
+ },
+ {
+  "id": "operator-norm",
+  "term": "operator norm",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "Largest amplification factor of a matrix; all many-step walk-versus-flow error bounds are stated in it.",
+  "seen_in": [
+   "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+  ]
+ },
+ {
+  "id": "operator-sign-function",
+  "term": "sign of an operator",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "sign(H) for gapped Hermitian H; pinned by a certified-sign interface (unique eps with [eps,H]=0, eps H PSD), no functional calculus.",
+  "seen_in": [
+   "docs/NERD_ROADMAP.md"
+  ]
+ },
+ {
+  "id": "orbit-invariant",
+  "term": "orbit invariant",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "Quantity constant on an entire group orbit; mass belongs to the orbit of null splittings, not to any representative.",
+  "seen_in": [
+   "Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md"
+  ]
+ },
+ {
+  "id": "plancherel-theorem",
+  "term": "Plancherel theorem",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "Exact energy identity between position and momentum sums, giving wave-packet error control without cardinality loss.",
+  "seen_in": [
+   "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+  ]
+ },
+ {
+  "id": "plucker-bracket",
+  "term": "Pluecker bracket (spinor wedge)",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "psi_0 phi_1 - psi_1 phi_0, the antisymmetric 'disagreement' of two spinors; summed squared moduli give mass squared.",
+  "seen_in": [
+   "Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md"
+  ]
+ },
+ {
+  "id": "plucker-coordinate",
+  "term": "Pl\u00fccker coordinate",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "The complex coordinate z of a spinor two-plane; it parametrizes the mass operator while keeping orientation information.",
+  "seen_in": [
+   "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+  ]
+ },
+ {
+  "id": "positive-semidefinite",
+  "term": "positive semidefinite",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "Nonnegative-form matrices; each psi psi-dagger is PSD and the reflected Hankel kernel is proved PSD.",
+  "seen_in": [
+   "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+  ]
+ },
+ {
+  "id": "projective-space",
+  "term": "projective space",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "Space of rays; the primitive field assigns a null ray [psi] in CP1 to each edge, and mass is failed projective synchronization.",
+  "seen_in": [
+   "Sources/Null_Edge_Future_Directions.md"
+  ]
+ },
+ {
+  "id": "relative-cohomology",
+  "term": "relative cohomology",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "Cohomology of a space modulo its boundary; Lambda is the harmonic representative of the H^4(D, boundary D) volume class.",
+  "seen_in": [
+   "docs/NERD_ROADMAP.md"
+  ]
+ },
+ {
+  "id": "root-system",
+  "term": "root system",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "Vector configuration encoding a Lie algebra; E8 root counts and normalizations are formalization checkpoints.",
+  "seen_in": [
+   "AGENTS.md"
+  ]
+ },
+ {
+  "id": "schur-complement",
+  "term": "Schur complement",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "Block-matrix reduction used as decimation; drives the finite RG flow, the seesaw bound, and recovery-length questions.",
+  "seen_in": [
+   "Sources/Null_Edge_Future_Directions.md"
+  ]
+ },
+ {
+  "id": "sedenion",
+  "term": "Sedenion",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "The 16-dimensional Cayley-Dickson double of O; proven to have zero divisors, making O the maximal division algebra.",
+  "seen_in": [
+   "Sources/Null_Edge_Ten_Ambitious_Goals_Status_2026-07-17.md"
+  ]
+ },
+ {
+  "id": "sl2c",
+  "term": "SL(2,C)",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "Unit-determinant complex 2x2 matrices, the double cover of the Lorentz group; the det P mass is SL(2,C)-invariant.",
+  "seen_in": [
+   "Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md"
+  ]
+ },
+ {
+  "id": "sobolev-space",
+  "term": "Sobolev space",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "H1-type spaces of weakly differentiable functions; identifying the Dirac operator's domain with vector-valued H1 remains open.",
+  "seen_in": [
+   "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+  ]
+ },
+ {
+  "id": "solid-angle",
+  "term": "Solid angle",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "Area cut out on the unit sphere; corner phases are proven to be half solid angles at every polygon order (Bargmann-style laws).",
+  "seen_in": [
+   "NULL_EDGE_RESULTS.md"
+  ]
+ },
+ {
+  "id": "special-unitary-group",
+  "term": "Special unitary group",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "SU(n), determinant-1 unitary matrices; SU(2), SU(3), SU(5) and their algebras are the program's force symmetries.",
+  "seen_in": [
+   "Sources/Null_Edge_Publication_Portfolio_2026-07-10.md",
+   "Sources/Null_Edge_Ten_Ambitious_Goals_Status_2026-07-17.md"
+  ]
+ },
+ {
+  "id": "spectrum",
+  "term": "spectrum",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "The set of eigenvalues of an operator; all 'spectral mass' language is forbidden until the positivity layer lands.",
+  "seen_in": [
+   "Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md"
+  ]
+ },
+ {
+  "id": "stabilizer",
+  "term": "stabilizer",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "Subgroup fixing the Higgs reference section; ker B_EW = u(1)_em and stabilizer directions remain gapless (the photon).",
+  "seen_in": [
+   "docs/CONVENTIONS.md",
+   "docs/NULLSTRAND.md"
+  ]
+ },
+ {
+  "id": "stereographic-projection",
+  "term": "stereographic projection",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "Map from sphere to plane; lets a spinor be read as a coordinate address for a light ray on the celestial sphere.",
+  "seen_in": [
+   "Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md"
+  ]
+ },
+ {
+  "id": "su2",
+  "term": "SU(2)",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "Unitary unit-determinant 2x2 matrices; both the massive little group and the weak-isospin symmetry su(2)_L.",
+  "seen_in": [
+   "Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md",
+   "Sources/Dixon_CxHxO_Convention_Reference.md"
+  ]
+ },
+ {
+  "id": "torsion",
+  "term": "torsion",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "Failure of edge parallelograms to close; one bin in the frame-defect classification alongside nonmetricity and curvature.",
+  "seen_in": [
+   "docs/NULLSTRAND.md",
+   "docs/CONVENTIONS.md"
+  ]
+ },
+ {
+  "id": "unitary-group",
+  "term": "unitary group U(n)",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "Norm-preserving matrix groups; U(2) = (SU(2) x U(1))/Z_2 splits into spin frame and internal clock.",
+  "seen_in": [
+   "docs/NERD_ROADMAP.md"
+  ]
+ },
+ {
+  "id": "unitary-matrix",
+  "term": "unitary matrix",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "Norm-preserving matrices; every walk step is exactly unitary, making histories and telescoping error estimates exact.",
+  "seen_in": [
+   "Sources/Null_Edge_From_Area_to_Dirac_Gap_Manuscript_Draft_2026-07-10.tex"
+  ]
+ },
+ {
+  "id": "von-neumann-algebra",
+  "term": "von Neumann algebra (type I/III)",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "Operator algebras; the type I vs type III continuum-limit problem (F-M2) is the program's hard analytic obstacle.",
+  "seen_in": [
+   "docs/NERD_ROADMAP.md"
+  ]
+ },
+ {
+  "id": "weitzenbock-decomposition",
+  "term": "Weitzenbock decomposition",
+  "domains": [
+   "mathematics",
+   "physics"
+  ],
+  "context": "Exact split of the squared carrier, 4 D^2 = Q_A + Q_C + 4 Q_T (+ soldering gradient): aperture, closure, turn, gravity channels.",
+  "seen_in": [
+   "NULL_EDGE_RESULTS.md",
+   "PROGRESS.md"
+  ]
+ },
+ {
+  "id": "zero-divisor",
+  "term": "Zero divisor",
+  "domains": [
+   "mathematics"
+  ],
+  "context": "Nonzero elements whose product is zero; none exist in division algebras, and explicit ones kill the sedenions.",
+  "seen_in": [
+   "Sources/Null_Edge_Ten_Ambitious_Goals_Status_2026-07-17.md"
+  ]
+ }
+]

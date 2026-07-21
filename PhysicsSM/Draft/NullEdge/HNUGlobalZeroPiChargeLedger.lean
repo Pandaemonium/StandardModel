@@ -15,14 +15,20 @@ Jacobians can share the same endpoint value at a crossing.  A global signed
 ledger therefore requires derivative, micromotion, Berry, or equivalent
 oriented data beyond the endpoint census.
 
-The concrete two-entry `hnuLedger` is only a nonvacuity fixture.  Its `+1` and `-1`
-charge assignment is not derived from the endpoint and is not a Brillouin-zone
-classification.
+The concrete two-entry `hnuLedger` is only a nonvacuity fixture. Its `+1` and
+`-1` charge assignment is not derived from the endpoint and is not a
+Brillouin-zone classification. In particular, it must not be confused with the
+published degree-one HNU endpoint: for a regular two-band representative, the
+oriented preimage sums at both `+I` and `-I` equal the same endpoint degree.
+The live `-I` preimage is a rank-deficient boundary sheet, so this file derives
+no pointwise charge from it.
 
 Provenance: Aristotle project `c626cb61-f1db-49ff-aa41-a9d96e9152ad`, task
 `e686ea99-0229-497c-ad7c-39fdba417a96`.  The return was independently retargeted
 and replayed against the live imports in
 `AutonomousLab/reviews/CLAUDE_REVIEW_HNUGlobalZeroPiChargeLedger_2026-07-13.md`.
+The endpoint-degree warning follows Higashikawa--Nakagawa--Ueda,
+arXiv:1806.06868, and Sun--Xiao--Bzdusek--Zhang--Fan, arXiv:1806.09296.
 -/
 
 noncomputable section
@@ -136,7 +142,8 @@ theorem singleton_origin_no_partner :
   rw [Finset.mem_singleton] at hx
   exact hne hx
 
-/-- Fixture-only opposite sector charges; these are not endpoint-derived. -/
+/-- Fixture-only opposite sector charges; these are not endpoint-derived and
+are not the published HNU north/south oriented-preimage ledger. -/
 def hnuSectorCharge : TaggedPoint -> Int
   | (_, Sector.zero) => 1
   | (_, Sector.pi) => -1

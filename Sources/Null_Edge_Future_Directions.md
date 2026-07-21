@@ -1,5 +1,12 @@
 # Null-edge mass program — future directions and candidate papers
 
+> **2026-07-19 focused successor:** the current ontology-level priority order,
+> including the order/count-to-metric gate, graph-first `3+1` reconstruction,
+> realizability, curvature coherence, universal stress energy, fixed-spacing
+> universality, and interacting-QFT targets, is maintained in
+> [`Null_Edge_Reconstruction_Priorities_2026-07-19.md`](Null_Edge_Reconstruction_Priorities_2026-07-19.md).
+> This long document remains the historical idea and candidate-paper ledger.
+
 **Status: speculative / research-program (grade C or lower throughout).** This
 document collects conceptual reframings and candidate future papers for the
 null-edge mass program. It is deliberately *outside* the manuscript

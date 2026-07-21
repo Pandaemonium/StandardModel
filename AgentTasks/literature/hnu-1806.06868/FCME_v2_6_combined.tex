@@ -1,0 +1,1055 @@
+\documentclass[
+floatfix,
+pra,
+twocolumn,
+%onecolumn,
+reprint,
+amsmath,amssymb,
+aps,
+footnote,
+%notitlepage,
+]{revtex4}
+\bibliographystyle{apsrev}
+
+
+%\usepackage{subfigure}
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+\usepackage{multirow}
+\usepackage{color}
+\usepackage{braket}
+\usepackage[utf8]{inputenc}
+%\usepackage{ulem}
+
+\include{module_command_general}%new commands for general use
+\include{module_command_only_thisnote}%new commands used only in this note
+
+
+\begin{document}
+
+
+%\usepackage{setspace} %PACKAGE FOR SETRUECM
+
+
+\preprint{APS/123-QED}
+\title{Floquet chiral magnetic effect}
+\author{Sho Higashikawa${}^1$}
+\author{Masaya Nakagawa${}^1$}
+\author{Masahito Ueda${}^{1,2}$}
+\affiliation{
+${}^1$
+Department of Physics, University of Tokyo, 7-3-1 Hongo, Bunkyo-ku, Tokyo 113-0033, Japan \\
+${}^2$RIKEN Center for Emergent Matter Science (CEMS), Wako, Saitama 351-0198, Japan
+}
+\date{\today}
+
+\begin{abstract}
+A single Weyl fermion, which is prohibited in static lattice systems by the Nielsen-Ninomiya theorem, is shown to be realized in a periodically driven three-dimensional lattice system with a topologically nontrivial Floquet unitary operator, manifesting the chiral magnetic effect.
+We give a topological classification of Floquet unitary operators in the Altland-Zirnbauer symmetry classes for all dimensions,
+and use it to predict that all gapless surface states of topological insulators and superconductors can emerge in bulk quasienergy spectra in Floquet systems.
+\end{abstract}
+\pacs{Valid PACS appear here}
+\maketitle
+
+%\large
+%\begin{spacing}{1.6} % add space between lines if necessary
+
+%----------------------------------------------------------------
+In 1981, Nielsen and Ninomiya proved that a single Weyl fermion cannot be realized in lattice systems \cite{NielsenNinomiya1, NielsenNinomiya2}. This theorem places a fundamental constraint on band structures due to the topology of the Brillouin zone.
+Weyl fermions have recently played a key role in cross-fertilizing ideas from high-energy physics and condensed-matter physics.
+A prime example is the prediction of Weyl semimetals \cite{Murakami07, Wan11}, where the low-energy effective field theory of Weyl fermions predicts novel electromagnetic responses originating from the chiral anomaly \cite{NielsenNinomiya3, Zyuzin12, Son12, Burkov14}.
+In particular, the observations of the surface Fermi arc \cite{Lv15_1, SYXu15, Lv15_2, LXYang15, SYXu16, NXu16, SMHuang15} and anomalous transport \cite{XHuang15, Arnold16, Zhen16, ZhangHasan16} have aroused considerable interest.
+However, if a system is defined on a lattice and thus anomaly-free, the Nielsen-Ninomiya theorem dictates that a Weyl fermion be accompanied by its partner with opposite chirality.
+By the same token, an anomaly-induced response known as the chiral magnetic effect (CME) \cite{Fukushima08} does not occur in equilibrium \cite{Vazifeh13},
+and numerous attempts to circumvent this difficulty have been made \cite{Goswami15, Taguchi16, Sumiyoshi16, Ibe17, Cortijo16, Pikulin16, MengT18, ChernodubM19}.
+
+In this Letter, we demonstrate that a single Weyl fermion can be realized on a periodically driven lattice, thereby overcoming the above limitations.
+In periodically driven (Floquet) systems, the unitary time-evolution operator over one period defines an effective Hamiltonian and the associated quasienergies \cite{Eckardt17}.
+Despite the apparent similarity to static systems, Floquet systems enable the realization of exotic phases that cannot be achieved in equilibrium, such as anomalous  topological insulators \cite{Kitagawa10, Rudner13} and time crystals \cite{Else16, Yao17}.
+The key idea of our proposal is an emerging topological structure in unitary operators associated with the periodicity of quasienergies \cite{Kitagawa10}.
+We here show that a driving protocol for a three-dimensional (3D) Thouless pump \cite{Thouless83, Kitagawa10} given by a topological Floquet unitary operation realizes a single Weyl fermion in a 3D lattice system, thereby providing a platform to observe the CME.
+We demonstrate that chiral transport emerges under a topological 3D Floquet drive with an applied synthetic magnetic field, leading to a Floquet realization of the CME.
+Our proposal can be implemented by using ultracold atomic gases, where the Thouless pump has been realized experimentally \cite{Nakajima16, Lohse16}.
+
+Furthermore, by exploiting the correspondence between anomalous gapless spectra and topological unitary operators, we provide a topological classification of Floquet unitary operators in the Altland-Zirnbauer symmetry classes.
+In general, a wide variety of lattice-prohibited band structures under given symmetries can be realized as gapless surface states of topological phases \cite{QiZhang11}.
+The impossibility of pure lattice realization of surface states is deeply connected with their symmetry-protected gaplessness via quantum anomalies \cite{RyuZhang12, Sule13, Hsieh16}.
+We show that the classification of topological Floquet unitaries, which generically offer symmetry-protected gapless quasienergy spectra, coincides with that of gapless surface states of static topological insulators/superconductors (TIs/TSCs). This correspondence strongly suggests that one can realize any gapless surface states of TIs/TSCs as \textit{bulk} quasienergy bands of Floquet systems, even though they cannot be realized in static lattice systems.
+
+%----------------------------------------------------------------
+%----------------------------------------------------------------
+%----------------------------------------------------------------
+\textit{General strategy.}--\
+We first explain our strategy to obtain a lattice-prohibited band structure in a Floquet system. We consider a periodically driven system of non-interacting fermions on a lattice. A periodically driven system is characterized by a Floquet operator, which is defined as a time-evolution operator over one period \cite{Eckardt17}. Since a crystal momentum is a good quantum number, a Floquet operator defines a map from the Brillouin zone to a space of unitary matrices. To characterize topology of a Floquet operator, we assume that a Hilbert subspace of the system is mapped onto itself by the Floquet operator \cite{Kitagawa10}. This condition is achieved by, e.g., (i) using generalized adiabaticity \cite{Kitagawa10, SunX18}, in which a time evolution is restricted to a low-energy subspace due to a large separation between low and high energy bands, or (ii) some fine-tuning of a driving protocol \cite{Budich17}. We hereafter refer to the Hilbert subspace closed in the time evolution over one period as ``lower" Floquet bands, which play a role similar to occupied bands of static  insulators \cite{Kitagawa10}.
+
+Let us denote the Floquet operator restricted to the lower Floquet bands by $U(\bm{k})$, where $\bm{k}$ is a crystal momentum. When $U(\bm{k})$ offers a topologically nontrivial map from the Brillouin zone to a unitary group U($N$) ($N$ is the number of the lower Floquet bands), the lower Floquet bands possess gapless quasienergy spectra, since a gapped Floquet operator can continuously be deformed into a trivial unitary, e.g., $U(\bm{k})=\bm{1}_N$ \cite{Kitagawa10, NathanRudner15}. Since the gapless quasienergy spectra cannot be gapped out by a continuous deformation of the Floquet operator, a topological Floquet operator is expected to exhibit a topologically protected gapless band structure, such as the case of Weyl fermions.
+In fact, it has been shown \cite{Kitagawa10, 1d_winding} that a single chiral fermion, which is forbidden in a static one-dimensional lattice, can be realized with a Floquet operator that has a nontrivial winding number.
+Our strategy for a realization of a single Weyl fermion is to construct a driving protocol that gives a Floquet operator with a nontrivial topological number in a 3D lattice system.
+
+
+
+
+
+%----------------
+\begin{figure}[t]
+  \begin{center}
+	\includegraphics[clip, width = \columnwidth]{protocol.png}
+	\caption{
+(a) Schematic illustration of the fermion pump by time-evolution operators $\mathcal{U}_j^\pm \ (j=1,2)$ and $\mathcal{U}_{h,3}^\pm$ given in Eqs.~\eqref{eq: in-plane pump} and \eqref{eq: in-axis pump} in the 3D lattice with a sublattice structure $L_{\mr{ev}}$ and $L_{\mr{od}}$ in the third direction. Thick arrows show the spin directions of fermions.
+(b), (c) Driving protocols of the model (b) without and (c) with a magnetic field.
+The time-evolution operator $\mathcal{U}_q$ describes a sudden switch-on and -off of a quadrupole potential, and $\mathcal{U}_s$ describes hopping in the third direction with a Hamiltonian $H_s$.}
+	\label{fig: ModelAndProtocol}
+  \end{center}
+\end{figure}
+%----------------
+
+%----------------------------------------------------------------
+%----------------------------------------------------------------
+%----------------------------------------------------------------
+\textit{Model.}--\
+Let us now proceed to a construction of a model with a topological Floquet operator.
+%While our model is constructed from a mathematical formula of a topologically nontrivial map \cite{3d_winding}, here we illustrate the model from a physical point of view.
+We consider spin-half fermions on a cubic lattice $L_C$ with a sublattice structure in the third direction:
+\begin{align}
+	L_C := \tbr{\left. \br{m_1, m_2, {m_3 \over 2}}\right| m_1, m_2, m_3 \in \mbZ }
+	,
+\end{align}
+where the sublattice $L_{\mr{ev}}$ ($L_{\mr{od}}$) corresponds to the sites with even (odd) $m_3$ [purple (light blue) points in Fig.~\ref{fig: ModelAndProtocol} (a)].
+The lattice constant $a_{\mr{lat}}$ is set to be unity: $a_{\mr{lat}} = 1$.
+The main ingredient of our model is spin-selective Thouless pumps \cite{Kitagawa10, Thouless83, Budich17} whose time-evolution operators $\mathcal{U}_j^\pm \ (j= 1,2)$ are given by
+\begin{align}
+	\mathcal{U}_j^\pm :=& \sum_{\bm{x} \alpha,\beta}
+\rbr{
+(P_j^\pm)^{\alpha\beta} c_{\bm{x} \pm \bm{e}_j, \alpha}^\dagger c_{\bm{x}, \beta}
+ + (P_j^\mp)^{\alpha\beta} c_{\bm{x}, \alpha}^\dagger c_{\bm{x}, \beta}
+}
+	, \label{eq: in-plane pump}
+\end{align}
+where $\bm{x} = (x_1, x_2, x_3) \in L_C$ denote the lattice site, $\bm{e}_j$ is a unit vector in the $x_j$ direction, and
+$c_{\bm{x}} = (c_{\bm{x}, \uparrow}, c_{\bm{x}, \downarrow})$ is the annihilation operator of a fermion with spin $\alpha$ ($\uparrow$ or $\downarrow$) at site $\bm{x}$.
+The matrix $P_j^\pm := (\sig_0 \pm \sig_j)/2$ is a projection operator on a spin state $\sig_j = \pm 1$, with $\sig_0$ and $\sig_j \ (j=1,2,3)$ being the $2 \times 2$ identity matrix and the Pauli matrices.
+From the projective nature of $P_j^\pm$, under the pump $\mathcal{U}_j^+$ ($\mathcal{U}_j^-$),
+fermions in a spin state $\sig_j = +1$ ($-1$) are displaced by one lattice site in the positive (negative) $x_j$ direction, while fermions in a spin state $\sig_1 = -1$ ($+1$) are not, thereby achieving spin-selective transport [see red and green arrows in Fig.~\ref{fig: ModelAndProtocol} (a)].
+We also introduce spin-selective Thouless pumps $\mathcal{U}_{h,3}^\pm$ which displace fermions by a half lattice site in the $x_3$ direction:
+\begin{align}
+	\mathcal{U}_{h,3}^\pm &:=
+	\sum_{\bm{x}, \alpha,\beta}
+	\rbr{
+(P_j^\pm)^{\alpha\beta} c_{\bm{x} \pm {\bm{e}_3 \over 2}, \alpha}^\dagger c_{\bm{x}, \beta}
+ + (P_j^\mp)^{\alpha\beta} c_{\bm{x}, \alpha}^\dagger c_{\bm{x}, \beta}
+	}
+	. \label{eq: in-axis pump}
+\end{align}
+We note that fermions can be displaced between the unit cells by $\mathcal{U}_{h,3}^\pm$ [see blue arrows in Fig.~\ref{fig: ModelAndProtocol} (a)].
+
+The driving protocol of our topological pump is constituted from eight successive applications of $\mathcal{U}_1^\pm, \mathcal{U}_2^\pm$, and $\mathcal{U}_{h, 3}^\pm$ as shown in Fig.~\ref{fig: ModelAndProtocol} (b), where the total time-evolution operator $\mathcal{U}_F^{\mr{wh}}$ for the whole four bands over one cycle is given as follows \cite{3d_winding, experiment}:
+\begin{align}
+	\mathcal{U}_F^{\mr{wh}} &:=
+\mathcal{U}_1^- \mathcal{U}_{h,3}^- \mathcal{U}_2^- \mathcal{U}_{h,3}^+
+\mathcal{U}_1^+ \mathcal{U}_{h,3}^- \mathcal{U}_2^+ \mathcal{U}_{h,3}^+ =
+	\sum_{\bk} c_{\bk}^\dagger V^{\mr{wh}}(\bk) c_{\bk}
+	, \label{eq: whole protocol}
+	\end{align}
+where $\bk = (k_1, k_2, k_3)$ is the crystal momentum.
+Then, the Floquet operator $V^{\mr{wh}}(\bk)$ is decomposed into two $2 \times 2$ matrices: $V^{\mr{wh}}(\bk) = U(\bk) \oplus U^H(\bk)$, where
+\begin{align}
+	U(\bk) &:=
+	U_1^-\br{k_1}U_{h,3}^-\br{k_3}U_2^-\br{k_2}U_{h,3}^+\br{k_3}
+	\nonumber \\ & \quad\quad \times
+	U_1^+\br{k_1}U_{h,3}^-\br{k_3}U_2^+\br{k_2}U_{h,3}^+\br{k_3}
+	, \label{eq: strobo0}
+\end{align}
+and $U^H(\bk):= U(k_1, k_2, k_3-2\pi)$, $U_{j}^\pm(k) := P_{j}^\pm \mr{e}^{-ik} + P_{j}^\mp$ and $U_{h,3}(k) := U_3(k/2)$ represent the Floquet operators of the spin-selective Thouless pumps.
+Here we focus on $U(\bm{k})$ as a Floquet operator of lower Floquet bands.
+A straightforward calculation shows that $U(\bk)$ stays a constant value $-\sig_0$ if $\bk$ belongs to the boundary of the Brillouin zone $\mbT^3 := [-\pi,\pi]^3$ and hence satisfies the periodic boundary condition on $\mbT^3$.
+
+Let $\heff(\bk)$ be an effective Hamiltonian defined by $U(\bk) =: \exp\rbr{ -i \heff (\bk)}$, where the driving period $T$ is set to unity.
+Since the quasienergies $\epsilon(\bk)$ (eigenvalues of $\heff(\bk)$) satisfy $\cos \rbr{\epsilon(\bk)} = \mr{Tr}\rbr{U(\bk)} / 2$,
+$\epsilon(\bk) =
+\pm\cos^{-1}\rbr{
+2 \cos^2\br{{k_1 \over 2}} \cos^2\br{{k_2 \over 2}} \cos^2\br{{k_3 \over 2}} - 1
+}$ follows from Eq.~\eqref{eq: strobo0}.
+Therefore, $\epsilon(\bk)$ has only one gapless point at $\bk = 0$.
+Since $U(\bk)$ is expanded around $\bk=0$ as $U(\bk) \approx \sig_0 - i \bk \cdot \bm{\sig}$ from $U_j^\pm(k) \approx \sig_0 \mp i P_j^\pm k$ for $k \approx 0$, we have $\heff(\bk) \approx \bk \cdot \bm{\sig},$ which clearly indicates the presence of a single left-handed Weyl fermion.
+The presence and stability of this single Weyl fermion is protected by a nontrivial topology in $U(\bk)$; In fact, $U(\bk)$ achieves a topologically nontrivial map from $\mbT^3$ to $\mr{SU}(2) \cong S^3$ (3D sphere) with a unit winding number \cite{MantonN04}:
+\begin{align}
+	W := - \int {d\bk \over 24 \pi^2}
+	\sum_{i,j,k = 1}^3
+	\epsilon^{ijk} \mr{Tr} \left[ R_i R_j R_k \right]
+	 = 1
+	, \label{eq: windnumber}
+\end{align}
+where $R_i := U(\bk)^\dagger \partial_{k_i} U(\bk)$ \cite{3d_winding}.
+We note that our model should be distinguished in topology from the previous proposals for realizing Floquet Weyl semimetals \cite{Chan16a, Hubener17, WangH16, Zou16, Bucciantini17, Wang14, Ebihara16, ZhangNagaosa16, Yan16, Takasan17}, where the Weyl nodes always appear in pairs in accordance with the Nielsen-Ninomiya theorem.
+
+
+
+%-------------------------------------
+\begin{figure}[t]
+  \begin{center}
+	\includegraphics[clip, width = \columnwidth]{spec_current.png}
+	\caption{
+(a), (b) Quasienergy spectra of $\bar{U}(0, k_3)$ with flux (a) $\phi=0$ and (b) $\phi=1/20$. The color represents the expectation value $S_3$ of $\sig_3$ for each eigenstate according to the gauge shown on the right.
+(c) Pumped charge $\Delta Q$ as a function of flux $\phi$ for the initial state \eqref{eq: fcme, 8} at half-filling and zero temperature without (red) and with (blue) spin-mixing perturbation. The orange points are the results with finite-temperature $T = 0.1 E_F$ [$E_F$ is the Fermi energy].
+(d) Hopping amplitudes $t_i$ for preparing the initial state.}	\label{fig: DynaWmag1}
+  \end{center}
+\end{figure}
+%-------------------------------------
+
+%----------------------------------------------------------------
+%----------------------------------------------------------------
+%----------------------------------------------------------------
+\textit{Floquet chiral magnetic effect.}--\
+When a magnetic field is applied, a Weyl fermion shows chiral transport antiparallel to the applied magnetic field, a phenomenon known as the CME \cite{Fukushima08}.
+A magnetic field can be introduced in our model through the replacement of
+$\mathcal{U}_2^\pm$ in Eq.~\eqref{eq: strobo0} with $\mathcal{U}_q^\dagger \mathcal{U}_2^\pm \mathcal{U}_q$, where $\mathcal{U}_q := \exp(- i 2 \pi \phi x_1 x_2)$ is the time evolution operator induced by a sudden switch-on and -off of a quadrupole potential \cite{Sorensen05, HafeziM07}.
+Since $\mathcal{U}_q^\dagger U_2^\pm(k_2) \mathcal{U}_q = U_2^\pm(k_2 - 2 \pi \phi x_1)$, the effective Hamiltonian near $\bm{k} = 0$ is given by $h_{\mr{eff}} = (\bk + \bm{A})\cdot \bm{\sigma}$ with $\bm{A} = (0, -2 \pi \phi x_1, 0)$, which describes a Weyl fermion under a magnetic field $\bm{B} = (0,0, -2 \pi \phi)$.
+However, $\mathcal{U}_q$ couples the lower and higher Floquet bands.
+Therefore, to decouple them, we need an additional time evolution $\mathcal{U}_s$ with duration $\tau_s$ under a Hamiltonian $H_s = J_s \sum_{\bm{x}} (i c_{\bm{x} + {\bm{e}_3 \over 2}}c_{\bm{x}} + \mr{h.c.})$ with $4J_s\tau_s = \pi\phi$ at the end of the cycle [see Fig.~\ref{fig: ModelAndProtocol} (c)] \cite{experiment}.
+Since $k_2$ and $k_3$ remain as good quantum numbers, the Floquet operator $\bar{U}_F$ acting on the lower Floquet band is decomposed into a set of one-dimensional lattice models as $\bar{U}_F = \sum_{k_2, k_3} \bar{U}(k_2, k_3)$ \cite{barU_form}.
+Figures~\ref{fig: DynaWmag1} (a) and (b) show the quasienergy spectra of $\bar{U}(0, k_3)$ without ($\phi = 0$) and with ($\phi = 1/20$) a magnetic field, respectively, where the color of the points represents the spin polarization $S_3 := \braket{u_a(k_3) | \sig_3 | u_a(k_3)}$ of the eigenstate $\ket{u_a(k_3)}$.
+Due to the flux $\phi$, the Landau gap with size $2 \omega_L := 2\sqrt{2B_s} \approx 1.6$ opens near the Weyl point at $k_3 = 0$, and a spin-polarized chiral fermion emerges inside the gap.
+
+
+The chiral dispersion emerging under a magnetic field produces a current parallel to the field, leading to a Floquet realization of the CME.
+To see this, we calculate the amount of charge $\Delta Q$ pumped during one period using $\Delta Q := \int_0^T dt J_3(t)$, where $J_3(t):=\int_{-\pi}^\pi {dk_3 \over 2\pi}\mr{Tr}\rbr{\rho_t \partial_{k_3} H(k_3, t)}$ is a current parallel to the magnetic field, $\rho_t$ is the density matrix at time $t$, and $H(k_3,t)$ is the time-dependent Hamiltonian.
+As shown in Ref.~\cite{Kitagawa10}, the pumped charge can be rewritten in terms of the quasienergy $\epsilon_{k_2,b}(k_3)$ of $\bar{U}(k_2,k_3)$ [$b$ specifies a Landau level] as
+\begin{align}
+	\Delta Q =
+	\sum_{k_2, b}
+	\int_{-\pi}^\pi {dk \over 2\pi}
+	f_{k_2, b}(k_3) {\partial \epsilon_{k_2, b}(k_3) \over \partial k_3}
+	, \label{eq: 2}
+\end{align}
+where $f_{k_2, b}(k_3) := \bra{k_3, k_2, b}\rho_0 \ket{k_3, k_2, b}$ is a distribution function of the Floquet eigenstates $\ket{k_3, k_2, b}$ in the initial state.
+As an initial state, we here take an equilibrium state under a Hamiltonian $H_0 = \sum_{\bm{q}, \alpha}\epsilon_0(\bm{q})c_{\bm{q},\alpha}^\dagger c_{\bm{q},\alpha}$ on the lattice $L_C$ with dispersion relation $\epsilon_0(\bm{q}) := -t_3\cos(q_3/2)-t_1\cos q_1-t_2\cos q_2$ [$t_i>0$ is the hopping amplitude along the $x_i$ direction, see Fig.~\ref{fig: DynaWmag1} (d)]:
+\begin{align}
+	\rho_0 &= \sum_{\bm{q}, \alpha = \uparrow, \downarrow}
+	f_{\mr{FD}}(\bm{q})
+	\ket{\bm{q},\alpha}_0 \bra{\bm{q},\alpha}_0
+	,
+	\label{eq: fcme, 8}
+\end{align}
+where $f_{\mr{FD}}(\bm{q})$ is the Fermi-Dirac distribution function with Fermi energy $E_F$, and $\ket{\bm{q},\alpha}_0$ is the Bloch state with momentum $\bm{q} \ (\in \rbr{-\pi,\pi}^2\times \rbr{-2\pi, 2\pi})$ and spin $\alpha$.
+Note that this thermal Fermi gas was used for detecting a static topological phase \cite{DauphinA13, RoyS16, RoyS18}. %ここでレフェリーから言われた先行研究を引用した（東川）
+By tuning the lattice parameters to be $t_1,t_2 \ll t_3$, we can make the distribution $f_{k_2, b}(k_3)$ concentrate almost on the lower Floquet bands, as shown below.
+
+In Fig.~\ref{fig: DynaWmag1} (c), we show the calculated pumped charge $\Delta Q$ for a half-filling and zero-temperature initial state with $t_1 = t_2 = t_3/3$.
+The obtained value close to $\phi/2$ [green dashed line in Fig.~\ref{fig: DynaWmag1} (c)] actually has a topological origin.
+In the limit $t_1, t_2\ll t_3$, only the lower Floquet bands are occupied, i.e., $f_{\mr{FD}}(\bk) = 1$, and hence
+\begin{align}
+	f_{k_2, b}(k_3) =
+	\sum_{\bm{q}, \alpha}
+	|\braket{k_3, k_2, b|\bm{q}, \alpha}|^2
+	= 1
+	.
+\end{align}
+Then, $\Delta Q$ in Eq.~\eqref{eq: 2} reduces to the sum of the one-dimensional winding number divided by the number of Landau levels $N_L = 2L_1$ [$L_1$ is the number of sites along the $x_1$ direction].
+Since we have the $(\phi L_1)$-chiral bands due to the flux $\phi$, each of which has the winding number $+1$, we obtain $\Delta Q = \phi L_1 /N_L = \phi / 2$.
+We emphasize that this quantized chiral current cannot arise in usual Floquet-Weyl semimetals with topologically trivial $U(\bk)$ because left- and right-handed Weyl fermions appear with equal numbers in accordance with the Nielsen-Ninomiya theorem.
+The quasienergy band in our setup, in contrast, hosts a single-chirality Weyl fermion without a partner of opposite chirality within a single band, enabling us to realize the maximally imbalanced population with only one chiral component being occupied.
+Although the CME is a many-body phenomena originating from the chiral imbalance, a similar effect can be observed in the single-particle dynamics \cite{single_particle}.
+
+The chiral current in the Floquet CME is robust against perturbations of the model due to topological stability of the single Weyl point protected by the 3D winding number $W$.
+The blue points in Fig.~\ref{fig: DynaWmag1} (c) show the pumped charge under a modified protocol with imperfect spin-selective Thouless pumps, where $\mathcal{U}_j^\pm$ ($j=1,2,3$) is replaced by with $\mathcal{U}_j^\pm \mr{e}^{-i \delta \sigma_l}$ ($l=j+1$ mod 3).
+Although $\mathcal{U}_j^\pm$ is no longer spin-preserving and spin-selective due to the spin-mixing term $\mr{e}^{-i \delta \sigma_l}$, $\Delta Q$ is almost unaffected.
+Furthermore, we confirm that $\Delta Q$ persists even in finite temperature as shown by the orange points in Fig.~\ref{fig: DynaWmag1} (c).
+
+
+
+%----------------------------------------------------------------
+\textit{Classification of gapless Floquet states.}--\
+In static topological insulators, symmetries dramatically enrich the classification of insulators as well as that of their gapless surface states, which cannot be realized in bulk lattices under the symmetry constraint \cite{QiZhang11}.
+This fact naturally motivates us to topologically classify Floquet unitary operators under various symmetries.
+As shown below, the symmetry-protected Floquet unitaries offer a wide range of lattice-prohibited band structures under symmetries which include the single Weyl fermion with the topological Floquet unitary as an example.
+
+Let us take a Floquet operator $U(\bm{k})\in$ U($N$) given by some unitary matrix. We here consider three symmetries in the Altland-Zirnbauer classes \cite{Kitaev09, Schnyder08}: time-reversal symmetry $\Theta H(\bm{k},t)\Theta^{-1}=H(-\bm{k},T-t)$, particle-hole symmetry $CH(\bm{k},t)C^{-1}=-H(-\bm{k},t)$, and chiral symmetry $\Gamma H(\bm{k},t)\Gamma^{-1}=-H(\bm{k},T-t)$. In terms of the Floquet operators, these symmetries are expressed as $\Theta U(\bm{k})\Theta^{-1}=U^\dag(-\bm{k})$, $CU(\bm{k})C^{-1}=U(-\bm{k})$, and $\Gamma U(\bm{k})\Gamma^{-1}=U^\dag(\bm{k})$ \cite{Kitagawa10}.
+We allow any continuous deformation of Floquet operators which respect the symmetry of the system, and classify their stable equivalence classes according to the K-theory \cite{Kitaev09, TeoKane10}. Note that we do \textit{not} assume energy gaps of the quasienergy band.
+Then, the classification of the unitary matrices can be performed in a manner similar to the classification of ``unitary loops" for Floquet TIs/TSCs \cite{RoyHarper17, MorimotoPoVishwanath17}.
+Since the derivation is parallel to Refs.~\cite{RoyHarper17, MorimotoPoVishwanath17}, we here outline the general idea and give the full derivation in Supplemental Material \cite{derivation_classification}.
+We define a Hermitian matrix $H_U(\bm{k})$ by
+\begin{equation}
+H_U(\bm{k})=
+\begin{pmatrix}
+0 & U(\bm{k})\\
+U^\dag(\bm{k}) & 0
+\end{pmatrix},
+\label{eq_HU}
+\end{equation}
+which satisfies $H_U(\bm{k})^2=\bm{1}_{2N}$ and thus has eigenvalues $\pm 1$.
+Note that in the case of the classification of Floquet TIs/TSCs, the unitary matrix is taken as $U(\bm{k},t):=\mathcal{T}\exp[-i\int_0^tdt'H(\bm{k},t')]$ instead of $U(\bm{k})$ \cite{RoyHarper17}. Regarding $H_U(\bm{k})$ as a ``Hamiltonian" and identifying its symmetry class,
+we can show that the classification of $U(\bm{k})$ is equivalent to that of $H_U(\bm{k})$ given by some K-groups of static TIs/TSCs.
+Using the K-group isomorphism between different spatial dimensions \cite{Kitaev09, TeoKane10},
+we find that the K-group of Floquet operators of a symmetry class in $d$ dimensions is given by that of static TIs/TSCs of the same symmetry class in $(d+1)$ dimensions.
+Since the latter is equivalent to the classification of $d$-dimensional gapless surface states through the bulk-boundary correspondence, we arrive at the conclusion that the classification of $d$-dimensional gapless Floquet states is equivalent to that of $d$-dimensional gapless surface states of TIs/TSCs.
+The final result is summarized in Table \ref{tab_AZ_maintext}.
+This result strongly suggests that the gapless surface states of TIs/TSCs, which cannot have any pure lattice realization without bulk, can be realized in bulk quasienergy spectra of periodically driven lattice systems.
+In fact, a single Weyl fermion presented in this paper corresponds to a surface state of a four-dimensional topological insulator \cite{Qi08} and to class A in $d=3$ in Table \ref{tab_AZ_maintext}.
+It merits further study to explicitly construct examples of Floquet operators in other symmetry classes.
+
+%---------------------------------
+\begin{center}
+\begin{table}
+\caption{Tenfold-way topological classification of Floquet operators for spatial dimension $d = 0,1,2,3$. The Floquet single Weyl fermion in Eq.~\eqref{eq: strobo0} corresponds to class A in $d=3$.}
+\label{tab_AZ_maintext}
+\begin{ruledtabular}
+\begin{tabular}{lcccc}
+class & $d=0$ & $d=1$ & $d=2$ & $d=3$ \\ \hline
+A & $0$ & $\mathbb{Z}$ & $0$ & $\mathbb{Z}$ \\
+AIII & $\mathbb{Z}$ & $0$ & $\mathbb{Z}$ & $0$ \\ \hline
+AI & $0$ & $0$ & $0$ & $2\mathbb{Z}$ \\
+BDI & $\mathbb{Z}$ & $0$ & $0$ & $0$ \\
+D & $\mathbb{Z}_2$ & $\mathbb{Z}$ & $0$ & $0$ \\
+DIII & $\mathbb{Z}_2$ & $\mathbb{Z}_2$ & $\mathbb{Z}$ & $0$ \\
+AII & $0$ & $\mathbb{Z}_2$ & $\mathbb{Z}_2$ & $\mathbb{Z}$ \\
+CII & $2\mathbb{Z}$ & $0$ & $\mathbb{Z}_2$ & $\mathbb{Z}_2$ \\
+C & $0$ & $2\mathbb{Z}$ & $0$ & $\mathbb{Z}_2$ \\
+CI & $0$ & $0$ & $2\mathbb{Z}$ & $0$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+\end{center}
+
+
+
+%----------------------------------------------------------------
+\textit{Summary.}--\
+We have presented a periodically driven 3D lattice system that exhibits the single Weyl fermion in a quasienergy spectrum, thereby demonstrating a Floquet version of the CME.
+Our proposal utilizes the topology of the Floquet unitary.
+While the mathematical formula of the 3D winding number \eqref{eq: windnumber} was presented in a seminal work \cite{Kitagawa10}, its physical consequence and concrete realization had remained elusive.
+We have resolved this problem and provided a generalization to a topological classification of Floquet operators in the Altland-Zirnbauer symmetry classes.
+We expect that the unique topological structure arising from unitary operators will serve as a useful guideline for designing non-equilibrium systems free from the limitations of static phases of matter.
+
+
+
+
+%----------------------------------------------------------------
+\begin{acknowledgments}
+We thank I.\ Danshita, T.\ Tomita, Y.\ Ashida, Z.\ Gong, Y.\  Kikuchi, and T.\ Morimoto for fruitful discussions.
+We are especially grateful to K.\ Shiozaki for suggesting the generalization of our result by including symmetries.
+This work was supported by KAKENHI Grant No. JP18H01145 and a Grant-in-Aid for Scientific Research on Innovative Areas ``Topological Materials Science" (KAKENHI Grant No. JP15H05855) from the Japan Society for the Promotion of Science (JSPS).
+S. H. acknowledges support from JSPS (Grant No. JP16J03619) and through the Advanced Leading Graduate Course for Photon Science (ALPS).
+M.N. is supported by RIKEN Special Postdoctoral Researcher Program.
+\end{acknowledgments}
+%----------------------------------------------------------------
+
+
+
+
+
+\appendix
+%\renewcommand\thefigure{S\arabic{figure}}
+
+
+\section{\label{sec: 1D}Floquet realization of a single chiral fermion in a one-dimensional lattice}
+A prototypical example of a gapless Floquet spectrum with nontrivial topology is a single chiral fermion, which is prohibited in a static one-dimensional lattice \cite{NielsenNinomiya1, NielsenNinomiya2}.
+This example corresponds to class A in $d=1$ in the classification table [see Table I in the main text].
+%(see Tab.~\ref{tab_AZ_maintext}).
+The model is given by the Thouless pump \cite{Kitagawa10, Thouless83}, where an adiabatic cycle of a one-dimensional insulator leads to quantized charge pumping.
+Because of the adiabatic condition,
+an occupied state with momentum $k$ returns to the same state during one cycle; thus the Floquet operator is decomposed according to the momentum $k$ and the Floquet-band index $\alpha$:
+\begin{align}
+	U(T) = \sum_{k, \alpha = 1,2} U_{F, \alpha}(k)
+	.
+\end{align}
+The two Floquet bands $\alpha = 1$ and $2$ correspond to the occupied and unoccupied bands of the initial Hamiltonian $H(t=0)$, respectively.
+When the system starts from the ground state of $H(t=0)$, the pumped charge $\Delta Q$ is expressed in terms of the first Chern number of the time-dependent Bloch Hamiltonian \cite{Thouless83}.
+Furthermore, $\Delta Q$ is rewritten in terms of the Floquet operator $U_{F, \alpha=1}(k)$ acting on the lower Floquet band as follows \cite{Kitagawa10}:
+\begin{align}
+	\Delta Q & =
+	\int_{-\pi}^{\pi} {dk \over 2\pi}
+	\mr{Tr}[U_{F, \alpha=1}^\dagger(k) i \partial_k U_{F, \alpha=1}(k)]
+	\nonumber \\
+	 & = T \int_{-\pi}^{\pi} {dk \over 2\pi}
+	 {\partial \epsilon_{\alpha=1}(k) \over \partial k}
+	 =: \nu_{\alpha=1}
+	, \label{eq: fl, 2}
+\end{align}
+where $\nu_{\alpha=1}$ is the winding number of the quasienergy band over the Brillouin zone.
+For a unit winding $\nu_1=1$, $\epsilon(k)$ is topologically equivalent to $\epsilon(k) = k/T$, i.e., the band with a single chiral fermion.
+From the $(2\pi/T)$-periodicity of the quasienergy, this linear dispersion $\epsilon(k) = k/T$ is actually \textit{continuous} at $k=\pm\pi$.
+Thanks to the periodic structure in the quasienergy space,
+Floquet systems can realize topological band structures that are not achievable in static systems.
+
+
+
+%----------------------------------------------------------------
+%----------------------------------------------------------------
+%----------------------------------------------------------------
+\section{\label{sec: smash}Nontriviality of $U(\bk)$ as a map from $\mbT^3$ to $\mr{SU}(2)$}
+It follows from the isomorphism $\mr{SU}(2) \cong S^3$ that the element $U$ in $\mr{SU}(2)$ can be parametrized in terms of $\bm{u} = \br{u_1, u_2, u_3, u_4} \in S^3$ as
+\peqn{
+&U = u_4 \sig_0 + i \br{
+u_1 \sig_1 + u_2 \sig_2 + u_3 \sig_3
+}
+, \nonumber \\
+&\sum_{k = 1}^4 (u_k)^2 = 1
+}
+If we parametrize $U(\bk)$ as
+\ceqn{
+U(\bk) = u_4(\bk) \sig_0 + i \br{
+u_1(\bk) \sig_1 + u_2(\bk) \sig_2 + u_3(\bk) \sig_3
+}
+}
+the winding number $W$ defined in Eq.~(6) in the main text can be expressed as
+\ceqn{
+W = \int {d \bm{k} \over 2 \pi^2}
+\sum_{i,j,k,l = 1}^4 \epsilon_{ijkl}
+u_i(\bk)
+{\partial u_j(\bk) \over \partial k_1}
+{\partial u_k(\bk) \over \partial k_2}
+{\partial u_l(\bk) \over \partial k_3}
+\label{eq: wind, another}
+}
+where $\epsilon_{ijkl}$ is the totally antisymmetric tensor of rank $4$ \cite{MantonN04}.
+Expanding Eq.~(5) in the main text,
+we obtain
+\peqn{
+u_1(\bk) =&
+- \sin\br{k_1}
+\cos^2\br{{k_2 \over 2}}
+\cos^2\br{{k_3 \over 2}}
+, \nnco
+u_2(\bk) =&
+- \cos^2\br{{k_1 \over 2}}
+\sin(k_2)
+\cos\br{{k_3 \over 2}}
+\nnco
+& + {1 \over 2} \sin(k_1)
+\cos^2\br{{k_2 \over 2}}
+\sin(k_3)
+, \nnco
+u_3(\bk) =&
+- {1 \over 2}
+\sin(k_1)
+\sin(k_2)
+\cos\br{{k_3 \over 2}}
+\nnco
+&- \cos^2\br{{k_1 \over 2}}
+\cos^2\br{{k_2 \over 2}}
+\sin(k_3)
+, \nnco
+u_4(\bk) =&
+2 \cos^2\br{{k_1 \over 2}}
+\cos^2\br{{k_2 \over 2}}
+\cos^2\br{{k_3 \over 2}} - 1
+\label{eq: Uk, as, S3}
+}
+Substituting these into Eq.~\eqref{eq: wind, another}, we obtain $W = 1$.
+
+In general, a nontrivial map from $\mbT^3$ to $S^3$ can be constructed from the \textit{smash product} \cite{Nakahara03}.
+It is a mathematical tool for constructing a manifold from two manifolds.
+Let $X$ ($Y$) be a manifold and $x_0$ ($y_0$) be a point on $X$ ($Y$).
+The smash product $X \wedge Y$ is defined as the product space $X \times Y$ with the space $(\tbr{x_0} \times Y) \cup (X \times \tbr{y_0} )$ identified with a point on $X \times Y$.
+For example, the smash product $S^1 \wedge S^1$, with $S^1$ being a circle, is isomorphic to the two-dimensional sphere $S^2$.
+We parametrize these two circles as
+\ceqn{
+S^1 = \tbr{k | -\pi \le k \le \pi}, \
+S^1 = \tbr{k\pri | -\pi \le k\pri \le \pi}
+}
+and take $x_0$ and $y_0$ as $k = \pm\pi$ and $k\pri = \pm\pi$, respectively.
+Then, the product space $S^1 \times S^1$ and its subspace,
+\ceqn{
+&(\tbr{x_0} \times Y) \cup (X \times \tbr{y_0} )
+ =
+ \nnco
+&\tbr{(\pm\pi, k\pri)  | -\pi \le k\pri \le \pi} \cup \tbr{(k, \pm\pi) | -\pi \le k \le \pi}
+\label{eq: smash11boundary}
+}
+are identified with the Brillouin zone $\mbT^2$ of a square lattice and its boundary, respectively.
+As we can obtain $S^2$ from $\mbT^2$ by wrapping up the square $\rbr{-\pi, \pi}^2$,
+the smash product $S^1 \wedge S^1$, which is defined as the square $\rbr{-\pi, \pi}^2$ with its boundary identified with a point, is isomorphic to $S^2$.
+The isomorphic mapping $f_{1,1}$ is given by
+\ceqn{
+& f_{1,1}(k, k\pri)
+\nnco
+:= &
+\rbr{- 2 \cos^2\br{{k \over 2}} \cos^2\br{{k\pri \over 2}} + 1 }\bm{n}_1
+\nnco
+&- \cos^2\br{{k \over 2}} \sin\br{k\pri} \bm{n}_2
+ - \sin\br{k} \cos\br{{k\pri \over 2}} \bm{n}_3
+\label{eq: isomorphism11}
+}
+where $\bm{n}_1 = (1,0,0)^T, \bm{n}_2 = (0,1,0)^T$, and $\bm{n}_3 = (0,0,1)^T$ (the superscript $T$ denotes the transpose) are the unit vectors in three orthogonal directions.
+
+As shown below,
+the nontrivial map $U(\bk)$ is constructed from the following isomorphism \cite{Nakahara03}:
+\peqn{
+S^1 \wedge S^1 \wedge S^1 \cong
+S^2 \wedge S^1 \cong
+S^3
+\label{eq: double, smash}
+}
+Let $\bm{\xi} = (\xi_1, \xi_2, \xi_3)^T$ be a unit vector on $S^2$, i.e., $\sum_{i=1}^3 (\xi_i)^2 = 1$, and $k_1 \in [-\pi, \pi] \cong S^1$.
+The isomorphic mapping $f\colon S^2 \times S^1 \to S^3$ of the second isomorphism in Eq.~\eqref{eq: double, smash} is given by
+\ceqn{
+&f_{2,1}(\bm{\xi}, k_1)
+\nnco
+=& {\xi_1 - 1 \over 2} \sin\br{k_1} \bm{a}_1
+ + \cos\br{{k_1 \over 2}}
+ \br{\xi_3 \bm{a}_2 + \xi_2 \bm{a}_3}
+\nnco
+& - \rbr{ \sin^2\br{{k_1 \over 2}} + \cos^2\br{{k_1 \over 2}} \xi_1} \bm{a}_4
+\label{eq: isomorphism21}
+}
+where $\bm{a}_i (i=1,2,3,4)$ are the unit vectors in four dimensions defined by
+\peqn{
+\bm{a}_1 &= (1,0,0,0)^T, \quad \bm{a}_2 = (0,1,0,0)^T
+, \nnco
+\bm{a}_3 &= (0,0,1,0)^T, \quad \bm{a}_4 = (0,0,0,1)^T
+}
+Then, the composition of $f_{1,1}$ and $f_{2,1}$ defined by
+\neqn{
+\widetilde{\bm{u}}(\bk) =
+f_{2,1}\rbr{f_{1,1}(k_2, k_3), k_1}
+}
+gives an isomorphic mapping between $S^1 \wedge S^1 \wedge S^1$ and $S^3$.
+Since the isomorphic mapping $f_{2,1}\rbr{f_{1,1}(k_2, k_3), k_1}$ to $S^3$ naturally has a unit winding number and the domain of $S^1 \wedge S^1 \wedge S^1$ and that of $\mbT^3$ are both cuboid $\rbr{-\pi, \pi}^3$,
+$\widetilde{\bm{u}}(\bk)$ has a unit winding number:
+\peqn{
+W &= \int {d \bm{k} \over 2 \pi^2}
+\sum_{i,j,k,l = 1}^4 \epsilon_{ijkl}
+\widetilde{u}_i(\bk)
+{\partial \widetilde{u}_j(\bk) \over \partial k_1}
+{\partial \widetilde{u}_k(\bk) \over \partial k_2}
+{\partial \widetilde{u}_l(\bk) \over \partial k_3}
+\nnco
+ &= 1
+}
+We note that $\widetilde{\bm{u}}(\bk)$ stays constant on the boundary of the Brillouin zone $\mbT^3 = [-\pi,\pi]^3$:
+\peqn{
+\widetilde{\bm{u}}(\bk) = \br{0,0,0,-1}
+\label{eq: bc, appA}
+}
+We define a continuous deformation $\widetilde{\bm{u}}_s(\bk) := R_{23}(s k_1 / 2) \widetilde{\bm{u}}(\bk)$ with a deformation parameter $s (\in [0,1])$, where $R_{23}(\theta)$ is a rotation matrix defined by
+\peqn{
+R_{23}(\theta) := \br{\begin{array}{cccc}
+	1&0&0&0 \\
+	0&\cos\theta & -\sin\theta&0 \\
+	0&\sin\theta &\cos\theta&0 \\
+	0&0&0&1
+\end{array}}
+}
+It follows from Eq.~\eqref{eq: bc, appA} that
+$\widetilde{\bm{u}}_s(\bk) = \br{0,0,0,-1}$ on the boundary of $\mbT^3$
+and hence $\widetilde{\bm{u}}_s(\bk)$ is continuous on $\mbT^3$.
+Also, combining Eqs.~\eqref{eq: Uk, as, S3}, \eqref{eq: isomorphism11}, and \eqref{eq: isomorphism21}, we obtain
+\ceqn{
+\widetilde{\bm{u}}_{s=0}(\bk) &= \widetilde{\bm{u}}(\bk)
+, \nnco
+\widetilde{\bm{u}}_{s=1}(\bk) &= \bm{u}(\bk)
+}
+where $\bm{u}(\bk)$ is defined in Eq.~\eqref{eq: Uk, as, S3}.
+Therefore, $\bm{u}(\bk)$ is also an isomorphic mapping between $S^1 \wedge S^1 \wedge S^1$ and $S^3$ and has a unit winding number $W=1$.
+
+
+
+
+
+
+%----------------------------------------------------------------
+%----------------------------------------------------------------
+\section{\label{sec: experiment}Experimental implementation with ultracold atomic gases}
+In this appendix,
+we discuss possible experimental implementations of the Floquet CME either by using a spin-dependent optical lattice with ${}^{87}$Rb or by using laser-assisted tunneling with ${}^{173}$Yb.
+
+%----------------------------------------------------------------
+\subsection{Setup with ${}^{87}$Rb}
+As discussed in the main text, the main ingredient of our driving protocol
+is spin-dependent transport, which has already been realized with ${}^{87}$Rb atoms in spin-dependent optical lattices \cite{Mandel03a, Mandel03b}.
+The two spin states $\left| \uparrow \right>$ and $\left| \downarrow \right>$ are chosen as $\left| \uparrow \right> = \left| F=2, m_F = -2 \right>$ and $\left| \downarrow \right> = \left| F = 1, m_F = -1 \right>$.
+Consider a 3D optical lattice produced by three orthogonal laser beams and their retroreflected ones.
+To suppress the natural hopping $J$, we apply an optical  field gradient with a slope $\Delta$, which is sufficiently small compared with the lattice depth $V_0$ but larger than $J$ \cite{JakschD03, AidelsburgerM14}.
+The three pairs of counterpropagating plane waves are all linearly polarized,
+and we write the angle between the two polarization vectors $\bm{e}^p_{1, +}$ and $\bm{e}^p_{1,-}$ of the beams along the $x_1$ axis as $\theta_1$, that along the $x_2$ axis as $\theta_2$, and that along the $x_3$ axis as $\theta_3$.
+Those angles are dynamically controlled by electro-optical modulators by rotating the polarization vector of the retroreflected laser beams.
+Then, the wave vectors $\bk_{i,\alpha} \ (i = 1,2,3$ and $\alpha = +, -)$ and the polarization vectors $\bm{e}^p_{i,\alpha} \ (i = 1,2,3$ and $\alpha = +, -)$ of the six laser beams are given by
+\begin{align}
+	& \bm{k}_{1, \pm} = \pm k \bm{n}_1,
+	\ \bm{e}^p_{1, \pm}, = R_1\br{{\pm \theta_1 \over 2}} \bm{n}_2,
+	\nnco
+	& \bm{k}_{2, \pm} = \pm k \bm{n}_2,
+	\ \bm{e}^p_{2, \pm} = R_2\br{{\pm \theta_2 \over 2}} \bm{n}_3,
+	\nnco
+	& \bm{k}_{3, \pm} = \pm k \bm{n}_3,
+	\ \bm{e}^p_{3, \pm} = R_3\br{{\pm \theta_3 \over 2}} \bm{n}_1
+	,
+\end{align}
+where $\bm{n}_i \ (i = 1,2,3)$ is the unit vector in the $x_i$ axis and $R_i(\theta)$ is the rotation matrix around the $x_i$ axis through angle $\theta$ [see Figs.~\ref{fig: experiment} (a), (b), and (c)].
+
+\begin{figure}[t]
+  \begin{center}
+	\includegraphics[clip, width = \columnwidth]{current_boson.png}
+	\caption{
+(a), (b), (c) Laser configurations of spin-selective pumps
+(a) $\mathcal{U}_1^\pm$, (b) $\mathcal{U}_2^\pm$, and (c) $\mathcal{U}_{h,3}^\pm$, where $\bk_{i,\alpha}$ and $\bm{e}^p_{i, \alpha} \ (i = 1,2,3$ and $\alpha = +, -)$ are the wave vectors and the polarization vectors of the six linearly polarized laser beams forming an optical lattice.
+The red and black arrows represent the wave vectors of the counterpropagating laser beams and green arrows are their polarization directions, and $\theta_i$ denotes the angle between $\bm{e}^p_{i,+}$ and $\bm{e}^p_{i,-}$, and $\phi_i$ denotes the locked phase of the incoming wave along the $x_i$ axis.
+(d) Pumped charge $\Delta Q$ for a bosonic atomic gas under the magnetic flux $\phi$, where the initial state is taken as a Bose-Einstein condensate at the momentum $\bk=0$.
+	}
+	\label{fig: experiment}
+  \end{center}
+\end{figure}
+
+Then, the created optical potential $U(\bm{x})$ at position $\bm{x}$ is given by
+\begin{align}
+	U(\bm{x}) &= u_s |\rbr{\bm{e}^p(\bm{x})}^\ast \cdot \bm{e}^p(\bm{x})| \sigma_0
+	+ u_v \bm{B}_{\mr{eff}}\cdot \bm{\sigma}
+	, \nonumber \\
+	\bm{B}_{\mr{eff}} &= i \rbr{\bm{e}^p(\bm{x})}^\ast \times \bm{e}^p(\bm{x})
+	, \nonumber \\
+	\bm{e}^p(\bm{x}) &= \sum_{i=1,2,3}\sum_{\alpha = \pm}
+	\bm{e}^p_{i, \alpha} \exp(i \bm{k}_{i, \alpha} \cdot \bm{x} + \phi_i)
+	,
+\end{align}
+where $u_s$, $u_v$, $\sigma_0$, and $\bm{\sigma}$ are the scalar potential, the vector potential, the $2 \times 2$ identity matrix, and the Pauli matrix vector with respect to the spin states $\left| \uparrow \right>$ and $\left| \downarrow \right>$, respectively \cite{Goldman14b}.
+Here, $\phi_i$ is the phase of the incoming wave along the $x_i$ axis that is phase-locked and controlled by an additional electro-optical modulator.
+We first consider the spin transport along the $x_1$-axis through the changes of $\theta_1$ and $\phi_1$.
+Suppose $u_s > u_v > 0$ and we initially set $\theta_1 = \theta_2 = \theta_3 = 0$ and $\phi_1 = \phi_2 = \phi_3 = \pi$.
+In this case, atoms are trapped at $\bm{x} = a_{\mr{lat}}(m_1, m_2, m_3) \in a \mathbb{Z}^3$, where $a_{\mr{lat}} = \pi/k$ is the lattice constant.
+As we change $(\theta_1, \phi_1)$ from $(0, \pi)$ to $(\pi, 2\pi)$, atoms with spin states $\sig_1 = 1$ are displaced by one lattice site in the positive $x_1$ direction, while those with spin states $\sig_1 = -1$ are not, realizing spin-selective transport for spin states $\sig_1 = 1$.
+For the parameter change of $(\theta_1, \phi_1)$ from $(0, \pi)$ to $(\pi, 0)$, atoms with spin states $\sig_1 = -1$ are displaced by one lattice site in the negative $x_1$ direction, while those with spin states $\sig_1 = 1$ are not, realizing a spin-selective transport for spin states $\sig_1 = -1$.
+The spin-selective transport along the $x_2$- and $x_3$-directions can be achieved by changing $(\theta_2, \phi_2)$ and $(\theta_3, \phi_3)$, respectively.
+
+
+Although ${}^{87}$Rb is a boson and hence the pumped charge $\Delta Q$ is different from the fermionic case shown in Fig.~2 (c) in the main text, %Fig.~\ref{fig: DynaWmag1} (c),
+we still have a nonzero $\Delta Q$ originating from the chiral dispersion in the quasienergy in Fig.~2 (b) in the main text.
+%Fig.~\ref{fig: DynaWmag1} (b).
+In Fig.~\ref{fig: experiment} (d), we calculate $\Delta Q$ [red points], where the initial state is taken as Bose-Einstein condensates at $\bk=0$.
+At zero temperature, the initial-state density matrix $\rho_0$ of non-interacting bosons is given by the mixture of Bose-Einstein condensates with spin up and down with momentum $\bk=0$:
+\begin{align}
+	\rho_0 = {1 \over 2}\sum_{\alpha = \uparrow, \downarrow}\ket{\bk=0,\alpha}\bra{\bk=0,\alpha}
+	. \label{eq: initial_state, BEC}
+\end{align}
+As shown by the red points in Fig.~\ref{fig: experiment} (d), $\Delta Q$ exhibits the power-law behavior $\Delta Q \propto \sqrt{\phi}$ for a small $\phi$ [green dashed curve], which is derived as follows.
+%From Eqs.~\eqref{eq: 2} and \eqref{eq: initial_state, BEC}, we have
+From Eq.~(7) in the main text and Eq.~\eqref{eq: initial_state, BEC}, we have
+\begin{align}
+	\Delta Q =
+	\sum_{b}
+	|\langle k_2 = k_3 = 0, b | \bm{k} = 0 \rangle |^2 {\partial \epsilon_{k_2, b}(k_3=0) \over \partial k_3}
+	,
+\end{align}
+Since we have the $(\phi L_1)$ chiral bands and the overlap integral satisfies $|\langle k_2 = k_3 = 0, b | \bm{k} = 0 \rangle |^2 \propto (\sqrt{\phi}L_1)^{-1}$, we obtain $\Delta Q \propto (\phi L_1) \times (\sqrt{\phi}L_1)^{-1} \propto \sqrt{\phi}$.
+
+
+
+To observe of the chiral transport in Fig.~\ref{fig: experiment} (d), the time scale of the pump $\tau_{\mr{pump}}$ should be made much smaller than the decoherence time $\tau_{\mr{de}}$.
+The time scale of the pump $\tau_{\mr{pump}}$ is determined from the adiabatic condition of sliding of the lattice, i.e., avoiding the excitation to higher Bloch bands.
+This condition is satisfied for $\tau_{\mr{pump}} \ge 40 \ \mr{\mu}$sec for the lattice depth $V_0 = 30 E_r$, with $E_r$ being the recoil energy \cite{Mandel03a, Mandel03b}.
+The dominant mechanism for decoherence may be the on-site interaction between particles \cite{Mandel03a}, by which $\tau_{\mr{de}} = $ 200 $\mu$sec for the lattice depth $V_0 = 25 E_r$ with $E_r$ being the recoil energy of ${}^{87}$Rb with wavelength $\lambda = 785$ nm.
+When the single spin-selective Thouless pump operates within $40 \ \mr{\mu}$sec, atoms experience the interaction energy during the time $\tau_{d,s} = 40 \ \mr{\mu}\mr{sec} \times (w/\lambda)$ with $w$ being the size of a wave packet localized at a site.
+Then, the total time $\tau_{d,\mr{tot}}$ during which the atoms experience the interaction is estimated to be $\tau_{d,\mr{tot}} = 8 \tau_{d,s}$.
+Since $(w/\lambda) \approx \sqrt{V_0/E_r}$ for a deep optical lattice and the interaction energy $\propto \tau_{\mr{de}}^{-1}$ is proportional to $(V_0/E_r)^{\frac{4}{3}}$ \cite{Bloch08}, we have $\tau_{\mr{de}}/\tau_{d, \mr{tot}} = 8$ for the lattice depth $V_0 / E_r = 20$.
+In this case, the optical field gradient with the on-site energy difference $\Delta$ with tens of kHz is sufficient to suppress the natural hopping $J = 0.02 E_r \sim $ kHz.
+Thus, 8 cycles of the pumps can operate, which is sufficient to observe the displacement of the center of mass shown in Fig.~\ref{fig: experiment} (d).
+Another limitation is the excitation to higher Bloch bands due to the quadrupole field pulse.
+The weight $w_{\mr{exc}}$ of the excited states is $w_{\mr{exc}} \propto \phi (w/\lambda)^2$ \cite{Sorensen05} and hence it is negligible for a weak magnetic flux and a deep optical lattice.
+
+%----------------------------------------------------------------
+\subsection{Setup with ${}^{173}$Yb}
+Motivated by the recent experiments on realizing synthetic gauge fields \cite{Mancini15, Song16} and the proposals for implementing a helical hopping \cite{BudichJ15, Budich17}, we consider yet another implementation scheme using fermionic alkaline-earth-like atoms ${}^{173}$Yb and a laser-assisted hopping using an excited level ${}^3$P${}_1$.
+For the implementation, we rewrite $U(\bk)$ as combination of helical pumps as follows:
+\begin{align}
+	U(\bk) =& \wt{U}_1(k_1) \wt{U}_3\br{ {k_3 \over 2}} \wt{U}_2(k_2) \wt{U}_3\br{ {k_3 \over 2}}
+	\nonumber \\
+	&\times \wt{U}_1(k_1) \wt{U}_3\br{ {k_3 \over 2}} \wt{U}_2(k_2) \wt{U}_3\br{ {k_3 \over 2}}
+	,
+\end{align}
+where $\wt{U}_j(k) := \mr{e}^{- i\sig_j k/2}$ gives a unitary operation of the helical pump.
+The two spin states are taken as $\left| m_F = -5/2 \right>$ and $\left| m_F = -1/2 \right>$ in the ground-state manifold ${}^1$S${}_0$ with $F = I = 5/2$.
+The six-fold degeneracy between the spin states is lifted  by a Zeeman splitting $\Delta_{B, 3}$ induced by a uniform magnetic field in the $x_3$ direction.
+The natural hopping is suppressed by a magnetic field gradient $\delta B_3 = \Delta_1 x_1 + \Delta_2 x_2 + \Delta_3 x_3$, where $\Delta_1, \Delta_2$, and $\Delta_3$ are the on-site energy difference along the $x_1$, $x_2$, and $x_3$ directions, respectively.
+For a lattice depth of $V_0  = 20 E_r$, where the natural hopping $J$ is given by $J = 0.02 E_r$, the Zeeman splitting $\Delta_{B,z}$ of the order of tens of kHz is sufficient for the suppression.
+A spin-flip hopping along the $x_3$ direction can be induced by Raman laser beams which are resonant to the energy difference $\Delta_3$ \cite{BudichJ15}.
+The helical hoppings $\wt{U}_{1,2}(k_{1,2})$ in the other two directions can be implemented by a combination of the $\pi/2$ pulses and the helical pump because we have
+\begin{align}
+	\wt{U}_1(k_1) =
+	\Exp{-i\pi \sig_2/ 4} \wt{U}_3(k_1) \Exp{i\pi \sig_2/ 4}
+	, \nonumber \\
+	\wt{U}_2(k_2) =
+	\Exp{i\pi \sig_1/ 4} \wt{U}_3(k_2) \Exp{-i\pi \sig_1/ 4}
+	.
+\end{align}
+One can selectively induce these three directional hoppings by making $\Delta_1, \Delta_2$, and $\Delta_3$  different from each other and three pairs of Raman laser beams.
+This also can be done by a pair of Raman laser beams and dynamically changing $\Delta_1, \Delta_2$, and $\Delta_3$.
+
+To observe the Floquet CME, the time scale of the pump $\tau_{\mr{pump}}$ should be made much smaller than the lifetime $\tau_{\mr{life}}$ of the Raman induced hopping.
+The time scale of a Raman-induced hopping $\Omega$ on a lattice system is of the order of kHz \cite{Mancini15} when the one-photon detuning $\delta$ of the Raman process is taken to be of the order of 1 GHz \cite{BudichJ15, Song16}.
+In this case, the single pump operates within one msec, leading to tens of msec for one cycle of the pump.
+The lifetime $\tau_{\mr{life}} \sim \delta / (\gamma \Omega)$ due to heating with the Raman process is of the order of 1 sec for the lifetime of $\gamma = 850$ nsec \cite{Enomoto08}, which is much longer than that of an alkali-metal system \cite{Song16}.
+Therefore, at least a few tens of pumps can operate within the lifetime, which is sufficient for the observation of the Floquet CME.
+
+
+
+
+
+
+
+
+
+
+
+
+%----------------------------------------------------------------
+\section{\label{sec: explicit}Explicit form of $\bar{U}(k_2, k_3)$}
+Let $L_1$ be the number of sites along the $x_1$ direction.
+The partial Fourier transforms of $\mathcal{U}_{h,3}^- \mathcal{U}_q^\dagger \mathcal{U}_2^\pm \mathcal{U}_q \mathcal{U}_{h,3}^+$ and $\mathcal{U}_1^{\pm}$ in the $x_2$- and $x_3$-axes are given by
+\begin{align}
+	&\mathcal{U}_{h,3}^- \mathcal{U}_q^\dagger \mathcal{U}_2^\pm \mathcal{U}_q \mathcal{U}_{h,3}^+
+	= \sum_{k_2, k_3} \sum_{x_1=1}^{L_1}
+	\bar{c}_{x_1}^\dagger \widetilde{U}_{k_2,k_3}^\pm(x_1) \bar{c}_{x_1}
+	, \nonumber \\
+	&\mathcal{U}_1^\pm = \sum_{k_2, k_3} \sum_{x_1=1}^{L_1}
+	\br{
+	\bar{c}_{x_1 \pm 1}^\dagger P_1^\pm \bar{c}_{x_1}
+	 + \bar{c}_{x_1}^\dagger P_1^\mp \bar{c}_{x_1}
+	}
+	,
+\end{align}
+where $\bar{c}_{x_1} := c_{x_1, k_2, k_3}$ is the annihilation operator of the fermion at site $x_1$ with fixed momenta $k_2$ and $k_3$ and $\widetilde{U}_{k_2,k_3}^\pm(x_1) := U_{h,3}^-(k_3)U_2^\pm(k_2 - 2 \pi \phi x_1)U_{h,3}^+(k_3)$.
+Since $k_2$ and $k_3$ remain good quantum numbers, the Floquet operator $\mathcal{U}_F$ acting on the lower Floquet bands is decomposed according to them:
+\begin{align}
+	& \mathcal{U}_F =
+	\mathcal{U}_1^-
+	\br{
+	\mathcal{U}_{h,3}^- \mathcal{U}_q^\dagger \mathcal{U}_2^- \mathcal{U}_q \mathcal{U}_{h,3}^+
+	}
+	\mathcal{U}_1^+
+	\br{
+	\mathcal{U}_{h,3}^- \mathcal{U}_q^\dagger \mathcal{U}_2^+ \mathcal{U}_q \mathcal{U}_{h,3}^+
+	}
+	\nonumber \\
+	&\quad
+	=: \sum_{k_2, k_3}U\pri(k_2, k_3)
+	.  \label{eq: fcme, 25}
+\end{align}
+However, this naive introduction of the flux breaks the  the periodic boundary condition along the $k_3$ direction, i.e, $U\pri(k_2, \pi) \ne U\pri(k_2,-\pi)$, due to the coupling between the lower and higher Floquet bands.
+To completely decouple them, we introduce the additional time evolution $\mathcal{U}_s$ with duration $\tau_s$ generated by a static Hamiltonian
+\begin{align}
+	H_s &= J_s \sum_{\bm{x},\alpha} (i c_{\bm{x} + {\bm{e}_3 \over 2},\alpha}c_{\bm{x},\alpha} + \mr{h.c.})
+	\nonumber\\
+	& = 2J_s\sum_{\bm{k},\alpha} \sin\br{{k_3 \over 2}}
+	c_{\bm{k},\alpha}^\dagger c_{\bm{k},\alpha}
+	, \label{eq: fcme, 20}
+\end{align}
+which can be implemented by laser-assisted hopping \cite{Goldman14b}.
+By tuning $2J_s\tau_s = \pi\phi/2$, we obtain the time-evolution operator $\bar{U}(k_2, k_3)$ acting only on the lower Floquet bands
+\begin{align}
+	\bar{U}(k_2, k_3) := U_{s,k_3} U\pri(k_2, k_3)
+	,
+\end{align}
+where $U_{s, k_3} := \exp\rbr{-i (\pi\phi/2) \sin(k_3/2)}$ is the Floquet operator acting on the lower Floquet bands.
+A straightforward calculation shows that $\bar{U}(k_2, k_3)$ satisfies the periodic boundary condition: $\bar{U}(k_2, \pi) = \bar{U}(k_2, -\pi)$.
+The overall Floquet operator $U(k_2, k_3)$ is given by
+\begin{align}
+	\bar{U}(k_2, k_3) &=
+\sum_{x_1=1}^{L_1}
+\br{
+\bar{c}_{x_1+1}^\dagger \bar{u}_1 \bar{c}_{x_1} +
+\bar{c}_{x_1}^\dagger \bar{u}_0 \bar{c}_{x_1} +
+\bar{c}_{x_1 - 1}^\dagger \bar{u}_{-1} \bar{c}_{x_1}
+}
+	, \nonumber \\
+	\bar{u}_1 &=
+	U_{s, k_3} P_1^+ \widetilde{U}_{k_2,k_3}^-(x_1+1) P_1^+ \widetilde{U}_{k_2,k_3}^+(x_1)
+	, \nonumber \\
+	\bar{u}_0 &=
+	U_{s, k_3}P_1^- \widetilde{U}_{k_2,k_3}^-(x_1+1) P_1^+ \widetilde{U}_{k_2,k_3}^+(x_1)
+		\nonumber \\
+		&\quad
+		+ U_{s, k_3}P_1^+ \widetilde{U}_{k_2,k_3}^-(x_1) P_1^- \widetilde{U}_{k_2,k_3}^+(x_1)
+	, \nonumber \\
+	\bar{u}_{-1} &=
+	U_{s, k_3} P_1^- \widetilde{U}_{k_2,k_3}^-(x_1) P_1^- \widetilde{U}_{k_2,k_3}^+(x_1)
+	.
+\end{align}
+The unitary operator $\bar{U}(k_2, k_3)$ gives a Floquet analog of the Aubry-Andrei-Harper model \cite{Aubry80, Harper55} with two parameters $k_2$ and $k_3$.
+
+
+
+\begin{figure}[t]
+  \begin{center}
+	\includegraphics[clip, width = \columnwidth]{SingleParticle.png}
+	\caption{
+Time evolution of the center of mass $X_{C, 3}$ along the direction of the applied magnetic field $\bm{B} = (0,0, -2 \pi \phi)$ with $\phi = 1/25$ for relative angles $\theta_0 = 0$ [blue], $\pi/6, \pi/3, \pi/2, 2\pi/3, 5\pi/6, \pi$ [red].
+The solid curves are the theoretical ones in Eq.~\eqref{eq: zitter}.
+The inset shows a schematic illustration of the initial pancake-shaped wave packet with widths $l_B, r_0$, and $r_0$ in the $x_1$-, $x_2$-, and $x_3$-directions, respectively, and $\theta_0$ is the angle between $\bm{B}$ and the spin polarization $\bm{S}$.
+}
+	\label{fig: single particle}
+  \end{center}
+\end{figure}
+%----------------------------------------------------------------
+\section{\label{sec: single}Single-particle dynamics in a chiral Floquet band}
+In this section, we consider the single-particle dynamics of a wave packet under the driving protocol $\bar{\mathcal{U}}_F$ in the main text, which is feasible for studying the Floquet CME in photonic Floquet systems \cite{GaoF16, MukherjeeS17, MaczewskyL17, SunX18}, quantum walks \cite{KitagawaT10, KitagawaT12}, and ultracold atomic gases \cite{JotzuG14, Stuhl15, RoyS18}.
+%ここでレフェリーから言われた先行研究（1粒子の局在した波束でダイナミクスを計算している論文）を引用（東川）
+
+
+As we will see below, a spin-polarized wave packet moves in the direction opposite to the applied magnetic field under the driving due to the chiral dispersion.
+Furthermore, we find an oscillating motion of the wave packet originating from the \textit{Zitterbewegung} \cite{SchrodingerE30}.
+Let $l_B = 1/\sqrt{2 \pi \phi}$ be the magnetic length.
+For clear demonstration of the Floquet CME, we initially prepare a spin-polarized Gaussian wave packet $\psi(\bm{x}, t=0)$ with spin polarization $\bm{S}$ and  width $l_B (\gg a_{\mr{lat}})$ in the $x_1$ direction and $r_0 (\gg l_B)$ in the other directions [see the inset in Fig.~\ref{fig: single particle}], where
+\begin{align}
+	\psi(\bm{x}, t=0) =
+\mathcal{N}^{-1/2}
+\exp\rbr{-{ (x_1)^2 \over 2 (l_B)^2} - { (x_2)^2 + (x_3)^2 \over 2 (r_0)^2}}\bm{v}
+	,
+\end{align}
+with $\sqrt{\mathcal{N}} = (\pi)^{3/2} (l_B)^{1/2}r_0$.
+Here, $\bm{v}$ is a two-component vector representing the spin degrees of freedom: $\bm{S}=\left<\bm{v}, \bm{\sigma} \bm{v} \right>$.
+Then, the Fourier-transformed state $\psi(t=0, k_2, k_3)$ is localized at $k_2 = k_3 = 0$ and can be expanded as
+\begin{align}
+	&\psi(t=0, k_2, k_3)
+	\nonumber \\
+	&\propto
+	\sin\br{{\theta_0 \over 2}} \Psi_0(k_3) +
+	i \cos\br{{\theta_0 \over 2}}
+	{\Psi_1(k_3) - \Psi_{-1}(k_3) \over \sqrt{2 \omega}}
+	,
+\end{align}
+where $\Psi_{-1}(k_3), \Psi_0(k_3)$, and $\Psi_1(k_3)$ are the lowest particle band, the chiral band, and the highest hole band of the Landau levels, respectively,
+and $\theta_0$ is the angle between $\bm{B}$ and $\bm{S}$.
+The wave function at time $t$ is given by
+\begin{align}
+	\bar{\psi}(t, k_3) \propto &
+ \sin\br{{\theta_0 \over 2}} \mr{e}^{-i \phi_0 - i \epsilon_0 t} \Psi_0(k_3)
+\nnco
++ & {i v  \cos\br{{\theta_0 \over 2}} \over \epsilon_1 l_B}
+ \br{
+{ \mr{e}^{- i \epsilon_1 t} \Psi_1(k_3) \over \sqrt{ \eps_1 + v k_3} }
+ - { \mr{e}^{i \epsilon_1 t} \Psi_{-1}(k_3) \over \sqrt{ \eps_1 - v k_3} }
+},
+\end{align}
+where $\epsilon_i$ is the quasienergy of the band $\Psi_i(k_3)$.
+For the Weyl equation in the continuous spacetime under a magnetic field $i \partial_t \psi = (\bk + \bm{A})\cdot \bm{\sigma} \psi$ with $\bm{A} = (0, - 2 \pi \phi x_1, 0)$, the time evolution of the center of mass $X_{C, 3}(t) = \int d\bm{x} \ x_3 |\psi(\bm{x}, t)|^2$ along the $x_3$ direction is given by
+\peqn{
+& X_{C, 3}(t)
+ = i \int dx_1
+\bar{\psi}^\ast(t, k_3 = 0) {\partial \bar{\psi}(t, k_3 = 0) \over \partial k_3}
+\nnco
+& = \sin^2\br{ \theta_0 \over 2} v t
+\nnco
+&\quad - {i \over \sqrt{2} \omega} \cos^2\br{ \theta_0 \over 2} \rbr{
+\mr{e}^{2 i \omega t}
+\int dx_1 \
+\Psi_1^\ast
+{\partial \Psi_{-1}\over \partial k_3}
++ \mr{c.c.}
+}
+\nnco
+& = \sin^2\br{\theta_0 \over 2} v t - {v \over 2 \omega}
+ \cos^2\br{\theta_0 \over 2} \sin(2 \omega t)
+ \label{eq: zitter}
+}
+In the units $a_{\mr{lat}} = T = 1$, we have $v = a_{\mr{lat}}/T = 1$.
+
+
+
+
+In Fig.~\ref{fig: single particle}, we numerically calculate $X_{C, 3}(t)$ at the discrete times $t = 0, T, 2T, \cdots$ based on the discrete-time Schr\"odinger equation $\psi(t + T) = \bar{\mathcal{U}}_F \psi(t)$ for various initial angle $\theta_0$.
+The numerical results [shown by points] are in excellent agreement with theoretical curve \eqref{eq: zitter}.
+After a sufficiently long time $t \gg T$, the center of mass moves linearly with $t$ parallel to $\bm{B}$ except for $\theta_0 = 0$.
+In particular, the long-time average of $X_{C, 3}(t)$ satisfies
+\begin{align}
+	\lim_{\mathcal{T} \to \infty}
+	{1 \over \mathcal{T}}
+	\int_0^{\mathcal{T}} dt \ X_{C, 3}(t) \ge 0
+	,
+\end{align}
+which manifests chiral transport consistent with the CME.
+When $\bm{S}$ is antiparallel to $\bm{B}$, i.e. $\theta_0 = \pi$, the wave packet occupies only the chiral band $\Psi_0$ and hence the linear dispersion gives a unidirectional motion $X_{C, 3} \propto t$ [red curve in Fig.~\ref{fig: single particle}].
+When $\bm{S}$ is parallel to $\bm{B}$, i.e., $\theta_0 = 0$, the initial state is a superposition of the particle and hole states $\Psi_{\pm 1}$.
+Therefore, the time evolution $\bar{\mathcal{U}}_F$ induces an oscillation with the frequency given by their energy difference $2\omega$ [blue curve in Fig.~\ref{fig: single particle}].
+One can see from the second last line of Eq.~\eqref{eq: zitter} that this oscillation results from the interference between the particle band $\Psi_1$ and the hole band $\Psi_{-1}$.
+This is analogous to the \textit{Zitterbewegung}, which was originally discussed for a Dirac particle in the absence of a magnetic field \cite{SchrodingerE30}, and later generalized to a relativistic particle under a magnetic field \cite{BermudezA07, RusinT10}.
+
+%----------------------------------------------------------------
+\section{\label{sec: classification}K-group correspondence in the classification of gapless Floquet states}
+In this appendix, we derive the K-group correspondence between gapless Floquet states and static TIs/TSCs. The derivation proceeds in a manner similar to that for Floquet TIs/TSCs given in Refs.~\cite{RoyHarper17, MorimotoPoVishwanath17}.
+As mentioned in the main text, we construct from the Floquet operator $U(\bm{k})$ a Hermitian matrix
+\begin{align}
+	H_U(\bm{k})=
+\begin{pmatrix}
+0 & U(\bm{k})\\
+U^\dag(\bm{k}) & 0
+\end{pmatrix}
+ = \sig_- \otimes U^\dag(\bk) + \sig_+ \otimes U(\bk)
+, \label{eq_HU2}
+\end{align}
+where $\otimes$ denotes the tensor product.
+This Hamiltonian has the following chiral symmetry (CS):
+\begin{align}
+\Gamma_2 H_U(\bm{k})\Gamma_2^{-1}=-H_U(\bm{k})
+,
+\label{HU2_chiral2}
+\end{align}
+where
+\begin{align}
+	\Gamma_2=
+\begin{pmatrix}
+\bm{1}_N & 0\\
+0 & -\bm{1}_N
+\end{pmatrix}
+ = \sig_3 \otimes \bm{1}_N
+.
+\end{align}
+Therefore, the classification of class A (i.e., no symmetry) Floquet operators in $d$ dimensions is equivalent to that of class AIII TIs in $d$ dimensions. When the Floquet operator has the time-reversal symmetry (TRS) $\Theta U(\bm{k})\Theta^{-1}=U^\dag(-\bm{k})$ with $\epsilon_\Theta:=\Theta^2=\pm 1$, the Hamiltonian $H_U(\bm{k})$ has the following symmetries
+\begin{align}
+\Theta_1H_U(\bm{k})\Theta_1^{-1}&=H_U(-\bm{k})
+,\label{HU2_T1} \\
+\Theta_2H_U(\bm{k})\Theta_2^{-1}&=-H_U(-\bm{k})
+, \label{HU2_T2}
+\end{align}
+where
+\begin{align}
+\Theta_1 &:=
+\begin{pmatrix}
+0 & \Theta\\
+\Theta & 0
+\end{pmatrix}
+ = \sig_1 \otimes \Theta
+ , \\
+\Theta_2 &:= \epsilon_\Theta
+\begin{pmatrix}
+0 & -\Theta\\
+\Theta & 0
+\end{pmatrix}
+ = -i \epsilon_\Theta \sig_2 \otimes \Theta
+.
+\end{align}
+These symmetries are regarded as effective TRS and particle-hole symmetry (PHS) of $H_U(\bm{k})$. Since $\Theta_1^2=\epsilon_\Theta$ and $\Theta_2^2=-\epsilon_\Theta$, the classification of class AI (AII) Floquet operators in $d$ dimensions corresponds to that of class CI (DIII) TSCs in the same dimensions. Similarly, when $U(\bm{k})$ has the PHS $CU(\bm{k})C^{-1}=U(-\bm{k})$ with $\epsilon_C:=C^2=\pm 1$, we can define
+\begin{align}
+C_1 &:=
+\begin{pmatrix}
+C & 0\\
+0 & C
+\end{pmatrix}
+ = \sig_0 \otimes C
+, \\
+C_2 &:= \epsilon_C C_1\Gamma_2=\epsilon_C
+\begin{pmatrix}
+C & 0\\
+0 & -C
+\end{pmatrix}
+ = \epsilon_C \sig_3 \otimes C
+,
+\end{align}
+so that
+\begin{align}
+C_1H_U(\bm{k})C_1^{-1} &= H_U(-\bm{k})
+, \label{HU2_C1} \\
+C_2H_U(\bm{k})C_2^{-1} &= -H_U(-\bm{k}),\label{HU2_C2}
+\end{align}
+with $C_1^2=C_2^2=\epsilon_C$. Therefore, the classification of class D (C) Floquet operators in $d$ dimensions corresponds to that of class BDI (CII) TSCs in the same dimensions.
+
+
+Next, we consider the cases where the Floquet operator has the CS $\Gamma U(\bm{k})\Gamma^{-1}=U^\dag (\bm{k})$. Then, the Hamiltonian $H_U(\bm{k})$ satisfies
+\begin{equation}
+\Gamma_1 H_U(\bm{k})\Gamma_1^{-1}=-H_U(\bm{k})
+, \label{HU2_chiral1}
+\end{equation}
+where $\Gamma_1$ is another CS of the Hamiltonian:
+\begin{equation}
+\Gamma_1:=
+\begin{pmatrix}
+0 & -\Gamma\\
+\Gamma & 0
+\end{pmatrix}
+ = -i \sig_2 \otimes \Gamma
+.
+\end{equation}
+By combining the two chiral symmetries \eqref{HU2_chiral2} and \eqref{HU2_chiral1}, we have
+\begin{equation}
+\Gamma_1\Gamma_2H_U(\bm{k})(\Gamma_1\Gamma_2)^{-1}=H_U(\bm{k})
+,
+\end{equation}
+and therefore the Hamiltonian $H_U(\bm{k})$ can be block-diagonalized simultaneously with $\Gamma_1\Gamma_2$.
+We introduce $\gamma=1$ for $\Gamma^2=1$ and $\gamma=i$ for $\Gamma^2=-1$.
+Using a unitary matrix $V$ defined by
+\begin{align}
+	V = {1 \over \sqrt{2}} \twmat{\gamma \Gamma}{-\gamma \Gamma}{\bm{1}_N}{\bm{1}_N}
+	,
+\end{align}
+we obtain the block-diagonalized Hamiltonian and $\Gamma_1\Gamma_2$:
+\begin{align}
+	V^\dag H_U(\bk)V &= \twmat{\gamma \Gamma U(\bk)}{0}{0}{-\gamma \Gamma U(\bk)}
+	 = \sig_3 \otimes \gamma\Gamma U(\bk)
+	, \\
+	V^\dag \Gamma_1\Gamma_2 V &= \gamma^*\twmat{\bm{1}_N}{0}{0}{ -\bm{1}_N}
+	 = \gamma^* \sig_3 \otimes \bm{1}_N
+	.
+\end{align}
+$\Gamma_{1,2}$ have off-diagonal forms in this basis:
+\begin{align}
+	V^\dag \Gamma_1 V &
+	 = -i \gamma^* \sig_2 \otimes \bm{1}_N
+	, \quad
+	V^\dag \Gamma_2 V
+	 = - \sig_1 \otimes \bm{1}_N
+	.
+\end{align}
+Thus, the classification of $H_U(\bm{k})$ reduces to that of $H_D(\bm{k}) := \gamma \Gamma U(\bk)$.
+Note that the Hermiticity of $H_D(\bm{k})$ follows from the CS of $U(\bk)$.
+For example, if the Floquet operator has the CS only (i.e., class AIII), $H_D(\bm{k})$ is a Hamiltonian without symmetry.
+Therefore, the classification of class AIII Floquet operators in $d$ dimensions reduces to that of class A TIs in the same dimensions.
+For the remaining classes, where the Floquet operators have TRS, PHS, and CS, we identify the symmetry of $H_D(\bm{k})$ by using $\Gamma^2=\epsilon_\Theta\epsilon_C$.
+Here we assume that $\Theta$ and $C$ commute with each other: $[\Theta,C]=0$.
+Then, $\Theta_{1,2}$ and $C_{1,2}$ are expressed in the new basis as follows:
+\begin{align}
+	V^\dag \Theta_1 V &=
+	\epsilon_\Theta (\sig_3 \mr{Re}\gamma - \sig_2\mr{Im}\gamma) \otimes C
+	, \\
+	V^\dag \Theta_2 V &=
+	-i (\sig_2\mr{Re}\gamma + \sig_3 \mr{Im}\gamma) \otimes C
+	, \label{eq: fcme, 26}\\
+	V^\dag C_1 V &=
+	\br{\sig_3 {1+\gamma^2 \over 2} + \sig_1{1-\gamma^2 \over 2}}
+	\otimes C
+	, \\
+	V^\dag C_2 V &=
+	\br{\sig_0 {-1+\gamma^2 \over 2} - \sig_1{1+\gamma^2 \over 2}}
+	\otimes C
+	. \label{eq: fcme, 27}
+\end{align}
+When $\gamma^2 = 1$, we find from Eqs.~\eqref{eq: fcme, 26} and \eqref{eq: fcme, 27} that $\Theta_1$ and $C_1$ are symmetries of $H_D(\bm{k})$, while $\Theta_2$ and $C_2$ are not because $\Theta_2$ and $C_2$ do not preserve the eigenvalue of $\Gamma_1\Gamma_2$.
+The symmetries by $\Theta_1$ and $C_1$ [Eqs.~\eqref{HU2_T1} and \eqref{HU2_C1}] are equivalently expressed as
+\begin{equation}
+C H_D(\bm{k})C^{-1}=H_D(-\bm{k})
+\end{equation}
+and this is the TRS of $H_D(\bm{k})$.
+Therefore, the classification of class BDI (CII) Floquet operators in $d$ dimensions is mapped to that of $d$-dimensional class AI (AII) TIs.
+When $\gamma^2 = -1$, we find from Eqs.~\eqref{eq: fcme, 26} and \eqref{eq: fcme, 27} that $\Theta_2$ and $C_2$ are symmetries of $H_D(\bm{k})$ while $\Theta_1$ and $C_1$ are not because $\Theta_1$ and $C_1$ do not preserve the eigenvalue of $\Gamma_1\Gamma_2$.
+The symmetries by $\Theta_2$ and $C_2$ [Eqs.~\eqref{HU2_T2} and \eqref{HU2_C2}] are equivalently expressed as \begin{equation}
+C H_D(\bm{k})C^{-1}=-H_D(-\bm{k}),
+\end{equation}
+which is the PHS of $H_D(\bm{k})$.
+Thus we find that the classification of class DIII (CI) Floquet operators in $d$ dimensions is equivalent to that of class D (C) TSCs in the same dimensions.
+
+
+We thus obtain the following results on the classification of Floquet operators. We denote the K-group of the Floquet operators by $K^{\mathrm{F}}_\mathbb{F}(s,d)$, where $d$ is the spatial dimension and $(\mathbb{F},s)$ represents the Altland-Zirnbauer symmetry class. To be concrete, $\mathbb{F}=\mathbb{C}$ with $s=0,1$ (mod $2$) corresponds to the complex class (A, AIII), and $\mathbb{F}=\mathbb{R}$ with $s=0,1,\cdots,7$ (mod $8$) corresponds to the real class (AI, BDI, D, DIII, AII, CII, C, CI).
+Similarly, we denote the K-group of static TIs/TSCs by $K_\mathbb{F}(s,d)$. Then, the analyses in this section indicate that
+\begin{equation}
+K^{\mathrm{F}}_\mathbb{F}(s,d)=K_\mathbb{F}(s-1,d).
+\end{equation}
+We list the resulting classification of Floquet operators in Table I in the main text. Using the K-group isomorphism $K_\mathbb{F}(s-1,d)=K_\mathbb{F}(s,d+1)$ \cite{Kitaev09, TeoKane10}, we obtain
+\begin{equation}
+K^{\mathrm{F}}_\mathbb{F}(s,d)=K_\mathbb{F}(s,d+1),
+\end{equation}
+which shows the equivalence between the class of gapless bulk states in Floquet systems and that of surface gapless states of static TIs/TSCs.
+
+Finally, we note that the classification of gapless Floquet states in $d$ dimensions coincides with that of anomalous edge (or surface) states of Floquet TIs/TSCs given by unitary loops in $(d+1)$ dimensions \cite{RoyHarper17}. Indeed, it has been discussed that the gapless Floquet spectrum can be realized as the edge state of the anomalous Floquet TIs/TSCs \cite{Rudner13}. We may interpret our result to be a generalization of this correspondence to all the Altland-Zirnbauer classes. The correspondence between the gapless topological singularities and topologically nontrivial unitaries has been discussed in the context of anomalous Floquet TIs/TSCs \cite{NathanRudner15, RoyHarper17}.
+
+
+
+
+
+
+
+
+
+
+
+\bibliography{FCME_ref.bib}
+%\bibliography{bibtex/FCME_higashi_footnote, bibtex/FCME_higashi_ref, bibtex/FCME_Nakagawa_ref}
+%\end{spacing} % add space between lines if necessary
+\end{document}

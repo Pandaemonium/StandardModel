@@ -1,0 +1,23 @@
+import PhysicsSM.Draft.NullEdge.Cl8SigmaAction
+import PhysicsSM.Draft.Spin10FockExteriorAction
+import PhysicsSM.Draft.H3OPeirceDecomposition
+
+#print axioms PhysicsSM.Draft.NullEdge.Cl8SigmaAction.sigmac_mul
+#print axioms PhysicsSM.Draft.NullEdge.Cl8SigmaAction.sigma_conj_colourGen
+#print axioms PhysicsSM.Draft.NullEdge.Cl8SigmaAction.s3_braid_on_colourGen
+
+#print axioms PhysicsSM.Draft.Spin10FockExteriorAction.compoundEntry_diagonal
+#print axioms PhysicsSM.Draft.Spin10FockExteriorAction.extAction_basisSpinor
+#print axioms PhysicsSM.Draft.Spin10FockExteriorAction.extAction_one
+#print axioms PhysicsSM.Draft.Spin10FockExteriorAction.exteriorPowerMap_entry
+#print axioms PhysicsSM.Draft.Spin10FockExteriorAction.compoundEntry_mul
+#print axioms PhysicsSM.Draft.Spin10FockExteriorAction.extAction_mul
+#print axioms PhysicsSM.Draft.Spin10FockExteriorAction.extAction_vacuum
+#print axioms PhysicsSM.Draft.Spin10FockExteriorAction.extAction_diagPhase3_weak
+#print axioms PhysicsSM.Draft.Spin10FockExteriorAction.extAction_diagPhase3_control
+
+#print axioms PhysicsSM.Draft.H3OPeirceDecomposition.lagrangeE_sum
+#print axioms PhysicsSM.Draft.H3OPeirceDecomposition.lagrangeE_reconstruct
+#print axioms PhysicsSM.Draft.H3OPeirceDecomposition.lagrangeE_isProjection
+#print axioms PhysicsSM.Draft.H3OPeirceDecomposition.lagrangeE_orthogonal
+#print axioms PhysicsSM.Draft.H3OPeirceDecomposition.jordan_eigen

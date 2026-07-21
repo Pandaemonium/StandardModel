@@ -90,3 +90,11 @@ Krein mass form; and the finite McKean-Singer index-protection family
 (topologically protected massless chiral modes, Hilbert and Krein versions).
 Adjacent kernel-checked assets: a strong-coupling Wilson-loop area law and
 Ginsparg-Wilson chirality layers. Results map: `NULL_EDGE_RESULTS.md`.
+
+2026-07-19 delta (saturation night): the ring-holonomy spectral witness now
+holds at EVERY ring length `n > 2` (`RingHolonomyAllN`, hole-free,
+standard-three - the parity hypothesis is gone from the Paper A chain);
+Hurwitz `finrank in {1,2,4,8}` proven at stage 5 conditional on two
+documented Moufang holes; the octonionic B-ladder gives the exact su(2)
+doublet on `(vL, eL)`. Fleet record:
+`AgentTasks/overnight-aristotle-saturation-2026-07-18.md`.

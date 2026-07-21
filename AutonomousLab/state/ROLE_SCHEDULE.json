@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "created_at": "2026-07-12T17:45:00-07:00",
-  "updated_at": "2026-07-17T07:14:47-07:00",
+  "updated_at": "2026-07-21T06:57:42-07:00",
   "note": "Durable role-duty schedule. Periodic duties must produce a bounded activation packet and a hashed completion artifact. Event-driven roles are enforced by their corresponding work/review gates.",
   "policies": {
     "research_scientist": {
@@ -78,6 +78,352 @@
     }
   },
   "activations": [
+    {
+      "id": "role-20260721-065612-2aa8e92f",
+      "role": "educator",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-21T06:56:12-07:00",
+      "due_at": "2026-07-21T07:56:12-07:00",
+      "project_id": "LAB-INFRA",
+      "work_item_id": "EDU-OVERVIEW-001",
+      "packet_path": "AutonomousLab/work/role-activations/role-20260721-065612-2aa8e92f_packet.md",
+      "deliverable_path": "AutonomousLab/work/LAB-INFRA/CODEX_EDUCATOR_MASSIVE_CONTINUUM_2026-07-21.md",
+      "note": "Rotation override within the active Codex goal: explain the massive 3+1 continuum result plainly with exact boundaries and formal anchors.",
+      "completed_at": "2026-07-21T06:57:42-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/LAB-INFRA/CODEX_EDUCATOR_MASSIVE_CONTINUUM_2026-07-21.md",
+        "sha256": "1ce1d63d3a19a8d4752274c92a6d478f72f002078c7078aa59d3e1f06e8d0853"
+      },
+      "summary": "Produced a plain-language explanation of the massive changing-lattice continuum theorem with its exact claim ceiling and next discriminating test."
+    },
+    {
+      "id": "role-20260721-065611-fe70ea50",
+      "role": "phenomenologist",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-21T06:56:11-07:00",
+      "due_at": "2026-07-21T07:56:11-07:00",
+      "project_id": "NE-3PLUS1",
+      "work_item_id": "QCA-3PLUS1-001",
+      "packet_path": "AutonomousLab/work/role-activations/role-20260721-065611-fe70ea50_packet.md",
+      "deliverable_path": "AutonomousLab/work/NE-3PLUS1/CODEX_PHENOMENOLOGY_MASSIVE_CONTINUUM_2026-07-21.md",
+      "note": "Rotation override within the active Codex goal: assess observable leverage, distinguish foundations from predictions, and rank the next held-out observable.",
+      "completed_at": "2026-07-21T06:57:41-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/NE-3PLUS1/CODEX_PHENOMENOLOGY_MASSIVE_CONTINUUM_2026-07-21.md",
+        "sha256": "e2c8b16a76dfd2196e80ed96c90a4de367477f9f03653cc01b61750c7b126f58"
+      },
+      "summary": "Separated regulator recovery from prediction, supplied units/observable dictionary and controls, and preregistered phase-defect response as the highest-value held-out observable."
+    },
+    {
+      "id": "role-20260721-061621-9f56bb8b",
+      "role": "superstar",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-21T06:16:21-07:00",
+      "due_at": "2026-07-21T07:16:21-07:00",
+      "project_id": "NE-3PLUS1",
+      "work_item_id": "QCA-3PLUS1-001",
+      "packet_path": "AutonomousLab/work/role-activations/role-20260721-061621-9f56bb8b_packet.md",
+      "deliverable_path": "AutonomousLab/work/NE-3PLUS1/CODEX_IMPACT_MASSIVE_CONTINUUM_2026-07-21.md",
+      "note": "Identify the publication lead result and the next theorem with highest marginal impact.",
+      "completed_at": "2026-07-21T06:16:27-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/NE-3PLUS1/CODEX_IMPACT_MASSIVE_CONTINUUM_2026-07-21.md",
+        "sha256": "6ee847481dd1fd87195b14e77cf7f55ff31e7f76292978fcdd2cdeced19fcd24"
+      },
+      "summary": "Promoted the changing-lattice free massive Dirac theorem as the lead result, with observed scales, interactions, and selected-band stability explicitly excluded; identified polynomial depth and quasi-local physical-band autonomy as the next impact gates."
+    },
+    {
+      "id": "role-20260721-061538-a675b6b1",
+      "role": "visionary",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-21T06:15:38-07:00",
+      "due_at": "2026-07-21T07:15:38-07:00",
+      "project_id": "NE-3PLUS1",
+      "work_item_id": "QCA-3PLUS1-001",
+      "packet_path": "AutonomousLab/work/role-activations/role-20260721-061538-a675b6b1_packet.md",
+      "deliverable_path": "AutonomousLab/work/NE-3PLUS1/CODEX_HNU_3PLUS1_LEDGER_2026-07-20.md",
+      "note": "Synthesize continuum closure, compensating-sector accounting, and quasi-local physical-band route.",
+      "completed_at": "2026-07-21T06:15:44-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/NE-3PLUS1/CODEX_HNU_3PLUS1_LEDGER_2026-07-20.md",
+        "sha256": "073266820136e04030e7ff15636fd4ed756ca4095d8202c7fcc57a386567604d"
+      },
+      "summary": "The free massive HNU route now has a changing-lattice position-space Dirac limit and self-adjoint closed generator. The next architecture is a full balanced register with an asymptotically autonomous gapped band, not deletion of the companion sector."
+    },
+    {
+      "id": "role-20260721-061523-2d9583c6",
+      "role": "archivist",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-21T06:15:23-07:00",
+      "due_at": "2026-07-21T07:15:23-07:00",
+      "project_id": "NE-3PLUS1",
+      "work_item_id": "QCA-3PLUS1-001",
+      "packet_path": "AutonomousLab/work/role-activations/role-20260721-061523-2d9583c6_packet.md",
+      "deliverable_path": "AutonomousLab/work/NE-3PLUS1/CODEX_LITERATURE_QUASILOCAL_PHYSICAL_SECTOR_2026-07-21.md",
+      "note": "Primary-source pass on adiabatic low-energy sectors, spectral flow, quasi-locality, and Floquet band invariants.",
+      "completed_at": "2026-07-21T06:15:29-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/NE-3PLUS1/CODEX_LITERATURE_QUASILOCAL_PHYSICAL_SECTOR_2026-07-21.md",
+        "sha256": "9504e561fcf47d7f8c7b760ec21e0591771ede0d629bafdb1f008b2cb9424a0b"
+      },
+      "summary": "Primary sources changed the physical-sector gate from exact coordinate-block invariance to a gapped quasi-local moving-band theorem with vanishing accumulated leakage; two sources were added to Zotero."
+    },
+    {
+      "id": "role-20260721-061449-2977be5e",
+      "role": "archivist",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "cancelled",
+      "started_at": "2026-07-21T06:14:49-07:00",
+      "due_at": "2026-07-21T07:14:49-07:00",
+      "project_id": "NE-3PLUS1",
+      "work_item_id": "QCA-3PLUS1-001",
+      "packet_path": "AutonomousLab/work/role-activations/role-20260721-061449-2977be5e_packet.md",
+      "deliverable_path": "Quasi-local physical-sector literature memo and source graph update",
+      "note": "Primary-source pass on adiabatic low-energy sectors, spectral flow, quasi-locality, and Floquet band invariants.",
+      "completed_at": "2026-07-21T06:15:23-07:00",
+      "summary": "Superseded by forced activation role-20260721-061523-2d9583c6."
+    },
+    {
+      "id": "role-20260720-225332-4eca4e95",
+      "role": "archivist",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-20T22:53:32-07:00",
+      "due_at": "2026-07-20T23:53:32-07:00",
+      "project_id": "NE-CONTINUUM",
+      "work_item_id": "CONT-FOURIER-001",
+      "packet_path": "AutonomousLab/work/role-activations/role-20260720-225332-4eca4e95_packet.md",
+      "deliverable_path": "Massive 3+1 continuum literature and theorem-reference refresh",
+      "note": "Refresh primary-source architecture and connect it to exact massive momentum, scaling, and changing-cell obligations.",
+      "completed_at": "2026-07-20T23:19:38-07:00",
+      "artifact": {
+        "path": "Massive 3+1 continuum literature and theorem-reference refresh",
+        "sha256": "bc3653f30bd90bdfd129fe0c1e9a142c2f7bacf11f5f09e0e7b509932131fffd"
+      },
+      "summary": "Primary sources, provenance delta, source debt, identifier/dedup status, and index-maintenance outcome recorded; canonical memo updated to the landed massive changing-lattice theorem stack."
+    },
+    {
+      "id": "role-20260720-100533-87a691b2",
+      "role": "educator",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-20T10:05:33-07:00",
+      "due_at": "2026-07-20T12:05:33-07:00",
+      "project_id": "LAB-INFRA",
+      "work_item_id": "EDU-OVERVIEW-001",
+      "packet_path": "AutonomousLab/work/role-activations/role-20260720-100533-87a691b2_packet.md",
+      "deliverable_path": "AutonomousLab/work/LAB-INFRA/CODEX_EDUCATOR_MASS_3PLUS1_BRIEF_2026-07-20.md",
+      "note": "Translate the current strongest honest origin-of-mass and HNU 3+1 status into a concise public-facing brief with theorem/open-boundary separation.",
+      "completed_at": "2026-07-20T10:06:50-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/LAB-INFRA/CODEX_EDUCATOR_MASS_3PLUS1_BRIEF_2026-07-20.md",
+        "sha256": "0663867e42f12f0c997482a4a278d738396fff77890dbc30e688dacf0c6205e6"
+      },
+      "summary": "Produced an evidence-preserving 3+1 regulator brief with learning objectives, a three-panel visual plan, misconception audit, formal anchors, evidence grades, and an explicit accuracy ceiling separating finite regulator results from continuum, topology, interaction, and primitive-null claims."
+    },
+    {
+      "id": "role-20260720-100503-d53e972d",
+      "role": "visionary",
+      "model": "claude",
+      "model_family": "claude",
+      "status": "cancelled",
+      "started_at": "2026-07-20T10:05:03-07:00",
+      "due_at": "2026-07-20T11:05:03-07:00",
+      "project_id": "NE-3PLUS1",
+      "work_item_id": "QCA-3PLUS1-001",
+      "packet_path": "AutonomousLab/work/role-activations/role-20260720-100503-d53e972d_packet.md",
+      "deliverable_path": "AutonomousLab/work/NE-3PLUS1/CLAUDE_VISIONARY_FLOQUET_TOPOLOGY_SYNTHESIS_2026-07-20.md",
+      "note": "Translate the newly source-grounded Floquet charge budget into the cheapest decisive HNU theorem sequence.",
+      "completed_at": "2026-07-21T06:15:38-07:00",
+      "summary": "Superseded by forced activation role-20260721-061538-a675b6b1."
+    },
+    {
+      "id": "role-20260720-100441-2eafbc8e",
+      "role": "lab_manager",
+      "model": "claude",
+      "model_family": "claude",
+      "status": "active",
+      "started_at": "2026-07-20T10:04:41-07:00",
+      "due_at": "2026-07-20T11:04:41-07:00",
+      "project_id": "NE-3PLUS1",
+      "work_item_id": "QCA-3PLUS1-001",
+      "packet_path": "AutonomousLab/work/role-activations/role-20260720-100441-2eafbc8e_packet.md",
+      "deliverable_path": "AutonomousLab/work/LAB-INFRA/CLAUDE_LAB_MANAGER_MASS_3PLUS1_CYCLE_2026-07-20.md",
+      "note": "Mid-mission productivity and dependency audit after HNU capstone, topology literature ingestion, and mass reconstruction returns."
+    },
+    {
+      "id": "role-20260720-074817-cb84010f",
+      "role": "phenomenologist",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-20T07:48:17-07:00",
+      "due_at": "2026-07-20T08:48:17-07:00",
+      "project_id": "NE-3PLUS1",
+      "work_item_id": "QCA-3PLUS1-001",
+      "packet_path": "AutonomousLab/work/role-activations/role-20260720-074817-cb84010f_packet.md",
+      "deliverable_path": "AutonomousLab/work/NE-3PLUS1/CODEX_PHENOMENOLOGIST_HNU_MASS_GATES_2026-07-20.md",
+      "note": "Assess what the new full-zone gap, adaptive changing-window convergence, and overlap obstructions do and do not imply for observable physics.",
+      "completed_at": "2026-07-20T07:49:06-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/NE-3PLUS1/CODEX_PHENOMENOLOGIST_HNU_MASS_GATES_2026-07-20.md",
+        "sha256": "b1083207f263135ada6be574939c5fe20a601814bf2594e7564f0301b744f41c"
+      },
+      "summary": "Produced two observable cards. Highest-value physical milestones are HNU changing-cell position-space L2 composition and positive observable-overlap reconstruction; no dimensional prediction is claimed before scale setting."
+    },
+    {
+      "id": "role-20260720-071644-d2937dd3",
+      "role": "superstar",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-20T07:16:44-07:00",
+      "due_at": "2026-07-20T08:16:44-07:00",
+      "project_id": "NE-DYNAMICS",
+      "work_item_id": "MASS-ORIGIN-001",
+      "packet_path": "AutonomousLab/work/role-activations/role-20260720-071644-d2937dd3_packet.md",
+      "deliverable_path": "AutonomousLab/work/NE-DYNAMICS/CODEX_IMPACT_STRATEGY_MASS_3PLUS1_2026-07-20.md",
+      "note": "Rank externally decisive results at the intersection of origin-of-mass, HNU 3+1, and spectral reconstruction; identify the smallest claim upgrade that would matter to lattice/QCA/formalization audiences.",
+      "completed_at": "2026-07-20T07:17:44-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/NE-DYNAMICS/CODEX_IMPACT_STRATEGY_MASS_3PLUS1_2026-07-20.md",
+        "sha256": "36fbd74d37178711ec6e3b5b7684dc4d5146782bf34c70eb931d7993d656b5d8"
+      },
+      "summary": "Ranked the full-zone HNU plus continuum theorem and the positive transfer-correlation reconstruction theorem as the two externally decisive results; scoped shared-Higgs composition as infrastructure rather than a headline by itself."
+    },
+    {
+      "id": "role-20260720-070216-fbe61748",
+      "role": "archivist",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-20T07:02:16-07:00",
+      "due_at": "2026-07-20T08:32:16-07:00",
+      "project_id": "NE-DYNAMICS",
+      "work_item_id": "MASS-ORIGIN-001",
+      "packet_path": "AutonomousLab/work/role-activations/role-20260720-070216-fbe61748_packet.md",
+      "deliverable_path": "AutonomousLab/work/NE-DYNAMICS/CODEX_LITERATURE_ORIGIN_MASS_CLASSIFICATION_2026-07-20.md",
+      "note": "Primary-source map for classifying fermion, gauge, Higgs radial, neutrino, and composite mass mechanisms; identify exact gap-to-pole and transfer-matrix theorem shapes, check Zotero/Neo4j dedup and Lean reference APIs.",
+      "completed_at": "2026-07-20T07:16:25-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/NE-DYNAMICS/CODEX_LITERATURE_ORIGIN_MASS_CLASSIFICATION_2026-07-20.md",
+        "sha256": "6ef3ebf1304992769235b9fa2a43188224535c53d318b8103ee613520a444236"
+      },
+      "summary": "Mapped electroweak, neutrino, QCD-composite, and gap-to-spectral mass mechanisms; added four deduplicated primary sources to Zotero/Neo4j; refreshed embeddings and full-text chunks; changed theorem queue to shared-Higgs reconstruction plus positive transfer-correlation bridge."
+    },
+    {
+      "id": "role-20260720-065858-73565726",
+      "role": "visionary",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-20T06:58:58-07:00",
+      "due_at": "2026-07-20T07:58:58-07:00",
+      "project_id": "NE-DYNAMICS",
+      "work_item_id": null,
+      "packet_path": "AutonomousLab/work/role-activations/role-20260720-065858-73565726_packet.md",
+      "deliverable_path": "AutonomousLab/work/NE-DYNAMICS/CODEX_VISIONARY_MASS_3PLUS1_SYNTHESIS_2026-07-20.md",
+      "note": "Rank the mass and 3+1 dependency chain, identify one latent unifier and the cheapest decisive falsifiers, and recommend the first exact theorem gate without changing evidence grades.",
+      "completed_at": "2026-07-20T07:00:41-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/NE-DYNAMICS/CODEX_VISIONARY_MASS_3PLUS1_SYNTHESIS_2026-07-20.md",
+        "sha256": "0bb1859945bdad6ad62242a5e1dbc954109a7a89b065b7dd65b848df9fc3ba31"
+      },
+      "summary": "Identified response-spectrum reconstruction as the latent unifier, coupled HNU spectrum to mass semantics, ranked seven gates, and selected a scoped mechanism matrix plus shared-Higgs-data composition as the first bounded mass item."
+    },
+    {
+      "id": "role-20260720-065622-83437bc7",
+      "role": "lab_manager",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-20T06:56:22-07:00",
+      "due_at": "2026-07-20T07:56:22-07:00",
+      "project_id": "LAB-INFRA",
+      "work_item_id": null,
+      "packet_path": "AutonomousLab/work/role-activations/role-20260720-065622-83437bc7_packet.md",
+      "deliverable_path": "AutonomousLab/work/LAB-INFRA/CODEX_LAB_MANAGER_MASS_3PLUS1_CYCLE_2026-07-20.md",
+      "note": "Open the 2026-07-20 to 2026-07-21 mass, 3+1, and literature mission; repair stale cycle, availability, queue, and handoff without changing scientific claims.",
+      "completed_at": "2026-07-20T06:58:41-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/LAB-INFRA/CODEX_LAB_MANAGER_MASS_3PLUS1_CYCLE_2026-07-20.md",
+        "sha256": "a7b879d00ecfd8cbc356b295a8bad4ac687fbc4ac91ea14dfd846f355def3e00"
+      },
+      "summary": "Reset the stale cycle, refreshed availability, freed one Codex WIP slot for origin-of-mass closure, audited review/role/fleet debt, and established the bounded mission operating order."
+    },
+    {
+      "id": "role-20260719-005753-c0bd5fe7",
+      "role": "superstar",
+      "model": "claude",
+      "model_family": "claude",
+      "status": "completed",
+      "started_at": "2026-07-19T00:57:53-07:00",
+      "due_at": "2026-07-19T01:57:53-07:00",
+      "project_id": null,
+      "work_item_id": null,
+      "packet_path": "AutonomousLab/work/role-activations/role-20260719-005753-c0bd5fe7_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/role-20260719-005753-c0bd5fe7_deliverable.md",
+      "note": "",
+      "completed_at": "2026-07-19T00:58:32-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/role-20260719-005753-c0bd5fe7_deliverable.md",
+        "sha256": "66dbd49796e9021bea4150a8b62020689eddce0db351576e209d344197c3a096"
+      },
+      "summary": "Publication-gate ranking: Hurwitz headline first (recognition + item-5 upgrade), then Paper D completion, Paper A generalization, Paper E operational quantity; three new audit-paper kill rows; draft-trust discipline reaffirmed (no promotion claims tonight)."
+    },
+    {
+      "id": "role-20260719-005306-49efbeb1",
+      "role": "visionary",
+      "model": "claude",
+      "model_family": "claude",
+      "status": "completed",
+      "started_at": "2026-07-19T00:53:06-07:00",
+      "due_at": "2026-07-19T01:53:06-07:00",
+      "project_id": null,
+      "work_item_id": null,
+      "packet_path": "AutonomousLab/work/role-activations/role-20260719-005306-49efbeb1_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/role-20260719-005306-49efbeb1_deliverable.md",
+      "note": "",
+      "completed_at": "2026-07-19T00:53:49-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/role-20260719-005306-49efbeb1_deliverable.md",
+        "sha256": "9d68281e8fb38863e74a5238865c31ed5429b3ccd56f3107911eaa20d187a5f0"
+      },
+      "summary": "Ranked post-harvest strategy: B torus gate = highest info density; Hurwitz merge = scheduling not research; AU triage rules pre-committed; statement quality identified as the binding constraint (85 pct conversion when well-posed); harvest-momentum pattern recommended for the operating docs."
+    },
+    {
+      "id": "role-20260718-235007-42ff1a71",
+      "role": "lab_manager",
+      "model": "claude",
+      "model_family": "claude",
+      "status": "completed",
+      "started_at": "2026-07-18T23:50:07-07:00",
+      "due_at": "2026-07-19T00:50:07-07:00",
+      "project_id": null,
+      "work_item_id": null,
+      "packet_path": "AutonomousLab/work/role-activations/role-20260718-235007-42ff1a71_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/role-20260718-235007-42ff1a71_deliverable.md",
+      "note": "",
+      "completed_at": "2026-07-18T23:50:44-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/role-20260718-235007-42ff1a71_deliverable.md",
+        "sha256": "46a39d639f3a792c27904b5e4ac9c67c3816629767782e9f31fa8d69177bdcb8"
+      },
+      "summary": "Overnight ops report: cap 8->16 formally recorded (Director-authorized); fleet 14/16 active (13 verified running); registry reconciled; day returns 4/4 dispositioned; role-duty and mailbox-debt dispositions recorded; no incidents."
+    },
     {
       "id": "role-20260717-071328-0e612bd3",
       "role": "educator",

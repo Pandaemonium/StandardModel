@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-07-16T15:30:09-07:00",
+  "updated_at": "2026-07-20T07:02:06-07:00",
   "items": [
     {
       "id": "LAB-BOOTSTRAP-001",
@@ -1115,7 +1115,7 @@
       "parent_id": "GRAV-GROWING-ATLAS-001",
       "depends_on": [],
       "title": "Order-native rank-four Lorentz sector after the growing-atlas no-go",
-      "status": "EXECUTING",
+      "status": "PARKED",
       "priority": 93,
       "role": "research_scientist",
       "owner_model": "codex",
@@ -1124,8 +1124,8 @@
       "nearest_work": "R4, R4-D, and R5 killed the frozen complete-family/greedy/cap/cardinality atlas architecture on the tested seeds. The harvested no-go chain and corrected-pairing representation are independently approved: direct retarded polynomial filters are trivial, while the corrected pairing is a nonzero self-adjoint weighted-difference endomorphism on zero-sum probes. The coordinate lane now proves based-difference injectivity, a rank-four five-event probe basis, and a concrete project-local three-arm Alexandrov diamond with top interval counts (3,0,0,0). Every event lies in the same marked carrier, its induced order is isomorphic to the concrete order, and reciprocal square-root rescaling proves the exact production HasLorentzianInertia predicate at equal nonzero scales. The result is kernel-clean, axiom-pinned, and independently approved by Gemini after the scheduled Claude review was unavailable. It is also transported into the successor HasSectorLorentzianInertia API, which is required because the already-proved whole-carrier cardinality boundary forces the old frame interface to five-event carriers. Canonical selected-sector construction, a four-mode gap, overlap transport, and refinement persistence remain open.",
       "success_criterion": "Construct an order-native operator and a source-side polynomial certificate proving idempotence and rank four; transport the projector naturally to overlaps; prove nondegenerate (+---) corrected-pairing inertia and a stable four-mode gap on an explicit refinement family; provide nonvacuous graph witnesses and independent semantic review.",
       "kill_condition": "Kill or narrow an operator family if its finite causal form forces every polynomial spectral projector to be scalar/trivial, if rank four is encoded by supplied eigendata rather than derived from the graph, if the corrected pairing lacks Lorentzian inertia, or if the selected image is not stable under overlap/refinement transport.",
-  "next_action": "Obtain Claude's hostile audit of the marked-Alexandrov shell-angular 1+3 design, then formalize its exact pre-run gates: the immediate-predecessor shell is an antichain; positive-radial and negative-shell supports are disjoint; and any independent shell triple plus nonzero positive radial line has conditional (+---) corrected Gram. Do not assign development or confirmatory seeds until these statements and the common-anchor/time-line semantic audit pass.",
-  "resource_ceiling": "Keep the active Aristotle comparison 9a705eeb-56af-4c05-a156-b2702b654206. Up to two additional focused standalone Aristotle jobs may be used for typechecking shell-antichain and conditional shell-angular inertia statements after local preflight. No S1 confirmatory run is authorized; no successor seeds are named. Do not reopen the killed R4/R5 complete-family architecture, direct retarded polynomial filter, or one-mode-per-layer shortcut.",
+      "next_action": "Obtain Claude's hostile audit of the marked-Alexandrov shell-angular 1+3 design, then formalize its exact pre-run gates: the immediate-predecessor shell is an antichain; positive-radial and negative-shell supports are disjoint; and any independent shell triple plus nonzero positive radial line has conditional (+---) corrected Gram. Do not assign development or confirmatory seeds until these statements and the common-anchor/time-line semantic audit pass.",
+      "resource_ceiling": "Keep the active Aristotle comparison 9a705eeb-56af-4c05-a156-b2702b654206. Up to two additional focused standalone Aristotle jobs may be used for typechecking shell-antichain and conditional shell-angular inertia statements after local preflight. No S1 confirmatory run is authorized; no successor seeds are named. Do not reopen the killed R4/R5 complete-family architecture, direct retarded polynomial filter, or one-mode-per-layer shortcut.",
       "deliverables": [
         "Strict-past polynomial-projector no-go or surviving certificate",
         "Order-native rank-four projector with Lorentzian-inertia witness",
@@ -1140,12 +1140,12 @@
         "PhysicsSM/Draft/NullEdge/LayeredOperatorPolynomialNoGo.lean",
         "PhysicsSM/Draft/NullEdge/CorrectedPairingDifferenceOperator.lean",
         "PhysicsSM/Draft/NullEdge/CorrectedPairingDifferenceCoordinates.lean",
-    "PhysicsSM/Draft/NullEdge/CorrectedPairingCarrierInertiaWitness.lean",
-    "PhysicsSM/Draft/NullEdge/CorrectedPairingSelectedSectorWitness.lean",
-    "PhysicsSM/Draft/NullEdge/CorrectedPairingLayerCoherentNoGo.lean",
-    "PhysicsSM/Draft/NullEdge/SL2CLorentzAction.lean",
-    "AgentTasks/null-edge-marked-alexandrov-1plus3-selector-stage-plan-2026-07-16.md",
-    "AutonomousLab/reviews/CODEX_REVIEW_CORRECTED_SPECTRUM_S1_2026-07-16.md",
+        "PhysicsSM/Draft/NullEdge/CorrectedPairingCarrierInertiaWitness.lean",
+        "PhysicsSM/Draft/NullEdge/CorrectedPairingSelectedSectorWitness.lean",
+        "PhysicsSM/Draft/NullEdge/CorrectedPairingLayerCoherentNoGo.lean",
+        "PhysicsSM/Draft/NullEdge/SL2CLorentzAction.lean",
+        "AgentTasks/null-edge-marked-alexandrov-1plus3-selector-stage-plan-2026-07-16.md",
+        "AutonomousLab/reviews/CODEX_REVIEW_CORRECTED_SPECTRUM_S1_2026-07-16.md",
         "AutonomousLab/reviews/CLAUDE_REVIEW_LAYERED_OPERATOR_NOGO_2026-07-16.md",
         "AutonomousLab/reviews/CLAUDE_REVIEW_CORRECTED_PAIRING_ESCAPE_2026-07-16.md",
         "AutonomousLab/reviews/CLAUDE_REVIEW_DIFFERENCE_COORDINATES_LORENTZ_WITNESS_2026-07-16.md",
@@ -1158,15 +1158,59 @@
         "lake build PhysicsSM.Draft.NullEdge.LayeredOperatorPolynomialNoGo",
         "lake build PhysicsSM.Draft.NullEdge.CorrectedPairingDifferenceOperator",
         "lake build PhysicsSM.Draft.NullEdge.CorrectedPairingDifferenceCoordinates",
-    "lake build PhysicsSM.Draft.NullEdge.CorrectedPairingCarrierInertiaWitness",
-    "lake build PhysicsSM.Draft.NullEdge.CorrectedPairingSelectedSectorWitness",
-    "lake build PhysicsSM.Draft.NullEdge.CorrectedPairingLayerCoherentNoGo",
+        "lake build PhysicsSM.Draft.NullEdge.CorrectedPairingCarrierInertiaWitness",
+        "lake build PhysicsSM.Draft.NullEdge.CorrectedPairingSelectedSectorWitness",
+        "lake build PhysicsSM.Draft.NullEdge.CorrectedPairingLayerCoherentNoGo",
         "lake build PhysicsSM.Draft.NullEdge.EquivariantPolynomialProbeProjector",
         "lake build PhysicsSM.Draft.NullEdge.LorentzAtlasSpinLiftBoundary",
         "python AutonomousLab/scripts/labctl.py validate"
       ],
       "forecast_success": 0.35,
       "target_date": "2026-07-22"
+    },
+    {
+      "id": "MASS-ORIGIN-001",
+      "project_id": "NE-DYNAMICS",
+      "parent_id": null,
+      "depends_on": [],
+      "title": "Scoped mass-mechanism classification and shared Higgs datum",
+      "status": "EXECUTING",
+      "priority": 98,
+      "role": "research_scientist",
+      "owner_model": "codex",
+      "skeptic_model": "claude",
+      "exact_claim": "Within a displayed finite Standard-Model-like response class, fermion chiral turns, gauge-orbit stiffness, and Higgs radial curvature can be reconstructed from one supplied vacuum datum together with separately displayed Yukawa, gauge, and potential couplings; a mechanism matrix classifies these and the neutrino/composite branches without asserting measured scales or one universal Pluecker formula.",
+      "nearest_work": "The repository has separate kernel-checked Pluecker rest, Yukawa turn, gauge Gram, Higgs tangent/radial, neutrino, and finite transfer-gap modules, but no convention-locked shared-input theorem, no proved exhaustive scope, and no common finite-gap-to-physical-pole reconstruction.",
+      "success_criterion": "Publish a source-anchored mechanism matrix with primitive data, supplied parameters, operator class, positivity, observable, continuum debt, and kill condition for each mechanism; then kernel-check a finite shared-Higgs-data theorem with a nonzero broken-direction/fermion/radial witness and unbroken/zero-coupling controls. Every free parameter remains explicit and the axiom footprint is guard-pinned.",
+      "kill_condition": "Narrow or kill the shared-data claim if the three sectors require incompatible vacuum conventions or an arbitrary bridge not represented in the structure. Kill any exhaustiveness wording not relative to a displayed action/operator class. Do not call an internal finite gap a physical mass without the separate gap-to-pole and continuum gates.",
+      "next_action": "Audit and align GaugeMassGram, HiggsTangentDecomposition, HiggsDoubletRadialCurvature, HiggsDofConservation, and GateYM.YukawaTurnAmplitude; write the mechanism matrix and a minimal SharedHiggsMassData theorem statement before submitting any proof job.",
+      "resource_ceiling": "One mechanism memo, one small draft Lean module, targeted builds and one axiom guard. At most one focused Aristotle package after local typechecking exposes a genuine proof blocker. No manuscript promotion before Claude/Opus review.",
+      "deliverables": [
+        "Origin-of-mass mechanism and claim matrix",
+        "Shared Higgs datum finite composition module",
+        "Nonzero and boundary-control witnesses",
+        "Cross-family semantic and physics audit"
+      ],
+      "evidence_paths": [
+        "AutonomousLab/prompts/CODEX_MASS_3PLUS1_LITERATURE_GOAL_2026-07-20.md",
+        "AutonomousLab/work/NE-DYNAMICS/CODEX_VISIONARY_MASS_3PLUS1_SYNTHESIS_2026-07-20.md",
+        "NULL_EDGE_RESULTS.md",
+        "Sources/Null_Edge_P1_Origin_of_Mass_Manuscript_Draft_v3.md",
+        "PhysicsSM/Draft/NullEdge/GaugeMassGram.lean",
+        "PhysicsSM/Draft/NullEdge/HiggsTangentDecomposition.lean",
+        "PhysicsSM/Draft/NullEdge/HiggsDoubletRadialCurvature.lean",
+        "PhysicsSM/Draft/NullEdge/HiggsDofConservation.lean",
+        "PhysicsSM/Draft/NullEdge/GateYM/YukawaTurnAmplitude.lean"
+      ],
+      "claim_ids": [],
+      "verification_commands": [
+        "lake build PhysicsSM.Draft.NullEdge.SharedHiggsMassData",
+        "lake build PhysicsSM.Draft.NullEdge.OvernightTheoryAxiomGuard",
+        "python AutonomousLab/scripts/labctl.py validate",
+        "pre-commit run --all-files"
+      ],
+      "forecast_success": 0.68,
+      "target_date": "2026-07-21"
     }
   ]
 }

@@ -6,11 +6,11 @@
   "strategic_year": 1,
   "strategic_quarter": "Y1-Q1",
   "current_cycle": {
-    "id": "GR-NULL-EDGE-OVERNIGHT-2026-07-16",
+    "id": "MASS-3PLUS1-LIT-2026-07-20",
     "status": "active",
     "phase": "focused_execution",
-    "started_at": "2026-07-16T21:04:29-07:00",
-    "planned_end_at": "2026-07-17T08:04:29-07:00"
+    "started_at": "2026-07-20T06:56:36-07:00",
+    "planned_end_at": "2026-07-21T09:02:36-07:00"
   },
   "active_project_ids": [
     "LAB-INFRA",
@@ -24,28 +24,28 @@
   "availability": {
     "codex": {
       "status": "available",
-      "last_checked": "2026-07-17T02:23:53-07:00",
-      "detail": "Overnight GR goal active to 08:00 PDT. Integrated Higgs Hilbert stress and massive retarded-link series; finite strict-past Higgs radial propagation capstone targeted-built and audited."
+      "last_checked": "2026-07-20T06:56:36-07:00",
+      "detail": "Active mission through 2026-07-21 09:00 PDT: origin of mass, 3+1, and literature closure."
     },
     "claude": {
       "status": "available",
-      "detail": "Interactive Claude solo session until ~18:00 2026-07-16; lane claimed",
-      "last_checked": "2026-07-16T05:48:34-07:00"
+      "detail": "Opus lane acknowledged via mailbox; active on independent mass audit and Aristotle strategy jobs.",
+      "last_checked": "2026-07-20T07:31:44-07:00"
     },
     "aristotle": {
       "status": "available",
-      "last_checked": "2026-07-16T23:53:48-07:00",
-      "detail": "Generic unitary Higgs link project 49e42dc1 submitted; old comparison 9a705eeb remains independent and in progress; fleet has open capacity."
+      "last_checked": "2026-07-20T06:56:37-07:00",
+      "detail": "CLI responsive; seven active mission-adjacent jobs plus available capacity."
     }
   },
   "work_in_progress_limits": {
     "active_science_projects": 6,
     "executing_items_per_model": 3,
     "moonshots": 2,
-    "aristotle_projects": 8
+    "aristotle_projects": 15
   },
   "last_reviews": {
-    "daily": "2026-07-17T01:25:10-07:00",
+    "daily": "2026-07-19T00:36:00-07:00",
     "weekly": null,
     "monthly": null,
     "quarterly": null,

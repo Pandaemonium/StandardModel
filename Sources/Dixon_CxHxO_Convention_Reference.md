@@ -114,6 +114,15 @@ explicit; `C⊗O` non-associative), with `bar_eq_rmul_lmul`. The landed
 are conceptually distinct and do not mix" (the algebraic origin of "the weak force
 is left-handed").
 
+**KERNEL-PINNED (2026-07-18, `DixonDiracGamma.lean`, P2 landed): the eq-13 γ's
+satisfy `{γ^μ, γ^ν} = 2η^{μν}` with `η = diag(−1,+1,+1,+1)` — MOSTLY-PLUS, with
+`(γ⁰)² = −1`.** This was computed by the kernel, not assumed. Convention bridge
+caution: PhysLean and most particle-physics texts use mostly-minus `(+,−,−,−)`
+with `(γ⁰)² = +1`; map via `γ^μ → i γ^μ` (equivalently `η → −η`) and re-derive
+any sign-sensitive identity — do NOT import mostly-minus gamma identities raw.
+`γ⁵` = right multiplication by `−i·i₃`; kernel facts: `(γ⁵)² = 1`,
+`{γ⁵, γ^μ} = 0`.
+
 States are **minimal left ideals** `Ψ = Cl(2n) v` on an idempotent vacuum `v`
 (eq. 8), so **`z = 1` is not a physical state** — relevant to §7 below.
 
@@ -140,41 +149,60 @@ Key derived colour objects:
 * Isospin `Cl(2)` generators (eq. 29): `tau_1 = omega + omega‡`,
   `tau_2 = i omega - i omega‡`, `tau_3 = omega omega‡ - omega‡ omega`.
 
-Weak `Cl(4)` ladders (eq. 30), `i_1, i_2` the `H`-units, `tau_1` colour, `i`
-complex:
+Weak `Cl(4)` ladders (eq. 30), `i_1, i_2` the `H`-units, `i` complex —
+**TRANSCRIPTION PINNED 2026-07-18: the colour factor in `beta_1` is `tau_3`**
+(the OCR trailing-subscript layout deceived an earlier reading into `tau_1`;
+the kernel refuted `tau_1` with cross-CAR `1/2` and the abstract Fock
+computation confirms `tau_3` satisfies all of eq 31):
 
-`beta_1 = (1/2)(-i_2 + i i_1 tau_1)`,   `beta_2 = omega‡ i i_1`.
+`beta_1 = (1/2)(-i_2 + i i_1 tau_3)`,   `beta_2 = omega‡ i i_1`.
 
 CAR target (eq. 31): `{beta_i, beta_j} = {beta_i‡, beta_j‡} = 0`,
 `{beta_i, beta_j‡} = delta_ij` for `i,j ∈ {1,2}`. su(2)_L (eq. 35):
-`T_j = tau_j (1/2)(1 + i_3)`, with `(1/2)(1+i_3)` a chirality projector; leptonic
-ideal `L ~ 1 ⊕ 2 ⊕ 1` (eq. 32/36).
+`T_j = tau_j (1/2)(1 + i·i_3)` — **the projector carries the COMPLEX `i`**
+(kernel lesson 2026-07-18: bare `(1+i_3)/2` squares to `i_3/2` since
+`i_3² = −1`; only `(i·i_3)² = +1` makes it idempotent, matching
+`γ⁵ = right-mult by −i·i_3`, so `P_L = ½(1 − γ⁵)`). The eq-6/8/29/35 display
+pattern `i(cid:6)_k` always means complex-`i` TIMES the `H`-unit — never read
+the glyph pair as a bare unit. Leptonic ideal `L ~ 1 ⊕ 2 ⊕ 1` (eq. 32/36).
 
 ---
 
-## 7. THE operator-vs-element CAR distinction (the second costly lesson)
+## 7. THE operator-vs-element distinction — RESOLVED: composition operators
 
-Furey's `beta`'s are written as algebra ELEMENTS (eq. 30) but the eq-31 CAR is an
-**OPERATOR** relation, NOT an element identity. Kernel fact
-(`DixonWeakLadders.betaH_like_anticomm_ne_zero`): the ELEMENT anticommutator
-`{beta_1, beta_2}_element = (1/2){omega,omega‡} = 1/2 ≠ 0` (the `H`-unit cross
-terms cancel via `{i_1,i_2}=0`; the colour `{omega,omega‡}=1` survives).
+**RESOLVED 2026-07-18 (kernel).** The faithful semantics of the ladder algebra
+is **composition of left-multiplication maps** (associative by definition —
+Furey 1806 §4.2; fully explicit in 1910.08395 p.3), NOT element products and
+NOT single right-multiplications. The kernel proof of unfaithfulness of
+elements is the **anti-Fock dictionary** (`DixonWeakCARTau3.lean`):
 
-So the element product is the WRONG model. Two live operator readings (open —
-`DixonWeakCARConjecture.lean` pre-registers reading A with a kill-condition):
+| operator Fock (kernel, `CompositionWeakLadders`) | element level (kernel) |
+|---|---|
+| `hatOmega² = 0` (global) | `omega² = −v` |
+| `hatOmegaDag² = 0` (global) | `(omega‡)² = −v*` |
+| `{hatTau3, hatOmega} = 0` (global) | `omega omega‡ = 0` |
+| `{hatTau3, hatOmegaDag} = 0` (global) | `omega‡ omega = 0` ⟹ `tau_3 = 0` (!) |
 
-* **(A) right-action on the ideal.** `R_{beta}(z) = z beta`, CAR on the leptonic
-  ideal `L = v_w Cl(4)` (`v_w = beta_1‡ beta_2‡ beta_2 beta_1`, eq. 32). `z=1 ∉ L`,
-  so the element `1/2` is irrelevant. Matches Furey's explicit "right action."
-* **(B) bar operators on all `z`.** `(x|y)z = xzy`; here `(x|y)·1 = xy ≠` element
-  product, so `1/2` is again not an obstruction. Matches eq. 13's `x|y` Diracs.
+Element squares and idempotents EXCHANGE roles — octonion non-associativity
+scrambles composition order. Consequences:
 
-Caution recorded from experience: the colour `alpha`'s DO satisfy the CAR at the
-element level (they are single ladders); the weak `beta`'s do NOT (they carry
-`tau_1 = omega+omega‡`). Do not assume the weak sector inherits the colour
-sector's element-level CAR. Determining (A) vs (B) and proving it is the open
-Aristotle target; brute `norm_num` on the 4–6-fold non-associative products is
-infeasible — use the colour-CAR / idempotent lemmas.
+* Every eq-29/30/31 object is a composition operator: `hatOmega z =
+  a₁(a₂(a₃ z))` (nesting = composition order), `hatTau3 = hatOmega∘hatOmegaDag
+  − hatOmegaDag∘hatOmega`, β̂'s built from these plus `H`-unit multiplications.
+* The like/cross CARs hold **globally** (their colour cores are the four
+  kernel identities above); the diagonal `{β,β‡} = 1` holds **on the
+  omega-mode plane** `span{v, nu = hatOmega v}` — NOT `span{v, v*}` (kernel-
+  refuted) — where `hatTau3` grades `v ↦ −v`, `nu ↦ +nu` and the τ̂'s are
+  literally Pauli matrices (σ₁, σ₂, −σ₃ on the (v, nu) basis).
+* Historical record: the element-level facts
+  (`DixonWeakLadders.betaH_like_anticomm_ne_zero` = the τ₁-variant `1/2`;
+  the τ₃-variant vacuity) remain true and guarded — they are the no-go that
+  forced the resolution. `DixonWeakCARConjecture.lean` is a supersession
+  record.
+* The old caution stands, sharpened: the colour `alpha`'s satisfy the CAR at
+  BOTH levels (single ladders — element products coincide with single
+  applications); anything built from ladder PRODUCTS (`omega`, `tau_j`,
+  `beta_j`, eq-37's `B_j`) exists faithfully ONLY as a composition operator.
 
 ---
 
@@ -191,7 +219,12 @@ infeasible — use the colour-CAR / idempotent lemmas.
 | left/right/bar action scaffolding | `PhysicsSM/Draft/NullEdge/DixonLeftRightAction.lean` |
 | **`C⊗H⊗O` Dixon algebra** | `PhysicsSM/Draft/NullEdge/DixonAlgebra.lean` |
 | faithful eq-30 `beta`'s + `‡`, element-CAR fact | `PhysicsSM/Draft/NullEdge/DixonWeakLadders.lean` |
-| pre-registered operator-CAR conjecture (A/B + kill) | `PhysicsSM/Draft/NullEdge/DixonWeakCARConjecture.lean` |
+| operator-CAR supersession record | `PhysicsSM/Draft/NullEdge/DixonWeakCARConjecture.lean` |
+| anti-Fock element dictionary (no-go) | `PhysicsSM/Draft/NullEdge/DixonWeakCARTau3.lean` |
+| composition-operator Fock cores + graded mode plane | `PhysicsSM/Draft/NullEdge/CompositionWeakLadders.lean` |
+| eq-31 CAR assembly on Dixon (cross global, diag structural) | `PhysicsSM/Draft/NullEdge/CompositionWeakCAR.lean` |
+| Dirac γ's as bar operators, η pinned | `PhysicsSM/Draft/NullEdge/DixonDiracGamma.lean` |
+| h3(O) spectral invariants (P7) | `PhysicsSM/Draft/H3OSpectralInvariants.lean` |
 | chirality projector, RH=singlet | `PhysicsSM/Draft/NullEdge/WeakIsospinChiralityProjector.lean` |
 | abstract su(2)_L, U(2), SU(5) hypercharge | `WeakIsospinTwoModeSU2Aristotle`, `ElectroweakU2FromLadders`, `SU5HyperchargeUnification` |
 

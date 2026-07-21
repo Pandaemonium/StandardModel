@@ -3,7 +3,7 @@ import Mathlib
 /-!
 # Sharp Lipschitz control for finite Hermitian evolution
 
-For Hermitian four-by-four matrices `H` and `K`, this module proves the sharp
+For Hermitian finite matrices `H` and `K`, this module proves the sharp
 Duhamel estimate
 
 `||exp(-i t H) - exp(-i t K)|| <= |t| * ||H - K||`.
@@ -28,20 +28,23 @@ namespace PhysicsSM.Draft.NullEdge.HermitianExpLipschitz
 abbrev Mat4 := Matrix (Fin 4) (Fin 4) Complex
 
 /-- Hermitian matrix evolution is one-Lipschitz in its generator, with elapsed
-time as the exact scale factor. -/
-theorem hermitian_exp_lipschitz (H K : Mat4)
+time as the exact scale factor. This dimension-generic form is load-bearing for
+both the four-component Dirac and two-component HNU Weyl continuum ladders. -/
+theorem hermitian_exp_lipschitz_fin {n : Type*} [Fintype n] [DecidableEq n]
+    [Nonempty n] (H K : Matrix n n Complex)
     (hH : H.IsHermitian) (hK : K.IsHermitian) (t : Real) :
     ‖NormedSpace.exp ((-(t : Complex)) • (Complex.I • H)) -
         NormedSpace.exp ((-(t : Complex)) • (Complex.I • K))‖ <=
       |t| * ‖H - K‖ := by
   classical
-  let +nondep : NormedAlgebra Rat Mat4 := .restrictScalars Rat Complex Mat4
-  set A : Mat4 := (-(t : Complex)) • (Complex.I • H) with hA
-  set B : Mat4 := (-(t : Complex)) • (Complex.I • K) with hB
+  let +nondep : NormedAlgebra Rat (Matrix n n Complex) :=
+    .restrictScalars Rat Complex (Matrix n n Complex)
+  set A : Matrix n n Complex := (-(t : Complex)) • (Complex.I • H) with hA
+  set B : Matrix n n Complex := (-(t : Complex)) • (Complex.I • K) with hB
   set C : Real := |t| * ‖H - K‖ with hC
-  set g : Real -> Mat4 := fun s =>
+  set g : Real -> Matrix n n Complex := fun s =>
     NormedSpace.exp (s • A) * NormedSpace.exp ((1 - s) • B) with hg
-  have hnormExp : forall (M : Mat4), M.IsHermitian -> forall (r : Real),
+  have hnormExp : forall (M : Matrix n n Complex), M.IsHermitian -> forall (r : Real),
       ‖NormedSpace.exp (r • ((-(t : Complex)) • (Complex.I • M)))‖ = 1 := by
     intro M hM r
     have hsa : IsSelfAdjoint M := isHermitian_iff_isSelfAdjoint.mp hM
@@ -111,6 +114,18 @@ theorem hermitian_exp_lipschitz (H K : Mat4)
   have hg0 : g 0 = NormedSpace.exp B := by simp [hg]
   rw [hg1, hg0] at hmv
   simpa [hA, hB, hC] using hmv
+
+/-- Backward-compatible four-component specialization. -/
+theorem hermitian_exp_lipschitz (H K : Mat4)
+    (hH : H.IsHermitian) (hK : K.IsHermitian) (t : Real) :
+    ‖NormedSpace.exp ((-(t : Complex)) • (Complex.I • H)) -
+        NormedSpace.exp ((-(t : Complex)) • (Complex.I • K))‖ <=
+      |t| * ‖H - K‖ :=
+  hermitian_exp_lipschitz_fin H K hH hK t
+
+/-- info: 'PhysicsSM.Draft.NullEdge.HermitianExpLipschitz.hermitian_exp_lipschitz_fin' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms hermitian_exp_lipschitz_fin
 
 /-- info: 'PhysicsSM.Draft.NullEdge.HermitianExpLipschitz.hermitian_exp_lipschitz' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in

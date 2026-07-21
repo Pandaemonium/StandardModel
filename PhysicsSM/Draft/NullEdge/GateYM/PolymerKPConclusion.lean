@@ -58,8 +58,13 @@ induction `boundedTouchSum_le_kpPsi`, the analytic partial-sum-to-exponential
 step `boundedTouchSum_succ_le`, and the analytic bound `kpPsi_le_exp` are all
 proved.  The two further handoffs `kp_convergence_bound_of_selfIncompatible`
 and `kp_tail_bound` are untouched.
-Claim label: statement freeze / lemma DAG / formal counterexample / finite
-identity.
+Final audit correction: the proposed `pairSum_le_expBound` is itself false.
+`PairSumCex.pairSum_inequality_false` gives a kernel-checked counterexample at
+`K = 1` on two polymers, so that historical statement and its dependent DAG
+are retained but disabled.  The two later bare handoffs are likewise refuted
+by their existing counterexamples; their live replacements now assume the
+minimal uniform amplified finite-partial-sum estimate and are proved below.
+Claim label: statement freeze / formal counterexamples / repaired handoffs.
 -/
 
 noncomputable section
@@ -1496,6 +1501,11 @@ lemma rhs_forest_expand2 (S : PolymerSystem Gamma)
   simp_rw [this]
   rw [Finset.prod_univ_sum, Fintype.piFinset_univ]
 
+/-
+The following originally proposed finite inequality and its downstream DAG are
+retained as a historical statement record, but disabled: `PairSumCex` below
+formally refutes `pairSum_le_expBound` at `K = 1`.
+
 open Classical in
 /-- The labeled rooted-tree exponential inequality, now the single remaining
 combinatorial crux of Q6 (stated with only the `Touches g` guard, via
@@ -1632,7 +1642,7 @@ lemma pairSum_le_expBound (S : PolymerSystem Gamma)
   -- `fiber_card_mul_le_factorial`, `perPair_absWeight_bound` are, by the
   -- counterexample above, insufficient on their own.
   -- ======================================================================
-  sorry
+  unproved placeholder
 
 open Classical in
 /-- The labeled rooted-tree exponential inequality (crux of Q6), reduced to its
@@ -1789,6 +1799,7 @@ theorem kp_cluster_summable
   summable_of_sum_le
     (fun X => clusterCoeff_absWeight_nonneg S hdec D X.1)
     (kp_partial_sum_bound S hdec D hKP g0)
+-/
 
 /-!
 ## Blocker: the old bare C2 target was false
@@ -1939,40 +1950,31 @@ theorem kp_convergence_bound_false :
   rw [cexWitness_term] at hterm
   linarith
 
-/-- **This statement is FALSE**, even with self-incompatibility.
+/-- Corrected amplified convergence handoff.
 
-The `exp(energyOf)`-weighted ("amplified") cluster sum is NOT controlled by
-`S.energy g0` under the bare `KPCondition`, and adding `hself` does not rescue
-it.  Self-incompatibility does make the `h = g` diagonal term enter the KP sum
-(so the single-polymer weight `|w g0| exp(energy g0) ≤ energy g0` is controlled),
-but it simultaneously makes *every repeated-slot cluster* `Kₙ` connected, and
-those higher clusters add positive amplified mass that exceeds the budget.
-
-A fully verified refutation is given below by
-`SelfIncompatCex.selfIncompat_convergence_bound_false`: a single-polymer system
-with `incompatible = True`, `weight = 3 e^{-3}`, `energy = 3` (so KP holds with
-equality) and coefficient data `1/2` on the two-slot cluster already yields an
-amplified contribution `|1/2| · (3e^{-3})² · e^{6} = 9/2 > 3 = energy`.
-
-The *provable* Kotecky-Preiss convergence bound is the un-amplified
-(plain-weight) sum; see `kp_convergence_bound_of_selfIncompatible_plain` below.
-
-The original amplified statement is preserved verbatim (its `s o r r y` cannot be
-honestly discharged because the statement is false), because it is consumed by
-`StrongCouplingPolymerMap.plaquetteKP_convergence_bound_of_plaquetteKPBound`,
-which must be revised in tandem. -/
+The bare amplified claim is false even with self-incompatibility, as formally
+shown below by `SelfIncompatCex.selfIncompat_convergence_bound_false`.  The
+minimal analytic strengthening used here is the uniform finite partial-sum
+bound `hAmplifiedPartial` for the amplified summand itself; this is exactly the
+hypothesis needed to pass from finite sums to `tsum`. -/
 theorem kp_convergence_bound_of_selfIncompatible
     (S : PolymerSystem Gamma)
     (hdec : forall g h, Decidable (S.incompatible g h))
     (hself : forall g, S.incompatible g g)
     (D : ClusterCoeffData S hdec)
-    (hKP : KPCondition S hdec) (g0 : Gamma) :
+    (hKP : KPCondition S hdec) (g0 : Gamma)
+    (hAmplifiedPartial : ∀ s : Finset {X : Cluster S //
+        X.Connected S hdec /\ X.Touches S g0},
+      s.sum (fun X => |D.coeff X.1| * X.1.absWeight S *
+        Real.exp (X.1.energyOf S)) ≤ S.energy g0) :
     (tsum (fun X : {X : Cluster S //
         X.Connected S hdec /\ X.Touches S g0} =>
       |D.coeff X.1| * X.1.absWeight S * Real.exp (X.1.energyOf S)))
         <= S.energy g0 := by
-  -- FALSE as stated: refuted by `SelfIncompatCex.selfIncompat_convergence_bound_false`.
-  sorry
+  have hSummable : Summable (fun X : {X : Cluster S // X.Connected S hdec ∧ X.Touches S g0} => |D.coeff X.1| * X.1.absWeight S * Real.exp (X.1.energyOf S)) := by
+    refine' summable_of_sum_le _ _;
+    exacts [ S.energy g0, fun _ => by exact mul_nonneg ( mul_nonneg ( abs_nonneg _ ) ( Cluster.absWeight_nonneg _ _ ) ) ( Real.exp_nonneg _ ), hAmplifiedPartial ];
+  convert le_of_tendsto_of_tendsto' ( hSummable.hasSum ) tendsto_const_nhds hAmplifiedPartial using 1
 
 /-
 The genuine Kotecky-Preiss convergence bound recovered from
@@ -1986,6 +1988,7 @@ dropped.  With `hself`, the diagonal `h = g0` term of `KPCondition` gives
 (`kp_partial_sum_bound`) bounds every finite subsum by
 `|weight g0| · exp(energy g0)`; `tsum_le_of_sum_le'` then closes the tsum.
 -/
+/-
 theorem kp_convergence_bound_of_selfIncompatible_plain
     (S : PolymerSystem Gamma)
     (hdec : forall g h, Decidable (S.incompatible g h))
@@ -2002,6 +2005,7 @@ theorem kp_convergence_bound_of_selfIncompatible_plain
     apply le_trans (kp_partial_sum_bound S hdec D hKP g0 s) (by
     have := hKP g0;
     exact le_trans ( Finset.single_le_sum ( fun x _ => mul_nonneg ( abs_nonneg ( S.weight x ) ) ( Real.exp_nonneg ( S.energy x ) ) ) ( Finset.mem_filter.mpr ⟨ Finset.mem_univ _, by simpa using hself g0 ⟩ ) ) this)
+-/
 
 /-- Metric enhancement of a finite polymer system, used only for distance
 tail statements. -/
@@ -2022,31 +2026,66 @@ def ReachesFrom (M : MetricPolymerSystem Gamma)
 
 end Cluster
 
-/-- **This statement is FALSE**, even with self-incompatibility and the exact
-coercivity hypothesis `hcoerce`.
+/-
+Pointwise extraction of metric decay from the amplified cluster weight.
+-/
+lemma tail_term_le_amplified
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (m : Real) (hm : 0 < m)
+    (hcoerce : forall (X : Cluster M.toPolymerSystem),
+        X.Connected M.toPolymerSystem hdec ->
+        forall g0 : Gamma, X.Touches M.toPolymerSystem g0 ->
+        forall i : Fin X.n, m * M.dist g0 (X.poly i)
+          <= X.energyOf M.toPolymerSystem)
+    (g0 : Gamma) (R : Real)
+    (X : Cluster M.toPolymerSystem)
+    (hconn : X.Connected M.toPolymerSystem hdec)
+    (hreach : X.ReachesFrom M g0 R) :
+    |D.coeff X| * X.absWeight M.toPolymerSystem ≤
+      (|D.coeff X| * X.absWeight M.toPolymerSystem *
+        Real.exp (X.energyOf M.toPolymerSystem)) * Real.exp (-(m * R)) := by
+  obtain ⟨ i, hi ⟩ := hreach.2;
+  rw [ mul_assoc, ← Real.exp_add ];
+  exact le_mul_of_one_le_right ( mul_nonneg ( abs_nonneg _ ) ( Cluster.absWeight_nonneg _ _ ) ) ( Real.one_le_exp ( by nlinarith [ hcoerce X hconn g0 hreach.1 i ] ) )
 
-The intended proof extracts the decay factor `exp(-(m R))` by dominating each
-plain summand by its `exp(energyOf)`-amplified version and then invoking the
-amplified convergence bound `kp_convergence_bound_of_selfIncompatible`.  But
-that amplified bound is itself false (see the docstring there and
-`SelfIncompatCex.selfIncompat_convergence_bound_false`), so the decay cannot be
-obtained under the bare `KPCondition`.
+/-
+Finite metric-tail sums are controlled by an amplified partial-sum bound.
+-/
+lemma finite_tail_sum_le
+    (M : MetricPolymerSystem Gamma)
+    (hdec : forall g h, Decidable (M.incompatible g h))
+    (D : ClusterCoeffData M.toPolymerSystem hdec)
+    (m : Real) (hm : 0 < m)
+    (hcoerce : forall (X : Cluster M.toPolymerSystem),
+        X.Connected M.toPolymerSystem hdec ->
+        forall g0 : Gamma, X.Touches M.toPolymerSystem g0 ->
+        forall i : Fin X.n, m * M.dist g0 (X.poly i)
+          <= X.energyOf M.toPolymerSystem)
+    (g0 : Gamma) (R : Real)
+    (hAmplifiedPartial : ∀ s : Finset {X : Cluster M.toPolymerSystem //
+        X.Connected M.toPolymerSystem hdec /\ X.Touches M.toPolymerSystem g0},
+      s.sum (fun X => |D.coeff X.1| * X.1.absWeight M.toPolymerSystem *
+        Real.exp (X.1.energyOf M.toPolymerSystem)) ≤ M.energy g0)
+    (s : Finset {X : Cluster M.toPolymerSystem //
+        X.Connected M.toPolymerSystem hdec /\ X.ReachesFrom M g0 R}) :
+    s.sum (fun X => |D.coeff X.1| * X.1.absWeight M.toPolymerSystem) ≤
+      M.energy g0 * Real.exp (-(m * R)) := by
+  -- Apply the lemma `tail_term_le_amplified` to each term in the sum.
+  have h_sum_le : ∑ X ∈ s, |D.coeff X.1| * Cluster.absWeight M.toPolymerSystem X.1 ≤ ∑ X ∈ s, |D.coeff X.1| * Cluster.absWeight M.toPolymerSystem X.1 * Real.exp (Cluster.energyOf M.toPolymerSystem X.1) * Real.exp (-(m * R)) := by
+    exact Finset.sum_le_sum fun x hx => tail_term_le_amplified M hdec D m hm hcoerce g0 R x.1 x.2.1 x.2.2;
+  refine' le_trans h_sum_le _;
+  convert mul_le_mul_of_nonneg_right ( hAmplifiedPartial ( Finset.image ( fun X : { X : Cluster M.toPolymerSystem // Cluster.Connected M.toPolymerSystem hdec X ∧ Cluster.ReachesFrom M X g0 R } => ⟨ X.1, X.2.1, X.2.2.1 ⟩ ) s ) ) ( Real.exp_nonneg ( - ( m * R ) ) ) using 1;
+  simp +decide [ Finset.sum_mul, Finset.sum_image ];
+  apply_rules [ Classical.decEq ]
 
-A fully verified refutation is given below by `TailCex.tail_bound_false`: a
-metric single-polymer system with `incompatible = True`, `weight = e^{-1}`,
-`energy = 1`, unit distance, `m = R = 1`, and coefficient data `1` / `1/2` on
-the one- and two-slot clusters.  All hypotheses (KP with equality, `hself`,
-`hcoerce`) hold, yet the plain reaching-cluster sum is
-`e^{-1} + (1/2) e^{-2} > e^{-1} = energy · exp(-(m R))`.
+/-- Corrected metric tail handoff.
 
-A true metric tail bound requires a strictly stronger hypothesis (extra
-exponential room in `KPCondition`, e.g. bounding `∑ |w| e^{energy + m·dist}`),
-not merely the coercivity bridge `hcoerce`.  The statement is preserved verbatim
-(its `s o r r y` cannot be honestly discharged because it is false).
-
-The hypothesis `hcoerce` is the named bridge from cluster energy to spatial
-diameter/distance.  It is exactly the extra Q6/Q8 geometry layer flagged by the
-day-1 strategy audit; it is not hidden inside `KPCondition`. -/
+The bare version is formally refuted below by `TailCex.tail_bound_false`.
+This strengthened version assumes uniform control of amplified finite sums.
+Coercivity extracts the factor `exp (-(m * R))` pointwise, after which that
+partial-sum hypothesis controls the remaining amplified terms. -/
 theorem kp_tail_bound
     (M : MetricPolymerSystem Gamma)
     (hdec : forall g h, Decidable (M.incompatible g h))
@@ -2059,20 +2098,23 @@ theorem kp_tail_bound
         forall g0 : Gamma, X.Touches M.toPolymerSystem g0 ->
         forall i : Fin X.n, m * M.dist g0 (X.poly i)
           <= X.energyOf M.toPolymerSystem)
-    (g0 : Gamma) (R : Real) (hR : 0 <= R) :
+    (g0 : Gamma) (R : Real) (hR : 0 <= R)
+    (hAmplifiedPartial : ∀ s : Finset {X : Cluster M.toPolymerSystem //
+        X.Connected M.toPolymerSystem hdec /\ X.Touches M.toPolymerSystem g0},
+      s.sum (fun X => |D.coeff X.1| * X.1.absWeight M.toPolymerSystem *
+        Real.exp (X.1.energyOf M.toPolymerSystem)) ≤ M.energy g0) :
     (tsum (fun X : {X : Cluster M.toPolymerSystem //
         X.Connected M.toPolymerSystem hdec /\ X.ReachesFrom M g0 R} =>
       |D.coeff X.1| * X.1.absWeight M.toPolymerSystem))
         <= M.energy g0 * Real.exp (-(m * R)) := by
-  -- FALSE as stated: refuted by `TailCex.tail_bound_false`.
-  sorry
+  apply_rules [ tsum_le_of_sum_le' ];
+  · exact mul_nonneg ( M.energy_nonneg g0 ) ( Real.exp_nonneg _ );
+  · convert finite_tail_sum_le M hdec D m hm hcoerce g0 R hAmplifiedPartial using 1
 
-/-! ## Verified refutations of the two amplified Q6 conclusions
+/-! ## Verified refutations of the original bare Q6 conclusions
 
-The two theorems above (`kp_convergence_bound_of_selfIncompatible` and
-`kp_tail_bound`) are FALSE as stated, even with self-incompatibility.  The
-namespaces below give fully verified (`s o r r y`-free) counterexamples. -/
-
+The namespaces below give fully verified counterexamples to the original
+versions without the added amplified finite-partial-sum hypotheses. -/
 namespace SelfIncompatCex
 
 /-- Single-polymer system with self-incompatibility. -/
@@ -2386,6 +2428,279 @@ theorem tail_bound_false :
   linarith
 
 end TailCex
+
+
+namespace PairSumCex
+
+open Classical
+
+/-- Two-polymer system exposing the missing canonical-root multiplicity in the
+finite pair-sum inequality. -/
+def sys : PolymerSystem (Fin 2) where
+  incompatible i j := i = 1 ∨ j = 1
+  incompatible_symm := by aesop
+  weight i := if i = 0 then (1 / 100 : Real) else 1 / 2
+  energy := fun _ => 0
+  energy_nonneg := by simp
+
+def dec : ∀ i j, Decidable (sys.incompatible i j) := fun _ _ => inferInstance
+
+lemma nbhd_zero : nbhd sys dec 0 = {1} := by
+  ext i;
+  fin_cases i <;> simp +decide [ nbhd, sys, dec ]
+
+lemma spanningTreeCount_fin_two (G : SimpleGraph (Fin 2)) :
+    PenroseTreeGraph.spanningTreeCount G = if G.Adj 0 1 then 1 else 0 := by
+  split_ifs <;> simp_all +decide [ PenroseTreeGraph.spanningTreeCount ];
+  · rw [ Finset.card_eq_one ];
+    use ⊤; ext T; simp [SimpleGraph.IsTree];
+    constructor <;> intro hT;
+    · have := hT.2.card_edgeFinset; simp_all +decide [ SimpleGraph.edgeFinset ] ;
+      obtain ⟨ e, he ⟩ := Finset.card_pos.mp ( by linarith ) ; fin_cases e <;> simp_all +decide [ SimpleGraph.adj_comm ] ;
+      ext i j; fin_cases i <;> fin_cases j <;> simp_all +decide [ SimpleGraph.adj_comm ] ;
+    · simp_all +decide [ SimpleGraph.IsTree ];
+      constructor;
+      · ext i j; fin_cases i <;> fin_cases j <;> simp_all +decide [ SimpleGraph.adj_comm ] ;
+      · constructor;
+        · exact SimpleGraph.connected_top;
+        · simp +decide [ SimpleGraph.isAcyclic_iff_forall_adj_isBridge ];
+          simp +decide [ SimpleGraph.isBridge_iff, SimpleGraph.connected_iff_exists_forall_reachable ];
+  · intro x hx h; have := h.card_edgeFinset; simp_all +decide [ SimpleGraph.IsTree ] ;
+    obtain ⟨ e, he ⟩ := Finset.card_eq_one.mp this; simp_all +decide [ SimpleGraph.IsTree ] ;
+    fin_cases e <;> simp_all +decide [ Finset.eq_singleton_iff_unique_mem ];
+    exact ‹¬G.Adj 0 1› ( hx he.1 )
+
+lemma spanningTreeCount_fin_three_top :
+    PenroseTreeGraph.spanningTreeCount (⊤ : SimpleGraph (Fin 3)) = 3 := by
+  simp +decide [ PenroseTreeGraph.spanningTreeCount ];
+  rw [ Finset.card_eq_three ];
+  -- The three trees are the paths 0-1-2, 0-2-1, and 1-0-2.
+  use SimpleGraph.mk (fun i j => i ≠ j ∧ (i = 0 ∨ j = 0)), SimpleGraph.mk (fun i j => i ≠ j ∧ (i = 1 ∨ j = 1)), SimpleGraph.mk (fun i j => i ≠ j ∧ (i = 2 ∨ j = 2));
+  refine' ⟨ _, _, _, _ ⟩ <;> simp +decide [ funext_iff, Fin.forall_fin_succ ];
+  ext T;
+  constructor;
+  · intro hT
+    have h_card : T.edgeFinset.card = 2 := by
+      have := SimpleGraph.IsTree.card_edgeFinset ( Finset.mem_filter.mp hT |>.2 ) ; aesop;
+    have h_edges : T.edgeFinset = {s(0, 1), s(0, 2)} ∨ T.edgeFinset = {s(0, 1), s(1, 2)} ∨ T.edgeFinset = {s(0, 2), s(1, 2)} := by
+      have h_edges : ∀ e ∈ T.edgeFinset, e = s(0, 1) ∨ e = s(0, 2) ∨ e = s(1, 2) := by
+        intro e he; fin_cases e <;> simp +decide at he ⊢;
+      rw [ Finset.card_eq_two ] at h_card; obtain ⟨ e₁, e₂, he ⟩ := h_card; simp_all +decide [ Finset.ext_iff ] ;
+      rcases h_edges with ⟨ rfl | rfl | rfl, rfl | rfl | rfl ⟩ <;> simp +decide at he ⊢;
+    simp_all +decide [ Finset.ext_iff, SimpleGraph.edgeFinset ];
+    rcases h_edges with h | h | h <;> simp_all +decide [ SimpleGraph.ext_iff, Sym2.forall ];
+    · exact Or.inl <| by ext i j; fin_cases i <;> fin_cases j <;> simp +decide [ h ] ;
+    · exact Or.inr <| Or.inl <| by ext i j; fin_cases i <;> fin_cases j <;> simp +decide [ h ] ;
+    · exact Or.inr <| Or.inr <| by ext i j; fin_cases i <;> fin_cases j <;> simp +decide [ h ] ;
+  · simp +decide [ SimpleGraph.IsTree ];
+    rintro ( rfl | rfl | rfl ) <;> constructor;
+    all_goals simp +decide [ SimpleGraph.connected_iff_exists_forall_reachable, SimpleGraph.isAcyclic_iff_forall_adj_isBridge ]; all_goals simp +decide [ SimpleGraph.isBridge_iff, SimpleGraph.connected_iff_exists_forall_reachable ]
+
+lemma spanningTreeCount_fin_three_star :
+    PenroseTreeGraph.spanningTreeCount
+      ({ Adj := fun i j => i ≠ j ∧ (i = 2 ∨ j = 2),
+         symm := by intro i j h; exact ⟨h.1.symm, h.2.symm⟩,
+         loopless := ⟨by intro i h; exact h.1 rfl⟩ } : SimpleGraph (Fin 3)) = 1 := by
+  rw [ PenroseTreeGraph.spanningTreeCount ];
+  rw [ Finset.card_eq_one ];
+  use SimpleGraph.mk (fun i j => i ≠ j ∧ (i = 2 ∨ j = 2));
+  ext T;
+  constructor;
+  · intro hT
+    have h_card : T.edgeFinset.card = 2 := by
+      have := SimpleGraph.IsTree.card_edgeFinset ( Finset.mem_filter.mp hT |>.2.2 ) ; aesop;
+    have h_edges : T.edgeFinset = {s(0, 2), s(1, 2)} := by
+      have h_edges : T.edgeFinset ⊆ {s(0, 2), s(1, 2)} := by
+        simp_all +decide [ Finset.subset_iff, SimpleGraph.edgeSet ];
+        intro x hx; fin_cases x <;> simp_all +decide [ SimpleGraph.edgeSetEmbedding ] ;
+        exact absurd ( hT.1 hx ) ( by simp +decide );
+      exact Finset.eq_of_subset_of_card_le h_edges ( by simp +decide [ h_card ] );
+    simp_all +decide [ Finset.ext_iff, SimpleGraph.edgeFinset ];
+    ext i j; simp +decide [ h_edges ] ;
+    fin_cases i <;> fin_cases j <;> simp +decide [ SimpleGraph.adj_comm ] at h_edges ⊢;
+    all_goals simp_all +decide [ SimpleGraph.adj_comm, Sym2.forall ];
+  · simp +decide [ SimpleGraph.IsTree ];
+    rintro rfl; simp +decide [ SimpleGraph.IsTree ] ;
+    constructor <;> norm_cast;
+    simp +decide [ SimpleGraph.isAcyclic_iff_forall_adj_isBridge ];
+    simp +decide [ SimpleGraph.isBridge_iff, SimpleGraph.connected_iff_exists_forall_reachable ]
+
+set_option maxHeartbeats 1000000 in
+lemma spanningTreeCount_fin_three_poly (p : Fin 3 → Fin 2) :
+    PenroseTreeGraph.spanningTreeCount
+      ((⟨3, p⟩ : Cluster sys).graph sys dec) =
+      if (Finset.univ.filter fun i => p i = 1).card = 1 then 1
+      else if 2 ≤ (Finset.univ.filter fun i => p i = 1).card then 3 else 0 := by
+  have h_cases : ∀ p : Fin 3 → Fin 2, (Cluster.graph sys dec { n := 3, poly := p }) = ⊤ ∨ (Cluster.graph sys dec { n := 3, poly := p }) = SimpleGraph.mk (fun i j => i ≠ j ∧ (i = 2 ∨ j = 2)) ∨ (Cluster.graph sys dec { n := 3, poly := p }) = SimpleGraph.mk (fun i j => i ≠ j ∧ (i = 1 ∨ j = 1)) ∨ (Cluster.graph sys dec { n := 3, poly := p }) = SimpleGraph.mk (fun i j => i ≠ j ∧ (i = 0 ∨ j = 0)) ∨ (Cluster.graph sys dec { n := 3, poly := p }) = ⊥ := by
+                                                                                                                                                                                                                                                                                                                                                                                                                                      simp +decide [ Cluster.graph, sys, dec ];
+                                                                                                                                                                                                                                                                                                                                                                                                                                      intro p; fin_cases p <;> simp +decide [ funext_iff, Fin.forall_fin_succ ] ;
+                                                                                                                                                                                                                                                                                                                                                                                                                                      · simp +decide [ SimpleGraph.ext_iff, funext_iff, Fin.forall_fin_succ ];
+                                                                                                                                                                                                                                                                                                                                                                                                                                      · simp +decide [ SimpleGraph.ext_iff, funext_iff, Fin.forall_fin_succ ];
+                                                                                                                                                                                                                                                                                                                                                                                                                                      · simp +decide [ SimpleGraph.ext_iff, funext_iff, Fin.forall_fin_succ ];
+                                                                                                                                                                                                                                                                                                                                                                                                                                      · simp +decide [ SimpleGraph.ext_iff, funext_iff, Fin.forall_fin_succ ];
+                                                                                                                                                                                                                                                                                                                                                                                                                                      · simp +decide [ SimpleGraph.ext_iff, funext_iff, Fin.forall_fin_succ ];
+  obtain h | h | h | h | h := h_cases p <;> simp_all +decide only [PenroseTreeGraph.spanningTreeCount];
+  · convert spanningTreeCount_fin_three_top using 1;
+    fin_cases p <;> simp +decide [ Cluster.graph ] at h ⊢;
+    · simp +decide [ SimpleGraph.ext_iff ] at h;
+      simp +decide [ funext_iff, SimpleGraph.adj_comm ] at h;
+      simp +decide [ sys ] at h;
+    · exact absurd ( congr_arg ( fun f => f.Adj 0 1 ) h ) ( by simp +decide [ sys ] );
+    · simp +decide [ SimpleGraph.ext_iff ] at h;
+      simp +decide [ funext_iff, SimpleGraph.adj_comm ] at h;
+      simp +decide [ sys ] at h;
+    · simp +decide [ SimpleGraph.ext_iff ] at h;
+      simp +decide [ funext_iff, SimpleGraph.adj_comm ] at h;
+      simp +decide [ sys ] at h;
+  · have h_card : (Finset.univ.filter (fun i => p i = 1)).card = 1 := by
+      fin_cases p <;> simp +decide [ Cluster.graph ] at h ⊢;
+      · simp +decide [ funext_iff, sys ] at h;
+      · simp +decide [ funext_iff, sys ] at h;
+      · simp +decide [ funext_iff, Fin.forall_fin_succ ] at h;
+        simp +decide [ sys ] at h;
+      · exact absurd ( congr_fun ( congr_fun h 0 ) 1 ) ( by simp +decide [ sys ] );
+      · simp +decide [ funext_iff, sys ] at h;
+    rw [ if_pos h_card ];
+    convert spanningTreeCount_fin_three_star using 1;
+  · rw [ if_pos ];
+    · rw [ Finset.card_eq_one ];
+      use SimpleGraph.mk (fun i j => i ≠ j ∧ (i = 1 ∨ j = 1));
+      ext T;
+      constructor;
+      · intro hT
+        have h_card : T.edgeFinset.card = 2 := by
+          have := SimpleGraph.IsTree.card_edgeFinset ( Finset.mem_filter.mp hT |>.2.2 ) ; aesop;
+        have h_edges : T.edgeFinset = {s(0, 1), s(1, 2)} := by
+          have h_edges : T.edgeFinset ⊆ {s(0, 1), s(1, 2)} := by
+            intro x hx; fin_cases x <;> simp_all +decide [ SimpleGraph.edgeSetEmbedding ] ;
+            exact absurd ( hT.1 hx ) ( by simp +decide );
+          exact Finset.eq_of_subset_of_card_le h_edges ( by simp +decide [ h_card ] );
+        simp_all +decide [ Finset.ext_iff, SimpleGraph.edgeFinset ];
+        ext i j; simp +decide [ h_edges ] ;
+        fin_cases i <;> fin_cases j <;> simp +decide [ SimpleGraph.adj_comm ] at h_edges ⊢;
+        all_goals simp_all +decide [ SimpleGraph.adj_comm, Sym2.forall ];
+      · simp +decide [ SimpleGraph.IsTree ];
+        rintro rfl; simp +decide [ SimpleGraph.IsTree ] ;
+        constructor;
+        · decide
+        · simp +decide [ SimpleGraph.isAcyclic_iff_forall_adj_isBridge ];
+          simp +decide [ SimpleGraph.isBridge_iff, SimpleGraph.connected_iff_exists_forall_reachable ];
+    · fin_cases p <;> simp +decide [ Cluster.graph ] at h ⊢;
+      · simp +decide [ funext_iff, Fin.forall_fin_succ ] at h;
+        simp +decide [ sys ] at h;
+      · simp +decide [ funext_iff, Fin.forall_fin_succ ] at h;
+        simp +decide [ sys ] at h;
+      · simp +decide [ funext_iff, sys ] at h;
+      · simp +decide [ funext_iff, sys ] at h;
+      · simp +decide [ funext_iff, Fin.forall_fin_succ ] at h;
+        simp +decide [ sys ] at h;
+  · have h_card : (Finset.univ.filter (fun i => p i = 1)).card = 1 := by
+      fin_cases p <;> simp +decide [ Cluster.graph ] at h ⊢;
+      · simp +decide [ funext_iff, sys ] at h;
+      · exact absurd ( congr_fun ( congr_fun h 1 ) 2 ) ( by simp +decide [ sys ] );
+      · simp +decide [ funext_iff, Fin.forall_fin_succ ] at h;
+        simp +decide [ sys ] at h;
+      · exact absurd ( congr_fun ( congr_fun h 1 ) 2 ) ( by simp +decide [ sys ] );
+      · exact absurd ( congr_fun ( congr_fun h 1 ) 2 ) ( by simp +decide [ sys ] );
+    rw [ if_pos h_card ];
+    rw [ Finset.card_eq_one ];
+    use SimpleGraph.mk (fun i j => i ≠ j ∧ (i = 0 ∨ j = 0));
+    ext T;
+    constructor;
+    · intro hT
+      have h_card : T.edgeFinset.card = 2 := by
+        have := SimpleGraph.IsTree.card_edgeFinset ( Finset.mem_filter.mp hT |>.2.2 ) ; aesop;
+      have h_edges : T.edgeFinset = {s(0, 1), s(0, 2)} := by
+        have h_edges : T.edgeFinset ⊆ {s(0, 1), s(0, 2)} := by
+          intro x hx; fin_cases x <;> simp_all +decide [ SimpleGraph.edgeSetEmbedding ] ;
+          exact absurd ( hT.1 hx ) ( by simp +decide );
+        exact Finset.eq_of_subset_of_card_le h_edges ( by simp +decide [ h_card ] );
+      simp_all +decide [ Finset.ext_iff, SimpleGraph.edgeFinset ];
+      ext i j; simp [h_edges];
+      fin_cases i <;> fin_cases j <;> simp +decide [ SimpleGraph.adj_comm ] at h_edges ⊢;
+      all_goals simp_all +decide [ SimpleGraph.adj_comm, Sym2.forall ];
+    · simp +decide [ SimpleGraph.IsTree ];
+      rintro rfl; simp +decide [ SimpleGraph.IsTree ] ;
+      constructor;
+      · simp +decide [ SimpleGraph.connected_iff_exists_forall_reachable ];
+      · simp +decide [ SimpleGraph.isAcyclic_iff_forall_adj_isBridge ];
+        simp +decide [ SimpleGraph.isBridge_iff, SimpleGraph.connected_iff_exists_forall_reachable ];
+  · rw [ Finset.card_eq_zero.mpr ] <;> norm_num;
+    · fin_cases p <;> simp +decide [ Cluster.graph ] at h ⊢;
+      all_goals have := congr_arg ( fun f => f.Adj 0 1 ) h; simp +decide [ sys ] at this;
+      exact absurd ( congr_arg ( fun f => f.Adj 0 2 ) h ) ( by simp +decide [ sys ] );
+    · rintro ⟨ ⟩;
+      simp_all +decide [ SimpleGraph.connected_iff_exists_forall_reachable ]
+
+lemma bounded_one : boundedTouchSum sys dec 1 1 = 63 / 100 := by
+  unfold boundedTouchSum treeTerm;
+  simp +decide [ Finset.sum_ite, Cluster.Connected, Cluster.Touches, Cluster.absWeight, sys, dec ];
+  rw [ Finset.sum_eq_multiset_sum ] ; norm_cast;
+  erw [ Multiset.map_coe ] ; norm_num;
+  simp +decide [ Cluster.graph, sys, dec ] at *;
+  unfold spanningTreeCount; norm_num [ PenroseTreeGraph.spanningTreeCount_card_one, spanningTreeCount_fin_two ] ;
+  unfold Cluster.graph; simp +decide [ sys, dec ] ;
+  simp +decide [ Multiset.Pi.cons ];
+  rw [ spanningTreeCount_fin_two, spanningTreeCount_fin_two, spanningTreeCount_fin_two ] ; norm_num
+
+lemma pair_lhs :
+    (∑ p : (Σ m : Fin (1 + 1 + 2), (Fin m.val -> Fin 2)),
+      (if Cluster.Touches sys ⟨p.1.val, p.2⟩ 0
+        then ∑ _T ∈ (Finset.univ.filter
+            (fun T : SimpleGraph (Fin (⟨p.1.val, p.2⟩ : Cluster sys).n) =>
+              T ≤ (⟨p.1.val, p.2⟩ : Cluster sys).graph sys dec ∧ T.IsTree)),
+            (⟨p.1.val, p.2⟩ : Cluster sys).absWeight sys /
+              (Nat.factorial (⟨p.1.val, p.2⟩ : Cluster sys).n : Real)
+        else 0)) = 751 / 40000 := by
+  unfold Cluster.Touches;
+  rw [ Finset.sum_congr rfl ];
+  rotate_right;
+  use fun x => if ∃ i : Fin x.1, x.2 i = 0 then ( x.1.val.factorial : ℝ ) ⁻¹ * ( ∏ i : Fin x.1, |sys.weight ( x.2 i )| ) * ( PenroseTreeGraph.spanningTreeCount ( Cluster.graph sys dec { n := x.1, poly := x.2 } ) : ℝ ) else 0;
+  · rw [ Finset.sum_congr rfl ];
+    rotate_right;
+    use fun x => if ∃ i : Fin x.1, x.2 i = 0 then ( x.1.val.factorial : ℝ ) ⁻¹ * ( ∏ i : Fin x.1, |sys.weight ( x.2 i )| ) * ( if x.1.val = 1 then 1 else if x.1.val = 2 then if ( Finset.univ.filter fun i : Fin x.1 => x.2 i = 1 ).card = 1 then 1 else 0 else if x.1.val = 3 then if ( Finset.univ.filter fun i : Fin x.1 => x.2 i = 1 ).card = 1 then 1 else if 2 ≤ ( Finset.univ.filter fun i : Fin x.1 => x.2 i = 1 ).card then 3 else 0 else 0 ) else 0;
+    · rw [ Finset.sum_eq_multiset_sum ] ; norm_cast;
+      erw [ Multiset.map_coe ] ; norm_num;
+      simp +decide [ Fin.prod_univ_succ, sys ] ; norm_num [ abs_of_pos ];
+    · congr! 2;
+      rename_i x hx₁ hx₂;
+      rcases x with ⟨ m, p ⟩ ; fin_cases m <;> simp +decide [ Cluster.graph, sys, dec ] at hx₂ ⊢;
+      · exact?;
+      · fin_cases p <;> simp +decide at hx₂ ⊢;
+        · convert spanningTreeCount_fin_two _ using 1;
+          simp +decide [ Multiset.Pi.cons ];
+        · convert spanningTreeCount_fin_two _ using 1;
+          simp +decide [ Multiset.Pi.cons ];
+        · convert spanningTreeCount_fin_two _ using 1;
+          simp +decide [ Multiset.Pi.cons ];
+      · convert congr_arg ( ( ↑ ) : ℕ → ℝ ) ( spanningTreeCount_fin_three_poly p ) using 1;
+        split_ifs <;> norm_num;
+  · unfold Cluster.absWeight; simp +decide [ div_eq_inv_mul, Finset.mul_sum _ _ _ ] ;
+    intro x; split_ifs <;> simp +decide [ *, mul_comm, mul_assoc, mul_left_comm, Finset.card_univ ] ;
+    exact Or.inl <| Or.inl <| congr_arg Finset.card <| Finset.ext fun x => by aesop;
+
+/-
+The finite combinatorial inequality used by `pairSum_le_expBound` is false
+for `K = 1`, even with positive rational weights.
+-/
+theorem pairSum_inequality_false :
+    ¬ ((∑ p : (Σ m : Fin (1 + 1 + 2), (Fin m.val -> Fin 2)),
+        (if Cluster.Touches sys ⟨p.1.val, p.2⟩ 0
+          then ∑ _T ∈ (Finset.univ.filter
+              (fun T : SimpleGraph (Fin (⟨p.1.val, p.2⟩ : Cluster sys).n) =>
+                T ≤ (⟨p.1.val, p.2⟩ : Cluster sys).graph sys dec ∧ T.IsTree)),
+              (⟨p.1.val, p.2⟩ : Cluster sys).absWeight sys /
+                (Nat.factorial (⟨p.1.val, p.2⟩ : Cluster sys).n : Real)
+          else 0))
+      <= |sys.weight 0| *
+          ∑ k ∈ Finset.range (1 + 3),
+            (∑ h ∈ nbhd sys dec 0, boundedTouchSum sys dec 1 h) ^ k /
+              (Nat.factorial k : Real)) := by
+  have h_sum : ∑ p : (Σ m : Fin (1 + 1 + 2), (Fin m.val -> Fin 2)), (if Cluster.Touches sys { n := p.1.val, poly := p.2 } 0 then ∑ _T ∈ (Finset.univ.filter (fun T : SimpleGraph (Fin (⟨p.1.val, p.2⟩ : Cluster sys).n) => T ≤ (⟨p.1.val, p.2⟩ : Cluster sys).graph sys dec ∧ T.IsTree)), (⟨p.1.val, p.2⟩ : Cluster sys).absWeight sys / (Nat.factorial (⟨p.1.val, p.2⟩ : Cluster sys).n : Real) else 0) = 751 / 40000 := by
+                                                                                                convert pair_lhs using 1;
+  rw [ h_sum ] ; norm_num [ abs_of_pos, sys, dec, nbhd_zero, bounded_one ] ;
+
+end PairSumCex
 
 end PolymerKPConclusion
 end GateYM

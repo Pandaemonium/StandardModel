@@ -143,6 +143,10 @@ Scripts/
   lit/
     neo4j_doc_search.py - semantic search over this repo's docs and Lean chunks
     neo4j_paper_search.py - scoped semantic search over paper nodes
+  glossary/
+    validate.py - validate canonical term JSONL and link integrity
+    query.py - compact exact, alias, search, and neighborhood reads
+    build.py - generate agent indexes and the static glossary browser
   oracle/
     sage_roots.py       — generate root system fixtures via SageMath
     lieart_branching.py — generate branching rule fixtures via LieART (Mathematica)

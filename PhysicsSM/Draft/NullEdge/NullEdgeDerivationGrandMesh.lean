@@ -10,6 +10,8 @@ import PhysicsSM.Draft.NullEdge.DivisionDimensionSelection
 import PhysicsSM.Algebra.Octonion.CompositionDivision
 import PhysicsSM.Draft.SedenionZeroDivisors
 import PhysicsSM.Algebra.Furey.TrialityFamilySymmetry
+import PhysicsSM.Draft.NullEdge.CompositionSU2
+import PhysicsSM.Draft.NullEdge.DixonDiracGammaBridge
 
 /-!
 # The null-edge derivation grand mesh (SM + GR foundations, capstone index)
@@ -172,6 +174,33 @@ theorem nullEdge_derivation_grand_mesh :
   intro psi chi
   exact NullEdgeSpinorSoldering.twoEdge_minkowskiSq_sl2_invariant 1 Matrix.det_one psi chi
 
+/-- **Grand-mesh growth 2026-07-18 (the electroweak-realization block):**
+co-certifies the goal-session landings in one statement - the eq-31 cross-CAR
+as a GLOBAL operator identity on `C(x)H(x)O`, the Fig-4 automatic-chirality
+theorem (su(2)_L kills right-handed states with no projector by hand), the
+Dirac-algebra timelike square in BOTH signature conventions (mostly-plus
+`gamma_0^2 = -1` and bridged mostly-minus `gammaM_0^2 = +1` - the signature
+emerging from `H`), and the su(2) bracket on the omega-mode plane. Each
+conjunct re-invokes a landed guarded theorem; regression in any link breaks
+this build. -/
+theorem nullEdge_derivation_grand_mesh_electroweak :
+    (∀ d, CompositionWeakCAR.betaHat1 (CompositionWeakCAR.betaHat2 d) +
+        CompositionWeakCAR.betaHat2 (CompositionWeakCAR.betaHat1 d) = 0) ∧
+      (∀ d, Complex.I • CompositionSU2.R3 d = -d → CompositionSU2.T1 d = 0) ∧
+      (∀ z, DixonDiracGamma.gamma0 (DixonDiracGamma.gamma0 z) = -z) ∧
+      (∀ z, DixonDiracGammaBridge.gammaM0 (DixonDiracGammaBridge.gammaM0 z) = z) ∧
+      (CompositionSU2.hatTau1 (CompositionSU2.hatTau2
+            PhysicsSM.Draft.NullEdge.DixonWeakCARTau3.vIdem) -
+          CompositionSU2.hatTau2 (CompositionSU2.hatTau1
+            PhysicsSM.Draft.NullEdge.DixonWeakCARTau3.vIdem)
+        = (-(2 * Complex.I)) • CompositionWeakLadders.hatTau3
+            PhysicsSM.Draft.NullEdge.DixonWeakCARTau3.vIdem) :=
+  ⟨CompositionWeakCAR.betaHat_cross_anticomm_12,
+    fun d h => CompositionSU2.T1_kills_RH d h,
+    DixonDiracGamma.gamma0_sq,
+    DixonDiracGammaBridge.gammaM0_sq,
+    CompositionSU2.tau12_bracket_on_vIdem⟩
+
 end PhysicsSM.Draft.NullEdge.NullEdgeDerivationGrandMesh
 
 /-! ## Build-enforced assumption-footprint guard -/
@@ -179,5 +208,9 @@ end PhysicsSM.Draft.NullEdge.NullEdgeDerivationGrandMesh
 /-- info: 'PhysicsSM.Draft.NullEdge.NullEdgeDerivationGrandMesh.nullEdge_derivation_grand_mesh' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms PhysicsSM.Draft.NullEdge.NullEdgeDerivationGrandMesh.nullEdge_derivation_grand_mesh
+
+/-- info: 'PhysicsSM.Draft.NullEdge.NullEdgeDerivationGrandMesh.nullEdge_derivation_grand_mesh_electroweak' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms PhysicsSM.Draft.NullEdge.NullEdgeDerivationGrandMesh.nullEdge_derivation_grand_mesh_electroweak
 
 end

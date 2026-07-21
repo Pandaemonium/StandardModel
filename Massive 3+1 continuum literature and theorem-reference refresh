@@ -1,0 +1,37 @@
+# Massive 3+1 continuum literature and theorem-reference refresh
+
+Date: 2026-07-20
+Role activation: `role-20260720-225332-4eca4e95`
+Canonical memo:
+`AutonomousLab/work/NE-3PLUS1/CODEX_LITERATURE_MASSIVE_DIRAC_CONTINUUM_2026-07-20.md`
+
+## Literature and provenance delta
+
+- Arrighi, Forets, and Nesme, arXiv:1307.3524, supplies the closest
+  consistency-stability-sampling architecture for a higher-dimensional Dirac
+  quantum-walk continuum limit.
+- D'Ariano, Mosco, Perinotti, and Tosini, arXiv:1603.06442, supports the
+  doubled-Weyl plus onsite-mass construction in `3+1` dimensions.
+- Gupta and Short, arXiv:2601.15885, supplies a current warning that stay
+  amplitudes can remove conventional doublers while retaining additional
+  low-energy solutions.
+- The project-specific bridge from those theorem shapes to the actual HNU walk
+  is now represented by the six massive continuum modules listed in the
+  canonical memo.
+
+## Source debt
+
+- Identify the exact multiplier group with the closure of the position-space
+  massive Dirac operator on a stated graph domain.
+- Locate the strongest primary references for second-quantized quantum-walk
+  locality and interaction-induced sector mixing.
+- Keep continuum convergence separate from physical-sector selection and
+  full-zone topology.
+
+## Identifier and index maintenance
+
+The canonical arXiv identifiers above were checked before use. No new Zotero
+or Neo4j records were added during this bounded activation because the sources
+were already represented in the project literature workflow; no duplicate
+record was created. The canonical memo and the `NE-3PLUS1` ledger were updated
+to point to the landed theorem stack and remaining source debt.

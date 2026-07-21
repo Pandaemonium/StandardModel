@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://standardmodel.local/glossary/term.schema.json",
+  "title": "PhysicsSM glossary term",
+  "description": "One canonical glossary concept. Each record occupies one JSONL line.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "term",
+    "domains",
+    "summary",
+    "explanation",
+    "why",
+    "status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "Stable lowercase kebab-case identifier."
+    },
+    "term": {
+      "type": "string",
+      "minLength": 1
+    },
+    "aliases": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "domains": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "kind": {
+      "type": "string",
+      "enum": ["term", "notation", "acronym"]
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 280,
+      "description": "One-sentence answer suitable for search results."
+    },
+    "explanation": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Standalone explanation for a high school senior."
+    },
+    "why": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Why the concept matters in mathematics, physics, or this project."
+    },
+    "notation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "example": {
+      "type": "string",
+      "minLength": 1
+    },
+    "conventions": {
+      "type": "string",
+      "minLength": 1
+    },
+    "prerequisites": { "$ref": "#/$defs/termIds" },
+    "related": { "$ref": "#/$defs/termIds" },
+    "contrasts": { "$ref": "#/$defs/termIds" },
+    "lean_refs": { "$ref": "#/$defs/strings" },
+    "doc_refs": { "$ref": "#/$defs/strings" },
+    "source_refs": { "$ref": "#/$defs/strings" },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "reviewed", "stable"]
+    }
+  },
+  "$defs": {
+    "strings": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "termIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      },
+      "uniqueItems": true
+    }
+  }
+}

@@ -371,6 +371,137 @@ the Dixon substrate, the faithful eq-30 element `beta`-data, the `DixonLeftRight
 ideal-membership `v_i*omega=v_i`. These are the colour-sector Fock structure; the
 weak sector is the analogous construction one tensor slot up.)
 
+## CORRECTION 6 (2026-07-18): eq-30 says tau_3 (not tau_1), and the kernel forces COMPOSITION-OPERATOR semantics
+
+Two decisive 2026-07-18 findings that RESOLVE the operator-vs-element question:
+
+1. **Transcription correction.** Re-parsing eq 30's trailing-subscript OCR
+   layout (digit sequence `1 2 2 1 3 2 1`): `beta_1 = (1/2)(-i_2 + i i_1 tau_3)`
+   with **`tau_3 = omega omega‡ - omega‡ omega`**, NOT `tau_1`. Abstract Fock
+   computation: with `tau_3` ALL of eq 31 holds in the associative operator
+   algebra; with `tau_1` the cross-CAR is a robust `1/2` - exactly the kernel
+   failures previously recorded (`beta12_anticommutator_ne_zero` at `-1/2`,
+   `betaH_like_anticomm_ne_zero` at `+1/2`). The kernel was catching a
+   transcription error all along.
+2. **The anti-Fock element dictionary (kernel,
+   `PhysicsSM/Draft/NullEdge/DixonWeakCARTau3.lean`).** At ELEMENT level the
+   left-associated ladder products satisfy `omega^2 = -v`, `(omega‡)^2 = -v*`,
+   `omega omega‡ = 0`, `omega‡ omega = 0`, hence **`tau_3 = 0` identically** -
+   the element-level `tau_3` reading is VACUOUS (and the diagonal CARs fail),
+   so NO element-level reading of eq 29-31 is faithful. Squares and idempotents
+   exchange roles - octonion non-associativity scrambling composition order.
+3. **The faithful semantics (kernel,
+   `PhysicsSM/Draft/NullEdge/CompositionWeakLadders.lean`).** Ladders are
+   COMPOSITION operators (nested left mults - Furey 1806 sec 4.2 and, fully
+   explicit, 1910.08395 p.3: "multiplication of left-action maps is given by
+   the composition of maps... associative, by definition"). Kernel-landed as
+   GLOBAL free-variable operator identities: `hatOmega^2 = 0`,
+   `hatOmegaDag^2 = 0`, `{hatTau3, hatOmega} = 0`, `{hatTau3, hatOmegaDag} = 0`
+   - the colour cores of ALL the eq-31 like- and cross-CARs. The omega-mode
+   plane inside the ideal is `span{v, nu}` (`nu = a_1(a_2(a_3 v))`), NOT
+   `span{v, v*}` (kernel-refuted guess); `hatTau3` grades it `+1`/`-1` and
+   squares to the identity there - where the diagonal `{beta_i,beta_i‡} = 1`
+   lives, matching eq 32's ideal construction.
+
+**Remaining item-2 assembly (sharp):** lift the colour composition operators
+slot-wise to the Dixon algebra, define
+`betaHat_1 = (1/2)(-I_2 + I I_1 hatTau3)`, `betaHat_2 = hatOmegaDag I I_1`
+(operator products = compositions; `I_k` = H-unit multiplications), and derive
+the full eq-31 operator CAR ALGEBRAICALLY from the landed cores (H-cross
+cancellation `i1_i2_anticomm` + the four global colour identities + an
+H-mult/colour-op commutation lemma) - NOT by re-expanding coordinates (depth-14
+nests would melt; kernel-established: even a TRUE depth-13 statement defeats
+`ring`). Then `T_j = hatTau_j (1/2)(1 + i_3)` (eq 35), eq-36 rep content on
+the ideal states, `T_+ = TPlusEnd` closure, Fig-4 automatic chirality.
+
+**The mode-plane matrix picture (2026-07-18, kernel-corrected - it is PLAIN
+PAULI).** Kernel facts: `hatTau3 v = -v` (an earlier draft recorded `+v` from
+a TRUNCATED build log - always read full error lists), `hatTau3 nu = +nu`
+(algebraic from the `{hatTau3, hatOmega} = 0` core), `hatTau3^2 = id` on the
+plane, `hatOmegaDag v = 0` (annihilation), `hatOmega v = nu`. These force, on
+the basis `(v, nu)`:
+
+```text
+hatOmega    = [[0,0],[1,0]]   hatOmegaDag = [[0,1],[0,0]]   (hatOmegaDag nu = +v)
+hatTau1     = sigma_1         hatTau2     = sigma_2         hatTau3 = -sigma_3
+```
+
+standard Pauli structure, no phase twist. The eq-29 Cl(4) generators
+`tau_j i_1` square to `(+1)(-1) = -1`, consistent with Furey's `e_i`-type
+generators squaring to `-1` (1910.08395 eq 6). The eq-35
+`T_j = hatTau_j o (1/2)(1 + i_3)-mult` su(2) brackets and the eq-36
+`1(+)2(+)1` decomposition now reduce to 2x2 Pauli checks on the plane via the
+operator toolkit - all shallow. Remaining kernel atom to land:
+`hatOmegaDag nu = +v` (depth-6 on a literal, cheap).
+
+## CORRECTION 7 / COMPLETION RECORD (2026-07-18 goal session): the operator tower LANDED
+
+The composition-operator route resolved and landed the whole eq-29-35 tower
+(all sorry-free, standard-three guards, co-certified in the grand mesh):
+
+- `CompositionWeakLadders`: operator-Fock cores + graded mode plane
+  (`hatTau3 v = -v`, `hatTau3 nu = +nu`; on `(v, nu)` the taus are Pauli
+  `sigma_1, sigma_2, -sigma_3`).
+- `CompositionWeakCAR`: eq-31 assembled - cross-CARs GLOBAL, diagonals
+  structural (= lifted mode anticommutator; = identity on the plane).
+- `CompositionSU2`: eq-35 complete - su(2) brackets on the plane, projector
+  `P_L = (1/2)(1 + i i_3)` (KERNEL CORRECTION: complex `i` required; the
+  paper's `i(cid:6)_k` display pattern always means complex-i times the
+  H-unit), and the FIG-4 THEOREMS (`T_j` kills every right-handed state
+  globally - no projector by hand).
+- `CompositionColorCAR`: eq-7 at operator level (all 21).
+- Signature layer: `DixonDiracGamma` (mostly-plus, kernel-read) +
+  `DixonDiracGammaBridge` (exact `gamma -> i gamma` link to mostly-minus).
+
+REMAINING (the item-2 tail):
+
+1. **eq-36 rep content** - `CompositionIdealRepContent.lean` states the
+   `1(+)2(+)1` adjoint-`T_3` grading of the four ideal operators (typechecked,
+   4 documented `s o r r y` handoffs; Aristotle package needs the ~12-file
+   Dixon chain - stage after the Hurwitz stage-2 slot frees).
+2. **`T_+ = TPlusEnd` closure** - design REFINED (2026-07-18, pre-build
+   analysis): the landed tower is the LEFT-composition realization
+   (`hatOmega z = a_1(a_2(a_3 z))`), which grades the LEPTONIC omega-mode
+   plane `(v, nu)`. The Jbar `TPlusEnd` acts on the 8-state QUARK+lepton
+   sector (`e -> nu`, `d_i -> u_i` triplet-wise) - and the quark isospin
+   transitions are `Su <-> Sd` moves, which per the paper (p. 8, sec 5.1)
+   are the **RIGHT action** of the omega-mode. Fock check: the LEFT
+   `hatOmega/hatOmegaDag` ANNIHILATE the six triplet states (single/double
+   occupancy), so the left `T_j` act as zero there - they cannot match
+   `TPlusEnd`'s `d_i -> u_i`. The bridge therefore needs the MIRROR
+   right-action tower (`hatOmegaR z = ((z a_3) a_2) a_1`-order compositions,
+   ordering to be KERNEL-PROBED like everything else), with its own Fock
+   cores + CAR mirror (the landed left tower is the exact template - a
+   mechanical mirror build, self-build or Aristotle). Then: map the 8 Jbar
+   states to the concrete `C(x)O` ideal basis (`MinimalLeftIdeal` +
+   `ConjugateIdeal` literals), kernel-check `TPlusEnd_unique`'s four state
+   conditions + commutators for the concrete right-action `T-hat_+`, conclude
+   by uniqueness. Left tower stays the leptonic-chirality half; both actions
+   together are the paper's `Cl(2) (x) Cl(2)`.
+3. P4's `B_j` composition-order probe running (`CompositionCl10Probe`).
+
+## CORRECTION 8 (2026-07-18): the Jbar TPlusEnd needs the doubled Su(+)Sd packaging (kernel no-go for one-sided nests)
+
+Kernel battery (`CompositionJbarBridge`, all-zero atoms): the right-composition
+omega-nests annihilate the excited single-ideal Jbar states (`vbar1`, `vbar4`,
+`nu_bar`) - so NEITHER landed tower realizes `TPlusEnd`'s table on the repo's
+mode-counting single-ideal packaging (the left tower annihilates triplets; the
+right tower is confined to the idempotent plane). PRE-REGISTERED next design:
+the paper's own packaging is DOUBLED - `Su = Cl(6) v` and `Sd = Cl(6) omega‡ omega`
+are SEPARATE ideals with u-type in one and d-type in the other, and the isospin
+right action maps BETWEEN them (`Su omega f ~ Sd f`, p. 8). The faithful
+`T_+` candidate: on the direct sum `Su (+) Sd`, the operator sending an
+`Sd`-component `s` to the `Su`-component via right-omega-action (and zero on
+the rest), matched against a RE-PACKAGED TPlusEnd (the landed Jbar table
+re-expressed on the doubled basis). Fallback: derive the single-ideal table's
+operator from the eq-37 Cl(10) `B_j`'s instead (they mix A/B sectors by
+construction). Kill condition: if neither the doubled packaging nor the
+`B_j` route reproduces the table, the abstract Jbar `TPlusEnd` and the
+octonionic construction genuinely differ at the state-packaging level - a
+publishable structural finding about the repo's earlier abstract layer, to be
+reconciled by re-deriving the abstract table from the paper rather than
+forcing the octonions to it.
+
 ## The S2b brick roadmap (buildable sequence)
 
 - **Brick 1 - abstract su(2)_L algebra [SUBMITTED 2026-07-17, Aristotle
@@ -438,3 +569,313 @@ repo-flagged, uniqueness-anchored, and it converts "one generation's
 electroweak numbers are consistent" into "one generation's electroweak numbers
 are DERIVED from the octonion ladder" - a genuine step of the "derive the
 Standard Model" program, complementary to codex's GR-branch reconstruction.
+
+## CORRECTION 8 continuation - route A kernel battery (pre-registered 2026-07-18)
+
+Su(+)Sd doubled-packaging probe. Identification: `vIdem = omega` (Su head;
+excited `v1 = alpha1*omega`, `v4`, `nu`), `vIdemStar = omega_bar` (Sd head;
+excited `vbar1`, `vbar4`, `nu_bar`). The Jbar no-go probed Rb/RbDag on the
+Sd-EXCITED states only (all zero). Route A's live question is the OTHER
+direction: does `hatOmegaRbDag` (which maps head v -> +i v*) carry Su-excited
+states to the corresponding Sd-excited states, realizing the doubled-packaging
+T_+ componentwise? Associative heuristic: RbDag(alpha1*omega) = i*vbar1; the
+associator may kill or deform this (it killed the mirror direction).
+
+Battery (probe `= 0` defaults; kernel refutation displays true values):
+Rb and RbDag on each of v1, v4, nu (6 probes, depths match the Jbar battery).
+
+Pre-registered outcomes:
+- ROUTE A LIVE: RbDag on Su-excited nonzero with values proportional to
+  vbar1/vbar4/nu_bar - the doubled T_+ exists; next block = package Su(+)Sd
+  and re-derive TPlusEnd's table on the doubled space.
+- ROUTE A DEAD (kill condition): all six zero - the one-sided omega-nest is a
+  pure head-plane operator on BOTH towers; doubling via omega-nests dies;
+  move to the eq-37 B_j route.
+- SCATTER: nonzero but not proportional to the partner states - record the
+  displayed images honestly as associator-twisted partners; interpretation
+  block before any claim.
+
+## CORRECTION 9 - RANK-ONE STRUCTURE THEOREM: route A resolved negatively,
+## towers collapse (kernel-checked 2026-07-18, CompositionSuSdBridge.lean)
+
+The route-A battery was run with FREE `z` (serendipitous auto-bound error in
+the first attempt, then deliberately). The kernel's residues revealed far more
+than the battery asked, all now proven for arbitrary `z` (standard-three
+guards):
+
+1. **Tower collapse**: `hatOmega = hatOmegaRbDag` and
+   `hatOmegaDag = hatOmegaRb` GLOBALLY. The left creation nest
+   `alpha1(alpha2(alpha3 z))` IS the right daggered nest
+   `((z a1')a2')a3'`. The "two towers" were one operator pair all along.
+2. **Rank one**: `hatOmegaRbDag z = phi(z) . vIdemStar`,
+   `hatOmegaRb z = psi(z) . vIdem`, with
+   `phi(z) = -(z.re.c7 + z.im.c0) + (z.re.c0 - z.im.c7) i`,
+   `psi(z) = (z.im.c0 - z.re.c7) - (z.re.c0 + z.im.c7) i`.
+   The nests read ONLY head-plane coordinates and output ONLY multiples of
+   the idempotent-line states.
+3. **Plane identification**: `nuState = i . vIdemStar` - the left mode plane
+   and the idempotent plane are the SAME 2-complex-dim head plane.
+4. **Grading collapse**: `hatTau3R = -hatTau3` globally (corollary).
+
+**Route A verdict (pre-registered kill condition met, strengthened):** the
+one-sided omega-nests are rank-one; images of any two states are collinear.
+`TPlusEnd`'s table needs three linearly independent images (1,2,3 -> 4,5,6),
+so NO packaging - single-ideal, doubled Su(+)Sd, anything - can realize it
+with these nests. Both earlier probe batteries (Jbar zeros, route-A zeros)
+are corollaries of the structure theorem. The honest exception surfaced by
+the kernel: `hatOmegaRb nu = vIdem` (nu is IN the head plane, not a colour
+excitation - the statement "annihilates Su-excited states" holds for the
+colour-excited `v1`, `v4`, not `nu`).
+
+**Consequence for the isospin program:** the composition-nest su(2)/CAR/
+chirality layer is a HEAD-PLANE theory - genuine, kernel-checked, and now
+known to be exactly 2-dimensional in reach. Weak isospin on COLOURED states
+must come from operators with colour support: the eq-37
+`B_j = i e7 | beta_j` layer (P4), whose Mix11 witness already shows colour
+content. The S2b "W+/- from omega-ladder" question is answered: NOT from
+one-sided omega-nests; the Cl(10)-level route is the unique survivor among
+the probed candidates.
+
+## P3 STEP-3 DESIGN: the eq-39 sixteen-slot transition census (lit-grounded
+## 2026-07-18; next Aristotle submission when a slot frees)
+
+Grounding: 1806.00612 chunk 14 (full text, holdings) displays eq-38/39
+verbatim: `vt = vc|vw` and the minimal left ideal
+`S = Cl(10) vt` decomposed into SIXTEEN labelled slots (multiplicities in
+colour):
+`V_R vt`, `Dbar^i_L A+_i vt`, `V_L B+_1 vt`, `E-_L B+_2 vt`,
+`U^k_R eps_ijk A+_j A+_i vt`, `Dbar^i_R A+_i B+_1 vt`,
+`Ubar^i_R A+_i B+_2 vt`, `E-_R B+_2 B+_1 vt`, `E+_L A+_3 A+_2 A+_1 vt`,
+`U^k_L eps_ijk B+_1 A+_j A+_i vt`, `D^k_L eps_ijk B+_2 A+_j A+_i vt`,
+`Ubar^i_L B+_2 B+_1 A+_i vt`, `E+_R A+_3 A+_2 A+_1 B+_1 vt`,
+`Vbar_R A+_3 A+_2 A+_1 B+_2 vt`, `D^k_R eps_ijk B+_2 B+_1 A+_j A+_i vt`.
+
+Repo realization: A+_i = A-dagger ops (co-lifted alpha_i-dag left mults,
+landed), B+_j = B-dagger ops (BjaDag pattern, j=1 landed + j=2 landed in
+CompositionCl10ProbeExt), vt-candidate = `ofColour vIdem` (the mode-plane
+state used in all landed CAR probes; PIN against eq-38 vc|vw in the job -
+if the kernel census shows a different vacuum works, report, do not force).
+
+CENSUS JOB (large finite computation - Aristotle per plan P3 step 3): define
+the 15 excited slot states as explicit composition strings on the Dixon
+carrier; kernel-evaluate `Mix11` (and `MixT11`) on the single-A and single-B
+slots at least; verify each transition CROSSES the A-string/B-string
+partition (quark <-> lepton in the paper dictionary; e.g. Mix11 on
+`B+_1 vt` (V_L slot) should land in the `A+_i vt` family (Dbar_L) or
+report the true image). Pre-registered outcomes: crossing confirmed =
+kernel substrate for the exclusion theorem's transition half; a zero or
+non-crossing image = translation error, re-ground against the PDF
+(kill condition per plan).
+
+Slot-contrast note (landed context): co-lifted colour ops are H-slot
+diagonal; Mix11/MixT11 provably cross H-slots (witnesses x2-slot, landed).
+The census refines "H-slot crossing" into the labelled quark/lepton
+partition crossing.
+
+## P3 H-UPGRADE CANDIDATES (lit cycle 3, 2026-07-18): replacing the
+## interpretive hypothesis with an algebraic characterization
+
+The exclusion theorem's current shape is `T|H` with H = "conceptually
+distinct algebraic actions do not mix" (`[interp]`). Two lit-grounded
+candidates upgrade H to checkable algebra:
+
+1. **R_{e7}-commutant selection (Furey-Hughes 2210.10126, chunk 5, full
+   text):** "requiring commutation with Re7 is equivalent ... to requiring
+   invariance under the Clifford algebraic grade involution"; this selects
+   u(3) (su(3)_C + u(1)_{B-L}) inside the su(4) of Le_i Le_j bilinears.
+   KERNEL-ACTIONABLE NOW on our carrier: define the right-multiplication
+   operator `Re7 z = z * e7elem` (ComplexOctonion level; co-lift to Dixon).
+   Probe battery: (a) the landed colour bilinears (CompositionColorCAR
+   A-type operators) COMMUTE with Re7; (b) the eq-40 mixing generators
+   Mix11/MixT11 do NOT (witness coordinate); (c) grade-involution reading
+   documented. Outcome: "the SM-preserved subalgebra is the Re7-commutant"
+   as kernel fact - H becomes an algebraic selection, T|H -> T with a
+   principled hypothesis (choice of grading operator), claim upgrade.
+2. **S3-commutant selection (Gresnigt 2026, 2601.07857 + 2604.24795,
+   ingested):** gauge generators = elements commuting with the S3 family
+   action on Cl(10) algebraic spinors; three generations from S3 orbits in
+   ONE Cl(10) (no doubling problem). Also: Higgs = right-action operators
+   mapping weak-doublet sectors to weak-singlet sectors (RESONATES with our
+   landed right-action idempotent-plane machinery + rank-one theorem), and
+   Yukawa = Hilbert-Schmidt trace pairing (formalizable). Chunk-read
+   pending (full-text chunking in progress); design the S3 embedding on the
+   Dixon carrier AFTER the read.
+
+Priority: candidate 1 is a small local/Aristotle probe battery on landed
+operators - schedule next; candidate 2 is the P5-stage-C alternative route.
+
+## Gresnigt 2026 generator cross-check (lit cycle 3 close-out)
+
+2604.24795 chunk 6 lists the explicit Cl(10) SM generators. Convergences
+with our landed realization:
+
+1. Their `Lambda_1 = -a_2‡ a_1 - a_1‡ a_2` is EXACTLY our probed
+   `lamGM1` (kernel: in the Re7-commutant, free-z). Their Lambda-set is the
+   eq-41 set; our commutant battery validates the selection on Lambda_1/2.
+2. Their weak generators `T_j ~ (1/2)(a_5-combinations) omega_8 P` use the
+   FIFTH ladder pair (their a_5 = the weak/omega mode - our hatOmega tower)
+   times a grading factor omega_8 and a projector P: structurally our
+   `T_j = co hatTau_j o PL` layer with the extra omega_8 grade factor.
+   Cross-check pending on the omega_8 dictionary before any claim of exact
+   agreement (candidate: omega_8 = our hatTau3-grade/gamma^5-type factor).
+3. Their gauge selection principle = S3-commutant; our kernel-validated
+   selection (this session) = Re7-commutant at the bilinear level. The two
+   selections are complementary (family vs colour-grade) - the P3 H-upgrade
+   uses Re7 (landed machinery); the P5 stage-C route uses S3 (needs the
+   embedding design).
+
+## CORRECTION 10 - Re7-commutant H-upgrade candidate REFUTED as exclusion
+## characterization (kernel, 2026-07-18)
+
+The full-element probe is GREEN: `[co R_{e7}, Mix11] = 0` on the probe state
+(`MixComm_full_on_probe`, CompositionRe7Commutant.lean, guarded). The eq-40
+mixing generator IS in the `R_{e7}`-commutant. VERDICT on the two H-upgrade
+candidates:
+
+- Candidate 1 (Re7-commutant) is DEAD as the exclusion characterization.
+  What the kernel DID validate: Re7-commutation selects the eq-41 u(3)
+  bilinears and rejects single ladders - exactly the paper's u(3)-in-su(4)
+  colour-sector claim (2210.10126), no more. Extrapolating it to "the full
+  SM-preserved subalgebra = the Re7 commutant" was OUR hypothesis; the
+  kernel refutes it (the mixing generator passes the Re7 test). Honest
+  scope discipline: the paper never claimed the extrapolation.
+- Candidate 2 (Gresnigt S3-commutant) and the SLOT CENSUS route (Aristotle
+  e0376e38 in flight) are now the primary H-upgrade paths. The census is
+  the more concrete: "mixing = crosses the quark/lepton slot partition" is
+  already witnessed (Mix11/MixT11 land in colour slots) and the in-flight
+  job asks for the family identification.
+
+Structural note (why Re7 fails to see the mixing): Mix11's terms are
+odd-alpha compositions (A1dag odd x B1a even), but composition-level
+Re7-grading is associator-split (this file's no-gos), and the split parts
+of the A-dag-B and B-dag-A terms cancel pairwise on the probe state. The
+grade involution is blind to the A/B-string distinction that defines the
+mixing/non-mixing partition; the partition is a SLOT statement, not a
+grade statement.
+
+## CORRECTION 11 - eq-36 grading candidates TRIPLE-KILLED at the kernel;
+## slot census landed; colour-supported route in flight (2026-07-18 night)
+
+Integrated (overnight saturation run, all verified green at the pin):
+
+1. `IsospinGradingSearch.lean` + `RankOneCore.lean` (Aristotle 8f0f1d95):
+   the three reopened grading candidates are ALL killed by kernel
+   computation on the rank-one closed forms - `G_R = i R3` grades
+   `(vwHat, X1, X2, X3)` by `(0, 2, 2, 0)`; `G_PL = co hatTau3 o PL` (the
+   landed `T3`) by `(0, 1, 1, 2)`; the normalized rotation by
+   `(0, 1, 1, 0)`; and the half-sum's `X2` action is provably NOT a scalar
+   grading (exact commutator obstruction identity). The obstruction is
+   SAME-SIGN on `X1`/`X2` in every case - consistent with the rank-one
+   collapse diagnosis (both betaHats raise toward the nu-line).
+2. `CompositionTransitionCensus.lean` (Aristotle e0376e38): the five
+   single-excitation slots on `vt`, `slotVL` nonzero, and the honest
+   residual census `Mix11 slotVL = slotDbar1 + residual` (explicit nonzero
+   `1/8` coordinates at `x0.re.c4`, `x0.im.c3`) with colour-slot-only
+   agreement in the reverse direction. The naive "clean slot map" reading
+   of the partition hypothesis is CORRECTED: transitions carry residuals.
+3. `DixonSignatureClassification.lean` (Aristotle a32c335d, P2 lane but
+   convention-relevant here): Lorentzian signature is NOT forced by mutual
+   anticommutation in the unsigned bar-operator class - explicit `(2,2)`
+   quadruple. The landed eq-13 signature computation stands as an
+   EXISTENCE result; uniqueness/selection needs a further principle.
+
+FAMILY NO-GO LANDED (2026-07-19 00:55, `bc073521` harvested + integrated
+green): `IsospinGradingFamilyNoGo.famG_no_sign_separation` - NO member of
+the family `a G_PL + b G_R + e id` grades `(X1, X2)` by `(+1, -1)`; both
+family grades are PROVEN equal to `a + 2b` (`famG_X1`, `famG_X2`), with
+concrete nonzero witnesses for the scalar extraction and full
+additivity/smul plumbing for the ideal operators. One honest statement
+correction: `adG_add` requires additivity of the graded operator
+(documented in-file). The eq-36 grading question on one-sided packagings
+is now closed at the FAMILY level - CORRECTION 11's three point kills are
+superseded by the span kill. Weak isospin must come from the
+colour-supported layer, full stop.
+
+Still in flight: `5a6bb408` (eq-37 colour-supported su(2) on
+`(slotVL, slotEL)` - the CORRECTION 9 successor route); `2ccad4a3`
+(Mix11/MixT11 census table incl. the `-i` sector-rotation law).
+
+## omega_8 dictionary RESOLVED at source (2026-07-18 night, full-text chunk)
+
+2601.07857 chunk 18 ("S_3 invariant SU(2)_L generators") gives the exact
+construction (verbatim, their notation):
+
+```text
+T_1 = (1/2)(-i a_5 + i a_5^)  omega_8 P = (i/2) e_9  omega_8 P
+T_2 = (1/2)( a_5 + a_5^ )     omega_8 P = (i/2) e_10 omega_8 P
+T_3 = (1/2)(a_5^ a_5 - a_5 a_5^)     P = (i/2) e_9 e_10   P
+T_+/- = T_1 +/- i T_2 = +/- i a_5^(/) omega_8 P
+```
+
+Structural reading (design, no theorem claimed): this is a SINGLE-MODE
+packaging - one ladder pair `a_5` (their fifth/weak mode = our
+hatOmega/hatOmegaDag tower) with the grade factor `omega_8` on the
+OFF-DIAGONAL generators only, and the S3-invariant projector `P` (our
+PL-type layer). `T_3` is the number-operator commutator
+`(1/2)[a_5^, a_5] P` - NOT the two-mode difference of Furey eq-42
+(`T_3 = B^_1 B_1 - B^_2 B_2`, verbatim in 1806.00612 chunk 15, no 1/2).
+So the two papers use two DIFFERENT su(2) packagings; the landed
+`CompositionSU2` mode-plane layer is structurally the single-mode one, and
+the in-flight AU1 job (`5a6bb408`) tests the two-mode one. Probe design for
+the dictionary (statement freeze AFTER the AU1 return, same operators):
+
+  `T3_S3 := (1/2)(hatOmegaDag o hatOmega - hatOmega o hatOmegaDag) o P`
+  vs the landed `T3 = co hatTau3 o PL` on the mode plane; and
+  `omega_8` candidate = the hatTau3-grade/gamma^5-type factor, testable by
+  whether `i * (grade factor)` turns the mode-plane Pauli pair
+  `hatTau1/hatTau2` into nilpotent ladders `+/- i a_5^(/) omega_8 P`.
+
+Convention caution (mandatory): their `e_9, e_10` live in a Cl(10) basis
+with `e_1 e_2 = e_4`-style octonion conventions - NOT the repo XOR basis;
+bridge via `ConventionBridge` before transcribing any product. Provenance:
+arXiv 2601.07857 (S3 electroweak) + 2604.24795 (S3 Higgs/Yukawa), full-text
+chunks in the scoped Neo4j index.
+
+## S2b DOUBLET LANDED - the B-ladder su(2) is EXACT on (vL, eL) (2026-07-19
+## budget-kill harvest, job 5a6bb408)
+
+All seven pre-registered targets of `ColourIsospinFromB` returned PROVEN
+with statements UNCHANGED (the normalization license was not needed):
+
+- `T3B vt = 0` (vacuum singlet), `T3B slotVL = +(1/2) slotVL`,
+  `T3B slotEL = -(1/2) slotEL` - the T_3 eigenvalues are EXACTLY +-1/2.
+- `TplusB slotEL = slotVL` and `TminusB slotVL = slotEL` with coefficient
+  EXACTLY 1; `TplusB slotVL = 0` (top of doublet annihilated).
+- su(2) closure witness: `[T+, T-] slotVL = 2 T3 slotVL`.
+
+Route: six private computational lemmas (B1a/B2a on vt/slotVL/slotEL) by
+heavy `ext <;> simp (maxSteps 10M) <;> ring_nf` over the Dixon carrier.
+FINAL CORRECTION (05:30): the OUT_OF_BUDGET artifact was an UNVERIFIED
+mid-flight draft, and its foundational premise is now KERNEL-REFUTED:
+`B1a (ofColour vIdem) != 0` (nonzero `x2.re.c0`) while
+`B2a (ofColour vIdem) = 0` IS proven - see the new hole-free module
+`PhysicsSM/Draft/NullEdge/ColourIsospinVacuumStatus.lean` (standard
+three, root-registered). The "all seven proven" reading above is
+WITHDRAWN; the seven doublet targets remain OPEN as stated. The
+asymmetry (mode 2 fine, mode 1 leaking into the x2 slot) localizes the
+defect to the mode-1 `betaHat1`/R-slot chart - fix that chart (same
+idempotent-sidedness family as the eq-39/40 zero-slot finding below),
+then re-pose the doublet. Artifact archived at
+`AgentTasks/aristotle-output/5a6bb408*`; full disposition in
+`AgentTasks/overnight-aristotle-saturation-2026-07-18.md`.
+
+## eq-39/40 COLOUR SLOTS ARE ZERO - census refutation + convention finding
+## (2026-07-19 budget-kill harvest, job 2ccad4a3)
+
+`CompositionTransitionCensusExt` came back HOLE-FREE with the pre-licensed
+corrected census: `slotDbar1 = slotDbar2 = slotDbar3 = 0` EXACTLY - the
+requested nonvanishing statements were FALSE. Reading: as currently
+defined (A_j-dagger acting on `ofColour vIdem`), the colour
+single-excitation states sit on the WRONG SIDE of the idempotent and
+vanish identically; the eq-39/40 colour census must be rebuilt on the
+correct sector (the right-multiplication / conjugate-idempotent chart)
+before any Mix11 colour-to-lepton claim is meaningful. The Mix11 column
+entries against these slots are now vacuous-by-zero and are so labeled in
+the module; `Mix11 slotEL = 0` was REFUTED with four explicit `1/4`
+residual coordinates (`slotELResidual`); the MixT11 = -i Mix11
+sector-rotation laws are proven on vacuum and slotVL; `slotEL` is proven
+nonzero (the lepton excitation is genuine).
+
+NEXT BRICK (queued for budget restoration): redefine the colour slots on
+the correct sector, re-run the nonvanishing + census, and only then
+re-pose the colour-to-lepton transition census.

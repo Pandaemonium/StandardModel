@@ -1,191 +1,263 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-07-17T03:29:40-07:00",
+  "updated_at": "2026-07-21T07:15:00-07:00",
   "note": "Bounded repository-path leases prevent concurrent agents from silently overwriting one another. Paths are normalized repository-relative prefixes. Expired leases are ignored and removed on the next lease acquisition.",
   "leases": [
     {
-      "path": "PhysicsSM/Draft/NullEdge/MarkedAlexandrovHiggsFrameBridge.lean",
-      "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-OPERATOR-001",
-      "acquired_at": "2026-07-17T01:29:45-07:00",
-      "expires_at": "2026-07-17T03:29:45-07:00",
-      "note": "Bridge marked shell inertia to complex Higgs derivative recovery"
+      "path": "AutonomousLab/work/NE-3PLUS1/OPUS_FINAL_HANDOFF_2026-07-21.md",
+      "owner_model": "claude",
+      "work_item_id": "CONT-FOURIER-001",
+      "acquired_at": "2026-07-21T01:42:10-07:00",
+      "expires_at": "2026-07-21T09:42:10-07:00",
+      "note": "Opus final session handoff"
     },
     {
-      "path": "PhysicsSMDraft.lean",
-      "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-OPERATOR-001",
-      "acquired_at": "2026-07-17T01:29:45-07:00",
-      "expires_at": "2026-07-17T03:29:45-07:00",
-      "note": "Add marked Alexandrov Higgs frame bridge import"
+      "path": "PhysicsSM/Draft/NullEdge/SU3PlaquetteObservable.lean",
+      "owner_model": "claude",
+      "work_item_id": "MASS-ORIGIN-001",
+      "acquired_at": "2026-07-21T02:01:57-07:00",
+      "expires_at": "2026-07-21T08:01:57-07:00",
+      "note": "Opus A3 SU(3) plaquette observable (verified 66995720)"
     },
     {
-      "path": "AgentTasks/null-edge-marked-alexandrov-higgs-frame-bridge-2026-07-17.md",
-      "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-OPERATOR-001",
-      "acquired_at": "2026-07-17T01:34:44-07:00",
-      "expires_at": "2026-07-17T03:34:44-07:00",
-      "note": "Record shared marked shell Higgs/inertia bridge"
+      "path": "PhysicsSM/Draft/NullEdge/FiniteTransferPositivity.lean",
+      "owner_model": "claude",
+      "work_item_id": "MASS-ORIGIN-001",
+      "acquired_at": "2026-07-21T02:12:06-07:00",
+      "expires_at": "2026-07-21T08:12:06-07:00",
+      "note": "Opus A3 transfer positivity, unpaired (verified e8f3f87b)"
     },
     {
-      "path": "AgentTasks/null-edge-finite-strict-past-kernel-matrix-2026-07-17.md",
-      "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-OPERATOR-001",
-      "acquired_at": "2026-07-17T01:50:41-07:00",
-      "expires_at": "2026-07-17T03:50:41-07:00",
-      "note": "Record strict-past matrix nilpotence bridge"
+      "path": "PhysicsSM/Draft/NullEdge/CorrectedReadingsAudit.lean",
+      "owner_model": "claude",
+      "work_item_id": "MASS-ORIGIN-001",
+      "acquired_at": "2026-07-21T03:03:11-07:00",
+      "expires_at": "2026-07-21T09:03:11-07:00",
+      "note": "Opus audit of corrected readings (verified a21c13e4)"
     },
     {
-      "path": "PhysicsSM/Draft/NullEdge/FiniteStrictPastKernelMatrix.lean",
-      "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-OPERATOR-001",
-      "acquired_at": "2026-07-17T01:50:41-07:00",
-      "expires_at": "2026-07-17T03:50:41-07:00",
-      "note": "Bridge finite strict-past linear operator nilpotence to matrix kernel"
+      "path": "PhysicsSM/Draft/NullEdge/ObservableGapLinkage.lean",
+      "owner_model": "claude",
+      "work_item_id": "MASS-ORIGIN-001",
+      "acquired_at": "2026-07-21T03:10:44-07:00",
+      "expires_at": "2026-07-21T09:10:44-07:00",
+      "note": "Opus A3 observable-gap linkage (verified a6f3c703)"
     },
     {
-      "path": "PhysicsSM/Draft/NullEdge/HiggsMassiveRetardedPropagation.lean",
+      "path": "AgentTasks/aristotle-standalone/hnu-polynomial-adaptive-cost-20260721",
       "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-OPERATOR-001",
-      "acquired_at": "2026-07-17T02:14:06-07:00",
-      "expires_at": "2026-07-17T04:14:06-07:00",
-      "note": "Finite Higgs radial-mass retarded propagation capstone"
+      "work_item_id": "QCA-3PLUS1-001",
+      "acquired_at": "2026-07-21T03:40:52-07:00",
+      "expires_at": "2026-07-21T07:40:52-07:00",
+      "note": "prepare sharp commutator schedule submission"
     },
     {
-      "path": "AgentTasks/null-edge-higgs-massive-retarded-propagation-2026-07-17.md",
+      "path": "AgentTasks/hnu-polynomial-adaptive-cost-aristotle-2026-07-21.md",
       "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-OPERATOR-001",
-      "acquired_at": "2026-07-17T02:14:06-07:00",
-      "expires_at": "2026-07-17T04:14:06-07:00",
-      "note": "Task note for finite Higgs radial propagation capstone"
+      "work_item_id": "QCA-3PLUS1-001",
+      "acquired_at": "2026-07-21T03:40:53-07:00",
+      "expires_at": "2026-07-21T07:40:53-07:00",
+      "note": "Aristotle task note"
     },
     {
-      "path": "AgentTasks/aristotle-standalone/higgs-fms-radial-observable-20260717",
+      "path": "AutonomousLab/work/NE-3PLUS1/CODEX_LITERATURE_PRODUCT_FORMULA_COST_2026-07-21.md",
       "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-OPERATOR-001",
-      "acquired_at": "2026-07-17T02:24:44-07:00",
-      "expires_at": "2026-07-17T04:24:44-07:00",
-      "note": "Gauge-invariant radial FMS observable and correlator algebra"
+      "work_item_id": "QCA-3PLUS1-001",
+      "acquired_at": "2026-07-21T03:40:54-07:00",
+      "expires_at": "2026-07-21T07:40:54-07:00",
+      "note": "literature memo"
     },
     {
-      "path": "AgentTasks/higgs-fms-radial-observable-aristotle-2026-07-17.md",
+      "path": "PhysicsSM/Draft/NullEdge/PlueckerPositiveEnergyTransfer.lean",
       "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-OPERATOR-001",
-      "acquired_at": "2026-07-17T02:24:44-07:00",
-      "expires_at": "2026-07-17T04:24:44-07:00",
-      "note": "Gauge-invariant radial FMS observable and correlator algebra"
+      "work_item_id": "MASS-ORIGIN-001",
+      "acquired_at": "2026-07-21T03:44:42-07:00",
+      "expires_at": "2026-07-21T07:44:42-07:00",
+      "note": "compose Pluecker rest eigenmode with positive transfer/pole ladder"
     },
     {
-      "path": "PhysicsSM/Draft/NullEdge/HiggsFMSRadialObservable.lean",
+      "path": "PhysicsSM/Draft/NullEdge/OriginMassAxiomGuard.lean",
       "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-OPERATOR-001",
-      "acquired_at": "2026-07-17T02:24:45-07:00",
-      "expires_at": "2026-07-17T04:24:45-07:00",
-      "note": "Gauge-invariant radial FMS observable and correlator algebra"
+      "work_item_id": "MASS-ORIGIN-001",
+      "acquired_at": "2026-07-21T03:44:44-07:00",
+      "expires_at": "2026-07-21T07:44:44-07:00",
+      "note": "guard positive-energy transfer bridge"
     },
     {
-      "path": "PhysicsSM/Draft/NullEdge/HiggsEdgeEulerOperator.lean",
-      "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-OPERATOR-001",
-      "acquired_at": "2026-07-17T02:40:31-07:00",
-      "expires_at": "2026-07-17T04:40:31-07:00",
-      "note": "Finite radial Higgs edge Euler operator and mass lifting"
+      "path": "PhysicsSM/Draft/NullEdge/FiniteReflectionPositivity.lean",
+      "owner_model": "claude",
+      "work_item_id": "MASS-ORIGIN-001",
+      "acquired_at": "2026-07-21T03:47:43-07:00",
+      "expires_at": "2026-07-21T09:47:43-07:00",
+      "note": "Opus finite reflection positivity (verified c2b7bd0d)"
     },
     {
-      "path": "AgentTasks/higgs-edge-euler-operator-aristotle-2026-07-17.md",
+      "path": "AutonomousLab/work/NE-DYNAMICS/CODEX_ORIGIN_OF_MASS_MECHANISM_MATRIX_2026-07-20.md",
       "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-OPERATOR-001",
-      "acquired_at": "2026-07-17T02:40:31-07:00",
-      "expires_at": "2026-07-17T04:40:31-07:00",
-      "note": "Finite radial Higgs edge Euler operator and mass lifting"
+      "work_item_id": "MASS-ORIGIN-001",
+      "acquired_at": "2026-07-21T03:51:22-07:00",
+      "expires_at": "2026-07-21T07:51:22-07:00",
+      "note": "record positive-energy Pluecker transfer bridge"
     },
     {
-      "path": "AgentTasks/aristotle-standalone/higgs-edge-euler-operator-20260717",
+      "path": "PhysicsSM/Draft/NullEdge/FiniteOSReflectionPositivity.lean",
       "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-OPERATOR-001",
-      "acquired_at": "2026-07-17T02:40:31-07:00",
-      "expires_at": "2026-07-17T04:40:31-07:00",
-      "note": "Finite radial Higgs edge Euler operator and mass lifting"
+      "work_item_id": "MASS-ORIGIN-001",
+      "acquired_at": "2026-07-21T03:53:35-07:00",
+      "expires_at": "2026-07-21T07:53:35-07:00",
+      "note": "integrate Aristotle finite OS positivity separation"
     },
     {
-      "path": "AgentTasks/null-edge-higgs-vacuum-stress-2026-07-17.md",
+      "path": "AgentTasks/a3-osterwalder-reflection-aristotle-2026-07-21.md",
       "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-OPERATOR-001",
-      "acquired_at": "2026-07-17T02:46:37-07:00",
-      "expires_at": "2026-07-17T04:46:37-07:00",
-      "note": "Higgs vacuum stress and p=-rho control"
+      "work_item_id": "MASS-ORIGIN-001",
+      "acquired_at": "2026-07-21T03:53:37-07:00",
+      "expires_at": "2026-07-21T07:53:37-07:00",
+      "note": "create integration record"
     },
     {
-      "path": "PhysicsSM/Draft/NullEdge/HiggsVacuumStress.lean",
+      "path": "PhysicsSM/Draft/NullEdge/CompositeMassBridge.lean",
       "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-OPERATOR-001",
-      "acquired_at": "2026-07-17T02:46:37-07:00",
-      "expires_at": "2026-07-17T04:46:37-07:00",
-      "note": "Higgs vacuum stress and p=-rho control"
+      "work_item_id": "MASS-ORIGIN-001",
+      "acquired_at": "2026-07-21T05:19:34-07:00",
+      "expires_at": "2026-07-21T08:19:34-07:00",
+      "note": "integrate verified A3 assembly"
     },
     {
-      "path": "AgentTasks/aristotle-standalone/higgs-measured-mass-retarded-series-20260717",
+      "path": "PhysicsSM/Draft/NullEdge/CompositeMassBridgeAxiomGuard.lean",
       "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-OPERATOR-001",
-      "acquired_at": "2026-07-17T02:54:35-07:00",
-      "expires_at": "2026-07-17T08:54:35-07:00",
-      "note": "Measured local Higgs mass insertion in finite retarded series"
+      "work_item_id": "MASS-ORIGIN-001",
+      "acquired_at": "2026-07-21T05:19:34-07:00",
+      "expires_at": "2026-07-21T08:19:34-07:00",
+      "note": "guard A3 assembly"
     },
     {
-      "path": "AgentTasks/higgs-measured-mass-retarded-series-aristotle-2026-07-17.md",
+      "path": "PhysicsSM.lean",
       "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-OPERATOR-001",
-      "acquired_at": "2026-07-17T02:54:35-07:00",
-      "expires_at": "2026-07-17T08:54:35-07:00",
-      "note": "Measured local Higgs mass insertion in finite retarded series"
+      "work_item_id": "MASS-ORIGIN-001",
+      "acquired_at": "2026-07-21T05:19:34-07:00",
+      "expires_at": "2026-07-21T08:19:34-07:00",
+      "note": "root import A3 assembly"
     },
     {
-      "path": "PhysicsSM/Draft/NullEdge/HiggsMeasuredMassRetardedSeries.lean",
+      "path": "AgentTasks/a3-assembled-model-aristotle-2026-07-21.md",
       "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-OPERATOR-001",
-      "acquired_at": "2026-07-17T02:54:36-07:00",
-      "expires_at": "2026-07-17T08:54:36-07:00",
-      "note": "Measured local Higgs mass insertion in finite retarded series"
+      "work_item_id": "MASS-ORIGIN-001",
+      "acquired_at": "2026-07-21T05:19:34-07:00",
+      "expires_at": "2026-07-21T08:19:34-07:00",
+      "note": "A3 job closeout"
     },
     {
-      "path": "AgentTasks/aristotle-standalone/higgs-curvature-mass-identifiability-20260717",
+      "path": "PhysicsSM/Draft/NullEdge/HNUPolynomialAdaptiveCost.lean",
       "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-OPERATOR-001",
-      "acquired_at": "2026-07-17T03:15:26-07:00",
-      "expires_at": "2026-07-17T09:15:26-07:00",
-      "note": "Higgs mass versus curvature-coupling identifiability gate"
+      "work_item_id": "QCA-3PLUS1-001",
+      "acquired_at": "2026-07-21T05:23:02-07:00",
+      "expires_at": "2026-07-21T08:23:02-07:00",
+      "note": "integrate verified polynomial HNU partial"
     },
     {
-      "path": "AgentTasks/higgs-curvature-mass-identifiability-aristotle-2026-07-17.md",
+      "path": "PhysicsSM/Draft/NullEdge/HNUPolynomialAdaptiveCostAxiomGuard.lean",
       "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-OPERATOR-001",
-      "acquired_at": "2026-07-17T03:15:27-07:00",
-      "expires_at": "2026-07-17T09:15:27-07:00",
-      "note": "Higgs mass versus curvature-coupling identifiability gate"
+      "work_item_id": "QCA-3PLUS1-001",
+      "acquired_at": "2026-07-21T05:23:03-07:00",
+      "expires_at": "2026-07-21T08:23:03-07:00",
+      "note": "guard polynomial HNU partial"
     },
     {
-      "path": "PhysicsSM/Draft/NullEdge/HiggsCurvatureMassIdentifiability.lean",
+      "path": "PhysicsSM/Draft/NullEdge/HNUMassivePolynomialAdaptiveCost.lean",
       "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-OPERATOR-001",
-      "acquired_at": "2026-07-17T03:15:27-07:00",
-      "expires_at": "2026-07-17T09:15:27-07:00",
-      "note": "Higgs mass versus curvature-coupling identifiability gate"
+      "work_item_id": "QCA-3PLUS1-001",
+      "acquired_at": "2026-07-21T05:28:27-07:00",
+      "expires_at": "2026-07-21T09:28:27-07:00",
+      "note": "prepare live massive polynomial cost target"
     },
     {
-      "path": "PhysicsSM/Draft/NullEdge/HiggsGaugeInvariantRetardedPropagation.lean",
+      "path": "AgentTasks/hnu-massive-polynomial-adaptive-cost-aristotle-2026-07-21.md",
       "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-OPERATOR-001",
-      "acquired_at": "2026-07-17T03:29:40-07:00",
-      "expires_at": "2026-07-17T09:29:40-07:00",
-      "note": "Gauge-invariant FMS radial response composed with finite Higgs retarded propagation"
+      "work_item_id": "QCA-3PLUS1-001",
+      "acquired_at": "2026-07-21T05:28:27-07:00",
+      "expires_at": "2026-07-21T09:28:27-07:00",
+      "note": "task metadata"
     },
     {
-      "path": "AgentTasks/null-edge-higgs-gauge-invariant-retarded-propagation-2026-07-17.md",
+      "path": "AgentTasks/aristotle-standalone/hnu-massive-polynomial-adaptive-cost-20260721",
       "owner_model": "codex",
-      "work_item_id": "GRAV-ORDER-OPERATOR-001",
-      "acquired_at": "2026-07-17T03:29:40-07:00",
-      "expires_at": "2026-07-17T09:29:40-07:00",
-      "note": "Gauge-invariant FMS radial response composed with finite Higgs retarded propagation"
+      "work_item_id": "QCA-3PLUS1-001",
+      "acquired_at": "2026-07-21T05:28:27-07:00",
+      "expires_at": "2026-07-21T09:28:27-07:00",
+      "note": "submission prompt"
+    },
+    {
+      "path": "AgentTasks/aristotle-submit/hnu-massive-polynomial-adaptive-cost-20260721-project",
+      "owner_model": "codex",
+      "work_item_id": "QCA-3PLUS1-001",
+      "acquired_at": "2026-07-21T05:30:29-07:00",
+      "expires_at": "2026-07-21T09:30:29-07:00",
+      "note": "clean full project submission"
+    },
+    {
+      "path": "PhysicsSM/Draft/NullEdge/SectorInteractionClassification.lean",
+      "owner_model": "codex",
+      "work_item_id": "QCA-3PLUS1-001",
+      "acquired_at": "2026-07-21T05:34:13-07:00",
+      "expires_at": "2026-07-21T08:34:13-07:00",
+      "note": "integrate exact sector classification"
+    },
+    {
+      "path": "PhysicsSM/Draft/NullEdge/SectorInteractionClassificationAxiomGuard.lean",
+      "owner_model": "codex",
+      "work_item_id": "QCA-3PLUS1-001",
+      "acquired_at": "2026-07-21T05:34:13-07:00",
+      "expires_at": "2026-07-21T08:34:13-07:00",
+      "note": "guard exact sector classification"
+    },
+    {
+      "path": "PhysicsSM/Draft/NullEdge/MovingSectorLeakage.lean",
+      "owner_model": "codex",
+      "work_item_id": "QCA-3PLUS1-001",
+      "acquired_at": "2026-07-21T07:05:26-07:00",
+      "expires_at": "2026-07-21T09:05:26-07:00",
+      "note": "Integrate returned moving-projector leakage theorem with statement repair."
+    },
+    {
+      "path": "PhysicsSM/Draft/NullEdge/MovingSectorLeakageAxiomGuard.lean",
+      "owner_model": "codex",
+      "work_item_id": "QCA-3PLUS1-001",
+      "acquired_at": "2026-07-21T07:05:26-07:00",
+      "expires_at": "2026-07-21T09:05:26-07:00",
+      "note": "Guard moving-projector leakage capstone."
+    },
+    {
+      "path": "AgentTasks/moving-sector-leakage-aristotle-2026-07-21.md",
+      "owner_model": "codex",
+      "work_item_id": "QCA-3PLUS1-001",
+      "acquired_at": "2026-07-21T07:10:05-07:00",
+      "expires_at": "2026-07-21T09:10:05-07:00",
+      "note": "Record Aristotle result, statement repair, and integration checks."
+    },
+    {
+      "path": "AgentTasks/aristotle-standalone/matrix-block-exp-lift-20260721",
+      "owner_model": "codex",
+      "work_item_id": "QCA-3PLUS1-001",
+      "acquired_at": "2026-07-21T07:13:35-07:00",
+      "expires_at": "2026-07-21T09:13:35-07:00",
+      "note": "Focused split for matrix block exponential and unitary conjugation lemmas."
+    },
+    {
+      "path": "AgentTasks/matrix-block-exp-lift-aristotle-2026-07-21.md",
+      "owner_model": "codex",
+      "work_item_id": "QCA-3PLUS1-001",
+      "acquired_at": "2026-07-21T07:13:35-07:00",
+      "expires_at": "2026-07-21T09:13:35-07:00",
+      "note": "Record focused Aristotle split job."
+    },
+    {
+      "path": "AgentTasks/aristotle-submit/matrix-block-exp-lift-20260721-project",
+      "owner_model": "codex",
+      "work_item_id": "QCA-3PLUS1-001",
+      "acquired_at": "2026-07-21T07:15:00-07:00",
+      "expires_at": "2026-07-21T09:15:00-07:00",
+      "note": "Focused Aristotle submission package."
     }
   ]
 }

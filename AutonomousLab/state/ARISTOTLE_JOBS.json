@@ -1,8 +1,1408 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-07-17T22:25:33-07:00",
+  "updated_at": "2026-07-21T07:15:39-07:00",
   "note": "Registry of Aristotle proof/audit jobs. Statuses: submitted|running|idle|unknown|harvested|integrated|deferred|cancelled|failed. labctl validate enforces the fleet cap on submitted+running; `labctl jobs` lists against the cap; `labctl due` flags idle/unknown/harvested jobs awaiting integration. Seeded 2026-07-12 from the 24h publication-run ledger; pre-lab jobs carry work_item_id null.",
   "jobs": [
+    {
+      "id": "da3d3a9a-d760-4161-8289-7a2820128e0e",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Matrix block exponential lift for massive HNU factorization",
+      "status": "submitted",
+      "submitted_at": "2026-07-21T07:15:39-07:00",
+      "notes": "Focused Mathlib-only split: exp through live reindexed 2+2 block lift and fixed unitary conjugation; task a95ee78b-46b7-4aed-a6d3-9ae79b0df7f1."
+    },
+    {
+      "id": "2624a3d5-4d7f-472c-9e36-82bc3896f5f8",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "codex discrete adiabatic finite differences",
+      "status": "submitted",
+      "submitted_at": "2026-07-21T06:52:27-07:00",
+      "notes": "Task 9de07986-91e3-4c34-8ea3-e8b11ba901dd; focused Mathlib package; proves exact 1/T and 1/T^2 finite-difference hypotheses from bounded derivatives; note AgentTasks/discrete-adiabatic-finite-differences-aristotle-2026-07-21.md"
+    },
+    {
+      "id": "a46bd268-cf90-4173-b904-a82d5d596218",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Exact finite gapped moving-band witness",
+      "status": "submitted",
+      "submitted_at": "2026-07-21T06:28:58-07:00",
+      "notes": "Task 74f3357b-00b7-4b75-8fac-0005bac8076d; exact fixed gap, moving rank-one projector, nonzero finite defect, vanishing slow-schedule leakage budget."
+    },
+    {
+      "id": "4f8edbcc-b25b-48df-ba57-9613c016e8bb",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Moving-sector leakage telescope",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T05:50:44-07:00",
+      "notes": "Mathlib-only moving projector transport defect telescope; task e66d42b7-1d2d-4017-a283-526a9966774a [2026-07-21T07:10:39-07:00 codex] Integrated MovingSectorLeakage with essential projector-idempotence and unit-norm statement repairs; targeted source/module/guard checks pass."
+    },
+    {
+      "id": "ffc13bb3-0136-4769-92e7-52680bef9f23",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Live massive HNU polynomial adaptive cost",
+      "status": "submitted",
+      "submitted_at": "2026-07-21T05:31:58-07:00",
+      "notes": "Project-native composition of sharp skew-Hermitian product bound with live massiveWend/massiveEflow; conservative 2*qAbs+norm z constant."
+    },
+    {
+      "id": "8bffcfa2-68af-4570-a536-3acdf0536db4",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Quantitative selected-sector leakage telescope",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T05:05:30-07:00",
+      "notes": "Generic NormedRing commutator-power and projector-leakage bounds; exponential suppression schedule; task 9f9f178f. [2026-07-21T06:00:35-07:00 codex] All seven theorems unchanged; local check and build-enforced guard passed; root imported."
+    },
+    {
+      "id": "4dfca880-8f38-4917-9ebb-2c3cc93358f1",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Finite interaction-sector projector classification",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T05:01:04-07:00",
+      "notes": "Mathlib-only iff cross-block criterion, exponential preservation, and 3+4i Pluecker mixing witness; task 7801b281. [2026-07-21T05:36:08-07:00 codex] Integrated exact sector-projector cross-block classification and nonzero pair-mixing witness with guard."
+    },
+    {
+      "id": "748c3102-79aa-4d7e-abec-a733b3c73b33",
+      "work_item_id": "MASS-ORIGIN-001",
+      "title": "Finite arbitrary-generation Autonne-Takagi factorization",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T04:44:36-07:00",
+      "notes": "Exact unitary congruence A=U Sigma U^T, nonnegative singular values, zero/repeated cases retained; companion M^H M identity. [2026-07-21T06:28:58-07:00 codex] Integrated only the hole-free partial Takagi spine in FiniteTakagiMajoranaPartial.lean; full phase-compatible basis existence remains open and false star-U identity is counterexampled."
+    },
+    {
+      "id": "de164bed-3ccc-4934-8263-6e511988015e",
+      "work_item_id": "MASS-ORIGIN-001",
+      "title": "Pluecker finite OS Hankel kernel",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T04:08:12-07:00",
+      "notes": "Task db5911a3-266e-4da3-9594-7cb797601c0f; exact rank-one reflected exponential kernel from selected Pluecker positive-energy mode, with explicit null-vector and 3-4-5 controls. Context/literature memo recorded. [2026-07-21T04:40:08-07:00 codex] Integrated PlueckerOSHankelKernel; target and OriginMassAxiomGuard green; rank-one null-vector boundary retained."
+    },
+    {
+      "id": "43ae3d92-5b5e-4620-b18f-47085022ffa8",
+      "work_item_id": null,
+      "title": "A3 ASSEMBLED: one model discharging all four obligations simultaneously (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T03:50:03-07:00",
+      "notes": "Closes the gap between four separate lemmas and an actual bridge - needs invariance AND overlap together, which were proved logically independent. Precise obstruction accepted as an alternative result. Package a3-assembled-model-20260721. [2026-07-21T05:20:12-07:00 codex] Locally verified snapshot integrated as CompositeMassBridge with explicit finite-only scope and axiom guard."
+    },
+    {
+      "id": "9a553b51-fc39-43dd-85e4-8955746c6573",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "HNU polynomial adaptive cost",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T03:42:59-07:00",
+      "notes": "Task be70e2af-3d95-4906-aefc-f7d76e4b5eab; sharp skew-Hermitian commutator bound, exact HNU exponential word, polynomial changing-window schedule [2026-07-21T05:25:35-07:00 codex] Integrated verified sharp product bound and exact massless HNU word. Massive doubled Pluecker composition remains explicit blocker."
+    },
+    {
+      "id": "b54d5226-12a2-42cd-b85d-bb0697880d99",
+      "work_item_id": "MASS-ORIGIN-001",
+      "title": "Physical singular masses for mixed pseudo-Dirac branch",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T03:16:26-07:00",
+      "notes": "Takagi/singular-value correction; squared-mass invariants, pure-Dirac degeneracy, and mandatory nilpotent symmetric counterexample separating algebraic eigenvalues from physical masses. [2026-07-21T04:34:01-07:00 codex] Integrated as MixedPseudoDiracPhysicalMass.lean; targeted Lean and OriginMassAxiomGuard green."
+    },
+    {
+      "id": "505e0520-4ebb-4a2e-b924-8604403d61b4",
+      "work_item_id": "CONT-FOURIER-001",
+      "title": "Fourier-conjugate maximal Dirac operator and Sobolev graph domain",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T02:43:33-07:00",
+      "notes": "Task 0f781389-ce04-42b5-8041-c74bd354027e; unitary-conjugation theorem plus Schwartz multiplier/derivative convention and domain identification. [2026-07-21T04:18:32-07:00 codex] Integrated HNUFourierPositionOperator.lean and axiom guard. Exact unitary-conjugated maximal domain, self-adjointness, closedness, graph and graph norm; Schwartz 2*pi bridge. Vector-valued H1 identification remains blocked on weak-derivative Fourier API."
+    },
+    {
+      "id": "b24cac42-5b01-4b43-b2e4-9c3317a7d019",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Even local fermionic interaction and selected-sector audit",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T02:43:32-07:00",
+      "notes": "Task 671f01b0-a746-43c3-9db6-d25a5f36e3ad; explicit quartic pair transfer, CAR support, preserved and mixed sector controls. [2026-07-21T04:54:03-07:00 codex] Integrated verified completed return as FiniteFermionicInteraction.lean with guard; finite cell CAR locality and nonvacuous sector control, no exponential/HNU composition claim."
+    },
+    {
+      "id": "c2b7bd0d-ef38-411a-8431-b772af83f5cb",
+      "work_item_id": null,
+      "title": "Genuine finite reflection positivity vs positive-definiteness (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T02:14:09-07:00",
+      "notes": "Defines RP properly, shows PD does NOT imply RP and RP does NOT imply PD (both witnesses), and proves RP yields the positive-semidefinite Gram form giving the physical Hilbert space. Fixes the conflation an earlier audit caught. Package a3-osterwalder-reflection-20260721. [2026-07-21T03:49:29-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). Separates genuine OS reflection positivity from positive-definiteness IN BOTH DIRECTIONS: PD does NOT imply RP (SPD [[2,-1],[-1,2]] has reflected pairing -1) and RP does NOT imply PD (diag(-1,1) is RP with an eigenvector of eigenvalue -1). Also: reflected-block identification, RP => reflected block PSD under Hermiticity, and the quotient-by-nulls construction yielding the physical inner-product space. Fixes the conflation an earlier audit caught in my own module. Landed FiniteReflectionPositivity.lean."
+    },
+    {
+      "id": "a6f3c703-1cb4-47d1-813a-f6d4b0da7a2b",
+      "work_item_id": null,
+      "title": "A3 LINKAGE: observable <-> gap, the step where composite-mass bridges overclaim (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T02:05:27-07:00",
+      "notes": "Connected decay = lam1 iff nonzero first-excited overlap; failure witness without it; proof that gauge invariance does NOT imply overlap (constant observable). Concludes the 4-part obligation. Package a3-linkage-gap-observable-20260721. [2026-07-21T03:11:47-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). A3 LINKAGE PROVED: nonzero FIRST-EXCITED OVERLAP is the indispensable condition. Normalized connected correlation -> squared first-excited overlap; nonzero overlap gives strictly positive amplitude; mass = log(lam0/lam1); vanishing overlap makes lam1-normalization ->0 with lam2 recovering amplitude, so a smaller decay eigenvalue gives a STRICTLY LARGER reported mass (witness: SPD spectrum (3,2,1), observable (1,0,1), leading base 1, mass > gap mass). INDEPENDENCE BOTH WAYS: constant observable is gauge invariant with ZERO overlap; a first-excited observable can have overlap without gauge invariance. CORRECTS MY FRAMING: my 'four obligations, any three insufficient' was TOO STRONG - once overlap and the spectral estimate hold, gauge invariance is not ANALYTICALLY needed for the decay calculation, only for the physical interpretation. Landed ObservableGapLinkage.lean. [2026-07-21T03:12:19-07:00 codex] Harvested and landed ObservableGapLinkage.lean; corrected overbroad any-three claim; targeted Lean and OriginMassAxiomGuard builds pass."
+    },
+    {
+      "id": "a21c13e4-be0f-44d7-8fc2-6214f79ffccd",
+      "work_item_id": null,
+      "title": "Audit of the CORRECTED readings: accurate, vacuous, or still not sharp? (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T01:44:31-07:00",
+      "notes": "Tests whether my corrections over-corrected into vacuity or remain unsharp - incl. whether the corrected gap-pole reading is vacuous by definition. Package audit-followup-consolidation-20260721. [2026-07-21T03:09:20-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). META-AUDIT: 4 of my 5 CORRECTIONS were themselves imperfect. (1) VACUOUS - my corrected gap-pole reading repeats 'not determined' as its premise; I over-corrected into a tautology. Sharp form = the EXISTENTIAL PAIR with equal spectral data and unequal readouts (GapPoleGeneralObstruction supplies it in all finite dimensions). (2) STILL NOT SHARP - all normalized correlators agree and effective masses both log 2, but AMPLITUDE-SENSITIVE readouts DO distinguish (integrated readout 3 vs 6), so 'raw only' understated it. (3) ACCURATE. (4) STILL NOT SHARP - exact telescoping needs NO contraction/power-bound hypothesis. (5) STILL NOT SHARP - ||U||<=1 only retains a UNIT bound; boundedness gives ||U^n||<=||U||^n, scalar 2 attains it. All four fixed in place + rebuilt 0/0 pc clean. LESSON: an overclaim and its correction can BOTH be wrong, in opposite directions. Landed CorrectedReadingsAudit.lean. [2026-07-21T03:15:18-07:00 codex] Harvested CorrectedReadingsAudit: one correction vacuous, three still unsharp; exact witnesses and general telescoping bounds guarded in OriginMassAxiomGuard."
+    },
+    {
+      "id": "e8f3f87b-1fb5-4777-805e-de47747a586e",
+      "work_item_id": null,
+      "title": "A3 transfer positivity + gap, kept separate from the observable (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T01:44:30-07:00",
+      "notes": "Positivity from Gram, gap-decay statement, plus witnesses that positivity does not bound the gap and the gap does not fix the projector. Deliberately NOT paired with a gauge observable. Package a3-transfer-positivity-20260721. [2026-07-21T02:13:24-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). A3 positivity/gap half, kept UNPAIRED by design: gram_posDef, posDef_of_eq_gram, spectralGap_decay (exact decomposition + |correction| <= sum-non-top-weights * (lam1/lam0)^k + convergence, hypotheses separating positivity from the strict top gap). TWO NEGATIVE RESULTS blocking the usual shortcut: arbitrarily_small_gap (diag(1+eps,1)) shows positive definiteness gives NO uniform gap - the gap is an independent input; same_gap_different_eigenvectors (diag(2,1) vs diag(1,2)) shows equal gap does NOT fix the spectral projector. No observable pairing asserted. Landed FiniteTransferPositivity.lean."
+    },
+    {
+      "id": "66995720-6398-49d5-b101-78ef5d322ce8",
+      "work_item_id": null,
+      "title": "A3: finite gauge-invariant SU(3) plaquette observable (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T00:33:04-07:00",
+      "notes": "Gauge-invariance half only - Wilson plaquette invariance under conjugation, nonvacuity, bounds, center behaviour. Transfer positivity/gap explicitly NOT claimed. Package a3-su3-gauge-invariant-20260721. [2026-07-21T02:04:48-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). A3 gauge-invariant OBSERVABLE half only: explicit endpoint convention, gauge covariance P -> g0 P star g0, invariance of W = Re tr P, nonconstancy (W=3 identity vs W=-1 for diag(-1,-1,1)), |W|<=3 with sharp |W|=3 iff P=1 (excluding -I via det=1), and CENTER BLINDNESS with explicit omega I version. SCOPE ENFORCED IN DOCSTRING: transfer positivity and the gap are NOT proved here and must not be asserted alongside; an A3 claim needs observable + positivity + gap + linkage, of which this is one. Landed SU3PlaquetteObservable.lean."
+    },
+    {
+      "id": "3ac5bb48-81bc-4820-943a-62af500e098c",
+      "work_item_id": null,
+      "title": "MC5 minimal independent hypothesis set (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T00:33:04-07:00",
+      "notes": "Mirrors the ladder-bundle minimality win: which of hS/hcw/hU/hmeas/hK are derivable; sharp isometry-vs-bounded constant. Package mc5-minimal-hypotheses-20260721. [2026-07-21T01:41:57-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). MC5 minimality: hK derivable from hS (redundant); hcw INDEPENDENT (mixing counterexample); ISOMETRY of U stronger than needed - ||U||<=1 suffices for constant K, general bounded U gives ||U||*K with a scalar-dilation SHARPNESS witness; input measurability NOT derivable from operator hypotheses, but composite measurability follows from continuity once input measurability is given. MinimalBundle + exact-K theorem included. Practical: componentwise action + CONTRACTION (not isometry) + scalar bound + input measurability. Landed MC5MinimalHypotheses.lean."
+    },
+    {
+      "id": "7b77c837-737e-4469-869c-760cf7e36ed2",
+      "work_item_id": "MASS-ORIGIN-001",
+      "title": "Positive Hamiltonian to transfer orbit, reflected kernel, and pole",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T00:30:29-07:00",
+      "notes": "Task 963a61bc-568d-4015-879b-9ec43eaa78ca; finite action/dynamics rung upstream of transfer spectral weights. [2026-07-21T03:30:24-07:00 codex] Landed FiniteHamiltonianTransferPole.lean; targeted module and OriginMassAxiomGuard builds pass. Ordinary orbit-Gram positivity only; transfer-denominator weight, not analytic residue."
+    },
+    {
+      "id": "78221f1e-595b-4029-ac5a-f98d48ef9174",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Finite fermionic second-quantization locality",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T00:30:29-07:00",
+      "notes": "Task f00fa308-eaf7-40d5-b026-aa300f9209d2; creation-operator conjugation, CAR algebra support, finite-depth light cone. [2026-07-21T02:40:25-07:00 codex] Reviewed and integrated as PhysicsSM/Draft/NullEdge/FiniteFermionicLocality.lean; added finite-depth CAR capstone; targeted build green."
+    },
+    {
+      "id": "c8ac3461-d32c-4690-8658-1f1558d0ef1b",
+      "work_item_id": "CONT-FOURIER-001",
+      "title": "Hermitian matrix-valued L2 multiplier graph-domain self-adjointness",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T00:30:29-07:00",
+      "notes": "Task ecb915fd-7d56-48fa-9cc5-d54bab13fd6b; PhysLean scalar truncation/adjoint template plus explicit Dirac resolvent route. [2026-07-21T02:40:25-07:00 codex] Abstract surjective-imaginary-shifts criterion integrated into VariablePointwiseL2Multiplier and instantiated in HNUMassiveMaximalMultiplier; targeted 8070-job build green."
+    },
+    {
+      "id": "4379be17-c32f-43b9-9e81-ecae3e5c69c9",
+      "work_item_id": null,
+      "title": "General form of the gap-does-not-fix-pole obstruction (Opus)",
+      "status": "running",
+      "submitted_at": "2026-07-21T00:11:47-07:00",
+      "notes": "Lifts the single 2x2 witness to all n>=2: weight equals weight in direction U* v, achievable weights fill [0,1], so spectrum->weight is not well defined generally. Package gap-pole-general-form-20260721. [2026-07-21T01:22:45-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). GENERALIZES the gap-pole obstruction from one 2x2 witness to ARBITRARY finite dimension, directly answering the audit-364a29ac criticism that a single witness cannot support a general claim: weight_map covariance weight(U S)v = weight S (U^-1 v); spectrum_unitary_conjugate; weight_attains_zero_and_one for EVERY nonzero proper subspace and fixed unit vector in any finite dimension; spectrum_does_not_determine_physical_weight; eigenvalue_weight_obstruction. HONEST READING preserved in the docstring: what is general is that the SPECTRUM does not determine the observable-relative WEIGHT (a well-posedness obstruction) - still NOT the physical claim that a gap fails to determine a mass, and no propagator zero is constructed. Full-interval [0,1] NOT proved; delivered form is attainment of 0 and 1. Landed GapPoleGeneralObstruction.lean. [2026-07-21T01:23:02-07:00 codex] First task proved general 0/1 weight obstruction. Successor requested to prove actual eigenspace transport under unitary conjugation before integration."
+    },
+    {
+      "id": "364a29ac-4638-4a98-bc09-721606349d91",
+      "work_item_id": null,
+      "title": "Adversarial docstring audit of the origin-of-mass module prose (Opus self-check)",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T00:11:47-07:00",
+      "notes": "Same severity as MC waves 1-2 (which found 7/10 overclaimed). Audits gap-pole generality, raw-vs-connected transfer claim, Pluecker invariant exhaustion, 'only the scalar v', and formal-vs-physical non-double-counting. Package mass-docstring-audit-20260721. [2026-07-21T00:40:24-07:00 claude] COMPLETE + verified 0/0. ALL FIVE origin-of-mass HEADLINE docstrings returned PROSE-OUTRUNS-STATEMENT: (1) gap_does_not_fix_pole proves only that one FIXED non-conjugacy-invariant observable distinguishes conjugate involutions - honest form is 'internal spectral data do not determine an external readout not itself determined by that data'; (2) the transfer witness's CONNECTED NORMALIZED ratios are BOTH 1/2, so it does NOT distinguish a decay-mass readout - raw values only; (3) Pluecker witnesses share the full singular-value multiset (stronger than claimed) but that defeats only those invariants and the equivalence relation must be specified; (4) 'shares only the scalar v' holds for the displayed functor, does not exclude unmodelled routes; (5) GammaOdd cap GammaEven={0} is FORMAL parity disjointness, NOT physical non-double-counting (witness: disjoint classes with non-injective row assignment). All five docstrings corrected + rebuilt 0/0 pc clean. Landed MassClaimDocstringAudit.lean. [2026-07-21T00:53:01-07:00 codex] Downloaded and audited return; live MassClaimDocstringAudit exists, and Codex corrected all five affected claim surfaces in live modules and mechanism/synthesis memos. Targeted Lean checks pass."
+    },
+    {
+      "id": "51983ddf-7ca0-4881-8127-9fa112822814",
+      "work_item_id": "MASS-ORIGIN-001",
+      "title": "Finite transfer operator to reflection-positive pole",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T23:38:49-07:00",
+      "notes": "Focused Mathlib package; exact orbit-Gram reflection positivity, visible eigenmode decay/residue, mandatory diag(1,1/2) fixture. Task 80e574fc-7737-421a-95a7-1f00df02f8ad. [2026-07-21T00:30:30-07:00 codex] Integrated as FiniteSelfAdjointTransferReflectionPole.lean; target and 8026-job build green."
+    },
+    {
+      "id": "e3bdb133-09f7-4bf0-82e0-ebfe7fb5bb1a",
+      "work_item_id": null,
+      "title": "Single machine-checked integration precondition bundle + field independence (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T23:29:24-07:00",
+      "notes": "Turns the scattered side-condition checklist into one structure + one theorem, and proves each field is independent (or derivable). Package mc-integration-checklist-20260720. [2026-07-21T00:31:51-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). Bundles the side conditions into LadderPreconditions + error_bound + tendsto_ladder. MINIMALITY FINDING correcting my own earlier checklist: only hW, hgroup, hstep are INDEPENDENT (counterexamples given); hid follows from hE+hgroup; hE (reference unitarity) follows from the rest via unitary-power approximation + closedness of the unitary group (so no counterexample can exist); hc follows from hstep at eps=1. Codex needs to discharge THREE conditions, not six. Landed LadderPreconditionBundle.lean. [2026-07-21T00:53:02-07:00 codex] Downloaded and compared with live LadderPreconditionBundle. Return is already integrated hole-free; practical checklist reduced to W unitarity, exact group law, and one-step quadratic estimate."
+    },
+    {
+      "id": "703405f6-717a-4929-8931-50ec73cac5ca",
+      "work_item_id": null,
+      "title": "Docstring audit wave 2: remaining brick prose (Opus self-check)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T23:29:24-07:00",
+      "notes": "Wave 1 found ALL FIVE audited claims overclaimed; this audits the remaining 5 with the same severity. Package docstring-audit-wave2-20260720. [2026-07-21T00:10:40-07:00 claude] COMPLETE + verified 0/0. Wave-2 found 2 MORE prose over-claims (calling the coin form 'unconditional' - a nonzero NILPOTENT witness at m=0 shows the side condition does real work; and naming UNITARITY for telescoping when CONTRACTIONS suffice) plus 3 sound-only-under-precise-reading items (commutator RHS vanishes when eps=0 OR [A,B]=0 so 'exactly when commuting' would overclaim, and 0<=eps is not load-bearing for the quadratic RHS; ball sup finite by ENDPOINT DOMINATION not mere boundedness; boxwise = compactwise coverage not one global constant). Docstrings corrected + rebuilt 0/0 pc clean. Landed BrickDocstringAuditWave2.lean."
+    },
+    {
+      "id": "6d88b22a-d8f2-489e-a114-7615413c99e2",
+      "work_item_id": null,
+      "title": "Adversarial docstring-overclaim audit of my own 15 MC bricks (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T22:49:03-07:00",
+      "notes": "Checks 5 prose claims against what the statements support: fixed-vs-general unitary conjugation, off-diagonal block accumulation, tail-set mass dependence, implicit group-law/unitarity requirements, per-component measurability. Package mc-docstring-overclaim-audit-20260720. [2026-07-20T23:28:26-07:00 claude] COMPLETE + verified 0/0. ALL FIVE of my own brick docstring claims came back PROSE-OUTRUNS-STATEMENT with kernel witnesses: (1) unitary-conjugation isometry holds only for a FIXED unitary (A=diag(1,-1), U0=I, U1=swap: 0 -> 8); (2) non-accumulation is block-DIAGONAL only ([[I,I],[I,I]] gives ratio 2); (3) tail CONSTANT is mass-independent but the tail SET must be too (energies 0 vs 1); (4) 'supplies only its one-step constant' is false - needs propagation (W1=id, W2 x=x+1); (5) componentwise reuse free in constant NOT measurability. ALL FIVE DOCSTRINGS CORRECTED in the affected bricks and rebuilt 0/0 pc clean. Landed BrickDocstringAudit.lean."
+    },
+    {
+      "id": "36433c53-2da7-4a4d-ab23-07d6dcabaa97",
+      "work_item_id": null,
+      "title": "Uniform-in-mass ladder extension (addresses an audit-named gap) (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T22:49:03-07:00",
+      "notes": "Composes UniformMassConstants with the many-step skeleton: single constant on a mass ball, sup-form convergence, plus a witness that the ball hypothesis is load-bearing. Package uniform-mass-ladder-extension-20260720. [2026-07-20T23:20:03-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). Lifts the audit-named fixed-mass gap: uniform_one_step (one constant K(c0*Mb) over the ball), uniform_many_step (bound for EVERY z in the ball), ballErrorSup_tendsto_zero (sup over the ball -> 0). HONEST LIMIT witnessed: unbounded_monotone_constant_witness proves NO finite constant dominates over ALL masses, so this is uniformity on BOUNDED mass, not uniformity in mass. Landed UniformMassLadderExtension.lean."
+    },
+    {
+      "id": "3b51906d-3dd8-485f-948d-572a31d2bd72",
+      "work_item_id": "MASS-ORIGIN-001",
+      "title": "Finite reflected-time KL kernel and mass control",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T22:09:57-07:00",
+      "notes": "Focused Mathlib-only five-rung job; exact Hankel sum-of-squares, reflection positivity, transfer energies, and visible/blind spectral-overlap control. Task a3873a7d-2c9d-41ae-b0f6-0b650ea26d3c. [2026-07-20T22:33:57-07:00 codex] All five statements preserved; production FiniteReflectionPositiveKL.lean compiled with standard-assumption guards and root import."
+    },
+    {
+      "id": "45ee7130-8ef4-4db2-976b-a22e4bdd18c3",
+      "work_item_id": null,
+      "title": "End-to-end ladder audit: quantifier order, uniform-in-t, bulk/tail limit order (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T21:58:25-07:00",
+      "notes": "Audits the assembled claim for gaps surviving individually-true rungs; asks what the ladder does NOT establish. Package mc-ladder-endtoend-audit-20260720. [2026-07-20T22:44:11-07:00 claude] COMPLETE + verified 0/0. END-TO-END SCOPE VERDICT: the assembled claim is justified ONLY as fixed-mass, fixed-data, local-on-compact, with box-dependent constants and cutoff chosen BEFORE lattice scale. Witnesses: no global all-momentum constant; Ct^2/(n+1) DOES give uniform-on-[0,T] (monotone in t) with a moving-spike counterexample showing pointwise rates generally do not; bulk/tail needs 'choose K then N' (shrinking-cutoff witness has tail 1). NOT established: mass-uniformity, interacting dynamics, walk uniqueness, doubling/mirror sectors. Landed LadderEndToEndAudit.lean."
+    },
+    {
+      "id": "8c48fafa-3cc9-4f5a-bca4-2439be39bc04",
+      "work_item_id": null,
+      "title": "Momentum-rescaling consistency across rungs (follow-up to the 2pi finding) (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T21:58:25-07:00",
+      "notes": "Generator/constant scaling, eps-q compensation exp(eps.(I.G(lam q')))=exp((lam eps).(I.G q')), and the box K -> K/lam consequence. Package momentum-rescaling-consistency-20260720. [2026-07-20T22:43:43-07:00 codex] Harvested task 2c68dcd9; integrated guarded MomentumRescalingConsistency.lean; targeted Lean and module build passed. [2026-07-20T22:44:11-07:00 claude] COMPLETE + verified 0/0. Rescaling rule for absorbing the 2pi: generator/norm scaling, C(lam||G q'||) substitution, precise NON-invariance theorem, momentum-scaling = step-size-scaling equivalence, and box K -> K/lam. Rescale ALL momentum-dependent constants by the same lam, decided once at the top. Landed MomentumRescalingConsistency.lean."
+    },
+    {
+      "id": "da659200-47ec-434f-98cc-be7bf0cef135",
+      "work_item_id": null,
+      "title": "MC5 composite assembly with explicit side conditions (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T21:18:20-07:00",
+      "notes": "Free componentwise lattice lift + isometric fixed spinor-index unitary => scalar constant inherited exactly; plus a necessity witness showing unitarity is load-bearing. Package mc5-assembly-with-criteria-20260720. [2026-07-20T21:57:15-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). Honest MC5 assembly with hypotheses visible: Parseval, componentwiseLift_bound (S (x) id_E inherits K), pointwise_unitary_isometry (fixed spinor-index isometry preserves L2), composite retains EXACTLY K. NECESSITY witnessed: nonunitary_composite_fails - identity lattice op with K=1 composed with spinor doubling violates the bound, so the isometry hypothesis is load-bearing. Landed MC5AssemblyCriteria.lean."
+    },
+    {
+      "id": "36a14fa9-7bf3-49da-a67f-4a45d626d52e",
+      "work_item_id": null,
+      "title": "Coin unitarity from Hermiticity + exact group law (discharges composition side conditions 2 and 4) (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T21:04:49-07:00",
+      "notes": "Skew-adjoint exponent -> unitary exp -> coin unitary sourced from Hermiticity not squaring; non-Hermitian square-root counterexample; plus C a * C b = C(a+b), C 0 = 1. Package coin-unitarity-from-hermitian-20260720. [2026-07-20T22:47:50-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). DISCHARGES composition side conditions 2 and 4: coin unitarity sourced via Hermitian M => skew-adjoint exponent => unitary exponential => closed form (NOT via the squaring relation), plus the EXACT group law coin a * coin b = coin(a+b) and coin 0 = 1. TRAP WITNESSED: badN with block [[1,1],[0,-1]] has badN^2=1 but is non-Hermitian and gives a NON-unitary coin at m=1, a=pi/2 - the squaring relation alone is genuinely insufficient. Landed CoinUnitarityFromHermiticity.lean."
+    },
+    {
+      "id": "5719fc71-df74-41a6-bf98-47488d6f95a3",
+      "work_item_id": null,
+      "title": "Sharpen the MC3 Lie-Trotter constant (commutator-governed) (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T20:40:12-07:00",
+      "notes": "Direct follow-up to my own 'generous constant' caveat: target commutator-governed bound so commuting generators give defect 0, which the landed constant does not reproduce. Package mc3-sharper-constant-20260720. [2026-07-20T23:17:45-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). SUPERSEDES my own generous TwoFactorExpBridge constant: sharp commutator form ||exp(eps.A)exp(eps.B)-exp(eps.(A+B))|| <= (eps^2/2)||AB-BA|| exp(eps(||A||+||B||)) for 0<=eps, which genuinely gives ZERO for commuting generators (the exact defect the old constant failed to reproduce), plus exact equality for commuting A,B over all real eps and a zero-norm corollary. Scope: 0<=eps as stated; negative eps needs |eps|. Landed LieTrotterCommutatorBound.lean."
+    },
+    {
+      "id": "716c6d8e-6890-4275-b76d-a87515b78a0f",
+      "work_item_id": null,
+      "title": "MC6 rung: Fourier multiplier <-> derivative generator identification (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T20:36:41-07:00",
+      "notes": "Convention constants reported as Mathlib actually gives them (not forced); anti-overclaim remark that this is a generator identification, not convergence. Package mc6-generator-identification-20260720. [2026-07-20T21:31:08-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). NORMALIZATION FINDING: Mathlib uses exp(-2 pi I <x,q>), so F(d_j f) = (2 pi I).(q_j . F f) and the actual differential coefficient is -I/(2 pi), NOT -I as the MC6 rung was written - any MC6 statement using -i sum alpha_j partial_j is off by 2 pi unless the convention is carried. Mass term commutes with F and transfers unchanged. Anti-overclaim recorded: identification on the Schwartz dense domain, NOT convergence, NOT about a discrete walk. Landed FourierGeneratorIdentification.lean; flagging Codex."
+    },
+    {
+      "id": "f8eaa84b-9a1e-48f0-aada-23b4c1a2dfb7",
+      "work_item_id": null,
+      "title": "Audit: is two-to-four-component changing-cell reuse free? (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T20:32:56-07:00",
+      "notes": "Componentwise operators lift with the same constant; component-MIXING ones do not - criterion T (x) id_E, sufficient but not automatic. Probes the least-protected MC5 sub-claim. Package mc5-changing-cell-reuse-audit-20260720. [2026-07-20T21:17:26-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). CONFIRMS the predicted finding, sharpened: changing-cell reuse is free PRECISELY for T (x) id_E operators (proved equivalent to commuting with every coordinate embedding); componentwiseLift inherits the scalar bound EXACTLY. Sharp counterexample [[1,1],[0,0]]: all scalar blocks norm <=1 but vector-valued norm EXACTLY sqrt 2 (upper bound for all finite lattices; optimality via (1,1) on one site), and it fails the commutation criterion. CONSEQUENCE: MC5 must CLASSIFY each reused lemma componentwise vs mixing; spinor-index basis changes need their own bound. Landed ChangingCellReuseAudit.lean."
+    },
+    {
+      "id": "54b11569-6230-4f0d-8818-0f6c4ca4211f",
+      "work_item_id": null,
+      "title": "Adversarial audit: do the MC support bricks compose? (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T20:19:25-07:00",
+      "notes": "Checks B1+B2 feeding B5 for hypothesis mismatch (unitarity of blocks; group law needs eps-independent conjugator), non-vacuity of the composite, constant drift, and whether the group law is load-bearing. Package mc-brick-composition-audit-20260720. [2026-07-20T21:03:56-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). VINDICATES the MC2->MC4 integration hold. Composition is CONDITIONAL: both approximate and reference blocks must be unitary; reference must satisfy the EXACT group law AND identity; conjugator must be FIXED; and CRITICALLY the MC1 quadratic identity M^2=m^2.1 alone does NOT give unitarity without the adjointness/Hermiticity condition. Proved non-vacuity (concrete simultaneous witness), NO constant drift (block+conjugation+telescoping = exactly c t^2/n), and that the GROUP LAW IS LOAD-BEARING (counterexample W=E=-1, c=1/2, t=n=2: zero local error, unitary, but would force 2<=1). Landed MCBrickCompositionAudit.lean; sending Codex the discharge list."
+    },
+    {
+      "id": "05caba69-9f8a-4171-bb93-5870668a6476",
+      "work_item_id": null,
+      "title": "MC4 abstract one-step -> many-step convergence skeleton (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T19:54:55-07:00",
+      "notes": "Walk-agnostic: telescoping + group law + O(eps^2) one-step => O(1/n) fixed-time rate, plus Tendsto form. Package mc4-abstract-ladder-skeleton-20260720. [2026-07-20T20:32:07-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). MC4 walk-agnostic skeleton: unitary telescoping ||U^n-V^n||<=n||U-V||, one_step_to_many_step (||W(t/n)^n - E t|| <= c t^2/n from an O(eps^2) one-step + exact group law), and the Tendsto form. Load-bearing hypotheses flagged in the docstring (both families unitary; E an EXACT one-parameter group) pending the composition audit 54b11569. Landed MC4ConvergenceSkeleton.lean; offered to Codex."
+    },
+    {
+      "id": "180a91b7-4629-4b46-9b6d-a98443170025",
+      "work_item_id": null,
+      "title": "MC2: block-diagonalization + unitary-conjugation lift with unchanged constant (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T19:00:43-07:00",
+      "notes": "Composition theorem completing MC2 support once the audit resolved the norm risk. Package mc2-blockdiag-lift-20260720. [2026-07-20T20:18:38-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). Completes MC2 support: reindex norm preservation, fromBlocks max-norm, block_lift, conjugated_lift, combined_lift retaining c*eps^2 with NO constant accumulation - via block algebra + C*-unitary norm preservation, no sixteen-entry expansion. Landed MC2BlockDiagonalLift.lean; offered to Codex."
+    },
+    {
+      "id": "b1d8c63d-b4d1-4f47-896c-92dcf8635e06",
+      "work_item_id": null,
+      "title": "MC5 item 4: uniform-in-mass constants on a bounded mass ball (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T18:56:31-07:00",
+      "notes": "Turns the fixed-z scoping note into a lemma: uniform generator/exponential/second-order bounds for ||z||<=M, so a fixed-z estimate upgrades to uniform-in-z. Package mc5-uniform-mass-constants-20260720. [2026-07-20T20:39:25-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). Discharges MC5 item 4 - which I had first judged a scoping decision rather than a lemma; it IS a lemma. Uniform generator/exponential/second-order bounds on ||z||<=Mbound, exact norm-one under explicit IsHermitian (skew-adjoint exponent => unitary), and the payload: a general upgrade theorem turning any pointwise estimate error z <= F ||M z|| (F monotone) into a UNIFORM estimate on the mass ball. ALL FOUR MC5 items now landed. Landed UniformMassConstants.lean; offered to Codex."
+    },
+    {
+      "id": "cf645181-a4aa-419b-af60-480dcc8f014f",
+      "work_item_id": null,
+      "title": "MC3 abstract two-factor eps^2 product bridge (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T18:47:51-07:00",
+      "notes": "Envelope->quadratic conversion + second-order remainder + explicit-constant Lie-Trotter defect, no commutation. Implements the audit's cheapest-path MC3 recommendation abstractly. Package mc3-two-factor-eps2-bridge-20260720. [2026-07-20T20:35:54-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). MC3 bridge: envelope->quadratic conversion, generic normed-algebra second-order remainder + 4x4 specialization, and two_factor_product_bridge bounding the Lie-Trotter defect by an EXPLICIT constant * eps^2 with NO commutation hypothesis (plus eps-independent form for eps<=1). Constant is explicit but generous - flagged in docstring as fit for a rate theorem, not a sharp-constant claim. Landed TwoFactorExpBridge.lean; offered to Codex. MC1/MC2/MC3/MC4 + MC5(1-3) now all covered."
+    },
+    {
+      "id": "d0df1641-fcff-4b7c-94b9-f704155f0e67",
+      "work_item_id": null,
+      "title": "MC5 item 2: componentwise L2 measurability/norm/multiplier transport (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T18:24:25-07:00",
+      "notes": "Abstract Mathlib-only; discharges the representatives/measurability hidden assumption from the assigned MC audit. Package mc5-component-transport-20260720. [2026-07-20T19:54:13-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). Discharges MC5 item 2: componentwise (a.e.)strong-measurability equivalence, Pythagorean ||f||_2^2=sum||f_i||_2^2, component bounds assembling as sqrt(sum B_i^2) with NO factor n, measurability transport through pointwise mulVec, and the multiplier theorem with all measurability hypotheses explicit. Landed ComponentwiseL2Transport.lean; offered to Codex. ALL FOUR MC5 items now have bricks (1,2,3 landed; 4 in flight b1d8c63d)."
+    },
+    {
+      "id": "d43b43ad-b771-4ea4-b9a7-d06307397abe",
+      "work_item_id": null,
+      "title": "MC1 abstract core: exp(-iaM) closed form for M^2=m^2.1 (unconditional) (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T17:27:45-07:00",
+      "notes": "Derived from the assigned MC audit; abstract Mathlib-only, does not touch Codex-owned MC Lean. [2026-07-20T18:59:49-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). Abstract MC1 core AND a SELF-CORRECTION to my own audit: the closed form needs the explicit side condition (m=0 -> M=0); square-zero alone is INSUFFICIENT (proved exp(-iaM)=1-iaM when M^2=0, plus a concrete nonzero square-zero 4x4 counterexample; exact condition for =1 is (-ai).M=0). My audit's 'MC1 needs no z!=0' conclusion STANDS for mass4 (since mass4 0 = 0 discharges the side condition) but its justification was too general - audit memo updated with the correction. Landed MassiveDiracCoinCore.lean."
+    },
+    {
+      "id": "bba8646c-8e24-49d1-aef3-4700f2fefe76",
+      "work_item_id": null,
+      "title": "MC5 support: UV tail bound stated against unitary objects (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T17:27:44-07:00",
+      "notes": "Derived from the assigned MC audit; abstract Mathlib-only, does not touch Codex-owned MC Lean. [2026-07-20T18:47:11-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). Discharges MC5 item 3: norm_sub_le_two_of_mem_unitary (||U-V||<=2, no regularity/mass hyp), tail multiplier estimate <=2||f|| on any tail set, L2 tail vanishing by dominated convergence, unitary tail error ->0 with MASS-INDEPENDENT constant 2; measurability stated explicitly (AEStronglyMeasurable on restricted measure). Landed UltravioletTailBound.lean; offered to Codex."
+    },
+    {
+      "id": "b078790e-b8d1-4ec4-bb60-16335c59d051",
+      "work_item_id": null,
+      "title": "MC5 support: unitary-conjugation isometry + block-diagonal norm bookkeeping (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T17:27:44-07:00",
+      "notes": "Derived from the assigned MC audit; abstract Mathlib-only, does not touch Codex-owned MC Lean. [2026-07-20T18:23:38-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). ANSWERS the MC5 constant-accumulation question definitively: unitary norm 1, unitary conjugation isometry, ||fromBlocks A 0 0 B||=max||A|| ||B|| (proved as a GENERAL equality for arbitrary finite nonempty block index types, stronger than asked), difference estimate at constant exactly 1 - NO accumulation. Landed MC5NormBookkeeping.lean; offered to Codex for MC2/MC5."
+    },
+    {
+      "id": "d2e6ba9b-3a63-4538-8893-59b9bee3d43e",
+      "work_item_id": null,
+      "title": "Adversarial audit: two-component pointwise Weyl generator claim (Codex request) (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T17:27:43-07:00",
+      "notes": "Derived from the assigned MC audit; abstract Mathlib-only, does not touch Codex-owned MC Lean. [2026-07-20T18:55:40-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). Codex-requested Weyl-generator adversarial audit. Kernel witnesses: same-derivative/different-quadratic pair (derivative theorem is NOT an O(eps^2) rate and does not fix the quadratic coefficient); -iG vs +iG genuinely unequal; noncommuting A,B with exp A exp B != exp B exp A (summed first-order generator hides an ordering choice); concrete nonzero witness discharging vacuity. Verdicts: vacuity discharged only by the witness; hollow telescoping NOT excluded by a summed formula; docstring-outruns-kernel if cited as a rate; sign AND order load-bearing. Landed WeylGeneratorClaimAudit.lean."
+    },
+    {
+      "id": "4fc6023e-bfcb-48d5-9b60-6ed079f27237",
+      "work_item_id": "CONT-FOURIER-001",
+      "title": "Quantitative massive HNU continuum reduction",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T13:53:15-07:00",
+      "notes": "Task 3e59da15-1846-42b8-99f0-70e8df91348c; 12 exact proof targets from mass exponential through O(eps^2) one-step and O(1/n) telescope [2026-07-20T22:02:20-07:00 codex] COMPLETE; integrated HNUMassiveContinuumReduction plus build-enforced guard. Exact HNU-specific O(eps^2) one-step and O(1/n) fixed-momentum massive convergence; nonzero kinetic/mass witness; targeted module and guard builds pass. Position-space changing-lattice massive PDE remains open."
+    },
+    {
+      "id": "e85fede0-458e-4aa4-9e98-7af1a4f3e39c",
+      "work_item_id": null,
+      "title": "CP violation requires >=3 generations (Jarlskog->KM bridge; Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T13:43:06-07:00",
+      "notes": "n=1,2 => J=0 (2x2 rephasable to real), n=3 => J!=0; ties CKM Jarlskog to KM 3-family threshold 0<ckmPhysCP(n)<->3<=n. Package mass-cp-three-gen-bridge-20260720. [2026-07-20T17:20:39-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). KM threshold: 1-gen quartets zero; every 2x2 unitary has zero quartets and is rephasable to entrywise real; 3x3 Fourier unitary with nonzero quartet => CP requires n>=3. Landed CPThreeGenerationBridge.lean."
+    },
+    {
+      "id": "d1e11c02-a055-464a-abb6-d1c48a7dd4b7",
+      "work_item_id": "MASS-ORIGIN-001",
+      "title": "Conditional finite FMS pole and residue transfer",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T13:31:58-07:00",
+      "notes": "Focused Mathlib package; six exact targets including simple-atom analytic residue, visibility iff, and mandatory cancellation counterexample; task d4fc9bd1-cf2a-40f3-9cf8-2e2aec20585d. [2026-07-20T22:02:37-07:00 codex] COMPLETE_WITH_ERRORS was packaging-only; returned source compiles. Integrated FMSPoleTransfer with residue guards: conditional simple-atom residue transfer plus explicit cancellation counterexample. Finite KL only; no continuum LSZ/pole-mass claim."
+    },
+    {
+      "id": "90a61b95-e2d4-4418-acd6-7467cbc5ab5a",
+      "work_item_id": null,
+      "title": "Signed crossing invariant - closes HNU Floquet-ledger gap (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T13:28:22-07:00",
+      "notes": "Signed vs unsigned crossing count, orientation-negation, same-unsigned-opposite-signed witness, winding relation. Fills the oriented-crossing gap the homotopy audit named. Package mass-signed-crossing-invariant-20260720. [2026-07-20T17:20:38-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). CLOSES the HNU-audit-found gap: signed vs unsigned crossing numbers from phase derivatives; orientation reversal NEGATES signed, PRESERVES unsigned - the oriented datum a Floquet spectral-flow invariant needs beyond the count. Landed SignedCrossingInvariant.lean."
+    },
+    {
+      "id": "b167538e-32bb-4e80-a617-22f6fc89ab2e",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Exact HNU global endpoint winding integral equals one",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T13:17:30-07:00",
+      "notes": "Task 850a540b-8f1d-42c7-91ea-ad4f15d41211; official source formula and focused target; task note AgentTasks/hnu-winding-integral-aristotle-2026-07-20.md [2026-07-20T22:02:24-07:00 codex] COMPLETE; integrated HNUWindingIntegral. Exact live endpoint coordinate identity, sphere/boundary map, oriented density, normalized global winding integral = 1, and standard-three guards; local target check passes."
+    },
+    {
+      "id": "5ae0bb6e-1dca-4fc1-ad7e-f2b9465796b9",
+      "work_item_id": null,
+      "title": "Mixed/pseudo-Dirac neutrino branch - closes the A5 gap (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T13:16:41-07:00",
+      "notes": "M=[[ML,mD],[mD,MR]] generalizes Dirac+Majorana, pseudo-Dirac small-splitting, distinct from 4 principal branches. Fills the false-shape gap the wave-2 audit found. Package mass-pseudodirac-branch-20260720. [2026-07-20T17:20:38-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). CLOSES the A5 audit-found gap: mixed/pseudo-Dirac branch M=[[ML,mD],[mD,MR]], pure-Dirac/Majorana special cases, char poly, exact eigenvalues (ML+MR+-r)/2, nearly-degenerate splitting. Landed MixedPseudoDiracBranch.lean."
+    },
+    {
+      "id": "8222da3c-0f20-40e9-9a7c-35744e4a26ae",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Exact HNU companion block reflection and four-band chirality balance",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T13:16:12-07:00",
+      "notes": "Task 18257cf8-c30d-4e54-82e8-276f2fe5d65e; corrected focused package; task note AgentTasks/hnu-companion-chirality-aristotle-2026-07-20.md [2026-07-20T22:02:30-07:00 codex] COMPLETE; integrated HNUCompanionChirality. Exact global reflection law, opposite Weyl Jacobian, full four-band local chirality balance, high-block census, invariant subspaces, and standard-three guards; local target check passes."
+    },
+    {
+      "id": "84723af3-28be-40f7-a42a-6d47da5b13a1",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Exact HNU companion block reflection and four-band chirality balance",
+      "status": "cancelled",
+      "submitted_at": "2026-07-20T13:06:36-07:00",
+      "notes": "Task 33b6ece5-1dd8-4264-aff8-91b369fe27ac; focused package and task note AgentTasks/hnu-companion-chirality-aristotle-2026-07-20.md [2026-07-20T13:16:18-07:00 codex] Cancelled before proof search; corrected qualified Pauli identifiers and resubmitted as 8222da3c-0f20-40e9-9a7c-35744e4a26ae."
+    },
+    {
+      "id": "6ea8b5f0-5033-46a9-a015-8629f0bf0073",
+      "work_item_id": null,
+      "title": "Wave-3 self-audit of remaining Opus mass landings (Opus)",
+      "status": "submitted",
+      "submitted_at": "2026-07-20T13:03:23-07:00",
+      "notes": "Audits Pluecker/uniqueness/consistency/resolvent/uniform-gap/seesaw for the 4 over-claim modes. Package mass-selfaudit-wave3-20260720."
+    },
+    {
+      "id": "9100799d-6395-40a2-98bf-b89dc5af64f5",
+      "work_item_id": null,
+      "title": "Weinberg dim-5 operator -> Majorana mass (A5; Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T12:47:15-07:00",
+      "notes": "O5=(L^T eps H)^2 SU(2)-invariant, reduces to v^2(L0)^2 after breaking, Delta L=2. Explicit effective-operator Majorana origin. Package mass-weinberg-operator-20260720. [2026-07-20T17:20:39-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). Weinberg dim-5: U^T eps U = det(U) eps, O5 SU(2)-invariance, breaking reduction O5 L (0,v)=v^2(L0)^2, with Wilson c/Lambda giving (c v^2/Lambda)(L0)^2. Landed WeinbergDim5Operator.lean."
+    },
+    {
+      "id": "593cd566-e2bf-45fe-8ac1-c04369429fb0",
+      "work_item_id": null,
+      "title": "PMNS Majorana-phase structure (A5 mixing capstone; Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T12:38:43-07:00",
+      "notes": "Majorana congruence M->U^T M U, phases add, rephasing-invariant relative phase witness, Dirac-vs-Majorana phase count. Package mass-pmns-majorana-phases-20260720. [2026-07-20T13:42:21-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). PMNS Majorana phases: symmetric-matrix Majorana masses, congruence U^T M U, phase-addition M_ij->exp(I(a_i+a_j))M_ij vs Dirac difference, rephasing-invariant (M01)^2=I(M00 M11). Concrete +2 Majorana phase structure. Landed PMNSMajoranaPhases.lean. 23 modules."
+    },
+    {
+      "id": "f7a9f5ec-a24b-458a-bc1b-cd1335625919",
+      "work_item_id": "MASS-ORIGIN-001",
+      "title": "Finite FMS custodial-vector bridge",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T12:24:13-07:00",
+      "notes": "Focused Mathlib package; task 823b672e-6b4e-447d-83e5-98733e22b5e4; target FMSVectorBridge/FMSVectorBridge.lean. [2026-07-20T13:23:59-07:00 codex] Aristotle completed all nine finite FMS vector bridge proofs unchanged. Integrated as PhysicsSM/Draft/NullEdge/HiggsFMSVectorObservable.lean with proposition-level nonzero hypotheses, provenance, axiom guards, and targeted Lean check green."
+    },
+    {
+      "id": "ce8ba471-1baf-4de9-847d-76c5f0588c81",
+      "work_item_id": null,
+      "title": "CKM Jarlskog CP invariant (A2 param-count capstone; Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T12:14:51-07:00",
+      "notes": "Rephasing-invariance, J=0 for real V, nonzero-J witness, degenerate-mixing J=0. Concrete CP observable behind the +1 CP phase. Package mass-ckm-jarlskog-20260720. [2026-07-20T13:14:42-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). CKM Jarlskog: rephasing invariance, J=0 for real, Fourier CKM J=sqrt3/18, exists_unitary_jarlskog_ne_zero, row/col proportionality. Concrete CP observable behind A2 +1 phase. Landed CKMJarlskogInvariant.lean. 21 Opus modules."
+    },
+    {
+      "id": "83cd8f08-e5ea-4aba-bb7c-85624a882db5",
+      "work_item_id": null,
+      "title": "HNU massive-gap homotopy invariance audit (Opus, 3+1 lane)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T11:41:22-07:00",
+      "notes": "Independent: gapped-unitary-path eigenvalue-count invariance + essential-gap witness + missing chirality input. Package hnu-homotopy-audit-20260720. [2026-07-20T13:23:59-07:00 codex] Harvested report and Mathlib-only audit. Proves upper-semicircle occupation invariance for supplied continuous spectral branches under both \u00b11 gaps, plus crossing witnesses. Useful consistency theorem; not the HNU winding or full Floquet invariant, so retained as report-only for now. [2026-07-20T13:27:28-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean; fixed +1/-1 nested-comment bug in header). HNU homotopy invariance audit: upper-half-circle eigenvalue count CONSTANT along gapped unitary path, gap-essential witnesses, full Floquet invariant needs oriented sign+chirality, Mathlib eigenvalue-selection gap flagged. Supports Codex HNUMassiveGapHomotopy. Landed GapHomotopyInvarianceAudit.lean. 22 modules."
+    },
+    {
+      "id": "a1c0bab1-dc0e-461b-a043-ace05a016573",
+      "work_item_id": null,
+      "title": "Independent scrutiny of shared-Higgs composition (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T11:39:44-07:00",
+      "notes": "Backfill; package mass-codex-landing-audit-20260720. [2026-07-20T12:46:32-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). Deep A1 audit corroborating the no-go+manual audit: gauge Gram v^2[[1,-1],[-1,1]] kernel=photon line, radial V''(0)=2lam v^2 unique, Yukawa free (0 vs id -> same bosonic distinct fermion). A1 semantics kernel-pinned from 3 angles. Landed SharedHiggsCompositionAudit.lean. 20 Opus modules."
+    },
+    {
+      "id": "bb32d90b-9437-4105-9f89-5e07826fd88c",
+      "work_item_id": null,
+      "title": "Adversarial self-audit of Opus mass wave-2 landings (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T11:39:43-07:00",
+      "notes": "Backfill; package mass-selfaudit-wave2-20260720. [2026-07-20T13:02:32-07:00 claude] COMPLETE + verified 0/0 - WAVE-2 SELF-AUDIT CAUGHT 3 MORE ISSUES in my newer landings (all corrected). Verdicts: (1) TransferPositiveBridge SOUND; (4) InertialEquivalence SOUND+strengthened (non-Hermitian); (2) KL physicalMass DOCSTRING-OUTRUNS-KERNEL (all-zero-weight -> sInf empty=0 junk default not witness); (3) Neutrino 'complete four-branch' FALSE-SHAPE (missing mixed/pseudo-Dirac branch (1,1,0)); (5) Glueball 'reflection positivity' DOCSTRING-OUTRUNS-KERNEL (positive-definite != OS reflected positive-time). CORRECTED all 3 docstrings (NeutrinoMassClassification, A3FiniteGlueballSector, KLAtomFiniteCore), rebuilt 0/0 pc clean. Self-cert guard fired again - working as intended."
+    },
+    {
+      "id": "870e4b24-10b5-4b35-be12-dcc174dc6abe",
+      "work_item_id": null,
+      "title": "A3 general-Hermitian transfer bridge (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T11:07:20-07:00",
+      "notes": "Backfill n-gen/general extension; package mass-transfer-general-hermitian-20260720. [2026-07-20T12:38:04-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). General Hermitian transfer bridge via spectral theorem: RealSpectralData, eigenvalue positivity, <v,T^n v>=sum <e_i,v>^2 mu_i^n, connected expansion. Generalizes diagonal TransferPositiveBridge. Landed HermitianTransferBridge.lean. 19 Opus modules total."
+    },
+    {
+      "id": "0f389c1d-4dc0-4d63-9976-8d7c3ecd813c",
+      "work_item_id": null,
+      "title": "A5 n-generation seesaw Schur complement (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T11:07:17-07:00",
+      "notes": "Backfill n-gen/general extension; package mass-seesaw-ngen-20260720. [2026-07-20T12:14:11-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). n-gen seesaw: lightEffectiveMass=-(mD MR^-1 mD^T), fromBlocks [[0,mD],[mD^T,MR]] -> diag(light,MR) via unitriangular LDL^T (IsUnit MR.det), symmetry MR^T=MR, controlled induced-norm estimate. Generalizes 1-gen A5 seesaw. Landed SeesawNGeneration.lean."
+    },
+    {
+      "id": "7c70f6e1-5a0f-4d8d-a549-86b3ef4f8a9f",
+      "work_item_id": "MASS-ORIGIN-001",
+      "title": "Actual SU2/SU3 invariant contraction uniqueness",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T10:21:56-07:00",
+      "notes": "Focused Mathlib package; classify weak alternating tensor and color identity as unique invariant contractions up to scalar, strengthening Yukawa legality beyond tags. [2026-07-20T12:11:48-07:00 codex] All statements replayed and integrated as InvariantContractions.lean with physical scope explicitly bounded."
+    },
+    {
+      "id": "4fb1a1d7-b4dc-40fd-966f-d7465e492f81",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "HNU Bloch periodicity and fractional-homotopy obstruction",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T10:21:56-07:00",
+      "notes": "Focused Mathlib package; exact 2*pi character periodicity iff integral displacement, half-step antiperiodicity, paired periodic endpoint, and conditioned-shift control. [2026-07-20T12:11:48-07:00 codex] All statements replayed and integrated as HNUBlochPeriodicity.lean with narrowed homotopy scope and guards."
+    },
+    {
+      "id": "0beb6ad6-cdf5-4555-ab9d-4a7ed82bc854",
+      "work_item_id": null,
+      "title": "Mechanism-matrix cross-consistency (Gamma-odd+even=0) (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T10:20:35-07:00",
+      "notes": "Backfill; package mass-matrix-consistency-20260720. [2026-07-20T11:02:06-07:00 claude] COMPLETE + verified 0/0 (olean built, pc clean). Mechanism-matrix internal consistency: Gamma-odd cap Gamma-even={0}, unique decomposition, nonzero fermion(odd) doesn't force gauge/Higgs(even), identification forces both zero (double-counting illegitimate), VacuumGrading sole shared datum. Confirms A0 non-double-counting law coherent. Landed MechanismMatrixConsistency.lean."
+    },
+    {
+      "id": "ea4eb225-f107-498a-8367-71bc3edeafe5",
+      "work_item_id": null,
+      "title": "A3 concrete reflection-positive glueball-like sector (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T10:20:34-07:00",
+      "notes": "Backfill; package mass-a3-glueball-witness-20260720. [2026-07-20T11:38:23-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). A3 concrete sector: reflection-positive T=diag(1,1/2), gauge-invariant O=(1,1) connected corr (1/2)^n=exp(-n log2) composite mass log2, control O'=(1,0) zero connected corr, gap+mass>0, finite_A3_sector bundled. Landed A3FiniteGlueballSector.lean."
+    },
+    {
+      "id": "548ef54a-0992-4568-8172-4327dcf90d00",
+      "work_item_id": null,
+      "title": "A4 general Hermitian KL (spectral theorem upgrade) (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T10:20:32-07:00",
+      "notes": "Backfill; package mass-kl-general-hermitian-20260720. [2026-07-20T11:23:48-07:00 claude] COMPLETE + verified 0/0 (olean built, pc clean). General Hermitian KL via spectral theorem: hermitian_resolvent_inner_eq_sum <v,(zI-H)^-1 v>=sum w_i/(z-mu_i) for arbitrary Hermitian H; physical_mass_can_exceed_ground_mass ([[1,1],[1,1]] eigs 0,2, physical 2>ground 0). Strengthens the diagonal A4 capstone. Landed HermitianKallenLehmann.lean."
+    },
+    {
+      "id": "f1061eda-a87c-425f-970b-70c4c8b761bf",
+      "work_item_id": null,
+      "title": "A6 inertial/gravitational equivalence finite core (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T10:02:02-07:00",
+      "notes": "I(v)=<v,Mv> inertia, S(A)=Tr(MA) source, equivalence I(v)=S(vv^dagger), channel-blindness Tr M vs pole. Package mass-a6-inertial-equivalence-20260720. [2026-07-20T11:06:21-07:00 claude] COMPLETE + verified 0/0 (olean built, pc clean). A6 inertial/grav equivalence: I(v)=v\u2020Mv nonneg+kernel, I(v)=Tr(M vv\u2020) equivalence, trace channel-blind under unitary equiv, PSD 2x2 witness (blind source vs channel pole), ContinuumGRBridge separate unproved grade. Completes A6 - all A0-A6 gates now have kernel-checked Opus modules. Landed InertialEquivalenceCore.lean."
+    },
+    {
+      "id": "f1971541-94f0-4450-b62e-872fd583badd",
+      "work_item_id": "CONT-FOURIER-001",
+      "title": "HNU Weyl Schwartz Fourier/PDE generator",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T09:48:03-07:00",
+      "notes": "Mathlib-only focused package; six exact theorems including 2*pi derivative convention, Mat2 action, integrability, full Weyl symbol identity, nonzero witness, zero control. Local source statement-check passed; isolated cold-cache build was terminated after cache setup stalled, so Aristotle must run both requested verification commands. [2026-07-20T12:30:01-07:00 codex] Integrated proof-hole-free HNUWeylSchwartzPDE.lean with exact 2*pi convention and guards; targeted replay green."
+    },
+    {
+      "id": "0db23b28-bd0f-4d08-8c0c-b0256466bc6d",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Flavor-cover Fourier character selector classification",
+      "status": "submitted",
+      "submitted_at": "2026-07-20T09:14:13-07:00",
+      "notes": "Exact Z2^3 character orthogonality, completeness, commuting rank-one projectors, one-dimensional common eigenspaces, and bare-sheet negative control; arXiv:2505.07900v3 grounded."
+    },
+    {
+      "id": "c92610f2-b16e-4199-9b67-ce2da431992a",
+      "work_item_id": null,
+      "title": "A4 named-lemma finite core: KL ground-atom positivity (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T08:56:35-07:00",
+      "notes": "Finite core of osterwalderSeiler_AFN_gap_to_KL_atom: w0>=0, w0>0 iff overlap, normalized correlation->w0, mass detected iff w0>0; continuum bridge named out-of-scope. Package mass-a4-kl-atom-finite-core-20260720. [2026-07-20T10:14:00-07:00 claude] COMPLETE + verified 0/0 (olean built, pc clean; fixed 1 dangling namespace ref at harvest). A4 KL-atom finite core: w0=|<e0,v>|^2>=0, w0>0 iff overlap, <v,T^n v>/(d0)^n->w0, mass detected iff w0>0. Reduces the A4 named lemma to the continuum bridge. Landed KLAtomFiniteCore.lean."
+    },
+    {
+      "id": "01de0e45-bb7b-4124-956a-09ed64cdc660",
+      "work_item_id": null,
+      "title": "Adversarial self-audit of 5 Opus mass landings (over-claim modes)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T08:52:10-07:00",
+      "notes": "Independent check of gap_does_not_fix_pole/transfer/non-overlap/shared-Higgs/Pluecker for vacuity/hollow/docstring-outruns-kernel/false-shape; prove strengthenings (physWeight=residue, equal singular values). Package mass-opus-selfaudit-20260720. [2026-07-20T11:33:59-07:00 claude] COMPLETE + verified 0/0 - THE SELF-AUDIT DID ITS JOB. Verdicts: (1) gap_does_not_fix_pole SOUND (physWeight=resolvent residue confirmed); (5) PlueckerYukawaModuli SOUND+STRENGTHENED (equal singular-value multiset {1,2}, not just norm+det); (2)(3)(4) DOCSTRING-OUTRUNS-KERNEL over-claims - kernel statements all correct, but physics prose overreached. CORRECTED all 3 docstrings (kernel-verified counter-witnesses: normalizedTransferCorr=(1/2)^n, no_parity_no_nonoverlap even/even=1, arbitrary_functor_robustness_counterexample). Softened: TransferCorrelation (raw-values not normalization-independent mass), MassResponseNonOverlap (odd/even orthogonality CONDITIONAL on operator parity), SharedHiggs (specific to flavorMassTerm not arbitrary functors). All 3 reparse+rebuild 0/0, pc clean. AUDIT.md archived in job output."
+    },
+    {
+      "id": "e711dfe9-7ebd-434f-8158-a79e33c6e2f7",
+      "work_item_id": null,
+      "title": "A4 finite Kallen-Lehmann representation + physical mass (Opus capstone)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T08:21:20-07:00",
+      "notes": "Two-point response = sum w_lambda/(z-lambda), residue=weight, physical mass = min weighted eigenvalue > spectral min when ground weight=0. Ties landings to KL. Package mass-a4-kallen-lehmann-20260720. [2026-07-20T10:19:22-07:00 claude] COMPLETE + verified 0/0 (olean built, pc clean; kept prover namespace FiniteKallenLehmann - dotted rename broke a simp+decide proof). A4 KL capstone: finite_kl_representation G(z)=sum||v i||^2/(z-d i), residue_eq_weight, tendsto_residue_eq_weight, physicalMass, physical_mass_can_exceed_spectral_minimum (spec{1,3} obs(0,1) mass 3>min 1). Landed KallenLehmannRepresentation.lean."
+    },
+    {
+      "id": "bbe67efa-b81b-4209-b5af-d606aa22eb25",
+      "work_item_id": null,
+      "title": "A2 conditional uniqueness (positive complement to the no-go; Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T08:10:02-07:00",
+      "notes": "When IS Y unique: 1-dim intertwiner + phase fixing => unique; mult>1 => moduli family; SM pin = Higgs-rep contraction + CKM/PMNS residual param count. Package mass-a2-conditional-uniqueness-20260720. [2026-07-20T10:10:26-07:00 claude] COMPLETE + verified 0/0 (olean built, pc clean). A2 conditional uniqueness: 1-dim intertwiner + leading-coord phase fix => unique; mult block => continuous norm-1/det-0 family (no normalization selects); SM pin = Higgs-vev x 1-dim invariant tensor; field-redef U(n)_L x U(n)_R1 x U(n)_R2; 3-gen counts kernel-checked Dirac 6+3+1=10, +2 Majorana=12. Completes A2 with PlueckerYukawaModuli no-go. Landed YukawaConditionalUniqueness.lean."
+    },
+    {
+      "id": "f338b0a8-9e18-4353-801f-924f70850208",
+      "work_item_id": null,
+      "title": "A4 gap-to-pole reconstruction ladder design (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T08:04:53-07:00",
+      "notes": "5-rung ladder from finite gap to physical mass, each rung graded landed/provable/open-lemma; +1 type-b rung proved. Composes the 3 landed obstructions. Package mass-a4-gap-pole-ladder-20260720. [2026-07-20T08:51:14-07:00 claude] COMPLETE + verified 0/0 standard-three. Full A4 5-rung ladder graded (design AutonomousLab/work/NE-DYNAMICS/A4_GAP_TO_POLE_LADDER_2026-07-20.md): rungs 2(residue)/3(dispersion) provable-now, 1(OS reconstruction)/4(changing-lattice) open bridges, 5 assembly-conditional; SINGLE missing analytic lemma named+contracted: osterwalderSeiler_AFN_gap_to_KL_atom. 3 kernel rungs landed PhysicsSM/Draft/NullEdge/GapToPoleLadder.lean (poleResponse residue-iff-overlap, regular-preserves-residue, relativistic rest=min=m)."
+    },
+    {
+      "id": "1d730886-0048-4d17-9b6a-186792cb2cb9",
+      "work_item_id": null,
+      "title": "A5 neutrino operator classification (Opus; Weinberg+NCG grounded)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T08:04:53-07:00",
+      "notes": "4-branch: no-minimal-content lemma, RH-singlet Dirac witness, Weinberg dim-5 Majorana cost, finite seesaw Schur complement. Package mass-a5-neutrino-classification-20260720. [2026-07-20T10:01:04-07:00 claude] COMPLETE + verified 0/0 standard-three (olean built, pc clean). Complete 4-branch A5 neutrino classification: no-minimal-content (empty V_R), hypercharge Majorana obstruction, RH-singlet Dirac turn, Weinberg dim-5 Delta L=2 vs Dirac, seesaw Schur -m_D^2/M_R + triangular congruence + controlled |m_D/M_R| approx, complete_four_branch_classification. Landed NeutrinoMassClassification.lean; CLASSIFICATION.md in NE-DYNAMICS."
+    },
+    {
+      "id": "da35eb2a-1150-47f9-8b67-bce8c90f8e86",
+      "work_item_id": "CONT-FOURIER-001",
+      "title": "HNU changing-cell position-space L2 composition",
+      "status": "cancelled",
+      "submitted_at": "2026-07-20T07:55:26-07:00",
+      "notes": "Flagship composition from exact adaptive HNU window bound through actual normalized cell coefficients and inverse Fourier L2. Task note AgentTasks/hnu-changing-cell-l2-aristotle-2026-07-20.md. [2026-07-20T12:11:48-07:00 codex] Four-hour stalled task canceled after its useful in-progress spine was harvested; local completion landed HNUChangingCellL2 and full capstone."
+    },
+    {
+      "id": "35962102-a590-4516-abaa-92a5e59b1a3e",
+      "work_item_id": null,
+      "title": "A3/A4 positive transfer-mass bridge + SU(3) API design (Opus, OS+KL grounded)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T07:49:42-07:00",
+      "notes": "Positive direction complementing transfer_gap obstruction: connected correlation decay = spectral gap WHEN observable overlaps first excited mode; + minimal reflection-positive SU(3) transfer API design. Package mass-a3-transfer-bridge-20260720. [2026-07-20T08:55:42-07:00 claude] COMPLETE + verified 0/0 (olean built, pc clean). Positive A3 gap<->mass bridge general finite dim: spectral decomposition C(n)=sum(v_j)^2 lam_j^n, fin2 Cc(n)=(v1)^2 lam1^n, ratio->positive weight, log(lam0/lam1)=decay mass. Completes A3 with transfer_gap obstruction. Landed TransferPositiveBridge.lean."
+    },
+    {
+      "id": "ccc3d4d7-86e3-4087-8c67-39b2de3d004f",
+      "work_item_id": null,
+      "title": "A4 correlator: resolvent response pole vs propagator zero (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T07:29:41-07:00",
+      "notes": "Explicit two-point response entry (z+1)^-1 (pole) vs (z-1)^-1 (regular) at the shared gap edge z=-1; residue 1 vs (z+1)/(z-1)->0. Mathlib-only. Package resolvent-response-pole-20260720. [2026-07-20T08:03:25-07:00 claude] COMPLETE + verified 0/0 standard-three (olean built, 0 axiom violations, pre-commit clean). resolvent_response_entries + resolvent_residue_pole_vs_zero via explicit 2x2 inverse. A4 correlator-level pole-vs-propagator-zero explicit. Landed PhysicsSM/Draft/NullEdge/ResolventResponsePole.lean."
+    },
+    {
+      "id": "1c9e1353-a242-4603-b54a-645e515b9788",
+      "work_item_id": null,
+      "title": "HNU headline upgrade: uniform quasienergy gap from pointwise no-crossing (Opus audit-driven)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T07:24:20-07:00",
+      "notes": "Compactness+unitarity upgrade of Codex massiveHNU_zero_pi_gap: pointwise det!=0 -> uniform eigenvalue margin. Mathlib-only. Package uniform-quasienergy-gap-20260720. [2026-07-20T08:20:25-07:00 claude] COMPLETE + verified 0/0 standard-three (olean built, 0 axiom violations, pc clean). Proved the FULL general-m statement (not the m=4 fallback): compactness lower bounds on both det norms + charpoly factorization over C + unit-norm eigenvalues (unitarity) + det-product 2^(m-1) estimate + margin delta = delta0/2^(m-1). One harvest fix: reordered misplaced set_option/docstring. Landed PhysicsSM/Draft/NullEdge/UniformQuasienergyGap.lean. Upgrades Codex massiveHNU_zero_pi_gap: pointwise det!=0 -> uniform eigenvalue margin at general m."
+    },
+    {
+      "id": "cda24762-8b5e-410b-a6cc-e10be2c867f5",
+      "work_item_id": null,
+      "title": "A1 shared-Higgs cross-space obstruction (Opus adversarial audit)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T07:16:21-07:00",
+      "notes": "Does fermion map factor through the vacuum VECTOR or only the scalar v? cross-space Fin2 vs Fin n x Fin4 no-go. Package mass-shared-higgs-crossspace-20260720. [2026-07-20T07:57:08-07:00 claude] COMPLETE + verified 0/0 standard-three. DECISIVE A1 NO-GO: strong shared-vacuum-VECTOR composition false under repo types; honest version = scalar sharing (v).Y_f with Y_f free. 3 kernel counterexamples. Sent Codex high-pri review (constrains its A1 build). Landing module next."
+    },
+    {
+      "id": "93652564-f5c4-4fa3-bc5a-a8a734ab554a",
+      "work_item_id": null,
+      "title": "A0 exhaustiveness + SMG boundary (Opus synthesis)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T07:16:20-07:00",
+      "notes": "Exhaustiveness rel to response class + non-overlap law + SMG (propagator-zero) as missing row vs scoped out. Package mass-a0-exhaustiveness-smg-20260720. [2026-07-20T07:48:40-07:00 claude] COMPLETE (not budget); independently verified 0/0 standard-three. High-value analysis + kernel Lean. Findings: (1) exhaustiveness only rel to a tagged response-witness class under a Single-response-witness hypothesis excluding Green-function-zero SMG; (2) NON-OVERLAP CORRECTION - Gamma-odd _|_ Gamma-even (row1 vs 2,3) BUT even/even NOT orthogonal (gauge Gram vs Higgs Hessian need typed domains, kernel counterexample even_even_not_orthogonal); (3) row4 neutrino = same odd form as row1, needs provenance convention; (4) SMG = 6th row iff transfer-gap means composite-only, else absorbed but list stops classifying (ties to gap_does_not_fix_pole). Landed verified port PhysicsSM/Draft/NullEdge/MassResponseNonOverlap.lean (olean built, pre-commit clean). Memo non-overlap law corrected."
+    },
+    {
+      "id": "37f6c2ac-9433-4cc1-88b4-1999430566b7",
+      "work_item_id": null,
+      "title": "A2 moduli: Pluecker-to-Yukawa legality/selection (Opus independent classification)",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T07:16:20-07:00",
+      "notes": "Strategy/no-go: Y is a free matrix at current level so Pluecker does NOT select it; classify Hom_G(rho_R,rho_L) survivors + whether Pluecker cuts to a point. Package mass-pluecker-yukawa-moduli-20260720. [2026-07-20T08:09:20-07:00 claude] COMPLETE + verified 0/0 standard-three (olean built, pc clean). A2 SETTLED AS MODULI: Adm = Hom_G(V_R,V_L), Schur dim sum m_L m_R; Pluecker does NOT uniquely select Y (kernel counterexample: diag(1,0), diag(0,1) both equivariant, EQUAL Frobenius norm + determinant). SM Yukawa needs the Higgs rep not a bare intertwiner; convention conflict flagged (+ projector commutes with Gamma5F). Landed PhysicsSM/Draft/NullEdge/PlueckerYukawaModuli.lean. Full analysis in job ANALYSIS.md."
+    },
+    {
+      "id": "f55ec40c-d7f3-4e85-b7bd-152dc2cc4dfc",
+      "work_item_id": null,
+      "title": "Codex: corrected associator transport",
+      "status": "running",
+      "submitted_at": "2026-07-20T05:47:32-07:00",
+      "notes": "Prove [xy,z,y] = [x,zy,y] and retain the false-formula regression. [2026-07-20T05:47:59-07:00 codex] Confirmed RUNNING by aristotle list after submission."
+    },
+    {
+      "id": "969f9380-d234-4979-bd91-447b9db90ea2",
+      "work_item_id": null,
+      "title": "Codex: standard right Moufang identity",
+      "status": "idle",
+      "submitted_at": "2026-07-20T05:47:32-07:00",
+      "notes": "Prove the correctly parenthesized standard right Moufang law. [2026-07-20T05:47:59-07:00 codex] Confirmed RUNNING by aristotle list after submission. [2026-07-20T09:10:30-07:00 codex] Reconciled from live Aristotle list at 2026-07-20 09:12 PDT; return awaits separate non-goal harvest."
+    },
+    {
+      "id": "f54bea15-48ee-48df-be8b-cb19dc18d05a",
+      "work_item_id": null,
+      "title": "Codex: Spin10 basis-two global pair composition",
+      "status": "idle",
+      "submitted_at": "2026-07-20T05:47:32-07:00",
+      "notes": "Close standardizable genuine Krasnov pairs from the new basis-two chart theorem. [2026-07-20T05:47:59-07:00 codex] Confirmed RUNNING by aristotle list after submission. [2026-07-20T09:10:30-07:00 codex] Reconciled from live Aristotle list at 2026-07-20 09:12 PDT; return awaits separate non-goal harvest."
+    },
+    {
+      "id": "832348d7-93c5-4ccf-836d-98b2dd26ea53",
+      "work_item_id": null,
+      "title": "Codex: strict 3+1 charge-balance frontier",
+      "status": "cancelled",
+      "submitted_at": "2026-07-20T05:47:31-07:00",
+      "notes": "Derive torus charge balance from explicit regularity/topology hypotheses or sharpen the missing axiom. [2026-07-20T05:47:58-07:00 codex] Confirmed RUNNING by aristotle list after submission. [2026-07-20T10:11:53-07:00 codex] Cancelled stalled task after 4h; snapshot preserved; result only conditional finite pairing bookkeeping, not global torus charge theorem."
+    },
+    {
+      "id": "e17b4762-72f1-4502-ae99-b2a47cfd0c0e",
+      "work_item_id": null,
+      "title": "Codex: rank-four Riesz projector capstone",
+      "status": "idle",
+      "submitted_at": "2026-07-20T05:47:31-07:00",
+      "notes": "Selfadjoint resolvent, contour projector bound, and rank-four stability composition. [2026-07-20T05:47:58-07:00 codex] Confirmed RUNNING by aristotle list after submission. [2026-07-20T09:10:31-07:00 codex] Reconciled from live Aristotle list at 2026-07-20 09:12 PDT; return awaits separate non-goal harvest."
+    },
+    {
+      "id": "ca8bccf7-0d88-4150-9855-6c833dc693c7",
+      "work_item_id": null,
+      "title": "Codex: HNU massive gapped homotopy class",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T05:47:31-07:00",
+      "notes": "Explicit continuous zero/pi-gapped interpolation between nontrivial mass angles. [2026-07-20T05:47:58-07:00 codex] Confirmed RUNNING by aristotle list after submission. [2026-07-20T09:01:40-07:00 codex] Harvested only the new HNUMassiveGapHomotopy module; rejected unrelated returned seed changes containing a proof hole. Live theorem statements preserved, axiom guards passed, targeted Lean and Lake build passed."
+    },
+    {
+      "id": "acb28328-643c-4218-95f9-ff105899f616",
+      "work_item_id": null,
+      "title": "Codex: uniform quantitative HNU zero/pi gap",
+      "status": "integrated",
+      "submitted_at": "2026-07-20T05:47:31-07:00",
+      "notes": "Uniform positive determinant margin over the closed Brillouin cube. [2026-07-20T05:47:58-07:00 codex] Confirmed RUNNING by aristotle list after submission. [2026-07-20T09:04:55-07:00 codex] Harvested only HNUQuantitativeGlobalGap; rejected unrelated seed changes containing a proof hole. Live theorem gives compactness-derived uniform positive determinant margins at +1 and -1, not yet an individual quasienergy-angle bound. Axiom guards and targeted builds passed."
+    },
+    {
+      "id": "9215a9d3-c0e5-41b3-a1c6-37df4a38268f",
+      "work_item_id": null,
+      "title": "Codex: direct right Moufang",
+      "status": "harvested",
+      "submitted_at": "2026-07-19T22:58:56-07:00",
+      "notes": "Independent Artin/polarization proof of right Moufang from alternativity. [2026-07-19T23:00:13-07:00 codex] Confirmed RUNNING by aristotle list immediately after submission. [2026-07-20T05:40:45-07:00 codex] Refuted the submitted mis-parenthesized right Moufang target with an exact real-octonion counterexample; standard identity uses u*((v*w)*v)."
+    },
+    {
+      "id": "554736ff-5227-4400-851d-409794cd3f98",
+      "work_item_id": null,
+      "title": "Codex: corrected signed associator",
+      "status": "harvested",
+      "submitted_at": "2026-07-19T22:58:55-07:00",
+      "notes": "Teichmueller/alternativity proof or exact counterexample for signed associator. [2026-07-19T23:00:13-07:00 codex] Confirmed RUNNING by aristotle list immediately after submission. [2026-07-20T05:40:45-07:00 codex] Refuted the signed associator candidate and identified the corrected parenthesization [xy,z,y]=[x,zy,y] in an exact coordinate octonion model."
+    },
+    {
+      "id": "e8b5248b-6f50-44e3-9fc3-2d33877f6e5d",
+      "work_item_id": null,
+      "title": "Codex: strict 3+1 locality frontier",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T22:58:55-07:00",
+      "notes": "Finite-range locality predicate, Wilson exclusion, and repaired torus theorem. [2026-07-19T23:00:13-07:00 codex] Confirmed RUNNING by aristotle list immediately after submission. [2026-07-20T05:40:45-07:00 codex] Integrated Strict3Plus1LocalityFrontier: finite Fourier locality, split-walk witness, and Wilson-Cayley exclusion; local Lean check passed."
+    },
+    {
+      "id": "62b38c16-d555-4aad-a231-b28c137de516",
+      "work_item_id": null,
+      "title": "Codex: finite Davis-Kahan bridge",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T22:58:54-07:00",
+      "notes": "Selfadjoint operator perturbation to nearby rank-four spectral projector. [2026-07-19T23:00:13-07:00 codex] Confirmed RUNNING by aristotle list immediately after submission. [2026-07-20T05:40:46-07:00 codex] Integrated IntrinsicRankFourDavisKahanBridge with resolvent persistence and quantitative displacement estimates; local Lean check passed."
+    },
+    {
+      "id": "46717581-7d99-422d-9bca-cdecd2692383",
+      "work_item_id": null,
+      "title": "Codex: HNU massive crossing reduction",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T22:58:54-07:00",
+      "notes": "Independent block-determinant/eigenphase reduction for zero-pi crossings. [2026-07-19T23:00:13-07:00 codex] Confirmed RUNNING by aristotle list immediately after submission. [2026-07-20T05:40:46-07:00 codex] Merged the exact massive HNU shifted-determinant reduction and crossing-to-endpoint theorem into the live global-gap module."
+    },
+    {
+      "id": "e98719ee-0bc7-4449-ae38-b84a3c22fcaf",
+      "work_item_id": null,
+      "title": "Codex: HNU endpoint-reversal centrality crux",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T22:58:53-07:00",
+      "notes": "Exact truth audit and proof/counterexample for endpoint reversal equality. [2026-07-19T23:00:13-07:00 codex] Confirmed RUNNING by aristotle list immediately after submission. [2026-07-20T05:40:46-07:00 codex] Merged endpoint reversal constraints, centrality, and exact zero/pi endpoint census; composed HNU module is hole-free."
+    },
+    {
+      "id": "cd32b70b-e8e9-48ee-b520-4722d9009b88",
+      "work_item_id": null,
+      "title": "Codex: non-diagonal rank-four spectral perturbation",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T20:45:06-07:00",
+      "notes": "AgentTasks/aristotle-submit/rank-four-general-perturbation-20260719-project; target RankFourSelector/GeneralPerturbation.lean; context rank-four-general-perturbation-20260719-20260719-203658.md [2026-07-19T22:52:59-07:00 codex] Integrated non-diagonal projector counterexample plus norm-less-than-one rank preservation theorem."
+    },
+    {
+      "id": "f28c5352-7ef5-478a-a2dc-5cefe48af96e",
+      "work_item_id": null,
+      "title": "Codex: full normalized Spin(10) vacuum-chart incidence",
+      "status": "running",
+      "submitted_at": "2026-07-19T20:45:05-07:00",
+      "notes": "AgentTasks/aristotle-submit/spin10-vacuum-chart-incidence-20260719-project; target PhysicsSM/Draft/Spin10VacuumChartIncidence.lean; context spin10-vacuum-chart-incidence-20260719-20260719-203648.md"
+    },
+    {
+      "id": "41cce47a-8eb5-497c-9536-9423031288d0",
+      "work_item_id": null,
+      "title": "Codex: vacuum-stabilizer basis-two affine transitivity",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T20:45:04-07:00",
+      "notes": "AgentTasks/aristotle-submit/spin10-vacuum-stabilizer-basis-two-20260719-project; target PhysicsSM/Draft/Spin10VacuumStabilizerBasisTwo.lean; context spin10-vacuum-stabilizer-basis-two-20260719-20260719-203636.md [2026-07-20T05:40:47-07:00 codex] Integrated Spin10VacuumStabilizerBasisTwo; all two-particle affine charts map to the weak line under an exact vacuum stabilizer."
+    },
+    {
+      "id": "1d659a0a-5b2f-4c60-9b3f-2622a76e96d3",
+      "work_item_id": null,
+      "title": "Codex: exact Spin(10) vacuum-chart denormalization",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T20:45:04-07:00",
+      "notes": "AgentTasks/aristotle-submit/spin10-chart-denormalization-20260719-project; target PhysicsSM/Draft/Spin10VacuumChartDenormalization.lean; context spin10-chart-denormalization-20260719-20260719-203606.md [2026-07-19T22:52:59-07:00 codex] Integrated exact nonzero vacuum-chart denormalization theorem with axiom guard."
+    },
+    {
+      "id": "6a0ba28d-c030-41d5-a2e2-a92f8c8004d5",
+      "work_item_id": null,
+      "title": "Codex: quantitative rank-four selector stability",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T18:50:09-07:00",
+      "notes": "Focused uniform-gap perturbation theorem and exact rank-four selector corollary. [2026-07-19T18:51:00-07:00 codex] Confirmed RUNNING by aristotle list immediately after submission. [2026-07-19T20:34:38-07:00 codex] Selector stability proved, axiom-guarded, and integrated as PhysicsSM.Draft.NullEdge.IntrinsicRankFourLagrangeSelectorStability."
+    },
+    {
+      "id": "b07302d3-f3f8-40a2-91ed-8aa17c2ca282",
+      "work_item_id": null,
+      "title": "Codex: global pure-spinor chart entry",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T18:50:08-07:00",
+      "notes": "Focused cancellation-safe chart entry and marked pure-spinor normal form. [2026-07-19T18:50:59-07:00 codex] Confirmed RUNNING by aristotle list immediately after submission. [2026-07-19T22:52:59-07:00 codex] Integrated cancellation-safe global chart entry and algebraic GSpin single-pure-spinor orbit; genuine-pair theorem remains open."
+    },
+    {
+      "id": "48aeb765-d1f3-4992-8fbd-489579cd5875",
+      "work_item_id": null,
+      "title": "Codex: general Chevalley pure-spinor incidence",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T18:50:06-07:00",
+      "notes": "Focused common-annihilator dimension-three theorem. [2026-07-19T18:50:59-07:00 codex] Confirmed RUNNING by aristotle list immediately after submission. [2026-07-19T20:34:39-07:00 codex] General target remains open; strongest affine basis-two incidence family integrated with an axiom guard."
+    },
+    {
+      "id": "76823bf2-3010-45f0-9f8e-7bb531dfc3f2",
+      "work_item_id": null,
+      "title": "Codex: pure-spinor affine chart reconstruction",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T18:50:04-07:00",
+      "notes": "Focused successor theorem using five landed Pluecker chart quadrics. [2026-07-19T18:50:59-07:00 codex] Confirmed RUNNING by aristotle list immediately after submission. [2026-07-19T20:34:38-07:00 codex] Normalized Spin(10) vacuum-chart reconstruction proved, axiom-guarded, and integrated."
+    },
+    {
+      "id": "979057a0-8cdc-418c-8554-c16d2291292e",
+      "work_item_id": null,
+      "title": "Codex: corrected signed Moufang-Artin gate",
+      "status": "harvested",
+      "submitted_at": "2026-07-19T18:50:03-07:00",
+      "notes": "Focused corrected associator sign and clean right Moufang proof. [2026-07-19T18:50:59-07:00 codex] Confirmed RUNNING by aristotle list immediately after submission. [2026-07-19T22:52:59-07:00 codex] Blocker report harvested; both signed associator and direct Moufang targets remain open and were not integrated as theorems."
+    },
+    {
+      "id": "ab9663c1-b4ef-42b2-a7db-6854d1f6eeb1",
+      "work_item_id": null,
+      "title": "Codex: Spin10 vacuum-fiber transitivity crux",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T18:50:01-07:00",
+      "notes": "Focused d=3 pure-spinor vacuum stabilizer transitivity target. [2026-07-19T18:50:58-07:00 codex] Confirmed RUNNING by aristotle list immediately after submission. [2026-07-19T20:34:40-07:00 codex] Full vacuum-fiber transitivity remains open; explicit annihilation-root affine-line transitivity family integrated with an axiom guard."
+    },
+    {
+      "id": "6c78a06c-5c93-4b10-ac12-8363c92e3224",
+      "work_item_id": null,
+      "title": "Codex: adversarial strict 3+1 torus doubling",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T18:49:59-07:00",
+      "notes": "Focused prove/counterexample/missing-hypothesis audit for admissible_doubling_torus. [2026-07-19T18:50:58-07:00 codex] Confirmed RUNNING by aristotle list immediately after submission. [2026-07-19T22:52:59-07:00 codex] Integrated adversarial conclusion: universal torus doubling is false; Wilson-Cayley counterexample and balanced-charge repair are kernel-checked."
+    },
+    {
+      "id": "bbd3611e-00d2-4957-8689-b6474edabf85",
+      "work_item_id": null,
+      "title": "Codex: HNU massive zero/pi crossing reduction",
+      "status": "harvested",
+      "submitted_at": "2026-07-19T18:49:57-07:00",
+      "notes": "Focused package; isolate global massive HNU spectral crossing and gap reduction. [2026-07-19T18:50:58-07:00 codex] Confirmed RUNNING by aristotle list immediately after submission. [2026-07-19T22:52:59-07:00 codex] Merged proved mass-coin determinant and origin-gap lemmas; global crossing reduction remains an explicit handoff."
+    },
+    {
+      "id": "d4420cd4-9b25-4d95-b771-6f1131480e7d",
+      "work_item_id": null,
+      "title": "Codex: HNU endpoint-reversal parity core",
+      "status": "harvested",
+      "submitted_at": "2026-07-19T18:48:16-07:00",
+      "notes": "Focused package; target HNUMassiveGlobalGap.endpoint_eq_momentumReverse_iff; context hnu-endpoint-parity-20260719. [2026-07-19T18:50:58-07:00 codex] Confirmed RUNNING by aristotle list immediately after submission. [2026-07-19T22:52:59-07:00 codex] Merged proved central-endpoint reversal converse; endpoint centrality implication remains an explicit handoff."
+    },
+    {
+      "id": "0fec57cf-2d61-4b56-b703-a075d6587977",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Exact HNU Floquet micromotion invariant strategy",
+      "status": "cancelled",
+      "submitted_at": "2026-07-19T13:28:36-07:00",
+      "notes": "Topological API/scaffold or precise missing-datum theorem jointly accounting for zero node and pi boundary; package codex-hnu-floquet-micromotion-strategy-20260719-project. [2026-07-19T17:51:53-07:00 codex] Exceeded two-hour stall rule; snapshot preserved, with no distinct strategy report returned."
+    },
+    {
+      "id": "70183b62-2e63-4e3a-a112-9ffab39017f2",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Canonical HNU decoder uniqueness",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T13:28:35-07:00",
+      "notes": "Explicit fiberwise-local complex-linear decoder uniqueness over the landed canonical decoder identities; package codex-hnu-canonical-decoder-uniqueness-20260719-project. [2026-07-19T17:51:46-07:00 codex] Canonical HNU decoder rebuilt with nonvacuous model, uniqueness, and clean axiom guards."
+    },
+    {
+      "id": "daac1f2a-0bcc-4238-b8b7-74238185d1d2",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Gupta-Short stay tangent resource theorem",
+      "status": "cancelled",
+      "submitted_at": "2026-07-19T13:28:35-07:00",
+      "notes": "Audit landed Laurent certificate bridge, derive exact tangent and involutory criterion with rational control; package codex-gupta-short-stay-tangent-20260719-project. [2026-07-19T17:51:52-07:00 codex] Exceeded two-hour stall rule; snapshot only added six unproved declarations and was not merged."
+    },
+    {
+      "id": "081bd1d6-d82e-4a13-b215-c319775a5aac",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Massive HNU global zero/pi gap",
+      "status": "cancelled",
+      "submitted_at": "2026-07-19T13:28:34-07:00",
+      "notes": "Full Brillouin-cube determinant exclusion plus momentum-reversal parity census; package codex-hnu-massive-global-gap-20260719-project. [2026-07-19T17:51:52-07:00 codex] Exceeded two-hour stall rule; snapshot preserved. Useful decomposition has two unproved core lemmas and was not merged."
+    },
+    {
+      "id": "695bcfb3-f956-4c37-8894-2713905d91d8",
+      "work_item_id": "GRAV-ORDER-OPERATOR-001",
+      "title": "Exact rank-four Lagrange spectral selector",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T10:01:21-07:00",
+      "notes": "Priority 1 constructive polynomial projector from isolated finite spectrum; task 235b50d3-648c-4553-a2e2-d492b7cc3c6a; focused Mathlib package. [2026-07-19T13:28:20-07:00 codex] Live aristotle list reported IDLE on 2026-07-19; registry reconciled, harvest still pending. [2026-07-19T18:02:43-07:00 codex] Exact rank-four Lagrange selector integrated under the project namespace with clean axiom guard; gap, inertia, and refinement stability remain explicit successor gates."
+    },
+    {
+      "id": "bdfa33fa-1eb5-4697-9858-7e1c1776a09f",
+      "work_item_id": null,
+      "title": "Fixed-momentum determinant-phase realizability and SU(2) fiber",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T09:51:10-07:00",
+      "notes": "Priority 3 image-and-fiber classification; task a27c568e-f192-40e3-ada0-e6beb1e3ec8f; focused Mathlib package. [2026-07-19T13:28:20-07:00 codex] Live aristotle list reported IDLE on 2026-07-19; registry reconciled, harvest still pending. [2026-07-19T18:02:43-07:00 codex] Fixed-momentum determinant-phase image and SU(2) fiber classification integrated into NullFactorizationSpinFiber with clean guards and quarter-turn witness."
+    },
+    {
+      "id": "8ac5c53d-c285-477b-92ed-6866a6413076",
+      "work_item_id": null,
+      "title": "QCA 3+1: local decoded HNU with explicit pi complement",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T09:07:52-07:00",
+      "notes": "Construction-or-no-go for real-space local selected HNU sector, pi-gapped complement, Fourier intertwiner, decoder, and one-edge support; package AgentTasks/aristotle-submit/hnu-decoded-local-stay-20260719-project [2026-07-19T13:28:19-07:00 codex] Harvested and integrated as HNUDecodedLocalStay; targeted direct check and build passed on 2026-07-19."
+    },
+    {
+      "id": "ff1b8e25-93f0-46a7-806d-9f0c99212a6c",
+      "work_item_id": null,
+      "title": "QCA 3+1: massive doubled HNU with Pluecker onsite turn",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T09:00:56-07:00",
+      "notes": "Exact unitary massive Floquet composition and simultaneous kinetic-plus-mass infrared derivative; package AgentTasks/aristotle-submit/hnu-pluecker-massive-stay-20260719-project [2026-07-19T13:28:19-07:00 codex] Harvested and integrated as HNUPlueckerMassiveStay; targeted direct check and build passed on 2026-07-19."
+    },
+    {
+      "id": "09a028fc-585e-4cbf-ab86-f6fbc352bb42",
+      "work_item_id": null,
+      "title": "QCA 3+1: HNU stay-sector coverage and no-global-stasis",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T09:00:55-07:00",
+      "notes": "Each factor has stay sector, full intersection zero, movementBudget = 4I; package AgentTasks/aristotle-submit/hnu-stay-coverage-20260719-v2-project [2026-07-19T09:55:32-07:00 codex] Downloaded complete HNU stay coverage proof; semantic audit confirms factor-local stay sectors and zero full intersection; live integration build running. [2026-07-19T09:56:29-07:00 codex] Integrated as PhysicsSM/Draft/NullEdge/HNUStayCoverage.lean with axiom guards; targeted repository build passed."
+    },
+    {
+      "id": "c8f5634c-c200-443f-82b3-25d8a4e6dd37",
+      "work_item_id": null,
+      "title": "QCA 3+1: exact Laurent stay/shift unitarity classification",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T09:00:55-07:00",
+      "notes": "Range-one stay-plus-null-shift classification; converse-or-counterexample contract; package AgentTasks/aristotle-submit/stay-laurent-unitarity-20260719-project [2026-07-19T09:38:27-07:00 codex] Downloaded and independently verified the exact stay/shift Laurent unitarity classification under the repository toolchain; integration review in progress. [2026-07-19T09:56:29-07:00 codex] Integrated as PhysicsSM/Draft/NullEdge/StayLaurentUnitarityClassification.lean with axiom guard; targeted repository build passed."
+    },
+    {
+      "id": "23312458-971a-45f7-bff6-1ccbb41d6c5e",
+      "work_item_id": null,
+      "title": "A5: holonomy complete gauge invariant (classification capstone)",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T08:21:08-07:00",
+      "notes": "Package ring-holonomy-classification-20260719 (4 landed + target, statement-checked green); crux = site-by-site gauge construction with wrap-around closure = holonomy equality; composes with landed all-n discriminator into the classification theorem [2026-07-19T09:07:18-07:00 codex] Aristotle task 70d4fc65 completed with errors; project is no longer computationally active and awaits separate failure harvest. [2026-07-19T17:51:45-07:00 codex] A5 rebuilt locally; equal holonomy classification and unitary conjugacy are assumption-clean and root-guarded."
+    },
+    {
+      "id": "f0c8d098-d381-433d-a2f6-be4368d6ff6f",
+      "work_item_id": null,
+      "title": "AU5r: general Chevalley incidence (post-harvest refresh)",
+      "status": "harvested",
+      "submitted_at": "2026-07-19T08:18:53-07:00",
+      "notes": "Basis case+equivariance+bridge proven; direct coordinate route licensed [2026-07-19T17:51:50-07:00 codex] Two clean incidence coefficient reductions isolated; main general-incidence crux remains open."
+    },
+    {
+      "id": "65457ef8-a4fd-4760-bbe9-439c99d91d72",
+      "work_item_id": null,
+      "title": "H-Artin: Moufang pair via Artin linearization (fresh route)",
+      "status": "harvested",
+      "submitted_at": "2026-07-19T08:18:53-07:00",
+      "notes": "PROMPT_ARTIN forbids product-entry reshuffles (circularity record); unlocks Hurwitz hole-free merge [2026-07-19T17:51:51-07:00 codex] Two Artin linearizations salvaged; requested unsigned associator companion is false by explicit octonion sign witness."
+    },
+    {
+      "id": "a5de8280-fec9-4c9f-98b9-516011897338",
+      "work_item_id": null,
+      "title": "Cl8sr: sigma multiplicativity + braid (post-harvest refresh)",
+      "status": "harvested",
+      "submitted_at": "2026-07-19T08:18:53-07:00",
+      "notes": "Six image signs proven; sigmac_mul = crux [2026-07-19T17:51:47-07:00 codex] Locally complete Cl8 sigma return; headline theorem transitively inherits sorryAx, so not root-integrated."
+    },
+    {
+      "id": "283cb5b8-99d1-4252-8859-f8edff04ee9a",
+      "work_item_id": null,
+      "title": "B4r: Wilson-Cayley crossing dictionary (post-harvest refresh)",
+      "status": "harvested",
+      "submitted_at": "2026-07-19T08:18:53-07:00",
+      "notes": "Hermiticity+unitarity proven; dictionary first priority [2026-07-19T17:51:48-07:00 codex] Locally complete Wilson-Cayley return; headline theorem inherits the open Strict3Plus1Frontier assumption."
+    },
+    {
+      "id": "78a8ea71-9ec7-4382-b28f-1ac840653ce7",
+      "work_item_id": null,
+      "title": "C2r: full-walk census completion (post-harvest refresh)",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T08:18:53-07:00",
+      "notes": "Corrected-docstring target; 8 holes; kernel-decide preferred over native [2026-07-19T17:51:46-07:00 codex] C2 full-walk plus/minus census rebuilt; local axiom guards exclude sorryAx."
+    },
+    {
+      "id": "47fe6cd0-b31d-4923-ae2a-b54248714fbe",
+      "work_item_id": null,
+      "title": "J1r: h3O power-4 + idempotence (post-harvest refresh)",
+      "status": "harvested",
+      "submitted_at": "2026-07-19T08:18:53-07:00",
+      "notes": "sum/reconstruct/eigen proven in target; 2 holes = job [2026-07-19T17:51:49-07:00 codex] Locally complete H3O Peirce return; headline projection theorem inherits sorryAx upstream."
+    },
+    {
+      "id": "d601d2ff-a3b1-4b5e-8579-c54a5aeadc06",
+      "work_item_id": null,
+      "title": "AU4r: vacuum-chart normal form lemmas (post-harvest refresh)",
+      "status": "harvested",
+      "submitted_at": "2026-07-19T08:18:53-07:00",
+      "notes": "creationRootEnd_mem proven in target; 2 chart lemmas = job; step-2 closure if reachable [2026-07-19T17:51:51-07:00 codex] Five clean chart quadratic identities isolated; reconstruction timed out and three returned declarations remain open."
+    },
+    {
+      "id": "e104c7db-6372-48e9-8218-a0672687180d",
+      "work_item_id": null,
+      "title": "S2r: ext-action Cauchy-Binet crux + vacuum (post-harvest refresh)",
+      "status": "harvested",
+      "submitted_at": "2026-07-19T08:18:53-07:00",
+      "notes": "Live target with payloads proven; 2 holes = entire job [2026-07-19T17:51:47-07:00 codex] Locally complete exterior-action return; extAction_mul transitively inherits sorryAx, so retained as draft."
+    },
+    {
+      "id": "9cf244e7-61dc-4873-af52-c3c54cf25883",
+      "work_item_id": null,
+      "title": "AU6r: vacuum-fiber marked transitivity (resubmission of stillborn)",
+      "status": "harvested",
+      "submitted_at": "2026-07-19T08:18:52-07:00",
+      "notes": "Package spin10-fiber-transitivity-20260719 verbatim; probe that confirmed budget restoration [2026-07-19T17:51:49-07:00 codex] Partial salvage integrated: invariance, witnesses, and scalar-line case; general transitivity remains one handoff hole."
+    },
+    {
+      "id": "2a74728c-732f-4e3c-bbe3-05e62a2461d1",
+      "work_item_id": null,
+      "title": "AU6: vacuum-fiber marked transitivity (Selector step 3, scalar form)",
+      "status": "failed",
+      "submitted_at": "2026-07-19T03:51:04-07:00",
+      "notes": "Package spin10-fiber-transitivity-20260719 (9 landed modules + target); crux = Witt-type extension on the d=3 fiber; warmup = fiber invariance via landed equivariance; sorryAx-leak ban pre-registered (must not route through the incidence hole); harvest-momentum successor of e267089c [2026-07-19T04:35:28-07:00 claude] STILLBORN: OUT_OF_BUDGET within minutes of submission; package byte-identical to submission, zero work. Resubmit as-is when budget restored (package spin10-fiber-transitivity-20260719 fully staged)."
+    },
+    {
+      "id": "371b7803-3cde-4d6f-b62c-7c4933387769",
+      "work_item_id": null,
+      "title": "AU4: pure-spinor normal form (Selector step 2, marked transitivity)",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T03:30:38-07:00",
+      "notes": "Package spin10-normal-form-20260719 (8 landed modules + target); target = exists_evenCliffordGroup_smul_eq_vacuum with pre-registered scalar license; suggested exp(B) route on the 16-coefficient even Fock model; counterexample first-class; margin submit lifting fleet to 13 [2026-07-19T04:36:07-07:00 claude] BUDGET-KILLED partial INTEGRATED (0 errors, 4 documented holes): creationRootEnd_mem PROVEN - the elementary creation-root operator 1 + t(wedge_i wedge_j) IS in evenCliffordGroup via explicit 4-gammaUnit + scalarUnit factorization (solves the exp(B)-route membership gate). Two chart lemmas (vacuum-chart normal form; flip-to-chart) stated as clean successor holes; step-2 + main exit unchanged."
+    },
+    {
+      "id": "d0c6d946-87b8-40b7-a67b-0eadd23194cf",
+      "work_item_id": null,
+      "title": "A4: ring-holonomy trace formula + spectral witness at EVERY n (drop parity)",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T03:27:19-07:00",
+      "notes": "Package ring-holonomy-alln-20260719 (4 files: 3 landed proven + target, Mathlib-only closure); even-n crux = telescoped binomial with n*C(n,n/2) constant; composes landed odd chain into all-n discriminator + all-n half-link witness; backfill restoring floor to 12 [2026-07-19T04:42:15-07:00 claude] HEADLINE COMPLETE: budget-killed at 23 min with the crux PROVEN (trace_pow_even, n*C(n,n/2) constant + hop-trace lemmas); the three compositional theorems closed by hand at harvest (mirrors of landed odd proofs). VERIFIED hole-free at pin (0/0) after heartbeat raise 3.2M; olean built; axiom audit all six decls standard-three. THE PAPER A RING-HOLONOMY CHAIN NOW HOLDS AT EVERY n > 2 - parity hypothesis eliminated."
+    },
+    {
+      "id": "10f229fc-518e-4f6c-9580-e5a243128fc6",
+      "work_item_id": null,
+      "title": "S2 prerequisites 1-2: exterior-power (Cauchy-Binet) action on the Fock model",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T03:15:28-07:00",
+      "notes": "Package spin10-ext-action-20260719 (3 files); nonvacuity payloads MANDATORY per 9d discipline (phase-3 diagonal eigenvalue on weakSpinor + colour control); successor of the rejected hollow S2 return [2026-07-19T04:35:28-07:00 claude] BUDGET-KILLED partial INTEGRATED: extAction_one + compoundEntry_diagonal + extAction_basisSpinor + BOTH MANDATORY nonvacuity payloads (diagPhase3 weak eigenvalue c; colour control) proven; Cauchy-Binet crux (extAction_mul) + extAction_vacuum remain holes."
+    },
+    {
+      "id": "c41f0c06-647a-4e8b-b9b1-443098714dd3",
+      "work_item_id": null,
+      "title": "P5: sigma action completes S3 on Cl(8) colour generators",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T02:43:01-07:00",
+      "notes": "Package cl8-sigma-action-20260719 (17 modules); (c2 c3)(c5 c6) all-minus signed permutation + braid relation; proof patterns transfer from the landed triality job [2026-07-19T04:35:28-07:00 claude] BUDGET-KILLED partial INTEGRATED (0 errors, 3 documented holes): all six sigma-image signs proven - the (c2 c3)(c5 c6) all-minus table is kernel-fact; sigmac_mul + braid remain holes."
+    },
+    {
+      "id": "25d92b80-9c4f-4966-867a-cc6546b04452",
+      "work_item_id": null,
+      "title": "Spin10 S2 brick 1: SM block-action homomorphism into evenCliffordGroup",
+      "status": "harvested",
+      "submitted_at": "2026-07-19T02:38:08-07:00",
+      "notes": "Package spin10-block-hom-20260719 (21 modules + S2 proof plan); def construction + vacuum/weak image-fixing + injectivity stretch; honest central-kernel license [2026-07-19T03:12:08-07:00 claude] HOLLOW-CONSTRUCTION EXPOSURE (semantic audit REJECTED integration): the returned smBlockHom is the constant-identity hom - fixing theorems vacuous, ker = top, candidly documented by the prover. Root cause: MY prompt allowed any construction without a faithfulness/nontriviality requirement. VALUE KEPT: the three named prerequisites for the real exterior-power construction (unit, functorial subset action, evenCliffordGroup landing theorem) archived as the S2 decomposition. NOT copied to live tree"
+    },
+    {
+      "id": "bf12a698-0a1a-4803-ab56-0fa30fb4e04b",
+      "work_item_id": null,
+      "title": "B4: Wilson-Cayley walk formalization (candidate refutation of universal torus doubling)",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T02:13:12-07:00",
+      "notes": "Package wilson-cayley-walk-20260719 (13 modules + predecessor plan); exact Cayley crossing dictionary; inadmissibility finding = first-class alternative outcome; interpretive locality caveat pinned in docstring [2026-07-19T04:35:28-07:00 claude] BUDGET-KILLED partial INTEGRATED (0 errors, 6 documented holes): wilsonK_isHermitian + cayley_denom_det_ne_zero + cayley_mem_unitary (full Cayley unitarity) proven; AdmissibleWalk assembled with unitary field closed; crossing dictionary + admissibility fields + refutation pair remain holes. Return relocated (not dropped) the pre-registered targets - dup-insert corrected at harvest."
+    },
+    {
+      "id": "3028154f-7913-4111-ae78-a8079900572d",
+      "work_item_id": null,
+      "title": "C2: full-walk mode census for the same-winding counterexample",
+      "status": "cancelled",
+      "submitted_at": "2026-07-19T02:01:54-07:00",
+      "notes": "Package halfwinding-fullwalk-20260719 (18 modules); four determinant census rows on the 8x8 walks, kernel-only via integer twin; the TABLE is the deliverable (Paper C claim-matrix rows either way) [2026-07-19T18:04:24-07:00 codex] Original C2 task was OUT_OF_BUDGET and is superseded by clean integrated refresh 78a8ea71-9ec7-4382-b28f-1ac840653ce7."
+    },
+    {
+      "id": "9cff3617-c673-4f29-a5f9-0993206cfe3c",
+      "work_item_id": null,
+      "title": "Item-3 group slice: exponentiated U(1)_Y phases on 5*+Lambda2",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T01:53:08-07:00",
+      "notes": "Package su5-group-action-20260719 (3 files); diagonal exp + phase payloads Y5bar/Y10 [2026-07-19T02:35:33-07:00 claude] ALL THREE proven, conventions unchanged, standard-three: exponentiated U(1)_Y phases (diagonal exp, Y5bar dual phases, Y10 wedge phases). Item-3 closed at Lie + abelian-group level"
+    },
+    {
+      "id": "1860fc89-2d6f-4d20-b381-d4a9ebcbb186",
+      "work_item_id": null,
+      "title": "A3: derived winding-one rings at every odd length (Paper A completion brick)",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T01:53:08-07:00",
+      "notes": "Package derived-winding-ring-n-20260719 (19 modules); two-theorem bridge closing the ring-holonomy chain end-to-end from derived Pluecker data [2026-07-19T02:39:34-07:00 claude] Both proven by specialization exactly as designed; Paper A ring-holonomy chain complete end-to-end from derived Pluecker data at every odd length; standard-three"
+    },
+    {
+      "id": "1e3e0f42-afe2-4d6b-8217-fc441943aee2",
+      "work_item_id": null,
+      "title": "P5 stage C: triality action on the Cl(8) colour generators (signed 3-cycles)",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T01:46:25-07:00",
+      "notes": "Package cl8-triality-action-20260719 (16 modules incl. tonight's Cl8 table + triality seed); hand-computed signed permutation pre-registered with sign-correction license [2026-07-19T02:40:37-07:00 claude] ALL NINE proven; hand-computed signed 3-cycles and index tables confirmed exactly (no corrections); the S3/triality invariance of the Cl(8) colour sector is kernel-fact; standard-three"
+    },
+    {
+      "id": "e267089c-15b3-49a8-805c-f246bf0762e7",
+      "work_item_id": null,
+      "title": "Spin10: Chevalley incidence lemma (genuine pairs meet in annihilator dim 3)",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T01:37:04-07:00",
+      "notes": "Package spin10-incidence-20260719 (9 modules); THE named blocker of the corrected-S1 chain; route via basis trichotomy + orbit equivariance; client transport error on submit but project created (gotcha pattern confirmed) [2026-07-19T03:49:28-07:00 claude] HONEST PARTIAL INTEGRATED 03:50: two-arg equivariance (induced V10 automorphism), basis annihilator characterization, dim formula = 5 - |S sym T|, basis genuine => 3 (kernel decide sweep), scalar invariance, normal-form transport bridge. 1 hole = general incidence (needs simultaneous normal form; AU4 371b7803 + fiber step). Axioms: 7 proven decls standard-three; conditional corollary carries sorryAx."
+    },
+    {
+      "id": "ab3c1fa8-7a46-46d1-9d98-f3c9fe2c8513",
+      "work_item_id": null,
+      "title": "A2: general-n half-link layer (turning 2pi => holonomy -1 => spectral witness)",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T00:54:45-07:00",
+      "notes": "Package ring-halflink-n-20260719; composes tonight's odd-n discriminator; backfill for bc073521 slot [2026-07-19T01:33:02-07:00 claude] All three proven, no convention adjustment, standard-three; Paper A abstract chain complete at general odd n (turning 2pi -> holonomy -1 -> spectrally distinct)"
+    },
+    {
+      "id": "cab788d3-8d7e-4b66-b680-fe17eb796883",
+      "work_item_id": null,
+      "title": "B3: torus-genuine zero-or-pi doubling (lattice noncongruence)",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T00:46:06-07:00",
+      "notes": "Package strict3plus1-torus-20260719; correctly-shaped frontier after the R^3 false-shape exposure; live witness + universal target + counterexample license [2026-07-19T02:10:41-07:00 claude] 4/5 PROVEN incl. splitU_torus_doubling (live walk's torus-genuine doubling, all-pi witness) + the lattice plumbing; universal target remains the sole hole WITH a designed Cayley-transform candidate COUNTEREXAMPLE (Wilson-Hamiltonian Cayley walk - exploits the AdmissibleWalk interface's missing locality field; 3-lemma formalization plan archived). Either outcome publishable: doubling-escape walk or interface-too-weak exposure"
+    },
+    {
+      "id": "ffd77a5a-d88b-4a35-9827-e86585aef2c9",
+      "work_item_id": null,
+      "title": "E2: operational pair-transition law (Rabi + Pluecker-phase pairing)",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T00:38:16-07:00",
+      "notes": "Package pair-transition-observables-20260719; backfill for 359f9b48 slot [2026-07-19T01:49:05-07:00 claude] ALL FIVE proven, no statement changes, per-theorem standard-three: Rabi law sin^2, Pluecker-phase pairing, selection rule, exponential headline - Paper E operational quantity DONE; lane stops here per Visionary rule"
+    },
+    {
+      "id": "d315d977-9eb8-41b5-ac1b-5d074501d370",
+      "work_item_id": null,
+      "title": "P6 Hurwitz stage-5: saturation endgame (finrank in {1,2,4,8})",
+      "status": "harvested",
+      "submitted_at": "2026-07-19T00:25:17-07:00",
+      "notes": "Package hurwitz-stage5-saturation-20260719 (Target + Stage2 + proven Stage3 + harvested Stage4 + Stage5 targets); 7-rung ladder to hurwitz_finrank_mem; accepted Moufang inheritance tracked [2026-07-19T01:47:38-07:00 claude] FULL SUCCESS: hurwitz_finrank_mem PROVEN exactly as stated (tower 1->2->4->8, conjugation-nontriviality -> noncommutativity -> nonassociativity propagation, stage-3a contradiction at proper dim-8); all six intermediates standard-three; final theorem inherits ONLY the two in-repair Moufang holes as pre-registered. Campaign headline achieved pending Moufang merge; archived in package dir"
+    },
+    {
+      "id": "ce693fe2-1bea-408b-811e-dd54c7fe8a34",
+      "work_item_id": null,
+      "title": "D2: exact L2 orbit differentiable at every time (flow-derivative successor)",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T00:19:32-07:00",
+      "notes": "Package l2-flow-derivative-20260719 (25 files incl. tonight's proven generator theorem); group law + support preservation + arbitrary-t derivative by conjugation [2026-07-19T02:00:05-07:00 claude] ALL FOUR proven exactly as stated (Matrix.exp_add_of_commute group law, Lp.ext lift, fibrewise support preservation, t0-conjugation transport); per-theorem standard-three; Paper D exact-flow theorem complete at every time; lane stops per Visionary rule"
+    },
+    {
+      "id": "215bd4d5-3f9a-49e1-86cf-1099a2ee0187",
+      "work_item_id": null,
+      "title": "Spin10 successor: corrected S1 via standardizable pairs (5-step plan)",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T00:14:02-07:00",
+      "notes": "Package spin10-standardizable-20260719 (30 files incl. integrated refutation); targets: general marked transitivity, standardizable_of_genuine_krasnov_pair, corrected S1; roadmap from 83ee06fc PROOF_PLAN_REPORT [2026-07-19T01:33:27-07:00 claude] HONEST PARTIAL landed: corrected-S1 reduction PROVEN (no direct hole), 4 geometric defs added (commonAnnihilator/annihilatorIntersectionDim/vacuumStabilizer/InVacuumThreeFiber); targets 1-2 documented holes; PROOF_STATUS names the exact missing lemma annihilatorIntersectionDim_eq_three_of_genuine -> next focused job per Visionary triage"
+    },
+    {
+      "id": "2868e8b9-0ebd-4b7c-8457-e4cec8f17aea",
+      "work_item_id": null,
+      "title": "Item-3 remainder: su(5) action on 5*+Lambda2+1 as one representation",
+      "status": "integrated",
+      "submitted_at": "2026-07-19T00:08:17-07:00",
+      "notes": "Package su5-rep-action-20260718; upgrades landed hypercharge tables to rep eigenvalue theorems; backfill for 83ee06fc slot [2026-07-19T00:46:06-07:00 claude] ALL SEVEN proven, conventions unchanged (dual -(A^T), Lambda2 A*W+W*A^T), both eigenvalue payloads exact, per-theorem standard-three audits in summary; item-3 Lie-algebra rep layer closed"
+    },
+    {
+      "id": "965e50ad-52a5-4720-9a30-0b848b45a0a1",
+      "work_item_id": null,
+      "title": "C1: kernel-only certificates for the four-site winding discriminant",
+      "status": "integrated",
+      "submitted_at": "2026-07-18T23:57:00-07:00",
+      "notes": "Package halfwinding-kernel-certs-20260718 (18 files); integer-twin decide route; footprint must be standard-three (removes ofReduceBool/trustCompiler from the Paper C decisions) [2026-07-19T04:46:11-07:00 claude] FULL SUCCESS after three pin repairs (det_fin_four -> det_apply' -> kernel decide route for sector controls; rw-in-negation -> mpr/mp): VERIFIED hole-free at pin (0 errors). Kernel-only C1 certificates: discriminant, selfadj iff involution, corrected bridge, witness pair, sector controls; integer twin at true clearing scale 5 (pre-licensed correction from 25). Paper C kernel-certificate gate CLOSED."
+    },
+    {
+      "id": "ecc61e57-4ce1-498b-ad84-d93dedd7afce",
+      "work_item_id": null,
+      "title": "YM4: polymer Kotecky-Preiss DAG completion (pairSum crux + corrected handoffs)",
+      "status": "integrated",
+      "submitted_at": "2026-07-18T23:47:00-07:00",
+      "notes": "Package polymer-kp-completion-20260718 (3 files); targets pairSum_le_expBound + kp_convergence_bound_of_selfIncompatible + kp_tail_bound; historical refutations preserved [2026-07-19T04:35:28-07:00 claude] BUDGET-KILLED but COMPLETE: HOLE-FREE at pin (0 errors 0 sorries). Corrected conditional shapes for the two previously-refuted KP statements (amplified-partial hypothesis; exp(-mR) metric tail) + NEW kernel refutation pairSum_inequality_false (two-polymer 63/100 counterexample + Fin 2/3 spanning-tree counts). YM polymer-KP module now closed."
+    },
+    {
+      "id": "83ee06fc-d7f2-4df6-bd89-bf4665b249f9",
+      "work_item_id": null,
+      "title": "Spin10: Selector Theorem chain S1 transitivity -> S4 selector",
+      "status": "integrated",
+      "submitted_at": "2026-07-18T23:43:10-07:00",
+      "notes": "Package spin10-selector-20260718 (27 modules); ladder: S1 Krasnov-pair transitivity, isomorphism hole, S4 selector, EJPG hole; partial success pre-registered [2026-07-19T00:11:40-07:00 claude] S1 KILL integrated: original transitivity false (diagonal d=5 stratum; counterexample active), ProjectivelyDistinct + StandardizablePair scaffolding + proved conditional reduction landed green, axiom audit standard-three. PROOF_PLAN_REPORT archived; successor = standardizable_of_genuine_krasnov_pair (5-step decomposition)"
+    },
+    {
+      "id": "487acc7d-acf8-43db-9d47-46aee659b933",
+      "work_item_id": null,
+      "title": "D1: strong Lp derivative of momentum-multiplier orbit (Paper D)",
+      "status": "integrated",
+      "submitted_at": "2026-07-18T23:43:10-07:00",
+      "notes": "Package compact-support-l2-generator-20260718; orbit_slope_tendsto via dominated convergence on bounded support [2026-07-19T00:16:09-07:00 claude] FULL SUCCESS: orbit_slope_tendsto proven zero holes (dominated convergence route), signatures unchanged, in-file axiom guards added by the return and passing; Paper D strong-Lp-derivative gate closed"
+    },
+    {
+      "id": "75bda6c7-9075-427f-bf7b-5beb188c27a8",
+      "work_item_id": null,
+      "title": "E1: canonical pair-evolution exponential bridge (Paper E gate)",
+      "status": "integrated",
+      "submitted_at": "2026-07-18T23:43:10-07:00",
+      "notes": "Package pair-exponential-bridge-20260718; bridges local KopMatrix/Uop to canonical PlueckerPairGenerator API; composed canonical exponential theorem [2026-07-19T00:20:51-07:00 claude] FULL SUCCESS: all 3 canonical bridge theorems proven zero holes, no mismatch factors, in-file guards; Paper E exact-operator-exponential gate closed"
+    },
+    {
+      "id": "3cbee275-853c-48d5-b8c5-51a351af16fe",
+      "work_item_id": null,
+      "title": "J1: Peirce/spectral decomposition of h3(O) at distinct eigenvalues",
+      "status": "integrated",
+      "submitted_at": "2026-07-18T23:37:53-07:00",
+      "notes": "Package h3o-peirce-20260718; Lagrange idempotents from the structural cubic; composes with unconditional real-spectrum theorem [2026-07-19T04:35:28-07:00 claude] BUDGET-KILLED partial INTEGRATED (0 errors, 2 documented holes): lagrangeE_sum + lagrangeE_reconstruct + jordan_eigen + bilinearity layer proven; lagrangeE_orthogonal proven but cites sorried jordan_power_four (inherits sorryAx); lagrangeE_isProjection open. Provenance header restored at harvest."
+    },
+    {
+      "id": "bf1fe84d-5226-400f-a692-0f87bf2dff68",
+      "work_item_id": null,
+      "title": "A1: general odd-n ring holonomy spectral witness (Paper A gate)",
+      "status": "integrated",
+      "submitted_at": "2026-07-18T23:37:53-07:00",
+      "notes": "Package ring-holonomy-n-20260718; trace_pow_odd + unitary-conjugacy discriminator; generalizes landed 3-site witness [2026-07-19T00:49:24-07:00 claude] ALL SIX proven as stated: odd-n trace formula trace(H^n)=n(w+conj w) via forward/backward shift decomposition + mixed-term vanishing by oddness; conjugacy discriminator + winding-one non-conjugacy at every odd n; standard-three per theorem. Paper A ring-holonomy gate generalized from n=3 to all odd n"
+    },
+    {
+      "id": "2ccad4a3-1dcf-44df-8be2-1904adcae092",
+      "work_item_id": null,
+      "title": "AU2: full eq-39/eq-40 transition census table (P3 step 4)",
+      "status": "integrated",
+      "submitted_at": "2026-07-18T23:37:53-07:00",
+      "notes": "Package transition-census-ext-20260718; slot nonvanishing + Mix11 column + MixT11 sector-rotation column [2026-07-19T04:35:27-07:00 claude] BUDGET-KILLED but COMPLETE: kernel REFUTATION + corrected census, HOLE-FREE at pin (0 errors 0 sorries). slotDbar1/2/3 = 0 EXACTLY (requested nonvanishing FALSE - the colour excitations sit on the wrong side of the idempotent); Mix11 column vacuous-by-zero (labeled); mix11_slotEL zero-expectation REFUTED with four 1/4-coordinates; sector-rotation laws proven; slotEL nonzero. Convention-level physics finding for the eq-39/40 dictionary."
+    },
+    {
+      "id": "5a6bb408-c355-4f11-a5b0-180fe49aa3fb",
+      "work_item_id": null,
+      "title": "AU1: weak isospin from colour-supported eq-37 B_j pair (S2b brick)",
+      "status": "harvested",
+      "submitted_at": "2026-07-18T23:37:53-07:00",
+      "notes": "Package colour-isospin-from-b-20260718; T3B/TplusB/TminusB on (slotVL, slotEL); successor route after rank-one collapse + grading kills [2026-07-19T06:00:59-07:00 claude] BUDGET-KILLED with all 7 targets returned proven (su(2) doublet EXACT on (vL,eL): T3 = +-1/2, ladder coefficient 1, [T+,T-] = 2 T3; statements unchanged). At-pin verification hit env drift: <;> ring_nf tails error on no-progress branches at our pin (12 errors). Repair applied (tolerant closer chain first|rfl|ring_nf|norm_num|skip); re-verification elaborating (~1h per pass, 64M-heartbeat file). Integration finalizes on its exit; root registration deferred until green. [2026-07-19T07:46:59-07:00 claude] FINAL: all 7 targets returned proven (su(2) doublet EXACT, statements unchanged) but the returned heavy-simp proofs DO NOT elaborate at our pin (simp normal-form drift; 2 mechanical repair passes failed). Live tree = restored 7-hole scaffold + harvest-status note; artifact archived at aristotle-output/5a6bb408*. Next: interactive LSP repair or fresh focused resubmission when budget returns. NOT root-registered. [2026-07-19T08:09:30-07:00 claude] FINAL (2nd correction, 05:30): the OUT_OF_BUDGET artifact was an UNVERIFIED mid-flight draft (no ARISTOTLE_SUMMARY). Its foundational premise is now KERNEL-REFUTED at our pin: B1a(ofColour vIdem) != 0 (x2.re.c0 nonzero) while B2a(vt) = 0 IS proven - asymmetric defect localized to the mode-1 chart. New hole-free module ColourIsospinVacuumStatus (refutation + proven half, standard-three, root-registered). The seven doublet targets remain OPEN as stated; scaffold stays live with 7 holes; re-pose after the mode-1 betaHat1/R-slot chart correction (same idempotent-sidedness family as the AU2 finding)."
+    },
+    {
+      "id": "359f9b48-0ca7-4239-8996-e23a915b0d43",
+      "work_item_id": null,
+      "title": "B1: strict 3+1 zero-or-pi combined doubling gate (frontier successor)",
+      "status": "integrated",
+      "submitted_at": "2026-07-18T23:37:53-07:00",
+      "notes": "Package AgentTasks/aristotle-standalone/strict3plus1-successor-20260718; targets: combined balance gate, live corner census, universal zero-or-pi doubling; counterexample = first-class outcome [2026-07-19T00:38:15-07:00 claude] All 3 proven zero holes: combined-balance gate; two-point census with the PI-CROSSING at the all-pi corner (anomalous-Floquet partner confirmed); target 3 TRUE-BUT-FALSE-SHAPE (R^3 momenta make (2pi,0,0) a nonzero origin alias - limitation documented in-docstring). Sharpened torus-noncongruence successor being staged"
+    },
+    {
+      "id": "2298aa71-cd1d-42f7-849d-0edfdc6fab09",
+      "work_item_id": null,
+      "title": "P6 Hurwitz stage-4a: doubled-subalgebra ladder step (7 structural theorems)",
+      "status": "harvested",
+      "submitted_at": "2026-07-18T23:29:56-07:00",
+      "notes": "Package AgentTasks/aristotle-standalone/hurwitz-stage4-ladder-20260718; Stage4.lean; hole-dependence split pre-registered; feeds stage-4b saturation [2026-07-19T00:22:57-07:00 claude] ALL 7 stage-4a theorems PROVEN; 5/7 hole-independent (incl. finrank_doubled, doubled_inf_map_eq_bot beyond pre-registration); doubled_isUnitalSubalgebra + ladder_step inherit the 2 documented Moufang holes via doubling_closed; harvest archived in package dir; in-repo replay deferred to stage-4b merge per stage-3a precedent"
+    },
+    {
+      "id": "bc073521-aafb-4f71-95c1-96e6aefe68cd",
+      "work_item_id": null,
+      "title": "AU3: eq-36 isospin-grading family no-go (span of killed candidates)",
+      "status": "integrated",
+      "submitted_at": "2026-07-18T23:29:56-07:00",
+      "notes": "Package AgentTasks/aristotle-standalone/isospin-grading-family-nogo-20260718; target IsospinGradingFamilyNoGo.lean (7 theorems); upgrades 8f0f1d95 point kills to family kill [2026-07-19T00:54:44-07:00 claude] FAMILY NO-GO PROVEN: famG_X1 = famG_X2 = (a+2b) coefficients confirmed, nonzero witnesses added, famG_no_sign_separation closes the eq-36 grading at family level; adG_add honestly corrected (+additivity hypothesis, documented); stale WeakLadders trim NOT applied (manual single-file apply)"
+    },
+    {
+      "id": "a8d83497-34e4-4151-a122-59b821b3e587",
+      "work_item_id": null,
+      "title": "Null-edge vacuum Weyl varying-carrier job (identify + harvest)",
+      "status": "harvested",
+      "submitted_at": "2026-07-18T23:01:19-07:00",
+      "notes": "IDLE/COMPLETE on live CLI; task note under AgentTasks/null-edge-vacuum-weyl-*; harvest status unknown [2026-07-18T23:44:11-07:00 claude] Vacuum-Weyl varying-coframe job complete; result landed as PeriodicVacuumWeylNullWaveFullNoGo.lean (rank-6 coframe Euler response, ten-parameter kernel, fixed-link repair impossible at nonzero area); task-note pair records the no-go + successor design"
+    },
+    {
+      "id": "691590a2-8740-4270-8d60-a8e26490da0d",
+      "work_item_id": null,
+      "title": "Item-2 eq36-v2: four adT3 gradings via rank-one closed forms",
+      "status": "integrated",
+      "submitted_at": "2026-07-18T23:01:19-07:00",
+      "notes": "Harvest verified; integrated as CompositionIdealRepContent.lean (zero holes + guards); supersedes 46c3246a"
+    },
+    {
+      "id": "e0376e38-063f-4e24-8271-0f407a800e12",
+      "work_item_id": null,
+      "title": "Item-2 eq-39 single-excitation layer (Dixon composition chain)",
+      "status": "integrated",
+      "submitted_at": "2026-07-18T23:01:19-07:00",
+      "notes": "IDLE/COMPLETE on live CLI; needs harvest [2026-07-18T23:47:28-07:00 claude] CompositionTransitionCensus.lean integrated + lake build green"
+    },
+    {
+      "id": "8f0f1d95-d225-46b5-bed8-865ee62aebba",
+      "work_item_id": null,
+      "title": "Item-2 eq-36 isospin-grading realization (post rank-one diagnosis)",
+      "status": "integrated",
+      "submitted_at": "2026-07-18T23:01:19-07:00",
+      "notes": "IDLE/COMPLETE on live CLI; candidates -tau3 orientation / PL-projected adjoint; needs harvest before new AU submissions [2026-07-18T23:47:28-07:00 claude] IsospinGradingSearch.lean + RankOneCore.lean integrated + lake build green"
+    },
+    {
+      "id": "a32c335d-cb63-4e31-b780-c3df39afeba9",
+      "work_item_id": null,
+      "title": "P2 signature classification (Dixon gamma bar-operator signature)",
+      "status": "integrated",
+      "submitted_at": "2026-07-18T23:01:18-07:00",
+      "notes": "IDLE/COMPLETE on live CLI; package AgentTasks/aristotle-standalone/p2-signature-classification-20260718; needs harvest [2026-07-18T23:47:28-07:00 claude] DixonSignatureClassification.lean integrated + lake env lean green"
+    },
+    {
+      "id": "9e6a6131-86fa-4da2-b9a5-548e333d2a24",
+      "work_item_id": null,
+      "title": "P5 Cl(8) generation census: Cl(8) generators on the 48-state sector split",
+      "status": "integrated",
+      "submitted_at": "2026-07-18T23:01:18-07:00",
+      "notes": "Package AgentTasks/aristotle-standalone/p5-cl8-generation-20260718; grounding note null-edge-P5-three-generations-1910-08395-grounding-2026-07-18.md [2026-07-19T01:07:43-07:00 claude] Cl8 generation table returned via mode-instruct finalization (server build never completed): 64-case 8x8 Clifford table as free-variable operator identities, zero holes claimed, honest L1/L2 right-vs-left dictionary correction with sign changes recorded; LOCAL verification in progress (mandatory - server never built it); stale bundle copies skipped [2026-07-19T01:31:45-07:00 claude] LOCAL KERNEL VERDICT GREEN at the pin (exit 0, only benign linter warnings) - the 64-case Cl(8) table + corrected left-action dictionary verified; the two live-management actions (ask + finalize-instruct) rescued a 9-hour job the server build would have timed out"
+    },
+    {
+      "id": "1b045f4b-33bd-4f41-ac6e-31e2a6f16b24",
+      "work_item_id": null,
+      "title": "P6 Hurwitz stage-2b: Moufang pair closure from proven alternative laws",
+      "status": "harvested",
+      "submitted_at": "2026-07-18T23:01:18-07:00",
+      "notes": "Successor to d5b0eac8; closes associator_mul_right + mul_right_moufang via Artin linearization. Task record AgentTasks/hurwitz-campaign-2026-07-18.md [2026-07-19T04:08:53-07:00 claude] BUDGET-KILLED at ~11h (OUT_OF_BUDGET). Harvest verdict: course-corrected sign identity landed as documentation (associator_mul_right_corrected + e1,e2,e4 counterexample record in-docstring), but the decomposition is CIRCULAR - associator_product_entry_right is right-Moufang restated (subtract/rearrange), so mul_right_moufang's grind proof moves the hole without shrinking it. Hurwitz hole-free merge remains gated on a genuine Moufang proof (Artin linearization route still open). No repo apply."
+    },
+    {
+      "id": "46c3246a-a2b9-4d73-b2ac-fce530e5cc0a",
+      "work_item_id": null,
+      "title": "Item-2 eq-36 rep content: adjoint-T3 grading of the leptonic ideal operators (13-file Dixon-chain package)",
+      "status": "integrated",
+      "submitted_at": "2026-07-18T09:39:43-07:00",
+      "notes": "The 1(+)2(+)1 grading of vwHat/X1/X2/X3 under adT3, on the fully-proven composition-operator tower. Pre-registered normalization caution: value mismatch = honest success outcome. 2 jobs now in flight (stage-2 doubling + this). [2026-07-18T23:01:19-07:00 claude] Superseded by eq36-v2 (691590a2); result integrated as CompositionIdealRepContent.lean [2026-07-18T23:47:28-07:00 claude] Superseded by eq36-v2 (691590a2) whose result is integrated; supersession recorded"
+    },
+    {
+      "id": "d5b0eac8-5b26-4505-bf8f-641eedb5aef5",
+      "work_item_id": null,
+      "title": "P6 stage 2: Cayley-Dickson doubling lemma (with proven stage-1 toolkit)",
+      "status": "harvested",
+      "submitted_at": "2026-07-18T08:55:45-07:00",
+      "notes": "Doubling product formula + closure + norm splitting on the internal double S + S a. Package includes the VERIFIED stage-1 toolkit. Kill condition: sign/order convention mismatch = report, do not change statement. [2026-07-18T23:01:19-07:00 claude] Stage-2 doubling harvest archived (3 theorems proven, 2 Moufang holes); successor 1b045f4b in flight"
+    },
+    {
+      "id": "9d6a0a84-8211-474b-8bdd-92173884d5d6",
+      "work_item_id": null,
+      "title": "P7/J4: real cubic with discr>=0 splits over R (h3(O) real-spectrum core)",
+      "status": "integrated",
+      "submitted_at": "2026-07-18T07:57:00-07:00",
+      "notes": "Plan P7 step 1. Mathlib-only standalone (Cubic API: splits_iff_roots_eq_three, discr_eq_prod_three_roots, conjugate-pair contradiction). 2 sorries typechecked. Package AgentTasks/aristotle-standalone/cubic-real-spectrum-20260718. [2026-07-18T23:01:19-07:00 claude] J4 cubic real spectrum harvested, verified verbatim, ported to PhysicsSM/Draft/CubicRealSpectrum.lean with guards"
+    },
+    {
+      "id": "b1a9e38f-586b-4f0b-80a6-0af52bf6625f",
+      "work_item_id": null,
+      "title": "P6/J2 Hurwitz stage 1: composition-algebra identity toolkit (15 identities, Mathlib-only)",
+      "status": "integrated",
+      "submitted_at": "2026-07-18T07:36:02-07:00",
+      "notes": "Plan P6 step 3 prerequisite. Standalone package AgentTasks/aristotle-standalone/hurwitz-composition-toolkit-20260718 (Target.lean, 15 sorries, typechecked at pin). Springer-Veldkamp Ch1 toolkit: Q_one, nondegeneracy, L/R composition similarity, exchange, quadratic identity, conjugation block, adjoints, Kirmse L/R. NonAssocRing only - no associativity. Stage 2 = doubling lemma, stage 3 = dim ladder. [2026-07-18T08:55:46-07:00 claude] All 15 toolkit identities proven (0 sorries, no mul_assoc, standard axioms per summary). VERIFY IN PROGRESS -> verbatim lake env lean at repo pin. [2026-07-18T08:57:53-07:00 claude] VERIFIED VERBATIM at repo pin: 0 errors, 0 sorries, axiom audit standard-three on kirmse_left/conj_mul/polar_exchange/quadratic_identity. P6 stage 1 LANDED. Stage 2 (doubling) submitted with the proven toolkit: d5b0eac8."
+    },
     {
       "id": "2f3fd545-2200-4a5d-a90a-61ac3bd1fb52",
       "work_item_id": "GRAV-ORDER-OPERATOR-001",
@@ -39,9 +1439,9 @@
       "id": "661e5230-4a4b-46cd-95f4-713dadadd576",
       "work_item_id": "GRAV-ORDER-OPERATOR-001",
       "title": "Item 2: derive weak isospin W+ from octonionic ladder substrate (WeakIsospinFromLadder, uniqueness-anchored)",
-      "status": "harvested",
+      "status": "integrated",
       "submitted_at": "2026-07-17T16:12:06-07:00",
-      "notes": "Flagship item-2 spine target. Closes 2 sorrys in PhysicsSM/Algebra/Furey/WeakIsospinFromLadder.lean: construct TPlusLadder from the C(x)H(x)O substrate (B_j=i e7|beta_j, T+=B1dag B2) and prove =TPlusEnd via TPlusEnd_unique (6 hypotheses). Narrow build (Furey+Octonion subtree). No-go analysis acceptable. Design note: AgentTasks/null-edge-S2b-weak-isospin-from-ladder-design-2026-07-17.md. [2026-07-17T16:53:27-07:00 claude] NO-GO (verified verbatim, NOT integrated): substrate lacks C(x)H factor; item-2 closure blocked on building the Dixon substrate first. Obstruction sub-target + eq-38 grounding recorded in design note. Archive retained in aristotle-downloads."
+      "notes": "Flagship item-2 spine target. Closes 2 sorrys in PhysicsSM/Algebra/Furey/WeakIsospinFromLadder.lean: construct TPlusLadder from the C(x)H(x)O substrate (B_j=i e7|beta_j, T+=B1dag B2) and prove =TPlusEnd via TPlusEnd_unique (6 hypotheses). Narrow build (Furey+Octonion subtree). No-go analysis acceptable. Design note: AgentTasks/null-edge-S2b-weak-isospin-from-ladder-design-2026-07-17.md. [2026-07-17T16:53:27-07:00 claude] NO-GO (verified verbatim, NOT integrated): substrate lacks C(x)H factor; item-2 closure blocked on building the Dixon substrate first. Obstruction sub-target + eq-38 grounding recorded in design note. Archive retained in aristotle-downloads. [2026-07-18T23:47:28-07:00 claude] W+ no-go recorded in status map and S2b design note (CORRECTION series)"
     },
     {
       "id": "64e5ad32-6161-47be-a394-6e55d9edc3e3",

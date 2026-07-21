@@ -6,6 +6,7 @@
 /.pre-commit-cache*/
 /Index/*.jsonl
 /Index/*.json
+/Index/glossary/
 __pycache__/
 *.py[cod]
 *.pyc
