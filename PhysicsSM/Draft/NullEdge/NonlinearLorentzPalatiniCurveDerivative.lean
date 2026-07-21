@@ -164,6 +164,14 @@ theorem unitMatrix_matrixExponentialUnit
     unitMatrix (matrixExponentialUnit matrix) = NormedSpace.exp matrix := by
   exact (Matrix.isUnit_exp matrix).unit_spec
 
+/-- The exponential unit at the zero matrix is the identity unit. -/
+@[simp]
+theorem matrixExponentialUnit_zero :
+    matrixExponentialUnit (0 : Matrix (Fin 4) (Fin 4) Real) = 1 := by
+  apply Units.ext
+  change unitMatrix (matrixExponentialUnit 0) = unitMatrix (1 : GL4)
+  rw [unitMatrix_matrixExponentialUnit, unitMatrix_one, NormedSpace.exp_zero]
+
 /-- Exponentiating a six-component link variation gives a proper eta-Lorentz
 matrix in the project's fixed mostly-minus convention. -/
 theorem matrixExponentialUnit_isProperEtaLorentz

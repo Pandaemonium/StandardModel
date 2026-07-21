@@ -64,6 +64,7 @@ import PhysicsSM.Draft.NullEdge.LorentzCoordinateCurvatureBridge
 import PhysicsSM.Draft.NullEdge.LorentzCoordinateEinsteinContraction
 import PhysicsSM.Draft.NullEdge.LorentzPlaquetteSecondJetCurvature
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniConcreteAffineCurve
+import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniConcreteVacuumWeylJet
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEulerChangingCarrierTorsion
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniEulerSampledCoframeTorsion
 import PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniLinearizedEinsteinCartanLimit
@@ -169,7 +170,11 @@ imports one representative route through each established layer:
     Lorentz curvature, the exact Ricci/scalar/Einstein contraction dictionary,
     and a guarded local Palatini capstone in which connection and coframe
     stationarity imply Christoffel selection and the ordinary coordinate mixed
-    vacuum Einstein equation, followed by a common
+    vacuum Einstein equation, followed by an explicit `3^4` proper-Lorentz
+    affine-exponential realization of a nonzero vacuum-Weyl plaquette second
+    jet whose actual link Euler derivative and coframe Euler quadratic response
+    vanish and whose induced coordinate curvature is Levi-Civita and vacuum
+    Einstein, with no claim of nonlinear continuation, followed by a common
     two-sided sampled refinement whose two actual-action Euler-map derivatives
     pass simultaneously to vacuum Einstein for `dA` and covariant Cartan torsion,
     with a guarded coordinate endpoint giving first-jet Christoffel selection

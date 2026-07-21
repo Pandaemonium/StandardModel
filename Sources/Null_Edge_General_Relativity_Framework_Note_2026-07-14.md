@@ -7288,6 +7288,29 @@ and coframe jets, symmetric predecessor coframe second jet, and eventual local
 joint stationarity. It does not derive those data from causal order or prove
 refinement convergence.
 
+The concrete affine module also closes the capstone's vacuity audit. Zero
+connection and coframe jets make every displayed link exactly the identity and
+both nonlinear Euler sectors vanish for every curve parameter. Applying the
+capstone gives an exact flat vacuum-Einstein witness. This establishes that the
+stationarity premise is inhabited, but flatness makes it only a control.
+
+`PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniConcreteVacuumWeylJet.lean`
+provides the complementary nonflat control. On the same `3^4` carrier, an
+actual affine-exponential proper eta-Lorentz link family has the nonzero unit
+vacuum-Weyl tensor as the exact quadratic coefficient of every origin-based
+plaquette. The derivative of every actual nonlinear link Euler coefficient is
+zero, and every actual coframe Euler coefficient has zero constant, linear,
+and quadratic coefficients. The same finite jet selects the Christoffel
+connection, identifies induced coordinate and plaquette curvature, and has
+vanishing standard mixed coordinate Einstein tensor. The guarded certificate
+`fourTorusUnitVacuumWeyl_actualActionJet` packages the complete statement.
+
+This is an exact finite second-jet consistency theorem. It does not say that
+the nonlinear Euler maps vanish for nonzero curve parameter, construct a
+nearby nonflat stationary branch, or provide a changing-carrier continuum
+limit. The later compact-carrier no-branch results show why this distinction is
+structural rather than cosmetic.
+
 The changing-carrier linearized successor
 `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniSampledCoordinateEinsteinLimit.lean`
 connects this coordinate normalization to derivatives of the actual nonlinear
@@ -7844,6 +7867,7 @@ not
 - `PhysicsSM/Draft/NullEdge/LorentzPlaquetteSecondJetCurvature.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniPlaquetteEinsteinCurve.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniConcreteAffineCurve.lean`
+- `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniConcreteVacuumWeylJet.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniSampledCoordinateEinsteinLimit.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniExponentialConnectionTorsionSelection.lean`
 - `PhysicsSM/Draft/NullEdge/NonlinearLorentzPalatiniEulerTorsionSelection.lean`

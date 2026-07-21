@@ -499,6 +499,20 @@ def nonlinearCoframeEulerCoefficient
   nonlinearCoframeLocalEulerLinearMap shift connection coframe site
     (Matrix.single internal direction 1)
 
+/-- Identity links make every local coframe Euler coefficient vanish, for any
+coframe field.  This is the pointwise form of the flat-plaquette control. -/
+theorem nonlinearCoframeEulerCoefficient_identityConnection
+    {Site : Type*} [Fintype Site]
+    (shift : Fin 4 -> Equiv Site Site) (coframe : CoframeField Site)
+    (site : Site) (internal direction : Fin 4) :
+    nonlinearCoframeEulerCoefficient shift (identityConnection Site) coframe
+      site internal direction = 0 := by
+  simp [nonlinearCoframeEulerCoefficient,
+    nonlinearCoframeLocalEulerLinearMap,
+    nonlinearCoframeLocalEulerFunctional, orderedPlaquetteActionTerm,
+    plaquetteUnit, plaquetteHolonomy, twoStepTransport,
+    identityConnection, unitMatrix]
+
 /-- The local coframe functional is the coordinate pairing with its sixteen
 Euler coefficients. -/
 theorem nonlinearCoframeLocalEulerFunctional_eq_coordinateSum

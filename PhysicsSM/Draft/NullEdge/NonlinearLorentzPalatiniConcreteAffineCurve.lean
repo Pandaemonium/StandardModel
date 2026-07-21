@@ -351,6 +351,92 @@ theorem actualJointStationary_fourTorusAffineExponential_imply_vacuumEinstein
     fourTorusShift 0 fourTorusFreeForwardStar connection connectionFirstJet
       hLink coframeFirst velocityFirstJet hMixed hStationary
 
+/-! ## Flat nonvacuity control -/
+
+/-- Zero connection data make the displayed affine-exponential family exactly
+the identity-link family at every parameter value. -/
+theorem fourTorusAffineExponentialLinkCurve_zero (t : Real) :
+    fourTorusAffineExponentialLinkCurve
+        (0 : LorentzConnectionVelocity) (0 : LorentzConnectionFirstJet) t =
+      identityConnection FourTorusSite := by
+  funext site direction
+  apply Units.ext
+  change unitMatrix
+      (fourTorusAffineExponentialLinkCurve
+        (0 : LorentzConnectionVelocity) (0 : LorentzConnectionFirstJet)
+          t site direction) =
+    unitMatrix (identityConnection FourTorusSite site direction)
+  simp [fourTorusAffineExponentialLinkCurve, affineExponentialLinkCurve,
+    constantConnectionVariation, localAffineConnectionCorrection,
+    identityConnection, unitMatrix, lorentzGenerator_zero_local]
+
+/-- The concrete stationarity premise is inhabited: zero connection and
+coframe jets give the exact flat identity-link/identity-coframe family.  This
+is a nonvacuity control, not a nonflat gravitational solution. -/
+theorem fourTorusFlatJointStationarity :
+    Filter.Eventually (fun t =>
+      (forall direction component,
+        nonlinearLinkEulerCoefficient fourTorusShift
+          (fourTorusAffineExponentialLinkCurve
+            (0 : LorentzConnectionVelocity) (0 : LorentzConnectionFirstJet) t)
+          (coframeLine (identityCoframeField FourTorusSite)
+            (0 : CoframeField FourTorusSite) t)
+          0 direction component = 0) /\
+      (forall internal direction,
+        nonlinearCoframeEulerCoefficient fourTorusShift
+          (fourTorusAffineExponentialLinkCurve
+            (0 : LorentzConnectionVelocity) (0 : LorentzConnectionFirstJet) t)
+          (coframeLine (identityCoframeField FourTorusSite)
+            (0 : CoframeField FourTorusSite) t)
+          0 internal direction = 0)) (nhds 0) := by
+  filter_upwards with t
+  rw [fourTorusAffineExponentialLinkCurve_zero]
+  have hCoframe : coframeLine (identityCoframeField FourTorusSite)
+      (0 : CoframeField FourTorusSite) t =
+        identityCoframeField FourTorusSite := by
+    funext site
+    simp [coframeLine]
+  rw [hCoframe]
+  constructor
+  · intro direction component
+    simpa [identityCoframeField] using
+      nonlinearLinkEulerCoefficient_identity_siteConstantCoframe
+        fourTorusShift (1 : Matrix (Fin 4) (Fin 4) Real)
+          (0 : FourTorusSite) direction component
+  · intro internal direction
+    exact nonlinearCoframeEulerCoefficient_identityConnection
+      fourTorusShift (identityCoframeField FourTorusSite)
+        (0 : FourTorusSite) internal direction
+
+/-- Applying the concrete capstone to the exact flat family proves its local
+vacuum Einstein endpoint without any stationarity assumption. -/
+theorem fourTorusFlatVacuumEinstein :
+    inducedCoordinateConnection 1 1 (0 : LorentzConnectionVelocity)
+          (backwardCoframeVelocity fourTorusShift
+            (0 : CoframeField FourTorusSite) 0) =
+        christoffelSecondKind (inverseCoframeMetric 1)
+          (inducedMetricFirstJet 1
+            (backwardCoframeVelocity fourTorusShift
+              (0 : CoframeField FourTorusSite) 0)) /\
+      LorentzCoordinateEinsteinContraction.inducedCoordinateCurvature
+          1 1 (0 : LorentzConnectionVelocity)
+          (backwardCoframeVelocity fourTorusShift
+            (0 : CoframeField FourTorusSite) 0)
+          (0 : LorentzConnectionFirstJet)
+          (0 : PredecessorCoframeSecondJet) =
+        coordinateCurvatureFromPlaquetteSecondJet 1 1
+          (0 : LorentzConnectionVelocity) (0 : LorentzConnectionFirstJet) /\
+      forall coframeDirection raisedDirection,
+        LorentzCoordinateEinsteinContraction.coordinateMixedEinstein
+          (inverseCoframeMetric 1)
+          (coordinateCurvatureFromPlaquetteSecondJet 1 1
+            (0 : LorentzConnectionVelocity) (0 : LorentzConnectionFirstJet))
+          coframeDirection raisedDirection = 0 := by
+  exact actualJointStationary_fourTorusAffineExponential_imply_vacuumEinstein
+    (0 : LorentzConnectionVelocity) (0 : LorentzConnectionFirstJet)
+      (0 : CoframeField FourTorusSite) (0 : PredecessorCoframeSecondJet)
+      (by simp) fourTorusFlatJointStationarity
+
 /-! ## Build-enforced assumption-footprint guards -/
 
 /-- info: 'PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniConcreteAffineCurve.affineExponentialLinkCurve_isProperEtaLorentz' depends on axioms: [propext, Classical.choice, Quot.sound] -/
@@ -368,5 +454,13 @@ theorem actualJointStationary_fourTorusAffineExponential_imply_vacuumEinstein
 /-- info: 'PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniConcreteAffineCurve.actualJointStationary_fourTorusAffineExponential_imply_vacuumEinstein' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs (whitespace := lax) in
 #print axioms actualJointStationary_fourTorusAffineExponential_imply_vacuumEinstein
+
+/-- info: 'PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniConcreteAffineCurve.fourTorusFlatJointStationarity' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms fourTorusFlatJointStationarity
+
+/-- info: 'PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniConcreteAffineCurve.fourTorusFlatVacuumEinstein' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs (whitespace := lax) in
+#print axioms fourTorusFlatVacuumEinstein
 
 end PhysicsSM.Draft.NullEdge.NonlinearLorentzPalatiniConcreteAffineCurve

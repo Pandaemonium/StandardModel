@@ -432,6 +432,20 @@ theorem nonlinearCoframePlaquetteConnectionStationary_iff_coefficients
     intro component _
     rw [hCoefficients site direction component, zero_mul]
 
+/-- At identity links, every site-constant coframe has vanishing local link
+Euler coefficients. -/
+theorem nonlinearLinkEulerCoefficient_identity_siteConstantCoframe
+    {Site : Type*} [Fintype Site]
+    (shift : Fin 4 -> Equiv Site Site)
+    (coframe : Matrix (Fin 4) (Fin 4) Real)
+    (site : Site) (direction : Fin 4) (component : Fin 6) :
+    nonlinearLinkEulerCoefficient shift (identityConnection Site)
+      (fun _ => coframe) site direction component = 0 := by
+  exact (nonlinearCoframePlaquetteConnectionStationary_iff_coefficients
+    shift (identityConnection Site) (fun _ => coframe)).1
+      (nonlinear_identity_siteConstantCoframe_stationary shift coframe)
+      site direction component
+
 /-- Ordinary derivative stationarity along every canonical exponential link
 curve is exactly vanishing of all six explicit local nonlinear Euler
 coefficients. -/
