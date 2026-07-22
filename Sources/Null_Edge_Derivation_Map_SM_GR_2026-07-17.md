@@ -242,6 +242,96 @@ open."
   action and the GR soldering on the same `psi` - the formal statement of
   "one object, two theories."
 
+## 5b. ADDENDUM 2026-07-21 (Opus audit day): two new debts, one new bridge
+
+A one-day independent audit of all five program lanes produced two items that belong in
+the debt list above, and one item that discharges part of section 5's hinge task. The
+bottom line of section 4 is **unchanged and still correct**; these sharpen it.
+
+### New debt 4b - the chirality join is PROSE, not Lean
+
+Under debt 4 (S2b), the map records that `W+-` and `T3` are supplied rather than
+ladder-derived. A second, separate gap sits next to it and was not previously listed.
+
+The program's most quotable SM sentence is that the weak force's left-handedness is
+*derived* rather than imposed. In the kernel this is **two theorems joined by a
+sentence**:
+
+* `ChiralityFromActionSplit` proves on `M(k,C)` that left multiplications commute with a
+  right-multiplication grading, by associativity. Its own docstring is honest that this
+  does NOT derive that right-handed fermions are weak singlets.
+* `WeakIsospinChiralityProjector` proves `T = P_L T P_L` on the four-state leptonic
+  ideal - but there the chirality operator is **supplied as the literal matrix**
+  `diag(-1, 1, 1, -1)`.
+
+No Lean theorem connects them. So inside the concrete model **the chiral projector is by
+hand**, and "without imposing a chiral projector by hand" currently outruns the kernel.
+
+*Status:* fix in flight (Aristotle `8a4e09a4`). The supplied matrix is exactly minus the
+fermion-parity operator of the two weak modes, `chi = -(-1)^N` with
+`N = B1^dag B1 + B2^dag B2 = diag(0,1,1,2)`; the `su(2)_L` generators are
+number-conserving bilinears, so they commute with every function of `N`, and the
+right-handed states are the `N = 0` and `N = 2` eigenvectors, each one-dimensional and
+therefore singlets automatically.
+
+*Grading, which matters here:* the physical identification is **`[comp]`**, not `[orig]`.
+Furey 1806.00612 already notes the ideal "resembles a Fock space, with the right-handed
+neutrino acting as the (formal) vacuum state" and that the `SU(2)` action is
+automatically single-chirality; Todorov 2206.06912 states outright that "chirality in the
+particle subspace is determined by the hypercharge: `P = P(-1)^{3Y}`". The `[orig]`
+contribution is the kernel derivation and the de-circularization. Full note:
+`AgentTasks/weak-chirality-parity-provenance-2026-07-21.md`.
+
+*Residual supplied input even after the fix:* the identification of weak-mode fermion
+parity with **spacetime** handedness. Nothing in the algebra makes the `N`-odd sector
+left- rather than right-handed. This is a real and permanent entry in the debt list.
+
+### New debt 7 - the GR interior-Einstein theorem has no model witness
+
+Commit `bc46c285` is titled "derive fixed-boundary interior Einstein equation". The
+module docstring of `FinitePalatiniBoundaryFlux` is honest and says *conditional*, but
+the theorem `fixedBoundaryPalatiniActionStationary_iff_interiorEinsteinEquation` rests on
+five structural predicates (`HasInteriorPointwisePalatiniDivergence`,
+`HasInteriorPalatiniCurvatureResponse`, `HasInteriorInverseMetricVolumeResponse`,
+`HasInteriorEinsteinMetricFirstVariation`, `HasFixedBoundaryInteriorPalatiniFirstVariation`),
+and a tree-wide search finds **each occurring only in the file that defines it**. Nothing
+instantiates any of them.
+
+That is the vacuity mode. Per section 4's own standard, **the word "derive" is not earned
+here**; the honest label is *conditional interior Einstein equation*. The parallel
+`NonlinearLorentzPalatini` track does carry a concrete witness - a nonflat vacuum-Weyl
+second jet on the explicit `3^4` carrier giving the standard mixed vacuum Einstein
+equation - so the decisive open question is whether that witness discharges these five
+predicates. Answering it is probably the highest-value single GR theorem currently
+available.
+
+*Related and undersold:* `PeriodicVacuumWeylAnalyticNoBranch`, now at `C2`, proves the
+realized jet does **not** continue to a nearby nonlinear stationary branch. That is a
+derived OBSTRUCTION in the same spirit as the layer-coherent `(2,2)` no-go already
+credited in section 4, and it deserves to be listed there.
+
+### Hinge progress - the two mass notions are now joined by a theorem
+
+Section 5 asks, on node H landing, for the compatibility of the SM internal action and
+the GR soldering on the same `psi`. A different and previously unlisted hinge has now
+been closed: the program carried **two distinct mass notions** with only a definitional
+coincidence between them.
+
+* *Kinematic:* `det(psi psi^dag + phi phi^dag) = |psi ^ phi|^2` - invariant mass of an
+  assembled lightlike system, a property of a momentum configuration (node H).
+* *Dynamical:* the mass parameter of the live massive Dirac walk, with
+  `H4(k,z)^2 = (|k|^2 + normSq z) I`, a property of an operator spectrum.
+
+`PhysicsSM/Draft/NullEdge/PluckerWalkMassBridge.lean` (landed, guarded, standard three)
+records that they are the same quantity: `H4_sq_eq_momentumSq_add_pluckerDet` shows the
+walk's Dirac square is `|k|^2 + det(twoEdgeMomentum)`;
+`walk_massless_iff_edges_parallel` transports the massless criterion to the dynamical
+side; and `resolvent_bound_governed_by_pluckerMass` shows the fibre resolvent stand-off
+is set by the Pluecker mass. **Scope:** these coincide *in this model because the model
+was built that way*; the value of recording it is that the two lanes are demonstrably
+about one quantity rather than two things sharing a name - previously supported only by
+prose, and exactly the kind of link that rots silently under refactoring.
+
 ## 6. Literature grounding (provenance)
 
 | Result used | Source | arXiv | Tag |

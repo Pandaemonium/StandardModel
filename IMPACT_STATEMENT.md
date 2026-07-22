@@ -42,7 +42,25 @@ directions lie on one projective ray. This turns the intuition that
 misaligned massless momenta can form a massive system into an exact finite
 theorem with a complete zero-locus classification.
 
-**Anchor:** `PhysicsSM.Spinor.PluckerMass`.
+The converse is now proved as well. Every future-causal four-momentum has a
+positive-semidefinite Pauli representative, every such representative is a
+finite sum of rank-one null spinor momenta, and its Minkowski square is exactly
+the same pairwise Pluecker sum. Thus every nonnegative relativistic invariant
+mass is covered at the level of kinematic representation. This does not select
+the momentum or derive the interaction, coupling, vacuum, or scale that produced
+it.
+
+A separate finite Lorentz audit removes one further arbitrariness: invariance
+under two explicit spatial half-turns, two quarter-turns, and an exact rational
+boost forces every symmetric quadratic four-momentum form to be a scalar
+multiple of the Minkowski metric. Fixing its time-time coefficient to one fixes
+the metric itself. This is not the full Wigner classification, but it proves
+that the quadratic mass scalar used here is uniquely selected within the
+displayed nonvacuous symmetry audit.
+
+**Anchors:** `PhysicsSM.Spinor.PluckerMass`,
+`PhysicsSM.Draft.NullEdge.PluckerMassKinematicCompleteness`,
+`PhysicsSM.Draft.NullEdge.FiniteLorentzMassCasimir`.
 
 ### 2. The same area generates the Dirac rest operator
 
@@ -182,20 +200,45 @@ the massive Dirac differential expression, with Mathlib's `2*pi` convention
 carried explicitly. The maximal momentum Hamiltonian and its exact
 Fourier-conjugated position operator are self-adjoint and closed.
 
-The onsite rest operator is determined by the same complex Pluecker area as the
-finite null-spinor mass invariant; the walk does not introduce a second
-independent rest coefficient. Finite exterior-Fock locality and a nontrivial
-local quartic interaction control are also proved.
+Under the explicit specialization `z = psi wedge phi`, the onsite rest
+operator, dynamical mass shell, and finite null-spinor determinant use the same
+complex Pluecker area, with no second coefficient inserted. The walk itself
+does not force that specialization or select the value of `z`. Finite
+exterior-Fock locality and a nontrivial local quartic interaction control are
+also proved.
+
+The actual massive endpoint also has a constructive resource theorem: one
+common schedule reaches error at most `1/(N+1)`, with an explicit cubic depth
+bound on the displayed linearly growing momentum window. Its full-zone zero/pi
+gap has further been converted into an invertible Hermitian inverse-Cayley
+generator and a canonical finite negative-sign orthogonal projector at every
+Brillouin-zone momentum. The generator is continuous on the closed Brillouin
+cube, the projector passes the exact rest-frame convention and commutes with
+the live endpoint, and the full characteristic determinant at arbitrary complex
+spectral parameter reduces exactly to a two-component opposite-chirality
+determinant. Determinant one of its two chiral blocks forces that polynomial to
+be reciprocal, so every nonzero characteristic root of the live massive walk
+is accompanied by its reciprocal. After the exact inverse-Cayley transform,
+the complete shifted determinant is even:
+`det (H - x I) = det (H + x I)` for every complex `x`. Opposite Cayley-energy
+pairing is therefore an exact polynomial symmetry, not a numerical spectral
+observation.
 
 This is a complete free one-particle changing-lattice theorem, not an
 interacting QFT. The full microscopic Floquet register retains its required
-compensating sector. The next gate is to construct a gapped quasi-local
-low-energy band whose accumulated interaction leakage vanishes, rather than
-deleting that sector by hand.
+compensating sector. The canonical projector is not yet a released physical
+sector: its global rank and continuity, quasi-local decay, and interaction
+leakage remain to be proved. The next gate is to construct a
+gapped quasi-local low-energy band whose accumulated interaction leakage
+vanishes, rather than deleting that sector by hand.
 
 **Anchors:** `HNUMassiveChangingLatticeContinuumCapstone`,
 `HNUMassiveSchwartzPDE`, `HNUMassiveMaximalMultiplier`,
-`HNUFourierPositionOperator`, `FiniteFermionicLocality`.
+`HNUFourierPositionOperator`, `HNUMassivePolynomialAdaptiveCost`,
+`HNUCayleyBandSelector`, `HNUCayleyBandSelectorCanonical`,
+`HNUCayleyBandSelectorContinuity`, `HNUMassiveSpectralReciprocity`,
+`HNUCayleyEvenDeterminant`,
+`FiniteFermionicLocality`.
 
 ## Why this matters
 

@@ -448,6 +448,40 @@ Mass squared is therefore a positive sum of directional disagreements.  It is
 zero only when every occupied direction agrees; no cancellation between
 different pairs is available.
 
+The forward map has an exact converse: the null-edge construction reaches every
+future-causal momentum, not a special subclass.
+
+\begin{theorem}[Null-edge completeness of the forward cone]\label{thm:completeness}
+A Hermitian $P\in M_2(\C)$ is positive semidefinite if and only if
+$P=\sum_{i=1}^{N}\psi_i\psi_i^\dagger$ for some finite family
+$\psi_1,\dots,\psi_N\in\C^2$.  Under the mostly-minus Pauli map the positive
+semidefinite $P$ are exactly the future-pointing, non-spacelike four-momenta; each
+factor $\psi_i\psi_i^\dagger$ is future null; and by Theorem~\ref{thm:area} the
+Lorentzian square is the pairwise area \eqref{eq:area}.  Thus every future-causal
+momentum is a sum of null edges whose total pairwise disagreement is its mass.  In the
+timelike interior two factors suffice, recovering the massive spinor-helicity split.
+\end{theorem}
+\noindent\Classical{} \Kernel{}
+
+\begin{proof}
+The spectral theorem writes a positive semidefinite $P$ as a nonnegative combination of
+rank-one spectral projectors, each of the form $\psi_i\psi_i^\dagger$; conversely every
+such sum is positive semidefinite.  This equivalence, the future-null character of each
+factor, the future-pointing time component, and the resulting realization of every
+forward-cone four-vector are kernel-checked in
+\texttt{PluckerMassKinematicCompleteness}; the Lorentzian square is
+Theorem~\ref{thm:area}.  In the timelike interior $P$ has rank two, so exactly two null
+factors occur, which is the standard massive two-spinor decomposition
+\cite{ArkaniHamedMassive,DittmaierWvdW}.
+\end{proof}
+
+This converse promotes the construction from an ansatz to a \emph{representation}: null
+edges are a coordinate for the entire forward cone, and $\det P$ is the mass of every
+momentum in it, not only of those presented in factored form.  The statement is
+kinematic.  It does not select $P$, and it derives no dynamical mass value; the
+two-spinor decomposition is classical amplitude kinematics, and only its finite
+formalization and the completeness packaging are new here.
+
 \subsection{Why the determinant is canonical}
 
 The determinant is not selected merely because it gives the desired answer.
@@ -647,9 +681,10 @@ $F:\C\to M_2(\C)$ satisfies:
 \end{enumerate}
 Then $F(z)=B_z$ for every $z\in\C$.
 \end{theorem}
-\noindent\Human{}  The theorem records the precise covariance class and
+\noindent\NewResult{} \Kernel{}  The theorem records the precise covariance class and
 normalization in which the words \emph{natural} and \emph{uniquely selected}
-are used; a dedicated Lean declaration is not claimed.
+are used; it is kernel-checked in \texttt{PluckerRestOperatorUniqueness}
+(\texttt{equivariant\_uniqueness\_of\_rest\_map}).
 
 \begin{proof}
 The case $z=0$ is an assumption.  Otherwise write $z=ru$ with
@@ -1333,6 +1368,15 @@ $\norm{A(k)-B(k)}\leq\varepsilon$ implies
   equal to its adjoint, and closed; these statements are \NewResult{}
   \Kernel{}.
 
+  The fibre resolvent bound is in fact sharper than the unit norm used for
+  self-adjointness.  At the spectral point $\ii$ the fibre inverse $R_q$ obeys
+  $(1+|z|^2)\,\norm{R_q v}^2\le\norm{v}^2$, so it stands off the fibre spectrum by
+  the full rest gap $\sqrt{1+|z|^2}$ and the resolvent estimate itself sees the
+  mass; the norm-one bound is its massless shadow.  This sharp bound, and the
+  identification of the walk's dynamical mass shell with the kinematic Pl\"ucker
+  area of Theorem~\ref{thm:area}, are \NewResult{} \Kernel{}
+  (\texttt{HNUResolventDomainBridge}, \texttt{PluckerWalkMassBridge}).
+
   The exact Fourier-conjugated maximal operator is now defined on the pulled-back
   graph domain.  Unitary conjugation proves it self-adjoint and closed, identifies
   its graph exactly, and preserves both graph-norm terms.  On Schwartz functions,
@@ -1646,6 +1690,23 @@ QCA.  This family-scoped locality/de-aliasing incompatibility, including the
 range-one control, is \NoGo{} \Kernel{}.  It does not exclude a larger cell or
 a genuinely different finite product; it prevents a nonlocal Bloch control
 from being mislabeled as that successor.
+
+Toward such a successor, three finite facts constrain how the doubler sector could be
+decoupled.  First, the obstruction is bundle-theoretic, not incidental: a nonzero
+one-particle index forbids an exponentially localized orthonormal band basis, even though
+the band \emph{projector} stays quasi-local
+\cite{ReadLaurentKTheory,GNVW}.  The extra range, coupled substeps, or enlarged cells are
+therefore the price of carrying a nonzero index in a strictly local frame, not a
+shortcoming of the present ansatz.  Second, an adiabatic decoupling cannot be certified by
+the naive per-step leakage telescope: for a band transported by its own instantaneous
+evolution the summed leakage bound equals the total band rotation angle in the limit, not
+zero, and worsens under refinement (\NoGo{} \Kernel{},
+\texttt{MovingProjectorTelescopeNoGo}).  Third, the correct finite replacement is a
+threshold, not a limit: a homotopy invariant of the endpoint map survives any perturbation
+that is never antipodal, that is, uniformly within distance two on the target sphere
+(\NewResult{} \Kernel{}, \texttt{NeverAntipodalThreshold}); the constant two is not
+demonstrated sharp for the $\mathrm{SU}(2)$-valued endpoint map, so the licensed gate is
+conservative.
 
 The matching cross-architecture algebraic invariant is now exact in one
 Laurent variable.  The determinant of every invertible finite Laurent matrix
@@ -2465,6 +2526,12 @@ lake env lean PhysicsSM/Draft/NullEdge/FiniteOSReflectionPositivity.lean
 lake env lean PhysicsSM/Draft/NullEdge/CornerWalkEquivalence.lean
 lake env lean PhysicsSM/Draft/NullEdge/FermionDoublingAudit.lean
 lake env lean PhysicsSM/Draft/NullEdge/ExactCheckerboardPathSum.lean
+lake env lean PhysicsSM/Draft/NullEdge/PluckerMassKinematicCompleteness.lean
+lake env lean PhysicsSM/Draft/NullEdge/PluckerRestOperatorUniqueness.lean
+lake env lean PhysicsSM/Draft/NullEdge/PluckerWalkMassBridge.lean
+lake env lean PhysicsSM/Draft/NullEdge/HNUResolventDomainBridge.lean
+lake env lean PhysicsSM/Draft/NullEdge/MovingProjectorTelescopeNoGo.lean
+lake env lean PhysicsSM/Draft/NullEdge/NeverAntipodalThreshold.lean
 lake build PhysicsSM.Draft.NullEdge.ExactQuantumWalkDispersion
 lake build PhysicsSM.Draft.NullEdge.FixedMomentumManyStepContinuum
 lake build PhysicsSM.Draft.NullEdge.BoundedMomentumManyStepContinuum

@@ -38,6 +38,17 @@ import PhysicsSM.Draft.NullEdge.HalfSpaceDefectIndex
 import PhysicsSM.Draft.NullEdge.HalfSpaceRelativeFlow
 import PhysicsSM.Draft.NullEdge.HNUExactCore
 import PhysicsSM.Draft.NullEdge.HNUInfraredTangent
+import PhysicsSM.Draft.NullEdge.HNUMassivePolynomialAdaptiveCostAxiomGuard
+import PhysicsSM.Draft.NullEdge.HNUCayleyBandSelectorAxiomGuard
+import PhysicsSM.Draft.NullEdge.HNUCayleyBandSelectorCanonicalAxiomGuard
+import PhysicsSM.Draft.NullEdge.HNUCayleyBandSelectorContinuityAxiomGuard
+import PhysicsSM.Draft.NullEdge.ContinuousProjectorRankAxiomGuard
+import PhysicsSM.Draft.NullEdge.HNUMassiveSpectralReciprocityAxiomGuard
+import PhysicsSM.Draft.NullEdge.HNUCayleyEvenDeterminantAxiomGuard
+import PhysicsSM.Draft.NullEdge.MovingProjectorTelescopeNoGoAxiomGuard
+import PhysicsSM.Draft.NullEdge.DiscreteAdiabaticCancellationAxiomGuard
+import PhysicsSM.Draft.NullEdge.InvariantCovarianceEigenspaceStructureAxiomGuard
+import PhysicsSM.Draft.NullEdge.WeakFermionParityChiralityAxiomGuard
 import PhysicsSM.Draft.NullEdge.PlueckerHNUIntertwiner
 import PhysicsSM.Draft.NullEdge.HNUInfraredWeylCharge
 import PhysicsSM.Draft.NullEdge.HNULocalChargeBalance
@@ -350,6 +361,9 @@ import PhysicsSM.Draft.NullEdge.FullBlochSplitMinus
 import PhysicsSM.Draft.NullEdge.FullBlochZeroClassification
 import PhysicsSM.Draft.NullEdge.FiniteWalkOnsiteEquivalenceObstruction
 import PhysicsSM.Draft.NullEdge.LocalQCAProperties
+import PhysicsSM.Draft.NullEdge.PluckerMassKinematicCompleteness
+import PhysicsSM.Draft.NullEdge.FiniteLorentzMassCasimir
+import PhysicsSM.Draft.NullEdge.ScopedMassMechanismGrammar
 
 /-!
 # Overnight whole-theory landing guard

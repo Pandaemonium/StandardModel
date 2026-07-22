@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-07-20T07:02:06-07:00",
+  "updated_at": "2026-07-21T14:14:17-07:00",
   "items": [
     {
       "id": "LAB-BOOTSTRAP-001",
@@ -649,7 +649,7 @@
       "parent_id": null,
       "depends_on": [],
       "title": "Build the first evidence-preserving public explanation ladder",
-      "status": "RED_TEAM",
+      "status": "EXECUTING",
       "priority": 78,
       "role": "educator",
       "owner_model": "claude",
@@ -1174,7 +1174,7 @@
       "parent_id": null,
       "depends_on": [],
       "title": "Scoped mass-mechanism classification and shared Higgs datum",
-      "status": "EXECUTING",
+      "status": "INTEGRATED",
       "priority": 98,
       "role": "research_scientist",
       "owner_model": "codex",

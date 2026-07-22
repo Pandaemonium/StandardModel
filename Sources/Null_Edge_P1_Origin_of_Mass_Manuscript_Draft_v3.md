@@ -37,6 +37,11 @@ time. When a sentence has no grade, it is exposition.
 trusted namespace `PhysicsSM.Spinor.PluckerMass` and
 `PhysicsSM.Spinor.TwistorPluckerMass` (verified green under the pinned
 toolchain `leanprover/lean4:v4.28.0`; provenance note of v2, 2026-07-03).
+The converse coverage theorem and the finite Lorentz quadratic-uniqueness
+audit live in
+`PhysicsSM.Draft.NullEdge.PluckerMassKinematicCompleteness` and
+`PhysicsSM.Draft.NullEdge.FiniteLorentzMassCasimir`; both carry
+build-enforced standard-three axiom guards.
 Kernel-clean draft anchors: `PhysicsSM.Draft.NullEdgeSpinorGeometryTargets`
 (SL(2,C) covariance), `PhysicsSM.Draft.NullEdgeBundleDiracPluckerCore`
 (static Dirac square root),
@@ -79,6 +84,13 @@ it vanishes exactly when all the vectors point along one common direction.
 Every step is checked by the Lean 4 proof kernel. Grade: `M [comp]` - the
 ingredients are classical; the finite bundle formulation, the exact massless
 criterion, and the machine-checked packaging are the contribution.
+
+The converse is now checked too. Every future-causal four-momentum has a
+finite decomposition into explicitly future-pointing null spinor edges, and
+the same pairwise wedge sum is exactly its Minkowski square. Thus the result is
+kinematically complete: it covers every nonnegative relativistic invariant
+mass once the total four-momentum is supplied. It does not explain which
+four-momentum or numerical mass the dynamics selects.
 
 The physics reading enters through one standard dictionary (also
 kernel-checked): rank-one bispinors are future-pointing lightlike momenta,
@@ -240,9 +252,20 @@ of constituents, of that pair's disagreement score.** Nothing else
 contributes. And the exact massless criterion follows: the bundle is
 massless if and only if every constituent points along one common ray.
 
-Three follow-up facts complete the package (all machine-checked, all stated
+Five follow-up facts complete the kinematic package (all machine-checked, all stated
 precisely in Part II):
 
+- **The converse holds.** Every future-causal four-momentum is the soldered sum
+  of finitely many explicitly future-pointing null spinor edges, and its
+  Minkowski square is exactly their total pairwise Pluecker mass. The formula
+  therefore covers every relativistic mass kinematically, not merely bundles
+  chosen in advance.
+- **The quadratic scalar is symmetry-selected.** Within an explicit finite
+  Lorentz audit, two spatial half-turns, two quarter-turns, and one exact
+  rational boost force a symmetric quadratic form to be a scalar multiple of
+  the Minkowski metric. Unit time-time normalization fixes the metric itself.
+  This is not the full Wigner classification; it rules out an arbitrary choice
+  of quadratic mass proxy within the displayed audit.
 - **Mass is an orbit invariant.** A massive `P` can be split into lightlike
   pieces in infinitely many ways. The theorem holds in EVERY split, with
   the same answer `det P`. So no particular decomposition is "the real

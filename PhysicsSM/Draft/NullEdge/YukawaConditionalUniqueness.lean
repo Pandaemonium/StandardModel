@@ -1,6 +1,14 @@
 import Mathlib
 
 /-!
+
+WAVE-3 AUDIT CORRECTION (2026-07-21, job `6ea8b5f0`, witnesses in
+`MassLandingsAuditWave3`). Fixing a PHASE alone does NOT give uniqueness, and requiring
+the coupling to be nonzero does not either, because the MAGNITUDE remains free
+(`AuditWitnesses.weak_phase_does_not_give_uniqueness`). The repair is fixed magnitude
+TOGETHER WITH phase (`AuditWitnesses.phase_and_magnitude_unique`). Separately: a genuine
+`finrank = 1` intertwiner space cannot be `{0}`, but a weakened `finrank <= 1` version
+would permit vacuity - the strict equality is load-bearing and must not be relaxed.
 # Yukawa conditional uniqueness (Opus, verified Aristotle bbe67efa)
 
 Positive complement to `PlueckerYukawaModuli` (the A2 no-go). One-dimensional

@@ -30,6 +30,22 @@ sector required by topology.
 
 ## Primary sources
 
+### Kato (1950)
+
+- T. Kato, *On the Adiabatic Theorem of Quantum Mechanics*, Journal of the
+  Physical Society of Japan 5, 435-439 (1950),
+  DOI:10.1143/JPSJ.5.435.
+- Exact result used: the adiabatic comparison dynamics transports the range of
+  a smoothly varying spectral projection into the later range. This is the
+  source of the projector-intertwining or parallel-transport target; it is not
+  merely a small norm difference between adjacent projectors.
+- Consequence for the finite witness: a genuine control should keep a fixed
+  macroscopic path, prove that adjacent projectors differ, and separately
+  exhibit a transporter with zero cross-band defect. Shrinking the total path
+  with the regulator is not an adequate substitute.
+- Zotero/Neo4j key: `QSGUZTTP`; metadata ingested and embedded, full text not
+  ingested.
+
 ### Dranov, Kellendonk, and Seiler (1998)
 
 - A. Dranov, J. Kellendonk, and R. Seiler, *Discrete time adiabatic theorems
@@ -74,7 +90,9 @@ sector required by topology.
   and complementary arcs require two separating gaps. Their multistep gap
   covers up to three consecutive walk operators. This is stronger than a
   pointwise gap declaration.
-- Zotero/Neo4j key: `32E6MCJA`; full text ingested.
+- Zotero/Neo4j key: `32E6MCJA`. Metadata and abstract are embedded. The arXiv
+  source was inspected directly for this memo, but the attempted Neo4j
+  full-text ingestion did not complete.
 
 ### Jansen, Ruskai, and Seiler (2007)
 
@@ -89,7 +107,9 @@ sector required by topology.
 - Consequence: the HNU physical field need not be a one-dimensional eigenline.
   A finite-rank low-energy cluster is acceptable if its external gap remains
   open.
-- Zotero/Neo4j key: `RGV8P5X3`; full text ingested.
+- Zotero/Neo4j key: `RGV8P5X3`. Metadata and abstract are embedded. The arXiv
+  source was inspected directly for this memo, but the attempted Neo4j
+  full-text ingestion did not complete.
 
 ## Relationship to landed finite theorems
 
@@ -111,23 +131,50 @@ The two layers should not be conflated:
 - the adiabatic theorem is the mechanism that can make a moving spectral band
   autonomous without exact coordinate-block invariance.
 
+### Post-search theorem correction: the absolute telescope is a no-go
+
+The finite control is now kernel-checked in
+`MovingProjectorTelescopeNoGo.lean` (Aristotle project
+`9e7d0e96-4b07-42b1-b90c-a5cff826368e`). For a rank-one band rotating through
+a fixed angle `Theta` in `N` equal steps,
+
+```text
+sum_k ||(1 - P_(k+1)) U_k P_k|| = N |sin (Theta/N)|
+```
+
+whenever `U_k` is unitary and commutes with `P_k`. Thus the dynamics drops out
+of the norm exactly, and the right side tends to `Theta`, not zero. The
+triangle-inequality telescope cannot prove asymptotic band autonomy for a
+fixed nonzero path. This does not contradict the cited adiabatic theorems:
+their smallness comes from an intertwining comparison dynamics and oscillatory
+cancellation that the sum of absolute norms destroys.
+
+The literature therefore changes the target rather than merely supplying a
+better constant. The next theorem must formalize a discrete adiabatic
+intertwiner, a resolvent/commutator cancellation estimate, or a finite
+homotopy-stability threshold. It must not reinstate the disproved requirement
+that the absolute mismatch sum tend to zero.
+
 ## New HNU theorem ladder
 
-1. **Moving-projector telescope.** Prove the exact product identity and norm
-   sum for arbitrary supplied `P_k` and contractive `U_k`.
-2. **Nonvacuity witness.** Give an exact rational two-band family with nonzero
-   finite-step defect and a displayed schedule for which accumulated leakage
-   vanishes.
-3. **HNU first difference.** For the live parameterized walk, prove
+1. **Canonical live selector.** Complete the inverse-Cayley certified-sign
+   construction for the massive HNU endpoint, prove that it commutes with the
+   endpoint, and pass the rest-frame projector kill test.
+2. **HNU first difference.** For the live parameterized walk, prove
    `||W_T((k+1)/T)-W_T(k/T)|| <= C_1/T` uniformly on the physical compact
    momentum region.
-4. **HNU second difference.** Prove the corresponding `C_2/T^2` bound.
-5. **Multistep quasienergy gap.** Upgrade the existing pointwise massive gap to
+3. **HNU second difference.** Prove the corresponding `C_2/T^2` bound.
+4. **Multistep quasienergy gap.** Upgrade the existing pointwise massive gap to
    separation of the chosen and complementary spectral arcs across every
    triple of neighboring steps.
-6. **Adiabatic composition.** Package the finite-dimensional discrete theorem
-   in the exact norm and indexing conventions used by the HNU schedule, then
-   instantiate it to obtain `O(1/T)` band leakage.
+5. **Adiabatic composition with cancellation.** Package a finite-dimensional
+   discrete adiabatic intertwiner in the exact norm and indexing conventions
+   used by the HNU schedule. The proof must retain phase cancellation; the
+   absolute mismatch telescope is formally unavailable.
+6. **Finite topology-stability gate.** Use the landed never-antipodal theorem
+   as a conservative sufficient gate: a uniform endpoint-map perturbation
+   below `2` preserves homotopy class. Do not call the constant sharp for the
+   `SU(2) = S^3` target.
 7. **Interaction stability.** Add a local even interaction whose finite
    differences and cross-band perturbation are small relative to the same gap;
    prove the selected-band leakage still tends to zero.
@@ -156,7 +203,9 @@ If the ladder closes, the correct statement is:
 > deleting the complement.
 
 Until then, the project has an exact free continuum theorem and an abstract
-leakage mechanism, but not a completed physical-sector theorem.
+selector plus topology-stability controls, but not a completed physical-sector
+theorem. In particular, the old absolute-telescope gate is now refuted as a
+proof method and must not appear as an open obligation.
 
 ## Kill conditions
 
@@ -174,7 +223,13 @@ leakage mechanism, but not a completed physical-sector theorem.
 
 | Key | Identifier | Graph status | Full text |
 |---|---|---|---|
+| `QSGUZTTP` | DOI:10.1143/JPSJ.5.435 | ingested and embedded | metadata only |
 | `9FE77BVH` | DOI:10.1063/1.532382 | ingested and embedded | metadata only |
 | `NJDPNUQ8` | DOI:10.1143/JPSJ.80.125002 | ingested and embedded | metadata only |
-| `32E6MCJA` | arXiv:2111.08152 | ingested and embedded | ingested |
-| `RGV8P5X3` | arXiv:quant-ph/0603175 | ingested and embedded | ingested |
+| `32E6MCJA` | arXiv:2111.08152 | ingested and embedded | ingestion failed; source inspected directly |
+| `RGV8P5X3` | arXiv:quant-ph/0603175 | ingested and embedded | ingestion failed; source inspected directly |
+
+The long-running full-text ingestion attempt terminated Neo4j before either
+paper appeared in `--list-fulltext`. Neo4j was restarted successfully at
+07:38 PDT; the graph metadata remained reachable. This is an indexing incident,
+not a change to the source-based conclusions above.

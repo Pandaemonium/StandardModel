@@ -11,6 +11,9 @@ Aristotle), and `labctl` enforces it.
 
 1. Read repository `AGENTS.md` and AFPL `README.md`, `CHARTER.md`,
    `OPERATING_SYSTEM.md`, and `GOVERNANCE.md`.
+   During the 2026-07-21 ten-day campaign, also read
+   `AutonomousLab/prompts/TEN_DAY_GRAND_CHALLENGE_ROADMAP_2026-07-21.md`; it is
+   the active campaign overlay, subordinate to the standing lab constitution.
 2. Run `python AutonomousLab/scripts/labctl.py validate`, then `mode`, `status`,
    `role-status`, `queue`, and `due`. If `mode` reports solo, also read
    `AutonomousLab/SOLO_MODE.md` before selecting work.

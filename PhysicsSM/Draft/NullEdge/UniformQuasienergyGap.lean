@@ -1,6 +1,14 @@
 import Mathlib
 
 /-!
+
+WAVE-3 AUDIT CORRECTION (2026-07-21, job `6ea8b5f0`, witnesses in
+`MassLandingsAuditWave3`). The `[Nonempty K]` instance is **semantically load-bearing, not
+boilerplate**: over `Empty` every gap function vacuously admits a positive uniform lower
+bound (`AuditWitnesses.empty_parameter_uniform_margin`). A uniform margin has content only
+once the parameter space is inhabited
+(`AuditWitnesses.uniform_margin_has_pointwise_content`). Do not present the `Nonempty`
+hypothesis as a technicality, and do not drop it in any restatement.
 # Compactness upgrade: pointwise no-crossing implies a uniform quasienergy gap
 
 Audit-driven strengthening of the AFPL HNU headline

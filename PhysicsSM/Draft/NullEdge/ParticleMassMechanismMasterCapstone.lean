@@ -11,6 +11,14 @@ import PhysicsSM.Draft.NullEdge.NeutrinoCPSeesawBridge
 import PhysicsSM.Draft.NullEdge.SigmaMapNullEdges
 
 /-!
+
+PRECISION (structural audit, Opus 2026-07-21). `particle_mass_mechanism_master_capstone`
+has proof `⟨a, b, c⟩`: the conjunction of three packets, each itself a conjunction of
+theorems proved in other modules. It is a **build-enforced integration pin**, not a result
+about particle mass - it adds no information beyond its components, and nothing in it
+could fail that was not already provable. The bundling role is genuinely useful (one axiom
+guard over the whole mesh), but "master capstone" and "verdict" must not be quoted as a
+culminating theorem. Cite the component theorems in their own modules.
 # The particle mass-mechanism master capstone
 
 `PhysicsSM.Draft.NullEdge.ParticleMassMechanismMasterCapstone`

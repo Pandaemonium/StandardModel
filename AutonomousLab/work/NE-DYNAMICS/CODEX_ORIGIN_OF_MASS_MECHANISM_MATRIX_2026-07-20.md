@@ -28,7 +28,11 @@ contractions are unique up to scalar in the displayed concrete
 representations; the finite neutrino branches are separated; and the HNU
 one-particle regulator has a changing-lattice strong position-space limit.
 None of those facts selects the free coefficients or turns a finite composite
-gap into a QCD pole mass.
+gap into a QCD pole mass. The composite lane now also has one finite abelian
+model in which gauge invariance, transfer positivity, a simple first-excited
+gap, and nonzero observable overlap hold simultaneously, plus a finite
+spectral-measure reconstruction theorem. Those close joint satisfiability and
+readout well-posedness controls, not the SU(3) or interacting continuum gates.
 
 ## 2. Universe of admissible mechanisms
 
@@ -71,10 +75,10 @@ be carried by a propagator zero rather than a one-particle mass pole.
 | Fermion chiral turn | Shared scalar `v`, independent equivariant Yukawa map `Y_f`, chirality conventions | Singular values/eigenvalues of `(v / sqrt 2) Y_f` in a positive physical sector | `M` algebra and finite legality/contraction classifiers, `T` SM formula | Derive/classify the flavor coefficients in `Y_f`; justify any full-doublet cross-space bridge; pole reconstruction |
 | Broken gauge orbit | `H0`, gauge representation and couplings | Positive Gram stiffness of `X |-> X H0`; stabilizer is massless kernel | `M` finite, `T` SM mechanism | Full electroweak convention lock and physical propagator |
 | Scalar radial mode | Scalar potential and vacuum `H0` | Hessian normal to the gauge orbit | `M` finite, `T` SM formula | Vacuum selection, radiative corrections, physical pole |
-| Neutrino extension | Declared right-handed fields or dimension-five operator; heavy scale | Dirac/Majorana block or seesaw Schur complement | `M` minimal, Dirac, Weinberg, seesaw, mixed two-state, and exact two-state singular-mass branches; `T` mechanism | Arbitrary-generation Takagi factorization, multi-generation flavor data, and pole control |
-| Composite gauge sector | Gauge action, transfer operator, vacuum, gauge-invariant observable | Rest-state energy or correlation-decay/transfer gap | `M` finite spectral/overlap/pole-residue controls, `T` lattice reconstruction | Honest finite nonabelian witness, field-algebra reflection positivity, SU(3), changing-lattice interacting limit |
+| Neutrino extension | Declared right-handed fields or dimension-five operator; heavy scale | Dirac/Majorana block or seesaw Schur complement | `M` minimal, Dirac, Weinberg, seesaw, mixed two-state, exact two-state singular masses, and an arbitrary-generation squared-singular basis with conditional Takagi assembly; `T` mechanism | Construct the phase-compatible basis in zero/repeated singular-value subspaces; multi-generation flavor data and pole control |
+| Composite gauge sector | Gauge action, transfer operator, vacuum, gauge-invariant observable | Rest-state energy or correlation-decay/transfer gap | `M` finite spectral/overlap/pole-residue controls and one joint abelian toy bridge, `T` lattice reconstruction | Honest finite nonabelian witness, field-algebra reflection positivity, SU(3), changing-lattice interacting limit |
 | Symmetric mass generation | An anomaly-compatible interacting multiplet and local many-body interaction | Symmetry-preserving many-body gap, potentially represented by a propagator zero rather than a bilinear pole | `T` mechanism, `M` overlap obstruction only | Null-edge interacting realization, anomaly ledger, and correlator reconstruction |
-| Inertial/gravitational response | Total action/stress response and coframe variation | Equality of inertial and source response | `M` finite identities, `C` physical completion | Shared action, continuum conservation, GR limit |
+| Inertial/gravitational response | Total action/stress response and coframe variation | Equality of independently derived inertial and source response | `M` positivity/channel-blindness controls only; equivalence gate open | Derive both roles independently from one shared action, then prove their equality; continuum conservation and GR limit |
 
 `M` means machine-verified program-internal finite statement; `T` means a
 source-verified established mechanism; `C` means an open program
@@ -131,6 +135,15 @@ texture, or QCD scale.
 `|z|`, the construction is a geometric parametrization of a rest term rather
 than a distinct physical mass mechanism.
 
+**Finite phase-sensitive control.** `EqualMagnitudePhaseInterferometer.lean`
+proves that two supplied `U(1)` edge profiles with identical local magnitudes
+can have different gauge-invariant closed-loop interference scores: the
+trivial square scores `4`, while the exact `I`-holonomy square scores `2` under
+every unit-norm vertex gauge transformation. This answers the purely algebraic
+claim that phase is always invisible once local magnitudes are fixed. It does
+not yet derive either edge profile from local Pluecker data, couple the score to
+the live mass dynamics, or provide a continuum or experimental discriminator.
+
 ### B. Fermion chiral turn
 
 **Data.** Left/right representations, a gauge-equivariant Yukawa map `Y_f`, the
@@ -163,6 +176,14 @@ the admissible intertwiner space. The general classification target is the
 representation-theoretic moduli space `Hom_G(V_R, V_L)` (with the Higgs
 representation included in the physical Standard Model version), followed by
 Pluecker level sets or strata inside that space.
+
+`MassLandingsAuditWave3.lean` adds a sharper uniqueness warning. Fixing only a
+coupling phase does not select a unique Yukawa map, and requiring the map to be
+nonzero does not repair the problem because its magnitude remains free. A
+conditional scalar uniqueness statement needs both magnitude and phase data.
+The strict one-dimensional hypothesis `finrank = 1` is also load-bearing: it
+excludes the zero space, whereas the superficially similar `finrank <= 1`
+would admit a vacuous model.
 
 **Independent control.** `Y = 0` kills the fermion response while leaving the
 gauge and radial responses available. A nilpotent nonzero `Y` is a warning that
@@ -294,6 +315,13 @@ API:
    triangular congruence block diagonalization, and a controlled residual under
    the displayed small-mixing hypothesis `|m_D/M_R| <= epsilon`.
 
+For the general block identity, two-sided invertibility of `M_R` is enough to
+form the Schur complement. It is not enough for a symmetry-preserving Majorana
+interpretation: an invertible nonsymmetric heavy block can produce a
+nonsymmetric light block. Whenever the effective block is called Majorana, the
+needed symmetry must be stated explicitly (equivalently, in the displayed
+finite elimination, symmetry of the inverse block used in the contraction).
+
 This is an operator and field-content classification. It does not derive the
 heavy scale, the Dirac coupling, mixing angles, CP phases, or a physical pole.
 `MixedPseudoDiracBranch.lean` closes the missing two-state algebraic row:
@@ -305,10 +333,13 @@ now supplies the physically relevant finite correction: the two squared masses
 are the nonnegative eigenvalues of `M^H M`, with exact trace, determinant,
 discriminant, and real-specialization formulas. Its nonzero complex symmetric
 nilpotent control has only zero ordinary eigenvalues while `M^H M` is nonzero,
-so ordinary complex-eigenvalue language is decisively inadequate. The module
-does not prove arbitrary-generation Autonne-Takagi factorization or determine
-flavor data. Accordingly, do not cite the combined finite modules as a complete
-phenomenological neutrino theory.
+so ordinary complex-eigenvalue language is decisively inadequate.
+`FiniteTakagiMajoranaPartial.lean` adds the arbitrary-generation
+squared-singular basis, conditional phase-compatible Takagi assembly, and the
+correctly oriented squared-mass identity. It does not construct the required
+phase-compatible basis in zero and repeated singular-value subspaces, and none
+of these modules determines flavor data. Accordingly, do not cite the combined
+finite modules as a complete phenomenological neutrino theory.
 
 **Input debt.** Extra field content, the heavy scale, and coupling matrices are
 supplied. The finite Schur identity does not determine observed neutrino masses
@@ -347,6 +378,17 @@ constituent reference.
 **Current boundary.** The strongest controls are finite/toy and do not yet give
 an SU(3) hadron sector or continuum confinement. The physical QCD mass gap is
 not proved.
+
+`CompositeMassBridgeModel.lean` closes an important finite satisfiability
+question. In one three-state model with a nontrivial finite abelian gauge
+action, the observable is gauge invariant, the transfer matrix is strictly
+positive with simple ordered eigenvalues `9 > 4 > 1`, and the same observable
+has nonzero overlap with the unique first-excited mode. Its normalized connected
+correlation is exactly `6 * (4/9)^n`, so the logarithmic mass is exactly
+`log (9/4)`. This is the first one-model composition of gauge admissibility,
+positive transfer dynamics, a simple vacuum/first-excited gap, and spectral
+visibility. It is deliberately not SU(3), field-algebra reflection positivity,
+or a continuum hadron theorem.
 
 The separate free one-particle HNU regulator now has a stronger continuum
 control than this row: `HNUChangingLatticeContinuumCapstone.lean` proves a
@@ -449,6 +491,23 @@ central falsifier: leading-term algebra does not imply pole survival without a
 remainder hypothesis. It is not LSZ reduction, a continuum propagator pole, or
 a measured hadron/Higgs mass.
 
+The related `ResolventResponsePole.lean` identity is deliberately only an
+entry formula. Its displayed `(0,0)` resolvent entry cannot determine the full
+response matrix or a two-point observable: two unequal matrices can share that
+entry. No manuscript sentence should promote the entry calculation to "the
+response" without an additional reconstruction theorem.
+
+**Spectral-measure repair.** `SpectralMeasureReadoutRepair.lean` identifies the
+right finite input after the gap-only obstruction: not the spectrum alone, but
+the spectral measure seen by the chosen source. For fixed distinct atoms, the
+first `n` moments determine the nonnegative source weights by Vandermonde
+injectivity and hence determine the full scalar resolvent response. The module
+also proves a sharp three-atom control showing that two moments do not suffice,
+and a two-atom Prony/Hankel recovery from four moments. This repairs finite
+well-posedness of the readout; it does not prove that a physical lattice
+observable realizes the measure, that a continuum atom survives, or that the
+readout is a hadron pole mass.
+
 ### G. Symmetric mass generation boundary
 
 **Data.** A declared anomaly-compatible fermion multiplet and a local
@@ -484,6 +543,14 @@ the already selected total response couples consistently to acceleration and
 geometry. Finite trace or coframe identities do not yet imply Einstein's
 equation, universal free fall in the continuum, or quantum gravity.
 
+The current `InertialEquivalenceCore` trace identity is not evidence for this
+gate by itself: it rewrites the same matrix pairing as a rank-one trace and is
+valid for every matrix. The genuine finite content presently available is the
+positive-semidefinite response/kernel criterion, channel-blind trace controls,
+and a witness separating equal trace/spectrum from channel-dependent response.
+Gate A6 remains open until an inertial operator and a gravitational source are
+derived independently from the shared architecture and then proved equal.
+
 ## 5. Shared-input and non-overlap laws
 
 The electroweak rows B-D share the scalar scale `v`; the bosonic rows C-D also
@@ -517,6 +584,15 @@ does not follow from parity disjointness alone. A Majorana neutrino block has
 the same odd form as the Dirac/Yukawa row, so a mixed model must use one
 displayed block operator and count each entry by provenance rather than parity
 alone.
+
+There is also a vacuity control at the level of the grading itself. The
+intersection statement `GammaOdd cap GammaEven = {0}` still holds for a trivial
+grading, because every map is even and only the zero map is odd; the theorem can
+therefore be true without representing a physical chirality split. A
+nondegenerate application must separately witness the grading. On the positive
+side, the corrected finite proof shows that surjectivity of `Gamma` already
+suffices for the odd/even disjointness conclusion; the formerly displayed
+fixed-vector hypothesis is unnecessary.
 
 ## 6. Spectral acceptance ladder
 
@@ -601,6 +677,11 @@ strict top gap gives exponential decay, but also proves two kill controls:
 positive definiteness supplies no uniform strict gap, and the same scalar gap
 can coexist with different top spectral projectors.
 
+Any uniform-gap theorem over a family must retain its `Nonempty` hypothesis.
+Over an empty parameter type, every pointwise gap statement is vacuous and a
+positive uniform lower bound can be manufactured with no spectrum at all. This
+is semantic content, not harmless typeclass boilerplate.
+
 The nonabelian observable half is now concrete but deliberately unpaired.
 `SU3PlaquetteObservable.lean` supplies a finite gauge-invariant `SU(3)`
 plaquette observable. It does not prove reflection positivity, a transfer gap,
@@ -652,14 +733,19 @@ science.
 3. Treat A2 as an intertwiner-moduli problem. Classify the admissible
    Higgs-assisted Yukawa space and its Pluecker level sets; do not claim
    uniqueness from determinant data.
-4. Compose the landed operator-orbit, reflected-Hankel, decay, and residue
+4. Promote the equal-magnitude phase interferometer from a supplied-link
+   control to a mass-origin result: derive the link profile from patched local
+   Pluecker data, couple it to the live walk or finite Fock dynamics, and retain
+   one gauge-invariant score that differs from the constant-phase fitted-mass
+   control.
+5. Compose the landed operator-orbit, reflected-Hankel, decay, and residue
    theorems only through explicit hypotheses. Keep zero-overlap and
    equal-gap/different-projector controls beside every positive statement.
-5. Pair the landed finite `SU(3)` plaquette observable with a concrete action
+6. Pair the landed finite `SU(3)` plaquette observable with a concrete action
    whose field algebra satisfies the correct link- or site-reflection
    positivity. Derive the transfer operator and prove a strict gap and nonzero
    first-excited overlap; positivity of a numerical matrix is not enough.
-6. Compose the landed mixed pseudo-Dirac and exact two-state singular-mass
+7. Compose the landed mixed pseudo-Dirac and exact two-state singular-mass
    branches with `NeutrinoMassClassification.lean`.
    `FiniteTakagiMajoranaPartial.lean` now supplies the arbitrary-generation
    squared-singular basis, conditional phase-paired assembly, corrected
@@ -668,9 +754,9 @@ science.
    construction in zero and repeated singular-value subspaces. Retain that
    blocker, together with flavor, scale-selection, and pole debts, before
    making a finite-operator exhaustiveness claim.
-7. Package the action grammar as a typed finite syntax and prove the relative
+8. Package the action grammar as a typed finite syntax and prove the relative
    exhaustiveness theorem by constructors, including an explicit outside-grammar
    counterexample such as symmetric mass generation or a higher-dimensional
    operator.
-8. Defer any "all sources of mass derived" claim until coefficient/scale
+9. Defer any "all sources of mass derived" claim until coefficient/scale
    selection, SU(3), spectral, and interacting continuum bridges are green.
