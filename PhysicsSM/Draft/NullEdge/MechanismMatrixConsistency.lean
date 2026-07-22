@@ -1,6 +1,17 @@
 import Mathlib
 
 /-!
+
+WAVE-3 AUDIT CORRECTION (2026-07-21, job `6ea8b5f0`, witnesses in
+`MassLandingsAuditWave3`). The `GammaOdd cap GammaEven = {0}` claim **survives the TRIVIAL
+grading**: when `Gamma` is trivial, every map is even and only zero is odd
+(`AuditWitnesses.trivial_grading_every_map_even`,
+`AuditWitnesses.trivial_grading_odd_iff_zero`), so the intersection statement holds for a
+reason unrelated to any physical parity. Reading it as physical non-double-counting is
+therefore an over-claim on top of the parity-disjointness caveat already recorded.
+SIMPLIFICATION, in our favour: **surjectivity of `Gamma` already suffices**
+(`AuditWitnesses.odd_even_intersection_of_surjective`); the fixed-vector condition is not
+needed and should be dropped from the hypothesis list.
 # Mechanism-matrix cross-consistency (Opus, verified Aristotle 0beb6ad6)
 
 Formal parity consistency facts for the origin-of-mass mechanism matrix:

@@ -6,10 +6,11 @@ Work items: `QCA-3PLUS1-001`, `CONT-FOURIER-001`
 Status: living synthesis; massless full-zone crossing set, exact endpoint
 winding, companion-block chirality balance, free Weyl changing-lattice limit,
 fixed-momentum massive continuum rate, and the free massive changing-lattice
-position-space limit are closed; the maximal momentum Hamiltonian, free finite
-Fock locality, and one finite cell-local even interaction control are also
-closed; exact Sobolev-domain identification, HNU physical-sector stability
-under interactions, and interacting convergence remain open
+position-space limit are closed; the live massive approximation now also has
+an explicit polynomial-depth schedule; the maximal momentum Hamiltonian, free
+finite Fock locality, and one finite cell-local even interaction control are
+also closed; exact Sobolev-domain identification, HNU physical-sector
+stability under interactions, and interacting convergence remain open
 
 ## 1. Plain-language verdict
 
@@ -63,7 +64,9 @@ quantization and interactions.
 | Massive tangent | Doubling opposite chiral sectors and adding the Pluecker mass coin gives the Dirac kinetic-plus-mass tangent | `HNUPlueckerMassiveStay.lean` | `M` | Position-space massive generator identification |
 | Massive global spectrum | For mass angle in `(0, pi)`, the four-channel walk is unitary and uniformly separated from both `+1` and `-1` across the full zone; admissible angles are gapped-connected | `HNUMassiveGlobalGap.lean`, `HNUQuantitativeGlobalGap.lean`, `HNUMassiveGapHomotopy.lean`, `HNURegulatorCapstone.lean` | `M` | Physical mass parameter/sector selection and interactions |
 | Massive fixed-momentum continuum | For fixed momentum and fixed complex Pluecker mass, the exact local-unitary walk has a one-step `O(eps^2)` error and an explicit many-step `O(1/n)` endpoint bound against the massive Dirac exponential | `HNUMassiveContinuumReduction.lean` | `M` asymptotic | Uniform momentum/tail control and changing-lattice position-space composition |
+| Massive polynomial approximation cost | The actual four-component `massiveWend` is the ordered exponential product of the displayed kinetic and Pluecker-mass generators; at fixed time its error against `massiveEflow` is `O((2|q|_1+|z|)^2 t^2/n)`, with a common `1/(N+1)` schedule and an explicit cubic real upper bound on the growing window `R_N=3(N+1)` | `MC2BlockExponentialLift.lean`, `HNUMassivePolynomialAdaptiveCost.lean`, `HNUMassivePolynomialAdaptiveCostAxiomGuard.lean` | `M` asymptotic | Cost is microscopic approximation depth, not a physical clock hierarchy; interactions remain open |
 | Massive changing-lattice evolution | For fixed complex mass, fixed time, and fixed four-component `L2` datum, the actual cell-projected massive HNU walk converges strongly in momentum and position `L2` to exact massive Dirac evolution under the displayed adaptive schedule | `HNUMassiveExactFlowMomentumLipschitz.lean`, `HNUMassiveCompactMomentumContinuum.lean`, `HNUMassiveChangingCellProjectionL2.lean`, `HNUMassiveExactFlowCellIntegral.lean`, `HNUMassiveChangingCellL2.lean`, `HNUMassiveChangingLatticeContinuumCapstone.lean` | `M` asymptotic | PDE graph-domain composition, physical sector, second quantization, and interactions |
+| Massive Cayley band selector | The global zero/pi gap turns every live massive HNU fiber into an invertible Hermitian inverse-Cayley generator; the certified-sign API then supplies a self-adjoint involution and an orthogonal negative-sign projector | `HNUCayleyBandSelector.lean`, `HNUCayleyBandSelectorAxiomGuard.lean` | `M` finite | Canonical momentum-space selector only; rank two, endpoint commutation wrapper, rest-frame identification, continuity, quasi-locality, and interaction stability remain open |
 | Maximal massive Hamiltonian | The matrix-valued momentum multiplier has dense maximal graph domain, is symmetric, has both imaginary shifts surjective through explicit bounded resolvents, and is self-adjoint and closed | `HNUMassiveFibreResolvent.lean`, `HNUMassiveL2Resolvent.lean`, `VariablePointwiseL2Multiplier.lean`, `HNUMassiveMaximalMultiplier.lean` | `M` analytic | Exact Fourier-conjugate position operator and Sobolev-domain equality |
 | Free finite Fock locality | Determinant-minor second quantization gives exact occupation amplitudes; conjugation transports creation/annihilation operators; sparse finite-depth one-particle support sends a local CAR algebra into the relational-power neighborhood algebra | `FiniteFermionicLocality.lean` | `M` | Instantiate the live HNU schedule explicitly; add an interaction and test selected/complement-sector invariance |
 | Finite even interaction control | On five occupation modes, an exact quartic pair transfer and unit-phase closed update are supported on a declared four-mode cell: conjugation fixes both outside CAR generators, maps the cell CAR algebra to itself, preserves the whole two-particle sector, and mixes an explicit one-pair sector | `FiniteFermionicInteraction.lean` | `M` | Identify the update with an interaction exponential/action; compose with the live HNU schedule; test lower/complement HNU band selection; prove an interacting cone and limit |
@@ -322,6 +325,58 @@ interacting stability, or construct a quantum field theory.
    theorem gives `O(1/T)` adiabatic error for fixed positive gap. This avoids an
    artificial stepwise logarithm and permits a finite-rank selected band with
    internal degeneracy or crossings, provided the external gap remains open.
+
+   Two guarded finite rungs now make that target more precise.
+   `MovingSectorLeakage.lean` proves the moving-projector telescope once every
+   supplied projector is genuinely idempotent; the rejected version without
+   that hypothesis has the exact counterexample `P = 1/2`, `U = 0`.
+   `DiscreteAdiabaticFiniteDifferences.lean` proves the sampled `C^2` bounds
+   needed by the literature theorem: first differences are `O(1/T)` and second
+   differences are exactly bounded by `C_2/T^2`. Neither module derives an HNU
+   spectral projector or quasienergy gap.
+
+   `FiniteMovingBandWitness.lean` supplies an exact two-level gapped projector
+   family with nonzero adjacent mismatch. Its original vanishing-budget
+   schedule traverses total distance only `1/N`, so it is a shrinking-path
+   control rather than fixed-macroscopic-path adiabatic transport. Its landed
+   fixed-path continuation supplies an explicit Kato-style intertwiner over
+   `0 -> 1`, proves adjacent projectors move, and gives exact zero cross-band
+   leakage for the supplied transporter. This is a nonvacuous finite control,
+   not an instantiation of the live HNU update or an adiabatic theorem derived
+   from slow dynamics.
+
+   The next live finite bridge has now landed. The proved HNU zero/pi gap
+   permits the inverse Cayley transform of each actual massive fiber;
+   `HNUCayleyBandSelector.lean` proves that generator Hermitian and invertible,
+   and the existing certified-sign API supplies a self-adjoint involution and
+   an idempotent Hermitian negative-sign projector. The live successor now
+   proves endpoint commutation, certified-sign uniqueness, and the exact
+   rest-frame kill test `P(a,0) = (1-beta)/2`. The exact endpoint and its
+   inverse-Cayley generator are continuous over the closed Brillouin cube.
+   `ContinuousProjectorRank.lean` additionally proves that any supplied
+   continuous real path of finite projectors has constant rank, with rank two
+   propagated from one base point. What is not yet proved is continuity of the
+   canonical HNU sign projector itself or its exact rank away from rest.
+
+   The general characteristic reduction has also landed:
+   `HNUMassiveSpectralReciprocity.lean` reduces the full four-component shifted
+   determinant for every complex `lambda` to the exact two-component expression
+   `det(UV - lambda cos(a)(U+V) + lambda^2 I)`. This upgrades the former
+   `lambda = +/-1` gap-only formula. The finite `SL(2,C)` determinant identity
+   is now proved in stronger form: determinant one of both chiral blocks alone
+   forces reciprocity, without an equal-trace or unitarity hypothesis. Thus
+   every nonzero live-HNU characteristic root is paired with its reciprocal.
+   Even after Cayley pairing and rank two are proved, the result will be a
+   canonical negative-principal-quasienergy
+   selector, not companion removal or a released physical sector. Projector
+   continuity, interaction leakage, and quasi-locality remain separate gates.
+
+   The literature memo
+   `CODEX_LITERATURE_CAYLEY_BAND_SELECTOR_2026-07-21.md` also separates decay of
+   the gauge-invariant projector kernel from existence of a localized
+   orthonormal Wannier basis. A topological obstruction to the latter does not
+   by itself kill the former, so projector locality must be attacked before
+   demanding a global localized basis.
 3. **Protocol topology.** Keep the endpoint winding `+1` separate from any
    proposed micromotion invariant; prove a micromotion or bulk-edge statement
    only if the full continuous-time protocol and hypotheses are supplied.
@@ -329,17 +384,19 @@ interacting stability, or construct a quantum field theory.
    live finite real-space schedule, then add one explicit local interaction and
    test invariance of the selected/complement split. Free second-quantized
    locality is already proved abstractly.
-5. **Adaptive-cost theorem.** `HNUPolynomialAdaptiveCost.lean` removes the
-   exponential penalty at the abstract unitary product-formula layer. It proves
-   the sharp skew-Hermitian ordered-product bound
-   `eps^2 / 2 * (sum norms)^2`, exact unitary telescoping, an exact depth-eight
-   two-component HNU exponential word whose generator norms sum to `qAbs q`,
-   and a cubic arithmetic bound for a candidate `(R+M)^2 / 2` schedule. The
-   decisive composition is still open: the generic bound is four-dimensional,
-   the exact word proved there is the two-component massless endpoint, and the
-   doubled chiral/Dirac-basis/Pluecker mass factors have not yet been assembled
-   into the required one-step inequality. The old exponential envelope remains
-   the only completed massive certificate until that theorem lands.
+5. **Adaptive-cost theorem.** `HNUMassivePolynomialAdaptiveCost.lean` now
+   completes the decisive live composition. The fixed Dirac-basis lift
+   preserves the operator norm; the eight doubled kinetic generators sum to
+   the actual kinetic block; adjoining the Pluecker rest generator gives the
+   actual four-component `massiveWend`; and the summed generator norms are
+   bounded by `2 qAbs q + norm z`. The sharp skew-Hermitian product estimate and
+   exact unitary telescope therefore give the actual walk a fixed-time
+   `O((2 qAbs q + norm z)^2 t^2/n)` error against `massiveEflow`. A common
+   schedule achieves error at most `1/(N+1)`, and at the changing window
+   `R_N = 3(N+1)` its real depth has an explicit cubic upper bound. This closes
+   the former exponential-in-momentum cost debt for the free finite-matrix
+   approximation. It does not select `z`, describe interactions, or identify
+   approximation depth with a physical clock hierarchy.
 
 An independent harvested homotopy audit (Aristotle project
 `83cd8f08-e5ea-4aba-bb7c-85624a882db5`) proves constancy of an unsigned
@@ -374,7 +431,12 @@ still needs orientation, chirality, and multiplicity.
 > Pluecker-mass extension, a strong changing-lattice position-space Weyl limit,
 > an explicit fixed-momentum `O(1/n)` massive Dirac convergence theorem, and a
 > strong changing-lattice position-space massive Dirac limit for fixed mass,
-> time, and `L2` datum. On Schwartz spinors the limiting multiplier is exactly
+> time, and `L2` datum. The actual massive endpoint also has an explicit
+> polynomial-depth approximation schedule, with cubic cost on the displayed
+> growing momentum window. Its global zero/pi gap also yields an explicit
+> invertible Hermitian inverse-Cayley generator and a canonical finite
+> negative-sign orthogonal projector at every Brillouin-zone momentum. On
+> Schwartz spinors the limiting multiplier is exactly
 > the Fourier image of the massive Dirac differential generator with the live
 > HNU/Pluecker matrices, and on bounded momentum support its exact complex-mass
 > flow has that generator as a strong `L2` derivative. The maximal

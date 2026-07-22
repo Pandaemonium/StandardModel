@@ -11,6 +11,24 @@ import PhysicsSM.Draft.NullEdge.LambdaThreeSplit
 import PhysicsSM.Draft.NullEdge.LambdaFrameConstraint
 
 /-!
+
+PRECISION (structural audit, Opus 2026-07-21). Three theorems in this module -
+`lambda_everpresent_sequestering_verdict`, `lambda_frame_blindness_capstone`, and
+`lambda_sequestering_branch_capstone` - have proofs that are ANONYMOUS CONSTRUCTORS
+bundling already-proved results. They are **build-enforced integration pins**, not new
+mathematical content: they add no information beyond the conjunction of their components,
+and nothing in them could fail that was not already provable. That is a legitimate and
+useful engineering role, but "capstone" and "verdict" must not be read as a culminating
+result. Quote the components, not the bundle.
+
+An earlier physical gloss of the frame-blindness result - that invariance forbids
+hyperuniform suppression, and that this blocks the everpresent-`Lambda` escape route -
+was WITHDRAWN on 2026-07-21 after a literature check (Torquato, arXiv:1801.06924:
+disordered hyperuniform systems are statistically isotropic by definition) and after a
+companion Lean job refuted the successor claim too (`HyperuniformityRankDichotomy`: rank
+two admits `I - J/N`, so hyperuniformity is never obstructed - only regional quiet is).
+Nothing here derives the value, sign, or magnitude of `Lambda`. Binding gloss:
+`AgentTasks/lambda-harvest-governance-2026-07-21.md`.
 # The finite cosmological-Λ everpresent/sequestering capstone
 
 This file composes the finite, kernel-checked Λ modules of `PhysicsSM.Draft.NullEdge`

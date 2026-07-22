@@ -11,6 +11,9 @@ every material transition.
 2. Run `python AutonomousLab/scripts/labctl.py validate`.
 3. Read `AutonomousLab/README.md`, `CHARTER.md`, `OPERATING_SYSTEM.md`, and the
    current state/portfolio/work-item files.
+   During the 2026-07-21 ten-day campaign, also read
+   `AutonomousLab/prompts/TEN_DAY_GRAND_CHALLENGE_ROADMAP_2026-07-21.md`; it is
+   the active campaign overlay, subordinate to the standing lab constitution.
 4. Inspect `state/LEDGER.md`, `BLOCKERS.md`, `DECISIONS.md`, `INCIDENTS.md`, and
    the newest handoff.
 5. Run `python AutonomousLab/scripts/labctl.py status`, `role-status`, and

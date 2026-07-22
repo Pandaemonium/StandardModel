@@ -3,8 +3,10 @@ import Mathlib
 /-!
 # Inertial/gravitational equivalence finite core (Opus, verified Aristotle f1061eda)
 
-Gate A6: I(v)=v(dag)Mv nonneg + zero iff kernel; headline equivalence
-I(v)=Tr(M(vv(dag))); trace channel-blind under unitary equivalence; a PSD 2x2
+Gate A6: I(v)=v(dag)Mv nonneg + zero iff kernel; the trace-pairing identity
+I(v)=Tr(M(vv(dag))) - see the PRECISION note on it below, it is a representation
+identity and NOT evidence for the equivalence principle; trace channel-blind
+under unitary equivalence; a PSD 2x2
 witness with equal trace/spectrum but channel-dependent response (channel-blind
 source vs channel-dependent pole). ContinuumGRBridge named as a SEPARATE unproved
 grade - no continuum GR folded in. Namespace kept as the prover's
@@ -45,8 +47,28 @@ theorem inertia_nonneg_and_eq_zero_iff_kernel {n : Type*} [Fintype n]
   · exact hM.dotProduct_mulVec_zero_iff v
 
 /-
-**Finite equivalence identity.** The same matrix supplies the inertial
-response and the source measured by the state's rank-one probe.
+**Finite trace-pairing identity.** The quadratic form of `M` on `v` equals the
+trace pairing of `M` with the rank-one probe `v v(dag)`.
+
+PRECISION (self-audit, 2026-07-21, over-claim mode: hollow telescoping). This
+theorem has **no hypotheses on `M` whatsoever** - it holds for every matrix,
+Hermitian or not, positive or not, physical or not. It is therefore the
+definition of trace pairing rewritten, and it carries **zero discriminating
+information about the equivalence principle**: nothing could fail it, so its
+holding is not evidence for anything.
+
+The earlier reading, "the same matrix supplies the inertial response and the
+gravitational source", overstates it. That sentence sounds like a claim that two
+independently-motivated physical roles are filled by one object, which is the
+actual content of an equivalence principle. What is proved is that ONE matrix,
+paired two notationally different ways, gives the same number.
+
+The genuine A6 content must come from elsewhere: an argument that the `M`
+appearing in the dynamics' inertial response is the same `M` appearing in an
+independently-motivated gravitational field equation. That is a MODELLING claim
+requiring two separate derivations to meet, and it is not established here or
+anywhere else in this repository. Gate A6 should be recorded as OPEN on that
+basis.
 -/
 theorem inertialResponse_eq_gravitationalSource_rankOne {n : Type*} [Fintype n]
     (M : Matrix n n ℂ) (v : n → ℂ) :

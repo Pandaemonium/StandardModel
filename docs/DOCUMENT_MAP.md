@@ -84,6 +84,11 @@ as current state.
 
 ## Program state and results
 
+- `SCIENTIFIC_RESULTS_OVERVIEW.md` - holistic, evidence-graded synthesis of the
+  repository's most significant scientific results across null-edge mass and
+  dynamics, gauge/chirality, gravity and cosmology, octonionic Standard Model
+  algebra, exceptional Jordan spectra, and the Hamming-to-E8 publication
+  artifact. [LIVE]
 - `IMPACT_STATEMENT.md` - brief, claim-graded account of the null-edge
   reconstruction program's most consequential results and present scientific
   boundary. [LIVE]

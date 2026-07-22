@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "created_at": "2026-07-12T17:45:00-07:00",
-  "updated_at": "2026-07-21T06:57:42-07:00",
+  "updated_at": "2026-07-21T14:06:57-07:00",
   "note": "Durable role-duty schedule. Periodic duties must produce a bounded activation packet and a hashed completion artifact. Event-driven roles are enforced by their corresponding work/review gates.",
   "policies": {
     "research_scientist": {
@@ -78,6 +78,106 @@
     }
   },
   "activations": [
+    {
+      "id": "role-20260721-140605-5eefd99c",
+      "role": "lab_manager",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-21T14:06:05-07:00",
+      "due_at": "2026-07-21T15:06:05-07:00",
+      "project_id": "NE-3PLUS1",
+      "work_item_id": "QCA-3PLUS1-001",
+      "packet_path": "AutonomousLab/work/role-activations/role-20260721-140605-5eefd99c_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/CODEX_LAB_MANAGER_MIDDAY_2026-07-21.md",
+      "note": "Resolve stale role activation, assess throughput/friction, and register next process actions after the massive continuum landing.",
+      "completed_at": "2026-07-21T14:06:57-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/CODEX_LAB_MANAGER_MIDDAY_2026-07-21.md",
+        "sha256": "d67b6ca2ed0200ab01208feeeed460c07fb8614a574c0e572081b1de2a0de104"
+      },
+      "summary": "Recorded scientific throughput, cold-build and collision friction, stale role expiry need, bounded polling, UTF-8 service handling, and the next queue unit."
+    },
+    {
+      "id": "role-20260721-135420-3ac3157b",
+      "role": "archivist",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-21T13:54:20-07:00",
+      "due_at": "2026-07-21T14:54:20-07:00",
+      "project_id": "NE-3PLUS1",
+      "work_item_id": "QCA-3PLUS1-001",
+      "packet_path": "AutonomousLab/work/role-activations/role-20260721-135420-3ac3157b_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/CODEX_ARCHIVIST_DISCRETE_ADIABATIC_2026-07-21.md",
+      "note": "Audit literature and local graph for discrete-time adiabatic transport, quasi-local band projectors, and finite topology thresholds relevant to HNU.",
+      "completed_at": "2026-07-21T13:55:54-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/CODEX_ARCHIVIST_DISCRETE_ADIABATIC_2026-07-21.md",
+        "sha256": "218bee3091deccb9beab33f48ba33848a7732e3ddbb955933c7f3407e3868bad"
+      },
+      "summary": "Recorded the discrete-time adiabatic source spine, the formal failure of absolute projector telescoping, and the next full-text extraction target."
+    },
+    {
+      "id": "role-20260721-135404-4a0dfe85",
+      "role": "superstar",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-21T13:54:04-07:00",
+      "due_at": "2026-07-21T14:54:04-07:00",
+      "project_id": "NE-3PLUS1",
+      "work_item_id": "QCA-3PLUS1-001",
+      "packet_path": "AutonomousLab/work/role-activations/role-20260721-135404-4a0dfe85_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/CODEX_IMPACT_MASSIVE_HNU_2026-07-21.md",
+      "note": "Identify the strongest defensible manuscript claim and the shortest route from the continuum capstone to a field-changing result.",
+      "completed_at": "2026-07-21T13:55:47-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/CODEX_IMPACT_MASSIVE_HNU_2026-07-21.md",
+        "sha256": "56f74e9258083e24707a15f3257915a8d7cec330531e120ff2c09f44327379c8"
+      },
+      "summary": "Identified the strongest defensible continuum claim, the selected-sector capstone needed for impact, and an explicit nonlocality kill test."
+    },
+    {
+      "id": "role-20260721-135358-681d8d72",
+      "role": "visionary",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-21T13:53:58-07:00",
+      "due_at": "2026-07-21T14:53:58-07:00",
+      "project_id": "NE-3PLUS1",
+      "work_item_id": "QCA-3PLUS1-001",
+      "packet_path": "AutonomousLab/work/role-activations/role-20260721-135358-681d8d72_packet.md",
+      "deliverable_path": "AutonomousLab/work/role-activations/CODEX_VISIONARY_MASSIVE_HNU_SYNTHESIS_2026-07-21.md",
+      "note": "Synthesize the massive changing-lattice capstone, canonical Cayley selector, moving-projector no-go, and topology threshold into the next 3+1 program.",
+      "completed_at": "2026-07-21T13:55:41-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/role-activations/CODEX_VISIONARY_MASSIVE_HNU_SYNTHESIS_2026-07-21.md",
+        "sha256": "a5aa43d22f2e1c780bd250d10f09919cbdfe3cc5acf8716128a3a4a5d61c2c2a"
+      },
+      "summary": "Reframed the 3+1 frontier around a discrete Cayley-band intertwiner, cancellation-preserving adiabatic transport, topology threshold, and quasi-local encoding kill test."
+    },
+    {
+      "id": "role-20260721-101611-2647c4d6",
+      "role": "visionary",
+      "model": "codex",
+      "model_family": "gpt",
+      "status": "completed",
+      "started_at": "2026-07-21T10:16:11-07:00",
+      "due_at": "2026-07-21T12:16:11-07:00",
+      "project_id": "NE-3PLUS1",
+      "work_item_id": "QCA-3PLUS1-001",
+      "packet_path": "AutonomousLab/work/role-activations/role-20260721-101611-2647c4d6_packet.md",
+      "deliverable_path": "AutonomousLab/work/NE-3PLUS1/CODEX_VISIONARY_SYNTHESIS_2026-07-21.md",
+      "note": "Synthesize massive continuum, physical-sector selection, and origin-of-mass consequences after overnight theorem wave.",
+      "completed_at": "2026-07-21T10:29:50-07:00",
+      "artifact": {
+        "path": "AutonomousLab/work/NE-3PLUS1/CODEX_VISIONARY_SYNTHESIS_2026-07-21.md",
+        "sha256": "c1ef6baf227df9ef2d70bc41ee3bee7ff14b0a71b0fcf3b39d2255df1a2e0a0c"
+      },
+      "summary": "Re-ranked the program around live-band selection, polynomial HNU realization, and a phase-defect discriminator now that changing-lattice massive Dirac convergence is proved."
+    },
     {
       "id": "role-20260721-065612-2aa8e92f",
       "role": "educator",
@@ -255,14 +355,16 @@
       "role": "lab_manager",
       "model": "claude",
       "model_family": "claude",
-      "status": "active",
+      "status": "cancelled",
       "started_at": "2026-07-20T10:04:41-07:00",
       "due_at": "2026-07-20T11:04:41-07:00",
       "project_id": "NE-3PLUS1",
       "work_item_id": "QCA-3PLUS1-001",
       "packet_path": "AutonomousLab/work/role-activations/role-20260720-100441-2eafbc8e_packet.md",
       "deliverable_path": "AutonomousLab/work/LAB-INFRA/CLAUDE_LAB_MANAGER_MASS_3PLUS1_CYCLE_2026-07-20.md",
-      "note": "Mid-mission productivity and dependency audit after HNU capstone, topology literature ingestion, and mass reconstruction returns."
+      "note": "Mid-mission productivity and dependency audit after HNU capstone, topology literature ingestion, and mass reconstruction returns.",
+      "completed_at": "2026-07-21T14:06:05-07:00",
+      "summary": "Superseded by forced activation role-20260721-140605-5eefd99c."
     },
     {
       "id": "role-20260720-074817-cb84010f",

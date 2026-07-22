@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-07-16T15:27:18-07:00",
+  "updated_at": "2026-07-21T11:02:27-07:00",
   "note": "Auto-appended by labctl transition on first entry to INTEGRATED/RELEASED (success) or KILLED/RETRACTED (failure). Scored at the monthly metascience review; entries are never edited retroactively.",
   "entries": [
     {
@@ -146,6 +146,14 @@
       "resolved_status": "KILLED",
       "resolved_at": "2026-07-16T15:27:18-07:00",
       "recorded_by": "codex/lab_manager"
+    },
+    {
+      "item_id": "MASS-ORIGIN-001",
+      "forecast_success": 0.68,
+      "outcome": "success",
+      "resolved_status": "INTEGRATED",
+      "resolved_at": "2026-07-21T11:02:27-07:00",
+      "recorded_by": "codex/research_scientist"
     }
   ]
 }

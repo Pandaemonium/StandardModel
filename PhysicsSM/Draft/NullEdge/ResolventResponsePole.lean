@@ -1,6 +1,13 @@
 import Mathlib
 
 /-!
+
+WAVE-3 AUDIT CORRECTION (2026-07-21, job `6ea8b5f0`, witnesses in
+`MassLandingsAuditWave3`). A formula for the `(0,0)` ENTRY does not determine the full
+response matrix, and therefore does not determine a two-point observable:
+`AuditWitnesses.same_zero_zero_entry_different_full_response` exhibits two unequal matrices
+sharing the displayed entry. Any sentence reading the entry formula as "the response" is an
+over-claim; state it as an entry formula.
 # Resolvent response: an explicit pole versus a propagator zero at the same gap edge
 
 The correlator-level sharpening of the AFPL gap-to-pole obstruction (gate A4).

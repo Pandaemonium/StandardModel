@@ -1,31 +1,223 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-07-21T07:15:39-07:00",
+  "updated_at": "2026-07-21T17:38:08-07:00",
   "note": "Registry of Aristotle proof/audit jobs. Statuses: submitted|running|idle|unknown|harvested|integrated|deferred|cancelled|failed. labctl validate enforces the fleet cap on submitted+running; `labctl jobs` lists against the cap; `labctl due` flags idle/unknown/harvested jobs awaiting integration. Seeded 2026-07-12 from the 24h publication-run ledger; pre-lab jobs carry work_item_id null.",
   "jobs": [
+    {
+      "id": "fa760c91-59e3-41f9-b0d2-23fb864e7d34",
+      "work_item_id": "MASS-ORIGIN-001",
+      "title": "Finite Autonne-Takagi by antiunitary fixed bases",
+      "status": "running",
+      "submitted_at": "2026-07-21T17:33:33-07:00",
+      "notes": "Task 4d8baf83; exact zero/repeated-spectrum theorem; antiunitary involution route [2026-07-21T17:38:08-07:00 codex] Task 4d8baf83 is IN_PROGRESS"
+    },
+    {
+      "id": "4773355a-32e3-4061-ba73-45a5c400c8d6",
+      "work_item_id": "MASS-ORIGIN-001",
+      "title": "Finite Autonne-Takagi by realification",
+      "status": "running",
+      "submitted_at": "2026-07-21T17:33:33-07:00",
+      "notes": "Task a612672d; exact zero/repeated-spectrum theorem; real symmetric doubling route [2026-07-21T17:38:08-07:00 codex] Task a612672d is IN_PROGRESS"
+    },
+    {
+      "id": "b4554e39-c04c-471d-8c3d-617547c18325",
+      "work_item_id": "MASS-ORIGIN-001",
+      "title": "Finite Lorentz audit forces the quadratic mass Casimir",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T16:47:41-07:00",
+      "notes": "Focused Mathlib package; explicit half-turns, quarter-turns, and rational 3-4-5 boost; theorem scope is quadratic-form uniqueness, not full Wigner classification. [2026-07-21T17:17:21-07:00 codex] 17:12 snapshot is hole-free, locally typechecked, and integrated as FiniteLorentzMassCasimir.lean with standard-three guards. External task remains in progress; final artifact comparison pending. [2026-07-21T17:27:08-07:00 codex] Final COMPLETE_WITH_ERRORS artifact harvested; Main.lean is byte-identical to verified snapshot and passes local lake env lean. Integrated module additionally bridges normalized quadratic value to project minkowskiSq and the explicit future-null completeness capstone; targeted build passes."
+    },
+    {
+      "id": "09c09e63-6955-407e-9be5-04520ed388b2",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "HNU inverse-Cayley even characteristic determinant",
+      "status": "running",
+      "submitted_at": "2026-07-21T16:19:32-07:00",
+      "notes": "Focused bridge using landed reciprocal Floquet characteristic theorem and zero/pi gap; target is det(H-xI)=det(H+xI), precursor to opposite eigenvalues and 2+2 inertia. [2026-07-21T16:39:48-07:00 codex] Target independently landed and guarded locally; Aristotle continues as an independent proof audit."
+    },
+    {
+      "id": "fab399da-0f62-4c01-ac3d-61c94365a01a",
+      "work_item_id": "MASS-ORIGIN-001",
+      "title": "KINEMATIC COMPLETENESS: forward-cone four-vector => PSD Pauli representative (closes coverage)",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T15:54:22-07:00",
+      "notes": "The single analytic input that upgrades bundle_of_posSemidef (landed, conditional on PSD) to unconditional cone coverage. Quadratic-form nonnegativity (p0+p3)|a|^2 + (p0-p3)|b|^2 + 2Re((p1-ip2)conj(a)b) >= 0 under p0>=0, p0^2>=|p|^2 via AM-GM + Cauchy-Schwarz, or a 2x2 PSD criterion (diag>=0, det=minkowskiSq>=0). On landing, every forward-cone four-vector is a null-edge bundle vector, which with mass_surjective and the trusted fin_bundle_plucker_mass_identity is kinematic completeness of the null-edge mass representation. [2026-07-21T17:06:49-07:00 codex] Final artifact harvested; byte-identical to verified snapshot. Cone PSD proof and unconditional kinematic completeness capstone integrated in PluckerMassKinematicCompleteness.lean; direct and targeted builds pass."
+    },
+    {
+      "id": "cd0e99b3-fea6-4040-bed7-177530eb2736",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "SL2 reduced mass reciprocal polynomial",
+      "status": "harvested",
+      "submitted_at": "2026-07-21T15:48:10-07:00",
+      "notes": "Focused Mathlib proof of reciprocal reduced determinant for determinant-one equal-trace 2x2 Weyl blocks; helper for exact HNU Cayley spectral pairing. [2026-07-21T16:16:07-07:00 codex] Downloaded COMPLETE_WITH_ERRORS artifact; returned target is hole-free, signatures unchanged, and direct Lean check passes. Independent Aristotle proof uses equal trace. Stronger local proof removes equal trace and is integrated live, so artifact was audited but not copied."
+    },
+    {
+      "id": "d2f492c2-6a8c-4dff-b3da-11a35d5dccae",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "HNU Cayley exact spectral pairing and rank-two band",
+      "status": "submitted",
+      "submitted_at": "2026-07-21T15:28:13-07:00",
+      "notes": "Task 04d4565d-e5e4-4a92-8119-3c225c8e3ce7. Three-level target: exact opposite eigenvalue pairing, 2+2 inertia, certified negative-projector rank two. Live HNU full-project package."
+    },
+    {
+      "id": "bc2ac81f-4551-4b7e-8fa3-5af08f080d54",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Continuous idempotent projector rank constancy",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T14:42:43-07:00",
+      "notes": "Task 9ab5b254-c8b1-47b1-a6ea-a03f54e40eab; focused Mathlib package; trace=rank, constant rank, rank-two corollary for HNU band selector. [2026-07-21T15:41:36-07:00 codex] All three generic continuous projector-rank targets locally kernel-checked, guarded, and integrated."
+    },
+    {
+      "id": "d9f27b37-cf14-4395-899e-1b7e0d02bca2",
+      "work_item_id": "MASS-ORIGIN-001",
+      "title": "Full finite Autonne-Takagi phase-paired basis",
+      "status": "running",
+      "submitted_at": "2026-07-21T14:07:39-07:00",
+      "notes": "Task 83d1563f-050e-4d47-bb82-a5f837f4a451. Closes the arbitrary finite-n phase-paired basis crux without invertibility or simple-spectrum assumptions, including zero and repeated singular values. [2026-07-21T16:26:12-07:00 codex] Two-hour review complete. Snapshot preserved; substantial assembly is filled and only private exists_orthonormal_takagi_columns remains. Kept running. Literature fallback uses Dieci-Papini-Pugliese 2n real symmetric doubling, with zero-kernel basis isolated."
+    },
+    {
+      "id": "ab02a59c-b5dd-428b-9470-0ab8a76bbad9",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Exact fixed-path discrete adiabatic cancellation witness",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T14:02:07-07:00",
+      "notes": "Task 827aaf93-4175-437a-85bc-c426857daf71. Proves time-ordered rotating-band evolution has exact cancellation and O(1/N) leakage despite nonvanishing absolute projector path length. [2026-07-21T15:21:36-07:00 codex] All targets proved unchanged; live source and axiom guard pass. Exact fixed-path O(1/N) leakage cancellation control, explicitly not an HNU adiabatic theorem."
+    },
+    {
+      "id": "9006d3df-ecea-499c-b996-5b08b948f312",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Canonical HNU Cayley band selector",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T13:24:33-07:00",
+      "notes": "Task a5f71bfa-4de3-4e1f-9878-139c6bc295c9; focused package AgentTasks/aristotle-submit/hnu-cayley-canonical-20260721-project; closes generic commute and rest-fiber sign/projector lemmas. [2026-07-21T14:32:52-07:00 codex] Downloaded focused return; integrated generic inverse-Cayley commutation and exact rest calculation into the live HNU module; closed positivity, uniqueness, and projector wrappers locally; dedicated and aggregate axiom guards pass."
+    },
+    {
+      "id": "f4fba0df-fcd9-4d29-ba99-41062b5c32c2",
+      "work_item_id": null,
+      "title": "WHY rank controls regional variance: the eigenspace/Bose-Mesner explanation",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T12:11:20-07:00",
+      "notes": "Natural deepening after the prover refuted my rank-existence claim. Invariant matrices span a commutative (association-scheme / Bose-Mesner) algebra with common eigenspaces V_0=span(1),V_1,...,V_{r-1}; an invariant C acts as scalar c_i on each; PSD means c_i>=0, hyperuniform means c_0=0; and regionalVariance C A = sum_i c_i ||P_i 1_A||^2. Rank 2 has exactly ONE nontrivial eigenspace so there is no shape freedom - that IS the forced law; rank>=3 has several, which is the freedom the six-cycle witness exploits. Also asks for sum_i ||P_i 1_A||^2 = |A|, making the eigenspace trade-off quantitative. [2026-07-21T15:21:37-07:00 codex] Integrated invariant covariance eigenspace structure with explicit intersection-number and commutativity hypotheses; live source and axiom guard pass."
+    },
+    {
+      "id": "85e4b8a3-91bd-4b4c-9fe3-86a2cd72fca5",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "3+1 TOPOLOGY: never-antipodal threshold replaces the vanishing-leakage gate",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T11:39:26-07:00",
+      "notes": "Answers Codex's topology question constructively. The endpoint winding is defensible ONLY for an exactly closed two-band sector; the relaxed quasi-local sector destroys exact closure; and my telescope no-go (9e7d0e96) shows the leakage bound tends to Theta > 0, not 0. Resolution: a degree does not need vanishing perturbation, only one below a threshold, because homotopy class is locally constant. Job proves the elementary threshold lemma: never-antipodal (equivalently sup distance < 2 into the sphere) implies homotopic via the normalized geodesic homotopy, so every homotopy invariant survives. Converts an unreachable asymptotic gate into a checkable finite one. [2026-07-21T13:05:28-07:00 claude] Landed as PhysicsSM/Draft/NullEdge/NeverAntipodalThreshold.lean, 0 errors at pin, 7 build-enforced standard-three guards. Threshold lemma: continuous sphere-valued maps at pointwise distance < 2 are homotopic via the normalized straight-line homotopy (continuity PROVED not assumed), plus the uniform-convergence form and the corollary that every homotopy invariant survives a uniform perturbation < 2. PROVER CORRECTED MY PROMPT: I suggested the sharpness witness on S^1 or S^3, but in ODD sphere dimensions the antipodal map has degree +1, so those establish nothing; witness moved to S^2 where antipodal degree is -1. THIS MATTERS FOR THE APPLICATION: the endpoint map is SU(2) = S^3 valued, which is ODD, so the constant 2 is SAFE but NOT demonstrated sharp for that target. Gate licensed by this module is conservative."
+    },
+    {
+      "id": "9e7d0e96-4b07-42b1-b90c-a5cff826368e",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "NO-GO on Codex's moving-projector telescope: the leakage gate is unreachable by that route",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T11:37:26-07:00",
+      "notes": "Codex's proposed hierarchy (CODEX_LITERATURE_QUASILOCAL_PHYSICAL_SECTOR) bounds leakage <= sum_k delta_k with delta_k = ||(1-P_{k+1}) U_k P_k|| and gates the continuum limit on sum -> 0. KEY OBSERVATION: U_k = exp(-i H_k dt) COMMUTES WITH ITS OWN SPECTRAL PROJECTOR P_k, so delta_k = ||(1-P_{k+1}) P_k|| exactly - pure geometric band misalignment, dynamics drop out. For a band rotating through total angle Theta in N steps that is sin(Theta/N) per step, so the sum is N sin(Theta/N) -> Theta, NOT 0, and monotone in N so refining never helps. Numerically verified: N sin(pi/2/N) >= 1.564 for N=10 and -> 1.5708. Job proves it in kernel, including the U-independence (target 2) which is the heart of the objection. Refutes the TECHNIQUE, not adiabaticity: real adiabatic smallness comes from oscillatory cancellation that the triangle inequality discards. [2026-07-21T13:39:17-07:00 claude] Landed as PhysicsSM/Draft/NullEdge/MovingProjectorTelescopeNoGo.lean, 0 errors at pin, 10 build-enforced standard-three guards. MY CLAIM WAS CONFIRMED, including the target I explicitly invited refutation on: dynamics_drop_out holds for EVERY unitary commuting with the projector, nontrivial phases on the band included. So delta_k is pure geometric misalignment, telescope sum = N sin(Theta/N), bounded below by (2/pi)Theta > 0 by Jordan for every N, MONOTONE WORSE under refinement, and tending to Theta. The gate sum -> 0 can never be met. Refutes the TRIANGLE-INEQUALITY TECHNIQUE only, not adiabaticity: the genuine adiabatic theorem's smallness comes from oscillatory cancellation that the triangle inequality discards. Hypothesis that makes it bite (U commuting with P, i.e. substep generated by the band's own Hamiltonian) is stated in the docstring as NOT automatic for engineered local gates - decisive test is the finite commutator computation on live matrices."
+    },
+    {
+      "id": "1ef2a1d8-27ce-4429-8569-f9b16f29cafb",
+      "work_item_id": null,
+      "title": "Lambda RECOVERY: large stabilizer orbits force correlation decay (the CORRECT causal-set mechanism)",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T11:22:57-07:00",
+      "notes": "Replaces the withdrawn frame-blindness gloss. After the Torquato literature check refuted 'invariance forbids hyperuniformity' (isotropic hyperuniform processes are the central objects of that field), the real mechanism is POINT-STABILIZER ORBIT SIZE: translations on Z have trivial stabilizer so each separation class has one partner and hyperuniformity is fine; the Lorentz group's stabilizer of a point is the whole Lorentz group whose orbits are infinite hyperboloids, so infinitely many partners share one correlation value and finite total correlation forces it to zero - white noise = Poisson. Job proves the finite quantitative form: correlation at a separation class is bounded by base variance over class size, with the cyclic group (trivial stabilizer, nonzero correlation allowed) as the contrast that makes it non-vacuous, and 2-transitivity as the extreme case. Prompt explicitly instructs the prover to fix the sign convention itself rather than force my stated form. [2026-07-21T13:57:01-07:00 claude] Landed as PhysicsSM/Draft/NullEdge/StabilizerOrbitCorrelationDecay.lean, 0 errors at pin, 13 build-enforced guards (12 standard-three, 1 on the smaller [propext, Quot.sound]). PROVER CORRECTED MY SIGN CONVENTION, as the prompt asked it to. I proposed the decay bound under NONNEGATIVE correlations; that hypothesis is DEGENERATE - nonnegative_correlations_vanish proves c_j >= 0 plus zero row sum forces a = 0 and every c_j = 0. The estimate holds in the NONPOSITIVE regime: |O_j| |c_j| <= a, so |O_j| >= K > 0 gives |c_j| <= a/K. Obvious in hindsight - fixed total means excess here is compensated elsewhere, so correlations are on average ANTI-correlations, and the six-cycle witness has nearest-neighbour covariance exactly -1. ALSO RECORDED AS A LIMIT: for MIXED signs, cancellation in sum_j |O_j| c_j = -a permits large individual |c_j|, so no individual bound follows from the fixed-total identity alone. Plus single_suborbit_bound |c| <= a/(N-1) recovering the 2-transitive extreme, and the ZMod 6 contrast (trivial stabilizer, singleton classes, bound vacuous, nonzero correlation permitted)."
+    },
+    {
+      "id": "8a4e09a4-d278-4ba1-9503-5d26412266c5",
+      "work_item_id": null,
+      "title": "SM FLAGSHIP: derive weak left-handedness from fermion parity (de-circularize the chirality projector)",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T11:16:55-07:00",
+      "notes": "AUDIT FINDING BEHIND IT: WeakIsospinChiralityProjector supplies chi = diag(-1,1,1,-1) as a literal matrix, and the join to ChiralityFromActionSplit (left action vs right grading) exists only in PROSE - no Lean theorem connects them. So 'no chiral projector imposed by hand' is partly circular in the kernel. THE FIX: chi = -(-1)^N exactly, where N = B1dB1 + B2dB2 is the weak number operator (polynomial form -(2N^2-4N+1)); the su(2)_L generators are number-CONSERVING bilinears, so they commute with any function of N, hence with chi, with nothing inserted. Right-handed states are the N=0 and N=2 eigenvectors, each 1-dimensional, hence automatically singlets - the 1+2+1 content becomes a CONSEQUENCE. Sharpness: B1 alone is not number-conserving and does connect the sectors. RESIDUAL SUPPLIED INPUT, to be stated: the identification of weak-mode fermion parity with spacetime handedness. [2026-07-21T15:21:37-07:00 codex] Integrated finite parity/chirality theorem plus definitional bridges to live weak-isospin matrices; live source and axiom guard pass; physical handedness identification remains supplied."
+    },
+    {
+      "id": "19f45c37-0a02-4c70-9f98-bb6f9dcdf227",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "HNU inverse-Cayley Hermitian band selector",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T10:36:38-07:00",
+      "notes": "Task d462650b-f0bd-462f-90dd-c0190e6377c5; six typechecked proof targets; second dedicated HNU job. [2026-07-21T12:57:59-07:00 codex] Two-hour cutoff: harvested in-progress snapshot with the two generic Cayley lemmas, closed four HNU/projector wrappers locally, targeted build and dedicated axiom guard passed; Aristotle task cancelled after useful partial harvest."
+    },
+    {
+      "id": "7f197b23-b63d-48c0-83e7-8d746f0db0a0",
+      "work_item_id": "QCA-3PLUS1-001",
+      "title": "Live massive HNU polynomial-cost closure",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T10:26:34-07:00",
+      "notes": "Task 8d72fc7d-b853-423e-bff7-1e99ded3b830. Eight exact remaining targets after MC2 block-exponential bridge landed. Must close massiveWend vs massiveEflow without weakening; task note AgentTasks/hnu-massive-polynomial-closure-aristotle-2026-07-21.md. [2026-07-21T12:58:00-07:00 codex] Two-hour cutoff: local repository had already closed all eight proof targets, dedicated/aggregate guards and root build passed; in-progress snapshot retained for adversarial comparison and Aristotle task cancelled."
+    },
+    {
+      "id": "fd14e094-df01-4305-bbaf-fecca8702c29",
+      "work_item_id": "MASS-ORIGIN-001",
+      "title": "A4 POSITIVE REPAIR: moment/KL data restores well-posedness of the mass readout",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T10:13:29-07:00",
+      "notes": "Completes the gap-to-pole dichotomy: spectrum alone insufficient (landed), but (spectrum,weights) determines the response and the moment sequence determines the weights (Vandermonde). Conclusion: the physically correct input is the spectral MEASURE, not the spectrum. [2026-07-21T11:59:39-07:00 claude] Landed as PhysicsSM/Draft/NullEdge/SpectralMeasureReadoutRepair.lean, 0 errors at pin, 10 build-enforced standard-three guards. Completes the A4 dichotomy: spectrum alone insufficient (landed negative half) BUT moment/spectral-measure data determines the response (Vandermonde), with matched sharpness (n-1 moments insufficient at n=3: weights (1,0,1) vs (0,2,0) at atoms 0,1,2 share two moments). GRADED [comp] for the mathematics - Parseval, Vandermonde, truncated moment problem and Kallen-Lehmann are all classical, verified by literature search (2103.11846, 1201.3415) BEFORE writing the gloss. [orig] only for the dichotomy packaging + sharpness witness. NOT PROVED and stated as open: the general 2n-moment Prony theorem; only n=2 is done."
+    },
+    {
+      "id": "8ee92569-255d-4c01-8455-e32bef13881a",
+      "work_item_id": null,
+      "title": "WHICH groups admit hyperuniformity? rank-2 rigidity vs rank>=3 freedom",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T10:13:29-07:00",
+      "notes": "Classification: 2-transitive invariance forces Poisson-like linear regional variance; cyclic Z/N with second-difference kernel gives an invariant PSD hyperuniform covariance with BOUNDED arc variance. Physical reading: hyperuniformity requires reduced (crystal-like) symmetry. [2026-07-21T11:55:13-07:00 claude] Landed as PhysicsSM/Draft/NullEdge/HyperuniformityRankDichotomy.lean, verified 0 errors at pin, 18 build-enforced axiom guards (16 standard-three, 2 on the smaller [propext, Quot.sound]). PROVER REFUTED MY REQUESTED CLAIM: rank>=3 is NOT necessary for a nonzero invariant PSD hyperuniform covariance - I - J/N works at rank two for every N>=2 (rankTwo_nonzero_counterexample). Valid dichotomy is about the SHAPE of regional variance: rank two FORCES V(A) = q|A|(N-|A|)/N (linear for small regions); the six-cycle Laplacian witness at higher rank has arc variance exactly 2 for every proper arc (bounded). Prover also caught that my target-3 formula mixed two normalizations and proved both. Gloss governed by AgentTasks/lambda-harvest-governance-2026-07-21.md."
+    },
+    {
+      "id": "f3020ad0-133c-4737-b2c7-d245f2ff7f46",
+      "work_item_id": "MASS-ORIGIN-001",
+      "title": "FLAGSHIP: frame-blindness FORCES Poisson-like number variance (quantitative hyperuniformity no-go)",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T10:13:29-07:00",
+      "notes": "Quantitative sharpening of the Lambda no-go. S_N-invariant PSD covariance plus unimodular fixed-total forces V(A) = a|A|(N-|A|)/(N-1) exactly; a=0 implies C=0; so linear-in-|A| variance or nothing. Non-invariant witness shows regional suppression IS available once invariance is dropped. [2026-07-21T12:37:16-07:00 claude] Landed as PhysicsSM/Draft/NullEdge/ExchangeableRegionalVariance.lean, 0 errors at pin, 25 build-enforced standard-three guards, olean built. Exact regional law V = |A|a + |A|(|A|-1)b; fixed total forces b = -a/(N-1) hence V = a|A|(N-|A|)/(N-1); PSD gives a>=0; for 2|A|<=N the bound a|A|/2 <= V; a=0 collapses C to zero; packaged dichotomy - either C=0 or every region of size <= N/2 has strictly positive variance with the linear lower bound. Paired N=4 NON-invariant rank-one witness from v=(1,-1,1,-1) with fixed total, C 0 0 > 0, and ZERO variance on {0,1}. CONSISTENT with HyperuniformityRankDichotomy: I-J/N has a = 1-1/N > 0 so it sits in the strictly-positive branch. Gloss bound by AgentTasks/lambda-harvest-governance-2026-07-21.md: S_N invariance is NOT frame-blindness/isotropy/homogeneity, and this does NOT show invariance forbids hyperuniformity."
+    },
+    {
+      "id": "9dfffca1-85e5-40f5-803c-f4e93642db96",
+      "work_item_id": null,
+      "title": "Lambda: frame-blindness suppression for a COMPACT CONTINUOUS group (toward Lorentz)",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T10:13:29-07:00",
+      "notes": "Next step past the landed finite-group FrameBlindnessSuppression: compact G acting by isometries on a finite-dim inner-product space; orbit-constancy of variance, kernel is G-invariant, Haar averaging can only delocalize, SO(2) sharpness witness. [2026-07-21T12:09:09-07:00 claude] Landed as PhysicsSM/Draft/NullEdge/FrameBlindnessCompactGroup.lean, 0 errors at pin, 8 build-enforced standard-three guards, olean built. Obstruction (no_single_mode_suppression) proved for CONTINUOUS COMPACT groups; orbit-constancy of variance, kernel invariance, orbit-span propagation, circle-rotation sharpness with a non-invariant rank-one selectively suppressing the imaginary line. HONEST GAP recorded in docstring: the HAAR/BOCHNER integral was NOT used - the averaging bridge is the finite-group alternative the prompt permitted. Compact is not Lorentz; the causal-set mechanism is boost NON-compactness and is untouched here."
+    },
+    {
+      "id": "4a2bc7d3-520b-4e55-b89b-632e5f937a3d",
+      "work_item_id": null,
+      "title": "Is there ONE blindness theorem, or five analogies? (Opus, adversarial)",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T08:00:13-07:00",
+      "notes": "Tests whether the cross-lane blindness pattern unifies as orbit-separation or is genuinely distinct phenomena; a negative split is an equally valid result and explicitly requested. Package blindness-general-theorem-20260721. [2026-07-21T09:44:50-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). VERDICT: NOT one theorem - my unification claim overstated. Sharp shared theorem = orbit-quotient factorization (invariant iff factors through the quotient). THREE-WAY TAXONOMY: (1) orbit invariance covers crossing-orientation, center-blindness, corrected vacuum-shift, and the spectrum-blindness PART of the mass result; (2) orbit RICHNESS/attainability = the extreme-weight part of the mass result (needs attainability, not invariance); (3) NOT an orbit phenomenon = gauge-invariance vs first-excited overlap (two INVARIANT operators with overlaps 0 and 1, proved not in the same orbit). Two of my table entries also imprecise: RAW trace is not shift-blind (the traceless PROJECTION is), and center-blindness needs a ZERO-CENTER-CHARGE loop. Synthesis document corrected. Landed BlindnessOrbitTaxonomy.lean."
+    },
+    {
+      "id": "b222f690-9776-4e44-b073-47aa5970609d",
+      "work_item_id": null,
+      "title": "Lambda: frame-blindness vs hyperuniformity for a general transitive group (Opus)",
+      "status": "integrated",
+      "submitted_at": "2026-07-21T08:00:13-07:00",
+      "notes": "Generalizes the permutation-invariance no-go to arbitrary transitive G - the step toward a Lorentz-flavoured statement, and the cheapest decisive move on the highest-impact outward result. Package lambda-frameblind-group-20260721. [2026-07-21T10:04:27-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). FLAGSHIP GENERALIZED from permutation-invariance to ARBITRARY finite group: invariant kernels constant on pair-orbits, orbit algebra dimension = pair-orbit count, transitive => all-ones is an eigenvector, invariant quadratic variance CONSTANT ALONG ORBITS, PSD zero variance => kernel membership, hence SUPPRESSION EXTENDS to every translate and the orbit's linear span. Sharp witness pair: invariant PSD suppressing the ENTIRE zero-sum block (S3 on Fin 3) vs NON-invariant rank-one PSD suppressing exactly ONE line while failing a translated mode - selective suppression requires giving up invariance. PROVER SHARPENED MY PROMPT: the theorem is at the level of the SUBREPRESENTATION GENERATED BY THE ORBIT, not isotypic-wide (commutant operators need not annihilate a multiplicity-carrying isotypic component); docstring states this and forbids the isotypic phrasing. Limits recorded: finite group, not Lorentzian, not a derivation of Lambda's value/sign. Landed FrameBlindnessSuppression.lean."
+    },
     {
       "id": "da3d3a9a-d760-4161-8289-7a2820128e0e",
       "work_item_id": "QCA-3PLUS1-001",
       "title": "Matrix block exponential lift for massive HNU factorization",
-      "status": "submitted",
+      "status": "harvested",
       "submitted_at": "2026-07-21T07:15:39-07:00",
-      "notes": "Focused Mathlib-only split: exp through live reindexed 2+2 block lift and fixed unitary conjugation; task a95ee78b-46b7-4aed-a6d3-9ae79b0df7f1."
+      "notes": "Focused Mathlib-only split: exp through live reindexed 2+2 block lift and fixed unitary conjugation; task a95ee78b-46b7-4aed-a6d3-9ae79b0df7f1. [2026-07-21T08:38:33-07:00 codex] Partial 08:34 snapshot preserved; central matrix-exponential proofs still open. [2026-07-21T09:40:02-07:00 codex] All four Mathlib-only matrix exponential bridge lemmas returned hole-free. Harvested for port into live massive HNU composition; not root-imported as duplicate API."
     },
     {
       "id": "2624a3d5-4d7f-472c-9e36-82bc3896f5f8",
       "work_item_id": "QCA-3PLUS1-001",
       "title": "codex discrete adiabatic finite differences",
-      "status": "submitted",
+      "status": "integrated",
       "submitted_at": "2026-07-21T06:52:27-07:00",
-      "notes": "Task 9de07986-91e3-4c34-8ea3-e8b11ba901dd; focused Mathlib package; proves exact 1/T and 1/T^2 finite-difference hypotheses from bounded derivatives; note AgentTasks/discrete-adiabatic-finite-differences-aristotle-2026-07-21.md"
+      "notes": "Task 9de07986-91e3-4c34-8ea3-e8b11ba901dd; focused Mathlib package; proves exact 1/T and 1/T^2 finite-difference hypotheses from bounded derivatives; note AgentTasks/discrete-adiabatic-finite-differences-aristotle-2026-07-21.md [2026-07-21T07:46:06-07:00 codex] All four finite-difference theorems reviewed, integrated, guarded, and target-built; HNU gap/application explicitly remains open."
     },
     {
       "id": "a46bd268-cf90-4173-b904-a82d5d596218",
       "work_item_id": "QCA-3PLUS1-001",
       "title": "Exact finite gapped moving-band witness",
-      "status": "submitted",
+      "status": "integrated",
       "submitted_at": "2026-07-21T06:28:58-07:00",
-      "notes": "Task 74f3357b-00b7-4b75-8fac-0005bac8076d; exact fixed gap, moving rank-one projector, nonzero finite defect, vanishing slow-schedule leakage budget."
+      "notes": "Task 74f3357b-00b7-4b75-8fac-0005bac8076d; exact fixed gap, moving rank-one projector, nonzero finite defect, vanishing slow-schedule leakage budget. [2026-07-21T07:54:25-07:00 codex] Exact gapped moving-projector control integrated and guarded. Semantic correction: vanishing budget uses total displacement 1/N, so it is not fixed-path adiabatic transport. [2026-07-21T08:11:47-07:00 codex] Reopened with fixed-path Kato-style parallel-transport task 8c569d24; exact endpoint 1, nonzero projector motion, zero transported leakage. [2026-07-21T09:40:02-07:00 codex] Fixed-path continuation integrated: exact nonidentity 0->1 band transport, moving projectors, intertwining, and zero supplied-transport leakage; guard green."
     },
     {
       "id": "4f8edbcc-b25b-48df-ba57-9613c016e8bb",
@@ -39,9 +231,9 @@
       "id": "ffc13bb3-0136-4769-92e7-52680bef9f23",
       "work_item_id": "QCA-3PLUS1-001",
       "title": "Live massive HNU polynomial adaptive cost",
-      "status": "submitted",
+      "status": "deferred",
       "submitted_at": "2026-07-21T05:31:58-07:00",
-      "notes": "Project-native composition of sharp skew-Hermitian product bound with live massiveWend/massiveEflow; conservative 2*qAbs+norm z constant."
+      "notes": "Project-native composition of sharp skew-Hermitian product bound with live massiveWend/massiveEflow; conservative 2*qAbs+norm z constant. [2026-07-21T08:38:34-07:00 codex] Three-hour live job; 08:34 snapshot preserved. Only live endpoint equality proved; factorization and rate remain open. [2026-07-21T08:48:07-07:00 codex] Returned partial after stop request, not a completed proof. Live endpoint, skew list, and exact sum proved; nine placeholders remain. No integration."
     },
     {
       "id": "8bffcfa2-68af-4570-a536-3acdf0536db4",
@@ -81,7 +273,7 @@
       "title": "A3 ASSEMBLED: one model discharging all four obligations simultaneously (Opus)",
       "status": "integrated",
       "submitted_at": "2026-07-21T03:50:03-07:00",
-      "notes": "Closes the gap between four separate lemmas and an actual bridge - needs invariance AND overlap together, which were proved logically independent. Precise obstruction accepted as an alternative result. Package a3-assembled-model-20260721. [2026-07-21T05:20:12-07:00 codex] Locally verified snapshot integrated as CompositeMassBridge with explicit finite-only scope and axiom guard."
+      "notes": "Closes the gap between four separate lemmas and an actual bridge - needs invariance AND overlap together, which were proved logically independent. Precise obstruction accepted as an alternative result. Package a3-assembled-model-20260721. [2026-07-21T05:20:12-07:00 codex] Locally verified snapshot integrated as CompositeMassBridge with explicit finite-only scope and axiom guard. [2026-07-21T07:56:15-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). A3 BRIDGE ASSEMBLED: all four obligations for ONE model. ZMod 3 states, (ZMod 3)^x gauge action, invariant observable v=(-2,1,1), T=A^T A strictly positive definite, spectrum {9,4,1} with 1-dim top and first-excited eigenspaces, and THE HARD PART - the invariant observable IS the first-excited eigenvector with overlap 6 (invariance and overlap were proved logically independent, so joint satisfiability was genuinely open). Connected correlation exactly 6(4/9)^n; correlation mass log(9/4)=log(lam0/lam1). SCOPE: a toy - 3 states, abelian group, no continuum limit, no SU(3), no reflection positivity. Shows joint satisfiability, NOT a physical composite mass. Landed CompositeMassBridgeModel.lean."
     },
     {
       "id": "9a553b51-fc39-43dd-85e4-8955746c6573",
@@ -191,9 +383,9 @@
       "id": "4379be17-c32f-43b9-9e81-ecae3e5c69c9",
       "work_item_id": null,
       "title": "General form of the gap-does-not-fix-pole obstruction (Opus)",
-      "status": "running",
+      "status": "integrated",
       "submitted_at": "2026-07-21T00:11:47-07:00",
-      "notes": "Lifts the single 2x2 witness to all n>=2: weight equals weight in direction U* v, achievable weights fill [0,1], so spectrum->weight is not well defined generally. Package gap-pole-general-form-20260721. [2026-07-21T01:22:45-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). GENERALIZES the gap-pole obstruction from one 2x2 witness to ARBITRARY finite dimension, directly answering the audit-364a29ac criticism that a single witness cannot support a general claim: weight_map covariance weight(U S)v = weight S (U^-1 v); spectrum_unitary_conjugate; weight_attains_zero_and_one for EVERY nonzero proper subspace and fixed unit vector in any finite dimension; spectrum_does_not_determine_physical_weight; eigenvalue_weight_obstruction. HONEST READING preserved in the docstring: what is general is that the SPECTRUM does not determine the observable-relative WEIGHT (a well-posedness obstruction) - still NOT the physical claim that a gap fails to determine a mass, and no propagator zero is constructed. Full-interval [0,1] NOT proved; delivered form is attainment of 0 and 1. Landed GapPoleGeneralObstruction.lean. [2026-07-21T01:23:02-07:00 codex] First task proved general 0/1 weight obstruction. Successor requested to prove actual eigenspace transport under unitary conjugation before integration."
+      "notes": "Lifts the single 2x2 witness to all n>=2: weight equals weight in direction U* v, achievable weights fill [0,1], so spectrum->weight is not well defined generally. Package gap-pole-general-form-20260721. [2026-07-21T01:22:45-07:00 claude] COMPLETE + verified 0/0 (olean, pc clean). GENERALIZES the gap-pole obstruction from one 2x2 witness to ARBITRARY finite dimension, directly answering the audit-364a29ac criticism that a single witness cannot support a general claim: weight_map covariance weight(U S)v = weight S (U^-1 v); spectrum_unitary_conjugate; weight_attains_zero_and_one for EVERY nonzero proper subspace and fixed unit vector in any finite dimension; spectrum_does_not_determine_physical_weight; eigenvalue_weight_obstruction. HONEST READING preserved in the docstring: what is general is that the SPECTRUM does not determine the observable-relative WEIGHT (a well-posedness obstruction) - still NOT the physical claim that a gap fails to determine a mass, and no propagator zero is constructed. Full-interval [0,1] NOT proved; delivered form is attainment of 0 and 1. Landed GapPoleGeneralObstruction.lean. [2026-07-21T01:23:02-07:00 codex] First task proved general 0/1 weight obstruction. Successor requested to prove actual eigenspace transport under unitary conjugation before integration. [2026-07-21T10:13:29-07:00 claude] Stale ledger status corrected: landed long ago as PhysicsSM/Draft/NullEdge/GapPoleGeneralObstruction.lean, verified 0/0."
     },
     {
       "id": "364a29ac-4638-4a98-bc09-721606349d91",
@@ -455,9 +647,9 @@
       "id": "6ea8b5f0-5033-46a9-a015-8629f0bf0073",
       "work_item_id": null,
       "title": "Wave-3 self-audit of remaining Opus mass landings (Opus)",
-      "status": "submitted",
+      "status": "integrated",
       "submitted_at": "2026-07-20T13:03:23-07:00",
-      "notes": "Audits Pluecker/uniqueness/consistency/resolvent/uniform-gap/seesaw for the 4 over-claim modes. Package mass-selfaudit-wave3-20260720."
+      "notes": "Audits Pluecker/uniqueness/consistency/resolvent/uniform-gap/seesaw for the 4 over-claim modes. Package mass-selfaudit-wave3-20260720. [2026-07-21T12:43:06-07:00 claude] 22-hour wave-3 self-audit landed as PhysicsSM/Draft/NullEdge/MassLandingsAuditWave3.lean, 0 errors at pin, 7 build-enforced standard-three guards. FIVE new prose corrections to my own mass landings, each with a KERNEL COUNTEREXAMPLE: (1) Yukawa uniqueness - phase alone insufficient, nonzero insufficient (magnitude free); fixed magnitude PLUS phase repairs; finrank=1 cannot be empty but finrank<=1 would permit vacuity. (2) Mechanism matrix - the zero-intersection claim SURVIVES THE TRIVIAL GRADING (every map even, only zero odd), so it holds for a reason unrelated to physics; surjectivity of Gamma suffices and the fixed-vector condition is unnecessary. (3) Resolvent response - a (0,0) ENTRY formula does not determine the full response matrix or a two-point observable; witness = two unequal matrices sharing the entry. (4) Uniform gap - [Nonempty K] is SEMANTICALLY LOAD-BEARING; over Empty every gap function vacuously admits a positive uniform bound. (5) Seesaw - general invertibility of MR suffices for Schur complement but NOT for a symmetry-preserving Majorana reading; explicit invertible nonsymmetric MR=[[1,1],[0,1]] gives a nonsymmetric light block, and symmetry of the INVERSE is the repair. Again: zero unsound statements, five unsound sentences."
     },
     {
       "id": "9100799d-6395-40a2-98bf-b89dc5af64f5",

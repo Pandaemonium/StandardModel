@@ -1,6 +1,17 @@
 import Mathlib
 
 /-!
+
+WAVE-3 AUDIT CORRECTION (2026-07-21, job `6ea8b5f0`, witnesses in
+`MassLandingsAuditWave3`). General invertibility of `M_R` suffices for the Schur-complement
+formula under two-sided elimination, but **NOT** for a symmetry-preserving Majorana
+interpretation: the explicit invertible nonsymmetric `M_R = [[1,1],[0,1]]` yields a
+NONSYMMETRIC light block
+(`AuditWitnesses.general_invertible_MR_can_give_nonsymmetric_light_block`). What repairs
+the shape is symmetry of the INVERSE
+(`AuditWitnesses.light_block_symmetric_of_inverse_symmetric`), and that is what a Majorana
+reading actually requires. State the symmetry hypothesis explicitly wherever the light
+block is called Majorana.
 # n-generation seesaw Schur complement (Opus, verified Aristotle 0f389c1d)
 
 Arbitrary-n extension of the A5 one-generation seesaw: lightEffectiveMass mD MR

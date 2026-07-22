@@ -181,3 +181,13 @@ AutonomousLab/
 The repository-wide `AGENTS.md` remains superior to this directory. If an AFPL
 procedure conflicts with it, `AGENTS.md` wins and the Lab Manager records an
 incident and proposes a correction.
+
+## Active campaign overlay
+
+For the Director's 2026-07-21 ten-day absence, both interactive agents also
+read
+[`prompts/TEN_DAY_GRAND_CHALLENGE_ROADMAP_2026-07-21.md`](prompts/TEN_DAY_GRAND_CHALLENGE_ROADMAP_2026-07-21.md).
+The overlay sets temporary scientific priorities, launch gates, resource
+envelopes, and return artifacts. It does not replace the charter or convert
+AFPL into a background daemon; continuity still requires a tested host-side
+supervisor or long-lived sessions with recovery instructions.

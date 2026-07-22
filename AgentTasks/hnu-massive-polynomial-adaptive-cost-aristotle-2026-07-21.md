@@ -3,7 +3,7 @@
 Date: 2026-07-21
 Owner: Codex
 Work item: `QCA-3PLUS1-001`
-Status: running; exact-factorization route reinforced
+Status: returned partial; deferred to focused matrix-exponential successor
 
 ## Objective
 
@@ -30,7 +30,7 @@ aristotle:
   expected_module: project-native live massive HNU polynomial-cost composition
   submission_project: AgentTasks/aristotle-submit/hnu-massive-polynomial-adaptive-cost-20260721-project
   output_dir: AgentTasks/aristotle-output/ffc13bb3-0136-4769-92e7-52680bef9f23
-  status: submitted
+  status: deferred
 ```
 
 ## Trust state
@@ -55,3 +55,23 @@ skew-Hermitian, sum to the live massive generator, and have norm sum at most
 `2 * qAbs q + norm z`. If Mathlib blocks the final assembly, the job must retain
 the exact factorization/sum/norm lemmas and report that API blocker. The false
 coarse scalar estimate is not an admissible substitute or no-go result.
+
+At 08:34 PDT the project was still in progress after three hours. A fresh
+archive is preserved at
+`AgentTasks/aristotle-output/ffc13bb3-0136-4769-92e7-52680bef9f23/in-progress-snapshot-0834.zip`.
+The snapshot proves only the live endpoint identification; the block lift,
+ordered kinetic product, polynomial one-step bound, telescope, and schedule
+still contain handoff placeholders. The live draft remains unintegrated and
+is not root-imported.
+
+## Returned partial result
+
+At 08:47 PDT Aristotle marked the task complete because it had honored the
+earlier stop-and-return instruction, not because the target theorem was proved.
+The final archive is
+`AgentTasks/aristotle-output/ffc13bb3-0136-4769-92e7-52680bef9f23/completed-0847.zip`.
+In addition to the live endpoint equality, it proves the skew-Hermitian
+generator-list theorem and exact generator-sum identity. It leaves nine
+explicit proof placeholders, beginning with the reindexed block-exponential
+API and ending with the changing-window rate. The package is therefore a useful
+handoff but is not eligible for integration or a headline claim.
